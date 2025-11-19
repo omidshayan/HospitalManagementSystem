@@ -38,11 +38,6 @@ require_once 'cron-job/cron_job.php';
 // users
 require_once 'users/users.php';
 
-// capital
-require_once 'capital/capital.php';
-
-
-
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
         //current url array
