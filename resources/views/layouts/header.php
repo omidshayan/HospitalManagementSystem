@@ -12,7 +12,6 @@
   <!-- <link href="<?= asset('lib/timePicker/persian-datepicker.min.css') ?>" rel="stylesheet" /> -->
   <link href="<?= asset('lib/datePicker/datePicker.min.css') ?>" rel="stylesheet" />
 
-
   <title><?= $title ?></title>
 </head>
 
