@@ -35,9 +35,9 @@ class Login extends Auth
             if (password_verify($request['password'], $user['password'])) {
 
                 if ($user['state'] == 1 && $user['role'] == 1) {
-                    $_SESSION['af_em_id'] = $user['id'];
-                    $_SESSION['af_em_name'] = $user['employee_name'];
-                    $_SESSION['af_em_image'] = $user['image'];
+                    $_SESSION['hsm_em_id'] = $user['id'];
+                    $_SESSION['hsm_em_name'] = $user['employee_name'];
+                    $_SESSION['hsm_em_image'] = $user['image'];
                     $_SESSION['branch_id'] = $user['branch_id'];
                     $permissions = $db->select('SELECT `section_name` FROM `permissions` WHERE employee_id = ?', [$user['id']])->fetchAll();
                     $_SESSION['permissions'] = array_column($permissions, 'section_name');
@@ -46,7 +46,7 @@ class Login extends Auth
                     $db->update('employees', $user['id'], ['remember_token', 'expire_remember_token'], [$rand, 2]);
 
                     if (isset($request['remember_me']) && $request['remember_me'] == 'on') {
-                        setcookie("af_user", $rand, [
+                        setcookie("hsm_user", $rand, [
                             'expires' => $expiry,
                             'path' => '/',
                             'secure' => true,
@@ -58,8 +58,8 @@ class Login extends Auth
                     $this->redirect('/');
                     exit();
                 } elseif ($user['state'] == 1 && $user['role'] == 2 && $user['role'] !== 1) {
-                    $_SESSION['af_em_id'] = $user['id'];
-                    $_SESSION['af_em_name'] = $user['employee_name'];
+                    $_SESSION['hsm_em_id'] = $user['id'];
+                    $_SESSION['hsm_em_name'] = $user['employee_name'];
                     $_SESSION['admin'] = 'admin';
                     $_SESSION['role'] = 2;
                     $permissions = $db->select('SELECT `en_name` FROM `sections`')->fetchAll();
@@ -69,7 +69,7 @@ class Login extends Auth
                     $db->update('employees', $user['id'], ['remember_token', 'expire_remember_token'], [$rand, 2]);
 
                     if (isset($request['remember_me']) && $request['remember_me'] == 'on') {
-                        setcookie("af_user", $rand, [
+                        setcookie("hsm_user", $rand, [
                             'expires' => $expiry,
                             'path' => '/',
                             'secure' => true,
@@ -94,16 +94,16 @@ class Login extends Auth
     public function userCheck()
     {
         $db = DataBase::getInstance();
-        if (isset($_COOKIE['af_user'])) {
-            $remember_token = $db->select('SELECT * FROM `employees` WHERE remember_token = ?', [$_COOKIE['af_user']])->fetch();
+        if (isset($_COOKIE['hsm_user'])) {
+            $remember_token = $db->select('SELECT * FROM `employees` WHERE remember_token = ?', [$_COOKIE['hsm_user']])->fetch();
             if ($remember_token != null && $remember_token > 0 && $remember_token['expire_remember_token'] == 1) {
-                $_SESSION['af_em_id'] = $remember_token['id'];
-                $_SESSION['af_em_name'] = $remember_token['employee_name'];
-                $_SESSION['af_em_image'] = $remember_token['image'];
+                $_SESSION['hsm_em_id'] = $remember_token['id'];
+                $_SESSION['hsm_em_name'] = $remember_token['employee_name'];
+                $_SESSION['hsm_em_image'] = $remember_token['image'];
                 $permissions = $db->select('SELECT `section_name` FROM `permissions` WHERE employee_id = ?', [$remember_token['id']])->fetchAll();
             } elseif ($remember_token['state'] == 1 && $remember_token['state'] != 0 && $remember_token['role'] == 2 && $remember_token['role'] !== 1) {
-                $_SESSION['af_em_id'] = $remember_token['id'];
-                $_SESSION['af_em_name'] = $remember_token['employee_name'];
+                $_SESSION['hsm_em_id'] = $remember_token['id'];
+                $_SESSION['hsm_em_name'] = $remember_token['employee_name'];
                 $_SESSION['admin'] = 'admin';
                 $_SESSION['role'] = 2;
                 $permissions = $db->select('SELECT `en_name` FROM `sections`')->fetchAll();
