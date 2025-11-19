@@ -23,10 +23,10 @@ include_once('lang/' . $_COOKIE['lang'] . '.php');
 require_once 'helper.php';
 //config
 define('BASE_PATH', __DIR__);
-define('CURRENT_DOMAIN', currentDomain() . '/framework');
+define('CURRENT_DOMAIN', currentDomain() . '/HospitalManagementSystem');
 define('DISPLAY_ERROR', true);
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'framework');
+define('DB_NAME', 'hms_sis');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 
