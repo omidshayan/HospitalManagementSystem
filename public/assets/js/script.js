@@ -4,25 +4,17 @@ const mainContent = document.querySelector(".content");
 const appbar = document.querySelector(".appbar");
 const menuToggle = document.querySelector("#menu-toggle");
 const left_menu_active = document.querySelector("#left-menu-active");
-const settings = document.querySelector(".settings");
+const settings = document.querySelector(".temp-settings");
 const setting = document.querySelector(".setting");
 const closeLeftMenu = document.querySelector(".closeLeftMenu");
 
 // events
-const show_msg = document.querySelector(".show-msg");
-const notif_events = document.querySelector(".notif-events");
 const shwo_msg_events = document.querySelector(".show-msg-events");
 
 // Function to close menu
 function closeMenu() {
   shwo_msg_events.classList.remove("active");
 }
-
-// Toggle menu when clicking the icon
-show_msg.addEventListener("click", function (event) {
-  event.stopPropagation(); // Prevent click event from propagating to document
-  shwo_msg_events.classList.toggle("active");
-});
 
 // Close menu when clicking outside the menu
 document.addEventListener("click", function (event) {
@@ -37,10 +29,6 @@ document.addEventListener("click", function (event) {
   }
 });
 
-notif_events.addEventListener("click", function (event) {
-  event.stopPropagation(); // Prevent click event from propagating to document
-  shwo_msg_events.classList.toggle("active");
-});
 
 hamber.addEventListener("click", function () {
   sidebar.classList.toggle("active");

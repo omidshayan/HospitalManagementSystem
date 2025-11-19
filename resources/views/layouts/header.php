@@ -597,68 +597,6 @@ admin
 
     <div class="w60 d-flex justify-between ml-20">
 
-      <!-- notif icon -->
-      <div class="notification-container pr cursor-p">
-        <!-- notif icon -->
-        <?php
-        $notifications = $this->loadNotifications();
-        $count = count($notifications);
-        ?>
-
-        <?php if ($count > 0): ?>
-          <div class="other-events pa">
-            <span class="text-white fs15">
-              <?= ($count > 9 ? '9' : $count) ?>
-            </span>
-            <?php if ($count > 9): ?>
-              <span class="fs11 text-white">+</span>
-            <?php endif; ?>
-          </div>
-        <?php endif; ?>
-
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="fs18 w20" viewBox="0 0 16 16">
-          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"></path>
-        </svg>
-
-        <!-- notif data -->
-        <div class="notification-dropdown">
-          <div class="notification-list color">
-            <?php if ($count > 0): ?>
-              <?php foreach ($notifications as $notification): ?>
-                <?php
-                $routes = [
-                  1 => 'sale-invoice-details',
-                  2 => 'purchase-invoice-details',
-                  3 => 'return-sale-invoice-details',
-                  4 => 'return-purchase-invoice-details',
-                  5 => 'financial-sector-details',
-                  6 => 'financial-sector-details',
-                  7 => 'salary-details',
-                ];
-
-                $type = $notification['notif_type'];
-                $link = isset($routes[$type])
-                  ? url($routes[$type] . '/' . $notification['ref_id'])
-                  : url('notification/' . $notification['id']);
-
-                ?>
-                <a href="<?= $link ?>" class="notification-item color bold">
-                  <?= htmlspecialchars($notification['title']) ?>
-                </a>
-              <?php endforeach; ?>
-            <?php else: ?>
-              <div class="notification-item color center">موردی وجود ندارد</div>
-            <?php endif; ?>
-
-          </div>
-
-          <div class="notification-footer-wrapper">
-            <?php if ($count > 0): ?>
-              <a href="<?= url('notifications') ?>" class="notification-footer">نــمـایـش هـمـه</a>
-            <?php endif; ?>
-          </div>
-        </div>
-      </div>
 
       <!-- setting icon -->
       <span class="temp-settings cursor-p">
@@ -689,25 +627,3 @@ admin
   <br />
   <br />
   <br />
-
-  <!-- show notif list dilay -->
-  <script>
-    const container = document.querySelector('.notification-container');
-    const dropdown = container.querySelector('.notification-dropdown');
-    let hideTimeout;
-
-    container.addEventListener('mouseenter', () => {
-      clearTimeout(hideTimeout);
-      dropdown.style.opacity = '1';
-      dropdown.style.transform = 'translateY(0)';
-      dropdown.style.pointerEvents = 'auto';
-    });
-
-    container.addEventListener('mouseleave', () => {
-      hideTimeout = setTimeout(() => {
-        dropdown.style.opacity = '0';
-        dropdown.style.transform = 'translateY(-10px)';
-        dropdown.style.pointerEvents = 'none';
-      }, 200);
-    });
-  </script>
