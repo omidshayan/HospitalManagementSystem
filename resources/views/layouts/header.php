@@ -31,7 +31,7 @@
           <div class="text-avatar">
             <div>
               کاربر
-              <?= $_SESSION['af_em_name'] ?></div>
+              <!-- <?= $_SESSION['af_em_name'] ?></div> -->
           </div>
         </div>
       </div>
@@ -57,54 +57,6 @@
                   <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
                 </svg>
                 <span class="mr5">جستجو</span>
-              </span>
-            </a>
-          </li>
-
-          <!-- send recive -->
-          <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
-              <a href="#" class="d-flex align-center justify-between dddd">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
-                    <path d="M20 3h-2V1h-2v2H8V1H6v2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM4 5h16v12H4V5zm9 6h-2v2h-2v-2H7v-2h2V7h2v2h2v2z" />
-                  </svg>
-                  <span class="mr5">برد و رسید طلا</span>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                </svg>
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('add-expense') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت رسید</li>
-                  </a>
-                <?php endif; ?>
-
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('expenses') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت برد</li>
-                  </a>
-                <?php endif; ?>
-
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('expenses_categories') ?>">
-                    <li class="sidebar-dropdown-menu-item">مدیریت دسته بندی‌ها</li>
-                  </a>
-                <?php endif; ?>
-              </ul>
-            </li>
-          <?php endif; ?>
-
-          <!-- capital -->
-          <li class="sidebar-menu">
-            <a href="<?= url('capital') ?>" class="d-flex align-center justify-between">
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 16 16">
-                  <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
-                </svg>
-                <span class="mr5">سرمایه</span>
               </span>
             </a>
           </li>
