@@ -19,23 +19,6 @@
   <input type="text" id="menu-toggle" />
   <input type="text" id="left-menu-active" />
 
-  <script>
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'F7') {
-        e.preventDefault();
-        window.location.href = '<?= url('add-sale') ?>';
-      }
-      if (e.key === 'F6') {
-        e.preventDefault();
-        window.location.href = '<?= url('add-product-inventory') ?>';
-      }
-      if (e.key === 'F2') {
-        e.preventDefault();
-        window.location.href = '<?= url('deposit-money') ?>';
-      }
-    });
-  </script>
-
   <!-- start sidebar -->
   <div class="sidebar">
     <div class="sidebar-section">
