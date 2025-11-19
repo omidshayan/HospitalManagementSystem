@@ -12,7 +12,7 @@ class Login extends Auth
     // login page
     public function login()
     {
-        if ((isset($_SESSION['er_em_id']) && $_SESSION['er_em_id'] != '') || isset($_SESSION['er_em_name']) && $_SESSION['er_em_name'] != '') {
+        if ((isset($_SESSION['hsm_em_id']) && $_SESSION['hsm_em_id'] != '') || isset($_SESSION['hsm_em_name']) && $_SESSION['hsm_em_name'] != '') {
             $this->redirect('/');
             exit();
         } else {
