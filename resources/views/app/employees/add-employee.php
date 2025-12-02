@@ -29,8 +29,8 @@
                             <input type="password" class="checkInput" name="password" value="" placeholder="رمزعبور را وارد نمایید" />
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">مقدار معاش<?= _star ?> </div>
-                            <input type="number" class="checkInput" name="salary_price" value="" placeholder="مقدار معاش را وارد نمایید" />
+                            <div class="label-form mb5 fs14">مقدار معاش </div>
+                            <input type="number" name="salary_price" value="" placeholder="مقدار معاش را وارد نمایید" />
                         </div>
                     </div>
                     <div class="inputs d-flex">
@@ -58,40 +58,6 @@
                     </div>
                     <div id="imagePreview">
                         <img src="" class="img" alt="">
-                    </div>
-
-                    <div class="accordion-title color-orange">تعیین سطح دسترسی</div>
-                    <div class="accordion-content">
-                        <div class="child-accordioin">
-                            <div class="one">
-                                <div class="accordion-select permision">
-                                    <?php foreach ($sections as $section) : ?>
-                                        <?php $mainId = 'accordion-main-' . $section['id']; ?>
-                                        <div class="accordion-item-select">
-                                            <input type="checkbox" name="section_name[]" value="<?= $section['en_name'] ?>" id="<?= $mainId ?>" class="main-checkbox-select">
-                                            <label for="accordion-button-<?= $mainId ?>" class="accordion-button-select bb"><?= $section['name'] ?></label>
-                                            <div class="accordion-content-select">
-                                                <?php foreach ($subSections as $subSection) : ?>
-                                                    <?php if ($section['id'] == $subSection['section_id']) : ?>
-                                                        <?php $subId = 'accordion-sub-' . $subSection['id']; ?>
-                                                        <div class="hover">
-                                                            <label class="checkbox-container">
-                                                                <input type="checkbox" name="section_name[]" class="inner-checkbox-select" value="<?= $subSection['en_name'] ?>" data-parent="<?= $mainId ?>">
-                                                                <span class="checkmark"></span> <?= $subSection["name"] ?>
-                                                            </label>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                <?php endforeach; ?>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="inputs d-flex">
-                        <?=$this->branchSelectField()?>
                     </div>
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
