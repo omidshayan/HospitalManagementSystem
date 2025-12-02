@@ -1,6 +1,6 @@
 <!-- start sidebar -->
 <?php
-$title = 'ثبت مصرفی';
+$title = 'مدیریت دسته بندی‌ها';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
@@ -9,12 +9,12 @@ include_once('public/alerts/toastr.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> مدیریت دسته بندی های مصارف
+    <div class="content-title"> مدیریت دسته بندی‌ها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
-    $help_title = 'راهنمای بخش مدیریت دروس';
-    $help_content = 'در این قسمت ابتدا باید نام درس را وارد کنید، مثلا فتوشاپ ';
+    $help_title = 'راهنمای دسته بندی‌ها';
+    $help_content = 'توضیحات دسته بندیها ';
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
@@ -53,7 +53,7 @@ include_once('public/alerts/toastr.php');
             <tbody>
                 <?php
                 $perPage = 10;
-                $data = paginate($expenses_categories, $perPage);
+                $data = paginate($drug_categories, $perPage);
                 $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                 $number = ($currentPage - 1) * $perPage + 1;
                 foreach ($data as $item) {
@@ -91,16 +91,16 @@ include_once('public/alerts/toastr.php');
             <tbody></tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
-            <div class="table-info fs12">تعداد کل: <?= count($expenses_categories) ?></div>
+            <div class="table-info fs12">تعداد کل: <?= count($drug_categories) ?></div>
             <?php
-            if (count($expenses_categories) == null) { ?>
+            if (count($drug_categories) == null) { ?>
                 <div class="center color-red fs12">
                     <i class="fa fa-comment"></i>
                     <?= _not_infos ?>
                 </div>
             <?php } else {
-                if (count($expenses_categories) > 10) {
-                    echo paginateView($expenses_categories, 10);
+                if (count($drug_categories) > 10) {
+                    echo paginateView($drug_categories, 10);
                 }
             }
             ?>
