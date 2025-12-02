@@ -36,9 +36,9 @@ class DrugCategory extends App
     public function expenseCatDetails($id)
     {
         $this->middleware(true, true, 'general');
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories WHERE `id` = ?', [$id])->fetch();
-        if ($expenses_categories != null) {
-            require_once(BASE_PATH . '/resources/views/app/expenses-categories/expense-cat-details.php');
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE `id` = ?', [$id])->fetch();
+        if ($drug_categories != null) {
+            require_once(BASE_PATH . '/resources/views/app/drug-categories/drug-cat-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -47,16 +47,16 @@ class DrugCategory extends App
     }
 
     // change status Expense Cat
-    public function changeStatusExpenseCat($id)
+    public function changeStatusDrugCat($id)
     {
         $this->middleware(true, true, 'general');
-        $drug_categories = $this->db->select('SELECT * FROM drug-categories WHERE id = ?', [$id])->fetch();
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE id = ?', [$id])->fetch();
         if ($drug_categories != null) {
             if ($drug_categories['status'] == 1) {
-                $this->db->update('drug-categories', $drug_categories['id'], ['status'], [2]);
+                $this->db->update('drug_categories', $drug_categories['id'], ['status'], [2]);
                 $this->send_json_response(true, _success, 2);
             } else {
-                $this->db->update('drug-categories', $drug_categories['id'], ['status'], [1]);
+                $this->db->update('drug_categories', $drug_categories['id'], ['status'], [1]);
                 $this->send_json_response(true, _success, 1);
             }
         } else {
