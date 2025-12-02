@@ -2,7 +2,7 @@
 require_once 'Http/Controllers/drugs/Drug.php';
 
 // drugs routes
-uri('drugs', 'App\Drug', 'drugs');
+uri('add-drug', 'App\Drug', 'addDrug');
 
 
 uri('employees', 'App\Employee', 'showEmployees');
