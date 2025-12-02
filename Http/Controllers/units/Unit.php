@@ -62,13 +62,13 @@ class Unit extends App
     }
 
     // edit expense page
-    public function editDrugCat($id)
+    public function editUnit($id)
     {
         $this->middleware(true, true, 'general', true);
 
-        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE id = ?', [$id])->fetch();
-        if ($drug_categories != null) {
-            require_once(BASE_PATH . '/resources/views/app/drug-categories/edit-drug-category.php');
+        $unit = $this->db->select('SELECT * FROM units WHERE id = ?', [$id])->fetch();
+        if ($unit != null) {
+            require_once(BASE_PATH . '/resources/views/app/units/edit-unit.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -77,7 +77,7 @@ class Unit extends App
     }
 
     // edit expense store
-    public function editDrugCatStore($request, $id)
+    public function editUnitStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
