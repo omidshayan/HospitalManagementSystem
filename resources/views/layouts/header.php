@@ -93,7 +93,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 2c0-2.67 3.33-4 6-4s6 1.33 6 4v1h-12v-1zm10-9h-2V5h-4v1H8V5H6v2h12V5z" />
                   </svg>
-                  <span class="mr5">کارمندان</span>
+                  <span class="mr5">مدیریت داروها</span>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
                   <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -101,26 +101,26 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('add-employee') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت کارمند جدید</li>
+                  <a href="<?= url('add-drug') ?>">
+                    <li class="sidebar-dropdown-menu-item">ثبت دارو</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('employees') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش کارمندان</li>
+                  <a href="<?= url('drugs') ?>">
+                    <li class="sidebar-dropdown-menu-item">نمایش داروها</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('positions') ?>">
-                    <li class="sidebar-dropdown-menu-item">مدیریت وظایف کارمندان</li>
+                  <a href="<?= url('categories-drugs') ?>">
+                    <li class="sidebar-dropdown-menu-item">مدیریت دسته بندی‌ها</li>
                   </a>
                 <?php endif; ?>
               </ul>
             </li>
           <?php endif; ?>
-          
+
           <!-- settings -->
           <?php if ($this->hasAccess('general')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
