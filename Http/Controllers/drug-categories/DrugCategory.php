@@ -66,13 +66,13 @@ class DrugCategory extends App
     }
 
     // edit expense page
-    public function editExpense($id)
+    public function editDrugCat($id)
     {
         $this->middleware(true, true, 'general', true);
 
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories WHERE id = ?', [$id])->fetch();
-        if ($expenses_categories != null) {
-            require_once(BASE_PATH . '/resources/views/app/expenses-categories/edit-expense.php');
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE id = ?', [$id])->fetch();
+        if ($drug_categories != null) {
+            require_once(BASE_PATH . '/resources/views/app/drug-categories/edit-drug-category.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -81,7 +81,7 @@ class DrugCategory extends App
     }
 
     // edit expense store
-    public function editCatStore($request, $id)
+    public function editDrugCatStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 

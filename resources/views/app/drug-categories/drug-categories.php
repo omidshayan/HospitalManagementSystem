@@ -88,7 +88,6 @@ include_once('public/alerts/toastr.php');
                 }
                 ?>
             </tbody>
-            <tbody></tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
             <div class="table-info fs12">تعداد کل: <?= count($drug_categories) ?></div>

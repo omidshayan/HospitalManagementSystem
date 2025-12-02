@@ -1,6 +1,6 @@
 <!-- start sidebar -->
 <?php
-$title = 'ویرایش دسته مصرفی: ' . $expenses_categories['cat_name'];
+$title = 'ویرایش دسته بندی: ' . $drug_categories['cat_name'];
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
@@ -9,7 +9,7 @@ include_once('public/alerts/toastr.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> ویرایش دسته مصرفی: <?= $expenses_categories['cat_name'] ?>
+    <div class="content-title"> ویرایش دسته بندی: <?= $drug_categories['cat_name'] ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
@@ -17,26 +17,26 @@ include_once('public/alerts/toastr.php');
     $help_content = 'در این قسمت ابتدا باید نام درس را وارد کنید، مثلا فتوشاپ ';
     include_once('resources/views/helps/help.php');
     ?>
-    <!-- start page content -->
+
     <div class="box-container">
         <div class="insert">
-            <form id="myForm" action="<?=url('edit-cat-store/' . $expenses_categories['id'])?>" method="POST">
+            <form id="myForm" action="<?= url('drug-cat-store') ?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="cat_name" class="checkInput" value="<?= $expenses_categories['cat_name'] ?>" placeholder="نام را وارد نمایید" autocomplete="off" />
+                        <div class="label-form mb5 fs14"> نام دسته بندی <?= _star ?> </div>
+                        <input type="text" name="cat_name" class="checkInput" value="<?= $drug_categories['cat_name'] ?>" placeholder="نام دسته بندی را وارد نمایید" autocomplete="off" />
                     </div>
                     <div class="one">
                         <div class="label-form mb5 fs14">توضیحات</div>
-                        <textarea name="description" id="" placeholder="لطفا توضیحات را بنویسید..."><?= $expenses_categories['description'] ?></textarea>
+                        <textarea name="description" id="" placeholder="لطفا توضیحات را بنویسید..."><?= $drug_categories['description'] ?></textarea>
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <input type="submit" id="submit" value="ثــبــت" class="btn bold" />
             </form>
         </div>
-        <a href="<?= url('expenses_categories') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
     </div>
+
 </div>
 <!-- End content -->
 
