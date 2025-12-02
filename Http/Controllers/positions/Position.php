@@ -21,12 +21,16 @@ class Position extends App
     public function positionStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
-        $position = $this->db->select('SELECT * FROM positions WHERE `name` = ?', [$request['name']])->fetch();
-        if ($position['name'] != '' && $position != false) {
+
+        $position = $this->db->select(
+            'SELECT * FROM positions WHERE `name` = ?',
+            [$request['name']]
+        )->fetch();
+
+        if ($position !== false && $position['name'] != '') {
             $this->flashMessage('error', _repeat);
         } else {
             $this->db->insert('positions', array_keys($request), $request);
-            dd('ok');
             $this->flashMessage('success', _success);
         }
     }
