@@ -20,7 +20,7 @@ include_once('public/alerts/toastr.php');
     <!-- start page content -->
     <div class="box-container">
         <div class="insert">
-            <form id="myForm" action="expense-cat-store" method="POST">
+            <form id="myForm" action="<?=url('drug-cat-store')?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14"> نام دسته بندی <?= _star ?> </div>
