@@ -476,23 +476,19 @@ class App
                         exit;
                 }
 
-                // اگر کاربر عادی است (شعبه خاص دارد)
                 if (isset($_SESSION['branch_id'])) {
                         $branchId = intval($_SESSION['branch_id']);
                         return "<input type=\"hidden\" name=\"branch_id\" value=\"$branchId\">";
                 }
 
-                // اگر ادمین است
                 if (isset($_SESSION['admin'])) {
                         $branches = $this->db->select('SELECT id, branch_name FROM branches')->fetchAll();
 
-                        // اگر فقط یک شعبه وجود دارد
                         if (count($branches) === 1) {
                                 $branchId = intval($branches[0]['id']);
                                 return "<input type=\"hidden\" name=\"branch_id\" value=\"$branchId\">";
                         }
 
-                        // اگر بیش از یک شعبه وجود دارد
                         $html = '<div class="one">';
                         $html .= '<div class="label-form mb5 fs14">انتخاب شعبه <span class="color-red">*</span></div>';
                         $html .= '<select name="branch_id" id="mySelect" required>';
@@ -515,7 +511,7 @@ class App
         // get branch id
         public function getBranchId()
         {
-                if (!isset($_SESSION['so_employee']) && !isset($_SESSION['so_admin']['admin'])) {
+                if (!isset($_SESSION['hms_employee']) && !isset($_SESSION['hms_admin']['admin'])) {
                         $this->redirect('logout');
                         exit;
                 }
@@ -526,11 +522,11 @@ class App
                         return $branches[0]['id'];
                 }
 
-                if (!empty($_SESSION['so_employee']['branch_id'])) {
-                        return $_SESSION['so_employee']['branch_id'];
+                if (!empty($_SESSION['hms_employee']['branch_id'])) {
+                        return $_SESSION['hms_employee']['branch_id'];
                 }
 
-                if (!empty($_SESSION['so_admin']['admin'])) {
+                if (!empty($_SESSION['hms_admin']['admin'])) {
                         return 'ALL';
                 }
 
@@ -544,11 +540,50 @@ class App
                 return $branches['cnt'] ?? 0;
         }
 
+        // get month name
+        function getMonthName($month)
+        {
+                return [
+                        1 => 'حمل',
+                        2 => 'ثور',
+                        3 => 'جوزا',
+                        4 => 'سرطان',
+                        5 => 'اسد',
+                        6 => 'سنبله',
+                        7 => 'میزان',
+                        8 => 'عقرب',
+                        9 => 'قوس',
+                        10 => 'جدی',
+                        11 => 'دلو',
+                        12 => 'حوت'
+                ][$month] ?? 'نامشخص';
+        }
+
+        // get transaction type name for salay
+        function getTransactionTypeName($type)
+        {
+                return [
+                        1 => 'معاش',
+                        2 => 'اضافه کاری',
+                        3 => 'کسری معاش'
+                ][$type] ?? 'نامشخص';
+        }
+
+        // go back page
+        public function goBack($default = null)
+        {
+                if (!empty($_SERVER['HTTP_REFERER'])) {
+                        return $_SERVER['HTTP_REFERER'];
+                }
+
+                return $default ?: url('home');
+        }
+
         // user, branch exist?
         public function validateUserBranch()
         {
-                if (isset($_SESSION['so_employee']['branch_id'])) {
-                        $branchId = $_SESSION['so_employee']['branch_id'];
+                if (isset($_SESSION['hms_employee']['branch_id'])) {
+                        $branchId = $_SESSION['hms_employee']['branch_id'];
 
                         $branchExists = $this->db->select('SELECT id FROM branches WHERE id = ?', [$branchId])->fetch();
 
@@ -557,5 +592,123 @@ class App
                                 exit();
                         }
                 }
+        }
+
+        // format gold
+        function formatGold($amount)
+        {
+                $value = $amount / 1000;
+                $formatted = number_format(abs($value), 3, '.', ',');
+
+                if ($value < 0) {
+                        return '<span class="color-red">- ' . $formatted . '</span>';
+                } else {
+                        return $formatted;
+                }
+        }
+
+        // validate requests
+        public function validateRequestt($request, $rules)
+        {
+                foreach ($rules as $field => $label) {
+                        if (!isset($request[$field]) || trim($request[$field]) === '') {
+                                $this->flashMessage('error', "{$label} نباید خالی باشد");
+                                return false;
+                        }
+
+                        if (!is_numeric($request[$field])) {
+                                $this->flashMessage('error', "ورودی {$label} باید عدد باشد");
+                                return false;
+                        }
+                }
+                return true;
+        }
+
+        // check time ago days
+        function timeAgoInDays($datetime)
+        {
+                $now = new \DateTime();
+                if (is_numeric($datetime)) {
+                        $created = new \DateTime();
+                        $created->setTimestamp($datetime);
+                } else {
+                        $created = new \DateTime($datetime);
+                }
+
+                $diff = $now->diff($created)->days;
+
+                if ($diff == 0) {
+                        return "امروز";
+                } elseif ($diff == 1) {
+                        return "دیروز";
+                } else {
+                        return $diff . " روز پیش";
+                }
+        }
+
+        // format making sout
+        function makingSut(int $sut): string
+        {
+                $value = $sut / 1000;
+                return number_format($value, 3, '.', '');
+        }
+
+        function toMillisot($value)
+        {
+                $value = str_replace(',', '', $value);
+
+                if (strpos($value, '.') === false) {
+                        return (int)$value * 1000;
+                }
+
+                list($int, $dec) = explode('.', $value);
+
+                $dec = str_pad($dec, 3, '0');
+
+                return (int)($int . $dec);
+        }
+
+        function editToMillisot($value)
+        {
+                $clean = str_replace([",", " "], "", $value);
+                if (strpos($value, ".") !== false) {
+                        return (int)round(floatval($value) * 1000);
+                }
+                return (int)$clean;
+        }
+
+        // redirect to ...
+        function flashMessageTo($type, $message, $redirectTo)
+        {
+                flash($type, $message);
+
+                if ($type === 'success') {
+                        unset($_SESSION['old']);
+                        unset($_SESSION['temporary_old']);
+                }
+
+                header('Location: ' . $redirectTo);
+                exit;
+        }
+
+        // format score
+        public function formatNumber($score, $forInput = false)
+        {
+                if (!is_numeric($score)) return $score;
+                if (is_array($score)) return array_map([$this, 'formatNumber'], $score);
+
+                $rounded = round((float)$score, 2);
+                $formatted = rtrim(rtrim(number_format(abs($rounded), 2, '.', ','), '0'), '.');
+
+                $english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+                $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+                $formatted = str_replace($english, $persian, $formatted);
+
+                if ($forInput) return $formatted;
+
+                if ($rounded < 0)
+                        return '<span style="color:red; direction:ltr; display:inline-block;">-&nbsp;' . $formatted . '</span>';
+                else
+                        return '<span style="direction:ltr; display:inline-block;">' . $formatted . '</span>';
         }
 }

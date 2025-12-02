@@ -26,6 +26,7 @@ class Position extends App
             $this->flashMessage('error', _repeat);
         } else {
             $this->db->insert('positions', array_keys($request), $request);
+            dd('ok');
             $this->flashMessage('success', _success);
         }
     }

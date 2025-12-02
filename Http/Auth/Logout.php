@@ -7,29 +7,46 @@ use database\Database;
 
 class Logout extends Auth
 {
+    // logout
     public function logout()
     {
         $db = DataBase::getInstance();
-        if (isset($_SESSION['hsm_em_id'])) {
-            // به‌روزرسانی وضعیت توکن در دیتابیس
-            $db->update('employees', $_SESSION['hsm_em_id'], ['expire_remember_token', 'remember_token'], [0, null]);
-            unset($_SESSION['hsm_em_id']);
-            unset($_SESSION['hsm_em_name']);
-            unset($_SESSION['hsm_em_image']);
-            unset($_SESSION['permissions']);
-            unset($_SESSION['admin']);
 
-            session_destroy();
+        if (isset($_SESSION['hms_employee']['id'])) {
+            $db->update('employees', $_SESSION['hms_employee']['id'], [
+                'expire_remember_token',
+                'remember_token'
+            ], [0, null]);
+        }
 
-            $expiry = time() - 3600;
-            setcookie("hsm_user", '', $expiry, '/', '', true, true);
+        if (isset($_SESSION['hms_admin']['id'])) {
+            $db->update('employees', $_SESSION['hms_admin']['id'], [
+                'expire_remember_token',
+                'remember_token'
+            ], [0, null]);
+        }
 
-            $this->redirect('login');
-            exit();
+        $sessionsToUnset = [
+            'hms_employee',
+            'hms_admin',
+            'sk_em_name',
+            'user_permissions',
+            'csrf_token',
+            'temporary_old',
+            'old'
+        ];
+
+        foreach ($sessionsToUnset as $sessionKey) {
+            unset($_SESSION[$sessionKey]);
+        }
+
+        session_destroy();
+
+        if (isset($_COOKIE['af_user'])) {
+            setcookie("af_user", '', time() - 3600, '/', '', true, true);
         }
 
         $this->redirect('login');
         exit();
     }
-
 }

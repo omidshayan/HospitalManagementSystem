@@ -3,7 +3,8 @@
 namespace App;
 
 use database\DataBase;
-trait Middleware 
+
+trait Middleware
 {
     protected $db;
     function __construct()
@@ -14,10 +15,12 @@ trait Middleware
     // middleware
     public function middleware($requireAuth = true, $requirePermission = true, $requiredPermission = null, $requireCSRF = false, &$request = null, $processRequest = false)
     {
+        // is logined
         if ($requireAuth) {
             $this->isLoggedIn($request);
         }
 
+        // check csrf token
         if ($requireCSRF && $request) {
             $this->validateCSRF($request, $this->db);
         }
@@ -34,7 +37,7 @@ trait Middleware
         // check permissions
         if ($requirePermission && $requiredPermission) {
             if (!$this->hasAccess($requiredPermission)) {
-                $id = $_SESSION['so_admin']['id'] ?? ($_SESSION['so_employee']['id'] ?? null);
+                $id = $_SESSION['hms_admin']['id'] ?? ($_SESSION['hms_employee']['id'] ?? null);
 
                 if ($id) {
                     $user = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
@@ -64,14 +67,16 @@ trait Middleware
     // user isLoggedIn
     public function isLoggedIn()
     {
-        $adminLoggedIn = isset($_SESSION['af_em_id']) && isset($_SESSION['af_em_name']);
-        $employeeLoggedIn = isset($_SESSION['so_employee']['id']) && isset($_SESSION['so_employee']['name']);
+        $employeeLoggedIn = isset($_SESSION['hms_employee']['id']) && isset($_SESSION['hms_employee']['name']);
 
-        if (!$adminLoggedIn && !$employeeLoggedIn) {
-            $this->redirect('login');
+        $adminLoggedIn = isset($_SESSION['hms_admin']['id']) && isset($_SESSION['hms_admin']['name']);
+
+        if (!$employeeLoggedIn && !$adminLoggedIn) {
+            $this->redirect('logout');
             exit();
         }
     }
+
 
 
     // validate csrf token
@@ -96,20 +101,26 @@ trait Middleware
     // check users permissions
     function hasAccess($page)
     {
-        if (isset($_SESSION['permissions']) && is_array($_SESSION['permissions'])) {
-            if (in_array($page, $_SESSION['permissions'])) {
-                return true;
-            }
+        if (isset($_SESSION['hms_admin']['permissions'])) {
+            $perms = $_SESSION['hms_admin']['permissions'];
+        } elseif (isset($_SESSION['hms_employee']['permissions'])) {
+            $perms = $_SESSION['hms_employee']['permissions'];
+        } else {
+            return false;
         }
-        return false;
+
+        return in_array($page, $perms);
     }
 
     // unset csrf token and add who_it
     private function processRequest(&$request)
     {
         unset($request['csrf_token']);
-        if (isset($_SESSION['af_em_name'])) {
-            $request['who_it'] = $_SESSION['af_em_name'];
+
+        if (isset($_SESSION['hms_admin']['name'])) {
+            $request['who_it'] = $_SESSION['hms_admin']['name'];
+        } elseif (isset($_SESSION['hms_employee']['name'])) {
+            $request['who_it'] = $_SESSION['hms_employee']['name'];
         } else {
             require_once(BASE_PATH . '/notAccess.php');
             exit();
