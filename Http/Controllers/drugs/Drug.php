@@ -8,8 +8,8 @@ class Drug extends App
     public function addDrug()
     {
         $this->middleware(true, true, 'general', true);
-        $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/employees/add-employee.php');
+        $drugCategories = $this->db->select('SELECT * FROM drug_categories')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/drugs/add-drug.php');
     }
 
     // store employee
