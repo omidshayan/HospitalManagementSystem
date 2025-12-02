@@ -12,76 +12,29 @@ class Unit extends App
         require_once(BASE_PATH . '/resources/views/app/units/units.php');
     }
 
-    // store products Category Store
-    public function productsCategoryStore($request)
+    // store unit
+    public function unitStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
-
-        if (empty($request['product_category_name']) || empty($request['branch_id'])) {
+        if ($request['unit_name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-
-        $isGlobal = isset($request['global']) && $request['global'] ? 1 : 0;
-
-        if ($isGlobal) {
-            $existingGlobal = $this->db->select(
-                'SELECT * FROM products_category WHERE product_category_name = ? AND `global` = 1',
-                [$request['product_category_name']]
-            )->fetch();
-
-            if (!empty($existingGlobal)) {
-                $this->flashMessage('error', _repeat);
-            }
-
-            $existingLocal = $this->db->select(
-                'SELECT * FROM products_category WHERE product_category_name = ? AND branch_id = ? AND `global` = 0',
-                [$request['product_category_name'], $request['branch_id']]
-            )->fetch();
-
-            if (!empty($existingLocal)) {
-                $requestUpdate = [
-                    'product_category_name' => $existingLocal['product_category_name'],
-                    'branch_id' => null,
-                    'global' => 1
-                ];
-                $this->db->update('products_category', $existingLocal['id'], array_keys($requestUpdate), $requestUpdate);
-                $this->flashMessage('success', _success);
-            } else {
-                $cols = ['product_category_name', 'branch_id', 'global'];
-                $vals = [$request['product_category_name'], $request['branch_id'], 1];
-                $this->db->insert('products_category', $cols, $vals);
-                $this->flashMessage('success', _success);
-            }
+        $unit = $this->db->select('SELECT * FROM units WHERE `unit_name` = ?', [$request['unit_name']])->fetch();
+        if (!empty($unit['unit_name'])) {
+            $this->flashMessage('error', _repeat);
         } else {
-            $existingLocal = $this->db->select(
-                'SELECT * FROM products_category WHERE product_category_name = ? AND branch_id = ? AND `global` = 0',
-                [$request['product_category_name'], $request['branch_id']]
-            )->fetch();
-
-            if (!empty($existingLocal)) {
-                $this->flashMessage('error', _repeat);
-            }
-
-            $cols = ['product_category_name', 'branch_id', 'global'];
-            $vals = [$request['product_category_name'], $request['branch_id'], 0];
-            $this->db->insert('products_category', $cols, $vals);
+            $this->db->insert('units', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
 
-    // edit expense category page
-    public function editExpenseCat($id)
+    // Expense Cat Details detiles page
+    public function unitDetails($id)
     {
-        dd('ok');
-    }
-
-    // product Cat Details detiles page
-    public function productCategoryDetails($id)
-    {
-        $this->middleware(true, true, 'students');
-        $products_category = $this->db->select('SELECT * FROM products_category WHERE `id` = ?', [$id])->fetch();
-        if ($products_category != null) {
-            require_once(BASE_PATH . '/resources/views/app/products-category/products-category-details.php');
+        $this->middleware(true, true, 'general');
+        $drug_categories = $this->db->select('SELECT * FROM units WHERE `id` = ?', [$id])->fetch();
+        if ($drug_categories != null) {
+            require_once(BASE_PATH . '/resources/views/app/units/unit-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -89,17 +42,17 @@ class Unit extends App
         }
     }
 
-    // change status product Cat
-    public function changeStatusProductCat($id)
+    // change status Expense Cat
+    public function changeStatusDrugCat($id)
     {
-        $this->middleware(true, true, 'students');
-        $products_category = $this->db->select('SELECT * FROM products_category WHERE id = ?', [$id])->fetch();
-        if ($products_category != null) {
-            if ($products_category['status'] == 1) {
-                $this->db->update('products_category', $products_category['id'], ['status'], [2]);
+        $this->middleware(true, true, 'general');
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE id = ?', [$id])->fetch();
+        if ($drug_categories != null) {
+            if ($drug_categories['status'] == 1) {
+                $this->db->update('drug_categories', $drug_categories['id'], ['status'], [2]);
                 $this->send_json_response(true, _success, 2);
             } else {
-                $this->db->update('products_category', $products_category['id'], ['status'], [1]);
+                $this->db->update('drug_categories', $drug_categories['id'], ['status'], [1]);
                 $this->send_json_response(true, _success, 1);
             }
         } else {
@@ -108,44 +61,41 @@ class Unit extends App
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-    // change status years
-    public function changeStatusYears($request, $id)
+    // edit expense page
+    public function editDrugCat($id)
     {
-        $this->middleware(true, true, 'students', true, $request);
+        $this->middleware(true, true, 'general', true);
 
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            http_response_code(405);
-            $this->flashMessage('error', 'درخواست نامعتبر است!');
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE id = ?', [$id])->fetch();
+        if ($drug_categories != null) {
+            require_once(BASE_PATH . '/resources/views/app/drug-categories/edit-drug-category.php');
+            exit();
+        } else {
+            require_once(BASE_PATH . '/404.php');
             exit();
         }
+    }
 
-        $year = $this->db->select('SELECT * FROM years WHERE id = ?', [$id])->fetch();
-        if (!$year) {
-            http_response_code(404);
-            $this->flashMessage('error', 'سال موردنظر یافت نشد!');
-            exit();
+    // edit expense store
+    public function editDrugCatStore($request, $id)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        // check empty form
+        if ($request['cat_name'] == '') {
+            $this->flashMessage('error', _emptyInputs);
         }
 
-        $currentYear = $this->convertPersionNumber(jdate('Y'));
-        $yearFromDB = is_numeric($year['year']) ? $year['year'] : jdate('Y', strtotime($year['year']));
-        if ($currentYear == $yearFromDB) {
-            http_response_code(403);
-            $this->flashMessage('error', 'سال جاری را نمی‌توان بست!');
-            exit();
+        $item = $this->db->select('SELECT * FROM drug_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
+
+        if ($item) {
+            if ($item['id'] != $id) {
+                $this->flashMessage('error', 'این دسته قبلا ثبت شده است.');
+                return;
+            }
         }
 
-        $newStatus = ($year['status'] == 1) ? 2 : 1;
-        $this->db->update('years', $year['id'], ['status'], [$newStatus]);
-        $this->flashMessage('success', 'عملیات موفقانه انجام شد.');
+        $this->db->update('drug_categories', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('drug-categories'));
     }
 }
