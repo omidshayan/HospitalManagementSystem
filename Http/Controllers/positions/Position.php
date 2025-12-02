@@ -57,28 +57,40 @@ class Position extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['name'] == '') {
+        if (trim($request['name']) == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        $branchId = $this->getBranchId();
-        $position = $this->db->select('SELECT * FROM positions WHERE id = ? AND branch_id = ?', [$id, $branchId])->fetch();
 
-        if ($position != null) {
-            $this->db->update('positions', $id, array_keys($request), $request);
-            $this->flashMessageTo('success', _success, url('positions'));
-        } else {
+        $currentPosition = $this->db->select(
+            'SELECT * FROM positions WHERE id = ?',
+            [$id]
+        )->fetch();
+
+        if (!$currentPosition) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
+
+        $exists = $this->db->select(
+            'SELECT id FROM positions WHERE name = ? AND id != ?',
+            [$request['name'], $id]
+        )->fetch();
+
+        if ($exists) {
+            $this->flashMessage('error', _repeat);
+        }
+
+        $this->db->update('positions', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('positions'));
     }
+
 
     // position detiles page
     public function positionDetails($id)
     {
         $this->middleware(true, true, 'general');
 
-        $branchId = $this->getBranchId();
-        $position = $this->db->select('SELECT * FROM positions WHERE id = ? AND branch_id = ?', [$id, $branchId])->fetch();
+        $position = $this->db->select('SELECT * FROM positions WHERE id = ?', [$id])->fetch();
         if ($position != null) {
             require_once(BASE_PATH . '/resources/views/app/positions/position-details.php');
             exit();
