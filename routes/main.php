@@ -39,7 +39,7 @@ require_once 'cron-job/cron_job.php';
 require_once 'users/users.php';
 
 // categories-drugs
-require_once 'categories-drugs/categories-drugs.php';
+require_once 'drug-categories/drug-categories.php';
 
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {

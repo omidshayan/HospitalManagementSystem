@@ -1,8 +1,8 @@
 <?php
-require_once 'Http/Controllers/categories-drugs/CategoryDrug.php';
+require_once 'Http/Controllers/drug-categories/DrugCategory.php';
 
 // expenses routes
-uri('categories-drugs', 'App\CategoryDrug', 'categoriesDrugs');
+uri('categories-drugs', 'App\DrugCategory', 'drugCategories');
 
 
 uri('expense-cat-store', 'App\ExpensesCategory', 'expenseCatStore', 'POST');

@@ -6,12 +6,11 @@ require_once 'Http/Controllers/App.php';
 
 use database\DataBase;
 
-class CategoryDrug extends App
+class DrugCategory extends App
 {
     //  categoriesDrugs page
-    public function categoriesDrugs()
+    public function drugCategories()
     {
-        dd('ok');
         $this->middleware(true, true, 'general', true);
         $expenses_categories = $this->db->select('SELECT * FROM expenses_categories ORDER BY id DESC')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/expenses-categories/expenses-categories.php');
