@@ -47,6 +47,9 @@ require_once 'drug-categories/drug-categories.php';
 // units
 require_once 'units/units.php';
 
+// prescriptions
+require_once 'prescriptions/prescriptions.php';
+
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
         //current url array
