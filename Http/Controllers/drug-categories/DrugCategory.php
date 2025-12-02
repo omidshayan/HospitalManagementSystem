@@ -50,13 +50,13 @@ class DrugCategory extends App
     public function changeStatusExpenseCat($id)
     {
         $this->middleware(true, true, 'general');
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories WHERE id = ?', [$id])->fetch();
-        if ($expenses_categories != null) {
-            if ($expenses_categories['state'] == 1) {
-                $this->db->update('expenses_categories', $expenses_categories['id'], ['state'], [2]);
+        $drug_categories = $this->db->select('SELECT * FROM drug-categories WHERE id = ?', [$id])->fetch();
+        if ($drug_categories != null) {
+            if ($drug_categories['status'] == 1) {
+                $this->db->update('drug-categories', $drug_categories['id'], ['status'], [2]);
                 $this->send_json_response(true, _success, 2);
             } else {
-                $this->db->update('expenses_categories', $expenses_categories['id'], ['state'], [1]);
+                $this->db->update('drug-categories', $drug_categories['id'], ['status'], [1]);
                 $this->send_json_response(true, _success, 1);
             }
         } else {
