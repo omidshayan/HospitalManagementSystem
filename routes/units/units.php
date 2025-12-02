@@ -2,7 +2,7 @@
 require_once 'Http/Controllers/units/Unit.php';
 
 // units routes
-uri('units', 'App\ProductCategory', 'Unit');
+uri('units', 'App\Unit', 'units');
 
 uri('unit-store', 'App\Unit', 'unitStore', 'POST');
 

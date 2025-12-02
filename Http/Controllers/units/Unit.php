@@ -7,11 +7,9 @@ class Unit extends App
     // units page
     public function units()
     {
-        dd('asdf');
         $this->middleware(true, true, 'general', true);
-        $ProductCategory = $this->getTableData('products_category');
-
-        require_once(BASE_PATH . '/resources/views/app/products/products-category/product-category.php');
+        $units = $this->db->select('SELECT * FROM units ORDER BY id DESC')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/units/units.php');
     }
 
     // store products Category Store
