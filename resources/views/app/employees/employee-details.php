@@ -15,7 +15,6 @@ include_once('resources/views/scripts/show-img-modal.php');
 <!-- Start content -->
 <div class="content">
     <div class="content-title"> جزئیات کارمند : <?= $employee['employee_name'] ?></div>
-    <br />
     <!-- start page content -->
     <div class="box-container">
 
@@ -79,7 +78,7 @@ include_once('resources/views/scripts/show-img-modal.php');
                         <div class="w100 m10 center status status-column" id="status"><?= ($employee['state'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
