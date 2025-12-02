@@ -18,7 +18,7 @@ class Position extends App
     }
 
     // store postion
-    public function store($request)
+    public function positionStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
         $position = $this->db->select('SELECT * FROM positions WHERE `name` = ?', [$request['name']])->fetch();

@@ -13,7 +13,7 @@
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
-                <form action="position-store" method="POST">
+                <form action="<?=url('position-store')?>" method="POST">
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
