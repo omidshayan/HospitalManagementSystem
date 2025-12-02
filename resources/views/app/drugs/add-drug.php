@@ -40,8 +40,8 @@
                             <select name="unit" class="checkSelect">
                                 <option selected disabled>دسته بندی را انتخاب نمائید</option>
                                 <?php
-                                foreach ($drugCategories as $drugCategory) { ?>
-                                    <option value="<?= $drugCategory['id'] ?>"><?= $drugCategory['cat_name'] ?></option>
+                                foreach ($units as $unit) { ?>
+                                    <option value="<?= $unit['id'] ?>"><?= $unit['unit_name'] ?></option>
                                 <?php }
                                 ?>
                             </select>

@@ -8,7 +8,8 @@ class Drug extends App
     public function addDrug()
     {
         $this->middleware(true, true, 'general', true);
-        $drugCategories = $this->db->select('SELECT * FROM drug_categories')->fetchAll();
+        $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
+        $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/drugs/add-drug.php');
     }
 
