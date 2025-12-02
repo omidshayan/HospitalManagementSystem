@@ -2,19 +2,22 @@
 
 namespace App;
 
+require_once 'Http/Controllers/App.php';
+
 class Dashboard extends App
 {
     public function index()
     {
-        dd('hi ok');
+        $this->middleware(true, true, 'general', true);
+
         $userId = $_SESSION['hms_employee']['id']
             ?? $_SESSION['hms_admin']['id']
             ?? null;
 
-        // if (!$userId) {
-        //     $this->redirect('logout');
-        //     exit();
-        // }
+        if (!$userId) {
+            $this->redirect('logout');
+            exit();
+        }
 
         $user = $this->db->select(
             'SELECT * FROM employees WHERE id = ?',

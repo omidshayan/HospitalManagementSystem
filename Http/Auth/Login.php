@@ -114,7 +114,7 @@ class Login extends Auth
         $db = DataBase::getInstance();
         if (isset($_COOKIE['hms_user'])) {
 
-            $remember_token = $db->select('SELECT * FROM `employees` WHERE remember_token = ?', [$_COOKIE['af_user']])->fetch();
+            $remember_token = $db->select('SELECT * FROM `employees` WHERE remember_token = ?', [$_COOKIE['hms_user']])->fetch();
 
             if (!$remember_token || !is_array($remember_token)) {
                 $this->redirect('logout');
@@ -135,7 +135,7 @@ class Login extends Auth
                     'branch_id' => $remember_token['branch_id'],
                     'permissions' => array_column($permissions, 'section_name')
                 ];
-            } elseif ($remember_token['state'] == 1 && $remember_token['role'] == 2 && $remember_token['super_admin'] == 2) {
+            } elseif ($remember_token['state'] == 1 && $remember_token['role'] == 2 && $remember_token['super_admin'] == 3) {
 
                 $permissions = $db->select('SELECT `en_name` FROM `sections`')->fetchAll();
                 $_SESSION['hms_admin'] = [
