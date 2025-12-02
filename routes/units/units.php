@@ -4,8 +4,5 @@ require_once 'Http/Controllers/units/Unit.php';
 // units routes
 uri('units', 'App\Unit', 'units');
 uri('unit-store', 'App\Unit', 'unitStore', 'POST');
-
-
-
-uri('product-category-details/{id}', 'App\Unit', 'productCategoryDetails');
-uri('change-status-product-cat/{id}', 'App\Unit', 'changeStatusProductCat');
+uri('unit-details/{id}', 'App\Unit', 'unitDetails');
+uri('change-status-unit/{id}', 'App\Unit', 'changeStatusUnit');

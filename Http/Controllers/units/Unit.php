@@ -32,8 +32,8 @@ class Unit extends App
     public function unitDetails($id)
     {
         $this->middleware(true, true, 'general');
-        $drug_categories = $this->db->select('SELECT * FROM units WHERE `id` = ?', [$id])->fetch();
-        if ($drug_categories != null) {
+        $unit = $this->db->select('SELECT * FROM units WHERE `id` = ?', [$id])->fetch();
+        if ($unit != null) {
             require_once(BASE_PATH . '/resources/views/app/units/unit-details.php');
             exit();
         } else {
@@ -43,16 +43,16 @@ class Unit extends App
     }
 
     // change status Expense Cat
-    public function changeStatusDrugCat($id)
+    public function changeStatusUnit($id)
     {
         $this->middleware(true, true, 'general');
-        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE id = ?', [$id])->fetch();
-        if ($drug_categories != null) {
-            if ($drug_categories['status'] == 1) {
-                $this->db->update('drug_categories', $drug_categories['id'], ['status'], [2]);
+        $unit = $this->db->select('SELECT * FROM units WHERE id = ?', [$id])->fetch();
+        if ($unit != null) {
+            if ($unit['status'] == 1) {
+                $this->db->update('units', $unit['id'], ['status'], [2]);
                 $this->send_json_response(true, _success, 2);
             } else {
-                $this->db->update('drug_categories', $drug_categories['id'], ['status'], [1]);
+                $this->db->update('units', $unit['id'], ['status'], [1]);
                 $this->send_json_response(true, _success, 1);
             }
         } else {
