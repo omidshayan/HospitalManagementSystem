@@ -25,7 +25,7 @@ include_once('public/alerts/toastr.php');
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14">نام واحد <?= _star ?> </div>
-                        <input type="text" name="unit_name" class="checkInput" value="<?= old('name') ?>" placeholder="نام واحد شمارش را وارد نمایید" autocomplete="off" />
+                        <input type="text" name="unit_name" class="checkInput" value="<?= old('name') ?>" placeholder="نام واحد شمارش را وارد نمایید" autocomplete="off" autofocus/>
                     </div>
                 </div>
 
