@@ -69,7 +69,7 @@ class Employee extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '' || $request['salary_price'] == '' || !isset($request['position'])) {
+        if ($request['employee_name'] == '' || $request['phone'] == '' || !isset($request['position'])) {
             $this->flashMessage('error', _emptyInputs);
         }
 
