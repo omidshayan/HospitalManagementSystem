@@ -61,7 +61,7 @@ class Unit extends App
         }
     }
 
-    // edit expense page
+    // edit unit page
     public function editUnit($id)
     {
         $this->middleware(true, true, 'general', true);
@@ -76,17 +76,17 @@ class Unit extends App
         }
     }
 
-    // edit expense store
+    // edit unit store
     public function editUnitStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['cat_name'] == '') {
+        if ($request['unit_name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $item = $this->db->select('SELECT * FROM drug_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
+        $item = $this->db->select('SELECT * FROM units WHERE `unit_name` = ?', [$request['unit_name']])->fetch();
 
         if ($item) {
             if ($item['id'] != $id) {
@@ -95,7 +95,7 @@ class Unit extends App
             }
         }
 
-        $this->db->update('drug_categories', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('drug-categories'));
+        $this->db->update('units', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('units'));
     }
 }

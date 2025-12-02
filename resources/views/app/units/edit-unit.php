@@ -11,7 +11,7 @@
 
         <div class="box-container">
             <div class="insert">
-                <form id="myForm" action="unit-store" method="POST">
+                <form id="myForm" action="<?= url('edit-unit-store' . '/' . $unit['id']) ?>" method="POST">
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">نام واحد <?= _star ?> </div>
