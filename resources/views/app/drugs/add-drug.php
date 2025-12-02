@@ -36,18 +36,15 @@
                             </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">دوز </div>
-                            <input type="text" name="strength" value="" placeholder="دوز دارو را وارد نمایید" />
-                        </div>
-                    </div>
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form mb5 fs14">واحد </div>
-                            <input type="text" name="unit" value="" placeholder="واحد دارو را وارد نمایید" />
-                        </div>
-                        <div class="one">
-                            <div class="label-form mb5 fs14">تولید کننده </div>
-                            <input type="text" name="manufacturer" value="" placeholder="تولید کننده دارو را وارد نمایید" />
+                            <div class="label-form mb5 fs14" for="name">انتخاب دسته بندی</div>
+                            <select name="unit" class="checkSelect">
+                                <option selected disabled>دسته بندی را انتخاب نمائید</option>
+                                <?php
+                                foreach ($drugCategories as $drugCategory) { ?>
+                                    <option value="<?= $drugCategory['id'] ?>"><?= $drugCategory['cat_name'] ?></option>
+                                <?php }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     <div class="inputs d-flex">
@@ -56,11 +53,16 @@
                             <input type="text" name="price" value="" placeholder="قیمت دارو را وارد نمایید" />
                         </div>
                         <div class="one">
+                            <div class="label-form mb5 fs14">تولید کننده </div>
+                            <input type="text" name="manufacturer" value="" placeholder="تولید کننده دارو را وارد نمایید" />
+                        </div>
+                    </div>
+                    <div class="inputs d-flex">
+                        <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
                         </div>
                     </div>
-
 
                     <div class="inputs d-flex">
                         <div class="one">
