@@ -113,7 +113,7 @@
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('categories-drugs') ?>">
+                  <a href="<?= url('drug-categories') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت دسته بندی‌ها</li>
                   </a>
                 <?php endif; ?>

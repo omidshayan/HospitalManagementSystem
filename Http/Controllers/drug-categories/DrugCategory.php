@@ -90,7 +90,7 @@ class DrugCategory extends App
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $item = $this->db->select('SELECT * FROM expenses_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
+        $item = $this->db->select('SELECT * FROM drug_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
 
         if ($item) {
             if ($item['id'] != $id) {
@@ -99,7 +99,7 @@ class DrugCategory extends App
             }
         }
 
-        $this->db->update('expenses_categories', $id, array_keys($request), $request);
-        $this->flashMessage('success', _success);
+        $this->db->update('drug_categories', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('drug-categories'));
     }
 }
