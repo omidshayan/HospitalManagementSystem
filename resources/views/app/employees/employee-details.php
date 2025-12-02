@@ -63,7 +63,7 @@ include_once('resources/views/scripts/show-img-modal.php');
                 </div>
 
                 <div class="detailes-culomn d-flex cursor-p align-center">
-                    <div class="title-detaile">عکس محصول</div>
+                    <div class="title-detaile">عکس کارمند</div>
                     <div class="info-detaile d-flex align-center">
                         <?= $employee['image']
                             ? '<img class="w50 cursor-p" src="' . asset('public/images/employees/' . $employee['image']) . '" alt="logo" onclick="openModal(\'' . asset('public/images/employees/' . $employee['image']) . '\')">'
@@ -83,7 +83,7 @@ include_once('resources/views/scripts/show-img-modal.php');
             </div>
         </div>
 
-        <div class="accordion-title color-orange">اطلاعات مالی و معاش</div>
+        <!-- <div class="accordion-title color-orange">اطلاعات مالی و معاش</div>
         <div class="accordion-content">
             <div class="child-accordioin">
                 <div class="detailes-culomn d-flex cursor-p">
@@ -119,7 +119,7 @@ include_once('resources/views/scripts/show-img-modal.php');
                     <div class="info-detaile"><?= $employee['salary_price'] ?></div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <a href="<?= url('employees') ?>">
             <div class="btn center p5">برگشت</div>
