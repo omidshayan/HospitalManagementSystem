@@ -9,7 +9,6 @@
     <!-- Start content -->
     <div class="content">
         <div class="content-title">ویرایش وظیفه <?= $position['name'] ?></div>
-        <br />
         <div class="box-container">
             <div class="insert">
                 <form id="myForm" action="<?= url('edit-position-store/' . $position['id']) ?>" method="POST">
