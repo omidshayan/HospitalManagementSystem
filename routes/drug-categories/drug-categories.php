@@ -4,12 +4,10 @@ require_once 'Http/Controllers/drug-categories/DrugCategory.php';
 // expenses routes
 uri('categories-drugs', 'App\DrugCategory', 'drugCategories');
 uri('drug-cat-store', 'App\DrugCategory', 'drugCatStore', 'POST');
-
-
-uri('expense-cat-details/{id}', 'App\DrugCategory', 'expenseCatDetails');
-uri('change-status-expense-cat/{id}', 'App\DrugCategory', 'changeStatusExpenseCat');
-uri('edit-cat-expense/{id}', 'App\DrugCategory', 'editExpense');
-uri('edit-cat-store/{id}', 'App\DrugCategory', 'editCatStore', 'POST');
+uri('drug-cat-details/{id}', 'App\DrugCategory', 'expenseCatDetails');
+uri('edit-drug-category/{id}', 'App\DrugCategory', 'editDrugCat');
+uri('edit-drug-cat-store/{id}', 'App\DrugCategory', 'editDrugCatStore', 'POST');
+uri('change-status-drug-cat/{id}', 'App\DrugCategory', 'changeStatusDrugCat');
 
 
 
