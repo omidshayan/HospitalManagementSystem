@@ -15,7 +15,6 @@
     <!-- Start content -->
     <div class="content">
         <div class="content-title"> جزئیات دسته بندی: <?= $drug_categories['cat_name'] ?></div>
-        <br />
         <!-- start page content -->
         <div class="box-container">
             <div class="details">
