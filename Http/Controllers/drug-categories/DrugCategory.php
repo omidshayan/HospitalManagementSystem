@@ -12,8 +12,8 @@ class DrugCategory extends App
     public function drugCategories()
     {
         $this->middleware(true, true, 'general', true);
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories ORDER BY id DESC')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/expenses-categories/expenses-categories.php');
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories ORDER BY id DESC')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/drug-categories/drug-categories.php');
     }
 
     // store expenses
