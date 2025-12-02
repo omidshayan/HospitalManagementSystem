@@ -1,6 +1,6 @@
     <!-- start sidebar -->
     <?php
-    $title = 'ثبت داروی جدید';
+    $title = 'ثبت نسخه';
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php'); ?>
@@ -8,61 +8,66 @@
 
     <!-- Start content -->
     <div class="content">
-        <div class="content-title">ثبت داروی جدید</div>
+        <div class="content-title">ثبت نسخه جدید</div>
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
                 <form action="<?= url('employee-store') ?>" method="POST" enctype="multipart/form-data">
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14"> نام دارو <?= _star ?> </div>
-                            <input type="text" class="checkInput" name="name" placeholder="نام دارو را وارد نمایید" />
-                        </div>
-                        <div class="one">
-                            <div class="label-form mb5 fs14"> نام انحصاری </div>
-                            <input type="text" class="checkInput" name="generic_name" placeholder="نام انحصاری دارو را وارد نمایید" />
-                        </div>
-                    </div>
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form mb5 fs14" for="name">انتخاب دسته بندی</div>
-                            <select name="category_id" class="checkSelect">
-                                <option selected disabled>دسته بندی را انتخاب نمائید</option>
-                                <?php
-                                foreach ($drugCategories as $drugCategory) { ?>
-                                    <option value="<?= $drugCategory['id'] ?>"><?= $drugCategory['cat_name'] ?></option>
-                                <?php }
-                                ?>
+                            <div class="label-form mb5 fs14"> مصرف در روز </div>
+                            <select name="frequency" required>
+                                <option value="1">یک بار در روز</option>
+                                <option value="2">دو بار در روز</option>
+                                <option value="3">سه بار در روز</option>
+                                <option value="4">چهار بار در روز</option>
+                                <option value="hourly">هر چند ساعت</option>
                             </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14" for="name">انتخاب واحد شمارش</div>
-                            <select name="unit" class="checkSelect">
-                                <option selected disabled>واحد شمارش را انتخاب نمائید</option>
-                                <?php
-                                foreach ($units as $unit) { ?>
-                                    <option value="<?= $unit['id'] ?>"><?= $unit['unit_name'] ?></option>
-                                <?php }
-                                ?>
+                            <div class="label-form mb5 fs14"> هر N ساعت </div>
+                            <select name="frequency" required>
+                                <option value="1">هر یک ساعت</option>
+                                <option value="1">هر دو ساعت</option>
+                                <option value="1">هر سه ساعت</option>
+                                <option value="1">هر چهار ساعت</option>
+                                <option value="2">دو بار در روز</option>
                             </select>
                         </div>
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">قیمت </div>
-                            <input type="text" name="price" value="" placeholder="قیمت دارو را وارد نمایید" />
+                            <div class="label-form mb5 fs14" for="name">مقدار مصرف در هر نوبت</div>
+                            <select name="frequency" required>
+                                <option value="1">یک قاشق</option>
+                                <option value="1">دو قاشق</option>
+                            </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">تولید کننده </div>
-                            <input type="text" name="manufacturer" value="" placeholder="تولید کننده دارو را وارد نمایید" />
+                            <div class="label-form mb5 fs14" for="name">زمان مصرف نسبت به غذا</div>
+                            <select name="food_relation">
+                                <option value="before">قبل از غذا</option>
+                                <option value="after">بعد از غذا</option>
+                                <option value="with">همزمان با غذا</option>
+                                <option value="none">بدون توجه به غذا</option>
+                            </select>
                         </div>
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">توضیحات</div>
+                            <div class="label-form mb5 fs14">مدت زمان مصرف </div>
+                            <select name="duration_unit">
+                                <option value="day">دو روز</option>
+                                <option value="week">سه روز</option>
+                                <option value="month">چهار روز</option>
+                            </select>
+                        </div>
+                        <div class="one">
+                            <div class="label-form mb5 fs14">توضیحات اضافی</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
                         </div>
                     </div>
+
 
                     <div class="inputs d-flex">
                         <div class="one">

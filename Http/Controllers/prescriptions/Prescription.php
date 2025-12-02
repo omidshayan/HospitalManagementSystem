@@ -5,7 +5,7 @@ namespace App;
 class Prescription extends App
 {
     // drugs
-    public function addPrescriptions()
+    public function addPrescription()
     {
         $this->middleware(true, true, 'general', true);
         $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
