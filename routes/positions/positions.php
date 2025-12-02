@@ -2,7 +2,7 @@
 require_once 'Http/Controllers/positions/Position.php';
 
 // add product routes
-uri('positions', 'App\Position', 'addPosition');
+uri('positions', 'App\Position', 'Positions');
 uri('position-store', 'App\Position', 'positionStore', 'POST');
 
 uri('change-status-position/{id}', 'App\Position', 'changeStatus');

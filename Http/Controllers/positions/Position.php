@@ -8,26 +8,27 @@ use database\DataBase;
 
 class Position extends App
 {
-
     // add position page
-    public function addPosition()
+    public function Positions()
     {
         $this->middleware(true, true, 'general', true);
         $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/positions/add-position.php');
+        require_once(BASE_PATH . '/resources/views/app/positions/positions.php');
     }
 
     // store postion
-    public function positionStore($request)
+    public function store($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        $position = $this->db->select(
-            'SELECT * FROM positions WHERE `name` = ?',
-            [$request['name']]
-        )->fetch();
+        if (empty(trim($request['name'] ?? ''))) {
+            $this->flashMessage('error', _emptyInputs);
+            return;
+        }
+        $branchId = $this->getBranchId();
+        $position = $this->db->select('SELECT `name` FROM positions WHERE `name` = ? AND branch_id = ?', [$request['name'], $branchId])->fetch();
 
-        if ($position !== false && $position['name'] != '') {
+        if ($position) {
             $this->flashMessage('error', _repeat);
         } else {
             $this->db->insert('positions', array_keys($request), $request);
@@ -35,34 +36,74 @@ class Position extends App
         }
     }
 
-    // show departments
-    public function showDepartments()
+    // edit position page
+    public function editPosition($id)
     {
-        $this->middleware(true, true, 'general');
-        $departments = $this->db->select('SELECT * FROM departments')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/departments/show-departments.php');
-    }
+        $this->middleware(true, true, 'general', true);
 
-    // change status department
-    public function changeStatus($id)
-    {
-        $this->middleware(true, true, 'general');
-        $department = $this->db->select('SELECT * FROM departments WHERE id = ?', [$id])->fetch();
-        if ($department != null) {
-            if ($department['state'] == 1) {
-                $this->db->update('departments', $department['id'], ['state'], [2]);
-                flash('success', _success);
-                $this->redirectBack();
-                exit();
-            } else {
-                $this->db->update('departments', $department['id'], ['state'], [1]);
-                flash('success', _success);
-                $this->redirectBack();
-                exit();
-            }
+        $branchId = $this->getBranchId();
+        $position = $this->db->select('SELECT * FROM positions WHERE id = ? AND branch_id = ?', [$id, $branchId])->fetch();
+
+        if ($position) {
+            require_once(BASE_PATH . '/resources/views/app/positions/edit-position.php');
+            exit();
         } else {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
+    }
+
+    // edit position store
+    public function editPositionStore($request, $id)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        if ($request['name'] == '') {
+            $this->flashMessage('error', _emptyInputs);
+        }
+        $branchId = $this->getBranchId();
+        $position = $this->db->select('SELECT * FROM positions WHERE id = ? AND branch_id = ?', [$id, $branchId])->fetch();
+
+        if ($position != null) {
+            $this->db->update('positions', $id, array_keys($request), $request);
+            $this->flashMessageTo('success', _success, url('positions'));
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+    }
+
+    // position detiles page
+    public function positionDetails($id)
+    {
+        $this->middleware(true, true, 'general');
+
+        $branchId = $this->getBranchId();
+        $position = $this->db->select('SELECT * FROM positions WHERE id = ? AND branch_id = ?', [$id, $branchId])->fetch();
+        if ($position != null) {
+            require_once(BASE_PATH . '/resources/views/app/positions/position-details.php');
+            exit();
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+    }
+
+    // change status Position
+    public function changeStatusPosition($id)
+    {
+        $this->middleware(true, true, 'general');
+
+        $branchId = $this->getBranchId();
+        $position = $this->db->select('SELECT * FROM positions WHERE id = ? AND branch_id = ?', [$id, $branchId])->fetch();
+
+        if (!$position) {
+            require BASE_PATH . '/404.php';
+            exit;
+        }
+
+        $newState = $position['state'] == 1 ? 2 : 1;
+        $this->db->update('positions', $position['id'], ['state'], [$newState]);
+        $this->send_json_response(true, _success, $newState);
     }
 }
