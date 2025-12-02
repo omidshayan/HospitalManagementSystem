@@ -2,16 +2,11 @@
 
 namespace App;
 
-require_once 'Http/Controllers/App.php';
-
-use database\DataBase;
-
 class Dashboard extends App
 {
     public function index()
     {
-        $this->middleware(true, true, 'general', true);
-
+        dd('hi ok');
         $userId = $_SESSION['hms_employee']['id']
             ?? $_SESSION['hms_admin']['id']
             ?? null;
