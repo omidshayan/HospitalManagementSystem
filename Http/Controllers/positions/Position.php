@@ -84,7 +84,6 @@ class Position extends App
         $this->flashMessageTo('success', _success, url('positions'));
     }
 
-
     // position detiles page
     public function positionDetails($id)
     {
@@ -105,8 +104,7 @@ class Position extends App
     {
         $this->middleware(true, true, 'general');
 
-        $branchId = $this->getBranchId();
-        $position = $this->db->select('SELECT * FROM positions WHERE id = ? AND branch_id = ?', [$id, $branchId])->fetch();
+        $position = $this->db->select('SELECT * FROM positions WHERE id = ?', [$id])->fetch();
 
         if (!$position) {
             require BASE_PATH . '/404.php';
