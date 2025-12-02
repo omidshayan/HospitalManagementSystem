@@ -38,6 +38,9 @@ require_once 'cron-job/cron_job.php';
 // users
 require_once 'users/users.php';
 
+// drugs
+require_once 'drugs/drugs.php';
+
 // categories-drugs
 require_once 'drug-categories/drug-categories.php';
 
