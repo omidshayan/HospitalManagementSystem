@@ -1961,6 +1961,14 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     background-color: var(--main) !important;
 }
 
+/* active page */
+.active-page {
+    background-color: var(--bg) !important;
+    color: #1b1a1a !important;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 1200px) {
     .report .report-item {
         width: calc(50% - 20px);
