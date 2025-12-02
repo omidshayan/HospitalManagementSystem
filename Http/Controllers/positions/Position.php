@@ -20,7 +20,7 @@ class Position extends App
     // store postion
     public function store($request)
     {
-         $this->middleware(true, true, 'general', true, $request, true);
+        $this->middleware(true, true, 'general', true, $request, true);
         $position = $this->db->select('SELECT * FROM positions WHERE `name` = ?', [$request['name']])->fetch();
         if ($position['name'] != '' && $position != false) {
             $this->flashMessage('error', _repeat);
