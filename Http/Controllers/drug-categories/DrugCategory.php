@@ -17,17 +17,17 @@ class DrugCategory extends App
     }
 
     // store expenses
-    public function expenseCatStore($request)
+    public function drugCatStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
         if ($request['cat_name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
+        $expenses_categories = $this->db->select('SELECT * FROM drug_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
         if (!empty($expenses_categories['cat_name'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('expenses_categories', array_keys($request), $request);
+            $this->db->insert('drug_categories', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }

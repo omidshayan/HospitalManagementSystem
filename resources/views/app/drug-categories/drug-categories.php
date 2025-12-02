@@ -63,7 +63,7 @@ include_once('public/alerts/toastr.php');
                         <td><?= $item['cat_name'] ?></td>
                         <td>
                             <span class="status">
-                                <?= ($item['state'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?>
+                                <?= ($item['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?>
                             </span>
                         </td>
                         <td>
