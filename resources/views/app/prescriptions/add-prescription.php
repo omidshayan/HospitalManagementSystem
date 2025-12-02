@@ -12,6 +12,22 @@
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
+
+                <!-- search product -->
+                <div class="inputs d-flex">
+                    <div class="one">
+                        <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
+                        <input type="hidden" id="product_id">
+                        <div id="user_details"></div>
+                        <input type="text" class="checkInput" name="product_name" id="product_name" placeholder="نام دارو را جستجو نمایید" autocomplete="off" autofocus />
+                    </div>
+                    <ul class="search-back d-none" id="backResponse">
+                        <li class="res search-item color" role="option"></li>
+                    </ul>
+                </div>
+                <br>
+
+
                 <form action="<?= url('employee-store') ?>" method="POST" enctype="multipart/form-data">
                     <div class="inputs d-flex">
                         <div class="one">
@@ -66,17 +82,6 @@
                             <div class="label-form mb5 fs14">توضیحات اضافی</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
                         </div>
-                    </div>
-
-
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form mb5 fs14">انتخاب عکس دارو</div>
-                            <input type="file" id="image" name="image" accept="image/*">
-                        </div>
-                    </div>
-                    <div id="imagePreview">
-                        <img src="" class="img" alt="">
                     </div>
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
