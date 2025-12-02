@@ -27,7 +27,6 @@ include_once('public/alerts/toastr.php');
                         <input type="text" name="name" class="checkInput" value="<?= old('name') ?>" placeholder="نام وظیفه را وارد نمایید" autocomplete="off" autofocus/>
                     </div>
                 </div>
-                <?= $this->branchSelectField(); ?>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <input type="submit" id="submit" value="ثــبــت" class="btn bold" />
             </form>
@@ -85,7 +84,6 @@ include_once('public/alerts/toastr.php');
                 }
                 ?>
             </tbody>
-            <tbody></tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
             <div class="table-info fs12">تعداد کل: <?= count($positions) ?></div>

@@ -17,7 +17,7 @@ class Position extends App
     }
 
     // store postion
-    public function store($request)
+    public function positionStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
