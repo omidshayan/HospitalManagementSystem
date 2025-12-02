@@ -1,6 +1,6 @@
     <!-- start sidebar -->
     <?php
-    $title = 'ثبت کارمند';
+    $title = 'ثبت داروی جدید';
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php'); ?>
@@ -8,7 +8,7 @@
 
     <!-- Start content -->
     <div class="content">
-        <div class="content-title">ثبت کارمند جدید</div>
+        <div class="content-title">ثبت داروی جدید</div>
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
@@ -39,8 +39,8 @@
                             <select name="position" id="mySelect" class="checkSelect">
                                 <option selected disabled>انتخاب وظیفه</option>
                                 <?php
-                                foreach ($positions as $position) { ?>
-                                    <option value="<?= $position['name'] ?>"><?= $position['name'] ?></option>
+                                foreach ($drugCategories as $drugCategory) { ?>
+                                    <option value="<?= $drugCategory['id'] ?>"><?= $drugCategory['cat_name'] ?></option>
                                 <?php }
                                 ?>
                             </select>
