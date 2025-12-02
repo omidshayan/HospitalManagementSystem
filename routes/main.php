@@ -38,6 +38,9 @@ require_once 'cron-job/cron_job.php';
 // users
 require_once 'users/users.php';
 
+// categories-drugs
+require_once 'categories-drugs/categories-drugs.php';
+
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
         //current url array
