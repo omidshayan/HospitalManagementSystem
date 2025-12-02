@@ -9,7 +9,7 @@
     <!-- Start content -->
     <div class="content">
         <div class="content-title">مدیریت وظایف</div>
-        <br />
+
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
@@ -69,7 +69,6 @@
                     }
                     ?>
                 </tbody>
-                <tbody></tbody>
             </table>
             <div class="flex-justify-align mt20 paginate-section">
                 <div class="table-info fs12">تعداد کل: <?= count($positions) ?></div>
