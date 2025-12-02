@@ -1,8 +1,10 @@
 <?php
-require_once 'Http/Controllers/employees/Employee.php';
+require_once 'Http/Controllers/drugs/Drug.php';
 
-// add product routes
-uri('add-employee', 'App\Employee', 'addEmployee');
+// drugs routes
+uri('drugs', 'App\Drug', 'drugs');
+
+
 uri('employees', 'App\Employee', 'showEmployees');
 uri('employee-store', 'App\Employee', 'employeeStore', 'POST');
 uri('employee-details/{id}', 'App\Employee', 'employeeDetails');
