@@ -23,8 +23,8 @@ include_once('public/alerts/toastr.php');
             <form id="myForm" action="expense-cat-store" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="cat_name" class="checkInput" value="<?= old('name') ?>" placeholder="نام را وارد نمایید" autocomplete="off" />
+                        <div class="label-form mb5 fs14"> نام دسته بندی <?= _star ?> </div>
+                        <input type="text" name="cat_name" class="checkInput" value="<?= old('name') ?>" placeholder="نام دسته بندی را وارد نمایید" autocomplete="off" />
                     </div>
                     <div class="one">
                         <div class="label-form mb5 fs14">توضیحات</div>
@@ -44,7 +44,7 @@ include_once('public/alerts/toastr.php');
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>نام درس</th>
+                    <th>نام دسته بندی</th>
                     <th>وضعیت</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
