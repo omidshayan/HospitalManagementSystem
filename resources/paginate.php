@@ -26,7 +26,7 @@ function paginateView($data, $perPage)
 
     $paginateView .= (($currentPage - 1) >= 1) ? '<li class="page-item"><a href="' . paginateUrl($currentPage - 1) . '" class="page-link">' . ($currentPage - 1) . '</a></li>' : '';
 
-    $paginateView .= '<li class="page-item"><a href="' . paginateUrl($currentPage) . '" class="page-link">' . ($currentPage) . '</a></li>';
+    $paginateView .= '<li class="page-item"><a href="' . paginateUrl($currentPage) . '" class="page-link active-page">' . ($currentPage) . '</a></li>';
 
     $paginateView .= (($currentPage + 1) <= $totalPages) ? '<li class="page-item"><a href="' . paginateUrl($currentPage + 1) . '" class="page-link">' . ($currentPage + 1) . '</a></li>' : '';
 
