@@ -4,11 +4,13 @@ namespace App;
 
 class Unit extends App
 {
-    // management of years page
-    public function productsCategory()
+    // units page
+    public function units()
     {
+        dd('asdf');
         $this->middleware(true, true, 'general', true);
         $ProductCategory = $this->getTableData('products_category');
+
         require_once(BASE_PATH . '/resources/views/app/products/products-category/product-category.php');
     }
 

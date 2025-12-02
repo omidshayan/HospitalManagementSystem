@@ -117,6 +117,11 @@
                     <li class="sidebar-dropdown-menu-item">مدیریت دسته بندی‌ها</li>
                   </a>
                 <?php endif; ?>
+                <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('units') ?>">
+                    <li class="sidebar-dropdown-menu-item">واحدهای شمارش</li>
+                  </a>
+                <?php endif; ?>
               </ul>
             </li>
           <?php endif; ?>
