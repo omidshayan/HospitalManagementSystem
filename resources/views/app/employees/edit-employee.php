@@ -75,11 +75,8 @@
                     </div>
                     <div class="fs11">تصویر فعلی</div>
 
-                    <div class="inputs d-flex">
-                        <?= $this->branchSelectField() ?>
-                    </div>
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                    <input type="submit" id="submit" value="ثبت" class="btn" />
+                    <input type="submit" id="submit" value="ویــرایــش" class="btn bold" />
                 </form>
             </div>
             <a href="<?= url('employees') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
