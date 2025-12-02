@@ -425,6 +425,16 @@ class App
                 exit;
         }
 
+        // back link 
+        function back_link($route)
+        {
+                return '
+                <div class="fs14 text-underline center">
+                <a href="' . url($route) . '" class="color">برگشت</a>
+                </div>
+                ';
+        }
+
         // get shmasi year
         public function getValidYear($inputYear = null)
         {

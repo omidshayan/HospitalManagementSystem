@@ -41,8 +41,7 @@ class Position extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $branchId = $this->getBranchId();
-        $position = $this->db->select('SELECT * FROM positions WHERE id = ? AND branch_id = ?', [$id, $branchId])->fetch();
+        $position = $this->db->select('SELECT * FROM positions WHERE id = ?', [$id])->fetch();
 
         if ($position) {
             require_once(BASE_PATH . '/resources/views/app/positions/edit-position.php');
