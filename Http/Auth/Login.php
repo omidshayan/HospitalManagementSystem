@@ -72,7 +72,6 @@ class Login extends Auth
 
                     // check super admin
                 } elseif ($user['state'] == 1 && $user['role'] == 2 && $user['super_admin'] == 3) {
-
                     $permissions = $db->select('SELECT `en_name` FROM `sections`')->fetchAll();
                     $_SESSION['hms_admin'] = [
                         'id' => $user['id'],
