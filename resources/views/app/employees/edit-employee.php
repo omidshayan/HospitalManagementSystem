@@ -22,25 +22,23 @@
                             <input type="text" class="checkInput" name="employee_name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" value="<?= $employee['employee_name'] ?>" />
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">نام پدر</div>
-                            <input type="text" name="father_name" placeholder="نام پدر را وارد نمایید" maxlength="40" value="<?= $employee['father_name'] ?>" />
-                        </div>
-                    </div>
-                    <div class="inputs d-flex">
-                        <div class="one">
                             <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
                             <input type="number" class="checkInput" name="phone" placeholder="شماره را وارد نمایید" value="<?= $employee['phone'] ?>" />
                         </div>
+                    </div>
+                    <div class="inputs d-flex">
+
                         <div class="one">
                             <div class="label-form mb5 fs14">رمزعبور</div>
                             <input type="password" name="password" placeholder="رمزعبور را وارد نمایید" />
                         </div>
+                        <div class="one">
+                            <div class="label-form mb5 fs14">مقدار معاش</div>
+                            <input type="number" value="<?= $employee['salary_price'] ?>" name="salary_price" placeholder="مقدار معاش را وارد نمایید" />
+                        </div>
                     </div>
                     <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form mb5 fs14">مقدار معاش<?= _star ?> </div>
-                            <input type="number" class="checkInput" value="<?= $employee['salary_price'] ?>" name="salary_price" placeholder="مقدار معاش را وارد نمایید" />
-                        </div>
+
                         <div class="one">
                             <div class="label-form mb5 fs14" for="name">وظیفه</div>
                             <select name="position" id="mySelect" class="checkSelect">
@@ -51,14 +49,12 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                    </div>
-
-                    <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"><?= $employee['description'] ?></textarea>
                         </div>
                     </div>
+
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">انتخاب عکس</div>
