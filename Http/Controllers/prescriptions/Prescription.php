@@ -2,15 +2,15 @@
 
 namespace App;
 
-class Drug extends App
+class Prescription extends App
 {
     // drugs
-    public function addDrug()
+    public function addPrescriptions()
     {
         $this->middleware(true, true, 'general', true);
         $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
         $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/drugs/add-drug.php');
+        require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
     }
 
     // store employee
