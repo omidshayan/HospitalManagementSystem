@@ -97,7 +97,7 @@ class Employee extends App
         }
 
         $this->db->update('employees', $id, array_keys($request), $request);
-        $this->flashMessage('success', _success);
+        $this->flashMessageTo('success', _success, url('employees'));
     }
 
     // show employees
