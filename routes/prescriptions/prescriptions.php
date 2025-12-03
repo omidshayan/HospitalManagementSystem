@@ -5,17 +5,16 @@ require_once 'Http/Controllers/prescriptions/Prescription.php';
 uri('add-prescription', 'App\Prescription', 'addPrescription');
 
 
+// search
 uri('search-product-purchase', 'App\Prescription', 'searchProdut', 'POST');
-
-
-
-
 
 
 // add drug in prescription 
 uri('drug-prescription-store', 'App\Prescription', 'drugPrescriptionStore', 'POST');
 
 
+// prescription actions
+uri('delete-prescription-list/{id}', 'App\Prescription', 'deletePrescriptionItem');
 
 
 
@@ -26,27 +25,8 @@ uri('drug-prescription-store', 'App\Prescription', 'drugPrescriptionStore', 'POS
 
 
 
+uri('delete-sale-invoice/{id}', 'App\Prescription', 'deleteSaleInvoice');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-uri('employees', 'App\Employee', 'showEmployees');
-uri('employee-store', 'App\Employee', 'employeeStore', 'POST');
-uri('employee-details/{id}', 'App\Employee', 'employeeDetails');
-uri('edit-employee/{id}', 'App\Employee', 'editEmployee');
-uri('edit-employee/store/{id}', 'App\Employee', 'editEmployeeStore', 'POST');
-uri('change-status-employee/{id}', 'App\Employee', 'changeStatus');
-
-
+uri('close-sale-inventory-store', 'App\Prescription', 'closeSaleInvoiceStore', 'POST');
 
 
