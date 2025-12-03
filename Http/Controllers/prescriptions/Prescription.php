@@ -2,8 +2,23 @@
 
 namespace App;
 
+require_once 'Http/Models/Calendar.php';
+require_once 'Http/Models/Invoice.php';
+
+use Models\Calendar\Calendar;
+use Models\Invoice\Invoice;
+
 class Prescription extends App
 {
+    private $calendar;
+    private $invoice;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->calendar = new Calendar();
+        $this->invoice = new Invoice();
+    }
+
     // drugs
     public function addPrescription()
     {
@@ -55,7 +70,6 @@ class Prescription extends App
         //  Prepare invoice info
         $invoice_infos = [
             'invoice_type' => 1,
-            'branch_id' => $branchId,
             'user_id' => $request['seller_id'],
             'year' => $yearMonth['year'],
             'month' => $yearMonth['month'],
@@ -65,9 +79,7 @@ class Prescription extends App
         //  Create or get existing invoice
         $invoice_id = $this->invoice->InvoiceConfirm($invoice_infos);
 
-                // 🧾 Prepare invoice item
         $invoice_items = [
-            'branch_id' => $branchId,
             'invoice_id' => $invoice_id,
             'product_id' => $request['product_id'],
             'product_name' => $request['product_name'],
@@ -86,7 +98,7 @@ class Prescription extends App
         ];
 
         //  Check if product exists in this invoice
-        $exist_product = $this->invoice->getInvoiceItem($invoice_id, $request['product_id'], $branchId);
+        $exist_product = $this->invoice->getInvoiceItem($invoice_id, $request['product_id']);
 
 
         //         if (!$exist_product) {
