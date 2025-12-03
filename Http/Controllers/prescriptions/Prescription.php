@@ -117,6 +117,360 @@ class Prescription extends App
 
 
 
+    //////////////////////////////////////////////
+
+    // delete saleproduct from cart
+    public function deletePrescriptionItem($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        if (!is_numeric($id)) {
+            $this->flashMessage('error', 'لطفا اطلاعات درست ارسال نمائید!');
+        }
+
+        $product_cart = $this->db->select('SELECT id, product_id, quantity FROM invoice_items WHERE `id` = ?', [$id])->fetch();
+        if (!$product_cart) {
+            require_once(BASE_PATH . '/404.php');
+            exit;
+        }
+        $inventory = $this->db->select('SELECT id, quantity FROM inventory WHERE `product_id` = ?', [$product_cart['product_id']])->fetch();
+
+        $newQuantity = intval($product_cart['quantity']) + intval($inventory['quantity']);
+
+        $this->db->update('inventory', $inventory['id'], ['quantity'], [$newQuantity]);
+        $this->db->delete('invoice_items', $id);
+        $this->flashMessage('success', _success);
+        exit;
+    }
+
+
+
+    // close invoice
+    // public function closeSaleInvoiceStore($request)
+    // {
+    //     $this->middleware(true, true, 'general', true, $request, true);
+
+    //     // check pain amount to not larg
+    //     $total_price = isset($request['total_price']) && is_numeric($request['total_price']) ? floatval($request['total_price']) : 0;
+    //     $sale_discount = isset($request['total_discount']) && is_numeric($request['total_discount']) ? floatval($request['total_discount']) : 0;
+    //     $sale_paid_amount = isset($request['paid_amount']) && is_numeric($request['paid_amount']) ? floatval($request['paid_amount']) : 0;
+
+    //     if (
+    //         !is_numeric($request['total_price']) && $request['total_price'] !== '' ||
+    //         !is_numeric($request['total_discount']) && $request['total_discount'] !== '' ||
+    //         !is_numeric($request['paid_amount']) && $request['paid_amount'] !== ''
+    //     ) {
+    //         $this->flashMessage('error', 'لطفا فقط مقدار عددی وارد کنید!');
+    //     } else {
+    //         $remaining_amount = $total_price - $sale_discount - $sale_paid_amount;
+    //         $after_discount = $sale_discount + $sale_paid_amount;
+
+    //         if ($sale_paid_amount > $total_price || $remaining_amount < 0) {
+    //             $this->flashMessage('error', 'مبلغ پرداختی نمی‌تواند بیشتر از مبلغ فاکتور باشد!');
+    //         }
+    //     }
+
+    //     if ($request['seller_id'] == '') {
+    //         if ($total_price > $after_discount) {
+    //             $this->flashMessage('error', 'چون مشتری عمومی است، باید مبلغ کل به صورت کامل پرداخت شود!');
+    //         }
+    //     }
+
+    //     $branchId = $this->getBranchId();
+    //     // get sale invoice
+    //     $invoice = $this->invoice->getInvoice($request['invoice_id'], $branchId);
+    //     if (!$invoice) {
+    //         require_once(BASE_PATH . '/404.php');
+    //         exit();
+    //     }
+
+    //     // get month and year
+    //     $yearMonth = $this->calendar->getYearMonth();
+
+
+    //     // get invoice items
+    //     $invoice_items = $this->invoice->getInvoiceItems($invoice['id']);
+    //     // check invoice items
+    //     if (!$invoice_items) {
+    //         $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');
+    //         return;
+    //     }
+
+    //     // foreach for handle invoice items
+    //     foreach ($invoice_items as $item) {
+
+    //         // exist product to sales table?
+    //         $existingInventory = $this->db->select(
+    //             "SELECT * FROM inventory WHERE product_id = ? AND branch_id = ?",
+    //             [$item['product_id'], $item['branch_id']]
+    //         )->fetch();
+
+
+    //         if ($existingInventory) {
+
+    //             // get settings for sell any situation
+    //             $settings = $this->db->select("SELECT sell_any_situation FROM settings WHERE branch_id = ?", [$item['branch_id']])->fetch();
+    //             if ($settings['sell_any_situation'] == 2) {
+    //                 if ($item['quantity'] > $existingInventory['quantity']) {
+    //                     $this->flashMessage('error', 'تعداد موجودی نسبت به تعداد فروش کم است!');
+    //                 }
+    //             }
+
+    //             // check product batches 
+    //             $product_batches = $this->db->select(
+    //                 "SELECT * FROM product_batches WHERE product_id = ? AND branch_id = ? AND status = 1 ORDER BY id ASC",
+    //                 [$item['product_id'], $item['branch_id']]
+    //             )->fetchAll();
+
+    //             $totalProfit = 0;
+    //             $remainingQty = $item['quantity'];
+
+    //             foreach ($product_batches as $batch) {
+    //                 if ($remainingQty <= 0) break;
+
+    //                 // تعداد واقعی فروخته شده از این batch
+    //                 $soldQty = min($remainingQty, (int)$batch['quantity']);
+    //                 $remainingQty -= $soldQty;
+
+    //                 // محاسبه سود برای همین batch
+    //                 $profit = ($batch['package_price_sell'] - $batch['package_price_buy']) * $soldQty; // قیمت فروش و خرید هر batch
+    //                 $totalProfit += $profit;
+
+    //                 // ثبت سود در جدول invoice_profits
+    //                 $profitData = [
+    //                     'branch_id' => $item['branch_id'],
+    //                     'invoice_id' => $invoice['id'],
+    //                     'invoice_item_id' => $item['id'],
+    //                     'product_id' => $item['product_id'],
+    //                     'batch_id' => $batch['id'],
+    //                     'quantity' => $soldQty,
+    //                     'buy_price' => $batch['package_price_buy'],
+    //                     'sell_price' => $batch['package_price_sell'],
+    //                     'profit' => $profit,
+    //                 ];
+    //                 $this->db->insert('invoice_profits', array_keys($profitData), $profitData);
+
+    //                 // به‌روزرسانی batch
+    //                 $newBatchQty = (int)$batch['quantity'] - $soldQty;
+    //                 if ($newBatchQty <= 0) {
+    //                     // کل batch فروخته شد → فقط status تغییر کند
+    //                     $this->db->update('product_batches', $batch['id'], ['quantity', 'status'], [0, 2]);
+    //                 } else {
+    //                     // بخشی از batch فروخته شد → آپدیت مقدار باقی مانده
+    //                     $this->db->update('product_batches', $batch['id'], ['quantity'], [$newBatchQty]);
+    //                 }
+
+    //                 // کاهش تعداد از inventory (همیشه)
+    //                 $newInventoryQty = $existingInventory['quantity'] - $item['quantity'];
+    //                 $this->db->update('inventory', $existingInventory['id'], ['quantity'], [$newInventoryQty]);
+    //             }
+    //         } else {
+    //             $this->flashMessage('error', 'محصول تا به حال در موجودی ثبت نشده!');
+    //         }
+    //     } //end foreach
+
+    //     // array for transaction
+    //     $this->transaction->addNewTransaction([
+    //         'branch_id' => $request['branch_id'],
+    //         'user_id' => $request['seller_id'],
+    //         'ref_id' => $invoice['invoice_number'],
+    //         'total_price' =>  $request['total_price'],
+    //         'paid_amount' => $request['paid_amount'],
+    //         'discount' => $request['total_discount'],
+    //         'transaction_date'  => $request['date'],
+    //         'who_it' => $request['who_it'],
+    //         'year' => $yearMonth['year'],
+    //         'month' => $yearMonth['month'],
+    //         'transaction_type' => 1, // sale
+    //     ]);
+
+    //     // send notificatons
+    //     $this->notification->sendNotif([
+    //         'branch_id' => $request['branch_id'],
+    //         'user_id' => $request['seller_id'],
+    //         'ref_id' => $invoice['id'],
+    //         'type' => 1,
+    //     ]);
+
+    //     // update account balance
+    //     $accoutBalance = [
+    //         'branch_id' => $request['branch_id'],
+    //         'user_id' => $request['seller_id'],
+    //         'total_price' =>  $request['total_price'],
+    //         'paid_amount' => $request['paid_amount'],
+    //         'discount' => $request['total_discount'],
+    //         'year' => $yearMonth['year'],
+    //         'type' => 1,
+    //     ];
+    //     $this->transaction->updateAccountBalance($accoutBalance);
+
+    //     // update daily reports
+    //     $dailyReports = [
+    //         'branch_id' => $request['branch_id'],
+    //         'total_price' =>  $request['total_price'],
+    //         'paid_amount' => $request['paid_amount'],
+    //         'discount' => $request['total_discount'],
+    //         'type' => 1,
+    //     ];
+    //     $this->reports->updateDailyReports($dailyReports);
+
+
+
+    //     // update fund
+    //     $updateFund = [
+    //         'branch_id'   => $request['branch_id'],
+    //         'paid_amount' => $sale_paid_amount,
+    //         'type'        => 1,
+    //         'source'      => isset($request['source']) ? (int)$request['source'] : 1,
+    //     ];
+    //     $this->reports->updateFund($updateFund);
+
+
+    //     // invoice data
+    //     $invoice_infos = [
+    //         'total_amount' => $total_price,
+    //         'discount' => $sale_discount,
+    //         'user_id' => $request['seller_id'],
+    //         'date' => $request['date'],
+    //         'paid_amount' => $sale_paid_amount,
+    //         'description' => $request['description'],
+    //         'year' => $yearMonth['year'],
+    //         'month' => $yearMonth['month'],
+    //         'status' => 2,
+    //     ];
+
+
+    //     $inserted = $this->db->update('invoices', $invoice['id'], array_keys($invoice_infos), $invoice_infos);
+    //     if ($inserted) {
+    //         if (isset($request['invoice_print'])) {
+    //             $this->InvoicePrint($request['invoice_id']);
+    //             $invoicePrintData = $this->InvoicePrint($request['invoice_id']);
+
+    //             $this->flashMessagePrint('success', _success, [
+    //                 'print_invoice' => $invoicePrintData,
+    //             ]);
+    //         }
+    //     }
+    //     $this->flashMessage('success', _success);
+    // }
+
+    // edit and close invoice sale cart controllers
+    // public function editSaleProductCart($id)
+    // {
+    //     $this->middleware(true, true, 'general', true);
+
+    //     $product_cart = $this->db->select('SELECT * FROM invoice_items WHERE id = ?', [$id])->fetch();
+
+    //     if ($product_cart == null) {
+    //         require_once(BASE_PATH . '/404.php');
+    //         exit();
+    //     }
+
+    //     $user = $this->db->select('SELECT id, user_name FROM users WHERE id = ?', [$product_cart['seller_id']])->fetch();
+
+    //     if ($product_cart != null) {
+    //         require_once(BASE_PATH . '/resources/views/app/sales/edit-sale-product-cart.php');
+    //         exit();
+    //     } else {
+    //         require_once(BASE_PATH . '/404.php');
+    //         exit();
+    //     }
+    // }
+
+    // edit sale product cart store
+    // public function editSaleProductCartStore($request, $id)
+    // {
+
+
+    //     $this->middleware(true, true, 'general', true, $request, true);
+
+    //     if ($request['package_qty'] == '' && $request['unit_qty'] == '') {
+    //         $this->flashMessage('error', 'لطفا تعداد بسته یا عدد را وارد نمائید!');
+    //     }
+
+    //     $product_cart = $this->db->select('SELECT * FROM invoice_items WHERE `id` = ?', [$id])->fetch();
+    //     if (!$product_cart) {
+    //         require_once(BASE_PATH . '/404.php');
+    //         exit;
+    //     }
+
+    //     $request = $this->cleanNumbers($request, ['package_qty', 'unit_qty']);
+
+
+
+
+    //     $unit_prices = $this->calculateUnitPrices($product_cart);
+    //     $unit_price = $unit_prices['sell'];
+
+    //     // new quantity
+    //     $request['quantity'] = ($product_cart['quantity_in_pack'] * (int)$request['package_qty']) + (int)$request['unit_qty'];
+
+    //     // $item_discount = 0;
+    //     // if ($request['discount'] != 0) {
+    //     //     $item_discount =  intval($request['discount']);
+    //     // }
+
+    //     $request['item_total_price'] = $unit_price * $request['quantity'];  // - $item_discount
+
+    //     $this->db->update('invoice_items', $id, array_keys($request), $request);
+    //     $this->flashMessageTo('success', _success, url('add-sale'));
+    // }
+
+
+    // delete sale invoice from buy product form
+    // NOTE add general method for delete invoce
+    public function deleteSaleInvoice($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        if (!is_numeric($id)) {
+            $this->flashMessage('error', 'لطفا اطلاعات درست ارسال نمائید!');
+        }
+        $branchId = $this->getBranchId();
+        $invoice = $this->db->select('SELECT id FROM invoices WHERE branch_id = ? AND `id` = ?', [$branchId, $id])->fetch();
+
+        if (!$invoice) {
+            require_once(BASE_PATH . '/404.php');
+            exit;
+        }
+
+        $this->db->delete('invoices', $id);
+        $this->flashMessage('success', _success);
+        exit;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
