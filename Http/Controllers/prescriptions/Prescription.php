@@ -121,12 +121,33 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $userId = $this->currentUser();
+        $user = $this->currentUser();
 
-        $prescriptions = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `status` = ?', [$userId, 2])->fetchAll();
+        $status = 2;
+
+        if ($user['role'] === 'admin') {
+
+            $prescriptions = $this->db->select(
+                'SELECT p.*, e.employee_name
+             FROM prescriptions p
+             JOIN employees e ON e.id = p.doctor_id
+             WHERE p.status = ?',
+                [$status]
+            )->fetchAll();
+        } else {
+
+            $prescriptions = $this->db->select(
+                'SELECT p.*, e.employee_name
+             FROM prescriptions p
+             JOIN employees e ON e.id = p.doctor_id
+             WHERE p.doctor_id = ? AND p.status = ?',
+                [$user['id'], $status]
+            )->fetchAll();
+        }
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
+
 
     //////////////////////////////////////////////
 

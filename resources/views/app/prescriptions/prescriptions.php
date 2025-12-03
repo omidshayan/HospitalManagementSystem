@@ -1,11 +1,9 @@
-<!-- start sidebar -->
 <?php
 $title = 'نمایش نسخه‌ها';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
-<!-- end sidebar -->
 
 <!-- Start content -->
 <div class="content">
@@ -42,8 +40,8 @@ include_once('public/alerts/toastr.php');
                 ?>
                     <tr>
                         <td class="color-orange"><?= $number ?></td>
-                        <td><?= $item['doctor_id'] ?></td>
-                        <td><?= $item['patient_name'] ?></td>
+                        <td><?= $item['employee_name'] ?></td>
+                        <td><?= $item['patient_name'] ?? '- - - -' ?></td>
                         <td><?= jdate('Y/m/d', strtotime($item['created_at'])) ?></td>
 
                         <td>
