@@ -50,6 +50,30 @@ class App
                 return true;
         }
 
+        public function currentUser()
+        {
+                if (isset($_SESSION['hms_admin']) && !empty($_SESSION['hms_admin'])) {
+                        return [
+                                'id'   => $_SESSION['hms_admin']['id'],
+                                'name' => $_SESSION['hms_admin']['name'],
+                                'role' => 'admin'
+                        ];
+                }
+
+                if (isset($_SESSION['hms_employee']) && !empty($_SESSION['hms_employee'])) {
+                        return [
+                                'id'        => $_SESSION['hms_employee']['id'],
+                                'name'      => $_SESSION['hms_employee']['name'],
+                                'role'      => 'employee',
+                                'branch_id' => $_SESSION['hms_employee']['branch_id']
+                        ];
+                }
+
+                $this->redirect('logout');
+                exit;
+        }
+
+
         // validations start
         function validateInputs($inputs, $validateFields = [])
         {

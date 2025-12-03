@@ -59,25 +59,25 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if (empty($request['drug_id']) || empty($request['drug_name'])) {
-            $this->flashMessage('error', _emptyInputs);
-        }
+        // if (empty($request['drug_id']) || empty($request['drug_name'])) {
+        //     $this->flashMessage('error', _emptyInputs);
+        // }
 
         $this->validateInputs($request);
 
         $yearMonth = $this->calendar->getYearMonth();
-
+        $id = $this->currentUser();
+        dd($id);
         //  Prepare invoice info
-        $invoice_infos = [
-            'invoice_type' => 1,
-            'user_id' => $request['seller_id'],
+        $prescription = [
+            'doctor_id' => $request['seller_id'],
             'year' => $yearMonth['year'],
             'month' => $yearMonth['month'],
             'who_it' => $request['who_it'],
         ];
 
         //  Create or get existing invoice
-        $invoice_id = $this->invoice->InvoiceConfirm($invoice_infos);
+        $invoice_id = $this->invoice->InvoiceConfirm($prescription);
 
         $invoice_items = [
             'invoice_id' => $invoice_id,
