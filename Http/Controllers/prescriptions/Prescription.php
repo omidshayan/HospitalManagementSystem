@@ -18,13 +18,13 @@ class Prescription extends App
     public function searchProdut($request)
     {
         $this->middleware(true, true, 'general');
-        
+
         $product = $this->db->select(
             "SELECT id, `name` 
             FROM drugs 
             WHERE `status` = 1 
-            AND product_name LIKE ? 
-            ORDER BY product_name 
+            AND `name` LIKE ? 
+            ORDER BY `name` 
             LIMIT 20",
             ['%' . strtolower($request['customer_name']) . '%']
         )->fetchAll();
