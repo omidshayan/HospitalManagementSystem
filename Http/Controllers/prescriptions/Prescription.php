@@ -3,20 +3,20 @@
 namespace App;
 
 require_once 'Http/Models/Calendar.php';
-require_once 'Http/Models/Invoice.php';
+require_once 'Http/Models/Prescriptions.php';
 
 use Models\Calendar\Calendar;
-use Models\Invoice\Invoice;
+use Models\Prescriptions\Prescriptions;
 
 class Prescription extends App
 {
     private $calendar;
-    private $invoice;
+    private $prescription;
     public function __construct()
     {
         parent::__construct();
         $this->calendar = new Calendar();
-        $this->invoice = new Invoice();
+        $this->prescription = new Prescriptions();
     }
 
     // drugs
@@ -66,18 +66,19 @@ class Prescription extends App
         $this->validateInputs($request);
 
         $yearMonth = $this->calendar->getYearMonth();
-        $id = $this->currentUser();
-        dd($id);
+
+        $user_id = $this->currentUser();
+
         //  Prepare invoice info
         $prescription = [
-            'doctor_id' => $request['seller_id'],
+            'doctor_id' => $user_id['id'],
             'year' => $yearMonth['year'],
             'month' => $yearMonth['month'],
             'who_it' => $request['who_it'],
         ];
 
         //  Create or get existing invoice
-        $invoice_id = $this->invoice->InvoiceConfirm($prescription);
+        $invoice_id = $this->prescription->InvoiceConfirm($prescription);
 
         $invoice_items = [
             'invoice_id' => $invoice_id,
@@ -98,7 +99,7 @@ class Prescription extends App
         ];
 
         //  Check if product exists in this invoice
-        $exist_product = $this->invoice->getInvoiceItem($invoice_id, $request['product_id']);
+        $exist_product = $this->prescription->getInvoiceItem($invoice_id, $request['product_id']);
 
 
         //         if (!$exist_product) {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Models\Invoice;
+namespace Models\Prescriptions;
 
 use App\App;
 
-class Invoice extends App
+class Prescriptions extends App
 {
     //////////////////// buy invoice ////////////////
     // get calendar type
