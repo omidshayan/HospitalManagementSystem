@@ -13,6 +13,65 @@ class Prescription extends App
         require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
     }
 
+
+    // search product for inventory
+    public function searchProdut($request)
+    {
+        $this->middleware(true, true, 'general');
+
+        $branchId = $this->getBranchId();
+
+        $product = $this->db->select(
+            "SELECT id, product_name 
+            FROM products 
+            WHERE `status` = 1 
+            AND product_name LIKE ? 
+            AND branch_id = ? 
+            ORDER BY product_name 
+            LIMIT 20",
+            ['%' . strtolower($request['customer_name']) . '%', $branchId]
+        )->fetchAll();
+
+        $response = [
+            'status' => 'success',
+            'products' => $product,
+            'message' => 'lists'
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
+
+    // get product infos AJAX
+    public function getProductInfos($request)
+    {
+        $this->middleware(true, true, 'general');
+        $productInfos = $this->db->select('SELECT * FROM products WHERE id LIKE ?', ['%' . $request['id'] . '%'])->fetch();
+        $inventory = $this->db->select('SELECT * FROM inventory WHERE product_id = ?', [$request['id']])->fetch();
+        $response = [
+            'status' => 'success',
+            'product' => $productInfos,
+            'inventory' => $inventory,
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // store employee
     public function employeeStore($request)
     {
