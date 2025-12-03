@@ -30,14 +30,23 @@
 
                 <form action="<?= url('employee-store') ?>" method="POST" enctype="multipart/form-data">
                     <div class="inputs d-flex">
-                        <div class="one quantity-wrapper">
+                        <div class="one">
                             <div class="label-form mb5 fs14"> تعداد دارو </div>
-                            <button type="button" class="qty-btn minus">−</button>
-                            <input type="number" name="drug_count" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn plus">+</button>
+                            <select name="frequency" required>
+                                <option value="1">1</option>
+                                <option value="1">2</option>
+                                <option value="1">3</option>
+                                <option value="1">4</option>
+                                <option value="1">5</option>
+                                <option value="1">6</option>
+                                <option value="1">7</option>
+                                <option value="1">8</option>
+                                <option value="1">9</option>
+                                <option value="1">10</option>
+                            </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14"> طریقه مصرف </div>
+                            <div class="label-form mb5 fs14"> زمان مصرف </div>
                             <select name="frequency" required>
                                 <option value="1">هر 1 ساعت</option>
                                 <option value="1">هر 2 ساعت</option>
@@ -95,29 +104,4 @@
     </div>
     <!-- End content -->
 
-    <script>
-        const minusBtn = document.querySelector(".minus");
-        const plusBtn = document.querySelector(".plus");
-        const qtyInput = document.querySelector(".qty-input");
-
-        // کاهش تعداد
-        minusBtn.addEventListener("click", () => {
-            let value = parseInt(qtyInput.value);
-            if (value > 1) qtyInput.value = value - 1;
-        });
-
-        // افزایش تعداد
-        plusBtn.addEventListener("click", () => {
-            let value = parseInt(qtyInput.value);
-            qtyInput.value = value + 1;
-        });
-
-        // جلوگیری از مقادیر منفی یا خالی
-        qtyInput.addEventListener("input", () => {
-            let value = parseInt(qtyInput.value);
-            if (isNaN(value) || value < 1) {
-                qtyInput.value = 1;
-            }
-        });
-    </script>
     <?php include_once('resources/views/layouts/footer.php') ?>

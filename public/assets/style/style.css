@@ -687,7 +687,6 @@ input:checked+.slider:before {
     display: flex;
     align-items: center;
     width: 140px;
-    border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -700,6 +699,7 @@ input:checked+.slider:before {
     font-size: 22px;
     cursor: pointer;
     outline: none;
+    border-radius: 50%;
     transition: background 0.2s;
 }
 
