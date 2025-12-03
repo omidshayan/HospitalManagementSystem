@@ -15,6 +15,7 @@ uri('drug-prescription-store', 'App\Prescription', 'drugPrescriptionStore', 'POS
 
 // prescription actions
 uri('delete-prescription-list/{id}', 'App\Prescription', 'deletePrescriptionItem');
+uri('delete-prescription/{id}', 'App\Prescription', 'deletePrescription');
 
 
 
@@ -25,7 +26,6 @@ uri('delete-prescription-list/{id}', 'App\Prescription', 'deletePrescriptionItem
 
 
 
-uri('delete-sale-invoice/{id}', 'App\Prescription', 'deleteSaleInvoice');
 
 uri('close-sale-inventory-store', 'App\Prescription', 'closeSaleInvoiceStore', 'POST');
 

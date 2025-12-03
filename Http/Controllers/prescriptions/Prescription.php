@@ -138,6 +138,26 @@ class Prescription extends App
         $this->flashMessage('success', _success);
     }
 
+    // delete prescription
+    public function deletePrescription($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        if (!is_numeric($id)) {
+            $this->flashMessage('error', 'لطفا اطلاعات درست ارسال نمائید!');
+        }
+        $branchId = $this->getBranchId();
+        $invoice = $this->db->select('SELECT id FROM invoices WHERE branch_id = ? AND `id` = ?', [$branchId, $id])->fetch();
+
+        if (!$invoice) {
+            require_once(BASE_PATH . '/404.php');
+            exit;
+        }
+
+        $this->db->delete('invoices', $id);
+        $this->flashMessage('success', _success);
+        exit;
+    }
 
 
     // close invoice
@@ -413,26 +433,6 @@ class Prescription extends App
 
 
     // delete sale invoice from buy product form
-    // NOTE add general method for delete invoce
-    public function deleteSaleInvoice($id)
-    {
-        $this->middleware(true, true, 'general', true);
-
-        if (!is_numeric($id)) {
-            $this->flashMessage('error', 'لطفا اطلاعات درست ارسال نمائید!');
-        }
-        $branchId = $this->getBranchId();
-        $invoice = $this->db->select('SELECT id FROM invoices WHERE branch_id = ? AND `id` = ?', [$branchId, $id])->fetch();
-
-        if (!$invoice) {
-            require_once(BASE_PATH . '/404.php');
-            exit;
-        }
-
-        $this->db->delete('invoices', $id);
-        $this->flashMessage('success', _success);
-        exit;
-    }
 
 
 

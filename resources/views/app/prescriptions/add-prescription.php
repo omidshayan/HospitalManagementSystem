@@ -104,7 +104,7 @@
                         نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span>
                         <?php
                         if (empty($drugList)) { ?>
-                            <a href="<?= url('delete-sale-invoice/' . $prescription['id']) ?>" class="color-red text-underline">حذف نسخه</a>
+                            <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline">حذف نسخه</a>
                         <?php }
                         ?>
                     </div>
@@ -201,6 +201,5 @@
 
         });
     </script>
-
 
     <?php include_once('resources/views/layouts/footer.php') ?>
