@@ -57,7 +57,6 @@ class Prescription extends App
     //    add drug in Prescription Store
     public function drugPrescriptionStore($request)
     {
-        dd($request);
         $this->middleware(true, true, 'general', true, $request, true);
 
         // if (empty($request['drug_id']) || empty($request['drug_name'])) {
@@ -83,7 +82,7 @@ class Prescription extends App
 
 
         $prescription_items = [
-            'invoice_id' => $prescription_id,
+            'prescription_id' => $prescription_id,
             'drug_id' => $request['drug_id'],
             'drug_name' => $request['drug_name'],
             'drug_count' => $request['drug_count'],
@@ -93,29 +92,20 @@ class Prescription extends App
             'description' => $request['description'],
         ];
 
-        //  Check if product exists in this invoice
-        $exist_product = $this->prescription->getPrescriptionItem($prescription_id, $request['drug_id']);
-dd($exist_product);
+        $exist_item = $this->prescription->getPrescriptionItem($prescription_id, $request['drug_id']);
 
-        //         if (!$exist_product) {
-        //     //  Insert new product
-        //     $this->db->insert('invoice_items', array_keys($invoice_items), $invoice_items);
-        // } else {
-        //     // 🔄 Update existing product quantities
-        //     $update_data = [
-        //         'quantity' => $exist_product['quantity'] + $invoice_items['quantity'],
-        //         'package_qty' => $exist_product['package_qty'] + $invoice_items['package_qty'],
-        //         'unit_qty' => $exist_product['unit_qty'] + $invoice_items['unit_qty'],
-        //         'item_total_price' => $exist_product['item_total_price'] + $invoice_items['item_total_price'],
-        //         // 'discount' => $invoice_items['discount'] ?? $exist_product['discount'],
-        //         'package_price_sell' => $invoice_items['package_price_sell'],
-        //         'package_price_buy' => $invoice_items['package_price_buy'],
-        //     ];
+        if (!$exist_item) {
+            $this->db->insert('prescription_items', array_keys($prescription_items), $prescription_items);
 
-        //     $this->db->update('invoice_items', $exist_product['id'], array_keys($update_data), $update_data);
-        // }
+        } else {
+            $update_data = [
+                'quantity' => $exist_item['quantity'] + $prescription_items['quantity'],
+                'package_qty' => $exist_item['package_qty'] + $prescription_items['package_qty'],
+            ];
+            $this->db->update('prescription_items', $exist_item['id'], array_keys($update_data), $update_data);
+        }
 
-        // $this->flashMessage('success', _success);
+        $this->flashMessage('success', _success);
     }
 
 
