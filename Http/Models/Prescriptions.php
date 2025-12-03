@@ -55,39 +55,21 @@ class Prescriptions extends App
         return $invoice = $this->db->select('SELECT * FROM invoice_items WHERE invoice_id = ?', [$invoice_id])->fetchAll();
     }
 
-    // get ionvice item
-    // public function getInvoiceItem($item_id)
-    // {
-    //     $product_cart = $this->db->select('SELECT * FROM invoice_items WHERE id = ?', [$item_id])->fetch();
-    //     if (!$product_cart) {
-    //         require_once(BASE_PATH . '/404.php');
-    //         exit();
-    //     }
-    //     return $product_cart;
-    // }
-
-    // check invoice but
-    public function InvoiceConfirm($invoice_info)
+    // check invoice but ///////////////// ok ///////////////////
+    public function InvoiceConfirm($prescription_info)
     {
-        $branchId = $this->getBranchId();
-        $invoice_type = $invoice_info['invoice_type'];
+        $invoice_type = $prescription_info['type'];
 
-        $invoice = $this->db->select(
-            'SELECT id FROM invoices WHERE invoice_type = ? AND branch_id = ? AND `status` = ?',
-            [$invoice_type, $branchId, 1]
-        )->fetch();
+        $prescription = $this->db->select('SELECT id FROM prescriptions WHERE `type` = ? AND `status` = ?', [$invoice_type, 1])->fetch();
 
-        if ($invoice) {
-            $this->db->update('invoices', $invoice['id'], array_keys($invoice_info), $invoice_info);
-            return $invoice['id'];
+        if ($prescription) {
+            $this->db->update('prescriptions', $prescription['id'], array_keys($prescription_info), $prescription_info);
+            return $prescription['id'];
         } else {
-            $this->db->insert('invoices', array_keys($invoice_info), $invoice_info);
+            $this->db->insert('prescriptions', array_keys($prescription_info), $prescription_info);
 
             $lastId = $this->db->lastInsertId();
 
-            $invoiceNo = $this->generateInvoiceNo($invoice_info['invoice_type'], $lastId);
-
-            $this->db->update('invoices', $lastId, ['invoice_number'], [$invoiceNo]);
             return $lastId;
         }
     }

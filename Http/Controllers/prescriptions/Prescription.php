@@ -72,13 +72,23 @@ class Prescription extends App
         //  Prepare invoice info
         $prescription = [
             'doctor_id' => $user_id['id'],
+            'type' => 1,
             'year' => $yearMonth['year'],
             'month' => $yearMonth['month'],
             'who_it' => $request['who_it'],
         ];
 
         //  Create or get existing invoice
-        $invoice_id = $this->prescription->InvoiceConfirm($prescription);
+        $prescription_id = $this->prescription->InvoiceConfirm($prescription);
+
+        dd($prescription_id);
+
+
+
+
+
+
+
 
         $invoice_items = [
             'invoice_id' => $invoice_id,
