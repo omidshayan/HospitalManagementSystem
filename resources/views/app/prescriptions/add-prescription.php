@@ -8,7 +8,7 @@
 
     <!-- Start content -->
     <div class="content">
-        <div class="content-title">ثبت نسخه جدید</div>
+        <div class="content-title mb10">ثبت نسخه جدید</div>
 
         <form action="<?= url('drug-prescription-store') ?>" method="POST">
             <!-- select details drug -->
@@ -104,7 +104,7 @@
                         نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span>
                         <?php
                         if (empty($drugList)) { ?>
-                            <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline">حذف نسخه</a>
+                            <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">حذف نسخه</a>
                         <?php }
                         ?>
                     </div>

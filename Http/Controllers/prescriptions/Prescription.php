@@ -146,15 +146,15 @@ class Prescription extends App
         if (!is_numeric($id)) {
             $this->flashMessage('error', 'لطفا اطلاعات درست ارسال نمائید!');
         }
-        $branchId = $this->getBranchId();
-        $invoice = $this->db->select('SELECT id FROM invoices WHERE branch_id = ? AND `id` = ?', [$branchId, $id])->fetch();
 
-        if (!$invoice) {
+        $prescription = $this->db->select('SELECT id FROM prescriptions WHERE `id` = ?', [$id])->fetch();
+
+        if (!$prescription) {
             require_once(BASE_PATH . '/404.php');
             exit;
         }
 
-        $this->db->delete('invoices', $id);
+        $this->db->delete('prescriptions', $id);
         $this->flashMessage('success', _success);
         exit;
     }
