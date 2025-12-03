@@ -39,23 +39,8 @@ class Prescription extends App
         exit();
     }
 
-    // get product infos AJAX
-    public function getProductInfos($request)
-    {
-        $this->middleware(true, true, 'general');
-        $productInfos = $this->db->select('SELECT * FROM products WHERE id LIKE ?', ['%' . $request['id'] . '%'])->fetch();
-        $inventory = $this->db->select('SELECT * FROM inventory WHERE product_id = ?', [$request['id']])->fetch();
-        $response = [
-            'status' => 'success',
-            'product' => $productInfos,
-            'inventory' => $inventory,
-        ];
-        header('Content-Type: application/json');
-        echo json_encode($response);
-        exit();
-    }
-
-
+    //    add drug in Prescription Store
+    public function drugPrescriptionStore($request) {}
 
 
 
