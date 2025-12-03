@@ -123,16 +123,15 @@
                         <?php
                         $number = 1;
                         foreach ($drugList as $item) {
-                            $unitPrices = $this->calculateUnitPrices($item);
                         ?>
                             <tr>
                                 <td class="color-orange"><?= $number ?></td>
-                                <td><?= $item['product_name'] ?></td>
-                                <td><?= $this->formatNumber($item['package_qty']) ?? 0 ?></td>
-                                <td><?= $this->formatNumber($item['unit_qty']) ?? 0 ?></td>
-                                <td><?= $this->formatNumber($item['quantity']) ?? 0 ?></td>
-                                <td><?= $this->formatNumber($unitPrices['sell'], 2) ?></td>
-                                <td><?= $this->formatNumber($item['item_total_price']) ?></td>
+                                <td><?= $item['drug_name'] ?></td>
+                                <td><?= $item['drug_count'] ?? 1 ?></td>
+                                <td><?= $item['interval_time'] ?></td>
+                                <td><?= $item['dosage'] ?></td>
+                                <td><?= $item['usage_instruction'] ?></td>
+                                <td><?= $item['description'] ?></td>
                                 <td>
                                     <a href="<?= url('edit-sale-product-cart/' . $item['id']) ?>" class="color-orange flex-justify-align">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -158,7 +157,7 @@
                     <tbody></tbody>
                 </table>
                 <div class="flex-justify-align mt20 paginate-section">
-                    <div class="table-info fs12">تعداد کل: <?= count($cart_lists) ?></div>
+                    <div class="table-info fs12">تعداد کل: <?= count($drugList) ?></div>
                 </div>
             </div>
         <?php }
