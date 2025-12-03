@@ -40,13 +40,75 @@ class Prescription extends App
     }
 
     //    add drug in Prescription Store
-    public function drugPrescriptionStore($request) {
-        
+    public function drugPrescriptionStore($request)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        if (empty($request['drug_id']) || empty($request['drug_name'])) {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
+        $this->validateInputs($request);
+
+        $yearMonth = $this->calendar->getYearMonth();
+
+        //  Prepare invoice info
+        $invoice_infos = [
+            'invoice_type' => 1,
+            'branch_id' => $branchId,
+            'user_id' => $request['seller_id'],
+            'year' => $yearMonth['year'],
+            'month' => $yearMonth['month'],
+            'who_it' => $request['who_it'],
+        ];
+
+        //  Create or get existing invoice
+        $invoice_id = $this->invoice->InvoiceConfirm($invoice_infos);
+
+                // 🧾 Prepare invoice item
+        $invoice_items = [
+            'branch_id' => $branchId,
+            'invoice_id' => $invoice_id,
+            'product_id' => $request['product_id'],
+            'product_name' => $request['product_name'],
+            'quantity' => $request['quantity'],
+            'package_qty' => $request['package_qty'],
+            'package_price_buy' => $request['package_price_buy'],
+            'package_price_sell' => $request['package_price_sell'],
+            'quantity_in_pack' => $request['quantity_in_pack'],
+            // 'discount' => $request['discount'] ?? 0,
+            'unit_qty' => $request['unit_qty'],
+            'item_total_price' => $request['item_total_price'],
+            'seller_id' => $request['seller_id'],
+            'item_year' => $yearMonth['year'],
+            'item_month' => $yearMonth['month'],
+            'who_it' => $request['who_it'],
+        ];
+
+        //  Check if product exists in this invoice
+        $exist_product = $this->invoice->getInvoiceItem($invoice_id, $request['product_id'], $branchId);
+
+
+        //         if (!$exist_product) {
+        //     //  Insert new product
+        //     $this->db->insert('invoice_items', array_keys($invoice_items), $invoice_items);
+        // } else {
+        //     // 🔄 Update existing product quantities
+        //     $update_data = [
+        //         'quantity' => $exist_product['quantity'] + $invoice_items['quantity'],
+        //         'package_qty' => $exist_product['package_qty'] + $invoice_items['package_qty'],
+        //         'unit_qty' => $exist_product['unit_qty'] + $invoice_items['unit_qty'],
+        //         'item_total_price' => $exist_product['item_total_price'] + $invoice_items['item_total_price'],
+        //         // 'discount' => $invoice_items['discount'] ?? $exist_product['discount'],
+        //         'package_price_sell' => $invoice_items['package_price_sell'],
+        //         'package_price_buy' => $invoice_items['package_price_buy'],
+        //     ];
+
+        //     $this->db->update('invoice_items', $exist_product['id'], array_keys($update_data), $update_data);
+        // }
+
+        // $this->flashMessage('success', _success);
     }
-
-
-
-
 
 
 
