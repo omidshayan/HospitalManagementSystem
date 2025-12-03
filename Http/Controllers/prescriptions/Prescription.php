@@ -24,6 +24,7 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true);
         $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
+        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE `type` = ? AND `status` = ?', [1, 1])->fetch();
         $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
     }
@@ -96,7 +97,6 @@ class Prescription extends App
 
         if (!$exist_item) {
             $this->db->insert('prescription_items', array_keys($prescription_items), $prescription_items);
-
         } else {
             $update_data = [
                 'quantity' => $exist_item['quantity'] + $prescription_items['quantity'],
