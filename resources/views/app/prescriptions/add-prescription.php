@@ -12,7 +12,7 @@
 
         <form action="<?= url('drug-prescription-store') ?>" method="POST">
             <!-- select details drug -->
-            <div class="box-container">
+            <div class="content-container">
                 <div class="insert">
 
                     <!-- search box -->
@@ -98,7 +98,7 @@
         <!-- prescription items -->
         <?php
         if ($prescription) { ?>
-            <div class="content-container mb30">
+            <div class="content-container mb30 mt20">
                 <div class="mb10 fs14 d-flex">
                     <div class="mr30 bold"> نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span></div>
                     <div class="mr30 bold">
