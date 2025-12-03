@@ -57,6 +57,7 @@ class Prescription extends App
     //    add drug in Prescription Store
     public function drugPrescriptionStore($request)
     {
+        dd($request);
         $this->middleware(true, true, 'general', true, $request, true);
 
         // if (empty($request['drug_id']) || empty($request['drug_name'])) {
@@ -94,7 +95,7 @@ class Prescription extends App
 
         //  Check if product exists in this invoice
         $exist_product = $this->prescription->getPrescriptionItem($prescription_id, $request['drug_id']);
-
+dd($exist_product);
 
         //         if (!$exist_product) {
         //     //  Insert new product

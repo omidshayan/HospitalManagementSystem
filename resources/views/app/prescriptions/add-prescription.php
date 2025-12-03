@@ -22,7 +22,7 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
-                            <input type="hidden" name="product_id" id="item_id">
+                            <input type="hidden" name="drug_id" id="item_id">
                             <input type="text"
                                 class="checkInput"
                                 name="drug_name"
