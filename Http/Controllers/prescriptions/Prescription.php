@@ -40,7 +40,9 @@ class Prescription extends App
     }
 
     //    add drug in Prescription Store
-    public function drugPrescriptionStore($request) {}
+    public function drugPrescriptionStore($request) {
+        
+    }
 
 
 
