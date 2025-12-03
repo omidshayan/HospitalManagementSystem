@@ -7,12 +7,12 @@ include_once('public/alerts/toastr.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title">نمایش کارمندان
+    <div class="content-title">نمایش نسخه‌ها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
-    $help_title = 'راهنمای بخش مدیریت دروس';
-    $help_content = 'در این قسمت ابتدا باید نام درس را وارد کنید، مثلا فتوشاپ ';
+    $help_title = 'راهنمای بخش ';
+    $help_content = 'ننمایش نسخه ها ';
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
