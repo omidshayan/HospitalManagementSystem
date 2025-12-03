@@ -98,6 +98,14 @@
 .mini-container::-webkit-scrollbar-thumb {
     background-color: var(--border) !important;
 }
+
+/* perscriptions section */
+.patient-container{
+    width: 20%;
+    background-color: red;
+}
+
+
 .search-content{
     width: 50%;
     background-color: var(--simillar);
