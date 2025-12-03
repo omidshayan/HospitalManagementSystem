@@ -97,10 +97,10 @@
 
         <!-- prescription items -->
         <?php
-        if ($sale_invoice) { ?>
+        if ($prescription) { ?>
             <div class="content-container mb30">
-                <div class="mb10 fs14 d-flex"> اقلام فاکتور شماره: <?= $sale_invoice['invoice_number'] ?>
-                    <div class="mr30 bold"> مشتری: <span><?= ($seller) ? $seller['user_name'] : 'عمومی' ?></span></div>
+                <div class="mb10 fs14 d-flex">
+                    <div class="mr30 bold"> نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span></div>
                     <div class="mr30 bold">
                         <span><?= isset($total_debt['debtor']) ? 'حساب قبلی: ' . number_format($total_debt['debtor']) : '' ?></span>
                     </div>
@@ -109,12 +109,12 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>نام محصول</th>
-                            <th>تعداد بسته</th>
-                            <th>تعداد عدد</th>
-                            <th>تعداد کل</th>
-                            <th>قیمت فروش واحد</th>
-                            <th>قیمت کل</th>
+                            <th>نام دارو</th>
+                            <th>تعداد</th>
+                            <th>زمان مصرف</th>
+                            <th>مقدار | واحد</th>
+                            <th>طریقه مصرف</th>
+                            <th>توضیحات</th>
                             <th>ویرایش</th>
                             <th>حذف</th>
                         </tr>
@@ -122,7 +122,7 @@
                     <tbody>
                         <?php
                         $number = 1;
-                        foreach ($cart_lists as $item) {
+                        foreach ($drugList as $item) {
                             $unitPrices = $this->calculateUnitPrices($item);
                         ?>
                             <tr>

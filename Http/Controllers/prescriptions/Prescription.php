@@ -23,9 +23,16 @@ class Prescription extends App
     public function addPrescription()
     {
         $this->middleware(true, true, 'general', true);
+        
         $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
-        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE `type` = ? AND `status` = ?', [1, 1])->fetch();
         $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
+
+        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE `type` = ? AND `status` = ?', [1, 1])->fetch();
+
+        if($prescription){
+            $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription])->fetchAll();
+        }
+        
         require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
     }
 
