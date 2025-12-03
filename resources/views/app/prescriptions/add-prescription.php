@@ -108,8 +108,8 @@
                         <?php }
                         ?>
                     </div>
-                    <div class="">
-                        <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">ثبت نسخه</a>
+                    <div>
+                        <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color btn p5-20">ثبت نسخه</a>
                     </div>
                 </div>
                 <table class="fl-table">

@@ -130,7 +130,7 @@
 
 /* colors */
 .color {
-    color: var(--text);
+    color: var(--text) !important;
 }
 
 .text-white {
@@ -321,7 +321,9 @@
 .p20-5 {
     padding: 20px 5px !important;
 }
-
+.p5-20{
+    padding: 5px 20px !important;
+}
 .p-att {
     padding: 2rem 0.4rem 2rem 0.4rem !important;
 }
