@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 02, 2025 at 07:23 PM
+-- Generation Time: Dec 03, 2025 at 10:42 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -221,6 +221,64 @@ INSERT INTO `daily_reports` (`id`, `branch_id`, `report_date`, `total_sales`, `t
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `drugs`
+--
+
+DROP TABLE IF EXISTS `drugs`;
+CREATE TABLE IF NOT EXISTS `drugs` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `generic_name` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `category_id` int NOT NULL,
+  `strength` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `unit` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `manufacturer` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `price` decimal(12,2) DEFAULT NULL,
+  `image` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `drugs`
+--
+
+INSERT INTO `drugs` (`id`, `name`, `generic_name`, `category_id`, `strength`, `unit`, `manufacturer`, `description`, `price`, `image`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, 'for test', NULL, 12, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-03 09:28:16', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drug_categories`
+--
+
+DROP TABLE IF EXISTS `drug_categories`;
+CREATE TABLE IF NOT EXISTS `drug_categories` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cat_name` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `drug_categories`
+--
+
+INSERT INTO `drug_categories` (`id`, `cat_name`, `description`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, 'for test', '', 1, 'ali', '2025-12-03 01:23:35', NULL),
+(2, 'for two ', NULL, 2, 'ali', '2025-12-03 01:24:05', '2025-12-03 01:39:46');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `employees`
 --
 
@@ -252,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `employee_name` (`employee_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `employees`
@@ -262,8 +320,9 @@ INSERT INTO `employees` (`id`, `branch_id`, `employee_name`, `father_name`, `pho
 (48, 100, 'ali', NULL, '11', '$2y$10$EfLQ0PKX4GeGGXnbfeNCdeao/DXcMSDb2Cm99gbyrLmuovnifQfki', 'ali.afg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '7c396f01862af3f8a02425df48586b23d095bf513a5daf59d2a7d15ae0c54d9a', '3', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-02 22:53:42'),
 (116, 20, 'احمد رضا 1', NULL, '22', '$2y$10$lvfOlBw5pMhnzGxLTMpdhOJAUdnpvXTj2xh.AW6/5AXndWqHA2fvu', NULL, '', '1', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2000, 'احمد رضا 1', 1, NULL, 2, '2025-11-10 21:59:19', '2025-12-02 22:52:38'),
 (117, 0, '1112', NULL, '212121', '$2y$10$eT2k1.wU0Y7BcqTBor.PVOHXAo7fNwqDLj/0F3Fs8EQo748qqiSgO', NULL, NULL, 'sdf', 1, NULL, NULL, NULL, NULL, NULL, NULL, '', 0, 'ali', 1, NULL, 1, '2025-12-02 23:49:30', NULL),
-(118, 0, 'ffffff', NULL, '79999', '$2y$10$dIQrMKRtXL8S9KT1GWLKI.sXdrKk3yUfLsxA/Y6P4UHIPLNCd4Otu', NULL, NULL, 'a', 1, NULL, NULL, NULL, NULL, NULL, NULL, '', 0, 'ali', 1, NULL, 1, '2025-12-02 23:51:34', NULL),
-(119, 0, 'احمد رضا aaa', NULL, '07008458', '$2y$10$m82MUnWL60OJ/UKv4DdqIuWw4.3x2gXsntZT2TK1IQey0f89.Lx3K', NULL, NULL, 'a', 1, NULL, NULL, NULL, NULL, NULL, NULL, '', 0, 'ali', 1, NULL, 1, '2025-12-02 23:52:20', NULL);
+(118, 0, 'ffffff', NULL, '79999', '', NULL, NULL, 'a', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ali', 1, NULL, 1, '2025-12-02 23:51:34', '2025-12-03 00:00:31'),
+(119, 0, 'احمد رضا ', NULL, '07008458', '', NULL, NULL, 'a', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ali', 1, NULL, 1, '2025-12-02 23:52:20', '2025-12-03 00:01:28'),
+(120, 0, 'عباس', NULL, '55', '$2y$10$oLHq562Qn4IpqqOOEK29ZOp4z6qcR8bK/xqzTB/ytA3B8jvKY3Muy', NULL, NULL, 'a', 1, NULL, NULL, NULL, NULL, NULL, '2025-12-03-00-50-57_692f4a2992ca8.jpg', '', 0, 'ali', 1, NULL, 1, '2025-12-03 00:50:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -480,6 +539,50 @@ INSERT INTO `positions` (`id`, `branch_id`, `name`, `who_it`, `state`, `created_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prescriptions`
+--
+
+DROP TABLE IF EXISTS `prescriptions`;
+CREATE TABLE IF NOT EXISTS `prescriptions` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `patient_id` int DEFAULT NULL,
+  `doctor_id` int DEFAULT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `patient_id` (`patient_id`),
+  KEY `doctor_id` (`doctor_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prescription_items`
+--
+
+DROP TABLE IF EXISTS `prescription_items`;
+CREATE TABLE IF NOT EXISTS `prescription_items` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `drug_name` varchar(124) COLLATE utf8mb4_general_ci NOT NULL,
+  `prescription_id` int NOT NULL,
+  `drug_id` int NOT NULL,
+  `dosage` varchar(124) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `interval_time` varchar(124) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `duration_days` varchar(124) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `usage_instruction` varchar(124) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `drug_count` int NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `salary_months`
 --
 
@@ -670,6 +773,32 @@ CREATE TABLE IF NOT EXISTS `settings` (
 
 INSERT INTO `settings` (`id`, `branch_id`, `sell_any_situation`, `buy_any_situation`, `expiration_date`, `warehouse`, `created_at`, `updated_at`) VALUES
 (1, 20, 1, 1, 2, 2, '2025-04-01 13:30:36', '2025-11-04 02:13:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `units`
+--
+
+DROP TABLE IF EXISTS `units`;
+CREATE TABLE IF NOT EXISTS `units` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `unit_name` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `units`
+--
+
+INSERT INTO `units` (`id`, `unit_name`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, 'ss aaa', 1, 'ali', '2025-12-03 02:36:15', '2025-12-03 02:46:54'),
+(2, 'two', 1, 'ali', '2025-12-03 02:47:06', NULL),
+(3, 'tree', 1, 'ali', '2025-12-03 02:47:10', NULL);
 
 -- --------------------------------------------------------
 
