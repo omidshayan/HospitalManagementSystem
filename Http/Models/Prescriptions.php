@@ -49,10 +49,10 @@ class Prescriptions extends App
         return $inventory;
     }
 
-    // get invoice items
-    public function getInvoiceItems($invoice_id)
+    // get invoice items ////////////////////////// ok /////////////////////
+    public function getPrescriptionItems($prescription_id)
     {
-        return $invoice = $this->db->select('SELECT * FROM invoice_items WHERE invoice_id = ?', [$invoice_id])->fetchAll();
+        return $prescription_items = $this->db->select('SELECT * FROM prescription_items WHERE prescription_id = ?', [$prescription_id])->fetchAll();
     }
 
     // check invoice but ///////////////// ok ///////////////////

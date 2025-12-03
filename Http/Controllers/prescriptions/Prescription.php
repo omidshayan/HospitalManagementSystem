@@ -166,18 +166,14 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        $prescription = $this->prescription->getInvoice($id);
+        $prescription = $this->prescription->getPrescription($id);
         if (!$prescription) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
 
-        // get month and year
-        $yearMonth = $this->calendar->getYearMonth();
-
-
         // get invoice items
-        $invoice_items = $this->invoice->getInvoiceItems($invoice['id']);
+        $prescription_items = $this->prescription->getPrescriptionItems($prescription['id']);
         // check invoice items
         if (!$invoice_items) {
             $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');

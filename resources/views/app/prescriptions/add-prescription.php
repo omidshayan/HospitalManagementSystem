@@ -109,7 +109,7 @@
                         ?>
                     </div>
                     <div>
-                        <a href="<?= url('close-prescription/' . $prescription['id']) ?>" class="color btn p5-20 bg-success">ثبت نسخه</a>
+                        <a href="<?= url('close-prescription-store/' . $prescription['id']) ?>" class="color btn p5-20 bg-success">ثبت نسخه</a>
                     </div>
                 </div>
                 <table class="fl-table">
