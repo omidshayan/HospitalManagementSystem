@@ -99,14 +99,17 @@
         <?php
         if ($prescription) { ?>
             <div class="content-container mb30 mt20">
-                <div class="mb10 fs14 d-flex">
-                    <div class="mr30 bold">
+                <div class="mb10 fs14 d-flex justify-between">
+                    <div class="mr30">
                         نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span>
                         <?php
                         if (empty($drugList)) { ?>
                             <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">حذف نسخه</a>
                         <?php }
                         ?>
+                    </div>
+                    <div class="">
+                        <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">ثبت نسخه</a>
                     </div>
                 </div>
                 <table class="fl-table">
@@ -158,7 +161,6 @@
                         }
                         ?>
                     </tbody>
-                    <tbody></tbody>
                 </table>
                 <div class="flex-justify-align mt20 paginate-section">
                     <div class="table-info fs12">تعداد کل: <?= count($drugList) ?></div>
