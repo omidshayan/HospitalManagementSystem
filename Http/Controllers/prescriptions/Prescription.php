@@ -77,21 +77,12 @@ class Prescription extends App
             'month' => $yearMonth['month'],
             'who_it' => $request['who_it'],
         ];
-
-        //  Create or get existing invoice
+        //  Create or get existing prescription
         $prescription_id = $this->prescription->InvoiceConfirm($prescription);
 
-        dd($prescription_id);
 
-
-
-
-
-
-
-
-        $invoice_items = [
-            'invoice_id' => $invoice_id,
+        $prescription_items = [
+            'invoice_id' => $prescription_id,
             'product_id' => $request['product_id'],
             'product_name' => $request['product_name'],
             'quantity' => $request['quantity'],
@@ -109,7 +100,7 @@ class Prescription extends App
         ];
 
         //  Check if product exists in this invoice
-        $exist_product = $this->prescription->getInvoiceItem($invoice_id, $request['product_id']);
+        $exist_product = $this->prescription->getInvoiceItem($prescription_id, $request['product_id']);
 
 
         //         if (!$exist_product) {
