@@ -81,10 +81,10 @@ class Prescriptions extends App
         return $product ? $product['quantity_in_pack'] : 1;
     }
 
-    // get purchase invoice
-    public function getInvoice($invoice, $branch_id)
+    // get prescription  /////////////////////// ok ///////////////////
+    public function getPrescription($id)
     {
-        return $invoice = $this->db->select('SELECT * FROM invoices WHERE id = ? AND branch_id = ?', [$invoice, $branch_id])->fetch();
+        return $prescription = $this->db->select('SELECT * FROM prescriptions WHERE id = ?', [$id])->fetch();
     }
 
     //////////////////////////////////////  sale invoice //////////////////////////////////
