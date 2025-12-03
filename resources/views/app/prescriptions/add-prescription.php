@@ -100,9 +100,13 @@
         if ($prescription) { ?>
             <div class="content-container mb30 mt20">
                 <div class="mb10 fs14 d-flex">
-                    <div class="mr30 bold"> نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span></div>
                     <div class="mr30 bold">
-                        <span><?= isset($total_debt['debtor']) ? 'حساب قبلی: ' . number_format($total_debt['debtor']) : '' ?></span>
+                        نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span>
+                        <?php
+                            if(empty($drugList)){ ?>
+                            <a href="<?= url('delete-sale-invoice/' . $prescription['id']) ?>" class="color-red text-underline">حذف نسخه</a>
+                        <?php }
+                        ?>
                     </div>
                 </div>
                 <table class="fl-table">
