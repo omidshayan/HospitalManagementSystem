@@ -43,22 +43,22 @@
                             <div class="label-form mb5 fs14"> تعداد دارو </div>
                             <select name="drug_count" required>
                                 <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
-                                <option value="1">5</option>
-                                <option value="1">6</option>
-                                <option value="1">7</option>
-                                <option value="1">8</option>
-                                <option value="1">9</option>
-                                <option value="1">10</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14"> زمان مصرف </div>
                             <select name="interval_time" required>
-                                <option value="4">بعد از غذا</option>
-                                <option value="4">قبل از غذا</option>
+                                <option value="بعد از غذا">بعد از غذا</option>
+                                <option value="قبل از غذا">قبل از غذا</option>
                                 <option value="1">هر 1 ساعت</option>
                                 <option value="1">هر 2 ساعت</option>
                                 <option value="1">هر 3 ساعت</option>
