@@ -3,6 +3,7 @@ require_once 'Http/Controllers/prescriptions/Prescription.php';
 
 // drugs routes
 uri('add-prescription', 'App\Prescription', 'addPrescription');
+uri('prescriptions', 'App\Prescription', 'prescriptions');
 
 
 // search
