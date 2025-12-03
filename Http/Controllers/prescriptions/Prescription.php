@@ -175,168 +175,42 @@ class Prescription extends App
         // get invoice items
         $prescription_items = $this->prescription->getPrescriptionItems($prescription['id']);
         // check invoice items
-        if (!$invoice_items) {
+        if (!$prescription_items) {
             $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');
             return;
         }
 
-        // foreach for handle invoice items
-        foreach ($invoice_items as $item) {
-
-            // exist product to sales table?
-            $existingInventory = $this->db->select(
-                "SELECT * FROM inventory WHERE product_id = ? AND branch_id = ?",
-                [$item['product_id'], $item['branch_id']]
-            )->fetch();
-
-
-            if ($existingInventory) {
-
-                // get settings for sell any situation
-                $settings = $this->db->select("SELECT sell_any_situation FROM settings WHERE branch_id = ?", [$item['branch_id']])->fetch();
-                if ($settings['sell_any_situation'] == 2) {
-                    if ($item['quantity'] > $existingInventory['quantity']) {
-                        $this->flashMessage('error', 'تعداد موجودی نسبت به تعداد فروش کم است!');
-                    }
-                }
-
-                // check product batches 
-                $product_batches = $this->db->select(
-                    "SELECT * FROM product_batches WHERE product_id = ? AND branch_id = ? AND status = 1 ORDER BY id ASC",
-                    [$item['product_id'], $item['branch_id']]
-                )->fetchAll();
-
-                $totalProfit = 0;
-                $remainingQty = $item['quantity'];
-
-                foreach ($product_batches as $batch) {
-                    if ($remainingQty <= 0) break;
-
-                    // تعداد واقعی فروخته شده از این batch
-                    $soldQty = min($remainingQty, (int)$batch['quantity']);
-                    $remainingQty -= $soldQty;
-
-                    // محاسبه سود برای همین batch
-                    $profit = ($batch['package_price_sell'] - $batch['package_price_buy']) * $soldQty; // قیمت فروش و خرید هر batch
-                    $totalProfit += $profit;
-
-                    // ثبت سود در جدول invoice_profits
-                    $profitData = [
-                        'branch_id' => $item['branch_id'],
-                        'invoice_id' => $invoice['id'],
-                        'invoice_item_id' => $item['id'],
-                        'product_id' => $item['product_id'],
-                        'batch_id' => $batch['id'],
-                        'quantity' => $soldQty,
-                        'buy_price' => $batch['package_price_buy'],
-                        'sell_price' => $batch['package_price_sell'],
-                        'profit' => $profit,
-                    ];
-                    $this->db->insert('invoice_profits', array_keys($profitData), $profitData);
-
-                    // به‌روزرسانی batch
-                    $newBatchQty = (int)$batch['quantity'] - $soldQty;
-                    if ($newBatchQty <= 0) {
-                        // کل batch فروخته شد → فقط status تغییر کند
-                        $this->db->update('product_batches', $batch['id'], ['quantity', 'status'], [0, 2]);
-                    } else {
-                        // بخشی از batch فروخته شد → آپدیت مقدار باقی مانده
-                        $this->db->update('product_batches', $batch['id'], ['quantity'], [$newBatchQty]);
-                    }
-
-                    // کاهش تعداد از inventory (همیشه)
-                    $newInventoryQty = $existingInventory['quantity'] - $item['quantity'];
-                    $this->db->update('inventory', $existingInventory['id'], ['quantity'], [$newInventoryQty]);
-                }
-            } else {
-                $this->flashMessage('error', 'محصول تا به حال در موجودی ثبت نشده!');
-            }
-        } //end foreach
-
-        // array for transaction
-        $this->transaction->addNewTransaction([
-            'branch_id' => $request['branch_id'],
-            'user_id' => $request['seller_id'],
-            'ref_id' => $invoice['invoice_number'],
-            'total_price' =>  $request['total_price'],
-            'paid_amount' => $request['paid_amount'],
-            'discount' => $request['total_discount'],
-            'transaction_date'  => $request['date'],
-            'who_it' => $request['who_it'],
-            'year' => $yearMonth['year'],
-            'month' => $yearMonth['month'],
-            'transaction_type' => 1, // sale
-        ]);
 
         // send notificatons
-        $this->notification->sendNotif([
-            'branch_id' => $request['branch_id'],
-            'user_id' => $request['seller_id'],
-            'ref_id' => $invoice['id'],
-            'type' => 1,
-        ]);
+        // $this->notification->sendNotif([
+        //     'branch_id' => $request['branch_id'],
+        //     'user_id' => $request['seller_id'],
+        //     'ref_id' => $invoice['id'],
+        //     'type' => 1,
+        // ]);
 
-        // update account balance
-        $accoutBalance = [
-            'branch_id' => $request['branch_id'],
-            'user_id' => $request['seller_id'],
-            'total_price' =>  $request['total_price'],
-            'paid_amount' => $request['paid_amount'],
-            'discount' => $request['total_discount'],
-            'year' => $yearMonth['year'],
-            'type' => 1,
-        ];
-        $this->transaction->updateAccountBalance($accoutBalance);
+
 
         // update daily reports
-        $dailyReports = [
-            'branch_id' => $request['branch_id'],
-            'total_price' =>  $request['total_price'],
-            'paid_amount' => $request['paid_amount'],
-            'discount' => $request['total_discount'],
-            'type' => 1,
-        ];
-        $this->reports->updateDailyReports($dailyReports);
+        // $dailyReports = [
+        //     'branch_id' => $request['branch_id'],
+        //     'total_price' =>  $request['total_price'],
+        //     'paid_amount' => $request['paid_amount'],
+        //     'discount' => $request['total_discount'],
+        //     'type' => 1,
+        // ];
+        // $this->reports->updateDailyReports($dailyReports);
 
 
+        $inserted = $this->db->update('prescriptions', $prescription['id'], ['status'], [2]);
 
-        // update fund
-        $updateFund = [
-            'branch_id'   => $request['branch_id'],
-            'paid_amount' => $sale_paid_amount,
-            'type'        => 1,
-            'source'      => isset($request['source']) ? (int)$request['source'] : 1,
-        ];
-        $this->reports->updateFund($updateFund);
-
-
-        // invoice data
-        $invoice_infos = [
-            'total_amount' => $total_price,
-            'discount' => $sale_discount,
-            'user_id' => $request['seller_id'],
-            'date' => $request['date'],
-            'paid_amount' => $sale_paid_amount,
-            'description' => $request['description'],
-            'year' => $yearMonth['year'],
-            'month' => $yearMonth['month'],
-            'status' => 2,
-        ];
-
-
-        $inserted = $this->db->update('invoices', $invoice['id'], array_keys($invoice_infos), $invoice_infos);
-        if ($inserted) {
-            if (isset($request['invoice_print'])) {
-                $this->InvoicePrint($request['invoice_id']);
-                $invoicePrintData = $this->InvoicePrint($request['invoice_id']);
-
-                $this->flashMessagePrint('success', _success, [
-                    'print_invoice' => $invoicePrintData,
-                ]);
-            }
-        }
         $this->flashMessage('success', _success);
     }
+
+
+
+
+
 
     // edit and close invoice sale cart controllers
     // public function editSaleProductCart($id)
