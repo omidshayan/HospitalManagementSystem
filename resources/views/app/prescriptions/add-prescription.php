@@ -21,13 +21,13 @@
                     <!-- search box -->
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">جستجوی محصول <?= _star ?> </div>
+                            <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
                             <input type="hidden" name="product_id" id="item_id">
                             <input type="text"
                                 class="checkInput"
-                                name="product_name"
+                                name="drug_name"
                                 id="item_name"
-                                placeholder="نام محصول را جستجو نمایید"
+                                placeholder="نام دارو را جستجو نمایید"
                                 autocomplete="off"
                                 autofocus
                                 data-search-url="<?= url('search-product-purchase') ?>"
