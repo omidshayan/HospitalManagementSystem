@@ -18,18 +18,15 @@ class Prescription extends App
     public function searchProdut($request)
     {
         $this->middleware(true, true, 'general');
-
-        $branchId = $this->getBranchId();
-
+        
         $product = $this->db->select(
-            "SELECT id, product_name 
-            FROM products 
+            "SELECT id, `name` 
+            FROM drugs 
             WHERE `status` = 1 
             AND product_name LIKE ? 
-            AND branch_id = ? 
             ORDER BY product_name 
             LIMIT 20",
-            ['%' . strtolower($request['customer_name']) . '%', $branchId]
+            ['%' . strtolower($request['customer_name']) . '%']
         )->fetchAll();
 
         $response = [

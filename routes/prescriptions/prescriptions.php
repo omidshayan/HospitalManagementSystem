@@ -5,9 +5,9 @@ require_once 'Http/Controllers/prescriptions/Prescription.php';
 uri('add-prescription', 'App\Prescription', 'addPrescription');
 
 
-uri('search-product-purchase', 'App\prescriptions', 'searchProdut', 'POST');
+uri('search-product-purchase', 'App\Prescription', 'searchProdut', 'POST');
 
-uri('get-product-infos', 'App\prescriptions', 'getProductInfos', 'POST');
+uri('get-product-infos', 'App\Prescription', 'getProductInfos', 'POST');
 
 
 
