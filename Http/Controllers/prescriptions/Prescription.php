@@ -128,19 +128,14 @@ class Prescription extends App
             $this->flashMessage('error', 'لطفا اطلاعات درست ارسال نمائید!');
         }
 
-        $product_cart = $this->db->select('SELECT id, product_id, quantity FROM invoice_items WHERE `id` = ?', [$id])->fetch();
-        if (!$product_cart) {
+        $prescription_item = $this->db->select('SELECT id FROM prescription_items WHERE `id` = ?', [$id])->fetch();
+        if (!$prescription_item) {
             require_once(BASE_PATH . '/404.php');
             exit;
         }
-        $inventory = $this->db->select('SELECT id, quantity FROM inventory WHERE `product_id` = ?', [$product_cart['product_id']])->fetch();
 
-        $newQuantity = intval($product_cart['quantity']) + intval($inventory['quantity']);
-
-        $this->db->update('inventory', $inventory['id'], ['quantity'], [$newQuantity]);
-        $this->db->delete('invoice_items', $id);
+        $this->db->delete('prescription_items', $id);
         $this->flashMessage('success', _success);
-        exit;
     }
 
 
