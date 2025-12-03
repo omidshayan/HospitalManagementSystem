@@ -7,7 +7,17 @@ uri('add-prescription', 'App\Prescription', 'addPrescription');
 
 uri('search-product-purchase', 'App\Prescription', 'searchProdut', 'POST');
 
-uri('get-product-infos', 'App\Prescription', 'getProductInfos', 'POST');
+
+
+
+
+
+// add drug in prescription 
+uri('drug-prescription-store', 'App\Prescription', 'drugPrescriptionStore', 'POST');
+
+
+
+
 
 
 

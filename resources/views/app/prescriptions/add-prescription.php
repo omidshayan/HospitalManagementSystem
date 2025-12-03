@@ -12,7 +12,7 @@
         <!-- start page content -->
 
 
-        <form action="<?= url('product-inventory-store') ?>" method="POST" enctype="multipart/form-data" id="myForm">
+        <form action="<?= url('drug-prescription-store') ?>" method="POST">
 
             <!-- select details drug -->
             <div class="box-container">
@@ -30,8 +30,7 @@
                                 placeholder="نام دارو را جستجو نمایید"
                                 autocomplete="off"
                                 autofocus
-                                data-search-url="<?= url('search-product-purchase') ?>"
-                                data-item-info-url="<?= url('get-product-infos') ?>" />
+                                data-search-url="<?= url('search-product-purchase') ?>" />
                         </div>
                         <ul class="search-back d-none" id="backResponse">
                             <li class="res search-item color" role="option"></li>

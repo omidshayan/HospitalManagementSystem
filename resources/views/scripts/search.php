@@ -30,7 +30,7 @@
                 if (response.status === 'success' && response.products.length) {
                     response.products.forEach(p => {
                         itemsData.push(p);
-                        output += `<li class="res search-item" data-id="${p.id}">${p.product_name}</li>`;
+                        output += `<li class="res search-item" data-id="${p.id}">${p.name}</li>`;
                     });
                 } else {
                     output = '<li class="res search-item color">چیزی یافت نشد</li>';
