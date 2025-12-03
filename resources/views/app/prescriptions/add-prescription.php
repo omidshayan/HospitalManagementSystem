@@ -2,7 +2,10 @@
     $title = 'ثبت نسخه';
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
-    include_once('public/alerts/toastr.php'); ?>
+    include_once('public/alerts/toastr.php');
+    include_once('resources/views/scripts/live-search-product.php');
+    include_once('resources/views/scripts/live-search.php');
+    ?>
 
     <!-- Start content -->
     <div class="content">
@@ -16,10 +19,10 @@
                     <!-- search product -->
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">جستجوی محصول <?= _star ?> </div>
+                            <div class="label-form mb5 fs14">جستجوی دارو </div>
                             <input type="hidden" id="product_id">
                             <div id="user_details"></div>
-                            <input type="text" class="checkInput" name="product_name" id="product_name" placeholder="نام محصول را جستجو نمایید" autocomplete="off" autofocus />
+                            <input type="text" class="checkInput" name="product_name" id="product_name" placeholder="نام دارو را جستجو نمایید" autocomplete="off" autofocus />
                         </div>
                         <ul class="search-back d-none" id="backResponse">
                             <li class="res search-item color" role="option"></li>
