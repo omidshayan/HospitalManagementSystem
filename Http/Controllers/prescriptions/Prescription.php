@@ -120,9 +120,12 @@ class Prescription extends App
     public function prescriptions()
     {
         $this->middleware(true, true, 'general', true);
-        $sales = $this->db->select('SELECT invoices.*, users.user_name AS seller_name FROM invoices LEFT JOIN users ON invoices.user_id = users.id WHERE invoices.status = 2 AND invoices.invoice_type = 1 ORDER BY invoices.id DESC')->fetchAll();
 
-        require_once(BASE_PATH . '/resources/views/app/sales/sales.php');
+        $userId = $this->currentUser();
+
+        $prescriptions = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `status` = ?', [$userId, 2])->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
 
     //////////////////////////////////////////////
