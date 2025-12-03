@@ -14,7 +14,7 @@
 
         <form action="<?= url('drug-prescription-store') ?>" method="POST">
 
-            <div class="d-flex">
+            <div class="d-flex alpha-container">
 
                 <!-- patient infos -->
                 <div class="patient-container">
@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- select details drug -->
-                <div class="content-container">
+                <div class="drug-container">
                     <div class="insert">
 
                         <!-- search box -->

@@ -100,11 +100,29 @@
 }
 
 /* perscriptions section */
-.patient-container{
-    width: 20%;
-    background-color: red;
+.alpha-container{
+    width: 100%;
+    background-color: transparent;
+    max-width: 1450px;
+    margin: 0 auto;
+    gap: 15px;
 }
-
+.patient-container{
+    width: 25%;
+    background-color: var(--simillar);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    margin: 20px auto 40px auto;
+}
+.drug-container{
+    width: 75%;
+    background-color: var(--simillar);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    margin: 0 auto;
+}
 
 .search-content{
     width: 50%;
