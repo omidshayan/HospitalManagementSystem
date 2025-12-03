@@ -41,7 +41,7 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14"> تعداد دارو </div>
-                            <select name="frequency" required>
+                            <select name="drug_count" required>
                                 <option value="1">1</option>
                                 <option value="1">2</option>
                                 <option value="1">3</option>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14"> زمان مصرف </div>
-                            <select name="frequency" required>
+                            <select name="interval_time" required>
                                 <option value="4">بعد از غذا</option>
                                 <option value="4">قبل از غذا</option>
                                 <option value="1">هر 1 ساعت</option>
@@ -72,14 +72,14 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14" for="name">مقدار / واحد مصرف در هر نوبت</div>
-                            <select name="frequency" required>
+                            <select name="dosage" required>
                                 <option value="1">یک قاشق</option>
                                 <option value="1">دو قاشق</option>
                             </select>
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
-                            <select name="frequency" required>
+                            <select name="usage_instruction" required>
                                 <option value="1">خوراکی</option>
                                 <option value="1">دو قاشق</option>
                             </select>

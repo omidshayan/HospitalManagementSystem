@@ -83,24 +83,17 @@ class Prescription extends App
 
         $prescription_items = [
             'invoice_id' => $prescription_id,
-            'product_id' => $request['product_id'],
-            'product_name' => $request['product_name'],
-            'quantity' => $request['quantity'],
-            'package_qty' => $request['package_qty'],
-            'package_price_buy' => $request['package_price_buy'],
-            'package_price_sell' => $request['package_price_sell'],
-            'quantity_in_pack' => $request['quantity_in_pack'],
-            // 'discount' => $request['discount'] ?? 0,
-            'unit_qty' => $request['unit_qty'],
-            'item_total_price' => $request['item_total_price'],
-            'seller_id' => $request['seller_id'],
-            'item_year' => $yearMonth['year'],
-            'item_month' => $yearMonth['month'],
-            'who_it' => $request['who_it'],
+            'drug_id' => $request['drug_id'],
+            'drug_name' => $request['drug_name'],
+            'drug_count' => $request['drug_count'],
+            'interval_time' => $request['interval_time'],
+            'dosage' => $request['dosage'],
+            'usage_instruction' => $request['usage_instruction'],
+            'description' => $request['description'],
         ];
 
         //  Check if product exists in this invoice
-        $exist_product = $this->prescription->getInvoiceItem($prescription_id, $request['product_id']);
+        $exist_product = $this->prescription->getPrescriptionItem($prescription_id, $request['drug_id']);
 
 
         //         if (!$exist_product) {

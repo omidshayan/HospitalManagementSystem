@@ -36,10 +36,10 @@ class Prescriptions extends App
         return $invoice = $this->db->select('SELECT * FROM invoice_items WHERE invoice_id = ?', [$invoice_id])->fetchAll();
     }
 
-    // get buy invoice item
-    public function getInvoiceItem($buy_invoice_id, $product_id, $branch_id)
+    // get buy invoice item /////////////////// ok /////////////////////
+    public function getPrescriptionItem($prescription_id, $drug_id)
     {
-        return $buy_item = $this->db->select('SELECT * FROM invoice_items WHERE invoice_id = ? AND product_id = ? AND branch_id = ?', [$buy_invoice_id, $product_id, $branch_id])->fetch();
+        return $drug_item = $this->db->select('SELECT * FROM prescription_items WHERE prescription_id = ? AND drug_id = ?', [$prescription_id, $drug_id])->fetch();
     }
 
     // get calendar type
