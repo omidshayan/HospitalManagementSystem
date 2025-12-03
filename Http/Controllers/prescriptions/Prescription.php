@@ -38,8 +38,7 @@ class Prescription extends App
         require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
     }
 
-
-    // search product for inventory
+    // search prescription for inventory
     public function searchProdut($request)
     {
         $this->middleware(true, true, 'general');
@@ -117,7 +116,14 @@ class Prescription extends App
         $this->flashMessage('success', _success);
     }
 
+    // show prescriptions
+    public function prescriptions()
+    {
+        $this->middleware(true, true, 'general', true);
+        $sales = $this->db->select('SELECT invoices.*, users.user_name AS seller_name FROM invoices LEFT JOIN users ON invoices.user_id = users.id WHERE invoices.status = 2 AND invoices.invoice_type = 1 ORDER BY invoices.id DESC')->fetchAll();
 
+        require_once(BASE_PATH . '/resources/views/app/sales/sales.php');
+    }
 
     //////////////////////////////////////////////
 
