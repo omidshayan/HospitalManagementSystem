@@ -67,7 +67,15 @@
                                 <option value="1">یک قاشق</option>
                                 <option value="1">دو قاشق</option>
                             </select>
+                        </div>                        <div class="one">
+                            <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
+                            <select name="frequency" required>
+                                <option value="1">خوراکی</option>
+                                <option value="1">دو قاشق</option>
+                            </select>
                         </div>
+                    </div>
+                    <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">توضیحات اضافی</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
