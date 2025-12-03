@@ -24,10 +24,12 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true);
 
+        $userId = $this->currentUser();
+
         $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
         $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
 
-        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE `type` = ? AND `status` = ?', [1, 1])->fetch();
+        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
 
         if ($prescription) {
             $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
