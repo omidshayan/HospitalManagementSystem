@@ -148,7 +148,9 @@ class Prescription extends App
         require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
 
-
+    public function test($request) {
+        dd($request);
+    }
     //////////////////////////////////////////////
 
     // delete saleproduct from cart
