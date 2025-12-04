@@ -18,7 +18,7 @@
 
             <!-- patient infos -->
             <div class="patient-container">
-                <form action="<?= url('close-prescription') ?>" method="post" id="patientForm">
+                <form action="<?= url('close-prescription') ?>" method="post" id="prescriptionForm">
                     <div class="center fs14">اطلاعات بیمار</div>
                     <div class="insert">
                         <div class="inputs d-flex">
@@ -70,7 +70,7 @@
 
             <!-- select details drug -->
             <div class="drug-container">
-                <form action="<?= url('drug-prescription-store') ?>" method="POST" id="drugForm">
+                <form action="<?= url('drug-prescription-store') ?>" method="POST">
                     <div class="insert">
 
                         <!-- search box -->
@@ -168,7 +168,7 @@
                         ?>
                     </div>
                     <div>
-                        <a href="<?= url('close-prescription-store/' . $prescription['id']) ?>" class="color btn p5-20 bg-success bold pa close-p">ثبت نسخه</a>
+                        <a href="<?= url('close-prescription-store/' . $prescription['id']) ?>" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ثبت نسخه</a>
                     </div>
                 </div>
                 <table class="fl-table">
@@ -232,6 +232,12 @@
     <!-- confirm for delete -->
     <script>
         $(document).ready(function() {
+
+            document.getElementById('closePrescriptionBtn').addEventListener('click', function(e) {
+                e.preventDefault(); // جلوگیری از رفتن به لینک
+                document.getElementById('prescriptionForm').submit();
+            });
+
 
             document.querySelectorAll(".delete-drug").forEach(function(element) {
                 element.addEventListener("click", function(event) {
