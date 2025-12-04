@@ -121,7 +121,7 @@
                         </div>
                         <div class="inputs d-flex">
                             <div class="one">
-                                <div class="label-form mb5 fs14" for="name">مقدار / واحد مصرف در هر نوبت</div>
+                                <div class="label-form mb5 fs14" for="name">مقدار مصرف هر نوبت</div>
                                 <select name="dosage" required>
                                     <option value="1">یک قاشق</option>
                                     <option value="1">دو قاشق</option>

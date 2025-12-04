@@ -343,17 +343,7 @@ textarea::placeholder {
 
 .show-msg-events::-webkit-scrollbar-thumb:hover {
     background: #555;
-    /* رنگ پس زمینه */
 }
-
-
-
-
-
-
-
-
-
 
 .notif-events {
     background-color: rgb(19, 113, 255);
@@ -498,11 +488,9 @@ input:checked+.slider:before {
 .slider {
     transition: background-color 0.4s;
 }
-
 .slider:before {
     transition: transform 0.4s;
 }
-
 /* end appbar */
 
 /* neu styles */
@@ -521,7 +509,6 @@ input:checked+.slider:before {
         inset -7px -7px 14px #ffffff;
 }
 
-
 .report {
     display: flex;
     align-items: center;
@@ -530,7 +517,6 @@ input:checked+.slider:before {
     max-width: 1450px;
     margin: 0 auto;
 }
-
 .report-item {
     width: calc(25% - 20px);
     padding: 30px;
@@ -563,7 +549,6 @@ input:checked+.slider:before {
     color: var(--text);
     font-size: 18px;
 }
-
 
 /* main content title evry pages */
 .content-title {
@@ -681,6 +666,7 @@ input:checked+.slider:before {
 .label-form {
     text-align: right;
     margin-right: 10px;
+    opacity: 0.9;
 }
 
 .img {
@@ -2112,4 +2098,14 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     .modal-content {
         width: 90%;
     }
+    .alpha-container{
+        display: block !important;
+    }
+    .patient-container{
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+    .drug-container{
+        width: 100% !important;
+}
 }

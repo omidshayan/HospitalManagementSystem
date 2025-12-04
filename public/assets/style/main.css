@@ -114,6 +114,7 @@
     padding: 10px;
     border: 1px solid var(--border);
     position: relative;
+    min-width: 250px !important;
 }
 .drug-container{
     width: 100%;
