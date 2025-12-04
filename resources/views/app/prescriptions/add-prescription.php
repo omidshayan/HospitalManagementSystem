@@ -18,35 +18,24 @@
 
                 <!-- patient infos -->
                 <div class="patient-container">
+                    <div class="center">اطلاعات بیمار</div>
                     <div class="insert">
                         <div class="inputs d-flex">
                             <div class="one">
-                                <div class="label-form mb5 fs14"> تعداد دارو </div>
-                                <select name="drug_count" required>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-                            <div class="one">
-                                <div class="label-form mb5 fs14"> زمان مصرف </div>
-                                <select name="interval_time" required>
-                                    <option value="بعد از غذا">بعد از غذا</option>
-                                    <option value="قبل از غذا">قبل از غذا</option>
-                                    <option value="1">هر 1 ساعت</option>
-                                </select>
+                                <div class="label-form mb5 fs14"> نام بیمار </div>
+                                <input type="text" name="patient_name" placeholder="نام بیمار را وارد نمائید">
                             </div>
                         </div>
                         <div class="inputs d-flex">
                             <div class="one">
-                                <div class="label-form mb5 fs14" for="name">مقدار / واحد مصرف در هر نوبت</div>
-                                <select name="dosage" required>
-                                    <option value="1">یک قاشق</option>
-                                </select>
+                                <div class="label-form mb5 fs14"> سن بیمار </div>
+                                <input type="text" name="patient_name" placeholder="سن بیمار را وارد نمائید">
                             </div>
+                        </div>
+                        <div class="inputs d-flex">
                             <div class="one">
-                                <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
-                                <select name="usage_instruction" required>
-                                    <option value="1">خوراکی</option>
-                                </select>
+                                <div class="label-form mb5 fs14"> شماره موبایل </div>
+                                <input type="text" name="patient_name" placeholder="شماره موبایل را وارد نمائید">
                             </div>
                         </div>
                     </div>
