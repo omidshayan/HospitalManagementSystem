@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="center mt20">
-                            <a id="checkPatientBtn" href="<?= url('patient-inquiry') ?>" class="p5-20 bg-success btn fs14 d-none">
+                            <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
                                 استعلام بیمار
                             </a>
                         </div>
@@ -240,7 +240,7 @@
             // check patient
             document.getElementById('patient_name').addEventListener('input', function() {
                 const btn = document.getElementById('checkPatientBtn');
-                const baseUrl = "<?= url('close-prescription-store') ?>";
+                const baseUrl = "<?= url('patient-inquiry') ?>";
                 let value = encodeURIComponent(this.value.trim());
 
                 if (this.value.length >= 3) {

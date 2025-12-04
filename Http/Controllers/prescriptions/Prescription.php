@@ -151,6 +151,11 @@ class Prescription extends App
     public function test($request) {
         dd($request);
     }
+
+    public function omid() {
+        $omid = $_GET['patient_name'];
+        dd($omid);
+    }
     //////////////////////////////////////////////
 
     // delete saleproduct from cart
