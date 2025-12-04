@@ -32,6 +32,15 @@
                                 <input type="text" name="patient_name" id="ageInput" placeholder="سن بیمار را وارد نمائید">
                             </div>
                         </div>
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form mb5 fs14"> جنسیت </div>
+                                <select name="gender">
+                                    <option value="آقا">آقا</option>
+                                    <option value="خانم">خانم</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="mt10">
                             <span class="fs14">سال تولد: </span>
                             <strong id="birthYear"></strong>
