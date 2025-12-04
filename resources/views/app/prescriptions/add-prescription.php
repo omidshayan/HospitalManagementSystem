@@ -29,8 +29,12 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form mb5 fs14"> سن بیمار </div>
-                                <input type="text" name="patient_name" placeholder="سن بیمار را وارد نمائید">
+                                <input type="text" name="patient_name" id="ageInput" placeholder="سن بیمار را وارد نمائید">
                             </div>
+                        </div>
+                        <div class="mt10">
+                            <span>سال تولد: </span>
+                            <strong id="birthYear"></strong>
                         </div>
                         <div class="inputs d-flex">
                             <div class="one">
@@ -232,6 +236,37 @@
                         event.preventDefault();
                     }
                 });
+            });
+
+
+            // generate age
+            function toEnglishDigits(str) {
+                return str.replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
+            }
+
+            function getCurrentPersianYear() {
+                let today = new Date();
+                let formatter = new Intl.DateTimeFormat('fa-IR', {
+                    year: 'numeric'
+                });
+                let persianYear = formatter.format(today);
+
+                return parseInt(toEnglishDigits(persianYear));
+            }
+
+            document.getElementById('ageInput').addEventListener('input', function() {
+                let age = parseInt(this.value);
+                let birthYearTag = document.getElementById('birthYear');
+
+                if (!age || age <= 0) {
+                    birthYearTag.textContent = '';
+                    return;
+                }
+
+                let currentPersianYear = getCurrentPersianYear();
+                let birthYear = currentPersianYear - age;
+
+                birthYearTag.textContent = birthYear;
             });
 
         });
