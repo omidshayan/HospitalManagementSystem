@@ -74,7 +74,6 @@
                                 <li class="res search-item color" role="option"></li>
                             </ul>
                         </div>
-                        <br>
 
                         <div class="inputs d-flex">
                             <div class="one">
