@@ -22,8 +22,8 @@
                     <div class="insert">
                         <div class="inputs d-flex">
                             <div class="one">
-                                <div class="label-form  fs14"> نام بیمار </div>
-                                <input type="text" name="patient_name" placeholder="نام بیمار را وارد نمائید">
+                                <div class="label-form  fs14"> نام بیمار <?= _star ?></div>
+                                <input type="text" name="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
                             </div>
                         </div>
                         <div class="inputs d-flex">
