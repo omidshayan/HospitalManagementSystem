@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 03, 2025 at 10:42 AM
+-- Generation Time: Dec 04, 2025 at 07:27 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `csrf_token_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `csrf_token_logs`
@@ -170,7 +170,9 @@ CREATE TABLE IF NOT EXISTS `csrf_token_logs` (
 
 INSERT INTO `csrf_token_logs` (`id`, `message`, `ip_address`, `created_at`, `updated_at`) VALUES
 (6, 'Invalid or missing CSRF token.', '::1', '2025-12-02 23:09:44', NULL),
-(7, 'Invalid or missing CSRF token.', '::1', '2025-12-02 23:09:49', NULL);
+(7, 'Invalid or missing CSRF token.', '::1', '2025-12-02 23:09:49', NULL),
+(8, 'Invalid or missing CSRF token.', '::1', '2025-12-03 15:32:18', NULL),
+(9, 'Invalid or missing CSRF token.', '::1', '2025-12-04 23:46:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -322,7 +324,7 @@ INSERT INTO `employees` (`id`, `branch_id`, `employee_name`, `father_name`, `pho
 (117, 0, '1112', NULL, '212121', '$2y$10$eT2k1.wU0Y7BcqTBor.PVOHXAo7fNwqDLj/0F3Fs8EQo748qqiSgO', NULL, NULL, 'sdf', 1, NULL, NULL, NULL, NULL, NULL, NULL, '', 0, 'ali', 1, NULL, 1, '2025-12-02 23:49:30', NULL),
 (118, 0, 'ffffff', NULL, '79999', '', NULL, NULL, 'a', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ali', 1, NULL, 1, '2025-12-02 23:51:34', '2025-12-03 00:00:31'),
 (119, 0, 'احمد رضا ', NULL, '07008458', '', NULL, NULL, 'a', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ali', 1, NULL, 1, '2025-12-02 23:52:20', '2025-12-03 00:01:28'),
-(120, 0, 'عباس', NULL, '55', '$2y$10$oLHq562Qn4IpqqOOEK29ZOp4z6qcR8bK/xqzTB/ytA3B8jvKY3Muy', NULL, NULL, 'a', 1, NULL, NULL, NULL, NULL, NULL, '2025-12-03-00-50-57_692f4a2992ca8.jpg', '', 0, 'ali', 1, NULL, 1, '2025-12-03 00:50:57', NULL);
+(120, 0, 'عباس', NULL, '55', '', NULL, NULL, 'a', 1, NULL, NULL, NULL, NULL, NULL, '2025-12-03-00-50-57_692f4a2992ca8.jpg', NULL, NULL, 'ali', 1, NULL, 1, '2025-12-03 00:50:57', '2025-12-04 01:08:45');
 
 -- --------------------------------------------------------
 
@@ -546,7 +548,12 @@ DROP TABLE IF EXISTS `prescriptions`;
 CREATE TABLE IF NOT EXISTS `prescriptions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `patient_id` int DEFAULT NULL,
+  `visit_id` int NOT NULL,
+  `patient_name` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `doctor_id` int DEFAULT NULL,
+  `year` varchar(4) COLLATE utf8mb4_general_ci NOT NULL,
+  `month` tinyint NOT NULL,
+  `type` tinyint NOT NULL DEFAULT '1',
   `status` tinyint NOT NULL DEFAULT '1',
   `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
@@ -554,7 +561,17 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
   PRIMARY KEY (`id`),
   KEY `patient_id` (`patient_id`),
   KEY `doctor_id` (`doctor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prescriptions`
+--
+
+INSERT INTO `prescriptions` (`id`, `patient_id`, `visit_id`, `patient_name`, `doctor_id`, `year`, `month`, `type`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(4, NULL, 0, NULL, 48, '1404', 9, 1, 2, 'ali', '2025-12-04 00:55:42', '2025-12-04 01:24:03'),
+(5, NULL, 0, NULL, 48, '1404', 9, 1, 2, 'ali', '2025-12-04 01:24:11', '2025-12-04 01:24:18'),
+(6, NULL, 0, NULL, 48, '1404', 9, 1, 2, 'ali', '2025-12-04 02:11:58', '2025-12-04 23:55:10'),
+(7, NULL, 0, NULL, 48, '1404', 9, 1, 1, 'ali', '2025-12-04 23:55:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -578,7 +595,18 @@ CREATE TABLE IF NOT EXISTS `prescription_items` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prescription_items`
+--
+
+INSERT INTO `prescription_items` (`id`, `drug_name`, `prescription_id`, `drug_id`, `dosage`, `interval_time`, `duration_days`, `usage_instruction`, `description`, `drug_count`, `status`, `created_at`, `updated_at`) VALUES
+(5, 'for test', 3, 1, '1', 'بعد از غذا', NULL, '1', '', 1, 1, '2025-12-03 23:51:29', NULL),
+(6, 'for test', 4, 1, '1', 'بعد از غذا', NULL, '1', '', 1, 1, '2025-12-04 00:55:42', NULL),
+(7, 'for test', 5, 1, '1', 'بعد از غذا', NULL, '1', '', 1, 1, '2025-12-04 01:24:11', NULL),
+(9, 'for test', 6, 1, '1', 'بعد از غذا', NULL, '1', '', 1, 1, '2025-12-04 23:49:44', NULL),
+(10, 'for test', 7, 1, '1', 'بعد از غذا', NULL, '1', '', 1, 1, '2025-12-04 23:55:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -809,35 +837,41 @@ INSERT INTO `units` (`id`, `unit_name`, `status`, `who_it`, `created_at`, `updat
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `branch_id` int NOT NULL,
+  `user_code` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `user_name` varchar(64) NOT NULL,
+  `password` varchar(124) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `father_name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `phone` varchar(15) DEFAULT NULL,
   `email` varchar(124) DEFAULT NULL,
-  `password` varchar(124) DEFAULT NULL,
-  `is_customer` tinyint DEFAULT NULL,
-  `is_seller` tinyint DEFAULT NULL,
+  `gender` varchar(5) DEFAULT NULL,
+  `birth_date` varchar(4) DEFAULT NULL,
+  `phone_relative` varchar(15) DEFAULT NULL,
+  `blood_group` varchar(15) DEFAULT NULL,
+  `chronic_diseases` varchar(1024) DEFAULT NULL,
+  `allergies` varchar(1024) DEFAULT NULL,
+  `past_surgeries` varchar(1024) DEFAULT NULL,
+  `height` varchar(5) DEFAULT NULL,
+  `weight` varchar(5) DEFAULT NULL,
   `address` varchar(512) DEFAULT NULL,
   `description` varchar(1024) DEFAULT NULL,
   `user_image` varchar(254) DEFAULT NULL,
-  `father_name` varchar(30) DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `who_it` varchar(64) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `user_name` (`user_name`),
-  KEY `phone` (`phone`)
+  KEY `user_name` (`user_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `branch_id`, `user_name`, `phone`, `email`, `password`, `is_customer`, `is_seller`, `address`, `description`, `user_image`, `father_name`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(1, 20, 'عمومی', '1', NULL, NULL, 1, 1, '', '', NULL, '', 1, 'محمد رضا', '2025-11-04 11:39:44', NULL),
-(4, 20, 'احمد حسینی 1', '0799', NULL, NULL, 1, 1, 'چوک گلها سنتر', NULL, '2025-11-10-15-43-43_6911c8e7099e3.jpg', NULL, 1, 'احمد رضا', '2025-11-09 18:38:44', '2025-11-11 14:31:33'),
-(5, 20, 'hamdi rezaee', '66', NULL, NULL, 1, 1, 'herat', 'desc', '2025-11-11-14-32-12_691309a42b926.jpg', 'ali', 1, 'احمد رضا', '2025-11-11 14:32:12', NULL),
-(6, 20, 'محمد رضا احمدی', '0799999999', NULL, '$2y$10$fVhSna7IN1cVEKlJezadnuQ0zU/vDhUTJPZ5iWd0/7p78rZyJ1TGa', 1, 1, 'هرات چوک گلها', 'توضیحات', '2025-11-11-21-57-57_6913721d5a467.jpg', 'غلام', 1, 'احمد رضا', '2025-11-11 21:57:57', '2025-11-11 22:02:26');
+INSERT INTO `users` (`id`, `user_code`, `user_name`, `password`, `father_name`, `phone`, `email`, `gender`, `birth_date`, `phone_relative`, `blood_group`, `chronic_diseases`, `allergies`, `past_surgeries`, `height`, `weight`, `address`, `description`, `user_image`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, '1', 'عمومی', NULL, '', '1', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, 1, 'محمد رضا', '2025-11-04 11:39:44', NULL),
+(4, '1', 'احمد حسینی 1', NULL, NULL, '0799', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'چوک گلها سنتر', NULL, '2025-11-10-15-43-43_6911c8e7099e3.jpg', 1, 'احمد رضا', '2025-11-09 18:38:44', '2025-11-11 14:31:33'),
+(5, '1', 'hamdi rezaee', NULL, 'ali', '66', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'herat', 'desc', '2025-11-11-14-32-12_691309a42b926.jpg', 1, 'احمد رضا', '2025-11-11 14:32:12', NULL),
+(6, '1', 'محمد رضا احمدی', '$2y$10$fVhSna7IN1cVEKlJezadnuQ0zU/vDhUTJPZ5iWd0/7p78rZyJ1TGa', 'غلام', '0799999999', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'هرات چوک گلها', 'توضیحات', '2025-11-11-21-57-57_6913721d5a467.jpg', 1, 'احمد رضا', '2025-11-11 21:57:57', '2025-11-11 22:02:26');
 
 -- --------------------------------------------------------
 
@@ -892,6 +926,30 @@ CREATE TABLE IF NOT EXISTS `user_licenses` (
 
 INSERT INTO `user_licenses` (`id`, `user_id`, `branch_id`, `license_key`, `start_date`, `end_date`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
 (1, 48, 48, 'sadfa3243edfdsfd', '2025-09-04', '2026-09-17', 1, NULL, '2025-09-17 12:37:57', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visits`
+--
+
+DROP TABLE IF EXISTS `visits`;
+CREATE TABLE IF NOT EXISTS `visits` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `visit_date` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `symptoms` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'alaem',
+  `diagnosis` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'tashkhis',
+  `note` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `doctor_id` int NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `doctor_id` (`doctor_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
