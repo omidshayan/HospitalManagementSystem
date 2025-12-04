@@ -10,10 +10,6 @@
     <div class="content">
         <div class="content-title mb10">ثبت نسخه جدید</div>
 
-        <!-- form -->
-
-
-
         <div class="d-flex alpha-container">
 
             <!-- patient infos -->
