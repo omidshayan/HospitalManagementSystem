@@ -36,6 +36,7 @@
     list-style: none;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: 'vazir';
 }
 
 body {
@@ -53,7 +54,11 @@ body.light-mode {
     --text: var(--text-light);
     --main2: var(--main2-light);
 }
-
+input::placeholder,
+textarea::placeholder {
+    font-size: 14px;
+    opacity: 0.7;
+}
 /* start sidebar */
 #menu-toggle {
     position: fixed;
