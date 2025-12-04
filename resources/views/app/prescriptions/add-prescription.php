@@ -18,51 +18,54 @@
 
             <!-- patient infos -->
             <div class="patient-container">
-                <div class="center fs14">اطلاعات بیمار</div>
-                <div class="insert">
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form  fs14"> نام بیمار <?= _star ?></div>
-                            <input type="text" name="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
+                <form action="<?=url('close-prescription')?>">
+                    <div class="center fs14">اطلاعات بیمار</div>
+                    <div class="insert">
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form  fs14"> نام بیمار <?= _star ?></div>
+                                <input type="text" name="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
+                            </div>
                         </div>
-                    </div>
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form fs14"> نام پدر </div>
-                            <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form fs14"> نام پدر </div>
+                                <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                            </div>
                         </div>
-                    </div>
-                    <div class="inputs d-flex mb3">
-                        <div class="one">
-                            <div class="label-form fs14"> سن بیمار </div>
-                            <input type="text" name="patient_name" id="ageInput" placeholder="سن بیمار را وارد نمائید">
+                        <div class="inputs d-flex mb3">
+                            <div class="one">
+                                <div class="label-form fs14"> سن بیمار </div>
+                                <input type="text" name="patient_name" id="ageInput" placeholder="سن بیمار را وارد نمائید">
+                            </div>
                         </div>
-                    </div>
-                    <div class="">
-                        <span class="fs14">سال تولد: </span>
-                        <strong id="birthYear"></strong>
-                    </div>
+                        <div class="">
+                            <span class="fs14">سال تولد: </span>
+                            <strong id="birthYear"></strong>
+                        </div>
 
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form fs14"> جنسیت </div>
-                            <select name="gender">
-                                <option value="آقا">آقا</option>
-                                <option value="خانم">خانم</option>
-                            </select>
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form fs14"> جنسیت </div>
+                                <select name="gender">
+                                    <option value="آقا">آقا</option>
+                                    <option value="خانم">خانم</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form fs14"> شماره موبایل </div>
-                            <input type="text" name="patient_name" placeholder="شماره موبایل را وارد نمائید">
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form fs14"> شماره موبایل </div>
+                                <input type="text" name="patient_name" placeholder="شماره موبایل را وارد نمائید">
+                            </div>
+                        </div>
+                        <div class="center mt20">
+                            <a href="<?= url('close-prescription-store') ?>" class="p5-20 bg-success btn fs14">استعلام بیمار</a>
                         </div>
                     </div>
-                    <div class="center mt20">
-                        <a href="<?= url('close-prescription-store') ?>" class="p5-20 bg-success btn fs14">استعلام بیمار</a>
-                    </div>
-                </div>
+                </form>
+
             </div>
 
             <!-- select details drug -->
