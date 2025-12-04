@@ -154,7 +154,12 @@
 .hei-500 {
     min-height: 500px !important;
 }
-
+.pr{
+    position: relative;
+}
+.pa{
+    position: absolute;
+}
 /* colors */
 .color {
     color: var(--text) !important;

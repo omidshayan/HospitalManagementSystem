@@ -672,7 +672,11 @@ input:checked+.slider:before {
 .img {
     width: 120px !important;
 }
-
+.close-p{
+    width: 100px !important;
+    left: 20px;
+    top: -10px;
+}
 /* btn count  */
 .quantity-wrapper {
     display: flex;

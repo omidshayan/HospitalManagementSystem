@@ -157,7 +157,7 @@
         <!-- prescription items -->
         <?php
         if ($prescription) { ?>
-            <div class="content-container mb30 mt20 pr">
+            <div class="content-container mb30 mt20">
                 <div class="mb10 fs14 d-flex justify-between">
                     <div class="mr30">
                         نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span>
@@ -168,7 +168,7 @@
                         ?>
                     </div>
                     <div>
-                        <a href="<?= url('close-prescription-store/' . $prescription['id']) ?>" class="color btn p5-20 bg-success bold">ثبت نسخه</a>
+                        <a href="<?= url('close-prescription-store/' . $prescription['id']) ?>" class="color btn p5-20 bg-success bold pa close-p">ثبت نسخه</a>
                     </div>
                 </div>
                 <table class="fl-table">
