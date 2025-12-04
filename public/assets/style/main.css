@@ -113,6 +113,7 @@
     border-radius: 10px;
     padding: 10px;
     border: 1px solid var(--border);
+    position: relative;
 }
 .drug-container{
     width: 100%;
@@ -122,7 +123,6 @@
     border: 1px solid var(--border);
     margin: 0 auto;
 }
-
 .search-content{
     width: 50%;
     background-color: var(--simillar);

@@ -18,7 +18,7 @@
 
                 <!-- patient infos -->
                 <div class="patient-container">
-                    <div class="center">اطلاعات بیمار</div>
+                    <div class="center fs14 mt20">اطلاعات بیمار</div>
                     <div class="insert">
                         <div class="inputs d-flex">
                             <div class="one">
@@ -50,6 +50,9 @@
                                 <div class="label-form mb5 fs14"> شماره موبایل </div>
                                 <input type="text" name="patient_name" placeholder="شماره موبایل را وارد نمائید">
                             </div>
+                        </div>
+                        <div class="center mt50">
+                            <a href="<?= url('close-prescription-store')?>" class="color p5-20 bg-success btn">استعلام بیمار</a>
                         </div>
                     </div>
                 </div>
