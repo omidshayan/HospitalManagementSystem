@@ -199,7 +199,7 @@ class Prescription extends App
     }
 
     // close invoice
-    public function closePrescriptionStore($id)
+    public function closePrescriptionStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 

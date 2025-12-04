@@ -62,10 +62,8 @@
                             </a>
                         </div>
                     </div>
-
-                    <div>
-                        <input type="submit" value="ok submit">
-                    </div>
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
+                    <input type="submit" id="submit" value="افزودن به نسخه" class="btn bold" />
 
                 </form>
 
