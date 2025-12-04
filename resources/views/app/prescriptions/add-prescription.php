@@ -18,7 +18,7 @@
 
             <!-- patient infos -->
             <div class="patient-container">
-                <form action="<?=url('close-prescription')?>" method="post">
+                <form action="<?= url('close-prescription') ?>" method="post" id="patientForm">
                     <div class="center fs14">اطلاعات بیمار</div>
                     <div class="insert">
                         <div class="inputs d-flex">
@@ -70,7 +70,7 @@
 
             <!-- select details drug -->
             <div class="drug-container">
-                <form action="<?= url('drug-prescription-store') ?>" method="POST">
+                <form action="<?= url('drug-prescription-store') ?>" method="POST" id="drugForm">
                     <div class="insert">
 
                         <!-- search box -->
@@ -151,7 +151,7 @@
                     </div>
                 </form>
             </div>
-            
+
         </div>
 
         <!-- prescription items -->
