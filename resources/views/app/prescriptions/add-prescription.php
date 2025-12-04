@@ -20,7 +20,7 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form  fs14"> نام بیمار <?= _star ?></div>
-                                <input type="text" name="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
+                                <input type="text" name="patient_name" id="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
                             </div>
                         </div>
                         <div class="inputs d-flex">
@@ -57,7 +57,9 @@
                             </div>
                         </div>
                         <div class="center mt20">
-                            <a href="<?= url('close-prescription-store') ?>" class="p5-20 bg-success btn fs14">استعلام بیمار</a>
+                            <a id="checkPatientBtn" href="<?= url('patient-inquiry') ?>" class="p5-20 bg-success btn fs14 d-none">
+                                استعلام بیمار
+                            </a>
                         </div>
                     </div>
                 </form>
@@ -229,9 +231,25 @@
     <script>
         $(document).ready(function() {
 
+            // close prescription
             document.getElementById('closePrescriptionBtn').addEventListener('click', function(e) {
-                e.preventDefault(); // جلوگیری از رفتن به لینک
+                e.preventDefault();
                 document.getElementById('prescriptionForm').submit();
+            });
+
+            // check patient
+            document.getElementById('patient_name').addEventListener('input', function() {
+                const btn = document.getElementById('checkPatientBtn');
+                const baseUrl = "<?= url('close-prescription-store') ?>";
+                let value = encodeURIComponent(this.value.trim());
+
+                if (this.value.length >= 3) {
+                    btn.classList.remove('d-none');
+                    btn.href = baseUrl + "?patient_name=" + value;
+                } else {
+                    btn.classList.add('d-none');
+                    btn.href = baseUrl;
+                }
             });
 
 
