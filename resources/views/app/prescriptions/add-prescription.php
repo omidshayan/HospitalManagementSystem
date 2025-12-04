@@ -143,7 +143,7 @@
                         </div>
 
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                        <input type="submit" id="submit" value="ثبت" class="btn" />
+                        <input type="submit" id="submit" value="افزودن به نسخه" class="btn bold" />
                     </div>
                 </div>
 
