@@ -157,7 +157,7 @@
         <!-- prescription items -->
         <?php
         if ($prescription) { ?>
-            <div class="content-container mb30 mt20">
+            <div class="content-container mb30 mt20 pr">
                 <div class="mb10 fs14 d-flex justify-between">
                     <div class="mr30">
                         نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span>

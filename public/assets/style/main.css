@@ -57,6 +57,7 @@
     max-width: 1450px;
     margin: 0 auto;
     overflow-x: auto;
+    position: relative;
 }
 
 .box-container {
