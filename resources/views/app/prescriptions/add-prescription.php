@@ -26,12 +26,17 @@
                                 <input type="text" name="patient_name" placeholder="نام بیمار را وارد نمائید">
                             </div>
                         </div>
-                        <div class="inputs d-flex">
+                        <div class="inputs d-flex mb3">
                             <div class="one">
                                 <div class="label-form mb5 fs14"> سن بیمار </div>
                                 <input type="text" name="patient_name" id="ageInput" placeholder="سن بیمار را وارد نمائید">
                             </div>
                         </div>
+                        <div class="">
+                            <span class="fs14">سال تولد: </span>
+                            <strong id="birthYear"></strong>
+                        </div>
+
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form mb5 fs14"> جنسیت </div>
@@ -41,10 +46,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="mt10">
-                            <span class="fs14">سال تولد: </span>
-                            <strong id="birthYear"></strong>
-                        </div>
+
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form mb5 fs14"> شماره موبایل </div>
@@ -52,7 +54,7 @@
                             </div>
                         </div>
                         <div class="center mt50">
-                            <a href="<?= url('close-prescription-store')?>" class="color p5-20 bg-success btn">استعلام بیمار</a>
+                            <a href="<?= url('close-prescription-store') ?>" class="color p5-20 bg-success btn">استعلام بیمار</a>
                         </div>
                     </div>
                 </div>
