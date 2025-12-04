@@ -14,7 +14,7 @@
 
             <!-- patient infos -->
             <div class="patient-container">
-                <form action="<?= url('close-prescription') ?>" method="post" id="prescriptionForm">
+                <form action="<?= url('close-prescription-store/' . $prescription['id']) ?>" method="post" id="prescriptionForm">
                     <div class="center fs14">اطلاعات بیمار</div>
                     <div class="insert">
                         <div class="inputs d-flex">
@@ -62,6 +62,11 @@
                             </a>
                         </div>
                     </div>
+
+                    <div>
+                        <input type="submit" value="ok submit">
+                    </div>
+
                 </form>
 
             </div>
@@ -234,8 +239,12 @@
             // close prescription
             document.getElementById('closePrescriptionBtn').addEventListener('click', function(e) {
                 e.preventDefault();
-                document.getElementById('prescriptionForm').submit();
+
+                document.getElementById('prescriptionForm').requestSubmit(
+                    document.getElementById('hiddenSubmit')
+                );
             });
+
 
             // check patient
             document.getElementById('patient_name').addEventListener('input', function() {
