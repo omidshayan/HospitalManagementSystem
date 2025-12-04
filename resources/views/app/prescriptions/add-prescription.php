@@ -18,7 +18,7 @@
 
             <!-- patient infos -->
             <div class="patient-container">
-                <form action="<?=url('close-prescription')?>">
+                <form action="<?=url('close-prescription')?>" method="post">
                     <div class="center fs14">اطلاعات بیمار</div>
                     <div class="insert">
                         <div class="inputs d-flex">
@@ -151,10 +151,8 @@
                     </div>
                 </form>
             </div>
+            
         </div>
-
-
-
 
         <!-- prescription items -->
         <?php
