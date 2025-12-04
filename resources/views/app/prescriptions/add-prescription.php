@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="mt10">
-                            <span>سال تولد: </span>
+                            <span class="fs14">سال تولد: </span>
                             <strong id="birthYear"></strong>
                         </div>
                         <div class="inputs d-flex">
