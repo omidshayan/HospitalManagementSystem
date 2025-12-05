@@ -205,7 +205,7 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        
+
         if (empty($request['patient_name']) || empty($request['birth_year'])) {
             $this->flashMessage('error', _emptyInputs);
         }
@@ -224,7 +224,13 @@ class Prescription extends App
             return;
         }
 
+         $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$prescription_id])->fetch();
 
+         if($user){
+            
+         }else{
+
+         }
         // send notificatons
         // $this->notification->sendNotif([
         //     'branch_id' => $request['branch_id'],
