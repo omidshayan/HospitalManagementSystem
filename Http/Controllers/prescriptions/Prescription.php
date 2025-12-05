@@ -227,9 +227,17 @@ class Prescription extends App
          $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$prescription_id])->fetch();
 
          if($user){
-            
-         }else{
 
+         }else{
+            $userData = [
+                'user_name' => $request['user_name'],
+                'birth_year' => $request['birth_year'],
+                'father_name' => $request['father_name'],
+                'gender' => $request['gender'],
+                'phone' => $request['phone'],
+            ];
+            $this->db->insert('account_balances', array_keys($userData), $userData);
+            dd('ol');
          }
         // send notificatons
         // $this->notification->sendNotif([
