@@ -166,7 +166,7 @@
                         ?>
                     </div>
                     <div>
-                        <a href="<?= url('close-prescription-store/' . $prescription['id']) ?>" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ثبت نسخه</a>
+                        <?= $drugList ? '<a href="' . url('close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ثبت نسخه</a>' : '' ?>
                     </div>
                 </div>
                 <table class="fl-table">
@@ -195,7 +195,7 @@
                                 <td><?= $item['interval_time'] ?></td>
                                 <td><?= $item['dosage'] ?></td>
                                 <td><?= $item['usage_instruction'] ?></td>
-                                <td><?= $item['description'] ?></td>
+                                <td><?= $item['description'] ?: '- - - -' ?></td>
                                 <!-- <td>
                                     <a href="<?= url('edit-prescription-list/' . $item['id']) ?>" class="color-orange flex-justify-align">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -239,7 +239,6 @@
                     document.getElementById('hiddenSubmit')
                 );
             });
-
 
             // check patient
             document.getElementById('patient_name').addEventListener('input', function() {
