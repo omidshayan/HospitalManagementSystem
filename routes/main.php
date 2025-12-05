@@ -47,6 +47,9 @@ require_once 'drug-categories/drug-categories.php';
 // units
 require_once 'units/units.php';
 
+// patients
+require_once 'patients/patients.php';
+
 // prescriptions
 require_once 'prescriptions/prescriptions.php';
 
