@@ -13,13 +13,20 @@ class Patient extends App
         $user = $this->currentUser();
 
         if ($user['role'] === 'admin') {
-            $users = $this->db->select('SELECT * FROM users')->fetchAll();
+
+            $users = $this->db
+                ->select("SELECT u.*, COUNT(p.id) AS prescription_count FROM users u LEFT JOIN prescriptions p ON p.patient_id = u.id GROUP BY u.id ORDER BY u.id DESC")
+                ->fetchAll();
         } else {
-            $users = $this->db->select('SELECT * FROM users WHERE doctor_id = ?', $user['id'])->fetchAll();
+
+            $users = $this->db
+                ->select("SELECT u.*, COUNT(p.id) AS prescription_count FROM users u LEFT JOIN prescriptions p ON p.patient_id = u.id WHERE u.doctor_id = ? GROUP BY u.id ORDER BY u.id DESC", $user['id'])
+                ->fetchAll();
         }
 
         require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
     }
+
 
 
 
