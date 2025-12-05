@@ -8,9 +8,18 @@ class Patient extends App
     // add employee page
     public function patients()
     {
+        dd('ok');
         $this->middleware(true, true, 'general', true);
-        $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/employees/add-employee.php');
+
+        $user = $this->currentUser();
+
+        if ($user['role'] === 'admin') {
+            $patients = $this->db->select('SELECT * FROM users')->fetchAll();
+        } else {
+            $patients = $this->db->select('SELECT * FROM users WHERE doctor_id = ?', $user['id'])->fetchAll();;
+        }
+
+        require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
 
 
@@ -23,7 +32,7 @@ class Patient extends App
 
 
 
-    
+
     // store employee
     public function employeeStore($request)
     {
