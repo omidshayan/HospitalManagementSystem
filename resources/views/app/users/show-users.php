@@ -58,7 +58,14 @@ include_once('resources/views/layouts/header.php');
                     <tr>
                         <td class="color-orange"><?= $number ?></td>
                         <td><?= $user['user_name'] ?></td>
-                        <td><?= ($user['birth_year']) ?: '- - - -' ?></td>
+                        <td>
+                            <?php if (!empty($user['birth_year']) && $user['birth_year'] != 0): ?>
+                                <?= $user['birth_year'] ?>  <span class="fs12">(<?= $this->getAge($user['birth_year']) ?> ساله)</span>
+                            <?php else: ?>
+                                - - - -
+                            <?php endif; ?>
+                        </td>
+
                         <td><?= ($user['phone']) ?: '- - - -' ?></td>
                         <td><?= ($user['prescription_count']) ?: 0 ?></td>
                         <td>

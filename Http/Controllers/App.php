@@ -73,6 +73,14 @@ class App
                 exit;
         }
 
+        // handle birth year
+        public function getAge($birthYear)
+        {
+                $currentYear = jdate('Y');
+                $currentYear = $this->convertPersionNumber($currentYear);
+                return $currentYear - (int)$birthYear;
+        }
+
 
         // validations start
         function validateInputs($inputs, $validateFields = [])
