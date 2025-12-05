@@ -223,10 +223,12 @@ class Prescription extends App
             $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');
             return;
         }
+
+        // select and check user
+        $userId = null;
         $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$request['user_name'], $request['birth_year']])->fetch();
-        
-        if ($user) {
-        } else {
+
+        if (!$user) {
             $userData = [
                 'user_name' => $request['user_name'],
                 'birth_year' => $request['birth_year'],
@@ -235,11 +237,12 @@ class Prescription extends App
                 'phone' => $request['phone'],
             ];
             $this->db->insert('users', array_keys($userData), $userData);
+            $userId = $this->db->lastInsertId();
+        } else {
+            $userId = $user['id'];
         }
 
-        $newPrescription = [
-            
-        ];
+        $newPrescription = [];
         // send notificatons
         // $this->notification->sendNotif([
         //     'branch_id' => $request['branch_id'],
