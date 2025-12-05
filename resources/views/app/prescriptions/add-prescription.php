@@ -229,6 +229,21 @@
     </div>
 
     <script>
+        // check patient
+        document.getElementById('patient_name').addEventListener('input', function() {
+            const btn = document.getElementById('checkPatientBtn');
+            const baseUrl = "<?= url('patient-inquiry') ?>";
+            let value = encodeURIComponent(this.value.trim());
+
+            if (this.value.length >= 3) {
+                btn.classList.remove('d-none');
+                btn.href = baseUrl + "?patient_name=" + value;
+            } else {
+                btn.classList.add('d-none');
+                btn.href = baseUrl;
+            }
+        });
+
         // generate age
         function toEnglishDigits(str) {
             return str.replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
@@ -276,22 +291,6 @@
                     document.getElementById('hiddenSubmit')
                 );
             });
-
-            // check patient
-            document.getElementById('patient_name').addEventListener('input', function() {
-                const btn = document.getElementById('checkPatientBtn');
-                const baseUrl = "<?= url('patient-inquiry') ?>";
-                let value = encodeURIComponent(this.value.trim());
-
-                if (this.value.length >= 3) {
-                    btn.classList.remove('d-none');
-                    btn.href = baseUrl + "?patient_name=" + value;
-                } else {
-                    btn.classList.add('d-none');
-                    btn.href = baseUrl;
-                }
-            });
-
 
             document.querySelectorAll(".delete-drug").forEach(function(element) {
                 element.addEventListener("click", function(event) {
