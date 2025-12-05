@@ -206,7 +206,7 @@ class Prescription extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
 
-        if (empty($request['patient_name']) || empty($request['birth_year'])) {
+        if (empty($request['user_name']) || empty($request['birth_year'])) {
             $this->flashMessage('error', _emptyInputs);
         }
 
@@ -223,12 +223,10 @@ class Prescription extends App
             $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');
             return;
         }
-
-         $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$prescription_id])->fetch();
-
-         if($user){
-
-         }else{
+        $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$request['user_name'], $request['birth_year']])->fetch();
+        
+        if ($user) {
+        } else {
             $userData = [
                 'user_name' => $request['user_name'],
                 'birth_year' => $request['birth_year'],
@@ -236,9 +234,8 @@ class Prescription extends App
                 'gender' => $request['gender'],
                 'phone' => $request['phone'],
             ];
-            $this->db->insert('account_balances', array_keys($userData), $userData);
-            dd('ol');
-         }
+            $this->db->insert('users', array_keys($userData), $userData);
+        }
         // send notificatons
         // $this->notification->sendNotif([
         //     'branch_id' => $request['branch_id'],

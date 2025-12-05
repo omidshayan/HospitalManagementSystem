@@ -20,7 +20,7 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form  fs14"> نام بیمار <?= _star ?></div>
-                                <input type="text" name="patient_name" id="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
+                                <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
                             </div>
                         </div>
                         <div class="inputs d-flex mb3">
