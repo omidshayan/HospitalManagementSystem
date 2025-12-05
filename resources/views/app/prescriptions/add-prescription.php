@@ -23,21 +23,22 @@
                                 <input type="text" name="patient_name" id="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
                             </div>
                         </div>
-                        <div class="inputs d-flex">
-                            <div class="one">
-                                <div class="label-form fs14"> نام پدر </div>
-                                <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
-                            </div>
-                        </div>
                         <div class="inputs d-flex mb3">
                             <div class="one">
-                                <div class="label-form fs14"> سن بیمار </div>
-                                <input type="text" name="patient_name" id="ageInput" placeholder="سن بیمار را وارد نمائید">
+                                <div class="label-form fs14"> سن بیمار <?= _star ?></div>
+                                <input type="number" id="ageInput" class="checkInput" placeholder="سن بیمار را وارد نمائید">
+                                <input type="hidden" name="birth_date" id="birthYearInput">
                             </div>
                         </div>
                         <div class="">
                             <span class="fs14">سال تولد: </span>
                             <strong id="birthYear"></strong>
+                        </div>
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form fs14"> نام پدر </div>
+                                <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                            </div>
                         </div>
 
                         <div class="inputs d-flex">
@@ -291,7 +292,7 @@
 
             function getCurrentPersianYear() {
                 let today = new Date();
-                let formatter = new Intl.DateTimeFormat('fa-IR', {
+                let formatter = new Intl.DateTimeFormat('fa-AF', {
                     year: 'numeric'
                 });
                 let persianYear = formatter.format(today);
@@ -302,9 +303,11 @@
             document.getElementById('ageInput').addEventListener('input', function() {
                 let age = parseInt(this.value);
                 let birthYearTag = document.getElementById('birthYear');
+                let birthYearInput = document.getElementById('birthYearInput');
 
                 if (!age || age <= 0) {
                     birthYearTag.textContent = '';
+                    birthYearInput.value = '';
                     return;
                 }
 
@@ -312,7 +315,10 @@
                 let birthYear = currentPersianYear - age;
 
                 birthYearTag.textContent = birthYear;
+
+                birthYearInput.value = birthYear;
             });
+
 
         });
     </script>
