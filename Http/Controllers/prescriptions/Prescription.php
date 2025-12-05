@@ -224,17 +224,18 @@ class Prescription extends App
             return;
         }
 
-        // select and check user
         $userId = null;
+
+        // select and check user
         $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$request['user_name'], $request['birth_year']])->fetch();
 
         if (!$user) {
             $userData = [
                 'user_name' => $request['user_name'],
                 'birth_year' => $request['birth_year'],
-                'father_name' => $request['father_name'],
+                'father_name' => $request['father_name'] ?? null,
                 'gender' => $request['gender'],
-                'phone' => $request['phone'],
+                'phone' => $request['phone'] ?? null,
             ];
             $this->db->insert('users', array_keys($userData), $userData);
             $userId = $this->db->lastInsertId();
@@ -264,7 +265,7 @@ class Prescription extends App
         // $this->reports->updateDailyReports($dailyReports);
 
 
-        $inserted = $this->db->update('prescriptions', $prescription['id'], ['status'], [2]);
+        $inserted = $this->db->update('prescriptions', $prescription['id'], ['patient_id', 'patient_name', 'status'], [$userId, $request['user_name'], 2]);
 
         $this->flashMessage('success', _success);
     }
