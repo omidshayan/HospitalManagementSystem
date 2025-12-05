@@ -27,7 +27,7 @@
                             <div class="one">
                                 <div class="label-form fs14"> سن بیمار <?= _star ?></div>
                                 <input type="number" id="ageInput" class="checkInput" placeholder="سن بیمار را وارد نمائید">
-                                <input type="hidden" name="birth_date" id="birthYearInput">
+                                <input type="hidden" name="birth_year" id="birthYearInput">
                             </div>
                         </div>
                         <div class="">
@@ -54,7 +54,7 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form fs14"> شماره موبایل </div>
-                                <input type="text" name="patient_name" placeholder="شماره موبایل را وارد نمائید">
+                                <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
                             </div>
                         </div>
                         <div class="center mt20">

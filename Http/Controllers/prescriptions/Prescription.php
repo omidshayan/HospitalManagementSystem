@@ -148,11 +148,13 @@ class Prescription extends App
         require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
 
-    public function test($request) {
+    public function test($request)
+    {
         dd($request);
     }
 
-    public function omid() {
+    public function omid()
+    {
         $omid = $_GET['patient_name'];
         dd($omid);
     }
@@ -202,6 +204,11 @@ class Prescription extends App
     public function closePrescriptionStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
+
+        
+        if (empty($request['patient_name']) || empty($request['birth_year'])) {
+            $this->flashMessage('error', _emptyInputs);
+        }
 
         $prescription = $this->prescription->getPrescription($id);
         if (!$prescription) {
