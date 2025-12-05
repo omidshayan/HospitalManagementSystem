@@ -40,6 +40,7 @@ include_once('resources/views/layouts/header.php');
                 <tr>
                     <th>#</th>
                     <th>نام</th>
+                    <th>نام پدر</th>
                     <th>شماره</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
@@ -55,8 +56,9 @@ include_once('resources/views/layouts/header.php');
                 ?>
                     <tr>
                         <td class="color-orange"><?= $number ?></td>
-                        <td><?= $user['name'] ?></td>
-                        <td><?= $user['phone'] ?></td>
+                        <td><?= $user['user_name'] ?></td>
+                        <td><?= ($user['father_name']) ?: '- - - -' ?></td>
+                        <td><?= ($user['phone']) ?: '- - - -' ?></td>
                         <td>
                             <a href="<?= url('edit-user/' . $user['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

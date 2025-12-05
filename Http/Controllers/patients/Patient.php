@@ -15,7 +15,7 @@ class Patient extends App
         if ($user['role'] === 'admin') {
             $users = $this->db->select('SELECT * FROM users')->fetchAll();
         } else {
-            $users = $this->db->select('SELECT * FROM users WHERE doctor_id = ?', $user['id'])->fetchAll();;
+            $users = $this->db->select('SELECT * FROM users WHERE doctor_id = ?', $user['id'])->fetchAll();
         }
 
         require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
