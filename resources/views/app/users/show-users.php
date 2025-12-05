@@ -41,7 +41,7 @@ include_once('resources/views/layouts/header.php');
                     <th>#</th>
                     <th>نام</th>
                     <th>تاریخ تولد</th>
-                    <th>شماره</th>
+                    <th>شماره موبایل</th>
                     <th>تعداد نسخه‌های دریافتی</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
