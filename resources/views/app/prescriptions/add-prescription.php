@@ -14,7 +14,7 @@
 
             <!-- patient infos -->
             <div class="patient-container">
-                <form action="<?= url('close-prescription-store/' . $prescription['id']) ?>" method="post" id="prescriptionForm">
+                <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
                     <div class="center fs14">اطلاعات بیمار</div>
                     <div class="insert">
                         <div class="inputs d-flex">
@@ -158,7 +158,7 @@
             <div class="content-container mb30 mt20">
                 <div class="mb10 fs14 d-flex justify-between">
                     <div class="mr30">
-                        نسخه بیمار: <span><?= ($prescription['patient_name']) ? $prescription['patient_name'] : 'ثبت نشده' ?></span>
+                        <span><?= ($drugList) ? 'لیست دواها' : 'لیست خالی است' ?></span>
                         <?php
                         if (empty($drugList)) { ?>
                             <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">حذف نسخه</a>
