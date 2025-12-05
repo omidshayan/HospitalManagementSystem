@@ -63,10 +63,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                    <input type="submit" id="submit" value="افزودن به نسخه" class="btn bold" />
-
                 </form>
-
             </div>
 
             <!-- select details drug -->
