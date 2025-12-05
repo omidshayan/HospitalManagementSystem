@@ -60,7 +60,7 @@ include_once('resources/views/layouts/header.php');
                         <td><?= $user['user_name'] ?></td>
                         <td>
                             <?php if (!empty($user['birth_year']) && $user['birth_year'] != 0): ?>
-                                <?= $user['birth_year'] ?>  <span class="fs12">(<?= $this->getAge($user['birth_year']) ?> ساله)</span>
+                                <?= $user['birth_year'] ?> <span class="fs12">(<?= $this->getAge($user['birth_year']) ?> ساله)</span>
                             <?php else: ?>
                                 - - - -
                             <?php endif; ?>
