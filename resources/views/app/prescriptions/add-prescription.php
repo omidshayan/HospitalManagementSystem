@@ -228,6 +228,42 @@
         ?>
     </div>
 
+    <script>
+        // generate age
+        function toEnglishDigits(str) {
+            return str.replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
+        }
+
+        function getCurrentPersianYear() {
+            let today = new Date();
+            let formatter = new Intl.DateTimeFormat('fa-AF', {
+                year: 'numeric'
+            });
+            let persianYear = formatter.format(today);
+
+            return parseInt(toEnglishDigits(persianYear));
+        }
+
+        document.getElementById('ageInput').addEventListener('input', function() {
+            let age = parseInt(this.value);
+            let birthYearTag = document.getElementById('birthYear');
+            let birthYearInput = document.getElementById('birthYearInput');
+
+            if (!age || age <= 0) {
+                birthYearTag.textContent = '';
+                birthYearInput.value = '';
+                return;
+            }
+
+            let currentPersianYear = getCurrentPersianYear();
+            let birthYear = currentPersianYear - age;
+
+            birthYearTag.textContent = birthYear;
+
+            birthYearInput.value = birthYear;
+        });
+    </script>
+
     <!-- confirm for delete -->
     <script>
         $(document).ready(function() {
@@ -274,51 +310,6 @@
                     }
                 });
             });
-
-            document.querySelectorAll(".delete-all-products").forEach(function(element) {
-                element.addEventListener("click", function(event) {
-                    let confirmDelete = confirm("آیا از حذف همه فاکتورها اطمینان دارید؟");
-                    if (!confirmDelete) {
-                        event.preventDefault();
-                    }
-                });
-            });
-
-
-            // generate age
-            function toEnglishDigits(str) {
-                return str.replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
-            }
-
-            function getCurrentPersianYear() {
-                let today = new Date();
-                let formatter = new Intl.DateTimeFormat('fa-AF', {
-                    year: 'numeric'
-                });
-                let persianYear = formatter.format(today);
-
-                return parseInt(toEnglishDigits(persianYear));
-            }
-
-            document.getElementById('ageInput').addEventListener('input', function() {
-                let age = parseInt(this.value);
-                let birthYearTag = document.getElementById('birthYear');
-                let birthYearInput = document.getElementById('birthYearInput');
-
-                if (!age || age <= 0) {
-                    birthYearTag.textContent = '';
-                    birthYearInput.value = '';
-                    return;
-                }
-
-                let currentPersianYear = getCurrentPersianYear();
-                let birthYear = currentPersianYear - age;
-
-                birthYearTag.textContent = birthYear;
-
-                birthYearInput.value = birthYear;
-            });
-
 
         });
     </script>
