@@ -1,17 +1,3 @@
-<?php
-
-$balancePrevious = $sale_invoice_print['balance'];
-$paidAmount = $sale_invoice_print['paid_amount'];
-
-$totalAmount = $sale_invoice_print['total_amount'] - $sale_invoice_print['discount'];
-
-$invoiceBalance = $sale_invoice_print['paid_amount'] + $sale_invoice_print['discount'];
-
-$remaining_amount = $sale_invoice_print['total_amount'] - $invoiceBalance;
-
-$beforeBalance = $balancePrevious + $remaining_amount;
-
-?>
 
 <!-- barcode -->
 <script src="<?= asset('public/assets/js/barcode.js') ?>"></script>

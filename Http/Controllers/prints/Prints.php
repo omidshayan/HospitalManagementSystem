@@ -29,17 +29,10 @@ class Prints extends App
     // print invoice
     public function print()
     {
-        dd('ok');
         $this->middleware(true, true, 'general', true);
-        $branchId = $this->getBranchId();
 
-        $factor_infos = $this->db->select('SELECT * FROM factor_settings WHERE branch_id = ?', [$branchId])->fetch();
+        // $factor_infos = $this->db->select('SELECT * FROM factor_settings WHERE branch_id = ?', [$branchId])->fetch();
 
-        if (!$branchId) {
-            require_once(BASE_PATH . '/404.php');
-            exit();
-        }
-
-        require_once(BASE_PATH . '/resources/views/app/prints/invoice.php');
+        require_once(BASE_PATH . '/resources/views/app/prints/prescription.php');
     }
 }
