@@ -236,6 +236,10 @@ class Prescription extends App
             ];
             $this->db->insert('users', array_keys($userData), $userData);
         }
+
+        $newPrescription = [
+            
+        ];
         // send notificatons
         // $this->notification->sendNotif([
         //     'branch_id' => $request['branch_id'],
