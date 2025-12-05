@@ -8,18 +8,17 @@ class Patient extends App
     // add employee page
     public function patients()
     {
-        dd('ok');
         $this->middleware(true, true, 'general', true);
 
         $user = $this->currentUser();
 
         if ($user['role'] === 'admin') {
-            $patients = $this->db->select('SELECT * FROM users')->fetchAll();
+            $users = $this->db->select('SELECT * FROM users')->fetchAll();
         } else {
-            $patients = $this->db->select('SELECT * FROM users WHERE doctor_id = ?', $user['id'])->fetchAll();;
+            $users = $this->db->select('SELECT * FROM users WHERE doctor_id = ?', $user['id'])->fetchAll();;
         }
 
-        require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
+        require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
     }
 
 
