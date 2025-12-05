@@ -50,6 +50,9 @@ require_once 'units/units.php';
 // patients
 require_once 'patients/patients.php';
 
+// prints
+require_once 'prints/prints.php';
+
 // prescriptions
 require_once 'prescriptions/prescriptions.php';
 
