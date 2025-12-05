@@ -75,12 +75,6 @@
                     <li class="sidebar-dropdown-menu-item">نمایش بیماران</li>
                   </a>
                 <?php endif; ?>
-
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('positions') ?>">
-                    <li class="sidebar-dropdown-menu-item">مدیریت وظایف کارمندان</li>
-                  </a>
-                <?php endif; ?>
               </ul>
             </li>
           <?php endif; ?>
