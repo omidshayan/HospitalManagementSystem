@@ -3,9 +3,7 @@ $title = 'نمایش نسخه‌ها';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
-include_once('resources/views/app/prints/style.php');
 ?>
-
 
 <div class="content">
     <div class="content-title">نمایش نسخه‌ها
@@ -72,10 +70,10 @@ include_once('resources/views/app/prints/style.php');
     <!-- end page content -->
 
     <!-- form print -->
-    <div class="center">
+    <div class="center bg-whith">
         <div class="item-print p10">
             <div class="border-black">
-                <div class="bold center pt2">center name</div>
+                <div class="pppp">center name</div>
                 <div class="center fs9 p5">شماره‌های تماس: <sapn class="fs12 bold">079999999 - 0700888888</sapn>
                 </div>
                 <hr class="hrb">
