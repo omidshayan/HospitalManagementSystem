@@ -1,4 +1,5 @@
     <?php
+    $title = 'چاپ نسخه';
     include_once('resources/views/layouts/header.php');
     include_once('resources/views/app/prints/style.php');
     ?>
