@@ -61,18 +61,16 @@ class Setting extends App
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $id = $this->getBranchId();
-
-        $branch = $this->db->select('SELECT * FROM factor_settings WHERE branch_id = ?', [$id])->fetch();
+        $branch = $this->db->select('SELECT * FROM prescription_settings')->fetch();
 
         if (!$branch) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
 
-        $this->updateImageUpload($request, 'image', 'public', 'factor_settings', $id);
+        $this->updateImageUpload($request, 'image', 'public', 'prescription_settings', $branch['id']);
 
-        $this->db->update('factor_settings', $branch['id'], array_keys($request), $request);
+        $this->db->update('prescription_settings', $branch['id'], array_keys($request), $request);
 
         $this->flashMessage('success', 'اطلاعات با موفقیت ویرایش شد.');
     }
