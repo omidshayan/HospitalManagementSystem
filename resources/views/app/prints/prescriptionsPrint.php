@@ -3,6 +3,7 @@ $title = 'نمایش نسخه‌ها';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
+include_once('resources/views/app/prints/script.php');
 ?>
 
 <!-- <script>
@@ -23,6 +24,11 @@ include_once('public/alerts/toastr.php');
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 
     <!-- show employees -->
     <div class="box-container">
@@ -82,73 +88,104 @@ include_once('public/alerts/toastr.php');
     </div>
     <!-- end page content -->
 
+    <div class="form-container" id="print">
 
-    <!-- print desgin -->
-    <div class="order-invoice d-">
-        <div class="factor-print p10">
-            <div class="border-black">
-
-                <div class="bold center pt2">name</div>
-                <div class="center fs9 p5">شماره‌های تماس: <sapn class="fs12 bold">12345678</sapn>
+        <!-- check phone -->
+        <?php
+        $phones = array_filter([
+            $invoice_infos['phone1'] ?? '',
+            $invoice_infos['phone2'] ?? '',
+            $invoice_infos['phone3'] ?? '',
+            $invoice_infos['phone4'] ?? '',
+        ]);
+        ?>
+        <!-- top header -->
+        <div class="top-inv d-flex align-center">
+            <div class="top-inv-text center">
+                <h2 class="color-print"></h2>
+                <div class="color-print fs14">تولید کننده رنگ های روغنی، پلاستیکی، و مایع رنگ</div>
+                <div class="color-print fs12">
+                    <span><?= implode(' - ', array_map([$this, 'convertEnNumber'], $phones)) ?></span>
                 </div>
-                <hr class="hrb">
-                <!-- logo -->
-
-                <!-- end logo -->
-                <div class="d-flex justify-between align-center p2">
-                    <div class="center mr10">
-                        <div class="fs11">شماره فاکتور</div>
-                        <div class="fs11">(77)</div>
-                    </div>
-                    <div class="ml-10 fs11 text-left">
-                        <div>44</div>
-                        <div>44</div>
-                    </div>
-                </div>
-                <hr class="hrb">
-
-                <table id="order-invoice-table" class="order-invoice-print">
-                    <thead>
-                        <tr>
-                            <th>نام</th>
-                            <th>فی</th>
-                            <th class="w10">تعداد</th>
-                            <th>قیمت</th>
-                        </tr>
-                    </thead>
-                    <tbody class="factortd fs14">
-                    </tbody>
-                </table>
-                <div class="d-flex justify-between plr10 fs14 p5">
-                    <div id="delivery-result" class="fs11"></div>
-                    <div id="customer-name" class="d-none fs11">مشتری: -</div>
-                </div>
-                <hr class="hrb d-none user-active">
-                <div id="customer-phone" class="d-none fs11 p5"></div>
-                <div id="customer-address" class="d-none fs11 p5"></div>
-
-                <hr class="hrb">
-                <div class="order-total text-right fs14">
-                    جمع کل: <span id="order-total" class="fs16">0</span>
-                    <span class="fs12">افغانی</span>
-                </div>
-                <hr class="hrb">
+            </div>
+            <div class="top-inv-logo">
+                <img src="<?= asset('public/assets/img/logo.png') ?>" class="" alt="logo">
             </div>
         </div>
-    </div>
+        <hr class="hr">
 
-    <button class="center mt10" onclick="printReceipt()">
-        print
-    </button>
+        <!-- invoice infos -->
+        <div class="d-flex justify-between">
+            <div class="top-desc-one mt5">
+                <div class="fs15 color-print">نام خریدار: <?= (isset($sale_invoice_print['user_name']) && $sale_invoice_print) ? $sale_invoice_print['user_name'] : 'عمومی' ?></div>
+                <div class="fs15 color-print">شماره موبایل: <?= htmlspecialchars($sale_invoice_print['phone'] ?? '- - - -', ENT_QUOTES, 'UTF-8') ?></div>
+                <div class="fs14 color-print">آدرس: <?= htmlspecialchars($sale_invoice_print['address'] ?? '- - - -', ENT_QUOTES, 'UTF-8') ?></div>
+            </div>
+            <div class="top-desc-one mt5 d-flex align-center">
+                <div class="fs15 color-print"><svg id="barcode"></svg></div>
+            </div>
+            <div class="top-desc-one mt5">
+                <div class="fs15 color-print bold">شماره فاکتور: <?= '555' ?></div>
+                <div class="fs15 color-print">تاریخ: 44444</div>
+                <div class="fs15 color-print">توسط: ali</div>
+            </div>
+        </div>
+        <hr class="hr">
+
+    </div>
+    <button id="generate-pdf">🖨️ چاپ فرم</button>
+
+
+    <!-- genaret pdf -->
     <script>
-        function printReceipt() {
-            if (window.chrome && window.chrome.webview) {
-                window.chrome.webview.hostObjects.bridge.PrintHtml(document.body.innerHTML);
-            } else {
-                window.print();
+        document.getElementById("generate-pdf").addEventListener("click", async function() {
+            const {
+                jsPDF
+            } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: "portrait",
+                unit: "mm",
+                format: "a4",
+            });
+
+            const element = document.querySelector(".form-container");
+            const canvas = await html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+            });
+
+            const imgData = canvas.toDataURL("image/jpeg", 0.9);
+
+            const pageWidth = 210;
+            const pageHeight = 297;
+            const marginLeft = 10;
+            const marginTop = 0;
+
+            const imgProps = {
+                width: canvas.width,
+                height: canvas.height,
+            };
+
+            const pxToMm = (px) => px * 25.4 / 96;
+
+            const imgWidthMm = pageWidth - marginLeft * 2;
+            const imgHeightMm = pxToMm(canvas.height) * (imgWidthMm / pxToMm(canvas.width));
+
+            doc.addImage(imgData, "JPEG", marginLeft, marginTop, imgWidthMm, imgHeightMm);
+
+            const pdfBlob = doc.output("blob");
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+            const printWindow = window.open(pdfUrl, "_blank");
+            if (printWindow) {
+                printWindow.addEventListener("load", () => {
+                    printWindow.print();
+                });
             }
-        }
+        });
     </script>
+
+
+
 </div>
 <!-- End content -->
 
