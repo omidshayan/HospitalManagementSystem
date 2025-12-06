@@ -10,7 +10,7 @@
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
-                <form action="<?= url('factor-settings-store') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= url('prescription-settings-store') ?>" method="POST" enctype="multipart/form-data">
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14"> نام فروشگاه / شرکت <?= _star ?></div>

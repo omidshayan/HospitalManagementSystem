@@ -93,6 +93,27 @@ class App
                 return $inputs;
         }
 
+                // update img 
+        public function updateImageUpload(&$request, $fieldName, $destinationPath, $tableName, $recordId, $maxFileSize = 1048576)
+        {
+                if (!isset($_FILES[$fieldName]) || !is_uploaded_file($_FILES[$fieldName]['tmp_name'])) {
+                        unset($request[$fieldName]);
+                        return;
+                }
+                $file = $_FILES[$fieldName];
+                if ($file['size'] > $maxFileSize) {
+                        $this->flashMessage('error', 'حجم عکس نباید بیشتر از ' . ($maxFileSize / 1024 / 1024) . ' MB باشد');
+                        unset($request[$fieldName]);
+                        return;
+                }
+
+                $record = $this->db->select("SELECT * FROM {$tableName} WHERE id = ?", [$recordId])->fetch();
+                if ($record && !empty($record[$fieldName])) {
+                        $this->removeImage('public/images/' . $destinationPath . '/' . $record[$fieldName]);
+                }
+                $request[$fieldName] = $this->saveImage($file, 'images/' . $destinationPath);
+        }
+        
         // hash password
         public function hash($password)
         {
