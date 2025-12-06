@@ -1,10 +1,8 @@
-    <!-- start sidebar -->
     <?php
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/error.php');
     ?>
-    <!-- end sidebar -->
 
     <!-- Start content -->
     <div class="content">
@@ -80,7 +78,5 @@
         <!-- end page content -->
     </div>
     <!-- End content -->
-
-    <?php include_once('resources/views/layouts/footer.php') ?>
 
     <?php include_once('resources/views/layouts/footer.php') ?>
