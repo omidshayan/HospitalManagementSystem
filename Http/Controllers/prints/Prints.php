@@ -26,9 +26,26 @@ class Prints extends App
         require_once(BASE_PATH . '/resources/views/app/sales/add-sale.php');
     }
 
-    // print invoice
+    // show presctiption for print
     public function print()
     {
+        $this->middleware(true, true, 'general', true);
+
+        $prescriptions = $this->db->select(
+            'SELECT p.*, e.employee_name
+             FROM prescriptions p
+             JOIN employees e ON e.id = p.doctor_id
+             WHERE p.status = ?',
+            [3]
+        )->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
+    }
+
+    // print invoice
+    public function autoPrint()
+    {
+        dd('tuo');
         $this->middleware(true, true, 'general', true);
 
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE `status` = ?', [2])->fetch();
