@@ -14,54 +14,52 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14"> نام فروشگاه / شرکت <?= _star ?></div>
-                            <textarea name="center_name" class="checkInput" placeholder="نام فروشگاه / شرکت را وارد نمایید"><?= $factor_infos['center_name'] ?></textarea>
+                            <textarea name="center_name" class="checkInput" placeholder="نام فروشگاه / شرکت را وارد نمایید"><?= $prescription_infos['center_name'] ?></textarea>
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">شعار</div>
-                            <textarea name="slogan" placeholder="شعار فروشگاه / شرکت را وارد نمایید"><?= $factor_infos['slogan'] ?></textarea>
+                            <textarea name="slogan" placeholder="شعار فروشگاه / شرکت را وارد نمایید"><?= $prescription_infos['slogan'] ?></textarea>
                         </div>
                     </div>
 
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">شماره موبایل 1</div>
-                            <input type="text" name="phone1" value="<?= $factor_infos['phone1'] ?>" placeholder="شماره موبایل را وارد نمایید" maxlength="40" />
+                            <input type="text" name="phone1" value="<?= $prescription_infos['phone1'] ?>" placeholder="شماره موبایل را وارد نمایید" maxlength="40" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">شماره موبایل 2</div>
-                            <input type="text" name="phone2" value="<?= $factor_infos['phone2'] ?>" placeholder="شماره موبایل را وارد نمایید" maxlength="40" />
+                            <input type="text" name="phone2" value="<?= $prescription_infos['phone2'] ?>" placeholder="شماره موبایل را وارد نمایید" maxlength="40" />
                         </div>
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">شماره موبایل 3</div>
-                            <input type="text" name="phone3" value="<?= $factor_infos['phone3'] ?>" placeholder="شماره موبایل را وارد نمایید" maxlength="40" />
+                            <input type="text" name="phone3" value="<?= $prescription_infos['phone3'] ?>" placeholder="شماره موبایل را وارد نمایید" maxlength="40" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">شماره موبایل 4</div>
-                            <input type="text" name="phone4" value="<?= $factor_infos['phone4'] ?>" placeholder="شماره موبایل را وارد نمایید" maxlength="40" />
+                            <input type="text" name="phone4" value="<?= $prescription_infos['phone4'] ?>" placeholder="شماره موبایل را وارد نمایید" maxlength="40" />
                         </div>
                     </div>
 
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">وبسایت</div>
-                            <input type="text" name="website" value="<?= $factor_infos['website'] ?>" placeholder="آدرس وبسایت را وارد نمایید" maxlength="40" />
+                            <input type="text" name="website" value="<?= $prescription_infos['website'] ?>" placeholder="آدرس وبسایت را وارد نمایید" maxlength="40" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">ایمیل</div>
-                            <input type="text" name="email" value="<?= $factor_infos['email'] ?>" placeholder="آدرس ایمیل را وارد نمایید" maxlength="40" />
+                            <input type="text" name="email" value="<?= $prescription_infos['email'] ?>" placeholder="آدرس ایمیل را وارد نمایید" maxlength="40" />
                         </div>
                     </div>
 
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">آدرس</div>
-                            <textarea name="address" placeholder="آدرس را وارد نمایید"><?= $factor_infos['address'] ?></textarea>
+                            <textarea name="address" placeholder="آدرس را وارد نمایید"><?= $prescription_infos['address'] ?></textarea>
                         </div>
                     </div>
-
-                    <?= $this->branchSelectField(); ?>
 
                     <div class="inputs d-flex">
                         <div class="one">
@@ -73,7 +71,7 @@
                         <img src="" class="img" alt="">
                     </div>
                     <div>
-                        <img src="<?= ($factor_infos['image'] ? asset('public/images/public/' . $factor_infos['image']) : asset('public/assets/img/empty.png')) ?>" class="img" alt="logo">
+                        <img src="<?= ($prescription_infos['image'] ? asset('public/images/public/' . $prescription_infos['image']) : asset('public/assets/img/empty.png')) ?>" class="img" alt="logo">
                     </div>
                     <div class="fs11">تصویر فعلی</div>
 
