@@ -31,6 +31,14 @@ class Prints extends App
     {
         $this->middleware(true, true, 'general', true);
 
+        $noPrintPrescriptions = $this->db->select(
+            'SELECT p.*, e.employee_name
+             FROM prescriptions p
+             JOIN employees e ON e.id = p.doctor_id
+             WHERE p.status = ?',
+            [2]
+        )->fetchAll();
+
         $prescriptions = $this->db->select(
             'SELECT p.*, e.employee_name
              FROM prescriptions p
