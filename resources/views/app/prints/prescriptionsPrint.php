@@ -88,27 +88,21 @@ include_once('public/alerts/toastr.php');
         <div class="factor-print p10">
             <div class="border-black">
 
-                <div class="bold center pt2"><?= $basic_infos['center_name'] ?></div>
+                <div class="bold center pt2">name</div>
                 <div class="center fs9 p5">شماره‌های تماس: <sapn class="fs12 bold">12345678</sapn>
                 </div>
                 <hr class="hrb">
                 <!-- logo -->
-                <!-- <div class="center">
-            <img src="<?= $basic_infos['image']
-                            ? asset('public/images/basic/' . $basic_infos['image'])
-                            : asset('public/assets/img/f-logo') ?>"
-                class="pr factor-logo"
-                alt="factor-logo">
-        </div> -->
+
                 <!-- end logo -->
                 <div class="d-flex justify-between align-center p2">
                     <div class="center mr10">
                         <div class="fs11">شماره فاکتور</div>
-                        <div class="fs11">(<?= tr_num($nextInvoiceId, 'fa') ?>)</div>
+                        <div class="fs11">(77)</div>
                     </div>
                     <div class="ml-10 fs11 text-left">
-                        <div><?= $nowTime ?></div>
-                        <div><?= $nowDate ?></div>
+                        <div>44</div>
+                        <div>44</div>
                     </div>
                 </div>
                 <hr class="hrb">
@@ -139,12 +133,22 @@ include_once('public/alerts/toastr.php');
                     <span class="fs12">افغانی</span>
                 </div>
                 <hr class="hrb">
-                <div class="fs8 center p2">نرم افزار ســـودا کــن - <span class="bold fs11"><?= $this->convertToFarsi('0799231116') ?></span></div>
             </div>
         </div>
     </div>
 
-
+    <button class="center mt10" onclick="printReceipt()">
+        print
+    </button>
+    <script>
+        function printReceipt() {
+            if (window.chrome && window.chrome.webview) {
+                window.chrome.webview.hostObjects.bridge.PrintHtml(document.body.innerHTML);
+            } else {
+                window.print();
+            }
+        }
+    </script>
 </div>
 <!-- End content -->
 
