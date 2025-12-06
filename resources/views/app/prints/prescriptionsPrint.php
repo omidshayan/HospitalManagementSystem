@@ -3,30 +3,8 @@ $title = 'نمایش نسخه‌ها';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
-// include_once('resources/views/app/prints/style.php');
+include_once('resources/views/app/prints/style.php');
 ?>
-<link rel="stylesheet" href="main.css" media="screen">
-<link rel="stylesheet" href="print.css" media="print">
-
-<style>
-    @media print {
-        body * {
-            visibility: hidden !important;
-        }
-
-        .factor-print,
-        .factor-print * {
-            visibility: visible !important;
-        }
-
-        .factor-print {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
-    }
-</style>
 
 
 <div class="content">
@@ -94,56 +72,64 @@ include_once('public/alerts/toastr.php');
     <!-- end page content -->
 
     <!-- form print -->
-    <div class="factor-print p10">
-        <div class="border-black">
-
-            <div class="bold center pt2">center name</div>
-            <div class="center fs9 p5">شماره‌های تماس: <sapn class="fs12 bold">079999999 - 0700888888</sapn>
-            </div>
-            <hr class="hrb">
-            <!-- logo -->
-
-            <!-- end logo -->
-            <div class="d-flex justify-between align-center p2">
-                <div class="center mr10">
-                    <div class="fs11">شماره فاکتور</div>
-                    <div class="fs11">(aaa)</div>
+    <div class="center">
+        <div class="item-print p10">
+            <div class="border-black">
+                <div class="bold center pt2">center name</div>
+                <div class="center fs9 p5">شماره‌های تماس: <sapn class="fs12 bold">079999999 - 0700888888</sapn>
                 </div>
-                <div class="ml-10 fs11 text-left">
-                    <div>1404/82/5</div>
-                    <div>1404/82/5</div>
+                <hr class="hrb">
+                <!-- logo -->
+
+                <!-- end logo -->
+                <div class="d-flex justify-between align-center p2">
+                    <div class="center mr10">
+                        <div class="fs11">شماره فاکتور</div>
+                        <div class="fs11">(aaa)</div>
+                    </div>
+                    <div class="ml-10 fs11 text-left">
+                        <div>1404/82/5</div>
+                        <div>1404/82/5</div>
+                    </div>
                 </div>
-            </div>
-            <hr class="hrb">
+                <hr class="hrb">
 
-            <table id="order-invoice-table" class="order-invoice-print">
-                <thead>
-                    <tr>
-                        <th>نام</th>
-                        <th>فی</th>
-                        <th class="w10">تعداد</th>
-                        <th>قیمت</th>
-                    </tr>
-                </thead>
-                <tbody class="factortd fs14">
-                </tbody>
-            </table>
-            <div class="d-flex justify-between plr10 fs14 p5">
-                <div id="delivery-result" class="fs11"></div>
-                <div id="customer-name" class="d-none fs11">مشتری: -</div>
-            </div>
-            <hr class="hrb d-none user-active">
-            <div id="customer-phone" class="d-none fs11 p5"></div>
-            <div id="customer-address" class="d-none fs11 p5"></div>
+                <table id="order-invoice-table" class="order-invoice-print">
+                    <thead>
+                        <tr>
+                            <th>نام</th>
+                            <th>فی</th>
+                            <th class="w10">تعداد</th>
+                            <th>قیمت</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>dsfdf</td>
+                            <td>dsfdf</td>
+                            <td>dsfdf</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-between plr10 fs14 p5">
+                    <div id="delivery-result" class="fs11"></div>
+                    <div id="customer-name" class="d-none fs11">مشتری: -</div>
+                </div>
+                <hr class="hrb d-none user-active">
+                <div id="customer-phone" class="d-none fs11 p5"></div>
+                <div id="customer-address" class="d-none fs11 p5"></div>
 
-            <hr class="hrb">
-            <div class="order-total text-right fs14">
-                جمع کل: <span id="order-total" class="fs16">0</span>
-                <span class="fs12">افغانی</span>
+                <hr class="hrb">
+                <div class="order-total text-right fs14">
+                    جمع کل: <span id="order-total" class="fs16">0</span>
+                    <span class="fs12">افغانی</span>
+                </div>
+                <hr class="hrb">
             </div>
-            <hr class="hrb">
         </div>
     </div>
+
+
 
     <div class="center mt10" onclick="printReceipt()">
         print
@@ -156,7 +142,7 @@ include_once('public/alerts/toastr.php');
                 window.chrome.webview.hostObjects.bridge.PrintHtml(document.body.innerHTML);
             } else {
                 const original = document.body.innerHTML;
-                const printArea = document.querySelector('.factor-print').outerHTML;
+                const printArea = document.querySelector('.item-print').outerHTML;
 
                 document.body.innerHTML = printArea;
 
