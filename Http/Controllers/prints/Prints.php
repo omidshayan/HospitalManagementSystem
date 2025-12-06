@@ -31,20 +31,14 @@ class Prints extends App
     {
         $this->middleware(true, true, 'general', true);
 
-$id = 19;
+        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE `status` = ?', [2])->fetch();
 
-        $sale_invoice_print = $this->db->select('SELECT * FROM prescriptions WHERE id = ?', [$id])->fetch();
-
-        if (!$sale_invoice_print) {
+        if (!$prescription) {
             require_once BASE_PATH . '/404.php';
             exit();
         }
 
-
         $factor_infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
-
-
-        // $factor_infos = $this->db->select('SELECT * FROM factor_settings WHERE branch_id = ?', [$branchId])->fetch();
 
         require_once(BASE_PATH . '/resources/views/app/prints/prescription.php');
     }
