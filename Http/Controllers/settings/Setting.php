@@ -2,10 +2,6 @@
 
 namespace App;
 
-require_once 'Http/Controllers/App.php';
-
-use database\DataBase;
-
 class Setting extends App
 {
 
@@ -46,5 +42,38 @@ class Setting extends App
         $newStatus = ($year['status'] == 1) ? 2 : 1;
         $this->db->update('years', $year['id'], ['status'], [$newStatus]);
         $this->flashMessage('success', 'عملیات موفقانه انجام شد.');
+    }
+
+        // prescription page
+    public function prescriptionSettings()
+    {
+        $this->middleware(true, true, 'general', true);
+        $factor_infos = $this->db->select('SELECT * FROM factor_settings')->fetch();
+        require_once(BASE_PATH . '/resources/views/app/settings/factor-settings.php');
+    }
+
+    // prescription settings store
+    public function prescriptionSettingsStore($request)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        if (empty($request['center_name'])) {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
+        $id = $this->getBranchId();
+
+        $branch = $this->db->select('SELECT * FROM factor_settings WHERE branch_id = ?', [$id])->fetch();
+
+        if (!$branch) {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+
+        $this->updateImageUpload($request, 'image', 'public', 'factor_settings', $id);
+
+        $this->db->update('factor_settings', $branch['id'], array_keys($request), $request);
+
+        $this->flashMessage('success', 'اطلاعات با موفقیت ویرایش شد.');
     }
 }
