@@ -213,8 +213,8 @@
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('factor-settings') ?>">
-                    <li class="sidebar-dropdown-menu-item">تنظیمات فاکتور</li>
+                  <a href="<?= url('prescription-settings') ?>">
+                    <li class="sidebar-dropdown-menu-item">تنظیمات نسخه</li>
                   </a>
                 <?php endif; ?>
               </ul>
