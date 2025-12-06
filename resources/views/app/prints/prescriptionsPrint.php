@@ -5,11 +5,11 @@ include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
 
-<script>
+<!-- <script>
     setInterval(function() {
         window.location.href = "<?= url('auto-print') ?>";
     }, 30000);
-</script>
+</script> -->
 
 
 <!-- Start content -->
