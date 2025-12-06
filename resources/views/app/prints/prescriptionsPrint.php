@@ -93,34 +93,7 @@ include_once('public/alerts/toastr.php');
     </div>
     <!-- end page content -->
 
-
-
-    <div class="center mt10" onclick="printReceipt()">
-        print
-    </div>
-
-    <!-- print invoice -->
-    <script>
-        function printReceipt() {
-            if (window.chrome && window.chrome.webview) {
-                // اگر در WebView خاص هستی، متد خاص را صدا بزن
-                window.chrome.webview.hostObjects.bridge.PrintHtml(document.body.innerHTML);
-            } else {
-                // حالت عادی مرورگر
-                const original = document.body.innerHTML;
-                const printArea = document.querySelector('.factor-print').outerHTML;
-
-                document.body.innerHTML = printArea;
-
-                window.print();
-
-                document.body.innerHTML = original;
-            }
-        }
-    </script>
-
-
-
+    <!-- form print -->
     <div class="factor-print p10">
         <div class="border-black">
 
@@ -172,12 +145,27 @@ include_once('public/alerts/toastr.php');
         </div>
     </div>
 
+    <div class="center mt10" onclick="printReceipt()">
+        print
+    </div>
 
+    <!-- print -->
+    <script>
+        function printReceipt() {
+            if (window.chrome && window.chrome.webview) {
+                window.chrome.webview.hostObjects.bridge.PrintHtml(document.body.innerHTML);
+            } else {
+                const original = document.body.innerHTML;
+                const printArea = document.querySelector('.factor-print').outerHTML;
 
+                document.body.innerHTML = printArea;
 
+                window.print();
 
-
-
+                document.body.innerHTML = original;
+            }
+        }
+    </script>
 
 
 </div>
