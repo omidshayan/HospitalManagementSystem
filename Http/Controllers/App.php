@@ -93,7 +93,7 @@ class App
                 return $inputs;
         }
 
-                // update img 
+        // update img 
         public function updateImageUpload(&$request, $fieldName, $destinationPath, $tableName, $recordId, $maxFileSize = 1048576)
         {
                 if (!isset($_FILES[$fieldName]) || !is_uploaded_file($_FILES[$fieldName]['tmp_name'])) {
@@ -113,7 +113,15 @@ class App
                 }
                 $request[$fieldName] = $this->saveImage($file, 'images/' . $destinationPath);
         }
-        
+
+        // change english number to persion
+        function convertEnNumber($number)
+        {
+                $englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+                $persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+                return str_replace($englishDigits, $persianDigits, $number);
+        }
+
         // hash password
         public function hash($password)
         {
