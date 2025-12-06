@@ -3,7 +3,7 @@ $title = 'نمایش نسخه‌ها';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
-include_once('resources/views/app/prints/script.php');
+include_once('resources/views/app/prints/style.php');
 ?>
 
 <div class="content">
@@ -70,52 +70,83 @@ include_once('resources/views/app/prints/script.php');
     </div>
     <!-- end page content -->
 
-    <div class="form-container" id="print">
 
-        <!-- check phone -->
-        <?php
-        $phones = array_filter([
-            $invoice_infos['phone1'] ?? '',
-            $invoice_infos['phone2'] ?? '',
-            $invoice_infos['phone3'] ?? '',
-            $invoice_infos['phone4'] ?? '',
-        ]);
-        ?>
-        <!-- top header -->
-        <div class="top-inv d-flex align-center">
-            <div class="top-inv-text center">
-                <h2 class="color-print"></h2>
-                <div class="color-print fs14">تولید کننده رنگ های روغنی، پلاستیکی، و مایع رنگ</div>
-                <div class="color-print fs12">
-                    <span><?= implode(' - ', array_map([$this, 'convertEnNumber'], $phones)) ?></span>
+
+    <div class="center mt10" onclick="printReceipt()">
+        print
+    </div>
+
+    <!-- print invoice -->
+    <script>
+        function printReceipt() {
+            if (window.chrome && window.chrome.webview) {
+                window.chrome.webview.hostObjects.bridge.PrintHtml(document.body.innerHTML);
+            } else {
+                window.print();
+            }
+        }
+    </script>
+
+
+
+    <div class="factor-print p10">
+        <div class="border-black">
+
+            <div class="bold center pt2">center name</div>
+            <div class="center fs9 p5">شماره‌های تماس: <sapn class="fs12 bold">079999999 - 0700888888</sapn>
+            </div>
+            <hr class="hrb">
+            <!-- logo -->
+
+            <!-- end logo -->
+            <div class="d-flex justify-between align-center p2">
+                <div class="center mr10">
+                    <div class="fs11">شماره فاکتور</div>
+                    <div class="fs11">(aaa)</div>
+                </div>
+                <div class="ml-10 fs11 text-left">
+                    <div>1404/82/5</div>
+                    <div>1404/82/5</div>
                 </div>
             </div>
-            <div class="top-inv-logo">
-                <img src="<?= asset('public/assets/img/logo.png') ?>" class="" alt="logo">
-            </div>
-        </div>
-        <hr class="hr">
+            <hr class="hrb">
 
-        <!-- invoice infos -->
-        <div class="d-flex justify-between">
-            <div class="top-desc-one mt5">
-                <div class="fs15 color-print">نام خریدار: <?= (isset($sale_invoice_print['user_name']) && $sale_invoice_print) ? $sale_invoice_print['user_name'] : 'عمومی' ?></div>
-                <div class="fs15 color-print">شماره موبایل: <?= htmlspecialchars($sale_invoice_print['phone'] ?? '- - - -', ENT_QUOTES, 'UTF-8') ?></div>
-                <div class="fs14 color-print">آدرس: <?= htmlspecialchars($sale_invoice_print['address'] ?? '- - - -', ENT_QUOTES, 'UTF-8') ?></div>
+            <table id="order-invoice-table" class="order-invoice-print">
+                <thead>
+                    <tr>
+                        <th>نام</th>
+                        <th>فی</th>
+                        <th class="w10">تعداد</th>
+                        <th>قیمت</th>
+                    </tr>
+                </thead>
+                <tbody class="factortd fs14">
+                </tbody>
+            </table>
+            <div class="d-flex justify-between plr10 fs14 p5">
+                <div id="delivery-result" class="fs11"></div>
+                <div id="customer-name" class="d-none fs11">مشتری: -</div>
             </div>
-            <div class="top-desc-one mt5 d-flex align-center">
-                <div class="fs15 color-print"><svg id="barcode"></svg></div>
-            </div>
-            <div class="top-desc-one mt5">
-                <div class="fs15 color-print bold">شماره فاکتور: <?= '555' ?></div>
-                <div class="fs15 color-print">تاریخ: 44444</div>
-                <div class="fs15 color-print">توسط: ali</div>
-            </div>
-        </div>
-        <hr class="hr">
+            <hr class="hrb d-none user-active">
+            <div id="customer-phone" class="d-none fs11 p5"></div>
+            <div id="customer-address" class="d-none fs11 p5"></div>
 
+            <hr class="hrb">
+            <div class="order-total text-right fs14">
+                جمع کل: <span id="order-total" class="fs16">0</span>
+                <span class="fs12">افغانی</span>
+            </div>
+            <hr class="hrb">
+        </div>
     </div>
-    <button>🖨️ چاپ فرم</button>
+
+
+
+
+
+
+
+
 
 </div>
 <!-- End content -->

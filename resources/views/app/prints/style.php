@@ -1,18 +1,4 @@
 <style>
-.form-container {
-    width: 210mm; 
-    height: 297mm;
-    margin: 0 auto;
-    padding: 10px 10px 0 10px;
-    box-sizing: border-box;
-    font-size: 12pt;
-    background-color: #fff;
-    color: black;
-}
-
-</style>
-
-<style>
     /* media */
     @media print {
 
@@ -20,39 +6,34 @@
             size: auto;
             margin: 0;
         }
-
-        .no-print {
-            display: none !important;
-        }
-
         .order-invoice {
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            display: block;
+            width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: block !important;
         }
 
         .factor-print {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 5px;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            padding: 5px !important;
         }
 
         .order-invoice-print {
-            width: 100%;
-            border-collapse: collapse;
+            width: 100% !important;
+            border-collapse: collapse !important;
         }
 
         .order-invoice-print th,
         .order-invoice-print td {
-            border-bottom: 1px dashed #000;
-            padding: 4px;
-            text-align: center;
+            border-bottom: 1px dashed #000 !important;
+            padding: 4px !important;
+            text-align: center !important;
         }
 
         .factor-logo {
-            max-width: 60px;
-            height: auto;
+            max-width: 60px !important;
+            height: auto !important;
         }
 
         thead th {
