@@ -29,6 +29,7 @@ class Prints extends App
     // print invoice
     public function print()
     {
+        dd('ok');
         $this->middleware(true, true, 'general', true);
 
         // $factor_infos = $this->db->select('SELECT * FROM factor_settings WHERE branch_id = ?', [$branchId])->fetch();
