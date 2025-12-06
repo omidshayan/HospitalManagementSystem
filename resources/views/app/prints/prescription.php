@@ -1,4 +1,3 @@
-
 <!-- barcode -->
 <script src="<?= asset('public/assets/js/barcode.js') ?>"></script>
 <!-- invoice print -->
