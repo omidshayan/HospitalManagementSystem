@@ -3,8 +3,31 @@ $title = 'نمایش نسخه‌ها';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
-include_once('resources/views/app/prints/style.php');
+// include_once('resources/views/app/prints/style.php');
 ?>
+<link rel="stylesheet" href="main.css" media="screen">
+<link rel="stylesheet" href="print.css" media="print">
+
+<style>
+    @media print {
+        body * {
+            visibility: hidden !important;
+        }
+
+        .factor-print,
+        .factor-print * {
+            visibility: visible !important;
+        }
+
+        .factor-print {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    }
+</style>
+
 
 <div class="content">
     <div class="content-title">نمایش نسخه‌ها
@@ -80,9 +103,18 @@ include_once('resources/views/app/prints/style.php');
     <script>
         function printReceipt() {
             if (window.chrome && window.chrome.webview) {
+                // اگر در WebView خاص هستی، متد خاص را صدا بزن
                 window.chrome.webview.hostObjects.bridge.PrintHtml(document.body.innerHTML);
             } else {
+                // حالت عادی مرورگر
+                const original = document.body.innerHTML;
+                const printArea = document.querySelector('.factor-print').outerHTML;
+
+                document.body.innerHTML = printArea;
+
                 window.print();
+
+                document.body.innerHTML = original;
             }
         }
     </script>
