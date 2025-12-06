@@ -6,28 +6,10 @@ include_once('public/alerts/toastr.php');
 include_once('resources/views/app/prints/script.php');
 ?>
 
-<!-- <script>
-    setInterval(function() {
-        window.location.href = "<?= url('auto-print') ?>";
-    }, 30000);
-</script> -->
-
-
-<!-- Start content -->
 <div class="content">
     <div class="content-title">نمایش نسخه‌ها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
-    <?php
-    $help_title = 'راهنمای بخش ';
-    $help_content = 'ننمایش نسخه ها ';
-    include_once('resources/views/helps/help.php');
-    ?>
-    <!-- start page content -->
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 
     <!-- show employees -->
@@ -133,58 +115,7 @@ include_once('resources/views/app/prints/script.php');
         <hr class="hr">
 
     </div>
-    <button id="generate-pdf">🖨️ چاپ فرم</button>
-
-
-    <!-- genaret pdf -->
-    <script>
-        document.getElementById("generate-pdf").addEventListener("click", async function() {
-            const {
-                jsPDF
-            } = window.jspdf;
-            const doc = new jsPDF({
-                orientation: "portrait",
-                unit: "mm",
-                format: "a4",
-            });
-
-            const element = document.querySelector(".form-container");
-            const canvas = await html2canvas(element, {
-                scale: 2,
-                useCORS: true,
-            });
-
-            const imgData = canvas.toDataURL("image/jpeg", 0.9);
-
-            const pageWidth = 210;
-            const pageHeight = 297;
-            const marginLeft = 10;
-            const marginTop = 0;
-
-            const imgProps = {
-                width: canvas.width,
-                height: canvas.height,
-            };
-
-            const pxToMm = (px) => px * 25.4 / 96;
-
-            const imgWidthMm = pageWidth - marginLeft * 2;
-            const imgHeightMm = pxToMm(canvas.height) * (imgWidthMm / pxToMm(canvas.width));
-
-            doc.addImage(imgData, "JPEG", marginLeft, marginTop, imgWidthMm, imgHeightMm);
-
-            const pdfBlob = doc.output("blob");
-            const pdfUrl = URL.createObjectURL(pdfBlob);
-            const printWindow = window.open(pdfUrl, "_blank");
-            if (printWindow) {
-                printWindow.addEventListener("load", () => {
-                    printWindow.print();
-                });
-            }
-        });
-    </script>
-
-
+    <button>🖨️ چاپ فرم</button>
 
 </div>
 <!-- End content -->
