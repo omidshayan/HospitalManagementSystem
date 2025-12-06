@@ -1,5 +1,5 @@
 <!-- barcode -->
-<script src="<?= asset('public/assets/js/barcode.js') ?>"></script>
+<!-- <script src="<?= asset('public/assets/js/barcode.js') ?>"></script> -->
 <!-- invoice print -->
 <div class="form-container" id="print">
 
@@ -38,113 +38,15 @@
             <div class="fs15 color-print"><svg id="barcode"></svg></div>
         </div>
         <div class="top-desc-one mt5">
-            <div class="fs15 color-print bold">شماره فاکتور: <?= $this->to_farsi_number($sale_invoice_print['id']) ?></div>
-            <div class="fs15 color-print">تاریخ: <?= jdate('Y/m/d', $sale_invoice_print['date']) ?></div>
-            <div class="fs15 color-print">توسط: <?= $_SESSION['so_employee']['name'] ?></div>
+            <div class="fs15 color-print bold">شماره فاکتور: <?= '555' ?></div>
+            <div class="fs15 color-print">تاریخ:  44444</div>
+            <div class="fs15 color-print">توسط: ali</div>
         </div>
     </div>
     <hr class="hr">
 
-    <!-- products items details -->
-    <table class="table-print w100 color-print center mt15">
-        <thead>
-            <tr class="fs14">
-                <th class="w20 fs11">شماره</th>
-                <th class="w300">نام محصول</th>
-                <th>تعداد بسته</th>
-                <th>تعداد جز</th>
-                <th>تعداد کل</th>
-                <th>قیمت واحد</th>
-                <!-- <th class="fs11">تخفیف</th> -->
-                <th>قیمت کل</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <?php
-            $total_price = 0;
-            if (!empty($invoice_data) && is_array($invoice_data)) {
-                $number = 1;
-                foreach ($invoice_data as $item) {
-                    $total_price += $item['item_total_price'];
-                    $unitPrices = $this->calculateUnitPrices($item);
-            ?>
-                    <tr>
-                        <td><?= $this->to_farsi_number($number) ?></td>
-                        <td class="w300"><?= $this->to_farsi_number($item['product_name']) ?></td>
-                        <td class="w80"><?= $this->formatNumber($item['package_qty']) ?> <span class="fs12"><?= $item['package_type'] ?></span></td>
-                        <td class="w80"><?= $this->formatNumber($item['unit_qty']) ?> <span class="fs12"><?= $item['unit_type'] ?></span></td>
-                        <td class="w80"><?= $this->formatNumber($item['quantity']) ?> <span class="fs12"><?= $item['unit_type'] ?></span></td>
-                        <td class="w80"><?= $this->formatNumber(number_format($unitPrices['sell'])) ?></td>
-                        <!-- <td><?= $this->formatNumber($sale_invoice_print['discount'] ?? 0) ?></td> -->
-                        <td class="w80"><?= $this->to_farsi_number(number_format($item['item_total_price'])) ?></td>
-                    </tr>
-            <?php
-                    $number++;
-                }
-            }
-            ?>
-        </tbody>
-    </table>
-
-    <!-- amount details -->
-    <table class="table-print w100 color-print center mt5">
-        <thead>
-            <tr>
-                <th colspan="4">مبلغ کل</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="fs15">
-                <?php if ($totalAmount > 0) : ?>
-                    <td colspan="1" class="text-right bold w300"><?= $this->number_to_dari_words($totalAmount) ?> <span class="fs11">افغانی</span></td>
-                    <td colspan="1" class="w200 bold"><?= $this->to_farsi_number(number_format($totalAmount)) ?> افغانی</td>
-                <?php endif; ?>
-            </tr>
-            <tr class="fs15">
-                <td class="bold">پرداختی: <?= ($sale_invoice_print['paid_amount']) ? $this->to_farsi_number(number_format($sale_invoice_print['paid_amount'])) . _afghani : $this->to_farsi_number(0) ?></td>
-                <td class="bold">باقیمانده: <?= ($remaining_amount) ? $this->to_farsi_number(number_format($remaining_amount)) . _afghani : $this->to_farsi_number(0) ?></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- seller details -->
-    <?php
-    if ($sale_invoice_print['user_name']) { ?>
-        <table class="table-print w100 color-print center mt5">
-            <thead>
-                <tr>
-                    <th colspan="4">جزئیات مالی شما</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tbody>
-                <tr class="fs15">
-                    <td class="bold">مانده از حساب قبلی:
-                        <span><?= $this->formatNumber($beforeBalance) . _afghani  ?></span>
-                    </td>
-                    <td class="bold">مانده از این فاکتور: <span><?= $this->formatNumber($remaining_amount) ?> <?= _afghani ?></span></td>
-                    <td class="bold">مجموع بدهی</td>
-                    <td class="bold"><?= $this->formatNumber($balancePrevious) ?> <?= _afghani ?></td>
-                </tr>
-            </tbody>
-            </tbody>
-        </table>
-    <?php }
-    ?>
-
-    <div class="d-flex justify-between">
-        <div class="fs12 center mt5 color-print"> آدرس: <?= $invoice_infos['address'] ?></div>
-        <div class="fs12 center mt5 color-print">www.faizipaint.com - E-Mail: info@faizipaint.com</div>
-    </div>
 </div>
 
-<?php
-$timestamp = $sale_invoice_print['date'];
-$discount = ($sale_invoice_print['discount']) ? '-' . $this->formatPrice($sale_invoice_print['discount']) : '';
-$date = date('Ymd', $timestamp);
-$fa =  $sale_invoice_print['id'] . '-' . $date . $discount;
-?>
 
 <!-- barcode -->
 <script>

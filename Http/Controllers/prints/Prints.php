@@ -31,6 +31,26 @@ class Prints extends App
     {
         $this->middleware(true, true, 'general', true);
 
+$id = 19;
+
+        $sale_invoice_print = $this->db->select('SELECT * FROM prescriptions WHERE id = ?', [$id])->fetch();
+
+        if (!$sale_invoice_print) {
+            require_once BASE_PATH . '/404.php';
+            exit();
+        }
+
+        // $invoice_data = $this->db->select(
+        //     'SELECT sii.*, p.package_type, p.unit_type
+        //  FROM invoice_items sii
+        //  LEFT JOIN prescriptions p ON p.id = sii.product_id
+        //  WHERE sii.invoice_id = ?',
+        //     [$id]
+        // )->fetchAll();
+
+        $factor_infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
+
+
         // $factor_infos = $this->db->select('SELECT * FROM factor_settings WHERE branch_id = ?', [$branchId])->fetch();
 
         require_once(BASE_PATH . '/resources/views/app/prints/prescription.php');
