@@ -48,8 +48,8 @@ class Setting extends App
     public function prescriptionSettings()
     {
         $this->middleware(true, true, 'general', true);
-        $factor_infos = $this->db->select('SELECT * FROM factor_settings')->fetch();
-        require_once(BASE_PATH . '/resources/views/app/settings/factor-settings.php');
+        $factor_infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
+        require_once(BASE_PATH . '/resources/views/app/settings/prescription-settings.php');
     }
 
     // prescription settings store
