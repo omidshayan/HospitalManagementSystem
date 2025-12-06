@@ -81,6 +81,70 @@ include_once('public/alerts/toastr.php');
         </div>
     </div>
     <!-- end page content -->
+
+
+    <!-- print desgin -->
+    <div class="order-invoice d-">
+        <div class="factor-print p10">
+            <div class="border-black">
+
+                <div class="bold center pt2"><?= $basic_infos['center_name'] ?></div>
+                <div class="center fs9 p5">شماره‌های تماس: <sapn class="fs12 bold">12345678</sapn>
+                </div>
+                <hr class="hrb">
+                <!-- logo -->
+                <!-- <div class="center">
+            <img src="<?= $basic_infos['image']
+                            ? asset('public/images/basic/' . $basic_infos['image'])
+                            : asset('public/assets/img/f-logo') ?>"
+                class="pr factor-logo"
+                alt="factor-logo">
+        </div> -->
+                <!-- end logo -->
+                <div class="d-flex justify-between align-center p2">
+                    <div class="center mr10">
+                        <div class="fs11">شماره فاکتور</div>
+                        <div class="fs11">(<?= tr_num($nextInvoiceId, 'fa') ?>)</div>
+                    </div>
+                    <div class="ml-10 fs11 text-left">
+                        <div><?= $nowTime ?></div>
+                        <div><?= $nowDate ?></div>
+                    </div>
+                </div>
+                <hr class="hrb">
+
+                <table id="order-invoice-table" class="order-invoice-print">
+                    <thead>
+                        <tr>
+                            <th>نام</th>
+                            <th>فی</th>
+                            <th class="w10">تعداد</th>
+                            <th>قیمت</th>
+                        </tr>
+                    </thead>
+                    <tbody class="factortd fs14">
+                    </tbody>
+                </table>
+                <div class="d-flex justify-between plr10 fs14 p5">
+                    <div id="delivery-result" class="fs11"></div>
+                    <div id="customer-name" class="d-none fs11">مشتری: -</div>
+                </div>
+                <hr class="hrb d-none user-active">
+                <div id="customer-phone" class="d-none fs11 p5"></div>
+                <div id="customer-address" class="d-none fs11 p5"></div>
+
+                <hr class="hrb">
+                <div class="order-total text-right fs14">
+                    جمع کل: <span id="order-total" class="fs16">0</span>
+                    <span class="fs12">افغانی</span>
+                </div>
+                <hr class="hrb">
+                <div class="fs8 center p2">نرم افزار ســـودا کــن - <span class="bold fs11"><?= $this->convertToFarsi('0799231116') ?></span></div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 <!-- End content -->
 
