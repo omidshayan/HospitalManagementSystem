@@ -36,7 +36,7 @@ class Prints extends App
              FROM prescriptions p
              JOIN employees e ON e.id = p.doctor_id
              WHERE p.status = ?',
-            [3]
+            [2]
         )->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
