@@ -11,7 +11,8 @@
 
     <!-- barcode -->
     <!-- <script src="<?= asset('public/assets/js/barcode.js') ?>"></script> -->
-    <!-- invoice print -->
+
+    <!-- prescription print -->
     <div class="content">
         <div class="form-container" id="print">
 

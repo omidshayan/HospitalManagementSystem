@@ -40,13 +40,6 @@ $id = 19;
             exit();
         }
 
-        // $invoice_data = $this->db->select(
-        //     'SELECT sii.*, p.package_type, p.unit_type
-        //  FROM invoice_items sii
-        //  LEFT JOIN prescriptions p ON p.id = sii.product_id
-        //  WHERE sii.invoice_id = ?',
-        //     [$id]
-        // )->fetchAll();
 
         $factor_infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
 
