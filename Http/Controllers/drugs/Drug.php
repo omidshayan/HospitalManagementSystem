@@ -18,9 +18,9 @@ class Drug extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
         // check empty form
-        if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
-            $this->flashMessage('error', _emptyInputs);
-        }
+        // if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
+        //     $this->flashMessage('error', _emptyInputs);
+        // }
 
         $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
         if ($existingEmployee) {

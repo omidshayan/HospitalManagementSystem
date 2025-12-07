@@ -13,8 +13,8 @@
     }
 
     @page {
-        size: A4;
         margin: 0;
+            size: 210mm 297mm;
     }
 
     @media print {
