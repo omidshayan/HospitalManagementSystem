@@ -17,4 +17,9 @@
         width: 210mm;
         height: 297mm;
         margin: 0 auto;
+        background-image: url('../img/img.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
     }

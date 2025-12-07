@@ -73,7 +73,7 @@ include_once('public/alerts/toastr.php');
     <div class="center bg-whith">
         <div class="item-print p10">
             <div class="border-black">
-                <div class="pppp">center name</div>
+                <div class="pppp">نام مرکز</div>
                 <div class="center fs9 p5">شماره‌های تماس: <sapn class="fs12 bold">079999999 - 0700888888</sapn>
                 </div>
                 <hr class="hrb">
