@@ -48,10 +48,6 @@
                         </div>
                     </div>
                     <div class="inputs d-flex">
-                        <!-- <div class="one">
-                            <div class="label-form mb5 fs14">قیمت </div>
-                            <input type="text" name="price" value="" placeholder="قیمت دارو را وارد نمایید" />
-                        </div> -->
                         <div class="one">
                             <div class="label-form mb5 fs14">تولید کننده </div>
                             <input type="text" name="manufacturer" value="" placeholder="تولید کننده دارو را وارد نمایید" />

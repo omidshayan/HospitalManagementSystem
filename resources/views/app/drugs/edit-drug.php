@@ -15,49 +15,60 @@
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
-                <form action="<?= url('edit-employee/store/' . $drug['id']) ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= url('drug-store') ?>" method="POST" enctype="multipart/form-data">
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">نام و تخلص <?= _star ?> </div>
-                            <input type="text" class="checkInput" name="name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" value="<?= $drug['name'] ?>" />
+                            <div class="label-form mb5 fs14"> نام دارو <?= _star ?> </div>
+                            <input type="text" class="checkInput" name="name" value="<?= $drug['name'] ?>" placeholder="نام دارو را وارد نمایید" />
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
-                            <input type="number" class="checkInput" name="phone" placeholder="شماره را وارد نمایید" value="<?= $drug['phone'] ?>" />
+                            <div class="label-form mb5 fs14"> نام انحصاری </div>
+                            <input type="text" name="generic_name" value="<?= $drug['generic_name'] ?>" placeholder="نام انحصاری دارو را وارد نمایید" />
                         </div>
                     </div>
                     <div class="inputs d-flex">
-
                         <div class="one">
-                            <div class="label-form mb5 fs14">رمزعبور</div>
-                            <input type="password" name="password" placeholder="رمزعبور را وارد نمایید" />
+                            <div class="label-form mb5 fs14" for="name">انتخاب دسته بندی <?= _star ?></div>
+                            <select name="category_id" id="mySelect" class="checkSelect">
+                                <option value="" selected disabled>دسته‌بندی را انتخاب نمائید</option>
+                                <?php foreach ($drugCategories as $item) :
+                                    $catValue = isset($item['id']) ? $item['id'] : $item['category_id'] ?? $item['cat_name'];
+                                    $isSelected = ((string)$catValue === (string)($drug['category_id'] ?? '')) ? ' selected' : '';
+                                ?>
+                                    <option value="<?= htmlspecialchars($catValue, ENT_QUOTES, 'UTF-8') ?>" <?= $isSelected ?>>
+                                        <?= htmlspecialchars($item['cat_name'], ENT_QUOTES, 'UTF-8') ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">مقدار معاش</div>
-                            <input type="number" value="<?= $drug['salary_price'] ?>" name="salary_price" placeholder="مقدار معاش را وارد نمایید" />
-                        </div>
-                    </div>
-                    <div class="inputs d-flex">
-
-                        <div class="one">
-                            <div class="label-form mb5 fs14" for="name">وظیفه</div>
-                            <select name="position" id="mySelect" class="checkSelect">
-                                <?php foreach ($positions as $position) : ?>
-                                    <option value="<?= $position['name'] ?>" <?= $position['name'] == $drug['position'] ? 'selected' : '' ?>>
-                                        <?= $position['name'] ?>
+                            <div class="label-form mb5 fs14" for="name">انتخاب واحد شمارش <?= _star ?></div>
+                            <select name="unit" class="checkSelect">
+                                <?php foreach ($units as $unit):
+                                    $isSelected = ((string)$unit['id'] === (string)($drug['unit'] ?? '')) ? ' selected' : '';
+                                ?>
+                                    <option value="<?= htmlspecialchars($unit['id'], ENT_QUOTES, 'UTF-8') ?>" <?= $isSelected ?>>
+                                        <?= htmlspecialchars($unit['unit_name'], ENT_QUOTES, 'UTF-8') ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
+                    </div>
+                    <div class="inputs d-flex">
+                        <div class="one">
+                            <div class="label-form mb5 fs14">تولید کننده </div>
+                            <input type="text" name="manufacturer" value="" placeholder="تولید کننده دارو را وارد نمایید" />
+                        </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
-                            <textarea name="description" placeholder="توضیحات را وارد نمایید"><?= $drug['description'] ?></textarea>
+                            <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
                         </div>
                     </div>
 
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">انتخاب عکس</div>
+                            <div class="label-form mb5 fs14">انتخاب عکس دارو</div>
                             <input type="file" id="image" name="image" accept="image/*">
                         </div>
                     </div>
@@ -65,17 +76,10 @@
                         <img src="" class="img" alt="">
                     </div>
 
-                    <div>
-                        <img src="<?= ($drug['image'] ? asset('public/images/drugس/' . $drug['image']) : asset('public/assets/img/empty.png')) ?>" onclick="openModal('<?php echo asset('public/images/drugس/' . $drug['image']); ?>')"
-                            class="img cursor-p" alt="logo">
-                    </div>
-                    <div class="fs11">تصویر فعلی</div>
-
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                    <input type="submit" id="submit" value="ویــرایــش" class="btn bold" />
+                    <input type="submit" id="submit" value="ثبت" class="btn" />
                 </form>
             </div>
-            <a href="<?= url('employees') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
         </div>
         <!-- end page content -->
 

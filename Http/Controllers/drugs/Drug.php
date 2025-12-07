@@ -54,7 +54,7 @@ class Drug extends App
 
         $drug = $this->db->select('SELECT * FROM drugs WHERE id = ?', [$id])->fetch();
         $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
-        $units = $this->db->select('SELECT * FROM units WHERE `status` WHERE `status` = ?', [1])->fetchAll();
+        $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
         if ($drug != null) {
             require_once(BASE_PATH . '/resources/views/app/drugs/edit-drug.php');
             exit();
