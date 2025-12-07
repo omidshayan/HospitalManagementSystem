@@ -163,9 +163,8 @@ textarea::placeholder {
 
 .sidebar-menu:hover {
     transition: 0.3s;
-    background-color: #33425373;
+    background-color: #88d1a973;
 }
-
 .sidebar-item li.focused>a {
     border-radius: 10px;
     background-color: var(--hover);
@@ -190,7 +189,7 @@ textarea::placeholder {
 }
 
 .sidebar-dropdown-menu li:hover {
-    background-color: #334253;
+    background-color: #125a2227;
 }
 
 /* end sidebar */
