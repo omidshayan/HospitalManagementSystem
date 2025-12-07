@@ -56,6 +56,16 @@ class Drug extends App
         }
     }
 
+        // show drugs
+    public function showEmployees()
+    {
+        $this->middleware(true, true, 'general');
+        $employees = $this->db->select('SELECT * FROM employees ORDER BY id DESC')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
+        exit();
+    }
+
+
     // edit employee store
     public function editEmployeeStore($request, $id)
     {
@@ -93,14 +103,6 @@ class Drug extends App
         $this->flashMessageTo('success', _success, url('employees'));
     }
 
-    // show employees
-    public function showEmployees()
-    {
-        $this->middleware(true, true, 'general');
-        $employees = $this->db->select('SELECT * FROM employees ORDER BY id DESC')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
-        exit();
-    }
 
     // change status employee
     public function changeStatus($id)
