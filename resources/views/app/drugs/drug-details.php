@@ -1,12 +1,11 @@
-<!-- start sidebar -->
 <?php
 $title = 'جزئیات دارو: ' . $drug['name'];
 include_once('resources/views/layouts/header.php');
 include_once('resources/views/scripts/change-status.php');
 include_once('resources/views/scripts/show-img-modal.php');
 ?>
-<!-- end sidebar -->
-<div id="alert" class="alert" style="display: none;">حالم بده، با برنامه نویس مه تماس بگیر :(</div>
+
+<div id="alert" class="alert" style="display: none;">مشکل در تغییر وضعیت، لطفا با برنامه نویس تماس بگیرید!</div>
 
 <!-- loading and overlay -->
 <div class="overlay" id="loadingOverlay">
@@ -75,69 +74,12 @@ include_once('resources/views/scripts/show-img-modal.php');
             </div>
         </div>
 
-        <!-- <div class="accordion-title color-orange">اطلاعات مالی و معاش</div>
-        <div class="accordion-content">
-            <div class="child-accordioin">
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">نوع حضور: </div>
-                    <div class="info-detaile">
-                        <?php if ($employee['agreement_type'] == 1) {
-                            echo 'پارت تایم';
-                        } elseif ($employee['agreement_type'] == 2) {
-                            echo 'فول تایم';
-                        } else {
-                            echo 'قراردادی';
-                        } ?>
-                    </div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">نوع معاش: </div>
-                    <div class="info-detaile"><?= ($employee['type_salary'] == 1) ? 'ساعتی' : 'ماهوار' ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">مقدار معاش: </div>
-                    <div class="info-detaile"><?= $employee['salary_price'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">کل دریافتی: </div>
-                    <div class="info-detaile"><?= $employee['salary_price'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">طلبکار: </div>
-                    <div class="info-detaile"><?= $employee['salary_price'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">بدهکار: </div>
-                    <div class="info-detaile"><?= $employee['salary_price'] ?></div>
-                </div>
-            </div>
-        </div> -->
-
-        <a href="<?= url('employees') ?>">
+        <a href="<?= url('drugs') ?>">
             <div class="btn center p5">برگشت</div>
         </a>
     </div>
     <!-- end page content -->
 </div>
 <!-- End content -->
-<!-- show password -->
-<script>
-    var passwordField = document.getElementById('passwordDisplay');
-    var eyeIcon = document.getElementById('eyeIcon');
-    var isMouseDown = false;
 
-    function showPassword() {
-        passwordField.innerHTML = '<?= $employee['password'] ?>';
-        eyeIcon.innerHTML = '&#128064;';
-        isMouseDown = true;
-    }
-
-    function hidePassword() {
-        if (isMouseDown) {
-            passwordField.innerHTML = '<?= str_repeat('*', strlen($employee['password'])) ?>';
-            eyeIcon.innerHTML = '&#128065;';
-            isMouseDown = false;
-        }
-    }
-</script>
 <?php include_once('resources/views/layouts/footer.php') ?>

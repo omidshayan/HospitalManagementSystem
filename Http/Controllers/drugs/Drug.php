@@ -118,23 +118,23 @@ class Drug extends App
         }
     }
 
-    // change status employee
-    public function changeStatus($id)
+    // change status drug
+    public function changeDrugStatus($id)
     {
         $this->middleware(true, true, 'general');
 
-        $employee = $this->db
-            ->select('SELECT * FROM employees WHERE id = ?', [$id])
+        $drug = $this->db
+            ->select('SELECT * FROM drugs WHERE id = ?', [$id])
             ->fetch();
 
-        if (!$employee) {
+        if (!$drug) {
             require_once BASE_PATH . '/404.php';
             exit;
         }
 
-        $newState = ($employee['state'] == 1) ? 2 : 1;
+        $newState = ($drug['status'] == 1) ? 2 : 1;
 
-        $this->db->update('employees', $employee['id'], ['state'], [$newState]);
+        $this->db->update('drugs', $drug['id'], ['status'], [$newState]);
         $this->send_json_response(true, _success, $newState);
     }
 }
