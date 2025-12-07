@@ -38,31 +38,30 @@ class Drug extends App
         }
     }
 
-    // edit employee page
-    public function editEmployee($id)
-    {
-        $this->middleware(true, true, 'general', true);
-
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
-        $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
-        $sections = $this->db->select('SELECT * FROM sections WHERE `section_id` IS NULL ORDER BY id ASC')->fetchAll();
-        $permissions = $this->db->select('SELECT * FROM permissions WHERE employee_id = ?', [$id])->fetchAll();
-        if ($employee != null) {
-            require_once(BASE_PATH . '/resources/views/app/employees/edit-employee.php');
-            exit();
-        } else {
-            require_once(BASE_PATH . '/404.php');
-            exit();
-        }
-    }
-
-        // show drugs
+    // show drugs
     public function showDrugs()
     {
         $this->middleware(true, true, 'general');
         $drugs = $this->db->select('SELECT * FROM drugs ORDER BY id DESC')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/drugs/show-drugs.php');
         exit();
+    }
+
+    // edit drug page
+    public function editDrug($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        $drug = $this->db->select('SELECT * FROM drugs WHERE id = ?', [$id])->fetch();
+        $positions = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
+        $sections = $this->db->select('SELECT * FROM units WHERE `status` WHERE `status` = ?', [1])->fetchAll();
+        if ($drug != null) {
+            require_once(BASE_PATH . '/resources/views/app/drugs/edit-drug.php');
+            exit();
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
     }
 
 
