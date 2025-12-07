@@ -58,11 +58,11 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">تولید کننده </div>
-                            <input type="text" name="manufacturer" value="" placeholder="تولید کننده دارو را وارد نمایید" />
+                            <input type="text" name="manufacturer" value="<?= $drug['manufacturer'] ?>" placeholder="تولید کننده دارو را وارد نمایید" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
-                            <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
+                            <textarea name="description" placeholder="توضیحات را وارد نمایید"><?= $drug['description'] ?></textarea>
                         </div>
                     </div>
 
@@ -75,6 +75,11 @@
                     <div id="imagePreview">
                         <img src="" class="img" alt="">
                     </div>
+                    <div>
+                        <img src="<?= ($drug['image'] ? asset('public/images/drugs/' . $drug['image']) : asset('public/assets/img/empty.png')) ?>" onclick="openModal('<?php echo asset('public/images/drugs/' . $drug['image']); ?>')"
+                            class="img cursor-p" alt="logo">
+                    </div>
+                    <div class="fs11">تصویر فعلی</div>
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                     <input type="submit" id="submit" value="ثبت" class="btn" />
