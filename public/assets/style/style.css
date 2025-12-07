@@ -170,7 +170,8 @@ textarea::placeholder {
     border-radius: 10px;
     background-color: var(--hover);
     transition: 0.4s;
-    color: var(--bg);
+    color: var(--text);
+    font-weight: bold;
 }
 
 .sidebar-item li .sidebar-arrow {
