@@ -27,9 +27,6 @@ class Drug extends App
         if ($existingDrug) {
             $this->flashMessage('error', _repeat);
         } else {
-            if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
-                $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
-            }
 
             $request = $this->validateInputs($request, ['image' => false]);
             $request['password'] = $this->hash($request['password']);
