@@ -66,8 +66,9 @@ class Drug extends App
 
 
     // edit employee store
-    public function editEmployeeStore($request, $id)
+    public function editDrugStore($request, $id)
     {
+        dd('ok');
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
