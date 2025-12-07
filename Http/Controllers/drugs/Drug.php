@@ -23,9 +23,9 @@ class Drug extends App
             $this->flashMessage('error', _emptyInputs);
         }
         
-        $existingDrug = $this->db->select('SELECT * FROM drugs WHERE `phone` = ?', [$request['phone']])->fetch();
+        $existingDrug = $this->db->select('SELECT * FROM drugs WHERE `phone` = ?', [$request['name']])->fetch();
         if ($existingDrug) {
-            $this->flashMessage('error', _phone_repeat);
+            $this->flashMessage('error', _repeat);
         } else {
             if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
                 $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
