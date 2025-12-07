@@ -75,17 +75,18 @@ class Drug extends App
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $existDrug = $this->db->select('SELECT * FROM drugs WHERE `name` = ?', [$request['name']])->fetch();
+        $existDrug = $this->db->select(
+            'SELECT id FROM drugs WHERE name = ? AND id != ? LIMIT 1',
+            [$request['name'], $id]
+        )->fetch();
 
         if ($existDrug) {
-            if ($existDrug['id'] != $existDrug['id']) {
-                $this->flashMessage('error', 'نام وارد شده قبلاً توسط ثبت شده است.');
-                return;
-            }
+            $this->flashMessage('error', 'نام وارد شده قبلاً ثبت شده است.');
+            return;
         }
 
         // check upload photo
-        $request['image'] = $this->handleImageUpload($request['image'], 'images/drugs');
+        $this->updateImageUpload($request, 'image', 'drugs', 'drugs', $id);
 
         $this->db->update('drugs', $id, array_keys($request), $request);
         $this->flashMessageTo('success', _success, url('drugs'));
