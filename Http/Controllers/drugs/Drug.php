@@ -60,7 +60,7 @@ class Drug extends App
     public function showEmployees()
     {
         $this->middleware(true, true, 'general');
-        $employees = $this->db->select('SELECT * FROM employees ORDER BY id DESC')->fetchAll();
+        $employees = $this->db->select('SELECT * FROM drugs ORDER BY id DESC')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
         exit();
     }
