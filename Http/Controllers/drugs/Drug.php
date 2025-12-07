@@ -75,31 +75,20 @@ class Drug extends App
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
+        $existDrug = $this->db->select('SELECT * FROM drugs WHERE `name` = ?', [$request['name']])->fetch();
 
-        if ($existEmployee) {
-            if ($existEmployee['id'] != $existEmployee['id']) {
-                $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
+        if ($existDrug) {
+            if ($existDrug['id'] != $existDrug['id']) {
+                $this->flashMessage('error', 'نام وارد شده قبلاً توسط ثبت شده است.');
                 return;
             }
         }
 
         // check upload photo
-        $max_file_size = 1048576;
-        if (is_uploaded_file($request['image']['tmp_name'])) {
-            if ($request['image']['size'] > $max_file_size) {
-                $this->flashMessage('error', 'حجم عکس نباید بیشتر از 1 mb باشد');
-            } else {
-                $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$existEmployee['id']])->fetch();
-                $this->removeImage('public/images/employees/' . $employee['image']);
-                $request['image'] = $this->saveImage($request['image'], 'images/employees');
-            }
-        } else {
-            unset($request['image']);
-        }
+        $request['image'] = $this->handleImageUpload($request['image'], 'images/drugs');
 
-        $this->db->update('employees', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('employees'));
+        $this->db->update('drugs', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('drugs'));
     }
 
 
