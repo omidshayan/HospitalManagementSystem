@@ -61,7 +61,7 @@ class Drug extends App
     {
         $this->middleware(true, true, 'general');
         $employees = $this->db->select('SELECT * FROM drugs ORDER BY id DESC')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
+        require_once(BASE_PATH . '/resources/views/app/drugs/show-drugs.php');
         exit();
     }
 
