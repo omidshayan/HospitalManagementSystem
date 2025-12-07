@@ -11,7 +11,7 @@
     <!-- Start content -->
     <div class="content">
         <div class="content-title">ویرایش دارو: <?= $drug['name'] ?></div>
-        <br />
+
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
