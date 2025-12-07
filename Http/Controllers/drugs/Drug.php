@@ -23,7 +23,7 @@ class Drug extends App
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $existingDrug = $this->db->select('SELECT * FROM drugs WHERE `phone` = ?', [$request['name']])->fetch();
+        $existingDrug = $this->db->select('SELECT * FROM drugs WHERE `name` = ?', [$request['name']])->fetch();
         if ($existingDrug) {
             $this->flashMessage('error', _repeat);
         } else {
