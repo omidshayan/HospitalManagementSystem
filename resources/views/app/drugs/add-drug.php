@@ -25,7 +25,7 @@
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14" for="name">انتخاب دسته بندی</div>
+                            <div class="label-form mb5 fs14" for="name">انتخاب دسته بندی <?= _star ?></div>
                             <select name="category_id" class="checkSelect">
                                 <option selected disabled>دسته بندی را انتخاب نمائید</option>
                                 <?php
@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14" for="name">انتخاب واحد شمارش</div>
+                            <div class="label-form mb5 fs14" for="name">انتخاب واحد شمارش <?= _star ?></div>
                             <select name="unit" class="checkSelect">
                                 <option selected disabled>واحد شمارش را انتخاب نمائید</option>
                                 <?php
@@ -48,16 +48,14 @@
                         </div>
                     </div>
                     <div class="inputs d-flex">
-                        <div class="one">
+                        <!-- <div class="one">
                             <div class="label-form mb5 fs14">قیمت </div>
                             <input type="text" name="price" value="" placeholder="قیمت دارو را وارد نمایید" />
-                        </div>
+                        </div> -->
                         <div class="one">
                             <div class="label-form mb5 fs14">تولید کننده </div>
                             <input type="text" name="manufacturer" value="" placeholder="تولید کننده دارو را وارد نمایید" />
                         </div>
-                    </div>
-                    <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
