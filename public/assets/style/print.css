@@ -12,14 +12,37 @@
         font-weight: bold !important;
     }
 
-    .bg-whith {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    @media print {
+        body, html {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .item-print {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            background-color: white;
+            page-break-after: avoid;
+            page-break-before: avoid;
+            page-break-inside: avoid;
+        }
+    }
+
+    .item-print {
         background-color: white;
         width: 210mm;
         height: 297mm;
         margin: 0 auto;
-        background-image: url('../img/img.jpg');
+        background-image: url('../img/img.jpg') !important;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         position: relative;
+        padding: 20px;
     }
