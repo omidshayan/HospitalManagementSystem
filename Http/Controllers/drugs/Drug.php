@@ -92,6 +92,21 @@ class Drug extends App
         $this->flashMessageTo('success', _success, url('drugs'));
     }
 
+    // drug detiles page
+    public function drugDetails($id)
+    {
+        $this->middleware(true, true, 'general');
+
+        $drug = $this->db->select('SELECT * FROM drugs WHERE id = ?', [$id])->fetch();
+
+        if ($drug) {
+            require_once(BASE_PATH . '/resources/views/app/drugs/drug-details.php');
+            exit();
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+    }
 
     // change status employee
     public function changeStatus($id)
@@ -111,20 +126,5 @@ class Drug extends App
 
         $this->db->update('employees', $employee['id'], ['state'], [$newState]);
         $this->send_json_response(true, _success, $newState);
-    }
-
-
-    // employee detiles page
-    public function employeeDetails($id)
-    {
-        $this->middleware(true, true, 'general');
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
-        if ($employee) {
-            require_once(BASE_PATH . '/resources/views/app/employees/employee-details.php');
-            exit();
-        } else {
-            require_once(BASE_PATH . '/404.php');
-            exit();
-        }
     }
 }
