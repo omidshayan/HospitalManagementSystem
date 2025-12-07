@@ -22,19 +22,18 @@ class Drug extends App
         if ($request['name'] == '' || $request['category_id'] == '' || $request['unit'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        
+
         $existingDrug = $this->db->select('SELECT * FROM drugs WHERE `phone` = ?', [$request['name']])->fetch();
         if ($existingDrug) {
             $this->flashMessage('error', _repeat);
         } else {
 
             $request = $this->validateInputs($request, ['image' => false]);
-            $request['password'] = $this->hash($request['password']);
 
             // check image
-            $this->handleImageUpload($request['image'], 'images/employees');
+            $this->handleImageUpload($request['image'], 'images/drugs');
 
-            $this->db->insert('employees', array_keys($request), $request);
+            $this->db->insert('drugs', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
