@@ -23,8 +23,8 @@ class Drug extends App
             $this->flashMessage('error', _emptyInputs);
         }
         
-        $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
-        if ($existingEmployee) {
+        $existingDrug = $this->db->select('SELECT * FROM drugs WHERE `phone` = ?', [$request['phone']])->fetch();
+        if ($existingDrug) {
             $this->flashMessage('error', _phone_repeat);
         } else {
             if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
