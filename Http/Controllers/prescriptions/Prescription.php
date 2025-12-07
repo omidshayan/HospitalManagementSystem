@@ -106,11 +106,7 @@ class Prescription extends App
         if (!$exist_item) {
             $this->db->insert('prescription_items', array_keys($prescription_items), $prescription_items);
         } else {
-            $update_data = [
-                'quantity' => $exist_item['quantity'] + $prescription_items['quantity'],
-                'package_qty' => $exist_item['package_qty'] + $prescription_items['package_qty'],
-            ];
-            $this->db->update('prescription_items', $exist_item['id'], array_keys($update_data), $update_data);
+            $this->flashMessage('error', 'داروی انتخاب شده، قبلا ثبت شده!');
         }
 
         $this->flashMessage('success', _success);
