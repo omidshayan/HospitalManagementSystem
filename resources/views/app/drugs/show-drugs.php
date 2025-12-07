@@ -1,6 +1,6 @@
 <!-- start sidebar -->
 <?php
-$title = 'نمایش کارمندان';
+$title = 'نمایش دواها';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
@@ -9,12 +9,12 @@ include_once('public/alerts/toastr.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title">نمایش کارمندان
+    <div class="content-title">نمایش دواها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
-    $help_title = 'راهنمای بخش مدیریت دروس';
-    $help_content = 'در این قسمت ابتدا باید نام درس را وارد کنید، مثلا فتوشاپ ';
+    $help_title = 'راهنمای بخش نمایش داروها';
+    $help_content = 'نمایش کامل دروها ';
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
