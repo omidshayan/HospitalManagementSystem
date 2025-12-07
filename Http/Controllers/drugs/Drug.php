@@ -68,11 +68,10 @@ class Drug extends App
     // edit employee store
     public function editDrugStore($request, $id)
     {
-        dd('ok');
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '' || !isset($request['position'])) {
+        if ($request['name'] == '' || $request['category_id'] == '' || $request['unit'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
