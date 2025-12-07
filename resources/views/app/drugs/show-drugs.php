@@ -14,7 +14,7 @@ include_once('public/alerts/toastr.php');
     </div>
     <?php
     $help_title = 'راهنمای بخش نمایش داروها';
-    $help_content = 'نمایش کامل دروها ';
+    $help_content = 'اگر شماره آیتمی به رنگ سرخ بود، یعنی آیتم مورد نظر غیر فعال است!';
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
@@ -42,7 +42,9 @@ include_once('public/alerts/toastr.php');
                 foreach ($data as $item) {
                 ?>
                     <tr>
-                        <td class="color-orange"><?= $number ?></td>
+                        <td class="color-orange <?= ($item['status'] == 2) ? 'color-red' : '' ?>">
+                            <?= $number ?>
+                        </td>
                         <td><?= $item['name'] ?></td>
                         <td><?= ($item['generic_name']) ?: '- - - -' ?></td>
                         <td><?= $item['category_id'] ?></td>

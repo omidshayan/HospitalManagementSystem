@@ -169,10 +169,6 @@
     color: white;
 }
 
-.color-red {
-    color: red;
-}
-
 .color-green {
     color: rgb(3, 206, 3);
 }
@@ -188,7 +184,9 @@
 .color-orange {
     color: var(--hover) !important;
 }
-
+.color-red {
+    color: red !important;
+}
 .bg-main {
     background-color: var(--main);
 }
