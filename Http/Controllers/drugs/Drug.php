@@ -97,7 +97,17 @@ class Drug extends App
     {
         $this->middleware(true, true, 'general');
 
-        $drug = $this->db->select('SELECT * FROM drugs WHERE id = ?', [$id])->fetch();
+        $drug = $this->db->select("
+            SELECT 
+                d.*, 
+                c.cat_name,
+                u.unit_name
+            FROM drugs d
+            LEFT JOIN drug_categories c ON d.category_id = c.id
+            LEFT JOIN units u ON d.unit = u.id
+            WHERE d.id = ?
+            LIMIT 1
+        ", [$id])->fetch();
 
         if ($drug) {
             require_once(BASE_PATH . '/resources/views/app/drugs/drug-details.php');
