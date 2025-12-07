@@ -34,20 +34,17 @@ include_once('public/alerts/toastr.php');
             <tbody>
                 <?php
                 $perPage = 10;
-                $data = paginate($employees, $perPage);
+                $data = paginate($drugs, $perPage);
                 $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                 $number = ($currentPage - 1) * $perPage + 1;
-                foreach ($data as $employee) {
+                foreach ($data as $item) {
                 ?>
                     <tr>
                         <td class="color-orange"><?= $number ?></td>
-                        <td><?= $employee['employee_name'] ?></td>
-                        <td><?= $employee['phone'] ?></td>
-                        <!-- <td>
-                            <span class="status">
-                                <?= ($employee['state'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?>
-                            </span>
-                        </td> -->
+                        <td><?= $item['name'] ?></td>
+                        <td><?= ($item['generic_name']) ?: '- - - -' ?></td>
+                        <td><?=  $item['category_id'] ?></td>
+                        <td><?=  $item['unit'] ?></td>
                         <td>
                             <a href="<?= url('edit-employee/' . $employee['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
