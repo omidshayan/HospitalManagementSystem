@@ -20,7 +20,7 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14"> نام انحصاری </div>
-                            <input type="text" class="checkInput" name="generic_name" placeholder="نام انحصاری دارو را وارد نمایید" />
+                            <input type="text" name="generic_name" placeholder="نام انحصاری دارو را وارد نمایید" />
                         </div>
                     </div>
                     <div class="inputs d-flex">
