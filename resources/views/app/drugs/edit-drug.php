@@ -82,7 +82,7 @@
                     <div class="fs11">تصویر فعلی</div>
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                    <input type="submit" id="submit" value="ثبت" class="btn" />
+                    <input type="submit" id="submit" value="ویــرایــش" class="btn" />
                 </form>
             </div>
         </div>
