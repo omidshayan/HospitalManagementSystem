@@ -57,7 +57,7 @@ class Drug extends App
     }
 
         // show drugs
-    public function showEmployees()
+    public function showDrugs()
     {
         $this->middleware(true, true, 'general');
         $drugs = $this->db->select('SELECT * FROM drugs ORDER BY id DESC')->fetchAll();
