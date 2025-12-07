@@ -45,8 +45,8 @@ include_once('public/alerts/toastr.php');
                         <td class="color-orange"><?= $number ?></td>
                         <td><?= $item['name'] ?></td>
                         <td><?= ($item['generic_name']) ?: '- - - -' ?></td>
-                        <td><?=  $item['category_id'] ?></td>
-                        <td><?=  $item['unit'] ?></td>
+                        <td><?= $item['category_id'] ?></td>
+                        <td><?= $item['unit'] ?></td>
                         <td>
                             <a href="<?= url('edit-drug/' . $item['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -71,16 +71,16 @@ include_once('public/alerts/toastr.php');
             </tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
-            <div class="table-info fs14">تعداد کل: <?= count($item) ?></div>
+            <div class="table-info fs14">تعداد کل: <?= count($drugs) ?></div>
             <?php
-            if (count($item) == null) { ?>
+            if (count($drugs) == null) { ?>
                 <div class="center fs14 color-red">
                     <i class="fa fa-comment"></i>
                     <?= 'اطلاعاتی ثبت نشده است' ?>
                 </div>
             <?php } else {
-                if (count($item) > 10) {
-                    echo paginateView($item, 10);
+                if (count($drugs) > 10) {
+                    echo paginateView($drugs, 10);
                 }
             }
             ?>
