@@ -14,6 +14,7 @@
     padding: 0 8px !important;
 }  
 .hrp{
+    width: 99%;
     border: 1px solid rgba(0, 0, 0, 0.336) !important;
 }
 .item-print {
@@ -21,11 +22,13 @@
     width: 210mm;
     height: 297mm;
     margin: 0 auto;
-    background-image: url('../img/img.jpg') !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+}
+.center {
+    text-align: center !important;
 }
 
 /* patient-infos */
@@ -35,9 +38,9 @@
     justify-content: space-between;
     gap: 30px;
     color: black;
-    margin-right: 30px;
+    margin-right: 2px;
     background-color: rgba(224, 224, 224, 0.301);
-    width: 550px;
+    width: 532px;
     padding: 5px;
     border-radius: 5px;
 }
@@ -114,7 +117,7 @@
     justify-content: end;
     text-align: left;
     margin-left: 20px;
-    margin-top: 400px;
+    margin-top: 350px !important;
 }
 .p10 {
     padding: 10px;

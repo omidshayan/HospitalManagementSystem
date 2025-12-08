@@ -113,12 +113,12 @@ include_once('public/alerts/toastr.php');
                                 foreach ($items as $item) { ?>
 
                                     <div class="p-drugs-items">
-                                        <tr class="p-color-item fs14">
+                                        <tr class="p-color-item fs14 center">
                                             <td><?= $item['usage_instruction'] ?></td>
                                             <td><?= $item['dosage'] ?></td>
                                             <td><?= $item['interval_time'] ?></td>
                                             <td><?= $this->convertEnNumber($item['drug_count']) ?></td>
-                                            <td class="p5 drug-name-en "> <?= $item['drug_name'] ?></td>
+                                            <td class="p5 drug-name-en"> <?= $item['drug_name'] ?></td>
                                         </tr>
                                     </div>
 
