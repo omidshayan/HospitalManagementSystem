@@ -75,28 +75,29 @@ class Prints extends App
 
         $prescription = $this->db->select(
             'SELECT p.*, 
-            e.employee_name,
-            e.expertise
-     FROM prescriptions p
-     JOIN employees e ON e.id = p.doctor_id
-     WHERE p.status = ? AND p.id = ?',
-            [2, $id]
+                e.employee_name,
+                e.expertise
+         FROM prescriptions p
+         JOIN employees e ON e.id = p.doctor_id
+         WHERE p.status = ? AND p.id = ?',
+            [3, $id]
         )->fetch();
-
 
         $items = [];
 
-
-        $items = $this->db->select(
-            'SELECT *
+        if ($prescription) {
+            $items = $this->db->select(
+                'SELECT *
              FROM prescription_items
              WHERE prescription_id = ?
              ORDER BY id ASC',
-            [$prescription['id']]
-        )->fetchAll();
+                [$prescription['id']]
+            )->fetchAll();
+        }
 
-        require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
+        require_once(BASE_PATH . '/resources/views/app/prints/prescriptionPrint.php');
     }
+
 
 
     // print invoice
