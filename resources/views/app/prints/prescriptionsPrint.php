@@ -11,27 +11,6 @@ include_once('public/alerts/toastr.php');
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
 
-    <style>
-        @media print {
-            body * {
-                visibility: hidden;
-                /* مخفی کردن همه */
-            }
-
-            .item-print,
-            .item-print * {
-                visibility: visible;
-                /* فقط بخش مورد نظر نمایان باشه */
-            }
-
-            .item-print {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-            }
-        }
-    </style>
 
     <!-- show -->
     <div class="box-container">
@@ -192,7 +171,13 @@ include_once('public/alerts/toastr.php');
 
             </div>
         </div>
-
+        <script>
+            window.onload = function() {
+                setTimeout(() => {
+                    printReceipt();
+                }, 200);
+            };
+        </script>
     <?php endif; ?>
 
     <div class="center mt10" onclick="printReceipt()">
@@ -215,17 +200,6 @@ include_once('public/alerts/toastr.php');
                 document.body.innerHTML = original;
             }
         }
-    </script>
-
-    <script>
-        window.onload = function() {
-            if (<?= !empty($prescription) ? 'true' : 'false' ?>) {
-                window.print();
-            }
-        };
-        setInterval(function() {
-            location.reload();
-        }, 30000);
     </script>
 
 
