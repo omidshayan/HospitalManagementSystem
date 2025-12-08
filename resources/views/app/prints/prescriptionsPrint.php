@@ -84,7 +84,7 @@ include_once('public/alerts/toastr.php');
                     </span>
                     <span>
                         <span class="fs14">سن: </span>
-                        <span class="bold"><?=$prescription['']?></span>
+                        <span class="bold"><?=$prescription['age']?></span>
                     </span>
 
                     <span>

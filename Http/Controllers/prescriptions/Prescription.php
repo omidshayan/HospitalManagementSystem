@@ -261,7 +261,7 @@ class Prescription extends App
         // $this->reports->updateDailyReports($dailyReports);
 
 
-        $inserted = $this->db->update('prescriptions', $prescription['id'], ['patient_id', 'patient_name', 'status'], [$userId, $request['user_name'], 2]);
+        $inserted = $this->db->update('prescriptions', $prescription['id'], ['patient_id', 'patient_name', 'age', 'status'], [$userId, $request['user_name'], $request['age'], 2]);
 
         $this->flashMessage('success', _success);
     }
