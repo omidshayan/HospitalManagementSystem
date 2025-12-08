@@ -33,51 +33,41 @@ class Prints extends App
 
         $prescription = $this->db->select(
             'SELECT p.*, 
-            e.employee_name,
-            e.expertise
-     FROM prescriptions p
-     JOIN employees e ON e.id = p.doctor_id
-     WHERE p.status = ?
-     ORDER BY p.id ASC
-     LIMIT 1',
+                e.employee_name,
+                e.expertise
+        FROM prescriptions p
+        JOIN employees e ON e.id = p.doctor_id
+        WHERE p.status = ?
+        ORDER BY p.id ASC
+        LIMIT 1',
             [2]
         )->fetch();
 
         $items = [];
 
         if ($prescription) {
+            $this->db->update('prescriptions', $prescription['id'], ['status'], [3]);
+
             $items = $this->db->select(
                 'SELECT *
-         FROM prescription_items
-         WHERE prescription_id = ?
-         ORDER BY id ASC',
+             FROM prescription_items
+             WHERE prescription_id = ?
+             ORDER BY id ASC',
                 [$prescription['id']]
             )->fetchAll();
         }
 
-
-        // if ($prescription) {
-        //     require_once('print-template.php');
-
-        //     $this->db->update(
-        //         'prescriptions',
-        //         ['status' => 3],     // چاپ شده
-        //         'id = ?',
-        //         [$prescription['id']]
-        //     );
-        // }
-
-
         $prescriptions = $this->db->select(
             'SELECT p.*, e.employee_name
-             FROM prescriptions p
-             JOIN employees e ON e.id = p.doctor_id
-             WHERE p.status = ?',
-            [2]
+         FROM prescriptions p
+         JOIN employees e ON e.id = p.doctor_id
+         WHERE p.status = ?',
+            [3]
         )->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
     }
+
 
     // print invoice
     public function autoPrint()

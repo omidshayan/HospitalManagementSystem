@@ -1586,7 +1586,6 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     visibility: visible;
     opacity: 1;
 }
-
 /* end tooltip for all sections */
 
 /* radio in attendance */
