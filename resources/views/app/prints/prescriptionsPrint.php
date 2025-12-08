@@ -100,27 +100,30 @@ include_once('public/alerts/toastr.php');
                     <div class="p-drugs-print">
                         <table>
                             <thead>
-                                <tr>
-                                    <th>نام دارو</th>
-                                    <th>طریقه مصرف</th>
-                                    <th>مقدار مصرف هر نوبت</th>
-                                    <th>زمان مصرف</th>
+                                <tr class="fs12 p-color-title">
+                                    <th class="w80 p5">طریقه مصرف</th>
+                                    <th class="w120">مقدار مصرف هر نوبت</th>
+                                    <th class="w80">زمان مصرف</th>
+                                    <th class="">نام دارو</th>
                                 </tr>
                             </thead>
-                        </table>
-                        <?php
-                        foreach ($items as $item) { ?>
-
-                            <div class="p-drugs-items">
-                                <div>drug </div>
-                                <div>usage from</div>
-                                <div>dosage</div>
-                                <div>sadfdsfdsf</div>
+                            <tbody>
+                                <?php
+                                foreach ($items as $item) { ?>
+                                
+                                <div class="p-drugs-items">
+                                <tr class="p-color-item">
+                                    <td>fdsfd</td>
+                                    <td>fdsfd</td>
+                                    <td>fdsfd</td>
+                                    <td class="p5 drug-name-en">this is name for frugs and anit biutick for sardar </td>
+                                </tr>
                             </div>
 
-                        <?php }
-                        ?>
-
+                                <?php }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
 
                     <!-- left infos -->

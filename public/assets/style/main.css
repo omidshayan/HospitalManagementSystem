@@ -187,6 +187,16 @@
 .color-red {
     color: red !important;
 }
+.p-color-title{
+    background-color: rgba(173, 173, 173, 0.411);
+}
+.p-color-item{
+    background-color: rgba(173, 173, 173, 0.171);
+}
+.drug-name-en{
+    direction: ltr;
+   text-align: justify;
+}
 .bg-main {
     background-color: var(--main);
 }
@@ -316,7 +326,9 @@
 .w80 {
     width: 80px !important;
 }
-
+.w120{
+    width: 120px !important;
+}
 .w200 {
     width: 200px;
 }
@@ -337,7 +349,7 @@
 }
 
 .p5 {
-    padding: 5px;
+    padding: 5px !important;
 }
 
 .p10 {
