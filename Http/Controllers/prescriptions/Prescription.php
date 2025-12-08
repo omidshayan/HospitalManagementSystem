@@ -260,9 +260,19 @@ class Prescription extends App
         // ];
         // $this->reports->updateDailyReports($dailyReports);
 
+        $preInfos = [
+            'patient_id' => $userId,
+            'patient_name' => $request['user_name'],
+            'age' => $request['age'],
+            'bp' => $request['bp'],
+            'pr' => $request['pr'],
+            'rr' => $request['rr'],
+            'temp' => $request['temp'],
+            'spo2' => $request['spo2'],
+            'status' => 2,
+        ];
 
-        $inserted = $this->db->update('prescriptions', $prescription['id'], ['patient_id', 'patient_name', 'age', 'status'], [$userId, $request['user_name'], $request['age'], 2]);
-
+        $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
         $this->flashMessage('success', _success);
     }
 
