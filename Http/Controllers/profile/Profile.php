@@ -21,19 +21,21 @@ class Profile extends App
     public function changePasswordStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request);
-        if (!isset($_SESSION['af_em_id']) || !isset($_SESSION['af_em_name'])) {
+        $id = $this->currentUser();
+
+        if (!isset($id['id']) || !isset($id['name'])) {
             $this->redirect('login');
             exit();
         } else {
             if (empty($request['oldPassword']) || empty($request['newPassword']) || empty($request['newPasswordR'])) {
                 $this->flashMessage('error', 'لطفا تمام قسمت های ضروری را وارد نمائید!');
             }
-            if (strlen($request['newPassword']) < 8) {
-                $this->flashMessage('error', 'تعداد کاراکترهای رمزعبور حداقل باید 8 کاراکتر باشد!');
+            if (strlen($request['newPassword']) < 6) {
+                $this->flashMessage('error', 'تعداد کاراکترهای رمزعبور حداقل باید 6 کاراکتر باشد!');
             }
 
             if ($request['newPassword'] === $request['newPasswordR']) {
-                $usre_id = $_SESSION['af_em_id'];
+                $usre_id = $id['id'];
                 $request = $this->validateInputs($request);
                 $user = $this->db->select('SELECT * FROM employees WHERE id =?', [$usre_id])->fetch();
                 if (

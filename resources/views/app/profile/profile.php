@@ -11,7 +11,7 @@ $date = explode(' ', $profile['created_at']);
 <!-- Start content -->
 <div class="content">
     <div class="content-title"> جزئیات حساب کاربری: <?= $profile['employee_name'] ?></div>
-    <br />
+
     <!-- start page content -->
     <div class="mini-container">
         <div class="details">
@@ -46,7 +46,7 @@ $date = explode(' ', $profile['created_at']);
         <div class="change-password center">
             تغییر رمزعبور
             <div class="insert">
-                <form action="<?= url('edit-password-profile/' . $profile['id']) ?>" method="POST">
+                <form action="<?= url('edit-store-profile/' . $profile['id']) ?>" method="POST">
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">رمزعبور فعلی <?= _star ?> </div>
