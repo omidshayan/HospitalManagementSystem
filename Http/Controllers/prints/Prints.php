@@ -5,26 +5,26 @@ namespace App;
 class Prints extends App
 {
     // management of years page
-    public function prescriptionPrint($id)
-    {
-        $this->middleware(true, true, 'general', true);
+    // public function prescriptionPrint($id)
+    // {
+    //     $this->middleware(true, true, 'general', true);
 
-        $sale_invoice_print = $this->db->select(
-            'SELECT 
-            si.*,
-            u.user_name,
-            u.address,
-            u.phone,
-            ca.balance AS account_balance
-         FROM invoices si
-         LEFT JOIN users u ON u.id = si.user_id
-         LEFT JOIN account_balances ca ON ca.user_id = si.user_id AND ca.branch_id = si.branch_id
-         WHERE si.id = ?',
-            [$id]
-        )->fetch();
+    //     $sale_invoice_print = $this->db->select(
+    //         'SELECT 
+    //         si.*,
+    //         u.user_name,
+    //         u.address,
+    //         u.phone,
+    //         ca.balance AS account_balance
+    //      FROM invoices si
+    //      LEFT JOIN users u ON u.id = si.user_id
+    //      LEFT JOIN account_balances ca ON ca.user_id = si.user_id AND ca.branch_id = si.branch_id
+    //      WHERE si.id = ?',
+    //         [$id]
+    //     )->fetch();
 
-        require_once(BASE_PATH . '/resources/views/app/sales/add-sale.php');
-    }
+    //     require_once(BASE_PATH . '/resources/views/app/sales/add-sale.php');
+    // }
 
     // show presctiption for print
     public function print()
@@ -63,6 +63,36 @@ class Prints extends App
          JOIN employees e ON e.id = p.doctor_id
          WHERE p.status = ?',
             [3]
+        )->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
+    }
+
+    // show presctiption for print
+    public function prescriptionItemPrint($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        $prescription = $this->db->select(
+            'SELECT p.*, 
+            e.employee_name,
+            e.expertise
+     FROM prescriptions p
+     JOIN employees e ON e.id = p.doctor_id
+     WHERE p.status = ? AND p.id = ?',
+            [2, $id]
+        )->fetch();
+
+
+        $items = [];
+
+
+        $items = $this->db->select(
+            'SELECT *
+             FROM prescription_items
+             WHERE prescription_id = ?
+             ORDER BY id ASC',
+            [$prescription['id']]
         )->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');

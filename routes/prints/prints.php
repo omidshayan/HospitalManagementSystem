@@ -6,6 +6,6 @@ uri('prescription-print/{id}', 'App\Prints', 'prescriptionPrint');
 
 
 uri('prescription-print', 'App\Prints', 'print');
-uri('prescription-print/{id}', 'App\Prints', 'itemPrint');
+uri('prescription-item-print/{id}', 'App\Prints', 'prescriptionItemPrint');
 
 uri('auto-print', 'App\Prints', 'autoPrint');
