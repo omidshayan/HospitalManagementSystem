@@ -58,29 +58,24 @@
                             </div>
                         </div>
 
-                        <div class="accordion-title color-orange">علائم حیاطی</div>
+                        <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
                         <div class="accordion-content-pre">
                             <div class="child-accordioin">
-                                <div class="insert">
+                                <div class="insert dir-left mt5">
                                         <div class="one m-auto w97d mb3">
-                                            <div class="label-form fs14"> BP </div>
-                                            <input type="text" class="h27" placeholder=" Blood Pressure  ">
+                                            <input type="text" placeholder=" Blood Pressure  ">
                                         </div>
                                         <div class="one m-auto w97d mb3">
-                                            <div class="label-form fs14"> PR </div>
-                                            <input type="text" class="h27" placeholder=" Pulse Rate  ">
+                                            <input type="text" placeholder=" Pulse Rate  ">
                                         </div>
                                         <div class="one m-auto w97d mb3">
-                                            <div class="label-form fs14"> RR </div>
-                                            <input type="text" class="h27" placeholder=" Respiratory Rate  ">
+                                            <input type="text" placeholder=" Respiratory Rate  ">
                                         </div>
                                         <div class="one m-auto w97d mb3">
-                                            <div class="label-form fs14"> TEMP </div>
-                                            <input type="text" class="h27" placeholder=" Temperature  ">
+                                            <input type="text" placeholder=" Temperature  ">
                                         </div>
                                         <div class="one m-auto w97d mb3">
-                                            <div class="label-form fs14"> SPO₂ </div>
-                                            <input type="text" class="h27" placeholder=" Oxygen Saturation  ">
+                                            <input type="text" placeholder=" Oxygen Saturation  ">
                                         </div>
                                 </div>
                             </div>

@@ -572,7 +572,6 @@ input:checked+.slider:before {
     margin-right: 5.5%;
     margin-bottom: 4px;
 }
-
 .insert input {
     background-color: var(--main);
     border: none;
