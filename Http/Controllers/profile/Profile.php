@@ -12,7 +12,8 @@ class Profile extends App
     public function profile()
     {
         $this->middleware(true, true, 'general', true);
-        $profile = $this->db->select('SELECT * FROM employees WHERE id = ?', [$_SESSION['af_em_id']])->fetch();
+        $id = $this->currentUser();
+        $profile = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id['id']])->fetch();
         require_once(BASE_PATH . '/resources/views/app/profile/profile.php');
     }
 
