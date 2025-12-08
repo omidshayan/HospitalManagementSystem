@@ -4,7 +4,9 @@ include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
-
+<script>
+    
+</script>
 <div class="content">
     <div class="content-title">نمایش نسخه‌ها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
@@ -77,7 +79,7 @@ include_once('public/alerts/toastr.php');
             <div class="p-patient-infos">
                 <span>
                     <span class="fs14">نام مریض:</span>
-                    <span class="bold"> حجی شیخ مندٌمر هراتی</span>
+                    <span class="bold"> <?=$noPrintPrescriptions['patient_name']?></span>
                 </span>
                 <span>
                     <span class="fs14">سن: </span>
@@ -95,12 +97,6 @@ include_once('public/alerts/toastr.php');
 
                 <!-- drugs list -->
                 <div class="p-drugs-print">
-                    <div class="p-drugs-items">
-                        <div>drug name</div>
-                        <div>usage from</div>
-                        <div>dosage</div>
-                        <div>sadfdsfdsf</div>
-                    </div>
                     <div class="p-drugs-items">
                         <div>drug name</div>
                         <div>usage from</div>
@@ -130,8 +126,6 @@ include_once('public/alerts/toastr.php');
                 </div>
 
             </div>
-
-
 
         </div>
     </div>

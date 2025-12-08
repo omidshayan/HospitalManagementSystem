@@ -33,18 +33,18 @@ class Prints extends App
 
         $noPrintPrescriptions = $this->db->select(
             'SELECT p.*, e.employee_name
-             FROM prescriptions p
-             JOIN employees e ON e.id = p.doctor_id
-             WHERE p.status = ?',
+     FROM prescriptions p
+     JOIN employees e ON e.id = p.doctor_id
+     WHERE p.status = ?',
             [2]
-        )->fetchAll();
+        )->fetchAll();            
 
         $prescriptions = $this->db->select(
             'SELECT p.*, e.employee_name
              FROM prescriptions p
              JOIN employees e ON e.id = p.doctor_id
              WHERE p.status = ?',
-            [3]
+            [2]
         )->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
