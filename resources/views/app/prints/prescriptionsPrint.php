@@ -223,6 +223,9 @@ include_once('public/alerts/toastr.php');
                 window.print();
             }
         };
+        setInterval(function() {
+            location.reload();
+        }, 6000);
     </script>
 
 
