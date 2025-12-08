@@ -12,7 +12,7 @@ include_once('public/alerts/toastr.php');
     </div>
 
 
-    <!-- show employees -->
+    <!-- show -->
     <div class="box-container">
         <table class="fl-table">
             <thead>
@@ -141,7 +141,7 @@ include_once('public/alerts/toastr.php');
                             <div>Pr</div>
                             <div>Rr</div>
                             <div>TEMP</div>
-                            <div>Diagnose</div>
+                            <div>SPO₂</div>
                         </div>
 
                     </div>
