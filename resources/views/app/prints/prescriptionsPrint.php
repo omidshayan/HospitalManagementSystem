@@ -138,9 +138,13 @@ include_once('public/alerts/toastr.php');
                         <!-- infos -->
                         <div class="p-vital-signs fs12">
                             <div>BP</div>
+                            <hr class="hrp">
                             <div>Pr</div>
+                            <hr class="hrp">
                             <div>Rr</div>
+                            <hr class="hrp">
                             <div>TEMP</div>
+                            <hr class="hrp">
                             <div>SPO₂</div>
                         </div>
 

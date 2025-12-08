@@ -2,7 +2,9 @@
 .hr {
     border: 1px solid var(--border) !important;
 }
-
+.hrp{
+    border: 1px solid rgba(0, 0, 0, 0.336) !important;
+}
 .text-underline {
     text-decoration: underline;
 }
