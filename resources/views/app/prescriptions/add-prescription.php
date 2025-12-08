@@ -57,6 +57,19 @@
                                 <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
                             </div>
                         </div>
+
+                        <div class="accordion-title color-orange">علائم حیاطی</div>
+                        <div class="accordion-content-pre">
+                            <div class="child-accordioin">
+                                <div class="insert">
+                                    <div class="one">
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="center mt20">
                             <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
                                 استعلام بیمار

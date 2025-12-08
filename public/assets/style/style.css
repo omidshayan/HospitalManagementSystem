@@ -852,6 +852,14 @@ input:checked+.slider:before {
     margin: 0 auto;
     transition: all .3s ease-in-out;
 }
+.accordion-content-pre {
+    width: 90%;
+    height: 0;
+    overflow: hidden;
+    margin: 0 auto;
+    transition: all .3s ease-in-out;
+}
+
 
 .child-accordioin {
     width: 100%;
