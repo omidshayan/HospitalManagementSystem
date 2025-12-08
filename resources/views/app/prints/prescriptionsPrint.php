@@ -98,8 +98,19 @@ include_once('public/alerts/toastr.php');
 
                     <!-- drugs list -->
                     <div class="p-drugs-print">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>نام دارو</th>
+                                    <th>طریقه مصرف</th>
+                                    <th>مقدار مصرف هر نوبت</th>
+                                    <th>زمان مصرف</th>
+                                </tr>
+                            </thead>
+                        </table>
                         <?php
                         foreach ($items as $item) { ?>
+
                             <div class="p-drugs-items">
                                 <div>drug </div>
                                 <div>usage from</div>
