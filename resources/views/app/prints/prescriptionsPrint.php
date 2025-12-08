@@ -72,58 +72,18 @@ include_once('public/alerts/toastr.php');
     <!-- form print -->
     <div class="center bg-whith">
         <div class="item-print p10">
-            <div class="border-black">
-                <div class="pppp">نام مرکز</div>
-                <div class="center fs9 p5">شماره‌های تماس: <sapn class="fs12 bold">079999999 - 0700888888</sapn>
-                </div>
-                <hr class="hrb">
-                <!-- logo -->
 
-                <!-- end logo -->
-                <div class="d-flex justify-between align-center p2">
-                    <div class="center mr10">
-                        <div class="fs11">شماره فاکتور</div>
-                        <div class="fs11">(aaa)</div>
-                    </div>
-                    <div class="ml-10 fs11 text-left">
-                        <div>1404/82/5</div>
-                        <div>1404/82/5</div>
-                    </div>
-                </div>
-                <hr class="hrb">
-
-                <table id="order-invoice-table" class="order-invoice-print">
-                    <thead>
-                        <tr>
-                            <th>نام</th>
-                            <th>فی</th>
-                            <th class="w10">تعداد</th>
-                            <th>قیمت</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>dsfdf</td>
-                            <td>dsfdf</td>
-                            <td>dsfdf</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="d-flex justify-between plr10 fs14 p5">
-                    <div id="delivery-result" class="fs11"></div>
-                    <div id="customer-name" class="d-none fs11">مشتری: -</div>
-                </div>
-                <hr class="hrb d-none user-active">
-                <div id="customer-phone" class="d-none fs11 p5"></div>
-                <div id="customer-address" class="d-none fs11 p5"></div>
-
-                <hr class="hrb">
-                <div class="order-total text-right fs14">
-                    جمع کل: <span id="order-total" class="fs16">0</span>
-                    <span class="fs12">افغانی</span>
-                </div>
-                <hr class="hrb">
+            <!-- patient infos -->
+            <div class="p-patient-infos">
+                <span> نام مریض: احمد جان</span>
+                <span> سن: 25</span>
+                <span> تاریخ مراجعه: 1404/25/5</span>
             </div>
+
+
+
+
+
         </div>
     </div>
 

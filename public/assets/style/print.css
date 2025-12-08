@@ -5,12 +5,29 @@
         border: none !important;
     }
 
-    .pppp {
-        font-size: 50px !important;
-        text-align: right;
-        color: black;
-        font-weight: bold !important;
+    
+    .item-print {
+        background-color: white;
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto;
+        background-image: url('../img/img.jpg') !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
     }
+
+/* patient-infos */
+.p-patient-infos{
+    margin-top: 200px;
+    display: flex;
+    gap: 30px;
+    color: black;
+}
+
+
+
 
     @page {
         margin: 0;
@@ -32,17 +49,4 @@
             page-break-before: avoid;
             page-break-inside: avoid;
         }
-    }
-
-    .item-print {
-        background-color: white;
-        width: 210mm;
-        height: 297mm;
-        margin: 0 auto;
-        background-image: url('../img/img.jpg') !important;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        position: relative;
-        padding: 20px;
     }
