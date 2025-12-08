@@ -109,6 +109,7 @@ include_once('public/alerts/toastr.php');
                     </div>
                 </div>
 
+                <!-- left infos -->
                 <div class="p-left-infos">
 
                     <!-- doctor infos -->
@@ -118,7 +119,7 @@ include_once('public/alerts/toastr.php');
                     </div>
 
                     <!-- infos -->
-                    <div class="p-vital-signs mt50 fs12">
+                    <div class="p-vital-signs fs12">
                         <div>BP</div>
                         <div>Pr</div>
                         <div>Rr</div>

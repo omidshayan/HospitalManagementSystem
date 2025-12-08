@@ -33,6 +33,9 @@
 }
 .p-drugs-print{
     width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 .p-drugs-items{
     display: flex;
@@ -68,6 +71,7 @@
     justify-content: end;
     text-align: left;
     margin-left: 20px;
+    margin-top: 420px;
 }
 
     @page {
