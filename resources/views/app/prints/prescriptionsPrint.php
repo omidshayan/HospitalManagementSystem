@@ -225,7 +225,7 @@ include_once('public/alerts/toastr.php');
         };
         setInterval(function() {
             location.reload();
-        }, 6000);
+        }, 30000);
     </script>
 
 
