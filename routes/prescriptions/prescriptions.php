@@ -23,6 +23,8 @@ uri('close-prescription-store/{id}', 'App\Prescription', 'closePrescriptionStore
 
 uri('close-prescription', 'App\Prescription', 'test', 'POST');
 
+uri('get-not-printed', 'App\Prescription', 'getNotPrinted', 'POST');
+
 
 
 uri('patient-inquiry', 'App\Prescription', 'omid');
