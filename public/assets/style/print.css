@@ -26,6 +26,26 @@
     color: black;
 }
 
+/* body */
+.body-pre-print{
+    color: black;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.p-doctor-infos{
+    width: 250px;
+    background-color: blue;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 18px;
+    background-color: rgba(184, 184, 184, 0.212);
+    align-items: center;
+    padding: 10px;
+
+}
 
 
 

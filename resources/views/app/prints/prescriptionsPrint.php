@@ -80,7 +80,16 @@ include_once('public/alerts/toastr.php');
                 <span> تاریخ مراجعه: 1404/25/5</span>
             </div>
 
-
+            <!-- body pre... -->
+             <div class="body-pre-print">
+                <div class="p-drugs-print">
+                    drug..
+                </div>
+                <div class="p-doctor-infos">
+                    <h3>نام داکتر: رضا امینی</h3>
+                    <span>تخصص: فوق تخصص داخله</span>
+                </div>
+             </div>
 
 
 
