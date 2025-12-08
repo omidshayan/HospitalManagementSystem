@@ -122,8 +122,8 @@ include_once('public/alerts/toastr.php');
         </script>
     <?php endif; ?>
 
-    <div class="center mt10" onclick="printReceipt()">
-        print
+    <div class="center mt10 btn w120 color bold p20" onclick="printReceipt()">
+        چاپ مجدد
     </div>
 
     <!-- print -->
