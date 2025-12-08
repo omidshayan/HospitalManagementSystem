@@ -91,6 +91,9 @@
     .w120 {
         width: 120px !important;
     }
+    .w150 {
+        width: 150px !important;
+    }
 
     .bold {
         font-weight: bold;

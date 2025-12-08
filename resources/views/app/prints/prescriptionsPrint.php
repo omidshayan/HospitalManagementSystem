@@ -76,7 +76,7 @@ include_once('public/alerts/toastr.php');
     <?php if (!empty($prescription)) : ?>
 
         <div class="center bg-whith">
-            <div class="item-print p10">
+            <div class="item-print p10 d-none">
 
                 <!-- patient infos -->
                 <div class="p-patient-infos">
@@ -182,6 +182,8 @@ include_once('public/alerts/toastr.php');
         </script>
     <?php endif; ?>
 
+    <div class="btn w150 color bold center p10" id="checkPrescriptions">برسی دستی نسخه‌ها</div>
+
     <!-- print -->
     <script>
         function printReceipt() {
@@ -202,6 +204,10 @@ include_once('public/alerts/toastr.php');
         setInterval(() => {
             location.reload();
         }, 30000);
+
+        document.getElementById('checkPrescriptions').addEventListener('click', function() {
+            location.reload();
+        });
     </script>
 
 
