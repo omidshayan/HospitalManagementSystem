@@ -113,10 +113,10 @@ include_once('public/alerts/toastr.php');
                                 
                                 <div class="p-drugs-items">
                                 <tr class="p-color-item">
-                                    <td>fdsfd</td>
-                                    <td>fdsfd</td>
-                                    <td>fdsfd</td>
-                                    <td class="p5 drug-name-en">this is name for frugs and anit biutick for sardar </td>
+                                    <td><?=$item['usage_instruction']?></td>
+                                    <td><?=$item['dosage']?></td>
+                                    <td><?=$item['interval_time']?></td>
+                                    <td class="p5 drug-name-en"> <?=$item['drug_name']?></td>
                                 </tr>
                             </div>
 
