@@ -4,8 +4,18 @@
         box-sizing: border-box !important;
         border: none !important;
     }
-
-    
+.d-flex {
+    display: flex;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.pr8{
+    padding: 0 8px !important;
+}  
+.hrp{
+    border: 1px solid rgba(0, 0, 0, 0.336) !important;
+}
 .item-print {
     background-color: white;
     width: 210mm;
@@ -41,7 +51,31 @@
     justify-content: end;
     gap: 20px;
 }
-
+.p-color-item{
+    background-color: rgba(173, 173, 173, 0.171);
+}
+.drug-name-en{
+    direction: ltr;
+   text-align: justify;
+}
+.fs14 {
+    font-size: 14px;
+}
+.fs12 {
+    font-size: 12px !important;
+}
+.w80 {
+    width: 80px !important;
+}
+.p5 {
+    padding: 5px !important;
+}
+.w120{
+    width: 120px !important;
+}
+.bold {
+    font-weight: bold;
+}
 /* body */
 .body-pre-print{
     color: black;
@@ -49,6 +83,9 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
+}
+.border-r{
+    border-right: 1px solid rgba(0, 0, 0, 0.541) !important;
 }
 .p-left-infos{
     width: 30%;
@@ -63,6 +100,13 @@
     align-items: center;
 
 }
+.drug-name-en{
+    direction: ltr;
+   text-align: justify;
+}
+.dir-left{
+    direction: ltr;
+}
 .p-vital-signs{
     display: flex;
     flex-direction: column;
@@ -72,7 +116,9 @@
     margin-left: 20px;
     margin-top: 400px;
 }
-
+.p10 {
+    padding: 10px;
+}
     @page {
         margin: 0;
             size: 210mm 297mm;
