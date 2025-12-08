@@ -32,14 +32,29 @@ class Prints extends App
         $this->middleware(true, true, 'general', true);
 
         $prescription = $this->db->select(
-            'SELECT p.*, e.employee_name
-            FROM prescriptions p
-            JOIN employees e ON e.id = p.doctor_id
-            WHERE p.status = ?
-            ORDER BY p.id ASC
-            LIMIT 1',
-                    [2]
-             )->fetch();
+            'SELECT p.*, 
+            e.employee_name,
+            e.expertise
+     FROM prescriptions p
+     JOIN employees e ON e.id = p.doctor_id
+     WHERE p.status = ?
+     ORDER BY p.id ASC
+     LIMIT 1',
+            [2]
+        )->fetch();
+
+
+
+        // if ($prescription) {
+        //     require_once('print-template.php');
+
+        //     $this->db->update(
+        //         'prescriptions',
+        //         ['status' => 3],     // چاپ شده
+        //         'id = ?',
+        //         [$prescription['id']]
+        //     );
+        // }
 
 
         $prescriptions = $this->db->select(
