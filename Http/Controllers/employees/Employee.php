@@ -104,7 +104,14 @@ class Employee extends App
     public function showEmployees()
     {
         $this->middleware(true, true, 'general');
-        $employees = $this->db->select('SELECT * FROM employees ORDER BY id DESC')->fetchAll();
+
+        $id = $this->currentUser();
+
+        $employees = $this->db->select(
+            'SELECT * FROM employees WHERE id != ? ORDER BY id DESC',
+            [$id['id']]
+        )->fetchAll();
+
         require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
         exit();
     }
