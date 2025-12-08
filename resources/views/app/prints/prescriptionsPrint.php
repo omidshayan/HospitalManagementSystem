@@ -75,9 +75,19 @@ include_once('public/alerts/toastr.php');
 
             <!-- patient infos -->
             <div class="p-patient-infos">
-                <span> نام مریض: احمد جان</span>
-                <span> سن: 25</span>
-                <span> تاریخ مراجعه: 1404/25/5</span>
+                <span>
+                    <span class="fs14">نام مریض:</span>
+                    <span class="bold"> حجی شیخ مندٌمر هراتی</span>
+                </span>
+                <span>
+                    <span class="fs14">سن: </span>
+                    <span class="bold">25</span>
+                </span>
+
+                <span>
+                    <span class="fs14">تاریخ مراجعه: </span>
+                    <span class="bold">1404/25/12</span>
+                </span>
             </div>
 
             <!-- body pre... -->
