@@ -17,7 +17,6 @@ include_once('resources/views/scripts/show-img-modal.php');
     <div class="content-title"> جزئیات کارمند : <?= $employee['employee_name'] ?></div>
     <!-- start page content -->
     <div class="box-container">
-
         <div class="accordion-title color-orange">مشخصات عمومی</div>
         <div class="accordion-content">
             <div class="child-accordioin">
@@ -81,44 +80,6 @@ include_once('resources/views/scripts/show-img-modal.php');
 
             </div>
         </div>
-
-        <!-- <div class="accordion-title color-orange">اطلاعات مالی و معاش</div>
-        <div class="accordion-content">
-            <div class="child-accordioin">
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">نوع حضور: </div>
-                    <div class="info-detaile">
-                        <?php if ($employee['agreement_type'] == 1) {
-                            echo 'پارت تایم';
-                        } elseif ($employee['agreement_type'] == 2) {
-                            echo 'فول تایم';
-                        } else {
-                            echo 'قراردادی';
-                        } ?>
-                    </div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">نوع معاش: </div>
-                    <div class="info-detaile"><?= ($employee['type_salary'] == 1) ? 'ساعتی' : 'ماهوار' ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">مقدار معاش: </div>
-                    <div class="info-detaile"><?= $employee['salary_price'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">کل دریافتی: </div>
-                    <div class="info-detaile"><?= $employee['salary_price'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">طلبکار: </div>
-                    <div class="info-detaile"><?= $employee['salary_price'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">بدهکار: </div>
-                    <div class="info-detaile"><?= $employee['salary_price'] ?></div>
-                </div>
-            </div>
-        </div> -->
 
         <a href="<?= url('employees') ?>">
             <div class="btn center p5">برگشت</div>
