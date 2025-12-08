@@ -43,6 +43,17 @@ class Prints extends App
             [2]
         )->fetch();
 
+        $items = [];
+
+        if ($prescription) {
+            $items = $this->db->select(
+                'SELECT *
+         FROM prescription_items
+         WHERE prescription_id = ?
+         ORDER BY id ASC',
+                [$prescription['id']]
+            )->fetchAll();
+        }
 
 
         // if ($prescription) {

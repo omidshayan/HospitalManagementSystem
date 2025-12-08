@@ -98,8 +98,9 @@ include_once('public/alerts/toastr.php');
 
                     <!-- drugs list -->
                     <div class="p-drugs-print">
+                        
                         <div class="p-drugs-items">
-                            <div>drug name</div>
+                            <div>drug </div>
                             <div>usage from</div>
                             <div>dosage</div>
                             <div>sadfdsfdsf</div>
