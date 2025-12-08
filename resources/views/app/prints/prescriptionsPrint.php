@@ -22,6 +22,7 @@ include_once('public/alerts/toastr.php');
                     <th>نام بیمار</th>
                     <th>تاریخ ثبت</th>
                     <th>جزئیات</th>
+                    <th>چاپ</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,6 +46,7 @@ include_once('public/alerts/toastr.php');
                                 </svg>
                             </a>
                         </td>
+                        <td><a href="<?=url('prescription-print/' . $item['id'])?>" class="color text-underline">چاپ</a></td>
                     </tr>
                 <?php
                     $number++;
