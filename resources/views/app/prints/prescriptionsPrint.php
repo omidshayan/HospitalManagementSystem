@@ -5,7 +5,7 @@ include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
 <script>
-    
+
 </script>
 <div class="content">
     <div class="content-title">نمایش نسخه‌ها
@@ -72,65 +72,67 @@ include_once('public/alerts/toastr.php');
     <!-- end page content -->
 
     <!-- form print -->
-    <div class="center bg-whith">
-        <div class="item-print p10">
+    <?php if (!empty($noPrintPrescriptions)) : ?>
 
-            <!-- patient infos -->
-            <div class="p-patient-infos">
-                <span>
-                    <span class="fs14">نام مریض:</span>
-                    <span class="bold"> <?=$noPrintPrescriptions['patient_name']?></span>
-                </span>
-                <span>
-                    <span class="fs14">سن: </span>
-                    <span class="bold">25</span>
-                </span>
+        <div class="center bg-whith">
+            <div class="item-print p10">
 
-                <span>
-                    <span class="fs14">تاریخ مراجعه: </span>
-                    <span class="bold">1404/25/12</span>
-                </span>
-            </div>
+                <!-- patient infos -->
+                <div class="p-patient-infos">
+                    <span>
+                        <span class="fs14">نام مریض:</span>
+                        <span class="bold"> <?= $noPrintPrescriptions['patient_name'] ?></span>
+                    </span>
+                    <span>
+                        <span class="fs14">سن: </span>
+                        <span class="bold">25</span>
+                    </span>
 
-            <!-- body pre... -->
-            <div class="body-pre-print">
-
-                <!-- drugs list -->
-                <div class="p-drugs-print">
-                    <div class="p-drugs-items">
-                        <div>drug name</div>
-                        <div>usage from</div>
-                        <div>dosage</div>
-                        <div>sadfdsfdsf</div>
-                    </div>
+                    <span>
+                        <span class="fs14">تاریخ مراجعه: </span>
+                        <span class="bold">1404/25/12</span>
+                    </span>
                 </div>
 
-                <!-- left infos -->
-                <div class="p-left-infos">
+                <!-- body pre... -->
+                <div class="body-pre-print">
 
-                    <!-- doctor infos -->
-                    <div class="p-doctor-infos">
-                        <h3>نام داکتر: رضا امینی</h3>
-                        <span class="fs15">تخصص: فوق تخصص داخله</span>
+                    <!-- drugs list -->
+                    <div class="p-drugs-print">
+                        <div class="p-drugs-items">
+                            <div>drug name</div>
+                            <div>usage from</div>
+                            <div>dosage</div>
+                            <div>sadfdsfdsf</div>
+                        </div>
                     </div>
 
-                    <!-- infos -->
-                    <div class="p-vital-signs fs12">
-                        <div>BP</div>
-                        <div>Pr</div>
-                        <div>Rr</div>
-                        <div>TEMP</div>
-                        <div>Diagnose</div>
+                    <!-- left infos -->
+                    <div class="p-left-infos">
+
+                        <!-- doctor infos -->
+                        <div class="p-doctor-infos">
+                            <h3>نام داکتر: رضا امینی</h3>
+                            <span class="fs15">تخصص: فوق تخصص داخله</span>
+                        </div>
+
+                        <!-- infos -->
+                        <div class="p-vital-signs fs12">
+                            <div>BP</div>
+                            <div>Pr</div>
+                            <div>Rr</div>
+                            <div>TEMP</div>
+                            <div>Diagnose</div>
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
-
         </div>
-    </div>
 
-
+    <?php endif; ?>
 
     <div class="center mt10" onclick="printReceipt()">
         print
