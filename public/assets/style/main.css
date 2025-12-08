@@ -366,7 +366,9 @@
 .p10 {
     padding: 10px;
 }
-
+.pr8{
+    padding: 0 8px !important;
+}
 .p6 {
     padding: 6px;
 }
