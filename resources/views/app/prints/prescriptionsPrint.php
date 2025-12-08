@@ -5,73 +5,12 @@ include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
 
-<script>
-    let queue = [];
-    let isPrinting = false;
-
-    // هر ۵ ثانیه نسخه‌های جدید را می‌گیرد
-    setInterval(() => {
-        fetch('get-not-printed', {
-                method: 'POST'
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.length > 0) {
-                    // اضافه کردن نسخه‌های جدید به صف
-                    queue.push(...data);
-                    processQueue();
-                }
-            })
-            .catch(err => console.log(err));
-    }, 1000);
-
-    // تابع پردازش صف
-    function processQueue() {
-        if (isPrinting) return; // اگر مشغول چاپ است، صبر کن
-        if (queue.length === 0) return; // اگر صف خالی است، تمام
-
-        isPrinting = true;
-
-        // نسخه اول صف
-        let item = queue.shift();
-
-        printPrescription(item)
-            .then(() => markAsPrinted(item.id))
-            .then(() => {
-                isPrinting = false;
-                processQueue(); // برو نسخه بعدی را چاپ کن
-            });
-    }
-
-    // تابع چاپ نسخه
-    function printPrescription(item) {
-        return new Promise(resolve => {
-            console.log("چاپ شد:", item);
-            // اینجا تابع چاپ واقعی پرینتر را صدا می‌زنی
-            setTimeout(resolve, 1000);
-        });
-    }
-
-    // ارسال به سرور: این نسخه چاپ شده
-    function markAsPrinted(id) {
-        return fetch('/update-printed', {
-            method: 'POST',
-            body: JSON.stringify({
-                id: id
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-    }
-</script>
-
 
 <div class="content">
     <div class="content-title">نمایش نسخه‌ها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
+
 
     <!-- show employees -->
     <div class="box-container">

@@ -31,7 +31,14 @@ class Prints extends App
     {
         $this->middleware(true, true, 'general', true);
 
-
+        $noPrintPrescriptions = $this->db->select(
+            'SELECT p.*, e.employee_name
+     FROM prescriptions p
+     JOIN employees e ON e.id = p.doctor_id
+     WHERE p.status = ?',
+            [2]
+        )->fetchAll();
+            
 
         $prescriptions = $this->db->select(
             'SELECT p.*, e.employee_name
@@ -43,26 +50,6 @@ class Prints extends App
 
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
     }
-
-    // get not printed
-public function getNotPrinted()
-{
-    $this->middleware(true, true, 'general', true);
-
-    $noPrintPrescriptions = $this->db->select(
-        'SELECT p.*, e.employee_name
-         FROM prescriptions p
-         JOIN employees e ON e.id = p.doctor_id
-         WHERE p.status = ?',
-        [2]
-    )->fetchAll();
-
-header('Content-Type: application/json');
-echo json_encode($noPrintPrescriptions);
-exit; // خیلی مهم
-
-}
-
 
     // print invoice
     public function autoPrint()
