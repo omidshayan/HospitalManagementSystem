@@ -97,35 +97,25 @@ include_once('public/alerts/toastr.php');
                         <div>dosage</div>
                         <div>sadfdsfdsf</div>
                     </div>
-                    <div class="p-drugs-items">
-                        <div>drug name</div>
-                        <div>usage from</div>
-                        <div>dosage</div>
-                        <div>sadfdsfdsf</div>
-                    </div>
-                    <div class="p-drugs-items">
-                        <div>drug name</div>
-                        <div>usage from</div>
-                        <div>dosage</div>
-                        <div>sadfdsfdsf</div>
-                    </div>
-                    <div class="p-drugs-items">
-                        <div>drug name</div>
-                        <div>usage from</div>
-                        <div>dosage</div>
-                        <div>sadfdsfdsf</div>
-                    </div>
-                    <div class="p-drugs-items">
-                        <div>drug name</div>
-                        <div>usage from</div>
-                        <div>dosage</div>
-                        <div>sadfdsfdsf</div>
-                    </div>
                 </div>
 
-                <div class="p-doctor-infos">
-                    <h3>نام داکتر: رضا امینی</h3>
-                    <span class="fs15">تخصص: فوق تخصص داخله</span>
+                <div class="p-left-infos">
+
+                    <!-- doctor infos -->
+                    <div class="p-doctor-infos">
+                        <h3>نام داکتر: رضا امینی</h3>
+                        <span class="fs15">تخصص: فوق تخصص داخله</span>
+                    </div>
+
+                    <!-- infos -->
+                    <div class="p-vital-signs mt50 fs12">
+                        <div>BP</div>
+                        <div>Pr</div>
+                        <div>Rr</div>
+                        <div>TEMP</div>
+                        <div>Diagnose</div>
+                    </div>
+
                 </div>
 
             </div>

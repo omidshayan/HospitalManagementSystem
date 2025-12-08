@@ -6,17 +6,17 @@
     }
 
     
-    .item-print {
-        background-color: white;
-        width: 210mm;
-        height: 297mm;
-        margin: 0 auto;
-        background-image: url('../img/img.jpg') !important;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        position: relative;
-    }
+.item-print {
+    background-color: white;
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    background-image: url('../img/img.jpg') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
 
 /* patient-infos */
 .p-patient-infos{
@@ -24,10 +24,10 @@
     display: flex;
     gap: 30px;
     color: black;
+    margin-right: 30px;
 }
 .p-drugs-print{
     width: 70%;
-    background-color: red;
 }
 .p-drugs-items{
     display: flex;
@@ -43,21 +43,28 @@
     justify-content: space-between;
     gap: 10px;
 }
-.p-doctor-infos{
+.p-left-infos{
     width: 30%;
-    background-color: blue;
+    gap: 20px;
+}
+.p-doctor-infos{
     display: flex;
     justify-content: start;
     flex-direction: column;
     gap: 12px;
     font-size: 18px;
-    background-color: rgba(184, 184, 184, 0.212);
     align-items: center;
     padding: 10px;
 
 }
-
-
+.p-vital-signs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: end;
+    text-align: left;
+    margin-left: 20px;
+}
 
     @page {
         margin: 0;
