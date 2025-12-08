@@ -82,8 +82,6 @@
                         </div>
 
 
-
-
                         <div class="center mt20">
                             <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
                                 استعلام بیمار
