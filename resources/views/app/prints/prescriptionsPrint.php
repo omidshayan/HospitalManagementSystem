@@ -127,7 +127,7 @@ include_once('public/alerts/toastr.php');
                     </div>
 
                     <!-- left infos -->
-                    <div class="p-left-infos">
+                    <div class="p-left-infos border-r">
 
                         <!-- doctor infos -->
                         <div class="p-doctor-infos">

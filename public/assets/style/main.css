@@ -200,7 +200,9 @@
 .bg-main {
     background-color: var(--main);
 }
-
+.border-r{
+    border-right: 1px solid rgba(0, 0, 0, 0.541) !important;
+}
 /* fonts */
 .fs15 {
     font-size: 15px !important;
