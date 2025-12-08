@@ -8,7 +8,6 @@ use database\DataBase;
 
 class Language extends App
 {
-
     public function dari()
     {
         setcookie("lang", 'fa', time() + (86400 * 30 * 6));

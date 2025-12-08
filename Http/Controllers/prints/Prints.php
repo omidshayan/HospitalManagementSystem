@@ -31,13 +31,7 @@ class Prints extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $noPrintPrescriptions = $this->db->select(
-            'SELECT p.*, e.employee_name
-     FROM prescriptions p
-     JOIN employees e ON e.id = p.doctor_id
-     WHERE p.status = ?',
-            [2]
-        )->fetchAll();
+
 
         $prescriptions = $this->db->select(
             'SELECT p.*, e.employee_name
@@ -51,22 +45,23 @@ class Prints extends App
     }
 
     // get not printed
-    public function getNotPrinted()
-    {
-        $this->middleware(true, true, 'general', true);
+public function getNotPrinted()
+{
+    $this->middleware(true, true, 'general', true);
 
-        $noPrintPrescriptions = $this->db->select(
-            'SELECT p.*, e.employee_name
+    $noPrintPrescriptions = $this->db->select(
+        'SELECT p.*, e.employee_name
          FROM prescriptions p
          JOIN employees e ON e.id = p.doctor_id
          WHERE p.status = ?',
-            [2]  // فرضاً 2 یعنی "چاپ‌نشده"
-        )->fetchAll();
+        [2]
+    )->fetchAll();
 
-        header('Content-Type: application/json');
-        echo json_encode($noPrintPrescriptions);
-        exit;
-    }
+header('Content-Type: application/json');
+echo json_encode($noPrintPrescriptions);
+exit; // خیلی مهم
+
+}
 
 
     // print invoice

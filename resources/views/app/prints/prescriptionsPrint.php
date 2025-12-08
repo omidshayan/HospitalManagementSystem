@@ -11,11 +11,12 @@ include_once('public/alerts/toastr.php');
 
     // هر ۵ ثانیه نسخه‌های جدید را می‌گیرد
     setInterval(() => {
-        fetch('/get-not-printed', {
+        fetch('get-not-printed', {
                 method: 'POST'
             })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 if (data.length > 0) {
                     // اضافه کردن نسخه‌های جدید به صف
                     queue.push(...data);
@@ -23,7 +24,7 @@ include_once('public/alerts/toastr.php');
                 }
             })
             .catch(err => console.log(err));
-    }, 5000);
+    }, 1000);
 
     // تابع پردازش صف
     function processQueue() {
@@ -71,7 +72,6 @@ include_once('public/alerts/toastr.php');
     <div class="content-title">نمایش نسخه‌ها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
-
 
     <!-- show employees -->
     <div class="box-container">
