@@ -84,12 +84,12 @@ include_once('public/alerts/toastr.php');
                     </span>
                     <span>
                         <span class="fs14">سن: </span>
-                        <span class="bold"><?=$prescription['age']?></span>
+                        <span class="bold"><?= $prescription['age'] ?></span>
                     </span>
 
                     <span>
                         <span class="fs14">تاریخ مراجعه: </span>
-                        <span class="bold">1404/25/12</span>
+                        <span class="bold"><?= jdate('Y/m/d', strtotime($prescription['created_at'])) ?></span>
                     </span>
                 </div>
 
