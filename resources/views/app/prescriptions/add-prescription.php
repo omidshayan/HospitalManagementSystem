@@ -62,12 +62,31 @@
                         <div class="accordion-content-pre">
                             <div class="child-accordioin">
                                 <div class="insert">
-                                    <div class="one">
-                                        <input type="text">
-                                    </div>
+                                        <div class="one m-auto w97d mb3">
+                                            <div class="label-form fs14"> BP </div>
+                                            <input type="text" class="h27" placeholder=" Blood Pressure  ">
+                                        </div>
+                                        <div class="one m-auto w97d mb3">
+                                            <div class="label-form fs14"> PR </div>
+                                            <input type="text" class="h27" placeholder=" Pulse Rate  ">
+                                        </div>
+                                        <div class="one m-auto w97d mb3">
+                                            <div class="label-form fs14"> RR </div>
+                                            <input type="text" class="h27" placeholder=" Respiratory Rate  ">
+                                        </div>
+                                        <div class="one m-auto w97d mb3">
+                                            <div class="label-form fs14"> TEMP </div>
+                                            <input type="text" class="h27" placeholder=" Temperature  ">
+                                        </div>
+                                        <div class="one m-auto w97d mb3">
+                                            <div class="label-form fs14"> SPO₂ </div>
+                                            <input type="text" class="h27" placeholder=" Oxygen Saturation  ">
+                                        </div>
                                 </div>
                             </div>
                         </div>
+
+
 
 
                         <div class="center mt20">

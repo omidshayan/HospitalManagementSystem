@@ -272,7 +272,7 @@
 }
 
 .m-auto {
-    margin: 0 auto;
+    margin: 0 auto !important;
 }
 
 .m0 {
@@ -303,7 +303,9 @@
 .w100 {
     width: 100% !important;
 }
-
+.w97d{
+    width: 97% !important;
+}
 .w17 {
     width: 17px;
 }
@@ -334,7 +336,9 @@
 .w200 {
     width: 200px;
 }
-
+.h27{
+    height: 27px !important;
+}
 .h50 {
     height: 50px !important;
 }
