@@ -98,13 +98,18 @@ include_once('public/alerts/toastr.php');
 
                     <!-- drugs list -->
                     <div class="p-drugs-print">
-                        
-                        <div class="p-drugs-items">
-                            <div>drug </div>
-                            <div>usage from</div>
-                            <div>dosage</div>
-                            <div>sadfdsfdsf</div>
-                        </div>
+                        <?php
+                        foreach ($items as $item) { ?>
+                            <div class="p-drugs-items">
+                                <div>drug </div>
+                                <div>usage from</div>
+                                <div>dosage</div>
+                                <div>sadfdsfdsf</div>
+                            </div>
+
+                        <?php }
+                        ?>
+
                     </div>
 
                     <!-- left infos -->
@@ -112,8 +117,8 @@ include_once('public/alerts/toastr.php');
 
                         <!-- doctor infos -->
                         <div class="p-doctor-infos">
-                            <h3>نام داکتر: <?=$prescription['employee_name']?></h3>
-                            <span class="fs14 bold">تخصص: <?=$prescription['expertise']?></span>
+                            <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
+                            <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
                         </div>
 
                         <!-- infos -->
