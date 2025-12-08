@@ -104,6 +104,7 @@ include_once('public/alerts/toastr.php');
                                     <th class="w80 p5">طریقه مصرف</th>
                                     <th class="w120">مقدار مصرف هر نوبت</th>
                                     <th class="w80">زمان مصرف</th>
+                                    <th class="">تعداد</th>
                                     <th class="">نام دارو</th>
                                 </tr>
                             </thead>
@@ -116,6 +117,7 @@ include_once('public/alerts/toastr.php');
                                             <td><?= $item['usage_instruction'] ?></td>
                                             <td><?= $item['dosage'] ?></td>
                                             <td><?= $item['interval_time'] ?></td>
+                                            <td><?= $this->convertEnNumber($item['drug_count']) ?></td>
                                             <td class="p5 drug-name-en "> <?= $item['drug_name'] ?></td>
                                         </tr>
                                     </div>
