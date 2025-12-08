@@ -84,7 +84,7 @@ include_once('public/alerts/toastr.php');
                     </span>
                     <span>
                         <span class="fs14">سن: </span>
-                        <span class="bold"><?= $prescription['age'] ?></span>
+                        <span class="bold"><?= $this->convertEnNumber($prescription['age']) ?></span>
                     </span>
 
                     <span>
@@ -110,15 +110,15 @@ include_once('public/alerts/toastr.php');
                             <tbody>
                                 <?php
                                 foreach ($items as $item) { ?>
-                                
-                                <div class="p-drugs-items">
-                                <tr class="p-color-item fs14">
-                                    <td><?=$item['usage_instruction']?></td>
-                                    <td><?=$item['dosage']?></td>
-                                    <td><?=$item['interval_time']?></td>
-                                    <td class="p5 drug-name-en "> <?=$item['drug_name']?></td>
-                                </tr>
-                            </div>
+
+                                    <div class="p-drugs-items">
+                                        <tr class="p-color-item fs14">
+                                            <td><?= $item['usage_instruction'] ?></td>
+                                            <td><?= $item['dosage'] ?></td>
+                                            <td><?= $item['interval_time'] ?></td>
+                                            <td class="p5 drug-name-en "> <?= $item['drug_name'] ?></td>
+                                        </tr>
+                                    </div>
 
                                 <?php }
                                 ?>
@@ -138,27 +138,27 @@ include_once('public/alerts/toastr.php');
                         <!-- infos -->
                         <div class="p-vital-signs fs12">
                             <div class="d-flex justify-between pr8">
-                                <span><?=$prescription['bp']?></span> 
-                                <span>BP</span> 
+                                <span><?= $prescription['bp'] ?></span>
+                                <span>BP</span>
                             </div>
                             <hr class="hrp">
                             <div class="d-flex justify-between pr8">
-                                <span><?=$prescription['pr']?></span>
+                                <span><?= $prescription['pr'] ?></span>
                                 <span>Pr</span>
                             </div>
                             <hr class="hrp">
                             <div class="d-flex justify-between pr8">
-                                <span><?=$prescription['rr']?></span>
+                                <span><?= $prescription['rr'] ?></span>
                                 <span>Rr</span>
                             </div>
                             <hr class="hrp">
                             <div class="d-flex justify-between pr8">
-                                <span><?=$prescription['temp']?></span>
+                                <span><?= $prescription['temp'] ?></span>
                                 <span>TEMP</span>
                             </div>
                             <hr class="hrp">
                             <div class="d-flex justify-between pr8">
-                                <span><?=$prescription['spo2']?></span>
+                                <span><?= $prescription['spo2'] ?></span>
                                 <span>SPO₂</span>
                             </div>
                         </div>
