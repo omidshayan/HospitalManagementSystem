@@ -1,12 +1,9 @@
 <?php
-require_once 'Http/Controllers/capital/Capital.php';
+require_once 'Http/Controllers/profile/Profile.php';
 
 //  profile routes
-uri('capital', 'App\Capital', 'capital');
-
-
-
-// uri('edit-password-profile/{id}', 'App\Profile', 'changePasswordStore', 'POST');
+uri('profile', 'App\Profile', 'profile');
+uri('edit-store-profile/{id}', 'App\Profile', 'changePasswordStore', 'POST');
 
 
 
