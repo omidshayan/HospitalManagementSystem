@@ -20,7 +20,6 @@ include_once('public/alerts/toastr.php');
     <!-- start page content -->
     <div class="box-container">
         <div class="insert">
-            <form id="myForm" action="position-store" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
@@ -29,7 +28,6 @@ include_once('public/alerts/toastr.php');
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <input type="submit" id="submit" value="ثــبــت" class="btn bold" />
-            </form>
         </div>
     </div>
 
