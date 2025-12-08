@@ -63,19 +63,19 @@
                             <div class="child-accordioin">
                                 <div class="insert dir-left mt5">
                                         <div class="one m-auto w97d mb3">
-                                            <input type="text" placeholder=" Blood Pressure  ">
+                                            <input type="text" name="bp" placeholder=" Blood Pressure  ">
                                         </div>
                                         <div class="one m-auto w97d mb3">
-                                            <input type="text" placeholder=" Pulse Rate  ">
+                                            <input type="text" name="pr" placeholder=" Pulse Rate  ">
                                         </div>
                                         <div class="one m-auto w97d mb3">
-                                            <input type="text" placeholder=" Respiratory Rate  ">
+                                            <input type="text" name="rr" placeholder=" Respiratory Rate  ">
                                         </div>
                                         <div class="one m-auto w97d mb3">
-                                            <input type="text" placeholder=" Temperature  ">
+                                            <input type="text" name="temp" placeholder=" Temperature  ">
                                         </div>
                                         <div class="one m-auto w97d mb3">
-                                            <input type="text" placeholder=" Oxygen Saturation  ">
+                                            <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
                                         </div>
                                 </div>
                             </div>
