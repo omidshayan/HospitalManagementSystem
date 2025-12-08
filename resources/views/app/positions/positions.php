@@ -24,7 +24,7 @@ include_once('public/alerts/toastr.php');
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="name" class="checkInput" value="<?= old('name') ?>" placeholder="نام وظیفه را وارد نمایید" autocomplete="off" autofocus/>
+                        <input type="text" name="name" class="checkInput" value="<?= old('name') ?>" placeholder="نام وظیفه را وارد نمایید" autocomplete="off" autofocus disabled/>
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
