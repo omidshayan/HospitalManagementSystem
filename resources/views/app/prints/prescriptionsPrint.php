@@ -71,7 +71,7 @@ include_once('public/alerts/toastr.php');
     <!-- end page content -->
 
     <!-- form print -->
-    <?php if (!empty($noPrintPrescriptions)) : ?>
+    <?php if (!empty($prescription)) : ?>
 
         <div class="center bg-whith">
             <div class="item-print p10">
@@ -80,11 +80,11 @@ include_once('public/alerts/toastr.php');
                 <div class="p-patient-infos">
                     <span>
                         <span class="fs14">نام مریض:</span>
-                        <span class="bold"> <?= $noPrintPrescriptions['patient_name'] ?></span>
+                        <span class="bold"> <?= $prescription['patient_name'] ?></span>
                     </span>
                     <span>
                         <span class="fs14">سن: </span>
-                        <span class="bold">25</span>
+                        <span class="bold"><?=$prescription['']?></span>
                     </span>
 
                     <span>
