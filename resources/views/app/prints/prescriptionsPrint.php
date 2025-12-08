@@ -46,7 +46,7 @@ include_once('public/alerts/toastr.php');
                                 </svg>
                             </a>
                         </td>
-                        <td><a href="<?=url('prescription-item-print/' . $item['id'])?>" target="_blank" class="color text-underline">چاپ</a></td>
+                        <td><a href="<?= url('prescription-item-print/' . $item['id']) ?>" target="_blank" class="color text-underline">چاپ</a></td>
                     </tr>
                 <?php
                     $number++;
@@ -198,6 +198,10 @@ include_once('public/alerts/toastr.php');
                 document.body.innerHTML = original;
             }
         }
+
+        setInterval(() => {
+            location.reload();
+        }, 30000);
     </script>
 
 
