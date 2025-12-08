@@ -75,7 +75,7 @@ include_once('public/alerts/toastr.php');
             <div class="table-info fs14">تعداد کل: <?= count($employees) ?></div>
             <?php
             if (count($employees) == null) { ?>
-                <div class="center">
+                <div class="center fs14 color-red">
                     <i class="fa fa-comment"></i>
                     <?= 'اطلاعاتی ثبت نشده است' ?>
                 </div>
