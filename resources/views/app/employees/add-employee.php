@@ -26,11 +26,11 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">رمزعبور<?= _star ?> </div>
-                            <input type="password" class="checkInput" id="salary_price" name="password" value="" placeholder="رمزعبور را وارد نمایید" />
+                            <input type="password" class="checkInput" id="salary_price" name="password" placeholder="رمزعبور را وارد نمایید" />
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">مقدار معاش </div>
-                            <input type="number" name="salary_price" value="" placeholder="مقدار معاش را وارد نمایید" />
+                            <div class="label-form mb5 fs14">تخصص </div>
+                            <input type="text" name="expertise" placeholder="تخصص را وارد نمایید" />
                         </div>
                     </div>
                     <div class="inputs d-flex">
