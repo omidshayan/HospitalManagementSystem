@@ -81,15 +81,54 @@ include_once('public/alerts/toastr.php');
             </div>
 
             <!-- body pre... -->
-             <div class="body-pre-print">
+            <div class="body-pre-print">
+
+                <!-- drugs list -->
                 <div class="p-drugs-print">
-                    drug..
+                    <div class="p-drugs-items">
+                        <div>drug name</div>
+                        <div>usage from</div>
+                        <div>dosage</div>
+                        <div>sadfdsfdsf</div>
+                    </div>
+                    <div class="p-drugs-items">
+                        <div>drug name</div>
+                        <div>usage from</div>
+                        <div>dosage</div>
+                        <div>sadfdsfdsf</div>
+                    </div>
+                    <div class="p-drugs-items">
+                        <div>drug name</div>
+                        <div>usage from</div>
+                        <div>dosage</div>
+                        <div>sadfdsfdsf</div>
+                    </div>
+                    <div class="p-drugs-items">
+                        <div>drug name</div>
+                        <div>usage from</div>
+                        <div>dosage</div>
+                        <div>sadfdsfdsf</div>
+                    </div>
+                    <div class="p-drugs-items">
+                        <div>drug name</div>
+                        <div>usage from</div>
+                        <div>dosage</div>
+                        <div>sadfdsfdsf</div>
+                    </div>
+                    <div class="p-drugs-items">
+                        <div>drug name</div>
+                        <div>usage from</div>
+                        <div>dosage</div>
+                        <div>sadfdsfdsf</div>
+                    </div>
                 </div>
+
                 <div class="p-doctor-infos">
                     <h3>نام داکتر: رضا امینی</h3>
-                    <span>تخصص: فوق تخصص داخله</span>
+                    <span class="fs15">تخصص: فوق تخصص داخله</span>
                 </div>
-             </div>
+
+            </div>
 
 
 

@@ -25,16 +25,26 @@
     gap: 30px;
     color: black;
 }
+.p-drugs-print{
+    width: 70%;
+    background-color: red;
+}
+.p-drugs-items{
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
 
 /* body */
 .body-pre-print{
     color: black;
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
 }
 .p-doctor-infos{
-    width: 250px;
+    width: 30%;
     background-color: blue;
     display: flex;
     justify-content: start;
