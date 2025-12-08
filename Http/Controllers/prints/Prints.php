@@ -33,13 +33,13 @@ class Prints extends App
 
         $prescription = $this->db->select(
             'SELECT p.*, e.employee_name
-     FROM prescriptions p
-     JOIN employees e ON e.id = p.doctor_id
-     WHERE p.status = ?
-     ORDER BY p.id ASC
-     LIMIT 1',
-            [2]
-        )->fetch();
+            FROM prescriptions p
+            JOIN employees e ON e.id = p.doctor_id
+            WHERE p.status = ?
+            ORDER BY p.id ASC
+            LIMIT 1',
+                    [2]
+             )->fetch();
 
 
         $prescriptions = $this->db->select(

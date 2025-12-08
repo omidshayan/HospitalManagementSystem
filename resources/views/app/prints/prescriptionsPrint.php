@@ -111,7 +111,7 @@ include_once('public/alerts/toastr.php');
 
                         <!-- doctor infos -->
                         <div class="p-doctor-infos">
-                            <h3>نام داکتر: رضا امینی</h3>
+                            <h3>نام داکتر: <?=$prescription['employee_name']?></h3>
                             <span class="fs15">تخصص: فوق تخصص داخله</span>
                         </div>
 
