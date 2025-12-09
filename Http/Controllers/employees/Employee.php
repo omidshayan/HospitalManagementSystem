@@ -55,8 +55,7 @@ class Employee extends App
         $employeeData['password'] = $this->hash($employeeData['password']);
 
         // آپلود عکس اگر هست
-        $this->handleImageUpload($request['image'] ?? null, 'images/employees');
-
+        $this->handleImageUpload($request['image'], 'images/employees');
         // ذخیره کارمند
         $this->db->insert('employees', array_keys($employeeData), $employeeData);
 
@@ -65,18 +64,20 @@ class Employee extends App
             ->select("SELECT id FROM employees ORDER BY id DESC LIMIT 1")
             ->fetch()['id'];
 
-        // تعریف ارتباط بخش ها با پرنت‌ها
         $permissionMap = [
             'paitents'           => 'parentPaitents',
             'addPrescription'    => 'parentPrescription',
             'showPrescription'   => 'parentPrescription',
+
             'addEmployee'        => 'parentEmployee',
             'showEmployees'      => 'parentEmployee',
             'positions'          => 'parentEmployee',
+
             'addDrug'            => 'parentDrug',
             'showDrugs'          => 'parentDrug',
             'catDrug'            => 'parentDrug',
             'unitDrug'           => 'parentDrug',
+
             'numberDrugs'        => 'parentNumberDrugs',
             'intakeTime'         => 'parentNumberDrugs',
             'dosage'             => 'parentNumberDrugs',
@@ -87,33 +88,29 @@ class Employee extends App
         // دسترسی های پیشفرض که همیشه ثبت شوند
         $defaultPermissions = ['profile', 'dashboard', 'general'];
 
-        // استخراج دسترسی‌های انتخاب شده از فرم
+        // استخراج دسترسی‌های انتخاب‌شده
         $selectedPermissions = [];
+
         foreach ($request as $key => $val) {
             if ($val === 'on') {
+
+                // خود دسترسی
                 $selectedPermissions[] = $key;
 
-                // اضافه کردن parent اگر وجود دارد
+                // پرنت مربوطه
                 if (isset($permissionMap[$key])) {
                     $selectedPermissions[] = $permissionMap[$key];
                 }
             }
         }
 
-        // اضافه کردن دسترسی های پیشفرض
         $selectedPermissions = array_merge($selectedPermissions, $defaultPermissions);
 
-        // حذف موارد تکراری
         $selectedPermissions = array_unique($selectedPermissions);
 
-        // ذخیره دسترسی‌ها اگر وجود داشته باشند
         if (!empty($selectedPermissions)) {
             foreach ($selectedPermissions as $section) {
-                $this->db->insert(
-                    'permissions',
-                    ['employee_id', 'section_name'],
-                    [$lastEmployeeId, $section]
-                );
+                $this->db->insert('permissions', ['employee_id', 'section_name'], [$lastEmployeeId, $section]);
             }
         }
 

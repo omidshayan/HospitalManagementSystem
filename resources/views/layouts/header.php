@@ -51,20 +51,22 @@
             </a>
           </li>
 
-          <!-- dashboard -->
-          <li class="sidebar-menu">
-            <a href="<?= url('prescription-print') ?>" class="d-flex align-center justify-between">
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 16 16">
-                  <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
-                </svg>
-                <span class="mr5">چاپ خودکار نسخه‌ها</span>
-              </span>
-            </a>
-          </li>
+          <!-- print -->
+          <?php if ($this->hasAccess('prescriptionPrint')): ?>
+            <li class="sidebar-menu">
+              <a href="<?= url('prescription-print') ?>" class="d-flex align-center justify-between">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 16 16">
+                    <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                  </svg>
+                  <span class="mr5">چاپ خودکار نسخه‌ها</span>
+                </span>
+              </a>
+            </li>
+          <?php endif; ?>
 
           <!-- employees -->
-          <?php if ($this->hasAccess('general')): ?>
+          <?php if ($this->hasAccess('parentPaitents')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -84,7 +86,7 @@
                   </a>
                 <?php endif; ?> -->
 
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('paitents')): ?>
                   <a href="<?= url('patients') ?>">
                     <li class="sidebar-dropdown-menu-item">نمایش بیماران</li>
                   </a>
@@ -94,7 +96,7 @@
           <?php endif; ?>
 
           <!-- prescriptions -->
-          <?php if ($this->hasAccess('general')): ?>
+          <?php if ($this->hasAccess('parentPrescription')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -108,13 +110,13 @@
                 </svg>
               </a>
               <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('addPrescription')): ?>
                   <a href="<?= url('add-prescription') ?>">
                     <li class="sidebar-dropdown-menu-item">ثبت نسخه</li>
                   </a>
                 <?php endif; ?>
 
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('showPrescription')): ?>
                   <a href="<?= url('prescriptions') ?>">
                     <li class="sidebar-dropdown-menu-item">نمایش نسخه‌ها</li>
                   </a>
@@ -124,7 +126,7 @@
           <?php endif; ?>
 
           <!-- employees -->
-          <?php if ($this->hasAccess('general')): ?>
+          <?php if ($this->hasAccess('parentEmployee')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -138,19 +140,19 @@
                 </svg>
               </a>
               <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('addEmployee')): ?>
                   <a href="<?= url('add-employee') ?>">
                     <li class="sidebar-dropdown-menu-item">ثبت کارمند جدید</li>
                   </a>
                 <?php endif; ?>
 
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('showEmployees')): ?>
                   <a href="<?= url('employees') ?>">
                     <li class="sidebar-dropdown-menu-item">نمایش کارمندان</li>
                   </a>
                 <?php endif; ?>
 
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('positions')): ?>
                   <a href="<?= url('positions') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت وظایف کارمندان</li>
                   </a>
@@ -159,8 +161,8 @@
             </li>
           <?php endif; ?>
 
-          <!-- employees -->
-          <?php if ($this->hasAccess('general')): ?>
+          <!-- Drug -->
+          <?php if ($this->hasAccess('parentDrug')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -174,24 +176,24 @@
                 </svg>
               </a>
               <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('addDrug')): ?>
                   <a href="<?= url('add-drug') ?>">
                     <li class="sidebar-dropdown-menu-item">ثبت دارو</li>
                   </a>
                 <?php endif; ?>
 
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('showDrugs')): ?>
                   <a href="<?= url('drugs') ?>">
                     <li class="sidebar-dropdown-menu-item">نمایش داروها</li>
                   </a>
                 <?php endif; ?>
 
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('catDrug')): ?>
                   <a href="<?= url('drug-categories') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت دسته بندی‌ها</li>
                   </a>
                 <?php endif; ?>
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('unitDrug')): ?>
                   <a href="<?= url('units') ?>">
                     <li class="sidebar-dropdown-menu-item">واحدهای شمارش</li>
                   </a>
@@ -201,7 +203,7 @@
           <?php endif; ?>
 
           <!-- settings -->
-          <?php if ($this->hasAccess('general')): ?>
+          <?php if ($this->hasAccess('parentNumberDrugs')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -216,27 +218,27 @@
                 </svg>
               </a>
               <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('numberDrugs')): ?>
                   <a href="<?= url('number-drugs') ?>">
                     <li class="sidebar-dropdown-menu-item">تنظیمات تعداد دارو</li>
                   </a>
                 <?php endif; ?>
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('intakeTime')): ?>
                   <a href="<?= url('intake-times') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت زمان مصرف</li>
                   </a>
                 <?php endif; ?>
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('dosage')): ?>
                   <a href="<?= url('dosage') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت مقدار مصرف</li>
                   </a>
                 <?php endif; ?>
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('intakeInstructions')): ?>
                   <a href="<?= url('intake-instructions') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت طریقه مصرف</li>
                   </a>
                 <?php endif; ?>
-                <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('prescriptionSettings')): ?>
                   <a href="<?= url('prescription-settings') ?>">
                     <li class="sidebar-dropdown-menu-item">تنظیمات نسخه</li>
                   </a>
