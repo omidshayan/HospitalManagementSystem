@@ -72,7 +72,7 @@
                     <div class="fs11">تصویر فعلی</div>
 
 
-                    <div class="accordion-title color-orange">تعیین سطح دسترسی</div>
+                    <div class="accordion-title color-orange mt20">تعیین سطح دسترسی</div>
                     <div class="accordion-content">
                         <div class="child-accordioin">
 

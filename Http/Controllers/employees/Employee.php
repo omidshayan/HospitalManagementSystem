@@ -128,7 +128,12 @@ class Employee extends App
         $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
         $sections = $this->db->select('SELECT * FROM sections WHERE `section_id` IS NULL ORDER BY id ASC')->fetchAll();
         $permissions = $this->db->select('SELECT * FROM permissions WHERE employee_id = ?', [$id])->fetchAll();
+
         if ($employee != null) {
+            // ساخت آرایه از نام دسترسی ها برای استفاده در فرانت
+            $employeePermissions = array_column($permissions, 'section_name');
+
+            // ارسال به ویو
             require_once(BASE_PATH . '/resources/views/app/employees/edit-employee.php');
             exit();
         } else {
@@ -136,6 +141,7 @@ class Employee extends App
             exit();
         }
     }
+
 
     // edit employee store
     public function editEmployeeStore($request, $id)
