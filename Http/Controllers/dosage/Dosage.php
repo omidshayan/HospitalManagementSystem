@@ -30,13 +30,14 @@ class Dosage extends App
         }
     }
 
-    // intake_time page
-    public function editIntakeTime($id)
+    // dosage page
+    public function editDosage($id)
     {
         $this->middleware(true, true, 'general');
-        $intake_time = $this->db->select('SELECT * FROM intake_times WHERE `id` = ?', [$id])->fetch();
-        if ($intake_time != null) {
-            require_once(BASE_PATH . '/resources/views/app/intake-times/edit-intake-time.php');
+
+        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
+        if ($dosage != null) {
+            require_once(BASE_PATH . '/resources/views/app/dosage/dosage.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -44,8 +45,8 @@ class Dosage extends App
         }
     }
 
-    // edit intake_time store
-    public function editIntakeTimeStore($request, $id)
+    // edit dosage store
+    public function editDosageStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 

@@ -1,6 +1,6 @@
 <!-- start sidebar -->
 <?php
-$title = 'ویرایش  زمان مصرف: ' . $intake_time['intake_time'];
+$title = 'ویرایش  مقدار مصرف: ' . $dosage['dosage'];
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
@@ -9,7 +9,7 @@ include_once('public/alerts/toastr.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> ویرایش زمان مصرف: <?= $intake_time['intake_time'] ?>
+    <div class="content-title"> ویرایش مقدار مصرف: <?= $dosage['dosage'] ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
@@ -20,18 +20,18 @@ include_once('public/alerts/toastr.php');
     <!-- start page content -->
     <div class="mini-container">
         <div class="insert">
-            <form id="myForm" action="<?=url('edit-intake-time-store/' . $intake_time['id'])?>" method="POST">
+            <form id="myForm" action="<?=url('edit-dosage-store/' . $dosage['id'])?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="intake_time" class="checkInput" value="<?= $intake_time['intake_time'] ?>" placeholder="نام را وارد نمایید" autocomplete="off" />
+                        <input type="text" name="dosage" class="checkInput" value="<?= $dosage['dosage'] ?>" placeholder="مقدار مصرف را وارد نمایید" autocomplete="off" />
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <input type="submit" id="submit" value="ویــرایــش" class="btn bold" />
             </form>
         </div>
-        <a href="<?= url('intake-times') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
+        <a href="<?= url('dosage') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
     </div>
 </div>
 <!-- End content -->
