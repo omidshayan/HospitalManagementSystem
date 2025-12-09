@@ -222,8 +222,8 @@
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('general-settings') ?>">
-                    <li class="sidebar-dropdown-menu-item">تنظیمات عمومی</li>
+                  <a href="<?= url('intake-times') ?>">
+                    <li class="sidebar-dropdown-menu-item">مدیریت زمان مصرف</li>
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
