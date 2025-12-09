@@ -158,12 +158,12 @@ class Prescription extends App
 
         $user = $_GET['patient_name'];
 
-                $userSearch = $this->db->select("
-                SELECT prescriptions.*, users.*
-                FROM prescriptions
-                LEFT JOIN users ON prescriptions.patient_id = users.id
-                WHERE LOWER(prescriptions.patient_name) LIKE ?
-            ", ['%' . strtolower($user) . '%'])->fetchAll();
+        $userSearch = $this->db->select("
+            SELECT prescriptions.*, users.phone, users.father_name
+            FROM prescriptions
+            LEFT JOIN users ON prescriptions.patient_id = users.id
+            WHERE LOWER(prescriptions.patient_name) LIKE ?
+        ", ['%' . strtolower($user) . '%'])->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/result-search.php');
     }
@@ -183,7 +183,6 @@ class Prescription extends App
             [3, $id]
         )->fetch();
 
-        dd($prescription);
         $items = [];
 
         if ($prescription) {

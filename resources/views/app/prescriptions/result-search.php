@@ -56,14 +56,7 @@ include_once('resources/views/layouts/header.php');
                     <tr>
                         <td class="color-orange"><?= $number ?></td>
                         <td><?= $user['patient_name'] ?></td>
-                        <td>
-                            <?php if (!empty($user['birth_year']) && $user['birth_year'] != 0): ?>
-                                <?= $user['birth_year'] ?> <span class="fs12">(<?= $this->getAge($user['birth_year']) ?> ساله)</span>
-                            <?php else: ?>
-                                - - - -
-                            <?php endif; ?>
-                        </td>
-
+                        <td><?= $user['age'] ?></td>
                         <td><?= ($user['phone']) ?: '- - - -' ?></td>
                         <td>
                             <a href="<?= url('show-prescription-item/' . $user['id']) ?>">
@@ -85,7 +78,7 @@ include_once('resources/views/layouts/header.php');
             <?php
             if (count($userSearch) == null) { ?>
                 <div class="center">
-                    <i class="fa fa-comment"></i>
+                    <i class="fa fa-comment fs14 color-red"></i>
                     <?= 'اطلاعاتی ثبت نشده است' ?>
                 </div>
             <?php } else {

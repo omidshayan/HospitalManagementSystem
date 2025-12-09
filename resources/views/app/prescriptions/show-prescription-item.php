@@ -7,7 +7,7 @@ include_once('public/alerts/toastr.php');
 
 
 <div class="content">
-    <div class="content-title">نمایش نسخه: <?=$prescription['patient_name']?>
+    <div class="content-title">نمایش نسخه: <?= $prescription['patient_name'] ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
 
@@ -112,9 +112,9 @@ include_once('public/alerts/toastr.php');
 
     <?php endif; ?>
 
-    <div class="center mt10 btn w120 color bold p20" onclick="printReceipt()">
+    <!-- <div class="center mt10 btn w120 color bold p20" onclick="printReceipt()">
         چاپ مجدد
-    </div>
+    </div> -->
 
     <!-- print -->
     <script>
@@ -133,8 +133,6 @@ include_once('public/alerts/toastr.php');
             }
         }
     </script>
-
-
 </div>
 <!-- End content -->
 
