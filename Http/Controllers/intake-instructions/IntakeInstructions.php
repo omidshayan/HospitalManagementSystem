@@ -30,7 +30,7 @@ class IntakeInstructions extends App
         }
     }
 
-    // dosage page
+    // intake_instructions page
     public function editIntakeInstructions($id)
     {
         $this->middleware(true, true, 'general');
@@ -82,20 +82,20 @@ class IntakeInstructions extends App
         }
     }
 
-    // change status dosage
-    public function changeStatusDosage($id)
+    // change status intake_instructions
+    public function changeStatusIntakeInstructions($id)
     {
         $this->middleware(true, true, 'general');
 
-        $dosage = $this->db->select('SELECT id, `status` FROM dosage WHERE id = ?', [$id])->fetch();
-        if (!$dosage) {
+        $intake_instructions = $this->db->select('SELECT id, `status` FROM intake_instructions WHERE id = ?', [$id])->fetch();
+        if (!$intake_instructions) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
 
-        $newStatus = ($dosage['status'] == 1) ? 2 : 1;
+        $newStatus = ($intake_instructions['status'] == 1) ? 2 : 1;
 
-        $this->db->update('dosage', $id, ['status'], [$newStatus]);
+        $this->db->update('intake_instructions', $id, ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
 }

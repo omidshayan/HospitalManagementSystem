@@ -1,11 +1,9 @@
-<!-- start sidebar -->
 <?php
 $title = 'ویرایش  طریقه مصرف: ' . $intakeInstructions['intake_instructions'];
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
-<!-- end sidebar -->
 
 <!-- Start content -->
 <div class="content">
@@ -31,7 +29,7 @@ include_once('public/alerts/toastr.php');
                 <input type="submit" id="submit" value="ویــرایــش" class="btn bold" />
             </form>
         </div>
-        <a href="<?= url('dosage') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
+        <a href="<?= url('intake-instructions') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
     </div>
 </div>
 <!-- End content -->

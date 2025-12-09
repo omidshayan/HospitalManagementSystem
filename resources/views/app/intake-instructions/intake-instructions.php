@@ -23,7 +23,7 @@ include_once('public/alerts/toastr.php');
             <form id="myForm" action="<?= url('intake-instructions-store') ?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14">مقدار مصرف <?= _star ?> </div>
+                        <div class="label-form mb5 fs14">طریقه مصرف <?= _star ?> </div>
                         <input type="text" name="intake_instructions" class="checkInput" placeholder="طریقه مصرف را وارد نمایید" autocomplete="off" autofocus />
                     </div>
                 </div>

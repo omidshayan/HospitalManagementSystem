@@ -41,14 +41,14 @@
                         <!-- HTML -->
                         <div class="w100 m10 center">
                             <td>
-                                <a href="#" data-url="<?= url('change-status-dosage') ?>" data-id="<?= $intake_instructions['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
+                                <a href="#" data-url="<?= url('change-status-intake-instructions') ?>" data-id="<?= $intake_instructions['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
                             </td>
                         </div>
                     </div>
                     <div class="w100 m10 center status status-column" id="status"><?= ($intake_instructions['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
                 </div>
             </div>
-            <a href="<?= url('dosage') ?>">
+            <a href="<?= url('intake-instructions') ?>">
                 <div class="btn center p5">برگشت</div>
             </a>
         </div>
