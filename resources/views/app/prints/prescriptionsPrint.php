@@ -145,22 +145,18 @@ include_once('public/alerts/toastr.php');
                                 <span><?= $prescription['bp'] ?></span>
                                 <span>BP</span>
                             </div>
-                            <hr class="hrp">
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['pr'] ?></span>
                                 <span>Pr</span>
                             </div>
-                            <hr class="hrp">
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['rr'] ?></span>
                                 <span>Rr</span>
                             </div>
-                            <hr class="hrp">
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['temp'] ?></span>
                                 <span>TEMP</span>
                             </div>
-                            <hr class="hrp">
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['spo2'] ?></span>
                                 <span>SPO₂</span>
