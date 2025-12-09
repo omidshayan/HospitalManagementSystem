@@ -217,8 +217,8 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('manage-years') ?>">
-                    <li class="sidebar-dropdown-menu-item">مدیریت سال</li>
+                  <a href="<?= url('number-drugs') ?>">
+                    <li class="sidebar-dropdown-menu-item">تنظیمات تعداد دارو</li>
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
