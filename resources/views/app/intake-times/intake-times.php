@@ -23,7 +23,7 @@ include_once('public/alerts/toastr.php');
             <form id="myForm" action="intake-time-store" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
+                        <div class="label-form mb5 fs14">زمان مصرف <?= _star ?> </div>
                         <input type="text" name="intake_time" class="checkInput" placeholder="زمان مصرف را وارد نمایید" autocomplete="off" autofocus />
                     </div>
                 </div>
@@ -54,7 +54,7 @@ include_once('public/alerts/toastr.php');
                 foreach ($data as $item) {
                 ?>
                     <tr>
-                        <td class="color-orange"><?= $number ?></td>
+                        <td class="color-orange <?= ($item['status'] == 2) ? 'color-red' : '' ?>"><?= $number ?></td>
                         <td><?= $item['intake_time'] ?></td>
                         <td>
                             <a href="<?= url('edit-intake-time/' . $item['id']) ?>" class="color-orange">

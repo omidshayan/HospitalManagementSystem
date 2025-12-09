@@ -44,7 +44,6 @@ class IntakeTime extends App
         }
     }
 
-
     // edit intake_time store
     public function editIntakeTimeStore($request, $id)
     {
@@ -68,35 +67,33 @@ class IntakeTime extends App
         $this->flashMessageTo('success', _success, url('intake-times'));
     }
 
-
-    // change status Expense Cat
-    public function changeStatusExpenseCat($id)
+    // intakeTimeDetails Details detiles page
+    public function intakeTimeDetails($id)
     {
         $this->middleware(true, true, 'general');
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories WHERE id = ?', [$id])->fetch();
-        if ($expenses_categories != null) {
-            if ($expenses_categories['state'] == 1) {
-                $this->db->update('expenses_categories', $expenses_categories['id'], ['state'], [2]);
-                $this->send_json_response(true, _success, 2);
-            } else {
-                $this->db->update('expenses_categories', $expenses_categories['id'], ['state'], [1]);
-                $this->send_json_response(true, _success, 1);
-            }
+        $intake_time = $this->db->select('SELECT * FROM intake_times WHERE `id` = ?', [$id])->fetch();
+        if ($intake_time != null) {
+            require_once(BASE_PATH . '/resources/views/app/intake-times/intake_time-details.php');
+            exit();
         } else {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
     }
 
-    // edit expense page
-    public function editExpense($id)
+    // change status intake_time
+    public function changeStatusIntakeTime($id)
     {
-        $this->middleware(true, true, 'general', true);
-
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories WHERE id = ?', [$id])->fetch();
-        if ($expenses_categories != null) {
-            require_once(BASE_PATH . '/resources/views/app/expenses-categories/edit-expense.php');
-            exit();
+        $this->middleware(true, true, 'general');
+        $intake_time = $this->db->select('SELECT * FROM intake_times WHERE id = ?', [$id])->fetch();
+        if ($intake_time != null) {
+            if ($intake_time['status'] == 1) {
+                $this->db->update('intake_times', $intake_time['id'], ['status'], [2]);
+                $this->send_json_response(true, _success, 2);
+            } else {
+                $this->db->update('intake_times', $intake_time['id'], ['status'], [1]);
+                $this->send_json_response(true, _success, 1);
+            }
         } else {
             require_once(BASE_PATH . '/404.php');
             exit();
