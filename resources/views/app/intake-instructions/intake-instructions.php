@@ -20,11 +20,11 @@ include_once('public/alerts/toastr.php');
     <!-- start page content -->
     <div class="mini-container">
         <div class="insert">
-            <form id="myForm" action="<?=url('dosage-store')?>" method="POST">
+            <form id="myForm" action="<?= url('intake-instructions-store') ?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14">مقدار مصرف <?= _star ?> </div>
-                        <input type="text" name="dosage" class="checkInput" placeholder="مقدار مصرف را وارد نمایید" autocomplete="off" autofocus />
+                        <input type="text" name="intake_instructions" class="checkInput" placeholder="طریقه مصرف را وارد نمایید" autocomplete="off" autofocus />
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
@@ -55,7 +55,7 @@ include_once('public/alerts/toastr.php');
                 ?>
                     <tr>
                         <td class="color-orange <?= ($item['status'] == 2) ? 'color-red' : '' ?>"><?= $number ?></td>
-                        <td><?= $item['intakeInstructions'] ?></td>
+                        <td><?= $item['intake_instructions'] ?></td>
                         <td>
                             <a href="<?= url('edit-intake-instructions/' . $item['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -78,7 +78,6 @@ include_once('public/alerts/toastr.php');
                 }
                 ?>
             </tbody>
-            <tbody></tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
             <div class="table-info fs12">تعداد کل: <?= count($intakeInstructions) ?></div>

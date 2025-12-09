@@ -13,19 +13,19 @@ class IntakeInstructions extends App
     }
 
     // store dosage
-    public function dosageStore($request)
+    public function intakeInstructionsStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['dosage'] == '') {
+        if ($request['intake_instructions'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
+        $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `intake_instructions` = ?', [$request['intake_instructions']])->fetch();
 
-        if (!empty($dosage['dosage'])) {
+        if (!empty($intakeInstructions['intake_instructions'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('dosage', array_keys($request), $request);
+            $this->db->insert('intake_instructions', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
