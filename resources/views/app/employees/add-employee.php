@@ -140,9 +140,9 @@
                             </div>
 
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
-                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="showPrescription">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="settingPrescription">
                                     <span> تنظیمات نسخه</span>
-                                    <input type="checkbox" name="showPrescription" id="showPrescription" class="w20 p0 m0 h22">
+                                    <input type="checkbox" name="settingPrescription" id="settingPrescription" class="w20 p0 m0 h22">
                                 </label>
                             </div>
 
