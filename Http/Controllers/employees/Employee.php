@@ -40,7 +40,21 @@ class Employee extends App
             // check image
             $this->handleImageUpload($request['image'], 'images/employees');
 
-            $this->db->insert('employees', array_keys($request), $request);
+            // array for employee data
+            $employeeData = [
+                'employee_name' => $request['employee_name'],
+                'phone' => $request['phone'],
+                'password' => $request['password'],
+                'email' => $request['email'],
+                'address' => $request['address'],
+                'position' => $request['position'],
+                'expertise' => $request['expertise'],
+                'image' => $request['image'],
+                'description' => $request['description'],
+                'who_it' => $request['who_it'],
+            ];
+            $this->db->insert('employees', array_keys($employeeData), $employeeData);
+
             $this->flashMessage('success', _success);
         }
     }
