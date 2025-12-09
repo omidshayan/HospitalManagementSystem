@@ -66,7 +66,7 @@
 
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
                                 <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="prescriptionPrint">
-                                    <span> صفحه چاپ نسخه‌ها</span>
+                                    <span> چاپ خودکار نسخه‌ها</span>
                                     <input type="checkbox" name="prescriptionPrint" id="prescriptionPrint" class="w20 p0 m0 h22">
                                 </label>
                             </div>
@@ -78,11 +78,71 @@
                                 </label>
                             </div>
 
-                            
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
-                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="showPatients">
-                                    <span> مدیریت نسخه‌ها</span>
-                                    <input type="checkbox" name="showPatients" id="showPatients" class="w20 p0 m0 h22">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="addPrescription">
+                                    <span> ثبت نسخه</span>
+                                    <input type="checkbox" name="addPrescription" id="addPrescription" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="showPrescription">
+                                    <span> نمایش نسخه‌ها</span>
+                                    <input type="checkbox" name="showPrescription" id="showPrescription" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="addEmployee">
+                                    <span> ثبت کارمند جدید</span>
+                                    <input type="checkbox" name="addEmployee" id="addEmployee" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="showEmployees">
+                                    <span> نمایش کارمندان</span>
+                                    <input type="checkbox" name="showEmployees" id="showEmployees" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="positions">
+                                    <span> مدیریت وظایف کارمندان</span>
+                                    <input type="checkbox" name="positions" id="positions" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="addDrug">
+                                    <span> ثبت دارو</span>
+                                    <input type="checkbox" name="addDrug" id="addDrug" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="showDrugs">
+                                    <span> نمایش داروها</span>
+                                    <input type="checkbox" name="showDrugs" id="showDrugs" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="catDrug">
+                                    <span> مدیریت دسته بندی‌های دارو</span>
+                                    <input type="checkbox" name="catDrug" id="catDrug" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="unitDrug">
+                                    <span> مدیریت واحد شمارش</span>
+                                    <input type="checkbox" name="unitDrug" id="unitDrug" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="showPrescription">
+                                    <span> تنظیمات نسخه</span>
+                                    <input type="checkbox" name="showPrescription" id="showPrescription" class="w20 p0 m0 h22">
                                 </label>
                             </div>
 
