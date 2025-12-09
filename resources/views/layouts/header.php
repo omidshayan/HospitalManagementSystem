@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="<?= asset('public/assets/style/style.css') ?>" media="screen" />
-  <link rel="stylesheet" href="<?= asset('public/assets/style/main.css') ?>" media="screen"/>
-  <link rel="stylesheet" href="<?= asset('public/assets/style/print.css') ?>" media="screen"/>
-  <link rel="stylesheet" href="<?= asset('public/assets/style/print.css') ?>" media="print"/>
+  <link rel="stylesheet" href="<?= asset('public/assets/style/main.css') ?>" media="screen" />
+  <link rel="stylesheet" href="<?= asset('public/assets/style/print.css') ?>" media="screen" />
+  <link rel="stylesheet" href="<?= asset('public/assets/style/print.css') ?>" media="print" />
   <script src="<?= asset('public/assets/js/sweetAlert.js') ?>"></script>
   <script src="<?= asset('public/assets/js/jquery.min.js') ?>"></script>
   <link rel="icon" href="<?= asset('public/assets/img/fav.png') ?>">
@@ -224,6 +224,11 @@
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('intake-times') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت زمان مصرف</li>
+                  </a>
+                <?php endif; ?>
+                <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('dosage') ?>">
+                    <li class="sidebar-dropdown-menu-item">مدیریت مقدار مصرف</li>
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
