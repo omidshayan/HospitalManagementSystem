@@ -64,16 +64,15 @@
                     <div class="accordion-content">
                         <div class="child-accordioin">
 
-                            <div class="detailes-culomn d-flex cursor-p bg-green-opacity h30 align-center">
-                                <label class="title-detaile d-flex justify-between w100 h30 align-center" for="pre">
-                                   <span> صفحه چاپ نسخه‌ها</span>
-                                    <input type="checkbox" id="pre" class="w20 p0 m0">
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="prescription-print">
+                                    <span> صفحه چاپ نسخه‌ها</span>
+                                    <input type="checkbox" name="prescription-print" id="prescription-print" class="w20 p0 m0 h22">
                                 </label>
                             </div>
 
                         </div>
                     </div>
-
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                     <input type="submit" id="submit" value="ثبت" class="btn" />
