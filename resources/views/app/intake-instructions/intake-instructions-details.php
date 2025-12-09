@@ -1,6 +1,6 @@
     <!-- start sidebar -->
     <?php
-    $title = 'جزئیات مقدار مصرف: ' . $dosage['dosage'];
+    $title = 'جزئیات طریقه مصرف: ' . $intake_instructions['intake_instructions'];
     include_once('resources/views/layouts/header.php');
     include_once('resources/views/scripts/change-status.php');
     ?>
@@ -14,25 +14,25 @@
 
     <!-- Start content -->
     <div class="content">
-        <div class="content-title"> جزئیات مقدار مصرف: <?= $dosage['dosage'] ?></div>
+        <div class="content-title"> جزئیات طریقه مصرف: <?= $intake_instructions['intake_instructions'] ?></div>
         <!-- start page content -->
         <div class="mini-container">
             <div class="details">
                 <div class="detail-item d-flex">
-                    <div class="w100 m10 center">مقدار مصرف</div>
-                    <div class="w100 m10 center"><?= $dosage['dosage'] ?></div>
+                    <div class="w100 m10 center">طریقه مصرف</div>
+                    <div class="w100 m10 center"><?= $intake_instructions['intake_instructions'] ?></div>
                 </div>
             </div>
             <div class="details">
                 <div class="detail-item d-flex">
                     <div class="w100 m10 center">ساخته شده توسط</div>
-                    <div class="w100 m10 center"><?= $dosage['who_it'] ?></div>
+                    <div class="w100 m10 center"><?= $intake_instructions['who_it'] ?></div>
                 </div>
             </div>
             <div class="details">
                 <div class="detail-item d-flex">
                     <div class="w100 m10 center">تاریخ ساخت</div>
-                    <div class="w100 m10 center"><?= jdate('Y/m/d', strtotime($dosage['created_at'])) ?></div>
+                    <div class="w100 m10 center"><?= jdate('Y/m/d', strtotime($intake_instructions['created_at'])) ?></div>
                 </div>
             </div>
             <div class="details">
@@ -41,11 +41,11 @@
                         <!-- HTML -->
                         <div class="w100 m10 center">
                             <td>
-                                <a href="#" data-url="<?= url('change-status-dosage') ?>" data-id="<?= $dosage['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
+                                <a href="#" data-url="<?= url('change-status-dosage') ?>" data-id="<?= $intake_instructions['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
                             </td>
                         </div>
                     </div>
-                    <div class="w100 m10 center status status-column" id="status"><?= ($dosage['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
+                    <div class="w100 m10 center status status-column" id="status"><?= ($intake_instructions['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
                 </div>
             </div>
             <a href="<?= url('dosage') ?>">

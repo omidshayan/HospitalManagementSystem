@@ -68,13 +68,13 @@ class IntakeInstructions extends App
         $this->flashMessageTo('success', _success, url('intake-instructions'));
     }
 
-    // dosage Details detiles page
-    public function dosageDetails($id)
+    // intake_instructions Details detiles page
+    public function intakeInstructionsDetails($id)
     {
         $this->middleware(true, true, 'general');
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
-        if ($dosage != null) {
-            require_once(BASE_PATH . '/resources/views/app/dosage/dosage-details.php');
+        $intake_instructions = $this->db->select('SELECT * FROM intake_instructions WHERE `id` = ?', [$id])->fetch();
+        if ($intake_instructions != null) {
+            require_once(BASE_PATH . '/resources/views/app/intake-instructions/intake-instructions-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
