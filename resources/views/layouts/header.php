@@ -86,7 +86,7 @@
                   </a>
                 <?php endif; ?> -->
 
-                <?php if ($this->hasAccess('paitents')): ?>
+                <?php if ($this->hasAccess('showPatients')): ?>
                   <a href="<?= url('patients') ?>">
                     <li class="sidebar-dropdown-menu-item">نمایش بیماران</li>
                   </a>
