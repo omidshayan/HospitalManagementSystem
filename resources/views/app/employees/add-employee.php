@@ -56,8 +56,8 @@
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">توضیحات</div>
-                            <textarea name="address" placeholder="توضیحات را وارد نمایید"></textarea>
+                            <div class="label-form mb5 fs14">آدرس</div>
+                            <textarea name="address" placeholder="آدرس را وارد نمایید"></textarea>
                         </div>
                     </div>
                     <div class="inputs d-flex">
