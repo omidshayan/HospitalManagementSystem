@@ -158,9 +158,14 @@ class Prescription extends App
 
         $user = $_GET['patient_name'];
 
-        $userSearch = $this->db->select("SELECT * FROM users WHERE `user_name` LIKE ?", ['%' . strtolower($user) . '%'])->fetchAll();
+                $userSearch = $this->db->select("
+                SELECT prescriptions.*, users.*
+                FROM prescriptions
+                LEFT JOIN users ON prescriptions.patient_id = users.id
+                WHERE LOWER(prescriptions.patient_name) LIKE ?
+            ", ['%' . strtolower($user) . '%'])->fetchAll();
 
-        require_once(BASE_PATH . '/resources/views/app/users/result-search.php');
+        require_once(BASE_PATH . '/resources/views/app/prescriptions/result-search.php');
     }
 
     // showPrescriptionItem
@@ -178,6 +183,7 @@ class Prescription extends App
             [3, $id]
         )->fetch();
 
+        dd($prescription);
         $items = [];
 
         if ($prescription) {
@@ -190,7 +196,7 @@ class Prescription extends App
             )->fetchAll();
         }
 
-        require_once(BASE_PATH . '/resources/views/app/prints/prescriptionPrint.php');
+        require_once(BASE_PATH . '/resources/views/app/prescriptions/show-prescription-item.php');
     }
 
     //////////////////////////////////////////////

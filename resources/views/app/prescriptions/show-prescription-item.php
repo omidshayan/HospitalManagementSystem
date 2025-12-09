@@ -109,13 +109,7 @@ include_once('public/alerts/toastr.php');
 
             </div>
         </div>
-        <script>
-            window.onload = function() {
-                setTimeout(() => {
-                    printReceipt();
-                }, 200);
-            };
-        </script>
+
     <?php endif; ?>
 
     <div class="center mt10 btn w120 color bold p20" onclick="printReceipt()">

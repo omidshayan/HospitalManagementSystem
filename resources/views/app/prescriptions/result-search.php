@@ -7,7 +7,7 @@ include_once('resources/views/layouts/header.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> نتیجه جستجو
+    <div class="content-title"> نتیجه جستجو: <?= $user?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
@@ -55,7 +55,7 @@ include_once('resources/views/layouts/header.php');
                 ?>
                     <tr>
                         <td class="color-orange"><?= $number ?></td>
-                        <td><?= $user['user_name'] ?></td>
+                        <td><?= $user['patient_name'] ?></td>
                         <td>
                             <?php if (!empty($user['birth_year']) && $user['birth_year'] != 0): ?>
                                 <?= $user['birth_year'] ?> <span class="fs12">(<?= $this->getAge($user['birth_year']) ?> ساله)</span>
