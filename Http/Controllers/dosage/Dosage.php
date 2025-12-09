@@ -4,12 +4,12 @@ namespace App;
 
 class Dosage extends App
 {
-    //  intakeTimes page
+    //  Dosage page
     public function dosage()
     {
         $this->middleware(true, true, 'general', true);
-        $intakeTimes = $this->db->select('SELECT * FROM intake_times')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/intake-times/intake-times.php');
+        $dosage = $this->db->select('SELECT * FROM dosage')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/dosage/dosage.php');
     }
 
     // store intake_time
