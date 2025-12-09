@@ -344,6 +344,9 @@
 .h27{
     height: 27px !important;
 }
+.h30{
+    height: 35px !important;
+}
 .h50 {
     height: 50px !important;
 }
@@ -358,7 +361,6 @@
 .p20 {
     padding: 20px;
 }
-
 .p5 {
     padding: 5px !important;
 }
@@ -387,6 +389,9 @@
 }
 .mb3{
     margin-bottom: 3px !important;
+}
+.p0{
+    padding: 0 !important;
 }
 /* imgages */
 .br {
@@ -507,11 +512,6 @@
     justify-content: center;
     align-items: center;
 }
-
-.align-center {
-    align-items: center;
-}
-
 .text-right {
     text-align: right;
 }
@@ -534,6 +534,9 @@
 }
 .gap10{
     gap: 10px;
+}
+.align-center {
+    align-items: center !important;
 }
 
 /* print styles */
