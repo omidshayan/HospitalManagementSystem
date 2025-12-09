@@ -12,7 +12,7 @@ class Employee extends App
     // add employee page
     public function addEmployee()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'addEmployee', true);
         $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/employees/add-employee.php');
     }
@@ -177,7 +177,7 @@ class Employee extends App
     // show employees
     public function showEmployees()
     {
-        $this->middleware(true, true, 'general');
+        $this->middleware(true, true, 'showEmployees');
 
         $id = $this->currentUser();
 
