@@ -21,6 +21,7 @@ class Employee extends App
     public function employeeStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
+
         // check empty form
         if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
             $this->flashMessage('error', _emptyInputs);
@@ -54,6 +55,57 @@ class Employee extends App
                 'who_it' => $request['who_it'],
             ];
             $this->db->insert('employees', array_keys($employeeData), $employeeData);
+
+            // گرفتن آی‌دی کارمند جدید
+            $employeeId = $this->db->lastInsertId();
+
+            // تعریف والدها و زیرمجموعه‌ها (نام‌ها و والدها)
+            $parentChildMap = [
+                // والد => [زیرمجموعه‌ها]
+                'parentPatients' => ['showPatients'],
+                'parentPrescription' => ['addPrescription', 'showPrescription'],
+                'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
+                'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
+                'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription'],
+                // تکی‌ها که والد ندارند
+                'prescriptionPrint' => null,
+            ];
+
+            // ابتدا همه دسترسی‌های تکی که والد ندارند و چک شده‌اند را بررسی کنیم
+            $permissionsToInsert = [];
+
+            // اول چک باکس تکی بدون والد
+            if (!empty($request['prescriptionPrint'])) {
+                $permissionsToInsert[] = 'prescriptionPrint';
+            }
+
+            // تابعی برای اضافه کردن دسترسی‌ها با والدش
+            $addPermissionWithParent = function ($parent, $children) use ($request, &$permissionsToInsert) {
+                $parentAdded = false;
+                foreach ($children as $child) {
+                    if (!empty($request[$child])) {
+                        if (!$parentAdded) {
+                            $permissionsToInsert[] = $parent;
+                            $parentAdded = true;
+                        }
+                        $permissionsToInsert[] = $child;
+                    }
+                }
+            };
+
+            // پردازش والد-زیرمجموعه ها
+            foreach ($parentChildMap as $parent => $children) {
+                if ($children === null) {
+                    // یعنی تکی بدون زیرمجموعه (مثلا prescriptionPrint)
+                    continue; // همین الان بالا چک کردیم
+                }
+                $addPermissionWithParent($parent, $children);
+            }
+
+            // ذخیره همه دسترسی‌ها در جدول permissions
+            foreach ($permissionsToInsert as $sectionName) {
+                $this->db->insert('permissions', ['employee_id', 'section_name'], [$employeeId, $sectionName]);
+            }
 
             $this->flashMessage('success', _success);
         }
