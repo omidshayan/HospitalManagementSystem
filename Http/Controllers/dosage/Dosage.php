@@ -7,7 +7,7 @@ class Dosage extends App
     //  Dosage page
     public function dosage()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'dosage', true);
         $dosage = $this->db->select('SELECT * FROM dosage')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/dosage/dosage.php');
     }

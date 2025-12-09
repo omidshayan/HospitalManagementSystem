@@ -16,7 +16,7 @@ class Drug extends App
     // store employee
     public function drugStore($request)
     {
-        $this->middleware(true, true, 'general', true, $request, true);
+        $this->middleware(true, true, 'addDrug', true, $request, true);
 
         // check empty form
         if ($request['name'] == '' || $request['category_id'] == '' || $request['unit'] == '') {
@@ -41,7 +41,7 @@ class Drug extends App
     // show drugs
     public function showDrugs()
     {
-        $this->middleware(true, true, 'general');
+        $this->middleware(true, true, 'showDrugs');
         $drugs = $this->db->select('SELECT * FROM drugs ORDER BY id DESC')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/drugs/show-drugs.php');
         exit();

@@ -4,15 +4,13 @@ namespace App;
 
 require_once 'Http/Controllers/App.php';
 
-use database\DataBase;
-
 class Employee extends App
 {
 
     // add employee page
     public function addEmployee()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'addEmployee', true);
         $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/employees/add-employee.php');
     }
@@ -25,7 +23,7 @@ class Employee extends App
     // store employee
     public function employeeStore($request)
     {
-        $this->middleware(true, true, 'general', true, $request, true);
+        $this->middleware(true, true, 'showEmployees', true, $request, true);
 
         // بررسی شماره‌ی تکراری
         $existingEmployee = $this->db->select(
@@ -83,10 +81,11 @@ class Employee extends App
             'intakeTime'         => 'parentNumberDrugs',
             'dosage'             => 'parentNumberDrugs',
             'intakeInstructions' => 'parentNumberDrugs',
+            'prescriptionSettings' => 'parentNumberDrugs',
         ];
 
         // دسترسی های پیشفرض که همیشه ثبت شوند
-        $defaultPermissions = ['profile', 'dashboard'];
+        $defaultPermissions = ['profile', 'dashboard', 'general'];
 
         // استخراج دسترسی‌های انتخاب شده از فرم
         $selectedPermissions = [];

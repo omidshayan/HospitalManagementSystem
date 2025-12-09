@@ -7,7 +7,7 @@ class IntakeTime extends App
     //  intakeTimes page
     public function intakeTimes()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'intakeTime', true);
         $intakeTimes = $this->db->select('SELECT * FROM intake_times')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/intake-times/intake-times.php');
     }

@@ -7,7 +7,7 @@ class Unit extends App
     // units page
     public function units()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'unitDrug', true);
         $units = $this->db->select('SELECT * FROM units ORDER BY id DESC')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/units/units.php');
     }

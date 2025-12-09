@@ -22,7 +22,7 @@ class Prescription extends App
     // drugs
     public function addPrescription()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'addPrescription', true);
 
         $userId = $this->currentUser();
 
@@ -122,7 +122,7 @@ class Prescription extends App
     // show prescriptions
     public function prescriptions()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'showPrescription', true);
 
         $user = $this->currentUser();
 

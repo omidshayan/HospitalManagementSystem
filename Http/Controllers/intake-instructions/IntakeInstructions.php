@@ -7,7 +7,7 @@ class IntakeInstructions extends App
     //  intake-instructions page
     public function intakeInstructions()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'intakeInstructions', true);
         $intakeInstructions = $this->db->select('SELECT * FROM intake_instructions')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/intake-instructions/intake-instructions.php');
     }

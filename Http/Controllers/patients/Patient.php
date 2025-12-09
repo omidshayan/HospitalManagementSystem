@@ -8,7 +8,7 @@ class Patient extends App
     // add employee page
     public function patients()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'showPatients', true);
 
         $user = $this->currentUser();
 

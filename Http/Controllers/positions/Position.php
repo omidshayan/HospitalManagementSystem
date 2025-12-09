@@ -11,7 +11,7 @@ class Position extends App
     // add position page
     public function Positions()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'positions', true);
         $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/positions/positions.php');
     }

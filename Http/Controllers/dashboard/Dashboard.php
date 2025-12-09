@@ -8,7 +8,7 @@ class Dashboard extends App
 {
     public function index()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'dashboard', true);
 
         $userId = $_SESSION['hms_employee']['id']
             ?? $_SESSION['hms_admin']['id']

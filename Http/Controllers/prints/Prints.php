@@ -29,7 +29,7 @@ class Prints extends App
     // show presctiption for print
     public function print()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'prescriptionPrint', true);
 
         $prescription = $this->db->select(
             'SELECT p.*, 
@@ -71,7 +71,7 @@ class Prints extends App
     // show presctiption for print
     public function prescriptionItemPrint($id)
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'prescriptionPrint', true);
 
         $prescription = $this->db->select(
             'SELECT p.*, 
@@ -101,20 +101,20 @@ class Prints extends App
 
 
     // print invoice
-    public function autoPrint()
-    {
-        dd('tuo');
-        $this->middleware(true, true, 'general', true);
+    // public function autoPrint()
+    // {
+    //     dd('tuo');
+    //     $this->middleware(true, true, 'general', true);
 
-        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE `status` = ?', [2])->fetch();
+    //     $prescription = $this->db->select('SELECT * FROM prescriptions WHERE `status` = ?', [2])->fetch();
 
-        if (!$prescription) {
-            require_once BASE_PATH . '/404.php';
-            exit();
-        }
+    //     if (!$prescription) {
+    //         require_once BASE_PATH . '/404.php';
+    //         exit();
+    //     }
 
-        $factor_infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
+    //     $factor_infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
 
-        require_once(BASE_PATH . '/resources/views/app/prints/prescription.php');
-    }
+    //     require_once(BASE_PATH . '/resources/views/app/prints/prescription.php');
+    // }
 }
