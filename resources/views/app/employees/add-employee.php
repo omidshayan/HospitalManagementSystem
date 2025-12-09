@@ -140,6 +140,30 @@
                             </div>
 
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="numberDrugs">
+                                    <span> تنظیمات تعداد دارو</span>
+                                    <input type="checkbox" name="numberDrugs" id="numberDrugs" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="intakeTime">
+                                    <span> تنظیمات زمان مصرف</span>
+                                    <input type="checkbox" name="intakeTime" id="intakeTime" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="dosage">
+                                    <span> تنظیمات مقدار مصرف</span>
+                                    <input type="checkbox" name="dosage" id="dosage" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="intakeInstructions">
+                                    <span> تنظیمات طریقه مصرف</span>
+                                    <input type="checkbox" name="intakeInstructions" id="intakeInstructions" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
                                 <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="settingPrescription">
                                     <span> تنظیمات نسخه</span>
                                     <input type="checkbox" name="settingPrescription" id="settingPrescription" class="w20 p0 m0 h22">
