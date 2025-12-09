@@ -16,7 +16,7 @@
     <div class="content">
         <div class="content-title"> جزئیات زمان مصرف: <?= $intake_time['intake_time'] ?></div>
         <!-- start page content -->
-        <div class="box-container">
+        <div class="mini-container">
             <div class="details">
                 <div class="detail-item d-flex">
                     <div class="w100 m10 center">زمان مصرف</div>

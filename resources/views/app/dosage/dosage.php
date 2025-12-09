@@ -40,7 +40,7 @@ include_once('public/alerts/toastr.php');
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>زمان مصرف</th>
+                    <th>مقدار مصرف</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
                 </tr>

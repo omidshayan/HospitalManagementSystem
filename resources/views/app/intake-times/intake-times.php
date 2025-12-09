@@ -35,7 +35,7 @@ include_once('public/alerts/toastr.php');
 
     <!-- show packages -->
     <div class="mini-container">
-        <div class="mb10 fs14"> دسته بندی های ثبت شده</div>
+        <div class="mb10 fs14"> زمان‌های ثبت شده</div>
         <table class="fl-table">
             <thead>
                 <tr>
