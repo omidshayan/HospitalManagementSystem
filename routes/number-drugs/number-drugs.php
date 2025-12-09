@@ -1,13 +1,13 @@
 <?php
-require_once 'Http/Controllers/expenses-categories/ExpensesCategory.php';
+require_once 'Http/Controllers/number-drugs/NumberDrug.php';
 
 // expenses routes
-uri('expenses_categories', 'App\ExpensesCategory', 'expensesCategories');
-uri('expense-cat-store', 'App\ExpensesCategory', 'expenseCatStore', 'POST');
-uri('expense-cat-details/{id}', 'App\ExpensesCategory', 'expenseCatDetails');
-uri('change-status-expense-cat/{id}', 'App\ExpensesCategory', 'changeStatusExpenseCat');
-uri('edit-cat-expense/{id}', 'App\ExpensesCategory', 'editExpense');
-uri('edit-cat-store/{id}', 'App\ExpensesCategory', 'editCatStore', 'POST');
+uri('number-drugs', 'App\NumberDrug', 'numberDrugs');
+uri('number-drugs-store', 'App\NumberDrug', 'numberDrugsStore', 'POST');
+uri('number-drugs-details/{id}', 'App\NumberDrug', 'numberDrugsDetails');
+uri('change-number-drugs/{id}', 'App\NumberDrug', 'changeStatusnumberDrugs');
+uri('edit-number-drugs/{id}', 'App\NumberDrug', 'editNumberDrugs');
+uri('edit-number-drugs-store/{id}', 'App\NumberDrug', 'editnumberDrugs', 'POST');
 
 
 
