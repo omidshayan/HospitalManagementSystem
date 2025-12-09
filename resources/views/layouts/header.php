@@ -232,6 +232,11 @@
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('intake-instructions') ?>">
+                    <li class="sidebar-dropdown-menu-item">مدیریت طریقه مصرف</li>
+                  </a>
+                <?php endif; ?>
+                <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('prescription-settings') ?>">
                     <li class="sidebar-dropdown-menu-item">تنظیمات نسخه</li>
                   </a>

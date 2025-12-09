@@ -4,13 +4,12 @@ namespace App;
 
 class IntakeInstructions extends App
 {
-    //  Dosage page
+    //  intake-instructions page
     public function intakeInstructions()
     {
-        dd('ok');
         $this->middleware(true, true, 'general', true);
-        $dosage = $this->db->select('SELECT * FROM dosage')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/dosage/dosage.php');
+        $intakeInstructions = $this->db->select('SELECT * FROM intake_instructions')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/intake-instructions/intake-instructions.php');
     }
 
     // store dosage
