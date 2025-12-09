@@ -50,7 +50,6 @@ class Employee extends App
 
         $employeeData = [
             'employee_name' => $request['employee_name'],
-            'father_name' => $request['father_name'],
             'phone' => $request['phone'],
             'password' => $request['password'],
             'email' => $request['email'],
@@ -59,7 +58,6 @@ class Employee extends App
             'expertise' => $request['expertise'],
             'image' => $request['image'],
             'description' => $request['description'],
-            'salary_price' => $request['salary_price'],
             'who_it' => $request['who_it'],
         ];
         // ذخیره کارمند

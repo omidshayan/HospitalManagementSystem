@@ -46,6 +46,12 @@
                             </select>
                         </div>
                         <div class="one">
+                            <div class="label-form mb5 fs14">ایمیل </div>
+                            <input type="text" name="email" placeholder="ایمیل را وارد نمایید" />
+                        </div>
+                    </div>
+                    <div class="inputs d-flex">
+                        <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
                         </div>
