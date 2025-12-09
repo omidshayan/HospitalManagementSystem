@@ -258,7 +258,22 @@ textarea::placeholder {
     left: 0;
     top: 7px;
 }
-
+.edit-btn {
+    width: 50px !important;
+    padding: 2px 4px;
+    position: absolute;
+    left: 6px;
+    background-color: var(--bg) !important;
+    color: var(--btn-text) !important;
+    transition: all .3s ease-in;
+    border-radius: 3px !important;
+    border: 1px solid var(--bg);
+}
+.edit-btn:hover {
+    background-color: var(--main) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--orange);
+}
 .appbar-item-l {
     margin-left: 0 !important;
 }
@@ -1588,6 +1603,29 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 }
 /* end tooltip for all sections */
 
+.search-database{
+    background-color: var(--main);
+    position: relative;
+    width: 99%;
+}
+.search-icon-database{
+    position: absolute;
+    left: 0;
+    top: 29px;
+    z-index: 2;
+}
+.search-database-s{
+    background-color: var(--main);
+    position: relative;
+    width: 30%;
+}
+.search-icon-database-s{
+    position: absolute;
+    left: 0;
+    top: 2px;
+    z-index: 2;
+}
+
 /* radio in attendance */
 .input-radio {
     margin: 0 auto 0 auto !important;
@@ -2052,7 +2090,10 @@ div:where(.swal2-container) div:where(.swal2-popup) {
         width: 100% !important;
         font-size: 12px !important;
     }
-
+    .edit-btn{
+        font-size: 9px !important;
+        width: 36px !important;
+    }
     .waiting_progress_term {
         display: none;
         visibility: hidden;
@@ -2071,6 +2112,15 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     .class_infos {
         display: block !important;
         text-align: center !important;
+    }
+}
+@media screen and (max-width: 1572px) {
+    .search-back{
+        font-size: 15px;
+    }
+    .edit-btn{
+        font-size: 11px !important;
+        width: 40px !important;
     }
 }
 

@@ -33,15 +33,9 @@ class Patient extends App
         $this->middleware(true, true, 'general');
 
         $keyword = '%' . $request['customer_name'] . '%';
-        $branchId = $this->getBranchId();
 
-        if ($branchId === 'ALL') {
-            $sql = "SELECT * FROM products WHERE product_name LIKE ? LIMIT 20";
+            $sql = "SELECT * FROM users WHERE user_name LIKE ? LIMIT 20";
             $params = [$keyword];
-        } else {
-            $sql = "SELECT * FROM products WHERE product_name LIKE ? AND branch_id = ? LIMIT 20";
-            $params = [$keyword, $branchId];
-        }
 
         $infos = $this->db->select($sql, $params)->fetchAll();
 

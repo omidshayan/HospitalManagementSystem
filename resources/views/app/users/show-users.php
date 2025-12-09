@@ -19,7 +19,7 @@ include_once('resources/views/layouts/header.php');
     <!-- start page content -->
 
     <!-- search box -->
-    <div class="flex-justify-align">
+    <div class="flex-justify-align mb20">
         <div class="border search-database-s flex-justify-align">
             <a href="#" class="color search-icon-database-s">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-10 search-icon w17">
