@@ -20,82 +20,14 @@ class Employee extends App
     // store employee
     public function employeeStore($request)
     {
-        $permissions = [];
 
-        if (isset($request['prescriptionPrint']) && $request['prescriptionPrint'] == 'on') {
-            $permissions['prescriptionPrint'] = $request['prescriptionPrint'];
-        }
-
-        if (isset($request['paitents']) && $request['paitents'] == 'on') {
-            $permissions['paitents'] = $request['paitents'];
-        }
-        if (isset($request['paitents']) && $request['paitents'] == 'on') {
-            $permissions['parentPaitents'] = 'parentPaitents';
-            $permissions['paitents'] = $request['paitents'];
-        }
-        if (isset($request['addPrescription']) && $request['addPrescription'] == 'on') {
-            $permissions['parentPrescription'] = 'parentPrescription';
-            $permissions['addPrescription'] = $request['addPrescription'];
-        }
-        if (isset($request['showPrescription']) && $request['showPrescription'] == 'on') {
-            $permissions['parentPrescription'] = 'parentPrescription';
-            $permissions['showPrescription'] = $request['showPrescription'];
-        }
-
-
-        if (isset($request['addEmployee']) && $request['addEmployee'] == 'on') {
-            $permissions['parentEmployee'] = 'parentEmployee';
-            $permissions['addEmployee'] = $request['addEmployee'];
-        }
-        if (isset($request['showEmployees']) && $request['showEmployees'] == 'on') {
-            $permissions['parentEmployee'] = 'parentEmployee';
-            $permissions['showEmployees'] = $request['showEmployees'];
-        }
-        if (isset($request['positions']) && $request['positions'] == 'on') {
-            $permissions['parentEmployee'] = 'parentEmployee';
-            $permissions['positions'] = $request['positions'];
-        }
-
-        if (isset($request['addDrug']) && $request['addDrug'] == 'on') {
-            $permissions['parentDrug'] = 'parentDrug';
-            $permissions['addDrug'] = $request['addDrug'];
-        }
-        if (isset($request['showDrugs']) && $request['showDrugs'] == 'on') {
-            $permissions['parentDrug'] = 'parentDrug';
-            $permissions['showDrugs'] = $request['showDrugs'];
-        }
-        if (isset($request['catDrug']) && $request['catDrug'] == 'on') {
-            $permissions['parentDrug'] = 'parentDrug';
-            $permissions['catDrug'] = $request['catDrug'];
-        }
-        if (isset($request['unitDrug']) && $request['unitDrug'] == 'on') {
-            $permissions['parentDrug'] = 'parentDrug';
-            $permissions['unitDrug'] = $request['unitDrug'];
-        }
-
-        if (isset($request['numberDrugs']) && $request['numberDrugs'] == 'on') {
-            $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
-            $permissions['numberDrugs'] = $request['numberDrugs'];
-        }
-        if (isset($request['intakeTime']) && $request['intakeTime'] == 'on') {
-            $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
-            $permissions['intakeTime'] = $request['intakeTime'];
-        }
-        if (isset($request['dosage']) && $request['dosage'] == 'on') {
-            $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
-            $permissions['dosage'] = $request['dosage'];
-        }
-        if (isset($request['intakeInstructions']) && $request['intakeInstructions'] == 'on') {
-            $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
-            $permissions['intakeInstructions'] = $request['intakeInstructions'];
-        }
 
 
         $this->middleware(true, true, 'general', true, $request, true);
         // check empty form
-        if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
-            $this->flashMessage('error', _emptyInputs);
-        }
+        // if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
+        //     $this->flashMessage('error', _emptyInputs);
+        // }
 
         $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
         if ($existingEmployee) {
@@ -111,10 +43,82 @@ class Employee extends App
             // check image
             $this->handleImageUpload($request['image'], 'images/employees');
 
-
-
-
             $this->db->insert('employees', array_keys($request), $request);
+            $lastId = $this->db->lastInsertId();
+
+            $permissions = [];
+
+            if (isset($request['prescriptionPrint']) && $request['prescriptionPrint'] == 'on') {
+                $permissions['prescriptionPrint'] = 'prescriptionPrint';
+            }
+
+            if (isset($request['paitents']) && $request['paitents'] == 'on') {
+                $permissions['paitents'] = 'paitents';
+            }
+            if (isset($request['paitents']) && $request['paitents'] == 'on') {
+                $permissions['parentPaitents'] = 'parentPaitents';
+                $permissions['paitents'] = 'paitents';
+            }
+            if (isset($request['addPrescription']) && $request['addPrescription'] == 'on') {
+                $permissions['parentPrescription'] = 'parentPrescription';
+                $permissions['addPrescription'] = 'addPrescription';
+            }
+            if (isset($request['showPrescription']) && $request['showPrescription'] == 'on') {
+                $permissions['parentPrescription'] = 'parentPrescription';
+                $permissions['showPrescription'] = 'showPrescription';
+            }
+
+
+            if (isset($request['addEmployee']) && $request['addEmployee'] == 'on') {
+                $permissions['parentEmployee'] = 'parentEmployee';
+                $permissions['addEmployee'] = 'addEmployee';
+            }
+            if (isset($request['showEmployees']) && $request['showEmployees'] == 'on') {
+                $permissions['parentEmployee'] = 'parentEmployee';
+                $permissions['showEmployees'] = 'showEmployees';
+            }
+            if (isset($request['positions']) && $request['positions'] == 'on') {
+                $permissions['parentEmployee'] = 'parentEmployee';
+                $permissions['positions'] = 'positions';
+            }
+
+            if (isset($request['addDrug']) && $request['addDrug'] == 'on') {
+                $permissions['parentDrug'] = 'parentDrug';
+                $permissions['addDrug'] = 'addDrug';
+            }
+            if (isset($request['showDrugs']) && $request['showDrugs'] == 'on') {
+                $permissions['parentDrug'] = 'parentDrug';
+                $permissions['showDrugs'] = 'showDrugs';
+            }
+            if (isset($request['catDrug']) && $request['catDrug'] == 'on') {
+                $permissions['parentDrug'] = 'parentDrug';
+                $permissions['catDrug'] = 'catDrug';
+            }
+            if (isset($request['unitDrug']) && $request['unitDrug'] == 'on') {
+                $permissions['parentDrug'] = 'parentDrug';
+                $permissions['unitDrug'] = 'unitDrug';
+            }
+
+            if (isset($request['numberDrugs']) && $request['numberDrugs'] == 'on') {
+                $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
+                $permissions['numberDrugs'] = 'numberDrugs';
+            }
+            if (isset($request['intakeTime']) && $request['intakeTime'] == 'on') {
+                $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
+                $permissions['intakeTime'] = 'intakeTime';
+            }
+            if (isset($request['dosage']) && $request['dosage'] == 'on') {
+                $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
+                $permissions['dosage'] = 'dosage';
+            }
+            if (isset($request['intakeInstructions']) && $request['intakeInstructions'] == 'on') {
+                $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
+                $permissions['intakeInstructions'] = 'intakeInstructions';
+            }
+            dd($permissions);
+            // $permissions['employee_id'] == $lastId;
+            $this->db->insert('employees', array_keys($permissions), $permissions);
+
             $this->flashMessage('success', _success);
         }
     }
