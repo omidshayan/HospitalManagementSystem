@@ -27,10 +27,11 @@ class Prescription extends App
         $userId = $this->currentUser();
 
         $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
-        $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
-        
-        $intake_times = $this->db->select('SELECT * FROM intake_times WHERE `status` = ?', [1])->fetchAll();
 
+        $intake_times = $this->db->select('SELECT intake_time FROM intake_times WHERE `status` = ?', [1])->fetchAll();
+
+        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
+        
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
