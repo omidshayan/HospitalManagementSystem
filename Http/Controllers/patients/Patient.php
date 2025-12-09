@@ -27,6 +27,33 @@ class Patient extends App
         require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
     }
 
+    // live search
+    public function liveSearchPatient($request)
+    {
+        $this->middleware(true, true, 'general');
+
+        $keyword = '%' . $request['customer_name'] . '%';
+        $branchId = $this->getBranchId();
+
+        if ($branchId === 'ALL') {
+            $sql = "SELECT * FROM products WHERE product_name LIKE ? LIMIT 20";
+            $params = [$keyword];
+        } else {
+            $sql = "SELECT * FROM products WHERE product_name LIKE ? AND branch_id = ? LIMIT 20";
+            $params = [$keyword, $branchId];
+        }
+
+        $infos = $this->db->select($sql, $params)->fetchAll();
+
+        $response = [
+            'status' => 'success',
+            'items'  => $infos,
+        ];
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
 
 
 

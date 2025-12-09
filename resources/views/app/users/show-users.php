@@ -14,11 +14,12 @@ include_once('resources/views/layouts/header.php');
     $help_title = _help_title;
     $help_content = _help_desc;
     include_once('resources/views/helps/help.php');
+    include_once('resources/views/scripts/live-search-link.php');
     ?>
     <!-- start page content -->
 
     <!-- search box -->
-    <div class="flex-justify-align mb10">
+    <div class="flex-justify-align">
         <div class="border search-database-s flex-justify-align">
             <a href="#" class="color search-icon-database-s">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-10 search-icon w17">
@@ -26,10 +27,18 @@ include_once('resources/views/layouts/header.php');
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </a>
-            <input type="text" class="p5 fs15 input w100" id="search_item" placeholder="جستجوی کاربر..." autocomplete="off" />
-            <ul class="item-search-back d-none" id="backResponseSeller">
-                <li class="resSel search-item color" role="option"></li>
-            </ul>
+            <input
+                type="text"
+                class="p5 fs15 input w100 live-search-input"
+                data-search-url="<?= url('live-search-patient') ?>"
+                data-redirect-url="<?= url('product-details') ?>/"
+                data-edit-url="<?= url('edit-product') ?>/"
+                data-template="product_name"
+                data-id-key="id"
+                placeholder="جستجوی مریض..."
+                autocomplete="off"
+                autofocus />
+            <ul class="search-back d-none live-search-result t35"></ul>
         </div>
     </div>
 
