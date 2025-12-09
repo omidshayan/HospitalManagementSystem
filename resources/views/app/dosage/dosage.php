@@ -20,7 +20,7 @@ include_once('public/alerts/toastr.php');
     <!-- start page content -->
     <div class="mini-container">
         <div class="insert">
-            <form id="myForm" action="intake-time-store" method="POST">
+            <form id="myForm" action="<?=url('dosage-store')?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14">مقدار مصرف <?= _star ?> </div>
@@ -55,7 +55,7 @@ include_once('public/alerts/toastr.php');
                 ?>
                     <tr>
                         <td class="color-orange <?= ($item['status'] == 2) ? 'color-red' : '' ?>"><?= $number ?></td>
-                        <td><?= $item['intake_time'] ?></td>
+                        <td><?= $item['dosage'] ?></td>
                         <td>
                             <a href="<?= url('edit-intake-time/' . $item['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

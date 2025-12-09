@@ -12,20 +12,20 @@ class Dosage extends App
         require_once(BASE_PATH . '/resources/views/app/dosage/dosage.php');
     }
 
-    // store intake_time
-    public function intakeTimeStore($request)
+    // store dosage
+    public function dosageStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['intake_time'] == '') {
+        if ($request['dosage'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        $intake_time = $this->db->select('SELECT intake_time FROM intake_times WHERE `intake_time` = ?', [$request['intake_time']])->fetch();
+        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
 
-        if (!empty($intake_time['intake_time'])) {
+        if (!empty($dosage['dosage'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('intake_times', array_keys($request), $request);
+            $this->db->insert('dosage', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
