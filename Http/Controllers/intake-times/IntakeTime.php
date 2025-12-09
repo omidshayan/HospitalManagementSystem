@@ -30,13 +30,13 @@ class IntakeTime extends App
         }
     }
 
-    // Expense Cat Details detiles page
-    public function expenseCatDetails($id)
+    // intake_time page
+    public function editIntakeTime($id)
     {
         $this->middleware(true, true, 'general');
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories WHERE `id` = ?', [$id])->fetch();
-        if ($expenses_categories != null) {
-            require_once(BASE_PATH . '/resources/views/app/expenses-categories/expense-cat-details.php');
+        $intake_time = $this->db->select('SELECT * FROM intake_times WHERE `id` = ?', [$id])->fetch();
+        if ($intake_time != null) {
+            require_once(BASE_PATH . '/resources/views/app/edit-intake-time/expense-edit-intake-time.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
