@@ -4,8 +4,8 @@ namespace App;
 
 class NumberDrug extends App
 {
-    //  expenses_categories page
-    public function expensesCategories()
+    //  numberDrugs page
+    public function numberDrugs()
     {
         $this->middleware(true, true, 'general', true);
         $expenses_categories = $this->db->select('SELECT * FROM expenses_categories ORDER BY id DESC')->fetchAll();
