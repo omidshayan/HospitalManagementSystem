@@ -22,26 +22,29 @@ class Employee extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        // check empty form
+        // بررسی خالی بودن فیلدهای ضروری
         if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
             $this->flashMessage('error', _emptyInputs);
         }
 
+        // چک تکراری بودن شماره تماس
         $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
         if ($existingEmployee) {
             $this->flashMessage('error', _phone_repeat);
         } else {
+            // بررسی حداقل طول رمز عبور
             if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
                 $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
             }
 
+            // اعتبارسنجی ورودی‌ها
             $request = $this->validateInputs($request, ['image' => false]);
             $request['password'] = $this->hash($request['password']);
 
-            // check image
+            // آپلود تصویر کارمند
             $this->handleImageUpload($request['image'], 'images/employees');
 
-            // array for employee data
+            // داده‌های کارمند
             $employeeData = [
                 'employee_name' => $request['employee_name'],
                 'phone' => $request['phone'],
@@ -54,32 +57,31 @@ class Employee extends App
                 'description' => $request['description'],
                 'who_it' => $request['who_it'],
             ];
+
+            // درج کارمند جدید
             $this->db->insert('employees', array_keys($employeeData), $employeeData);
 
             // گرفتن آی‌دی کارمند جدید
             $employeeId = $this->db->lastInsertId();
 
-            // تعریف والدها و زیرمجموعه‌ها (نام‌ها و والدها)
+            // تعریف والد‌ها و زیرمجموعه‌ها
             $parentChildMap = [
-                // والد => [زیرمجموعه‌ها]
                 'parentPatients' => ['showPatients'],
                 'parentPrescription' => ['addPrescription', 'showPrescription'],
                 'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
                 'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
                 'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription'],
-                // تکی‌ها که والد ندارند
-                'prescriptionPrint' => null,
+                'prescriptionPrint' => null, // مورد تکی بدون زیرمجموعه
             ];
 
-            // ابتدا همه دسترسی‌های تکی که والد ندارند و چک شده‌اند را بررسی کنیم
             $permissionsToInsert = [];
 
-            // اول چک باکس تکی بدون والد
+            // بررسی دسترسی تکی بدون والد
             if (!empty($request['prescriptionPrint'])) {
                 $permissionsToInsert[] = 'prescriptionPrint';
             }
 
-            // تابعی برای اضافه کردن دسترسی‌ها با والدش
+            // تابع کمکی برای افزودن والد و زیرمجموعه‌ها
             $addPermissionWithParent = function ($parent, $children) use ($request, &$permissionsToInsert) {
                 $parentAdded = false;
                 foreach ($children as $child) {
@@ -93,23 +95,29 @@ class Employee extends App
                 }
             };
 
-            // پردازش والد-زیرمجموعه ها
+            // بررسی همه والد-زیرمجموعه‌ها
             foreach ($parentChildMap as $parent => $children) {
                 if ($children === null) {
-                    // یعنی تکی بدون زیرمجموعه (مثلا prescriptionPrint)
-                    continue; // همین الان بالا چک کردیم
+                    continue; // تکی بدون زیرمجموعه قبلا چک شده
                 }
                 $addPermissionWithParent($parent, $children);
             }
 
-            // ذخیره همه دسترسی‌ها در جدول permissions
+            // ثبت دسترسی‌ها در جدول permissions
             foreach ($permissionsToInsert as $sectionName) {
                 $this->db->insert('permissions', ['employee_id', 'section_name'], [$employeeId, $sectionName]);
+            }
+
+            // ثبت دسترسی‌های پیش‌فرض برای همه کارمندان (مثل dashboard و profile)
+            $defaultPermissions = ['dashboard', 'profile'];
+            foreach ($defaultPermissions as $defaultPermission) {
+                $this->db->insert('permissions', ['employee_id', 'section_name'], [$employeeId, $defaultPermission]);
             }
 
             $this->flashMessage('success', _success);
         }
     }
+
 
     // edit employee page
     public function editEmployee($id)
