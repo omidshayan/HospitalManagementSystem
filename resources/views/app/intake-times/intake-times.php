@@ -24,7 +24,7 @@ include_once('public/alerts/toastr.php');
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="intake_time" class="checkInput" placeholder="زمان مصرف را وارد نمایید" autocomplete="off" />
+                        <input type="text" name="intake_time" class="checkInput" placeholder="زمان مصرف را وارد نمایید" autocomplete="off" autofocus />
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
@@ -55,7 +55,7 @@ include_once('public/alerts/toastr.php');
                 ?>
                     <tr>
                         <td class="color-orange"><?= $number ?></td>
-                        <td><?= $item['intake-times'] ?></td>
+                        <td><?= $item['intake_time'] ?></td>
                         <td>
                             <a href="<?= url('edit-intake-time/' . $item['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

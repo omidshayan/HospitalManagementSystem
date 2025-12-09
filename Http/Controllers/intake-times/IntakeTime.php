@@ -16,15 +16,16 @@ class IntakeTime extends App
     public function intakeTimeStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
-        
+
         if ($request['intake_time'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
-        if (!empty($expenses_categories['cat_name'])) {
+        $intake_time = $this->db->select('SELECT intake_time FROM intake_times WHERE `intake_time` = ?', [$request['intake_time']])->fetch();
+
+        if (!empty($intake_time['intake_time'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('expenses_categories', array_keys($request), $request);
+            $this->db->insert('intake_times', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
