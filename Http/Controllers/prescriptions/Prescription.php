@@ -156,7 +156,7 @@ class Prescription extends App
         dd($request);
     }
 
-    public function omid()
+    public function patientInquiry()
     {
         $omid = $_GET['patient_name'];
         dd($omid);

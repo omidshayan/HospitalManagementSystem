@@ -21,8 +21,8 @@ uri('delete-prescription/{id}', 'App\Prescription', 'deletePrescription');
 uri('close-prescription-store/{id}', 'App\Prescription', 'closePrescriptionStore', 'POST');
 
 
-uri('close-prescription', 'App\Prescription', 'test', 'POST');
+// uri('close-prescription', 'App\Prescription', 'test', 'POST');
 
 
-
-uri('patient-inquiry', 'App\Prescription', 'omid');
+// patient Inquiry
+uri('patient-inquiry', 'App\Prescription', 'patientInquiry');
