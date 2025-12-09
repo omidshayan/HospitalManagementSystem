@@ -16,7 +16,7 @@
     <div class="content">
         <div class="content-title"> جزئیات مقدار مصرف: <?= $dosage['dosage'] ?></div>
         <!-- start page content -->
-        <div class="box-container">
+        <div class="mini-container">
             <div class="details">
                 <div class="detail-item d-flex">
                     <div class="w100 m10 center">مقدار مصرف</div>
@@ -48,7 +48,7 @@
                     <div class="w100 m10 center status status-column" id="status"><?= ($dosage['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
                 </div>
             </div>
-            <a href="<?= url('intake-times') ?>">
+            <a href="<?= url('dosage') ?>">
                 <div class="btn center p5">برگشت</div>
             </a>
         </div>
