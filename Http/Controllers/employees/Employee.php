@@ -17,111 +17,118 @@ class Employee extends App
         require_once(BASE_PATH . '/resources/views/app/employees/add-employee.php');
     }
 
+    // check empty form
+    // if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
+    //     $this->flashMessage('error', _emptyInputs);
+    // }
+
     // store employee
     public function employeeStore($request)
     {
-
-
-
         $this->middleware(true, true, 'general', true, $request, true);
-        // check empty form
-        // if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
-        //     $this->flashMessage('error', _emptyInputs);
-        // }
 
-        $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
+        // بررسی شماره‌ی تکراری
+        $existingEmployee = $this->db->select(
+            'SELECT * FROM employees WHERE `phone` = ?',
+            [$request['phone']]
+        )->fetch();
+
         if ($existingEmployee) {
             $this->flashMessage('error', _phone_repeat);
-        } else {
-            if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
-                $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
-            }
-
-            $request = $this->validateInputs($request, ['image' => false]);
-            $request['password'] = $this->hash($request['password']);
-
-            // check image
-            $this->handleImageUpload($request['image'], 'images/employees');
-
-            $this->db->insert('employees', array_keys($request), $request);
-            $lastId = $this->db->lastInsertId();
-
-            $permissions = [];
-
-            if (isset($request['prescriptionPrint']) && $request['prescriptionPrint'] == 'on') {
-                $permissions['prescriptionPrint'] = 'prescriptionPrint';
-            }
-
-            if (isset($request['paitents']) && $request['paitents'] == 'on') {
-                $permissions['paitents'] = 'paitents';
-            }
-            if (isset($request['paitents']) && $request['paitents'] == 'on') {
-                $permissions['parentPaitents'] = 'parentPaitents';
-                $permissions['paitents'] = 'paitents';
-            }
-            if (isset($request['addPrescription']) && $request['addPrescription'] == 'on') {
-                $permissions['parentPrescription'] = 'parentPrescription';
-                $permissions['addPrescription'] = 'addPrescription';
-            }
-            if (isset($request['showPrescription']) && $request['showPrescription'] == 'on') {
-                $permissions['parentPrescription'] = 'parentPrescription';
-                $permissions['showPrescription'] = 'showPrescription';
-            }
-
-
-            if (isset($request['addEmployee']) && $request['addEmployee'] == 'on') {
-                $permissions['parentEmployee'] = 'parentEmployee';
-                $permissions['addEmployee'] = 'addEmployee';
-            }
-            if (isset($request['showEmployees']) && $request['showEmployees'] == 'on') {
-                $permissions['parentEmployee'] = 'parentEmployee';
-                $permissions['showEmployees'] = 'showEmployees';
-            }
-            if (isset($request['positions']) && $request['positions'] == 'on') {
-                $permissions['parentEmployee'] = 'parentEmployee';
-                $permissions['positions'] = 'positions';
-            }
-
-            if (isset($request['addDrug']) && $request['addDrug'] == 'on') {
-                $permissions['parentDrug'] = 'parentDrug';
-                $permissions['addDrug'] = 'addDrug';
-            }
-            if (isset($request['showDrugs']) && $request['showDrugs'] == 'on') {
-                $permissions['parentDrug'] = 'parentDrug';
-                $permissions['showDrugs'] = 'showDrugs';
-            }
-            if (isset($request['catDrug']) && $request['catDrug'] == 'on') {
-                $permissions['parentDrug'] = 'parentDrug';
-                $permissions['catDrug'] = 'catDrug';
-            }
-            if (isset($request['unitDrug']) && $request['unitDrug'] == 'on') {
-                $permissions['parentDrug'] = 'parentDrug';
-                $permissions['unitDrug'] = 'unitDrug';
-            }
-
-            if (isset($request['numberDrugs']) && $request['numberDrugs'] == 'on') {
-                $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
-                $permissions['numberDrugs'] = 'numberDrugs';
-            }
-            if (isset($request['intakeTime']) && $request['intakeTime'] == 'on') {
-                $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
-                $permissions['intakeTime'] = 'intakeTime';
-            }
-            if (isset($request['dosage']) && $request['dosage'] == 'on') {
-                $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
-                $permissions['dosage'] = 'dosage';
-            }
-            if (isset($request['intakeInstructions']) && $request['intakeInstructions'] == 'on') {
-                $permissions['parentNumberDrugs'] = 'parentNumberDrugs';
-                $permissions['intakeInstructions'] = 'intakeInstructions';
-            }
-            dd($permissions);
-            // $permissions['employee_id'] == $lastId;
-            $this->db->insert('employees', array_keys($permissions), $permissions);
-
-            $this->flashMessage('success', _success);
         }
+
+        // بررسی پسورد
+        if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
+            $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
+        }
+
+        // آپلود عکس و آماده‌سازی ورودی‌ها
+        $request = $this->validateInputs($request, ['image' => false]);
+        $request['password'] = $this->hash($request['password']);
+
+        $this->handleImageUpload($request['image'], 'images/employees');
+
+        $employeeData = [
+            'employee_name' => $request['employee_name'],
+            'father_name' => $request['father_name'],
+            'phone' => $request['phone'],
+            'password' => $request['password'],
+            'email' => $request['email'],
+            'address' => $request['address'],
+            'position' => $request['position'],
+            'expertise' => $request['expertise'],
+            'image' => $request['image'],
+            'description' => $request['description'],
+            'salary_price' => $request['salary_price'],
+            'who_it' => $request['who_it'],
+        ];
+        // ذخیره کارمند
+        $this->db->insert('employees', array_keys($employeeData), $employeeData);
+
+
+        // دریافت آخرین ID (روش مطمئن‌تر)
+        $lastEmployeeId = $this->db
+            ->select("SELECT id FROM employees ORDER BY id DESC LIMIT 1")
+            ->fetch()['id'];
+
+        $permissionMap = [
+            'paitents'           => 'parentPaitents',
+            'addPrescription'    => 'parentPrescription',
+            'showPrescription'   => 'parentPrescription',
+            'addEmployee'        => 'parentEmployee',
+            'showEmployees'      => 'parentEmployee',
+            'positions'          => 'parentEmployee',
+            'addDrug'            => 'parentDrug',
+            'showDrugs'          => 'parentDrug',
+            'catDrug'            => 'parentDrug',
+            'unitDrug'           => 'parentDrug',
+            'numberDrugs'        => 'parentNumberDrugs',
+            'intakeTime'         => 'parentNumberDrugs',
+            'dosage'             => 'parentNumberDrugs',
+            'intakeInstructions' => 'parentNumberDrugs',
+        ];
+
+        /*
+    |--------------------------------------------
+    | استخراج دسترسی‌ها
+    |--------------------------------------------
+    */
+        $selectedPermissions = [];
+
+        foreach ($request as $key => $val) {
+            if ($val === 'on') {
+                $selectedPermissions[] = $key;
+
+                // اگر برای این دسترسی parent تعریف شده، parent نیز اضافه شود
+                if (isset($permissionMap[$key])) {
+                    $selectedPermissions[] = $permissionMap[$key];
+                }
+            }
+        }
+
+        // حذف تکراری‌ها
+        $selectedPermissions = array_unique($selectedPermissions);
+
+        /*
+    |--------------------------------------------
+    | اگر هیچ دسترسی انتخاب نشود → ادامه بدون خطا
+    |--------------------------------------------
+    */
+        if (!empty($selectedPermissions)) {
+
+            foreach ($selectedPermissions as $section) {
+                $this->db->insert(
+                    'permissions',
+                    ['employee_id', 'section_name'],
+                    [$lastEmployeeId, $section]
+                );
+            }
+        }
+
+        $this->flashMessage('success', _success);
     }
+
+
 
     // edit employee page
     public function editEmployee($id)
