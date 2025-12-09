@@ -83,21 +83,19 @@ class Dosage extends App
     }
 
     // change status dosage
-    public function changeStatusIntakeTime($id)
+    public function changeStatusDosage($id)
     {
         $this->middleware(true, true, 'general');
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE id = ?', [$id])->fetch();
-        if ($dosage != null) {
-            if ($dosage['status'] == 1) {
-                $this->db->update('dosage', $dosage['id'], ['status'], [2]);
-                $this->send_json_response(true, _success, 2);
-            } else {
-                $this->db->update('dosage', $dosage['id'], ['status'], [1]);
-                $this->send_json_response(true, _success, 1);
-            }
-        } else {
+
+        $dosage = $this->db->select('SELECT id, `status` FROM dosage WHERE id = ?', [$id])->fetch();
+        if (!$dosage) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
+
+        $newStatus = ($dosage['status'] == 1) ? 2 : 1;
+
+        $this->db->update('dosage', $id, ['status'], [$newStatus]);
+        $this->send_json_response(true, _success, $newStatus);
     }
 }
