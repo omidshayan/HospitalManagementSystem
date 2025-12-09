@@ -65,6 +65,8 @@ class Employee extends App
             ->fetch()['id'];
 
         $permissionMap = [
+            'prescriptionPrint' => null,   // مستقل و بدون parent
+
             'paitents'           => 'parentPaitents',
             'addPrescription'    => 'parentPrescription',
             'showPrescription'   => 'parentPrescription',
@@ -84,6 +86,7 @@ class Employee extends App
             'intakeInstructions' => 'parentNumberDrugs',
             'prescriptionSettings' => 'parentNumberDrugs',
         ];
+
 
         // دسترسی های پیشفرض که همیشه ثبت شوند
         $defaultPermissions = ['profile', 'dashboard', 'general'];
