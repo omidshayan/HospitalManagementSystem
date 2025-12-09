@@ -36,7 +36,7 @@ class IntakeTime extends App
         $this->middleware(true, true, 'general');
         $intake_time = $this->db->select('SELECT * FROM intake_times WHERE `id` = ?', [$id])->fetch();
         if ($intake_time != null) {
-            require_once(BASE_PATH . '/resources/views/app/edit-intake-time/expense-edit-intake-time.php');
+            require_once(BASE_PATH . '/resources/views/app/intake-times/edit-intake-time.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');

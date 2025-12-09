@@ -1,6 +1,6 @@
 <!-- start sidebar -->
 <?php
-$title = 'ویرایش دسته مصرفی: ' . $expenses_categories['cat_name'];
+$title = 'ویرایش  زمان مصرف: ' . $intake_time['intake_time'];
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
@@ -9,7 +9,7 @@ include_once('public/alerts/toastr.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> ویرایش دسته مصرفی: <?= $expenses_categories['cat_name'] ?>
+    <div class="content-title"> ویرایش زمان مصرف: <?= $intake_time['intake_time'] ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
@@ -20,22 +20,18 @@ include_once('public/alerts/toastr.php');
     <!-- start page content -->
     <div class="box-container">
         <div class="insert">
-            <form id="myForm" action="<?=url('edit-cat-store/' . $expenses_categories['id'])?>" method="POST">
+            <form id="myForm" action="<?=url('edit-cat-store/' . $intake_time['id'])?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="cat_name" class="checkInput" value="<?= $expenses_categories['cat_name'] ?>" placeholder="نام را وارد نمایید" autocomplete="off" />
-                    </div>
-                    <div class="one">
-                        <div class="label-form mb5 fs14">توضیحات</div>
-                        <textarea name="description" id="" placeholder="لطفا توضیحات را بنویسید..."><?= $expenses_categories['description'] ?></textarea>
+                        <input type="text" name="intake_time" class="checkInput" value="<?= $intake_time['intake_time'] ?>" placeholder="نام را وارد نمایید" autocomplete="off" />
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <input type="submit" id="submit" value="ثــبــت" class="btn bold" />
             </form>
         </div>
-        <a href="<?= url('expenses_categories') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
+        <a href="<?= url('intake-times') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
     </div>
 </div>
 <!-- End content -->
