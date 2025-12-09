@@ -18,9 +18,9 @@ include_once('public/alerts/toastr.php');
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
-    <div class="box-container">
+    <div class="mini-container">
         <div class="insert">
-            <form id="myForm" action="<?=url('edit-cat-store/' . $intake_time['id'])?>" method="POST">
+            <form id="myForm" action="<?=url('edit-intake-time-store/' . $intake_time['id'])?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
@@ -28,7 +28,7 @@ include_once('public/alerts/toastr.php');
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
-                <input type="submit" id="submit" value="ثــبــت" class="btn bold" />
+                <input type="submit" id="submit" value="ویــرایــش" class="btn bold" />
             </form>
         </div>
         <a href="<?= url('intake-times') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>

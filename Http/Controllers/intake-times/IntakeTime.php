@@ -46,16 +46,16 @@ class IntakeTime extends App
 
 
     // edit intake_time store
-    public function editCatStore($request, $id)
+    public function editIntakeTimeStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['cat_name'] == '') {
+        if ($request['intake_time'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $item = $this->db->select('SELECT * FROM expenses_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
+        $item = $this->db->select('SELECT * FROM intake_times WHERE `intake_time` = ?', [$request['intake_time']])->fetch();
 
         if ($item) {
             if ($item['id'] != $id) {
@@ -64,8 +64,8 @@ class IntakeTime extends App
             }
         }
 
-        $this->db->update('expenses_categories', $id, array_keys($request), $request);
-        $this->flashMessage('success', _success);
+        $this->db->update('intake_times', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('intake-times'));
     }
 
 
