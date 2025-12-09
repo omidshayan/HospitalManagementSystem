@@ -4,123 +4,46 @@ namespace App;
 
 require_once 'Http/Controllers/App.php';
 
+use database\DataBase;
+
 class Employee extends App
 {
 
     // add employee page
     public function addEmployee()
     {
-        $this->middleware(true, true, 'addEmployee', true);
+        $this->middleware(true, true, 'general', true);
         $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/employees/add-employee.php');
     }
 
-    // check empty form
-    // if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
-    //     $this->flashMessage('error', _emptyInputs);
-    // }
-
     // store employee
     public function employeeStore($request)
     {
-        $this->middleware(true, true, 'showEmployees', true, $request, true);
+        $this->middleware(true, true, 'general', true, $request, true);
+        // check empty form
+        if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
+            $this->flashMessage('error', _emptyInputs);
+        }
 
-        // بررسی شماره‌ی تکراری
-        $existingEmployee = $this->db->select(
-            'SELECT * FROM employees WHERE `phone` = ?',
-            [$request['phone']]
-        )->fetch();
-
+        $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
         if ($existingEmployee) {
             $this->flashMessage('error', _phone_repeat);
-        }
-
-        // بررسی پسورد
-        if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
-            $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
-        }
-
-        // فقط فیلدهای واقعی جدول employees را نگه دار
-        $columns = $this->db->select("SHOW COLUMNS FROM employees")->fetchAll();
-        $validColumns = array_column($columns, 'Field');
-
-        $employeeData = [];
-        foreach ($request as $key => $val) {
-            if (in_array($key, $validColumns)) {
-                $employeeData[$key] = $val;
+        } else {
+            if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
+                $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
             }
+
+            $request = $this->validateInputs($request, ['image' => false]);
+            $request['password'] = $this->hash($request['password']);
+
+            // check image
+            $this->handleImageUpload($request['image'], 'images/employees');
+
+            $this->db->insert('employees', array_keys($request), $request);
+            $this->flashMessage('success', _success);
         }
-
-        // هش کردن پسورد
-        $employeeData['password'] = $this->hash($employeeData['password']);
-
-        // آپلود عکس اگر هست
-        $this->handleImageUpload($request['image'], 'images/employees');
-        // ذخیره کارمند
-        $this->db->insert('employees', array_keys($employeeData), $employeeData);
-
-        // دریافت آخرین id کارمند ثبت شده
-        $lastEmployeeId = $this->db
-            ->select("SELECT id FROM employees ORDER BY id DESC LIMIT 1")
-            ->fetch()['id'];
-
-        $permissionMap = [
-            'prescriptionPrint' => null,   // مستقل و بدون parent
-
-            'paitents'           => 'parentPaitents',
-            'addPrescription'    => 'parentPrescription',
-            'showPrescription'   => 'parentPrescription',
-
-            'addEmployee'        => 'parentEmployee',
-            'showEmployees'      => 'parentEmployee',
-            'positions'          => 'parentEmployee',
-
-            'addDrug'            => 'parentDrug',
-            'showDrugs'          => 'parentDrug',
-            'catDrug'            => 'parentDrug',
-            'unitDrug'           => 'parentDrug',
-
-            'numberDrugs'        => 'parentNumberDrugs',
-            'intakeTime'         => 'parentNumberDrugs',
-            'dosage'             => 'parentNumberDrugs',
-            'intakeInstructions' => 'parentNumberDrugs',
-            'prescriptionSettings' => 'parentNumberDrugs',
-        ];
-
-
-        // دسترسی های پیشفرض که همیشه ثبت شوند
-        $defaultPermissions = ['profile', 'dashboard', 'general'];
-
-        // استخراج دسترسی‌های انتخاب‌شده
-        $selectedPermissions = [];
-
-        foreach ($request as $key => $val) {
-            if ($val === 'on') {
-
-                // خود دسترسی
-                $selectedPermissions[] = $key;
-
-                // پرنت مربوطه
-                if (isset($permissionMap[$key])) {
-                    $selectedPermissions[] = $permissionMap[$key];
-                }
-            }
-        }
-
-        $selectedPermissions = array_merge($selectedPermissions, $defaultPermissions);
-
-        $selectedPermissions = array_unique($selectedPermissions);
-
-        if (!empty($selectedPermissions)) {
-            foreach ($selectedPermissions as $section) {
-                $this->db->insert('permissions', ['employee_id', 'section_name'], [$lastEmployeeId, $section]);
-            }
-        }
-
-        $this->flashMessage('success', _success);
     }
-
-
 
     // edit employee page
     public function editEmployee($id)
