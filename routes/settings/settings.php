@@ -10,5 +10,6 @@ uri('manage-years', 'App\Setting', 'manageYears');
 uri('change-status-years/{id}', 'App\Setting', 'changeStatusYears', 'POST');
 
 
-
+// number drugs
+uri('number-drugs', 'App\Setting', 'numberDrugs');
 

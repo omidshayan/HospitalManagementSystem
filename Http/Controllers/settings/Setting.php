@@ -51,7 +51,7 @@ class Setting extends App
         $prescription_infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
         require_once(BASE_PATH . '/resources/views/app/settings/prescription-settings.php');
     }
-
+// numberDrugs
     // prescription settings store
     public function prescriptionSettingsStore($request)
     {

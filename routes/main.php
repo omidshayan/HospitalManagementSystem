@@ -56,6 +56,9 @@ require_once 'prints/prints.php';
 // prescriptions
 require_once 'prescriptions/prescriptions.php';
 
+// number-drugs
+require_once 'number-drugs/number-drugs.php';
+
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
         //current url array
