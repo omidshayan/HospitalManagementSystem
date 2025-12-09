@@ -44,6 +44,31 @@ class IntakeTime extends App
         }
     }
 
+
+    // edit intake_time store
+    public function editCatStore($request, $id)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        // check empty form
+        if ($request['cat_name'] == '') {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
+        $item = $this->db->select('SELECT * FROM expenses_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
+
+        if ($item) {
+            if ($item['id'] != $id) {
+                $this->flashMessage('error', 'این دسته قبلا ثبت شده است.');
+                return;
+            }
+        }
+
+        $this->db->update('expenses_categories', $id, array_keys($request), $request);
+        $this->flashMessage('success', _success);
+    }
+
+
     // change status Expense Cat
     public function changeStatusExpenseCat($id)
     {
@@ -76,28 +101,5 @@ class IntakeTime extends App
             require_once(BASE_PATH . '/404.php');
             exit();
         }
-    }
-
-    // edit expense store
-    public function editCatStore($request, $id)
-    {
-        $this->middleware(true, true, 'general', true, $request, true);
-
-        // check empty form
-        if ($request['cat_name'] == '') {
-            $this->flashMessage('error', _emptyInputs);
-        }
-
-        $item = $this->db->select('SELECT * FROM expenses_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
-
-        if ($item) {
-            if ($item['id'] != $id) {
-                $this->flashMessage('error', 'این دسته قبلا ثبت شده است.');
-                return;
-            }
-        }
-
-        $this->db->update('expenses_categories', $id, array_keys($request), $request);
-        $this->flashMessage('success', _success);
     }
 }
