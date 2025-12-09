@@ -141,10 +141,14 @@
                         </div>
                         <div class="inputs d-flex">
                             <div class="one">
-                                <div class="label-form mb5 fs14" for="name">مقدار مصرف هر نوبت</div>
+                                <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
                                 <select name="dosage" required>
-                                    <option value="1">یک قاشق</option>
-                                    <option value="1">دو قاشق</option>
+                                    <option selected disabled>مقدار مصرف در هر نوبت</option>
+                                    <?php
+                                    foreach ($dosage as $dos) { ?>
+                                        <option value="<?= $dos['dosage'] ?>"><?= $dos['dosage'] ?></option>
+                                    <?php }
+                                    ?>
                                 </select>
                             </div>
                             <div class="one">
