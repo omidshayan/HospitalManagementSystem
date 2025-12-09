@@ -7,10 +7,9 @@ class IntakeTime extends App
     //  intakeTimes page
     public function intakeTimes()
     {
-        dd('ok');
         $this->middleware(true, true, 'general', true);
-        $numberDrugs = $this->db->select('SELECT * FROM number_of_drugs')->fetch();
-        require_once(BASE_PATH . '/resources/views/app/number-drugs/number-drugs.php');
+        $intakeTimes = $this->db->select('SELECT * FROM intake_times')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/intake-times/intake-times.php');
     }
 
     // store number drug
