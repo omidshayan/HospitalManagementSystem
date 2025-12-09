@@ -1,13 +1,11 @@
-<!-- start sidebar -->
 <?php
 $title = 'نتیجه جستجو';
 include_once('resources/views/layouts/header.php');
 ?>
-<!-- end sidebar -->
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> نتیجه جستجو: <?= $user?>
+    <div class="content-title"> نتیجه جستجو: <?= $user ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
@@ -17,24 +15,8 @@ include_once('resources/views/layouts/header.php');
     ?>
     <!-- start page content -->
 
-    <!-- search box -->
-    <div class="flex-justify-align mb10">
-        <div class="border search-database-s flex-justify-align">
-            <a href="#" class="color search-icon-database-s">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-10 search-icon w17">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-            </a>
-            <input type="text" class="p5 fs15 input w100" id="search_item" placeholder="جستجوی کاربر..." autocomplete="off" />
-            <ul class="item-search-back d-none" id="backResponseSeller">
-                <li class="resSel search-item color" role="option"></li>
-            </ul>
-        </div>
-    </div>
-
     <!-- show employees -->
-    <div class="content-container">
+    <div class="box-container">
         <table class="fl-table">
             <thead>
                 <tr>
@@ -77,8 +59,8 @@ include_once('resources/views/layouts/header.php');
             <div class="table-info fs14">تعداد کل: <?= count($userSearch) ?></div>
             <?php
             if (count($userSearch) == null) { ?>
-                <div class="center">
-                    <i class="fa fa-comment fs14 color-red"></i>
+                <div class="center color-red fs14">
+                    <i class="fa fa-comment"></i>
                     <?= 'اطلاعاتی ثبت نشده است' ?>
                 </div>
             <?php } else {
