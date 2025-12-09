@@ -33,7 +33,7 @@ class Prescription extends App
         $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
 
         $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
-        
+
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
@@ -151,16 +151,48 @@ class Prescription extends App
         require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
 
-    public function test($request)
-    {
-        dd($request);
-    }
-
+    // patient Inquiry
     public function patientInquiry()
     {
-        $omid = $_GET['patient_name'];
-        dd($omid);
+        $this->middleware(true, true, 'showPrescription', true);
+
+        $user = $_GET['patient_name'];
+
+        $userSearch = $this->db->select("SELECT * FROM users WHERE `user_name` LIKE ?", ['%' . strtolower($user) . '%'])->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/users/result-search.php');
     }
+
+    // showPrescriptionItem
+    public function showPrescriptionItem($id)
+    {
+        $this->middleware(true, true, 'prescriptionPrint', true);
+
+        $prescription = $this->db->select(
+            'SELECT p.*, 
+                e.employee_name,
+                e.expertise
+         FROM prescriptions p
+         JOIN employees e ON e.id = p.doctor_id
+         WHERE p.status = ? AND p.id = ?',
+            [3, $id]
+        )->fetch();
+
+        $items = [];
+
+        if ($prescription) {
+            $items = $this->db->select(
+                'SELECT *
+             FROM prescription_items
+             WHERE prescription_id = ?
+             ORDER BY id ASC',
+                [$prescription['id']]
+            )->fetchAll();
+        }
+
+        require_once(BASE_PATH . '/resources/views/app/prints/prescriptionPrint.php');
+    }
+
     //////////////////////////////////////////////
 
     // delete saleproduct from cart

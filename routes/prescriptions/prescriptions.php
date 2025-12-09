@@ -26,3 +26,5 @@ uri('close-prescription-store/{id}', 'App\Prescription', 'closePrescriptionStore
 
 // patient Inquiry
 uri('patient-inquiry', 'App\Prescription', 'patientInquiry');
+
+uri('show-prescription-item/{id}', 'App\Prescription', 'showPrescriptionItem');
