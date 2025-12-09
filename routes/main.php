@@ -26,6 +26,9 @@ require_once 'expenses/expenses.php';
 // positions
 require_once 'positions/positions.php';
 
+// number-drugs
+require_once 'number-drugs/number-drugs.php';
+
 // settings
 require_once 'settings/settings.php';
 
@@ -56,8 +59,6 @@ require_once 'prints/prints.php';
 // prescriptions
 require_once 'prescriptions/prescriptions.php';
 
-// number-drugs
-require_once 'number-drugs/number-drugs.php';
 
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {

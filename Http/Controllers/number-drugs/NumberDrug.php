@@ -7,9 +7,10 @@ class NumberDrug extends App
     //  numberDrugs page
     public function numberDrugs()
     {
+        dd('ok');
         $this->middleware(true, true, 'general', true);
-        $expenses_categories = $this->db->select('SELECT * FROM expenses_categories ORDER BY id DESC')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/expenses-categories/expenses-categories.php');
+        $expenses_categories = $this->db->select('SELECT * FROM number_of_drugs')->fetch();
+        require_once(BASE_PATH . '/resources/views/app/number-drugs/number-drugs.php');
     }
 
     // store expenses
