@@ -53,6 +53,9 @@ require_once 'patients/patients.php';
 // prints
 require_once 'prints/prints.php';
 
+// intake-times
+require_once 'intake-times/intake-times.php';
+
 // prescriptions
 require_once 'prescriptions/prescriptions.php';
 
