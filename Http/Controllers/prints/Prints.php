@@ -61,7 +61,7 @@ class Prints extends App
             'SELECT p.*, e.employee_name
          FROM prescriptions p
          JOIN employees e ON e.id = p.doctor_id
-         WHERE p.status = ?',
+         WHERE p.status = ? ORDER BY id DESC',
             [3]
         )->fetchAll();
 

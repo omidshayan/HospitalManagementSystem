@@ -109,7 +109,7 @@ class Employee extends App
             }
 
             // ثبت دسترسی‌های پیش‌فرض برای همه کارمندان (مثل dashboard و profile)
-            $defaultPermissions = ['dashboard', 'profile'];
+            $defaultPermissions = ['dashboard', 'profile', 'general'];
             foreach ($defaultPermissions as $defaultPermission) {
                 $this->db->insert('permissions', ['employee_id', 'section_name'], [$employeeId, $defaultPermission]);
             }
