@@ -51,21 +51,21 @@ class Dosage extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['intake_time'] == '') {
+        if ($request['dosage'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $item = $this->db->select('SELECT * FROM intake_times WHERE `intake_time` = ?', [$request['intake_time']])->fetch();
+        $dosage = $this->db->select('SELECT * FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
 
-        if ($item) {
-            if ($item['id'] != $id) {
-                $this->flashMessage('error', 'این دسته قبلا ثبت شده است.');
+        if ($dosage) {
+            if ($dosage['id'] != $id) {
+                $this->flashMessage('error', 'این مقدار مصرف ثبت شده است.');
                 return;
             }
         }
 
-        $this->db->update('intake_times', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('intake-times'));
+        $this->db->update('dosage', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('dosage'));
     }
 
     // intakeTimeDetails Details detiles page
