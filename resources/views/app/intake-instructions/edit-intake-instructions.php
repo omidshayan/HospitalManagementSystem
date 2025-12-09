@@ -24,7 +24,7 @@ include_once('public/alerts/toastr.php');
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14">طریقه مصرف <?= _star ?> </div>
-                        <input type="text" name="dosage" class="checkInput" value="<?= $intakeInstructions['intake_instructions'] ?>" placeholder="طریقه مصرف را وارد نمایید" autocomplete="off" />
+                        <input type="text" name="intake_instructions" class="checkInput" value="<?= $intakeInstructions['intake_instructions'] ?>" placeholder="طریقه مصرف را وارد نمایید" autocomplete="off" />
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">

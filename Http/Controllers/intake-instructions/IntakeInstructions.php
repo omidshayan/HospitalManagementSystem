@@ -45,27 +45,27 @@ class IntakeInstructions extends App
         }
     }
 
-    // edit dosage store
-    public function editDosageStore($request, $id)
+    // edit intake_instructions store
+    public function editIntakeInstructionsStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['dosage'] == '') {
+        if ($request['intake_instructions'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
+        $intake_instructions = $this->db->select('SELECT * FROM intake_instructions WHERE `intake_instructions` = ?', [$request['intake_instructions']])->fetch();
 
-        if ($dosage) {
-            if ($dosage['id'] != $id) {
-                $this->flashMessage('error', 'این مقدار مصرف ثبت شده است.');
+        if ($intake_instructions) {
+            if ($intake_instructions['id'] != $id) {
+                $this->flashMessage('error', 'این طریقه مصرف قبلا ثبت شده است.');
                 return;
             }
         }
 
-        $this->db->update('dosage', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('dosage'));
+        $this->db->update('intake_instructions', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('intake-instructions'));
     }
 
     // dosage Details detiles page
