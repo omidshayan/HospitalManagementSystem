@@ -28,6 +28,8 @@ class Prescription extends App
 
         $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
         $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
+        
+        $intake_times = $this->db->select('SELECT * FROM intake_times WHERE `status` = ?', [1])->fetchAll();
 
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 

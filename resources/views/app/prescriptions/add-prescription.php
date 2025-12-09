@@ -130,15 +130,12 @@
                             <div class="one">
                                 <div class="label-form mb5 fs14"> زمان مصرف </div>
                                 <select name="interval_time" required>
-                                    <option value="بعد از غذا">بعد از غذا</option>
-                                    <option value="قبل از غذا">قبل از غذا</option>
-                                    <option value="1">هر 1 ساعت</option>
-                                    <option value="1">هر 2 ساعت</option>
-                                    <option value="1">هر 3 ساعت</option>
-                                    <option value="1">هر 4 ساعت</option>
-                                    <option value="2">دو بار در روز</option>
-                                    <option value="1">یک بار در روز</option>
-                                    <option value="4">چهار بار در روز</option>
+                                    <option selected disabled>زمان مصرف را انتخاب نمائید</option>
+                                    <?php
+                                    foreach ($intake_times as $intake_time) { ?>
+                                        <option value="<?= $intake_time['intake_time'] ?>"><?= $intake_time['intake_time'] ?></option>
+                                    <?php }
+                                    ?>
                                 </select>
                             </div>
                         </div>
