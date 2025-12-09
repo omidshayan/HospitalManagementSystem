@@ -130,10 +130,8 @@ class Employee extends App
         $permissions = $this->db->select('SELECT * FROM permissions WHERE employee_id = ?', [$id])->fetchAll();
 
         if ($employee != null) {
-            // ساخت آرایه از نام دسترسی ها برای استفاده در فرانت
             $employeePermissions = array_column($permissions, 'section_name');
 
-            // ارسال به ویو
             require_once(BASE_PATH . '/resources/views/app/employees/edit-employee.php');
             exit();
         } else {
@@ -144,41 +142,86 @@ class Employee extends App
 
 
     // edit employee store
-    public function editEmployeeStore($request, $id)
-    {
-        $this->middleware(true, true, 'general', true, $request, true);
+public function editEmployeeStore($request, $id)
+{
+    $this->middleware(true, true, 'general', true, $request, true);
 
-        // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '' || !isset($request['position'])) {
-            $this->flashMessage('error', _emptyInputs);
-        }
-
-        $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
-
-        if ($existEmployee) {
-            if ($existEmployee['id'] != $existEmployee['id']) {
-                $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
-                return;
-            }
-        }
-
-        // check upload photo
-        $max_file_size = 1048576;
-        if (is_uploaded_file($request['image']['tmp_name'])) {
-            if ($request['image']['size'] > $max_file_size) {
-                $this->flashMessage('error', 'حجم عکس نباید بیشتر از 1 mb باشد');
-            } else {
-                $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$existEmployee['id']])->fetch();
-                $this->removeImage('public/images/employees/' . $employee['image']);
-                $request['image'] = $this->saveImage($request['image'], 'images/employees');
-            }
-        } else {
-            unset($request['image']);
-        }
-
-        $this->db->update('employees', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('employees'));
+    // بررسی پر بودن فیلدهای اجباری
+    if ($request['employee_name'] == '' || $request['phone'] == '' || !isset($request['position'])) {
+        $this->flashMessage('error', _emptyInputs);
     }
+
+    // چک شماره موبایل تکراری به جز خودش
+    $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
+
+    if ($existEmployee && $existEmployee['id'] != $id) {
+        $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
+        return;
+    }
+
+    // آپلود تصویر اگر ارسال شده
+    $this->updateImageUpload($request, 'image', 'employees', 'employees', $id);
+
+    // بروزرسانی اطلاعات کارمند
+    $this->db->update('employees', $id, array_keys($request), $request);
+
+    // ------------- مدیریت دسترسی‌ها ----------------
+
+    // ابتدا همه دسترسی‌های کارمند رو بگیر
+    $currentPermissions = $this->db->select('SELECT * FROM permissions WHERE employee_id = ?', [$id])->fetchAll();
+
+    // حذف همه دسترسی‌ها با متد delete (بر اساس id رکورد دسترسی)
+    foreach ($currentPermissions as $permissionRow) {
+        $this->db->delete('permissions', $permissionRow['id']);
+    }
+
+    // ساختار والد و فرزندان
+    $menuStructure = [
+        'parentPrescription' => ['addPrescription', 'showPrescription'],
+        'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
+        'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
+        'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription'],
+        'parentPatients' => ['showPatients'],
+    ];
+
+    // بخش‌هایی که والد ندارند (مستقل)
+    $independentSections = ['prescriptionPrint', 'dashboard', 'profile'];
+
+    $finalPermissions = [];
+
+    // ثبت دسترسی‌های فرزندان و والدها
+    foreach ($menuStructure as $parent => $children) {
+        $childChecked = false;
+        foreach ($children as $child) {
+            if (isset($request[$child]) && $request[$child] == 'on') {
+                $childChecked = true;
+                $finalPermissions[] = $child;
+            }
+        }
+        if ($childChecked) {
+            $finalPermissions[] = $parent;
+        }
+    }
+
+    // ثبت دسترسی‌های مستقل
+    foreach ($independentSections as $section) {
+        if (isset($request[$section]) && $request[$section] == 'on') {
+            $finalPermissions[] = $section;
+        }
+    }
+
+    // حذف تکراری‌ها
+    $finalPermissions = array_unique($finalPermissions);
+
+    // ذخیره نهایی دسترسی‌ها
+    foreach ($finalPermissions as $permission) {
+        $this->db->insert('permissions', ['employee_id', 'section_name'], [$id, $permission]);
+    }
+
+    $this->flashMessageTo('success', _success, url('employees'));
+}
+
+
 
     // show employees
     public function showEmployees()
