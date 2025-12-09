@@ -42,33 +42,32 @@ class Employee extends App
             $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
         }
 
-        // آپلود عکس و آماده‌سازی ورودی‌ها
-        $request = $this->validateInputs($request, ['image' => false]);
-        $request['password'] = $this->hash($request['password']);
+        // فقط فیلدهای واقعی جدول employees را نگه دار
+        $columns = $this->db->select("SHOW COLUMNS FROM employees")->fetchAll();
+        $validColumns = array_column($columns, 'Field');
 
-        $this->handleImageUpload($request['image'], 'images/employees');
+        $employeeData = [];
+        foreach ($request as $key => $val) {
+            if (in_array($key, $validColumns)) {
+                $employeeData[$key] = $val;
+            }
+        }
 
-        $employeeData = [
-            'employee_name' => $request['employee_name'],
-            'phone' => $request['phone'],
-            'password' => $request['password'],
-            'email' => $request['email'],
-            'address' => $request['address'],
-            'position' => $request['position'],
-            'expertise' => $request['expertise'],
-            'image' => $request['image'],
-            'description' => $request['description'],
-            'who_it' => $request['who_it'],
-        ];
+        // هش کردن پسورد
+        $employeeData['password'] = $this->hash($employeeData['password']);
+
+        // آپلود عکس اگر هست
+        $this->handleImageUpload($request['image'] ?? null, 'images/employees');
+
         // ذخیره کارمند
         $this->db->insert('employees', array_keys($employeeData), $employeeData);
 
-
-        // دریافت آخرین ID (روش مطمئن‌تر)
+        // دریافت آخرین id کارمند ثبت شده
         $lastEmployeeId = $this->db
             ->select("SELECT id FROM employees ORDER BY id DESC LIMIT 1")
             ->fetch()['id'];
 
+        // تعریف ارتباط بخش ها با پرنت‌ها
         $permissionMap = [
             'paitents'           => 'parentPaitents',
             'addPrescription'    => 'parentPrescription',
@@ -86,34 +85,30 @@ class Employee extends App
             'intakeInstructions' => 'parentNumberDrugs',
         ];
 
-        /*
-    |--------------------------------------------
-    | استخراج دسترسی‌ها
-    |--------------------------------------------
-    */
-        $selectedPermissions = [];
+        // دسترسی های پیشفرض که همیشه ثبت شوند
+        $defaultPermissions = ['profile', 'dashboard'];
 
+        // استخراج دسترسی‌های انتخاب شده از فرم
+        $selectedPermissions = [];
         foreach ($request as $key => $val) {
             if ($val === 'on') {
                 $selectedPermissions[] = $key;
 
-                // اگر برای این دسترسی parent تعریف شده، parent نیز اضافه شود
+                // اضافه کردن parent اگر وجود دارد
                 if (isset($permissionMap[$key])) {
                     $selectedPermissions[] = $permissionMap[$key];
                 }
             }
         }
 
-        // حذف تکراری‌ها
+        // اضافه کردن دسترسی های پیشفرض
+        $selectedPermissions = array_merge($selectedPermissions, $defaultPermissions);
+
+        // حذف موارد تکراری
         $selectedPermissions = array_unique($selectedPermissions);
 
-        /*
-    |--------------------------------------------
-    | اگر هیچ دسترسی انتخاب نشود → ادامه بدون خطا
-    |--------------------------------------------
-    */
+        // ذخیره دسترسی‌ها اگر وجود داشته باشند
         if (!empty($selectedPermissions)) {
-
             foreach ($selectedPermissions as $section) {
                 $this->db->insert(
                     'permissions',
