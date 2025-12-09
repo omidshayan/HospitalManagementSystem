@@ -69,7 +69,7 @@ class Dosage extends App
     }
 
     // dosage Details detiles page
-    public function intakeTimeDetails($id)
+    public function dosageDetails($id)
     {
         $this->middleware(true, true, 'general');
         $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
