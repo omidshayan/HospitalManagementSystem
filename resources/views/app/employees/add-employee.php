@@ -65,9 +65,24 @@
                         <div class="child-accordioin">
 
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
-                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="prescription-print">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="prescriptionPrint">
                                     <span> صفحه چاپ نسخه‌ها</span>
-                                    <input type="checkbox" name="prescription-print" id="prescription-print" class="w20 p0 m0 h22">
+                                    <input type="checkbox" name="prescriptionPrint" id="prescriptionPrint" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="showPatients">
+                                    <span> نمایش مریضان</span>
+                                    <input type="checkbox" name="showPatients" id="showPatients" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="showPatients">
+                                    <span> مدیریت نسخه‌ها</span>
+                                    <input type="checkbox" name="showPatients" id="showPatients" class="w20 p0 m0 h22">
                                 </label>
                             </div>
 
