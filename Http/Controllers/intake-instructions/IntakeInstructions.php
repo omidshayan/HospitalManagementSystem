@@ -31,13 +31,13 @@ class IntakeInstructions extends App
     }
 
     // dosage page
-    public function editDosage($id)
+    public function editIntakeInstructions($id)
     {
         $this->middleware(true, true, 'general');
 
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
-        if ($dosage != null) {
-            require_once(BASE_PATH . '/resources/views/app/dosage/edit-dosage.php');
+        $intakeInstructions = $this->db->select('SELECT * FROM intake_instructions WHERE `id` = ?', [$id])->fetch();
+        if ($intakeInstructions != null) {
+            require_once(BASE_PATH . '/resources/views/app/intake-instructions/edit-intake-instructions.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
