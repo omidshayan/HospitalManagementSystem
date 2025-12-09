@@ -56,6 +56,9 @@ require_once 'prints/prints.php';
 // intake-times
 require_once 'intake-times/intake-times.php';
 
+// dosage
+require_once 'dosage/dosage.php';
+
 // prescriptions
 require_once 'prescriptions/prescriptions.php';
 

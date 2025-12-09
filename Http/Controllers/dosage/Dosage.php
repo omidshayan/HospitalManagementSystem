@@ -2,10 +2,10 @@
 
 namespace App;
 
-class IntakeTime extends App
+class Dosage extends App
 {
     //  intakeTimes page
-    public function intakeTimes()
+    public function dosage()
     {
         $this->middleware(true, true, 'general', true);
         $intakeTimes = $this->db->select('SELECT * FROM intake_times')->fetchAll();
