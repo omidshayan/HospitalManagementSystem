@@ -25,17 +25,25 @@ class Employee extends App
         // بررسی خالی بودن فیلدهای ضروری
         if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
             $this->flashMessage('error', _emptyInputs);
+            return;
         }
 
         // چک تکراری بودن شماره تماس
         $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
         if ($existingEmployee) {
             $this->flashMessage('error', _phone_repeat);
-        } else {
-            // بررسی حداقل طول رمز عبور
-            if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
-                $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
-            }
+            return;
+        }
+
+        // بررسی حداقل طول رمز عبور
+        if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
+            $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
+            return;
+        }
+
+        try {
+            // شروع تراکنش
+            $this->db->beginTransaction();
 
             // اعتبارسنجی ورودی‌ها
             $request = $this->validateInputs($request, ['image' => false]);
@@ -114,9 +122,17 @@ class Employee extends App
                 $this->db->insert('permissions', ['employee_id', 'section_name'], [$employeeId, $defaultPermission]);
             }
 
+            // پایان تراکنش
+            $this->db->commit();
+
             $this->flashMessage('success', _success);
+        } catch (\Exception $e) {
+            // بازگردانی در صورت بروز خطا
+            $this->db->rollBack();
+            $this->flashMessage('error', 'خطا در ثبت کارمند: ' . $e->getMessage());
         }
     }
+
 
 
     // edit employee page
@@ -140,7 +156,6 @@ class Employee extends App
         }
     }
 
-
     // edit employee store
     public function editEmployeeStore($request, $id)
     {
@@ -148,6 +163,7 @@ class Employee extends App
 
         if ($request['employee_name'] == '' || $request['phone'] == '' || !isset($request['position'])) {
             $this->flashMessage('error', _emptyInputs);
+            return;
         }
 
         $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
@@ -156,52 +172,63 @@ class Employee extends App
             return;
         }
 
-        $this->updateImageUpload($request, 'image', 'employees', 'employees', $id);
+        try {
+            $this->db->beginTransaction();
 
-        $this->db->update('employees', $id, array_keys($request), $request);
+            $this->updateImageUpload($request, 'image', 'employees', 'employees', $id);
 
-        // حذف دسترسی‌های قبلی کارمند
-        $this->db->deleteWhere('permissions', 'employee_id', $id);
+            $this->db->update('employees', $id, array_keys($request), $request);
 
-        $menuStructure = [
-            'parentPrescription' => ['addPrescription', 'showPrescription'],
-            'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
-            'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
-            'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription'],
-            'parentPatients' => ['showPatients'],
-        ];
+            $this->db->deleteWhere('permissions', 'employee_id', $id);
 
-        $independentSections = ['prescriptionPrint', 'dashboard', 'profile'];
+            $menuStructure = [
+                'parentPrescription' => ['addPrescription', 'showPrescription'],
+                'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
+                'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
+                'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription'],
+                'parentPatients' => ['showPatients'],
+            ];
 
-        $finalPermissions = [];
+            $independentSections = ['prescriptionPrint', 'dashboard', 'profile'];
 
-        foreach ($menuStructure as $parent => $children) {
-            $childChecked = false;
-            foreach ($children as $child) {
-                if (isset($request[$child]) && $request[$child] == 'on') {
-                    $childChecked = true;
-                    $finalPermissions[] = $child;
+            $defaultPermissions = ['dashboard', 'profile', 'general'];
+
+            $finalPermissions = [];
+
+            foreach ($menuStructure as $parent => $children) {
+                $childChecked = false;
+                foreach ($children as $child) {
+                    if (isset($request[$child]) && $request[$child] == 'on') {
+                        $childChecked = true;
+                        $finalPermissions[] = $child;
+                    }
+                }
+                if ($childChecked) {
+                    $finalPermissions[] = $parent;
                 }
             }
-            if ($childChecked) {
-                $finalPermissions[] = $parent;
+
+            foreach ($independentSections as $section) {
+                if (isset($request[$section]) && $request[$section] == 'on') {
+                    $finalPermissions[] = $section;
+                }
             }
-        }
 
-        foreach ($independentSections as $section) {
-            if (isset($request[$section]) && $request[$section] == 'on') {
-                $finalPermissions[] = $section;
+            $finalPermissions = array_unique(array_merge($finalPermissions, $defaultPermissions));
+
+            foreach ($finalPermissions as $permission) {
+                $this->db->insert('permissions', ['employee_id', 'section_name'], [$id, $permission]);
             }
+
+            $this->db->commit();
+
+            $this->flashMessageTo('success', _success, url('employees'));
+        } catch (\Exception $e) {
+            $this->db->rollBack();
+            $this->flashMessage('error', 'خطا در بروزرسانی کارمند: ' . $e->getMessage());
         }
-
-        $finalPermissions = array_unique($finalPermissions);
-
-        foreach ($finalPermissions as $permission) {
-            $this->db->insert('permissions', ['employee_id', 'section_name'], [$id, $permission]);
-        }
-
-        $this->flashMessageTo('success', _success, url('employees'));
     }
+
 
 
 
