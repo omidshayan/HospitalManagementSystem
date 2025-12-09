@@ -1,6 +1,6 @@
 <!-- start sidebar -->
 <?php
-$title = 'ثبت مصرفی';
+$title = 'مدیریت تعداد دارو';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
@@ -9,26 +9,22 @@ include_once('public/alerts/toastr.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> مدیریت دسته بندی های مصارف
+    <div class="content-title"> مدیریت تعداد دارو
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
-    $help_title = 'راهنمای بخش مدیریت دروس';
-    $help_content = 'در این قسمت ابتدا باید نام درس را وارد کنید، مثلا فتوشاپ ';
+    $help_title = 'مدیریت عدد';
+    $help_content = ' ';
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
-    <div class="box-container">
+    <div class="mini-container">
         <div class="insert">
-            <form id="myForm" action="expense-cat-store" method="POST">
+            <form id="myForm" action="<?=url('number-drugs-store')?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="cat_name" class="checkInput" value="<?= old('name') ?>" placeholder="نام را وارد نمایید" autocomplete="off" />
-                    </div>
-                    <div class="one">
-                        <div class="label-form mb5 fs14">توضیحات</div>
-                        <textarea name="description" id="" placeholder="لطفا توضیحات را بنویسید..."></textarea>
+                        <div class="label-form mb5 fs14">تعداد <?= _star ?> </div>
+                        <input type="text" name="number" class="checkInput" value="<?= $numberDrugs['number'] ?>" placeholder="عدد مورد نظر را وارد نمائید" autocomplete="off" />
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
