@@ -62,21 +62,21 @@
                         <div class="accordion-content-pre">
                             <div class="child-accordioin">
                                 <div class="insert dir-left mt5">
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="bp" placeholder=" Blood Pressure  ">
-                                        </div>
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="pr" placeholder=" Pulse Rate  ">
-                                        </div>
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="rr" placeholder=" Respiratory Rate  ">
-                                        </div>
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="temp" placeholder=" Temperature  ">
-                                        </div>
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
-                                        </div>
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="bp" placeholder=" Blood Pressure  ">
+                                    </div>
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="pr" placeholder=" Pulse Rate  ">
+                                    </div>
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="rr" placeholder=" Respiratory Rate  ">
+                                    </div>
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="temp" placeholder=" Temperature  ">
+                                    </div>
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -120,16 +120,11 @@
                             <div class="one">
                                 <div class="label-form mb5 fs14"> تعداد دارو </div>
                                 <select name="drug_count" required>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                    <?php for ($i = 1; $i <= $number['number']; $i++): ?>
+                                        <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
+                                            <?= $i ?>
+                                        </option>
+                                    <?php endfor; ?>
                                 </select>
                             </div>
                             <div class="one">

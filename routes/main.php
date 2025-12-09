@@ -44,9 +44,6 @@ require_once 'users/users.php';
 // drugs
 require_once 'drugs/drugs.php';
 
-// categories-drugs
-require_once 'drug-categories/drug-categories.php';
-
 // units
 require_once 'units/units.php';
 
@@ -59,6 +56,8 @@ require_once 'prints/prints.php';
 // prescriptions
 require_once 'prescriptions/prescriptions.php';
 
+// categories-drugs
+require_once 'drug-categories/drug-categories.php';
 
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
