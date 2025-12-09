@@ -203,7 +203,7 @@
           <?php endif; ?>
 
           <!-- settings -->
-          <?php if ($this->hasAccess('parentNumberDrugs')): ?>
+          <?php if ($this->hasAccess('parentSetting')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>

@@ -171,18 +171,19 @@ class DataBase
         }
     }
 
-    public function deleteWhere($tableName, $columnName, $value)
-    {
-        $sql = "DELETE FROM " . $tableName . " WHERE " . $columnName . " = ? ;";
-        try {
-            $stmt = $this->connection->prepare($sql);
-            $stmt->execute([$value]);
-            return true;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
+public function deleteWhere($tableName, $columnName, $value)
+{
+    $sql = "DELETE FROM " . $tableName . " WHERE " . $columnName . " = ? ;";
+    try {
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$value]);
+        return true;
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+        return false;
     }
+}
+
 
     public function createTable($sql)
     {
