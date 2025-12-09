@@ -37,7 +37,7 @@ class Dosage extends App
 
         $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
         if ($dosage != null) {
-            require_once(BASE_PATH . '/resources/views/app/dosage/dosage.php');
+            require_once(BASE_PATH . '/resources/views/app/dosage/edit-dosage.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -68,13 +68,13 @@ class Dosage extends App
         $this->flashMessageTo('success', _success, url('dosage'));
     }
 
-    // intakeTimeDetails Details detiles page
+    // dosage Details detiles page
     public function intakeTimeDetails($id)
     {
         $this->middleware(true, true, 'general');
-        $intake_time = $this->db->select('SELECT * FROM intake_times WHERE `id` = ?', [$id])->fetch();
-        if ($intake_time != null) {
-            require_once(BASE_PATH . '/resources/views/app/intake-times/intake_time-details.php');
+        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
+        if ($dosage != null) {
+            require_once(BASE_PATH . '/resources/views/app/dosage/dosage-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
