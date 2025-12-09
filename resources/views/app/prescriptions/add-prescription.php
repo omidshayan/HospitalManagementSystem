@@ -154,8 +154,13 @@
                             <div class="one">
                                 <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
                                 <select name="usage_instruction" required>
-                                    <option value="1">خوراکی</option>
-                                    <option value="1">دو قاشق</option>
+                                    <option selected disabled>طریقه مصرف در هر نوبت</option>
+                                    <?php
+                                    foreach ($intakeInstructions as $intakeInstruction) { ?>
+                                        <option value="<?= $intakeInstruction['intake_instructions'] ?>"><?= $intakeInstruction['intake_instructions'] ?></option>
+                                    <?php }
+                                    ?>
+                                </select>
                                 </select>
                             </div>
                         </div>

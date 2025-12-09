@@ -31,6 +31,8 @@ class Prescription extends App
         $intake_times = $this->db->select('SELECT intake_time FROM intake_times WHERE `status` = ?', [1])->fetchAll();
 
         $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
+
+        $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
         
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
