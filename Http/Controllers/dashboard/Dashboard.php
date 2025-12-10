@@ -24,32 +24,18 @@ class Dashboard extends App
             [$userId]
         )->fetch();
 
-        $total = $this->db->select(
-            'SELECT COUNT(*) as cnt
-         FROM notifications
-         WHERE read_at IS NULL
-         AND user_id = ?
-         AND DATE(created_at) = CURDATE()',
-            [$userId]
-        )->fetch();
+        $today = date('Y-m-d');
+        $sevenDaysAgo = date('Y-m-d', strtotime('-6 days')); // 6 روز قبل از امروز (شامل امروز 7 روز میشه)
 
-        $reports = $this->db->select(
-            'SELECT id, msg
-         FROM notifications
-         WHERE read_at IS NULL
-         AND user_id = ?
-         AND DATE(created_at) = CURDATE()
-         ORDER BY id DESC
-         LIMIT 10',
-            [$userId]
-        )->fetchAll();
+        // گرفتن نسخه‌های 7 روز گذشته
+                $prescriptionsLast7Days = $this->db->select("
+            SELECT DATE(created_at) as date, COUNT(*) as count
+            FROM prescriptions
+            WHERE DATE(created_at) BETWEEN ? AND ?
+            GROUP BY DATE(created_at)
+            ORDER BY DATE(created_at) ASC
+        ", [$sevenDaysAgo, $today])->fetchAll();
 
-        $expences = $this->db->select(
-            'SELECT *
-         FROM expenses
-         WHERE DATE(created_at) = CURDATE()
-         LIMIT 10'
-        )->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/dashboard/index.php');
     }
