@@ -347,7 +347,7 @@ class Prescription extends App
     }
 
 
-    //    add drug in Prescription Store
+    //    add drug in edit Prescription Store
     public function editDrugPrescriptionStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
@@ -373,7 +373,6 @@ class Prescription extends App
         //  Create or get existing prescription
         $prescription_id = $this->prescription->editInvoiceConfirm($prescription);
 
-
         $prescription_items = [
             'prescription_id' => $prescription_id,
             'drug_id' => $request['drug_id'],
@@ -395,6 +394,67 @@ class Prescription extends App
 
         $this->flashMessage('success', _success);
     }
+
+    // edit close invoice
+    public function editClosePrescriptionStore($request, $id)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+
+        if (empty($request['user_name']) || empty($request['birth_year'])) {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
+        $prescription = $this->prescription->getPrescription($id);
+        if (!$prescription) {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+
+        // get invoice items
+        $prescription_items = $this->prescription->getPrescriptionItems($prescription['id']);
+        // check invoice items
+        if (!$prescription_items) {
+            $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');
+            return;
+        }
+
+        $userId = null;
+
+        // select and check user
+        $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$request['user_name'], $request['birth_year']])->fetch();
+
+        if (!$user) {
+            $userData = [
+                'user_name' => $request['user_name'],
+                'birth_year' => $request['birth_year'],
+                'father_name' => $request['father_name'] ?? null,
+                'gender' => $request['gender'],
+                'phone' => $request['phone'] ?? null,
+            ];
+            $this->db->insert('users', array_keys($userData), $userData);
+            $userId = $this->db->lastInsertId();
+        } else {
+            $userId = $user['id'];
+        }
+
+        $preInfos = [
+            'patient_id' => $userId,
+            'patient_name' => $request['user_name'],
+            'birth_year' => $request['birth_year'],
+            'bp' => $request['bp'],
+            'pr' => $request['pr'],
+            'rr' => $request['rr'],
+            'temp' => $request['temp'],
+            'spo2' => $request['spo2'],
+        ];
+
+        $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
+        $this->flashMessageTo('success', _success, url('prescriptions'));
+    }
+
+
+
 
 
     // edit and close invoice sale cart controllers

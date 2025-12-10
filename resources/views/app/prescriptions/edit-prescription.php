@@ -14,7 +14,7 @@
 
             <!-- patient infos -->
             <div class="patient-container">
-                <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
+                <form action="<?= url('edit-close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
                     <div class="center fs14">اطلاعات بیمار</div>
                     <div class="insert">
                         <div class="inputs d-flex">
@@ -27,7 +27,7 @@
                             <div class="one">
                                 <div class="label-form fs14"> سن بیمار <?= _star ?></div>
                                 <input type="number" id="ageInput" class="checkInput" value="<?= $this->getAge($prescription['birth_year']) ?>" placeholder="سن بیمار را وارد نمائید">
-                                <input type="hidden" name="birth_year" id="birthYearInput">
+                                <input type="hidden" name="birth_year" value="<?= $this->getAge($prescription['birth_year']) ?>" id="birthYearInput">
                             </div>
                         </div>
                         <div class="">
@@ -186,7 +186,7 @@
                         ?>
                     </div>
                     <div>
-                        <?= $drugList ? '<a href="' . url('close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ثبت نسخه</a>' : '' ?>
+                        <?= $drugList ? '<a href="' . url('edit-close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ثبت نسخه</a>' : '' ?>
                     </div>
                 </div>
                 <table class="fl-table">

@@ -13,6 +13,7 @@ uri('search-product-purchase', 'App\Prescription', 'searchProdut', 'POST');
 // editing 
 uri('edit-prescription/{id}', 'App\Prescription', 'editPrescription');
 uri('edit-drug-prescription-store/{id}', 'App\Prescription', 'editDrugPrescriptionStore', 'POST');
+uri('edit-close-prescription-store/{id}', 'App\Prescription', 'editClosePrescriptionStore', 'POST');
 
 
 // prescription actions
