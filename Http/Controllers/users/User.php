@@ -91,7 +91,15 @@ class User extends App
         $this->middleware(true, true, 'general');
         $user = $this->db->select('SELECT * FROM users WHERE id = ?', [$id])->fetch();
         if ($user != null) {
-            $prescriptions = $this->db->select('SELECT * FROM prescriptions WHERE patient_id = ?', [$id])->fetchAll();
+
+            $prescriptions = $this->db->select(
+                'SELECT p.*, e.employee_name AS doctor_name 
+                FROM prescriptions p
+                LEFT JOIN employees e ON p.doctor_id = e.id
+                WHERE p.patient_id = ?',
+                [$id]
+            )->fetchAll();
+            
             require_once(BASE_PATH . '/resources/views/app/users/user-details.php');
             exit();
         } else {
