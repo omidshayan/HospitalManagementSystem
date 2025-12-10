@@ -42,7 +42,11 @@ include_once('resources/views/scripts/show-img-modal.php');
                 </div> -->
                 <div class="detailes-culomn d-flex cursor-p">
                     <div class="title-detaile">وظیفه: </div>
-                    <div class="info-detaile"><?= $employee['position'] ?></div>
+                    <div class="info-detaile"><?= $employee['position'] ?> </div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">تعداد نسخه‌های تجویز شده: </div>
+                    <div class="info-detaile"><?= $totalPrescriptions ?> نسخه</div>
                 </div>
                 <div class="detailes-culomn d-flex cursor-p">
                     <div class="title-detaile">تاریخ ثبت: </div>
@@ -114,6 +118,7 @@ include_once('resources/views/scripts/show-img-modal.php');
     }
 </script>
 
+<!-- chart -->
 <script>
     const rawDates = <?= json_encode(array_keys($data)) ?>;
     const dataValues = <?= json_encode(array_values($data)) ?>;

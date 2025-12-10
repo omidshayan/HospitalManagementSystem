@@ -266,7 +266,6 @@ class Employee extends App
         $this->send_json_response(true, _success, $newState);
     }
 
-
     // employee detiles page
     public function employeeDetails($id)
     {
@@ -296,6 +295,12 @@ class Employee extends App
             foreach ($prescriptionsLast7Days as $row) {
                 $data[$row['date']] = (int)$row['count'];
             }
+
+            $totalPrescriptions = $this->db->select("
+                SELECT COUNT(*) as total
+                FROM prescriptions
+                WHERE doctor_id = ?
+            ", [$id])->fetchColumn();
 
             require_once(BASE_PATH . '/resources/views/app/employees/employee-details.php');
             exit();

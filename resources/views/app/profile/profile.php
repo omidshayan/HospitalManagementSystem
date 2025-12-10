@@ -42,6 +42,14 @@ $date = explode(' ', $profile['created_at']);
         <br>
     </div>
 
+    <!-- show chart -->
+    <div class="mini-container">
+        <div class="dash-chart center m-auto w90d">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <!-- change password -->
     <div class="mini-container">
         <div class="change-password center">
             تغییر رمزعبور
@@ -126,4 +134,58 @@ $date = explode(' ', $profile['created_at']);
     }
 </script>
 
+<!-- chart -->
+<script>
+    const rawDates = <?= json_encode(array_keys($data)) ?>;
+    const dataValues = <?= json_encode(array_values($data)) ?>;
+
+    const daysFa = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
+
+    function getPersianDay(dateStr) {
+        const date = new Date(dateStr);
+        let dayNumber = date.getDay();
+        // جاوااسکریپت یکشنبه رو 0 می‌دونه، ولی تو میخوای شنبه اول باشه:
+        // چون تو روزهای فارسی شنبه اولین روز هفته است، باید عدد را تغییر بدیم
+        // دقت کن که روز هفته به صورت 0=یکشنبه هست، پس میخوایم تبدیل کنیم به 0=شنبه
+        dayNumber = (dayNumber + 1) % 7;
+        return daysFa[dayNumber];
+    }
+
+    const labels = rawDates.map(getPersianDay);
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'تعداد نسخه‌های هفت روز گذشته',
+                data: dataValues,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                maxBarThickness: 20
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.parsed.y + ' نسخه';
+                        }
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+</script>
 <?php include_once('resources/views/layouts/footer.php') ?>
