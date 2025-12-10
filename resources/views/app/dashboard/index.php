@@ -17,7 +17,7 @@
             </svg>
           </div>
           <div class="report-text">
-            <span>تعداد مریضان ثبت شده <div class="d-flex color-orange"><?=$totalUsers['total_users']?> مریض</div></span>
+            <span>تعداد مریضان ثبت شده <div class="d-flex color-orange"><?= $totalUsers['total_users'] ?> مریض</div></span>
           </div>
         </div>
 
@@ -29,7 +29,7 @@
             </svg>
           </div>
           <div class="report-text">
-            <span>تعداد نسخه‌های ثبت شده<div class="d-flex color-orange"><?=$totalPrescriptions['total_prescriptions']?> نسخه</div></span>
+            <span>تعداد نسخه‌های ثبت شده<div class="d-flex color-orange"><?= $totalPrescriptions['total_prescriptions'] ?> نسخه</div></span>
           </div>
         </div>
         <div class="report-item">
@@ -40,7 +40,7 @@
             </svg>
           </div>
           <div class="report-text">
-            <span>تعداد دواهای ثبت شده<div class="d-flex color-orange"><?=$totalDrugs['total_drugs']?> دوا</div></span>
+            <span>تعداد دواهای ثبت شده<div class="d-flex color-orange"><?= $totalDrugs['total_drugs'] ?> دوا</div></span>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
 
       const ctx = document.getElementById('topDrugsChart').getContext('2d');
       const topDrugsChart = new Chart(ctx, {
-        type: 'bar', // یا 'pie' اگر میخوای دایره‌ای باشه
+        type: 'bar',
         data: {
           labels: labels,
           datasets: [{
