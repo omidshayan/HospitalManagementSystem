@@ -86,7 +86,7 @@
         data: {
           labels: labels,
           datasets: [{
-            label: 'تعداد نسخه‌های تجویز شده',
+            label: 'بیشترین داروی تجویز شده',
             data: data,
             backgroundColor: 'rgba(75, 192, 192, 0.6)',
             borderColor: 'rgba(75, 192, 192, 1)',
@@ -96,6 +96,7 @@
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           plugins: {
             legend: {
               display: true,
@@ -109,6 +110,7 @@
             }
           }
         }
+
       });
     </script>
 
