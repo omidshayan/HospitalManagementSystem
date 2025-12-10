@@ -23,8 +23,9 @@
   <!-- start sidebar -->
   <div class="sidebar">
     <div class="sidebar-section">
-      <div class="brand-name">حسابداری سودا کن</div>
+      <div class="brand-name fs14">مدییریت شفاخانه <span class="color-orange fs18 bold">صــحـت یـــار</span></div>
       <div class="avatar">
+        <!-- avatar photo -->
         <div class="img-avatar">
           <?php
           $defaultImage = asset('public/assets/img/profile.png');
@@ -43,9 +44,6 @@
           }
           ?>
           <img src="<?= $image ?>" alt="Profile" />
-
-
-
         </div>
         <div class="info-avatar">
           <div class="text-avatar">
