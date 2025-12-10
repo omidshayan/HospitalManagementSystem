@@ -25,6 +25,7 @@ define('_error_question_type', 'نوع سوال ارسال شده معتبر ن�
 
 
 define('_star', '<span class="color-red">*</span>');
+define('_edit_btn', 'ویــرایــش');
 
 
 

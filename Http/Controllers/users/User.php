@@ -69,7 +69,7 @@ class User extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['name'] == '' || $request['phone'] == '') {
+        if ($request['user_name'] == '' || $request['phone'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 

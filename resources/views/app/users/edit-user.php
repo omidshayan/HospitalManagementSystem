@@ -1,5 +1,5 @@
     <!-- start sidebar -->
-    <?php 
+    <?php
     $title = 'ویرایش کاربر: ' . $user['user_name'];
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
@@ -10,7 +10,7 @@
     <!-- Start content -->
     <div class="content">
         <div class="content-title">ویرایش کاربر: <?= $user['user_name'] ?></div>
-        <br />
+
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
@@ -51,42 +51,19 @@
                         <img src="" class="img" alt="">
                     </div>
                     <div>
-                        <img src="<?= ($user['user_image'] ? asset('public/images/users/' . $user['user_image']) : asset('public/assets/img/empty.png')) ?>" class="img" alt="user image">
+                        <img src="<?= ($user['image'] ? asset('public/images/users/' . $user['image']) : asset('public/assets/img/empty.png')) ?>" class="img" alt="user image">
                     </div>
                     <div class="fs11">تصویر فعلی</div>
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                    <input type="submit" id="submit" value="ثبت" class="btn" />
+                    <input type="submit" id="submit" value="<?=_edit_btn?>" class="btn" />
                 </form>
             </div>
-            <a href="<?= url('users') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
+            <a href="<?= url('patients') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
         </div>
         <!-- end page content -->
 
     </div>
     <!-- End content -->
 
-    <script>
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("openModalBtn");
-        var span = document.getElementsByClassName("close")[0];
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        document.getElementById("cancelBtn").onclick = function() {
-            modal.style.display = "none";
-        }
-        document.getElementById("confirmBtn").onclick = function() {
-            var email = document.getElementById("emailInput").value;
-            modal.style.display = "none";
-        }
-    </script>
     <?php include_once('resources/views/layouts/footer.php') ?>
