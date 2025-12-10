@@ -255,20 +255,30 @@
 
     <!-- estelam and change age -->
     <script>
-        // check patient
-        document.getElementById('patient_name').addEventListener('input', function() {
-            const btn = document.getElementById('checkPatientBtn');
-            const baseUrl = "<?= url('patient-inquiry') ?>";
-            let value = encodeURIComponent(this.value.trim());
 
-            if (this.value.length >= 3) {
+        // check patient btn
+        const patientName = document.getElementById('patient_name');
+        const ageInput = document.getElementById('ageInput');
+        const btn = document.getElementById('checkPatientBtn');
+        const baseUrl = "<?= url('patient-inquiry') ?>";
+
+        function checkInputs() {
+            let nameVal = patientName.value.trim();
+            let ageVal = ageInput.value.trim();
+            let encodedName = encodeURIComponent(nameVal);
+
+            if (nameVal.length >= 3 && ageVal !== "") {
                 btn.classList.remove('d-none');
-                btn.href = baseUrl + "?patient_name=" + value;
+                btn.href = baseUrl + "?patient_name=" + encodedName + "&age=" + ageVal;
             } else {
                 btn.classList.add('d-none');
                 btn.href = baseUrl;
             }
-        });
+        }
+
+        patientName.addEventListener('input', checkInputs);
+        ageInput.addEventListener('input', checkInputs);
+
 
         // generate age
         function toEnglishDigits(str) {
