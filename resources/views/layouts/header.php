@@ -26,12 +26,37 @@
       <div class="brand-name">حسابداری سودا کن</div>
       <div class="avatar">
         <div class="img-avatar">
-          <img src="<?= asset('public/assets/img/profile.png') ?>" alt="" />
+          <?php
+          $defaultImage = asset('public/assets/img/profile.png');
+          $image = $defaultImage;
+          if (isset($_SESSION['hms_admin'])) {
+
+            if (!empty($_SESSION['hms_admin']['image'])) {
+              $image = asset('public/images/employees/' . $_SESSION['hms_admin']['image']);
+            }
+          }
+          elseif (isset($_SESSION['hms_employee'])) {
+
+            if (!empty($_SESSION['hms_employee']['image'])) {
+              $image = asset('public/images/employees/' . $_SESSION['hms_employee']['image']);
+            }
+          }
+          ?>
+          <img src="<?= $image ?>" alt="Profile" />
+
+
+
         </div>
         <div class="info-avatar">
           <div class="text-avatar">
             <div>
-              admin
+              <?php
+              if (isset($_SESSION['hms_admin'])) {
+                echo $_SESSION['hms_admin']['name'];
+              } else {
+                echo $_SESSION['hms_employee']['name'];
+              }
+              ?>
             </div>
           </div>
         </div>
