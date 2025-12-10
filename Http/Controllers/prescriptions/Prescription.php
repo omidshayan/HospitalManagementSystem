@@ -75,9 +75,9 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        // if (empty($request['drug_id']) || empty($request['drug_name'])) {
-        //     $this->flashMessage('error', _emptyInputs);
-        // }
+        if (empty($request['drug_id']) || empty($request['drug_name'] || empty($request['drug_count']))) {
+            $this->flashMessage('error', _emptyInputs);
+        }
 
         $this->validateInputs($request);
 
@@ -102,10 +102,10 @@ class Prescription extends App
             'drug_id' => $request['drug_id'],
             'drug_name' => $request['drug_name'],
             'drug_count' => $request['drug_count'],
-            'interval_time' => $request['interval_time'],
-            'dosage' => $request['dosage'],
-            'usage_instruction' => $request['usage_instruction'],
-            'description' => $request['description'],
+            'interval_time' => $request['interval_time'] ?? null,
+            'dosage' => $request['dosage'] ?? null,
+            'usage_instruction' => $request['usage_instruction'] ?? null,
+            'description' => $request['description'] ?? null,
         ];
 
         $exist_item = $this->prescription->getPrescriptionItem($prescription_id, $request['drug_id']);
