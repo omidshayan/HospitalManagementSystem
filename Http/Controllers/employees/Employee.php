@@ -278,7 +278,6 @@ class Employee extends App
             $today = date('Y-m-d');
             $sevenDaysAgo = date('Y-m-d', strtotime('-6 days'));
 
-            // کوئری برای تعداد نسخه‌های دکتر در هر روز 7 روز گذشته
             $prescriptionsLast7Days = $this->db->select("
             SELECT DATE(created_at) as date, COUNT(*) as count
             FROM prescriptions
@@ -287,16 +286,13 @@ class Employee extends App
             ORDER BY DATE(created_at) ASC
         ", [$id, $sevenDaysAgo, $today])->fetchAll();
 
-            // ساخت آرایه تاریخ‌های 7 روز گذشته
             $dates = [];
             for ($i = 6; $i >= 0; $i--) {
                 $dates[] = date('Y-m-d', strtotime("-$i days"));
             }
 
-            // پر کردن داده‌ها با مقدار صفر برای تاریخ‌های بدون نسخه
             $data = array_fill_keys($dates, 0);
 
-            // مقدار نسخه‌ها را جایگزین می‌کنیم
             foreach ($prescriptionsLast7Days as $row) {
                 $data[$row['date']] = (int)$row['count'];
             }

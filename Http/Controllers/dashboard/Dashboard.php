@@ -44,7 +44,7 @@ class Dashboard extends App
         }
 
 
-$prescriptionsByGender = $this->db->select("
+        $prescriptionsByGender = $this->db->select("
     SELECT 
         DATE(prescriptions.created_at) as date, 
         users.gender, 
@@ -72,6 +72,29 @@ $prescriptionsByGender = $this->db->select("
                 $dataFemale[$row['date']] = (int)$row['count'];
             }
         }
+
+        // use drugs
+        $topDrugs = $this->db->select("
+        SELECT
+            pi.drug_name,
+            SUM(pi.drug_count) AS total_count
+        FROM prescription_items pi
+        LEFT JOIN prescriptions p ON p.id = pi.prescription_id
+        WHERE DATE(p.created_at) BETWEEN ? AND ?
+        GROUP BY pi.drug_name
+        ORDER BY total_count DESC
+        LIMIT 7
+    ", [$sevenDaysAgo, $today])->fetchAll();
+
+        // آماده‌سازی آرایه‌های جداگانه برای نام دارو و تعداد آن‌ها
+        $drugNames = [];
+        $drugCounts = [];
+
+        foreach ($topDrugs as $drug) {
+            $drugNames[] = $drug['drug_name'];
+            $drugCounts[] = (int)$drug['total_count'];
+        }
+
 
         require_once(BASE_PATH . '/resources/views/app/dashboard/index.php');
     }

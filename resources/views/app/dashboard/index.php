@@ -66,8 +66,52 @@
         </div>
       </div>
 
+      <div class="parent-dash-chart mmw mt20">
+        <div class="dash-chart-f">
+          <canvas id="topDrugsChart"></canvas>
+        </div>
+      </div>
+
     </div>
     <!-- End content -->
+
+
+    <script>
+      const labels = <?= json_encode($drugNames) ?>;
+      const data = <?= json_encode($drugCounts) ?>;
+
+      const ctx = document.getElementById('topDrugsChart').getContext('2d');
+      const topDrugsChart = new Chart(ctx, {
+        type: 'bar', // یا 'pie' اگر میخوای دایره‌ای باشه
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'تعداد نسخه‌های تجویز شده',
+            data: data,
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+            maxBarThickness: 40
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              stepSize: 1
+            }
+          }
+        }
+      });
+    </script>
+
 
     <script>
       const daysFa = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
