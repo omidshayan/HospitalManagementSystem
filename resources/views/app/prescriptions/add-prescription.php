@@ -217,10 +217,10 @@
                             <tr>
                                 <td class="color-orange"><?= $number ?></td>
                                 <td><?= $item['drug_name'] ?></td>
-                                <td><?= $item['drug_count'] ?? 1 ?></td>
-                                <td><?= $item['interval_time'] ?></td>
-                                <td><?= $item['dosage'] ?></td>
-                                <td><?= $item['usage_instruction'] ?></td>
+                                <td><?= $item['drug_count'] ?></td>
+                                <td><?= ($item['interval_time']) ?: '- - - -' ?></td>
+                                <td><?= ($item['dosage'] ) ?: '- - - -'?></td>
+                                <td><?= ($item['usage_instruction']) ?: '- - - -' ?></td>
                                 <td><?= $item['description'] ?: '- - - -' ?></td>
                                 <!-- <td>
                                     <a href="<?= url('edit-prescription-list/' . $item['id']) ?>" class="color-orange flex-justify-align">
