@@ -73,21 +73,22 @@ include_once('resources/views/scripts/show-img-modal.php');
             </div>
         </div>
 
-        <div class="accordion-title color-orange">مشخصات مالی</div>
+        <div class="accordion-title color-orange">جزئیات مراجعه</div>
         <div class="accordion-content">
             <div class="child-accordioin">
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">نام</div>
-                    <div class="info-detaile"><?= $user['name'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">نام پدر</div>
-                    <div class="info-detaile"><?= ($user['father_name'] ? $user['father_name'] : '- - - - ') ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">شماره</div>
-                    <div class="info-detaile"><?= $user['phone'] ?></div>
-                </div>
+                <?php
+                if ($prescription) { ?>
+                    <div class="detailes-culomn d-flex cursor-p">
+                        <div class="title-detaile">نام</div>
+                        <div class="info-detaile"><?= $user['name'] ?></div>
+                    </div>
+                <?php } else { ?>
+                    <div class="detailes-culomn center">
+                        <div class="fs14 color-red">بدون مراجعه</div>
+                    </div>
+                <?php }
+                ?>
+
             </div>
         </div>
 
