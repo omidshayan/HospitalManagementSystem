@@ -5,7 +5,7 @@ include_once('resources/views/layouts/header.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> نتیجه جستجو: <?= $user ?>
+    <div class="content-title"> نتیجه جستجو: <?= $user ?> - متولد:  <?=$birth_year?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
