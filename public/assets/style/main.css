@@ -32,7 +32,9 @@
 .border-radius {
     border-radius: 10px;
 }
-
+.mmw{
+    max-width: 1450px !important;
+}
 .border50 {
     border-radius: 50%;
 }

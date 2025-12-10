@@ -2,7 +2,7 @@
     $title = 'داشبورد';
     include_once('resources/views/layouts/header.php');
     ?>
-    
+
     <script src="<?= asset('lib/chart.js') ?>"></script>
 
     <!-- Start content -->
@@ -58,45 +58,62 @@
       </div>
       <!-- end report -->
 
-      <div style="max-width: 700px; margin: 50px auto;">
-        <canvas id="testChart"></canvas>
+      <div class="parent-dash-chart mmw mt20">
+        <div class="dash-chart">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="dash-chart">
+          <canvas id="typeChart"></canvas>
+        </div>
       </div>
 
-      <script>
-        const ctx = document.getElementById('testChart');
-
-        // داده فیک (می‌تونی هر عددی بزاری)
-        const fakeData = [5, 2, 8, 4, 6, 3, 9];
-
-        // لیبل فیک
-        const fakeLabels = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه"];
-
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: fakeLabels,
-            datasets: [{
-              label: 'تعداد نسخه‌های فیک',
-              data: fakeData,
-              borderWidth: 2
-            }]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      </script>
 
 
     </div>
     <!-- End content -->
 
+    <script>
+      const rawLabels = <?= json_encode(array_keys($data)) ?>;
+      const dataValues = <?= json_encode(array_values($data)) ?>;
+
+      const daysFa = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
+
+      function getPersianDay(dateStr) {
+        const date = new Date(dateStr);
+        let dayNumber = date.getDay();
 
 
+        dayNumber = (dayNumber + 1) % 7;
+
+        return daysFa[dayNumber];
+      }
+
+      const labels = rawLabels.map(getPersianDay);
+
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'تعداد نسخه‌ها',
+            data: dataValues,
+            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            maxBarThickness: 30
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+    </script>
 
     <?php include_once('resources/views/layouts/footer.php') ?>

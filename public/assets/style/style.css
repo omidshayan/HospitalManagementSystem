@@ -2044,6 +2044,20 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     font-weight: bold;
 }
 
+/* chart  */
+ .parent-dash-chart{
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin: 0 auto;
+    gap: 20px;
+ }
+.dash-chart{
+    width: 50%;
+    height: 220px;
+    background-color: var(--simillar);
+    position: relative !important;
+    left: 0 !important;
+}
 @media screen and (max-width: 1200px) {
     .report .report-item {
         width: calc(50% - 20px);
@@ -2052,6 +2066,13 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 
     .search-content {
         width: 100% !important;
+    }
+        .parent-dash-chart{
+        display: block !important;
+    }
+    .dash-chart{
+        width: 100% !important;
+        margin-bottom: 10px;
     }
 }
 
