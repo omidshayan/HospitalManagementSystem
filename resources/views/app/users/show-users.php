@@ -33,7 +33,7 @@ include_once('resources/views/layouts/header.php');
                 data-search-url="<?= url('live-search-patient') ?>"
                 data-redirect-url="<?= url('product-details') ?>/"
                 data-edit-url="<?= url('edit-product') ?>/"
-                data-template="product_name"
+                data-template="user_name"
                 data-id-key="id"
                 placeholder="جستجوی مریض..."
                 autocomplete="off"

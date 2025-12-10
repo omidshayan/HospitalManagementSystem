@@ -50,6 +50,7 @@
 
                         if (response.status === 'success' && response.items.length > 0) {
                             response.items.forEach(item => {
+                                console.log(response);
                                 const display = renderItems(template, item);
                                 const itemId = item[idKey];
                                 const editButton = editUrlBase ?
