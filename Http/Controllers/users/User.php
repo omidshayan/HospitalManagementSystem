@@ -19,10 +19,9 @@ class User extends App
     // store user
     public function userStore($request)
     {
-        dd($request);
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['name'] == '') {
+        if ($request['user_name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
@@ -32,7 +31,7 @@ class User extends App
         $this->handleImageUpload($request['image'], 'images/users');
 
         $this->db->insert('users', array_keys($request), $request);
-        dd('oi');
+
         $this->flashMessage('success', _success);
     }
 

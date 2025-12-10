@@ -19,19 +19,19 @@
                             <input type="text" class="checkInput" name="user_name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" />
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">نام پدر</div>
-                            <input type="text" name="father_name" placeholder="نام پدر را وارد نمایید" maxlength="40" />
+                            <div class="label-form mb5 fs14">سن <?= _star ?></div>
+                            <input type="number" id="ageInput" class="checkInput" placeholder="سن بیمار را وارد نمائید">
+                            <input type="hidden" name="birth_year" id="birthYearInput">
                         </div>
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">شماره </div>
-                            <input type="number" name="phone" placeholder="شماره را وارد نمایید" />
+                            <div class="label-form mb5 fs14">نام پدر</div>
+                            <input type="text" name="father_name" placeholder="نام پدر را وارد نمایید" maxlength="40" />
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">سن </div>
-                            <input type="number" id="ageInput" class="checkInput" placeholder="سن بیمار را وارد نمائید">
-                            <input type="hidden" name="birth_year" id="birthYearInput">
+                            <div class="label-form mb5 fs14">شماره </div>
+                            <input type="number" name="phone" placeholder="شماره را وارد نمایید" />
                         </div>
                     </div>
                     <div class="d-none">
