@@ -348,7 +348,7 @@ class Prescription extends App
 
 
     //    add drug in Prescription Store
-    public function editDrugPrescriptionStore($request)
+    public function editDrugPrescriptionStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
@@ -371,7 +371,7 @@ class Prescription extends App
             'who_it' => $request['who_it'],
         ];
         //  Create or get existing prescription
-        $prescription_id = $this->prescription->InvoiceConfirm($prescription);
+        $prescription_id = $this->prescription->editInvoiceConfirm($prescription);
 
 
         $prescription_items = [

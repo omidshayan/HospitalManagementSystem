@@ -74,6 +74,20 @@ class Prescriptions extends App
         }
     }
 
+    // check invoice but ///////////////// ok ///////////////////
+    public function editInvoiceConfirm($prescription_info)
+    {
+        $invoice_type = $prescription_info['type'];
+
+        $prescription = $this->db->select('SELECT id FROM prescriptions WHERE `type` = ? AND `status` != ?', [$invoice_type, 1])->fetch();
+
+        if ($prescription) {
+            $this->db->update('prescriptions', $prescription['id'], array_keys($prescription_info), $prescription_info);
+            return $prescription['id'];
+        }
+    }
+
+
     // get quantity in package, query from products
     public function quantityInPackage($product_id)
     {

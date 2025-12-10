@@ -87,7 +87,7 @@
 
             <!-- select details drug -->
             <div class="drug-container">
-                <form action="<?= url('drug-prescription-store') ?>" method="POST">
+                <form action="<?= url('edit-drug-prescription-store/' . $prescription['id']) ?>" method="POST">
                     <div class="insert">
 
                         <!-- search box -->
