@@ -19,24 +19,21 @@ class User extends App
     // store user
     public function userStore($request)
     {
+        dd($request);
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['name'] == '' || $request['phone'] == '') {
+        if ($request['name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $existinguser = $this->db->select('SELECT * FROM users WHERE `phone` = ?', [$request['phone']])->fetch();
-        if ($existinguser) {
-            $this->flashMessage('error', _phone_repeat);
-        } else {
-            $this->validateInputs($request, ['image' => false]);
+        $this->validateInputs($request, ['image' => false]);
 
-            // check image
-            $this->handleImageUpload($request['image'], 'images/users');
+        // check image
+        $this->handleImageUpload($request['image'], 'images/users');
 
-            $this->db->insert('users', array_keys($request), $request);
-            $this->flashMessage('success', _success);
-        }
+        $this->db->insert('users', array_keys($request), $request);
+        dd('oi');
+        $this->flashMessage('success', _success);
     }
 
     // show users
