@@ -175,8 +175,8 @@ class Prescription extends App
                 e.expertise
          FROM prescriptions p
          JOIN employees e ON e.id = p.doctor_id
-         WHERE p.status = ? AND p.id = ?',
-            [3, $id]
+         WHERE  p.id = ?',
+            [$id]
         )->fetch();
 
         $items = [];
