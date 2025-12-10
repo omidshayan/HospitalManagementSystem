@@ -74,7 +74,7 @@ class Employee extends App
 
             // تعریف والد‌ها و زیرمجموعه‌ها
             $parentChildMap = [
-                'parentPatients' => ['showPatients'],
+                'parentPatients' => ['showPatients', 'addPatient'],
                 'parentPrescription' => ['addPrescription', 'showPrescription'],
                 'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
                 'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
@@ -133,8 +133,6 @@ class Employee extends App
         }
     }
 
-
-
     // edit employee page
     public function editEmployee($id)
     {
@@ -186,7 +184,7 @@ class Employee extends App
                 'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
                 'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
                 'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription'],
-                'parentPatients' => ['showPatients'],
+                'parentPatients' => ['showPatients', 'addPatient'],
             ];
 
             $independentSections = ['prescriptionPrint', 'dashboard', 'profile'];

@@ -38,11 +38,11 @@ include_once('resources/views/scripts/show-img-modal.php');
                 </div>
                 <div class="detailes-culomn d-flex cursor-p">
                     <div class="title-detaile">شماره</div>
-                    <div class="info-detaile"><?= $user['phone'] ?></div>
+                    <div class="info-detaile"><?= ($user['phone']) ?: '- - - -' ?></div>
                 </div>
                 <div class="detailes-culomn d-flex cursor-p">
                     <div class="title-detaile">آدرس</div>
-                    <div class="info-detaile"><?= ($user['address'] ? $user['address'] : '- - - - ') ?></div>
+                    <div class="info-detaile"><?= $user['address'] ?: '- - - - ' ?></div>
                 </div>
                 <div class="detailes-culomn d-flex cursor-p">
                     <div class="title-detaile">توضیحات</div>
@@ -51,6 +51,10 @@ include_once('resources/views/scripts/show-img-modal.php');
                 <div class="detailes-culomn d-flex cursor-p">
                     <div class="title-detaile">تاریخ ثبت</div>
                     <div class="info-detaile"><?= jdate('Y/m/d', strtotime($user['created_at'])) ?></div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">ثبت شده توسط</div>
+                    <div class="info-detaile"><?= $user['who_it'] ?></div>
                 </div>
                 <div class="detailes-culomn d-flex align-center cursor-p">
                     <div class="title-detaile">عکس</div>
@@ -87,7 +91,7 @@ include_once('resources/views/scripts/show-img-modal.php');
             </div>
         </div>
 
-        <a href="<?= url('users') ?>">
+        <a href="<?= url('patients') ?>">
             <div class="btn center p5">برگشت</div>
         </a>
     </div>

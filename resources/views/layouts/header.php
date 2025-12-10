@@ -65,8 +65,8 @@
             </li>
           <?php endif; ?>
 
-          <!-- employees -->
-          <?php if ($this->hasAccess('parentPaitents')): ?>
+          <!-- users -->
+          <?php if ($this->hasAccess('parentPatients')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -80,11 +80,11 @@
                 </svg>
               </a>
               <ul class="sidebar-dropdown-menu">
-                <!-- <?php if ($this->hasAccess('general')): ?>
+                <?php if ($this->hasAccess('addPatient')): ?>
                   <a href="<?= url('add-patient') ?>">
                     <li class="sidebar-dropdown-menu-item">ثبت بیمار</li>
                   </a>
-                <?php endif; ?> -->
+                <?php endif; ?>
 
                 <?php if ($this->hasAccess('showPatients')): ?>
                   <a href="<?= url('patients') ?>">
