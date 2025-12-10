@@ -44,6 +44,34 @@ class Dashboard extends App
         }
 
 
+$prescriptionsByGender = $this->db->select("
+    SELECT 
+        DATE(prescriptions.created_at) as date, 
+        users.gender, 
+        COUNT(*) as count
+    FROM prescriptions
+    LEFT JOIN users ON prescriptions.patient_id = users.id
+    WHERE DATE(prescriptions.created_at) BETWEEN ? AND ?
+    GROUP BY DATE(prescriptions.created_at), users.gender
+    ORDER BY DATE(prescriptions.created_at) ASC
+", [$sevenDaysAgo, $today])->fetchAll();
+
+
+        $dates = [];
+        for ($i = 6; $i >= 0; $i--) {
+            $dates[] = date('Y-m-d', strtotime("-$i days"));
+        }
+
+        $dataMale = array_fill_keys($dates, 0);
+        $dataFemale = array_fill_keys($dates, 0);
+
+        foreach ($prescriptionsByGender as $row) {
+            if ($row['gender'] === 'آقا') {
+                $dataMale[$row['date']] = (int)$row['count'];
+            } elseif ($row['gender'] === 'خانم') {
+                $dataFemale[$row['date']] = (int)$row['count'];
+            }
+        }
 
         require_once(BASE_PATH . '/resources/views/app/dashboard/index.php');
     }

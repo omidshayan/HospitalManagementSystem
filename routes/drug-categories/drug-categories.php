@@ -1,7 +1,6 @@
 <?php
 require_once 'Http/Controllers/drug-categories/DrugCategory.php';
 
-// expenses routes
 uri('drug-categories', 'App\DrugCategory', 'drugCategories');
 uri('drug-cat-store', 'App\DrugCategory', 'drugCatStore', 'POST');
 uri('drug-cat-details/{id}', 'App\DrugCategory', 'expenseCatDetails');

@@ -4,13 +4,14 @@ require_once 'Http/Controllers/prescriptions/Prescription.php';
 // drugs routes
 uri('add-prescription', 'App\Prescription', 'addPrescription');
 uri('prescriptions', 'App\Prescription', 'prescriptions');
+uri('drug-prescription-store', 'App\Prescription', 'drugPrescriptionStore', 'POST');
 
 
 // search
 uri('search-product-purchase', 'App\Prescription', 'searchProdut', 'POST');
 
 
-// editing 
+// editing
 uri('edit-prescription/{id}', 'App\Prescription', 'editPrescription');
 uri('edit-drug-prescription-store/{id}', 'App\Prescription', 'editDrugPrescriptionStore', 'POST');
 uri('edit-close-prescription-store/{id}', 'App\Prescription', 'editClosePrescriptionStore', 'POST');
