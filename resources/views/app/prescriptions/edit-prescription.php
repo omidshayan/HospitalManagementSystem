@@ -1,5 +1,5 @@
     <?php
-    $title = 'ثبت نسخه';
+    $title = 'ویرایش نسخه:' . $prescription['patient_name'];
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
@@ -8,7 +8,7 @@
 
     <!-- Start content -->
     <div class="content">
-        <div class="content-title mb10">ثبت نسخه جدید</div>
+        <div class="content-title mb10">ویرایش نسخه: <?= $prescription['patient_name'] ?></div>
 
         <div class="d-flex alpha-container">
 
@@ -20,24 +20,24 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form  fs14"> نام بیمار <?= _star ?></div>
-                                <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
+                                <input type="text" name="user_name" value="<?= $prescription['patient_name'] ?>" id="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
                             </div>
                         </div>
                         <div class="inputs d-flex mb3">
                             <div class="one">
                                 <div class="label-form fs14"> سن بیمار <?= _star ?></div>
-                                <input type="number" id="ageInput" class="checkInput" placeholder="سن بیمار را وارد نمائید">
+                                <input type="number" id="ageInput" class="checkInput" value="<?= $this->getAge($prescription['birth_year']) ?>" placeholder="سن بیمار را وارد نمائید">
                                 <input type="hidden" name="birth_year" id="birthYearInput">
                             </div>
                         </div>
                         <div class="">
                             <span class="fs14">سال تولد: </span>
-                            <strong id="birthYear"></strong>
+                            <strong id="birthYear"><?= $prescription['birth_year'] ?></strong>
                         </div>
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form fs14"> نام پدر </div>
-                                <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                                <input type="text" name="father_name" value="<?= $user['father_name'] ?>" placeholder="نام پدر را وارد نمائید">
                             </div>
                         </div>
 
@@ -45,8 +45,8 @@
                             <div class="one">
                                 <div class="label-form fs14"> جنسیت </div>
                                 <select name="gender">
-                                    <option value="آقا">آقا</option>
-                                    <option value="خانم">خانم</option>
+                                    <option value="آقا" <?= ($user['gender'] === 'آقا') ? 'selected' : '' ?>>آقا</option>
+                                    <option value="خانم" <?= ($user['gender'] === 'خانم') ? 'selected' : '' ?>>خانم</option>
                                 </select>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form fs14"> شماره موبایل </div>
-                                <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
+                                <input type="text" name="phone" value="<?= $user['phone'] ?>" placeholder="شماره موبایل را وارد نمائید">
                             </div>
                         </div>
 
@@ -63,28 +63,22 @@
                             <div class="child-accordioin">
                                 <div class="insert dir-left mt5">
                                     <div class="one m-auto w97d mb3">
-                                        <input type="text" name="bp" placeholder=" Blood Pressure  ">
+                                        <input type="text" name="bp" value="<?= $prescription['bp'] ?>" placeholder=" Blood Pressure  ">
                                     </div>
                                     <div class="one m-auto w97d mb3">
-                                        <input type="text" name="pr" placeholder=" Pulse Rate  ">
+                                        <input type="text" name="pr" value="<?= $prescription['pr'] ?>" placeholder=" Pulse Rate  ">
                                     </div>
                                     <div class="one m-auto w97d mb3">
-                                        <input type="text" name="rr" placeholder=" Respiratory Rate  ">
+                                        <input type="text" name="rr" value="<?= $prescription['rr'] ?>" placeholder=" Respiratory Rate  ">
                                     </div>
                                     <div class="one m-auto w97d mb3">
-                                        <input type="text" name="temp" placeholder=" Temperature  ">
+                                        <input type="text" name="temp" value="<?= $prescription['temp'] ?>" placeholder=" Temperature  ">
                                     </div>
                                     <div class="one m-auto w97d mb3">
-                                        <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
+                                        <input type="text" name="spo2" value="<?= $prescription['spo2'] ?>" placeholder=" Oxygen Saturation  ">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="center mt20">
-                            <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
-                                استعلام بیمار
-                            </a>
                         </div>
                     </div>
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
@@ -219,7 +213,7 @@
                                 <td><?= $item['drug_name'] ?></td>
                                 <td><?= $item['drug_count'] ?></td>
                                 <td><?= ($item['interval_time']) ?: '- - - -' ?></td>
-                                <td><?= ($item['dosage'] ) ?: '- - - -'?></td>
+                                <td><?= ($item['dosage']) ?: '- - - -' ?></td>
                                 <td><?= ($item['usage_instruction']) ?: '- - - -' ?></td>
                                 <td><?= $item['description'] ?: '- - - -' ?></td>
                                 <!-- <td>

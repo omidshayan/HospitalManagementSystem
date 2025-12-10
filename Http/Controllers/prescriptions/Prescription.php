@@ -157,6 +157,15 @@ class Prescription extends App
         $this->middleware(true, true, 'general', true);
 
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE id = ?', [$id])->fetch();
+        $user = $this->db->select('SELECT * FROM users WHERE id = ?', [$prescription['patient_id']])->fetch();
+
+        $intake_times = $this->db->select('SELECT intake_time FROM intake_times WHERE `status` = ?', [1])->fetchAll();
+
+        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
+
+        $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
+
+        $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
         if ($prescription != null) {
             $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
