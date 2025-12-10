@@ -36,7 +36,9 @@
 .border50 {
     border-radius: 50%;
 }
-
+.top35{
+    top: 35px !important;
+}
 .center {
     text-align: center !important;
 }

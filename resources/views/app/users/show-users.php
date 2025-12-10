@@ -29,14 +29,14 @@ include_once('resources/views/layouts/header.php');
                 type="text"
                 class="p5 fs15 input w100 live-search-input"
                 data-search-url="<?= url('live-search-patient') ?>"
-                data-redirect-url="<?= url('product-details') ?>/"
-                data-edit-url="<?= url('edit-product') ?>/"
+                data-redirect-url="<?= url('user-details') ?>/"
+                data-edit-url="<?= url('edit-user') ?>/"
                 data-template="user_name"
                 data-id-key="id"
                 placeholder="جستجوی مریض..."
                 autocomplete="off"
                 autofocus />
-            <ul class="search-back d-none live-search-result t35"></ul>
+            <ul class="search-back d-none live-search-result t35 top35"></ul>
         </div>
     </div>
 
