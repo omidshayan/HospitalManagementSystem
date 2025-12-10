@@ -157,7 +157,7 @@ class Prescription extends App
         $this->middleware(true, true, 'showPrescription', true);
 
         $user = $_GET['patient_name'];
-
+        dd($_GET['birth_year']);
         $userSearch = $this->db->select("
             SELECT prescriptions.*, users.phone, users.father_name
             FROM prescriptions

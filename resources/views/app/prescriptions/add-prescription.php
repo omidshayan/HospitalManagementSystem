@@ -255,21 +255,23 @@
 
     <!-- estelam and change age -->
     <script>
-
-        // check patient btn
         const patientName = document.getElementById('patient_name');
         const ageInput = document.getElementById('ageInput');
+        const birthYearInput = document.getElementById('birthYearInput');
         const btn = document.getElementById('checkPatientBtn');
         const baseUrl = "<?= url('patient-inquiry') ?>";
 
         function checkInputs() {
             let nameVal = patientName.value.trim();
             let ageVal = ageInput.value.trim();
+            let birthYear = birthYearInput.value.trim();
             let encodedName = encodeURIComponent(nameVal);
 
-            if (nameVal.length >= 3 && ageVal !== "") {
+            if (nameVal.length >= 3 && ageVal !== "" && birthYear !== "") {
+
+                btn.href = `${baseUrl}?patient_name=${encodedName}&birth_year=${birthYear}`;
+
                 btn.classList.remove('d-none');
-                btn.href = baseUrl + "?patient_name=" + encodedName + "&age=" + ageVal;
             } else {
                 btn.classList.add('d-none');
                 btn.href = baseUrl;
@@ -280,7 +282,6 @@
         ageInput.addEventListener('input', checkInputs);
 
 
-        // generate age
         function toEnglishDigits(str) {
             return str.replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
         }
@@ -291,18 +292,18 @@
                 year: 'numeric'
             });
             let persianYear = formatter.format(today);
-
             return parseInt(toEnglishDigits(persianYear));
         }
 
-        document.getElementById('ageInput').addEventListener('input', function() {
+        ageInput.addEventListener('input', function() {
             let age = parseInt(this.value);
             let birthYearTag = document.getElementById('birthYear');
-            let birthYearInput = document.getElementById('birthYearInput');
+            let birthYearInputField = document.getElementById('birthYearInput');
 
             if (!age || age <= 0) {
                 birthYearTag.textContent = '';
-                birthYearInput.value = '';
+                birthYearInputField.value = '';
+                checkInputs();
                 return;
             }
 
@@ -310,8 +311,9 @@
             let birthYear = currentPersianYear - age;
 
             birthYearTag.textContent = birthYear;
+            birthYearInputField.value = birthYear;
 
-            birthYearInput.value = birthYear;
+            checkInputs();
         });
     </script>
 
