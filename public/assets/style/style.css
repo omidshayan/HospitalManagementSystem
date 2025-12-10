@@ -533,7 +533,7 @@ input:checked+.slider:before {
     margin: 0 auto;
 }
 .report-item {
-    width: calc(25% - 20px);
+    width: calc(34% - 20px);
     padding: 30px;
     display: flex;
     background-color: var(--simillar);

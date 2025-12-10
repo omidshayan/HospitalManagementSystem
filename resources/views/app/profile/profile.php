@@ -18,6 +18,12 @@ include_once('public/alerts/error.php');
                 <div class="w100 m10 center"><?= $profile['employee_name'] ?></div>
             </div>
         </div>
+                <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">تعداد نسخه‌های تجویز شده</div>
+                <div class="w100 m10 center"><?= $totalPrescriptions ?> نسخه</div>
+            </div>
+        </div>
         <div class="details">
             <div class="detail-item d-flex">
                 <div class="w100 m10 center">تاریخ ثبت</div>

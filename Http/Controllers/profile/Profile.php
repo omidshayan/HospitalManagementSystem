@@ -35,6 +35,12 @@ class Profile extends App
             $data[$row['date']] = (int)$row['count'];
         }
 
+        $totalPrescriptions = $this->db->select("
+                SELECT COUNT(*) as total
+                FROM prescriptions
+                WHERE doctor_id = ?
+            ", [$id['id']])->fetchColumn();
+
         require_once(BASE_PATH . '/resources/views/app/profile/profile.php');
     }
 

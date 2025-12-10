@@ -86,7 +86,6 @@ class Dashboard extends App
         LIMIT 7
     ", [$sevenDaysAgo, $today])->fetchAll();
 
-        // آماده‌سازی آرایه‌های جداگانه برای نام دارو و تعداد آن‌ها
         $drugNames = [];
         $drugCounts = [];
 
@@ -95,6 +94,10 @@ class Dashboard extends App
             $drugCounts[] = (int)$drug['total_count'];
         }
 
+
+        $totalUsers = $this->db->select("SELECT COUNT(*) AS total_users FROM users")->fetch();
+        $totalPrescriptions = $this->db->select("SELECT COUNT(*) AS total_prescriptions FROM prescriptions")->fetch();
+        $totalDrugs = $this->db->select("SELECT COUNT(*) AS total_drugs FROM drugs")->fetch();
 
         require_once(BASE_PATH . '/resources/views/app/dashboard/index.php');
     }
