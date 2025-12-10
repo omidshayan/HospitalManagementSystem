@@ -4,8 +4,6 @@ namespace App;
 
 require_once 'Http/Controllers/App.php';
 
-use database\DataBase;
-
 class Profile extends App
 {
     // profile page
@@ -14,6 +12,29 @@ class Profile extends App
         $this->middleware(true, true, 'general', true);
         $id = $this->currentUser();
         $profile = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id['id']])->fetch();
+
+        $today = date('Y-m-d');
+        $sevenDaysAgo = date('Y-m-d', strtotime('-6 days'));
+
+        $prescriptionsLast7Days = $this->db->select("
+            SELECT DATE(created_at) as date, COUNT(*) as count
+            FROM prescriptions
+            WHERE doctor_id = ? AND DATE(created_at) BETWEEN ? AND ?
+            GROUP BY DATE(created_at)
+            ORDER BY DATE(created_at) ASC
+        ", [$id['id'], $sevenDaysAgo, $today])->fetchAll();
+
+        $dates = [];
+        for ($i = 6; $i >= 0; $i--) {
+            $dates[] = date('Y-m-d', strtotime("-$i days"));
+        }
+
+        $data = array_fill_keys($dates, 0);
+
+        foreach ($prescriptionsLast7Days as $row) {
+            $data[$row['date']] = (int)$row['count'];
+        }
+
         require_once(BASE_PATH . '/resources/views/app/profile/profile.php');
     }
 

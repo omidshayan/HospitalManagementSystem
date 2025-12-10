@@ -1,12 +1,10 @@
-<!-- start sidebar -->
 <?php
 $title = 'مشخصات اکانت';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/error.php');
-$date = explode(' ', $profile['created_at']);
 ?>
-<!-- end sidebar -->
+<script src="<?= asset('lib/chart.js') ?>"></script>
 
 <!-- Start content -->
 <div class="content">
@@ -23,19 +21,19 @@ $date = explode(' ', $profile['created_at']);
         <div class="details">
             <div class="detail-item d-flex">
                 <div class="w100 m10 center">تاریخ ثبت</div>
-                <div class="w100 m10 center"><?= $date[0] ?></div>
+                <div class="w100 m10 center"><?= jdate('Y/m/d', strtotime($profile['created_at'])) ?></div>
             </div>
         </div>
         <div class="details">
             <div class="detail-item d-flex">
                 <div class="w100 m10 center">شماره تماس</div>
-                <div class="w100 m10 center"><?= $profile['phone'] ?></div>
+                <div class="w100 m10 center"><?= $profile['phone'] ?: '- - - -' ?></div>
             </div>
         </div>
         <div class="details">
             <div class="detail-item d-flex">
                 <div class="w100 m10 center">ایمیل</div>
-                <div class="w100 m10 center"><?= $profile['email'] ?></div>
+                <div class="w100 m10 center"><?= $profile['email'] ?: '- - - -' ?></div>
             </div>
         </div>
         <hr class="hr">
