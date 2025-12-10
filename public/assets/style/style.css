@@ -1195,7 +1195,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     max-height: 380px;
     background-color: var(--main);
     position: absolute;
-    top: 65px;
+    top: 38px;
     border-radius: 10px;
     overflow-y: auto;
     transition: 0.9s;

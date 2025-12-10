@@ -1,13 +1,11 @@
-<!-- start sidebar -->
 <?php
-$title = 'نمایش فروشندگان / مشتریان';
+$title = 'نمایش مریضان';
 include_once('resources/views/layouts/header.php');
 ?>
-<!-- end sidebar -->
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> نمایش مشتریان / فروشندگان
+    <div class="content-title"> نمایش مریضان
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
