@@ -151,68 +151,6 @@ class Prescription extends App
         require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
 
-    // edit employee page
-    public function editPrescription($id)
-    {
-        $this->middleware(true, true, 'general', true);
-
-        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE id = ?', [$id])->fetch();
-        $user = $this->db->select('SELECT * FROM users WHERE id = ?', [$prescription['patient_id']])->fetch();
-
-        $intake_times = $this->db->select('SELECT intake_time FROM intake_times WHERE `status` = ?', [1])->fetchAll();
-
-        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
-
-        $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
-
-        $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
-
-        if ($prescription != null) {
-            $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
-            require_once(BASE_PATH . '/resources/views/app/prescriptions/edit-prescription.php');
-            exit();
-        } else {
-            require_once(BASE_PATH . '/404.php');
-            exit();
-        }
-    }
-
-    // edit employee store
-    public function editEmployeeStore($request, $id)
-    {
-        $this->middleware(true, true, 'general', true, $request, true);
-
-        // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '' || !isset($request['position'])) {
-            $this->flashMessage('error', _emptyInputs);
-        }
-
-        $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
-
-        if ($existEmployee) {
-            if ($existEmployee['id'] != $existEmployee['id']) {
-                $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
-                return;
-            }
-        }
-
-        // check upload photo
-        $max_file_size = 1048576;
-        if (is_uploaded_file($request['image']['tmp_name'])) {
-            if ($request['image']['size'] > $max_file_size) {
-                $this->flashMessage('error', 'حجم عکس نباید بیشتر از 1 mb باشد');
-            } else {
-                $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$existEmployee['id']])->fetch();
-                $this->removeImage('public/images/employees/' . $employee['image']);
-                $request['image'] = $this->saveImage($request['image'], 'images/employees');
-            }
-        } else {
-            unset($request['image']);
-        }
-
-        $this->db->update('employees', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('employees'));
-    }
 
     // patient Inquiry
     public function patientInquiry()
@@ -380,8 +318,83 @@ class Prescription extends App
     }
 
 
+    /////////////////// edit prescription ///////////////
+
+    // edit employee page
+    public function editPrescription($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE id = ?', [$id])->fetch();
+        $user = $this->db->select('SELECT * FROM users WHERE id = ?', [$prescription['patient_id']])->fetch();
+
+        $intake_times = $this->db->select('SELECT intake_time FROM intake_times WHERE `status` = ?', [1])->fetchAll();
+
+        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
+
+        $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
+
+        $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
+
+        if ($prescription != null) {
+            $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
+            require_once(BASE_PATH . '/resources/views/app/prescriptions/edit-prescription.php');
+            exit();
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+    }
 
 
+    //    add drug in Prescription Store
+    public function editDrugPrescriptionStore($request)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        if (empty($request['drug_id']) || empty($request['drug_name'] || empty($request['drug_count']))) {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
+        $this->validateInputs($request);
+
+        $yearMonth = $this->calendar->getYearMonth();
+
+        $user_id = $this->currentUser();
+
+        //  Prepare invoice info
+        $prescription = [
+            'doctor_id' => $user_id['id'],
+            'type' => 1,
+            'year' => $yearMonth['year'],
+            'month' => $yearMonth['month'],
+            'who_it' => $request['who_it'],
+        ];
+        //  Create or get existing prescription
+        $prescription_id = $this->prescription->InvoiceConfirm($prescription);
+
+
+        $prescription_items = [
+            'prescription_id' => $prescription_id,
+            'drug_id' => $request['drug_id'],
+            'drug_name' => $request['drug_name'],
+            'drug_count' => $request['drug_count'],
+            'interval_time' => $request['interval_time'] ?? null,
+            'dosage' => $request['dosage'] ?? null,
+            'usage_instruction' => $request['usage_instruction'] ?? null,
+            'description' => $request['description'] ?? null,
+        ];
+
+        $exist_item = $this->prescription->getPrescriptionItem($prescription_id, $request['drug_id']);
+
+        if (!$exist_item) {
+            $this->db->insert('prescription_items', array_keys($prescription_items), $prescription_items);
+        } else {
+            $this->flashMessage('error', 'داروی انتخاب شده، قبلا ثبت شده!');
+        }
+
+        $this->flashMessage('success', _success);
+    }
 
 
     // edit and close invoice sale cart controllers
