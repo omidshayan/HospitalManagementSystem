@@ -26,7 +26,7 @@ include_once('public/alerts/toastr.php');
                     </span>
                     <span>
                         <span class="fs14">سن: </span>
-                        <span class="bold"><?= $this->convertEnNumber($prescription['birth_year']) ?></span>
+                        <span class="bold"><?= $this->convertEnNumber($this->getAge($prescription['birth_year'])) ?></span>
                     </span>
 
                     <span>
