@@ -26,7 +26,7 @@
                         <div class="inputs d-flex mb3">
                             <div class="one">
                                 <div class="label-form fs14"> سن بیمار <?= _star ?></div>
-                                <input type="number" name="age" id="ageInput" class="checkInput" placeholder="سن بیمار را وارد نمائید">
+                                <input type="number" id="ageInput" class="checkInput" placeholder="سن بیمار را وارد نمائید">
                                 <input type="hidden" name="birth_year" id="birthYearInput">
                             </div>
                         </div>

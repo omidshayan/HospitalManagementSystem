@@ -38,7 +38,7 @@ include_once('resources/views/layouts/header.php');
                     <tr>
                         <td class="color-orange"><?= $number ?></td>
                         <td><?= $user['patient_name'] ?></td>
-                        <td><?= $user['age'] ?></td>
+                        <td><?= $user['birth_year'] ?></td>
                         <td><?= ($user['phone']) ?: '- - - -' ?></td>
                         <td>
                             <a href="<?= url('show-prescription-item/' . $user['id']) ?>">

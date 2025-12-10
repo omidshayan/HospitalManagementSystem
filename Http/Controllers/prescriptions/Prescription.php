@@ -157,13 +157,9 @@ class Prescription extends App
         $this->middleware(true, true, 'showPrescription', true);
 
         $user = $_GET['patient_name'];
-        dd($_GET['birth_year']);
-        $userSearch = $this->db->select("
-            SELECT prescriptions.*, users.phone, users.father_name
-            FROM prescriptions
-            LEFT JOIN users ON prescriptions.patient_id = users.id
-            WHERE LOWER(prescriptions.patient_name) LIKE ?
-        ", ['%' . strtolower($user) . '%'])->fetchAll();
+        $birth_year = $_GET['birth_year'];
+
+        $userSearch = $this->db->select("SELECT prescriptions.*, users.phone, users.father_name FROM prescriptions LEFT JOIN users ON prescriptions.patient_id = users.id WHERE LOWER(prescriptions.patient_name) LIKE ? AND prescriptions.birth_year = ?", ['%' . strtolower($user) . '%', $birth_year])->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/result-search.php');
     }
@@ -307,7 +303,7 @@ class Prescription extends App
         $preInfos = [
             'patient_id' => $userId,
             'patient_name' => $request['user_name'],
-            'age' => $request['age'],
+            'birth_year' => $request['birth_year'],
             'bp' => $request['bp'],
             'pr' => $request['pr'],
             'rr' => $request['rr'],
