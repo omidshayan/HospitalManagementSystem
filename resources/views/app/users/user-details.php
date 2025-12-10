@@ -76,19 +76,18 @@ include_once('resources/views/scripts/show-img-modal.php');
         <div class="accordion-title color-orange">جزئیات مراجعه</div>
         <div class="accordion-content">
             <div class="child-accordioin">
-                <?php
-                if ($prescription) { ?>
+                <?php if (!empty($prescriptions)): ?>
                     <div class="detailes-culomn d-flex cursor-p">
-                        <div class="title-detaile">نام</div>
-                        <div class="info-detaile"><?= $user['name'] ?></div>
+                        <?php foreach ($prescriptions as $prescription): ?>
+                            <div class="title-detaile">نام</div>
+                            <div class="info-detaile"><?= $user['name'] ?></div>
+                        <?php endforeach; ?>
                     </div>
-                <?php } else { ?>
+                <?php else: ?>
                     <div class="detailes-culomn center">
                         <div class="fs14 color-red">بدون مراجعه</div>
                     </div>
-                <?php }
-                ?>
-
+                <?php endif; ?>
             </div>
         </div>
 

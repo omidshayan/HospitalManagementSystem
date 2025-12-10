@@ -91,7 +91,7 @@ class User extends App
         $this->middleware(true, true, 'general');
         $user = $this->db->select('SELECT * FROM users WHERE id = ?', [$id])->fetch();
         if ($user != null) {
-            $prescription = $this->db->select('SELECT * FROM prescriptions WHERE patient_id = ?', [$id])->fetch();
+            $prescriptions = $this->db->select('SELECT * FROM prescriptions WHERE patient_id = ?', [$id])->fetchAll();
             require_once(BASE_PATH . '/resources/views/app/users/user-details.php');
             exit();
         } else {
