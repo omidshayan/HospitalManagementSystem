@@ -241,7 +241,7 @@ class Employee extends App
             'SELECT * FROM employees WHERE id != ? ORDER BY id DESC',
             [$id['id']]
         )->fetchAll();
-
+            
         require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
         exit();
     }

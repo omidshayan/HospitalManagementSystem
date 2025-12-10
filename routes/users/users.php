@@ -2,7 +2,7 @@
 require_once 'Http/Controllers/users/User.php';
 
 // add product routes
-uri('users', 'App\User', 'showUsers');
+// uri('users', 'App\User', 'showUsers');
 uri('add-user', 'App\User', 'addUser');
 uri('user-store', 'App\User', 'userStore', 'POST');
 uri('user-details/{id}', 'App\User', 'userDetails');

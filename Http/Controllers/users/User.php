@@ -36,13 +36,14 @@ class User extends App
     }
 
     // show users
-    public function showUsers()
-    {
-        $this->middleware(true, true, 'general');
-        $users = $this->db->select('SELECT * FROM users ORDER BY id DESC')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
-        exit();
-    }
+    // public function showUsers()
+    // {
+    //     dd('ok');
+    //     $this->middleware(true, true, 'showPatients');
+    //     $users = $this->db->select('SELECT * FROM users ORDER BY id DESC')->fetchAll();
+    //     require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
+    //     exit();
+    // }
 
     // edit user page
     public function editUser($id)
