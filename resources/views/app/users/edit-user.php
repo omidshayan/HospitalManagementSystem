@@ -1,6 +1,6 @@
     <!-- start sidebar -->
     <?php 
-    $title = 'ویرایش کارمند: ' . $user['name'];
+    $title = 'ویرایش کاربر: ' . $user['user_name'];
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
@@ -9,7 +9,7 @@
 
     <!-- Start content -->
     <div class="content">
-        <div class="content-title">ویرایش کارمند: <?= $user['name'] ?></div>
+        <div class="content-title">ویرایش کاربر: <?= $user['user_name'] ?></div>
         <br />
         <!-- start page content -->
         <div class="box-container">
@@ -18,7 +18,7 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">نام و تخلص <?= _star ?> </div>
-                            <input type="text" class="checkInput" name="name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" value="<?= $user['name'] ?>" />
+                            <input type="text" class="checkInput" name="user_name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" value="<?= $user['user_name'] ?>" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">نام پدر</div>
@@ -51,7 +51,7 @@
                         <img src="" class="img" alt="">
                     </div>
                     <div>
-                        <img src="<?= ($user['image'] ? asset('public/images/users/' . $user['image']) : asset('public/assets/img/empty.png')) ?>" class="img" alt="logo">
+                        <img src="<?= ($user['user_image'] ? asset('public/images/users/' . $user['user_image']) : asset('public/assets/img/empty.png')) ?>" class="img" alt="user image">
                     </div>
                     <div class="fs11">تصویر فعلی</div>
 
