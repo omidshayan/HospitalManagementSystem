@@ -63,7 +63,7 @@ include_once('resources/views/layouts/header.php');
                 foreach ($data as $user) {
                 ?>
                     <tr>
-                        <td class="color-orange"><?= $number ?></td>
+                        <td class="color-orange <?= ($user['status'] == 2) ? 'color-red' : '' ?>"><?= $number ?></td>
                         <td><?= $user['user_name'] ?></td>
                         <td>
                             <?php if (!empty($user['birth_year']) && $user['birth_year'] != 0): ?>

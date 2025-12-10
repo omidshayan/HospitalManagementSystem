@@ -113,9 +113,9 @@ class User extends App
             exit;
         }
 
-        $newState = ($user['state'] == 1) ? 2 : 1;
+        $newState = ($user['status'] == 1) ? 2 : 1;
 
-        $this->db->update('users', $user['id'], ['state'], [$newState]);
+        $this->db->update('users', $user['id'], ['status'], [$newState]);
         $this->send_json_response(true, _success, $newState);
     }
 
