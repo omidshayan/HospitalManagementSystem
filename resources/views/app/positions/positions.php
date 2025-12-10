@@ -19,16 +19,18 @@ include_once('public/alerts/toastr.php');
     ?>
     <!-- start page content -->
     <div class="box-container">
-        <div class="insert">
+        <form action="<?=url('position-store')?>" method="post">
+            <div class="insert">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="name" class="checkInput" value="<?= old('name') ?>" placeholder="نام وظیفه را وارد نمایید" autocomplete="off" autofocus disabled/>
+                        <input type="text" name="name" class="checkInput" value="<?= old('name') ?>" placeholder="نام وظیفه را وارد نمایید" autocomplete="off" autofocus/>
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                 <input type="submit" id="submit" value="ثــبــت" class="btn bold" />
-        </div>
+            </div>
+        </form>
     </div>
 
     <!-- show packages -->
