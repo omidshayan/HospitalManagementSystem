@@ -545,7 +545,7 @@ input:checked+.slider:before {
     height: 120px;
     border-width: 1px;
     border-style: solid;
-    box-shadow: -1px 11px 28px -7px var(--shadow);
+    box-shadow: -1px 5px 10px -7px var(--shadow);
 }
 
 .report .report-item .report-icon {
