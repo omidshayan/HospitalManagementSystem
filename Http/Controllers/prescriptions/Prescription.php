@@ -151,6 +151,60 @@ class Prescription extends App
         require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
 
+    // edit employee page
+    public function editPrescription($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE id = ?', [$id])->fetch();
+
+        if ($prescription != null) {
+            $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
+            require_once(BASE_PATH . '/resources/views/app/prescriptions/edit-prescription.php');
+            exit();
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+    }
+
+    // edit employee store
+    public function editEmployeeStore($request, $id)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        // check empty form
+        if ($request['employee_name'] == '' || $request['phone'] == '' || !isset($request['position'])) {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
+        $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
+
+        if ($existEmployee) {
+            if ($existEmployee['id'] != $existEmployee['id']) {
+                $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
+                return;
+            }
+        }
+
+        // check upload photo
+        $max_file_size = 1048576;
+        if (is_uploaded_file($request['image']['tmp_name'])) {
+            if ($request['image']['size'] > $max_file_size) {
+                $this->flashMessage('error', 'حجم عکس نباید بیشتر از 1 mb باشد');
+            } else {
+                $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$existEmployee['id']])->fetch();
+                $this->removeImage('public/images/employees/' . $employee['image']);
+                $request['image'] = $this->saveImage($request['image'], 'images/employees');
+            }
+        } else {
+            unset($request['image']);
+        }
+
+        $this->db->update('employees', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('employees'));
+    }
+
     // patient Inquiry
     public function patientInquiry()
     {
@@ -450,61 +504,6 @@ class Prescription extends App
             $this->db->insert('employees', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
-    }
-
-    // edit employee page
-    public function editEmployee($id)
-    {
-        $this->middleware(true, true, 'general', true);
-
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
-        $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
-        $sections = $this->db->select('SELECT * FROM sections WHERE `section_id` IS NULL ORDER BY id ASC')->fetchAll();
-        $permissions = $this->db->select('SELECT * FROM permissions WHERE employee_id = ?', [$id])->fetchAll();
-        if ($employee != null) {
-            require_once(BASE_PATH . '/resources/views/app/employees/edit-employee.php');
-            exit();
-        } else {
-            require_once(BASE_PATH . '/404.php');
-            exit();
-        }
-    }
-
-    // edit employee store
-    public function editEmployeeStore($request, $id)
-    {
-        $this->middleware(true, true, 'general', true, $request, true);
-
-        // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '' || !isset($request['position'])) {
-            $this->flashMessage('error', _emptyInputs);
-        }
-
-        $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
-
-        if ($existEmployee) {
-            if ($existEmployee['id'] != $existEmployee['id']) {
-                $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
-                return;
-            }
-        }
-
-        // check upload photo
-        $max_file_size = 1048576;
-        if (is_uploaded_file($request['image']['tmp_name'])) {
-            if ($request['image']['size'] > $max_file_size) {
-                $this->flashMessage('error', 'حجم عکس نباید بیشتر از 1 mb باشد');
-            } else {
-                $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$existEmployee['id']])->fetch();
-                $this->removeImage('public/images/employees/' . $employee['image']);
-                $request['image'] = $this->saveImage($request['image'], 'images/employees');
-            }
-        } else {
-            unset($request['image']);
-        }
-
-        $this->db->update('employees', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('employees'));
     }
 
     // show employees
