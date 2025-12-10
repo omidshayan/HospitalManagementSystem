@@ -11,7 +11,7 @@ class User extends App
     // add User page
     public function addUser()
     {
-        $this->middleware(true, true, 'general', true);
+        $this->middleware(true, true, 'addPatient', true);
         require_once(BASE_PATH . '/resources/views/app/users/add-user.php');
         exit();
     }

@@ -81,7 +81,7 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('addPatient')): ?>
-                  <a href="<?= url('add-patient') ?>">
+                  <a href="<?= url('add-user') ?>">
                     <li class="sidebar-dropdown-menu-item">ثبت بیمار</li>
                   </a>
                 <?php endif; ?>
