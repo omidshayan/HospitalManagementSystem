@@ -2,7 +2,6 @@
     $title = 'داشبورد';
     include_once('resources/views/layouts/header.php');
     ?>
-
     <script src="<?= asset('lib/chart.js') ?>"></script>
 
     <!-- Start content -->
@@ -71,96 +70,64 @@
     <!-- End content -->
 
     <script>
-      const rawLabels = <?= json_encode(array_keys($data)) ?>;
-      const dataValues = <?= json_encode(array_values($data)) ?>;
-
       const daysFa = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
 
       function getPersianDay(dateStr) {
         const date = new Date(dateStr);
         let dayNumber = date.getDay();
-
-
         dayNumber = (dayNumber + 1) % 7;
-
         return daysFa[dayNumber];
       }
 
-      const labels = rawLabels.map(getPersianDay);
+      function createBarChart(canvasId, rawLabels, datasets) {
+        const labels = rawLabels.map(getPersianDay);
+        const ctx = document.getElementById(canvasId).getContext('2d');
 
-      const ctx = document.getElementById('myChart').getContext('2d');
-      const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'تعداد نسخه‌ها',
-            data: dataValues,
-            backgroundColor: 'rgba(54, 162, 235, 0.6)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1,
-            maxBarThickness: 30
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
+        return new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: datasets
           },
-          responsive: true,
-          maintainAspectRatio: false
-        }
-      });
-    </script>
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      }
 
-    <script>
+      const rawLabels = <?= json_encode(array_keys($data)) ?>;
+      const dataValues = <?= json_encode(array_values($data)) ?>;
+      createBarChart('myChart', rawLabels, [{
+        label: 'تعداد نسخه‌ها',
+        data: dataValues,
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1,
+        maxBarThickness: 20
+      }]);
+
       const rawDates = <?= json_encode($dates) ?>;
       const dataMale = <?= json_encode(array_values($dataMale)) ?>;
       const dataFemale = <?= json_encode(array_values($dataFemale)) ?>;
-
-      const daysFa2 = ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه'];
-
-      function getPersianDay(dateStr) {
-        const date = new Date(dateStr);
-        let dayNumber = date.getDay();
-        dayNumber = (dayNumber + 1) % 7;
-        return daysFa2[dayNumber];
-      }
-
-      const labels2 = rawDates.map(getPersianDay);
-
-      const ctx2 = document.getElementById('myChart2').getContext('2d');
-const myChart2 = new Chart(ctx2, {
-  type: 'bar',
-  data: {
-    labels: labels2,
-    datasets: [
-      {
-        label: 'آقایان',
-        data: dataMale,
-        backgroundColor: 'rgba(54, 162, 235, 0.6)'
-      },
-      {
-        label: 'خانم‌ها',
-        data: dataFemale,
-        backgroundColor: 'rgba(255, 99, 132, 0.6)'
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,  // این خط مهمه
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-
+      createBarChart('myChart2', rawDates, [{
+          label: 'آقایان',
+          data: dataMale,
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          maxBarThickness: 20
+        },
+        {
+          label: 'خانم‌ها',
+          data: dataFemale,
+          backgroundColor: 'rgba(255, 99, 132, 0.6)',
+          maxBarThickness: 20
+        }
+      ]);
     </script>
-
-
 
     <?php include_once('resources/views/layouts/footer.php') ?>

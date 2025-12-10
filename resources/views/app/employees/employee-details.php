@@ -5,6 +5,7 @@ include_once('resources/views/layouts/header.php');
 include_once('resources/views/scripts/change-status.php');
 include_once('resources/views/scripts/show-img-modal.php');
 ?>
+<script src="<?= asset('lib/chart.js') ?>"></script>
 <!-- end sidebar -->
 <div id="alert" class="alert" style="display: none;">حالم بده، با برنامه نویس مه تماس بگیر :(</div>
 
@@ -79,6 +80,10 @@ include_once('resources/views/scripts/show-img-modal.php');
                 </div>
 
             </div>
+        </div>
+
+        <div class="dash-chart">
+            <canvas id="myChart"></canvas>
         </div>
 
         <a href="<?= url('employees') ?>">
