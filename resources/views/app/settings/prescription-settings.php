@@ -13,7 +13,7 @@
                 <form action="<?= url('prescription-settings-store') ?>" method="POST" enctype="multipart/form-data">
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14"> نام فروشگاه / شرکت <?= _star ?></div>
+                            <div class="label-form mb5 fs14"> نام کلینیک یا شفاخانه <?= _star ?></div>
                             <textarea name="center_name" class="checkInput" placeholder="نام فروشگاه / شرکت را وارد نمایید"><?= $prescription_infos['center_name'] ?></textarea>
                         </div>
                         <div class="one">

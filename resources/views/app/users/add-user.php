@@ -20,7 +20,7 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">سن <?= _star ?></div>
-                            <input type="number" id="ageInput" class="checkInput" placeholder="سن بیمار را وارد نمائید">
+                            <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
                             <input type="hidden" name="birth_year" id="birthYearInput">
                         </div>
                     </div>

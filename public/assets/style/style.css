@@ -164,7 +164,7 @@ textarea::placeholder {
 
 .sidebar-menu:hover {
     transition: 0.3s;
-    background-color: #88d1a973;
+    background-color: rgba(136, 209, 169, 0.151);
 }
 .sidebar-item li.focused>a {
     border-radius: 10px;

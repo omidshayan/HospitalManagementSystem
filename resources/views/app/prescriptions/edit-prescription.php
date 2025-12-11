@@ -15,18 +15,18 @@
             <!-- patient infos -->
             <div class="patient-container">
                 <form action="<?= url('edit-close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
-                    <div class="center fs14">اطلاعات بیمار</div>
+                    <div class="center fs14">اطلاعات مریض</div>
                     <div class="insert">
                         <div class="inputs d-flex">
                             <div class="one">
-                                <div class="label-form  fs14"> نام بیمار <?= _star ?></div>
-                                <input type="text" name="user_name" value="<?= $prescription['patient_name'] ?>" id="patient_name" class="checkInput" placeholder="نام بیمار را وارد نمائید">
+                                <div class="label-form  fs14"> نام مریض <?= _star ?></div>
+                                <input type="text" name="user_name" value="<?= $prescription['patient_name'] ?>" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
                             </div>
                         </div>
                         <div class="inputs d-flex mb3">
                             <div class="one">
-                                <div class="label-form fs14"> سن بیمار <?= _star ?></div>
-                                <input type="number" id="ageInput" class="checkInput" value="<?= $this->getAge($prescription['birth_year']) ?>" placeholder="سن بیمار را وارد نمائید">
+                                <div class="label-form fs14"> سن مریض <?= _star ?></div>
+                                <input type="number" id="ageInput" class="checkInput" value="<?= $this->getAge($prescription['birth_year']) ?>" placeholder="سن مریض را وارد نمائید">
                                 <input type="hidden" name="birth_year" value="<?= $this->getAge($prescription['birth_year']) ?>" id="birthYearInput">
                             </div>
                         </div>

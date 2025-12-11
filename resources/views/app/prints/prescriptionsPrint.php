@@ -19,7 +19,7 @@ include_once('public/alerts/toastr.php');
                 <tr>
                     <th>#</th>
                     <th>نام داکتر</th>
-                    <th>نام بیمار</th>
+                    <th>نام مریض</th>
                     <th>تاریخ ثبت</th>
                     <th>جزئیات</th>
                     <th>چاپ</th>

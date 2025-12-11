@@ -103,7 +103,7 @@ include_once('resources/views/layouts/header.php');
             <div class="table-info fs14">تعداد کل: <?= count($users) ?></div>
             <?php
             if (count($users) == null) { ?>
-                <div class="center">
+                <div class="center color-red fs14">
                     <i class="fa fa-comment"></i>
                     <?= 'اطلاعاتی ثبت نشده است' ?>
                 </div>

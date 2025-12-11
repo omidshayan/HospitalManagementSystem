@@ -86,7 +86,7 @@
 
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
                                 <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="addPatient">
-                                    <span> ثبت بیمار</span>
+                                    <span> ثبت مریض</span>
                                     <input type="checkbox" name="addPatient" id="addPatient" class="w20 p0 m0 h22">
                                 </label>
                             </div>

@@ -84,7 +84,7 @@ include_once('resources/views/scripts/show-img-modal.php');
                                 <tr>
                                     <th>#</th>
                                     <th>نام داکتر</th>
-                                    <th>نام بیمار</th>
+                                    <th>نام مریض</th>
                                     <th>تاریخ ثبت</th>
                                     <th>جزئیات</th>
                                 </tr>

@@ -1,11 +1,11 @@
 <?php
-require_once 'Http/Controllers/intake-times/intakeTime.php';
+require_once 'Http/Controllers/intake-times/IntakeTime.php';
 
 // expenses routes
-uri('intake-times', 'App\intakeTime', 'intakeTimes');
-uri('intake-time-store', 'App\intakeTime', 'intakeTimeStore', 'POST');
-uri('edit-intake-time/{id}', 'App\intakeTime', 'editIntakeTime');
-uri('edit-intake-time-store/{id}', 'App\intakeTime', 'editIntakeTimeStore', 'POST');
-uri('intake-time-details/{id}', 'App\intakeTime', 'intakeTimeDetails');
+uri('intake-times', 'App\IntakeTime', 'intakeTimes');
+uri('intake-time-store', 'App\IntakeTime', 'intakeTimeStore', 'POST');
+uri('edit-intake-time/{id}', 'App\IntakeTime', 'editIntakeTime');
+uri('edit-intake-time-store/{id}', 'App\IntakeTime', 'editIntakeTimeStore', 'POST');
+uri('intake-time-details/{id}', 'App\IntakeTime', 'intakeTimeDetails');
 
-uri('change-status-intake-time/{id}', 'App\intakeTime', 'changeStatusIntakeTime');
+uri('change-status-intake-time/{id}', 'App\IntakeTime', 'changeStatusIntakeTime');

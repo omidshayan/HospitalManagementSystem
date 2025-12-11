@@ -6,7 +6,8 @@ class Patient extends App
 {
     // add employee page
     public function patients()
-    {
+    {// NOTE 
+// NOTE
         $this->middleware(true, true, 'showPatients', true);
 
         $user = $this->currentUser();
@@ -18,15 +19,15 @@ class Patient extends App
                 ->fetchAll();
         } else {
             $users = $this->db->select("
-            SELECT 
-                u.*,
-                COUNT(p.id) AS prescription_count
-            FROM users AS u
-            INNER JOIN prescriptions AS p 
-                ON p.patient_id = u.id
-            WHERE p.doctor_id = ?
-            GROUP BY u.id
-            ORDER BY u.id DESC
+                SELECT 
+                    u.*,
+                    COUNT(p.id) AS prescription_count
+                FROM users AS u
+                INNER JOIN prescriptions AS p 
+                    ON p.patient_id = u.id
+                WHERE p.doctor_id = ?
+                GROUP BY u.id
+                ORDER BY u.id DESC
         ", [$user['id']])->fetchAll();
         }
 
@@ -44,6 +45,7 @@ class Patient extends App
         $params = [$keyword];
 
         $infos = $this->db->select($sql, $params)->fetchAll();
+
 
         $response = [
             'status' => 'success',
