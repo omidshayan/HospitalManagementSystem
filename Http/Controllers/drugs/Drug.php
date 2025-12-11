@@ -64,7 +64,6 @@ class Drug extends App
         }
     }
 
-
     // edit employee store
     public function editDrugStore($request, $id)
     {
