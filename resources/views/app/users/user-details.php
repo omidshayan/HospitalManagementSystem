@@ -33,6 +33,16 @@ include_once('resources/views/scripts/show-img-modal.php');
                     <div class="info-detaile"><?= $user['user_name'] ?></div>
                 </div>
                 <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">سن</div>
+                    <div class="info-detaile">
+                        <?php if (!empty($user['birth_year']) && $user['birth_year'] != 0): ?>
+                            <?= $user['birth_year'] ?> <span class="fs12">(<?= $this->getAge($user['birth_year']) ?> ساله)</span>
+                        <?php else: ?>
+                            - - - -
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
                     <div class="title-detaile">نام پدر</div>
                     <div class="info-detaile"><?= ($user['father_name'] ? $user['father_name'] : '- - - - ') ?></div>
                 </div>
