@@ -9,3 +9,6 @@ uri('prescription-print', 'App\Prints', 'print');
 uri('prescription-item-print/{id}', 'App\Prints', 'prescriptionItemPrint');
 
 uri('auto-print', 'App\Prints', 'autoPrint');
+
+
+uri('getNextPrescription', 'App\Prints', 'getNextPrescription');

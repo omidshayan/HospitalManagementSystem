@@ -68,6 +68,44 @@ class Prints extends App
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
     }
 
+public function getNextPrescription()
+{
+    // header JSON
+    header('Content-Type: application/json; charset=utf-8');
+
+    // اگر سیستم تو خروجی دیگری (مثل view یا layout) می‌چسباند، بهتر است از خروجی خام استفاده کنی و فوراً خروجی دهی
+    $prescription = $this->db->select(
+        'SELECT p.*, e.employee_name, e.expertise
+         FROM prescriptions p
+         JOIN employees e ON e.id = p.doctor_id
+         WHERE p.status = ?
+         ORDER BY p.id ASC LIMIT 1',
+        [2]
+    )->fetch();
+
+    if ($prescription) {
+        // آپدیت وضعیت
+        $this->db->update('prescriptions', $prescription['id'], ['status'], [3]);
+
+        $items = $this->db->select(
+            'SELECT * FROM prescription_items WHERE prescription_id = ? ORDER BY id ASC',
+            [$prescription['id']]
+        )->fetchAll();
+
+        echo json_encode([
+            'success' => true,
+            'prescription' => $prescription,
+            'items' => $items
+        ], JSON_UNESCAPED_UNICODE);
+
+        exit; // بسیار مهم — جلوگیری از اضافه شدن هر خروجی دیگر (layout, footer و ...)
+    } else {
+        echo json_encode(['success' => false]);
+        exit;
+    }
+}
+
+
     // show presctiption for print
     public function prescriptionItemPrint($id)
     {
