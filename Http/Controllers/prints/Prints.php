@@ -42,7 +42,7 @@ class Prints extends App
          WHERE p.status = ? ORDER BY id DESC',
             [3]
         )->fetchAll();
-
+            
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
     }
 
