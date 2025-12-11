@@ -30,6 +30,15 @@ define('DB_NAME', 'hms_sis');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 
+// define('BASE_PATH', __DIR__);
+// define('CURRENT_DOMAIN', currentDomain() . '/sis');
+// define('DISPLAY_ERROR', true);
+// define('DB_HOST', 'localhost');
+// define('DB_NAME', 'msclinic_mehr');
+// define('DB_USERNAME', 'msclinic_mehr');
+// define('DB_PASSWORD', 'Salmehr111');
+
+
 //mail
 require_once 'lib/PHPMailer/PHPMailer/PHPMailer.php';
 require_once 'lib/PHPMailer/PHPMailer/SMTP.php';

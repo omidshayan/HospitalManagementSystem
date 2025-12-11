@@ -87,7 +87,9 @@
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
                                 <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="addPatient">
                                     <span> ثبت مریض</span>
-                                    <input type="checkbox" name="addPatient" id="addPatient" class="w20 p0 m0 h22">
+                                    <input type="checkbox" name="addPatient" id="addPatient" class="w20 p0 m0 h22"
+                                    <?= in_array('addPatient', $employeePermissions) ? 'checked' : '' ?>>
+                                     
                                 </label>
                             </div>
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
