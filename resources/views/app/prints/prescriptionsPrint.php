@@ -72,12 +72,10 @@ include_once('public/alerts/toastr.php');
     </div>
     <!-- end page content -->
 
-    <!-- form print -->
-
     <div class="btn w150 color bold center p10" id="checkPrescriptions">برسی دستی نسخه‌ها</div>
 
     <div id="printContainer" class="center bg-whith">
-        <!-- نسخه در اینجا نمایش داده می‌شود -->
+
     </div>
 
     <script>
@@ -220,9 +218,6 @@ include_once('public/alerts/toastr.php');
         // دکمه بررسی دستی
         document.getElementById('checkPrescriptions').addEventListener('click', checkForPrescription);
     </script>
-
-
-
 
 </div>
 <!-- End content -->
