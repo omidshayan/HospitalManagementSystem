@@ -6,8 +6,7 @@ class Patient extends App
 {
     // add employee page
     public function patients()
-    {// NOTE 
-// NOTE
+    {
         $this->middleware(true, true, 'showPatients', true);
 
         $user = $this->currentUser();

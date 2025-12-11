@@ -22,37 +22,30 @@ class Employee extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        // بررسی خالی بودن فیلدهای ضروری
         if ($request['employee_name'] == '' || $request['password'] == '' || $request['phone'] == '' || !isset($request['position'])) {
             $this->flashMessage('error', _emptyInputs);
             return;
         }
 
-        // چک تکراری بودن شماره تماس
         $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
         if ($existingEmployee) {
             $this->flashMessage('error', _phone_repeat);
             return;
         }
 
-        // بررسی حداقل طول رمز عبور
         if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
             $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
             return;
         }
 
         try {
-            // شروع تراکنش
             $this->db->beginTransaction();
 
-            // اعتبارسنجی ورودی‌ها
             $request = $this->validateInputs($request, ['image' => false]);
             $request['password'] = $this->hash($request['password']);
 
-            // آپلود تصویر کارمند
             $this->handleImageUpload($request['image'], 'images/employees');
 
-            // داده‌های کارمند
             $employeeData = [
                 'employee_name' => $request['employee_name'],
                 'phone' => $request['phone'],
@@ -66,30 +59,25 @@ class Employee extends App
                 'who_it' => $request['who_it'],
             ];
 
-            // درج کارمند جدید
             $this->db->insert('employees', array_keys($employeeData), $employeeData);
 
-            // گرفتن آی‌دی کارمند جدید
             $employeeId = $this->db->lastInsertId();
 
-            // تعریف والد‌ها و زیرمجموعه‌ها
             $parentChildMap = [
                 'parentPatients' => ['showPatients', 'addPatient'],
                 'parentPrescription' => ['addPrescription', 'showPrescription'],
                 'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
                 'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
                 'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription'],
-                'prescriptionPrint' => null, // مورد تکی بدون زیرمجموعه
+                'prescriptionPrint' => null,
             ];
 
             $permissionsToInsert = [];
 
-            // بررسی دسترسی تکی بدون والد
             if (!empty($request['prescriptionPrint'])) {
                 $permissionsToInsert[] = 'prescriptionPrint';
             }
 
-            // تابع کمکی برای افزودن والد و زیرمجموعه‌ها
             $addPermissionWithParent = function ($parent, $children) use ($request, &$permissionsToInsert) {
                 $parentAdded = false;
                 foreach ($children as $child) {
@@ -103,31 +91,26 @@ class Employee extends App
                 }
             };
 
-            // بررسی همه والد-زیرمجموعه‌ها
             foreach ($parentChildMap as $parent => $children) {
                 if ($children === null) {
-                    continue; // تکی بدون زیرمجموعه قبلا چک شده
+                    continue;
                 }
                 $addPermissionWithParent($parent, $children);
             }
 
-            // ثبت دسترسی‌ها در جدول permissions
             foreach ($permissionsToInsert as $sectionName) {
                 $this->db->insert('permissions', ['employee_id', 'section_name'], [$employeeId, $sectionName]);
             }
 
-            // ثبت دسترسی‌های پیش‌فرض برای همه کارمندان (مثل dashboard و profile)
             $defaultPermissions = ['dashboard', 'profile', 'general'];
             foreach ($defaultPermissions as $defaultPermission) {
                 $this->db->insert('permissions', ['employee_id', 'section_name'], [$employeeId, $defaultPermission]);
             }
 
-            // پایان تراکنش
             $this->db->commit();
 
             $this->flashMessage('success', _success);
         } catch (\Exception $e) {
-            // بازگردانی در صورت بروز خطا
             $this->db->rollBack();
             $this->flashMessage('error', 'خطا در ثبت کارمند: ' . $e->getMessage());
         }
@@ -227,9 +210,6 @@ class Employee extends App
         }
     }
 
-
-
-
     // show employees
     public function showEmployees()
     {
@@ -241,7 +221,7 @@ class Employee extends App
             'SELECT * FROM employees WHERE id != ? ORDER BY id DESC',
             [$id['id']]
         )->fetchAll();
-            
+
         require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
         exit();
     }
