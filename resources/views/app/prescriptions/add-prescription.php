@@ -81,6 +81,16 @@
                             </div>
                         </div>
 
+                        <div class="accordion-title color-orange">تشخیص داکتر</div>
+                        <div class="accordion-content-pre">
+                            <div class="child-accordioin">
+                                <div class="insert mt5">
+                                    <div class="one m-auto w97d mb3">
+                                        <textarea name="description" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="center mt20">
                             <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
                                 استعلام مریض
@@ -219,7 +229,7 @@
                                 <td><?= $item['drug_name'] ?></td>
                                 <td><?= $item['drug_count'] ?></td>
                                 <td><?= ($item['interval_time']) ?: '- - - -' ?></td>
-                                <td><?= ($item['dosage'] ) ?: '- - - -'?></td>
+                                <td><?= ($item['dosage']) ?: '- - - -' ?></td>
                                 <td><?= ($item['usage_instruction']) ?: '- - - -' ?></td>
                                 <td><?= $item['description'] ?: '- - - -' ?></td>
                                 <!-- <td>
