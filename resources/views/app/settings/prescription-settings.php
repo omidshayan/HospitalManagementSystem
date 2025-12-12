@@ -1,12 +1,12 @@
     <?php
-    $title = 'تنظیمات فاکتور';
+    $title = 'تنظیمات نسخه';
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php'); ?>
 
     <!-- Start content -->
     <div class="content">
-        <div class="content-title"> تنظیمات فاکتور</div>
+        <div class="content-title"> تنظیمات نسخه</div>
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
