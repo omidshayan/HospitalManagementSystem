@@ -304,7 +304,7 @@ class Prescription extends App
         $preInfos = [
             'patient_id' => $userId,
             'patient_name' => $request['user_name'],
-            'birth_year' => $request['birth_year'],
+            'birth_year' => $request['age'],
             'bp' => $request['bp'],
             'pr' => $request['pr'],
             'rr' => $request['rr'],

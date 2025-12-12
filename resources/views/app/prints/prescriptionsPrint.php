@@ -83,15 +83,68 @@ include_once('public/alerts/toastr.php');
 
         let isPrinting = false;
 
+        // جلوگیری از null
+        function safe(value, fallback = "") {
+            return (value === null || value === undefined || value === "null") ? fallback : value;
+        }
+
+        // تبدیل عدد به فارسی
         function convertEnNumber(number) {
+            if (!number) return "";
             const en = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
             const fa = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
             return number.toString().split('').map(n => fa[en.indexOf(n)] || n).join('');
         }
 
-        function getAge(birthYear) {
+        // تبدیل تاریخ میلادی به شمسی
+        function gregorianToJalali(gy, gm, gd) {
+            var g_d_m = [0, 31, (gy % 4 === 0 && gy % 100 !== 0 || gy % 400 === 0) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var jy = (gy <= 1600) ? 0 : 979;
+            gy -= (gy <= 1600) ? 621 : 1600;
+            var gy2 = (gm > 2) ? (gy + 1) : gy;
+            var days = (365 * gy) + Math.floor((gy2 + 3) / 4) - Math.floor((gy2 + 99) / 100) + Math.floor((gy2 + 399) / 400);
+            for (var i = 0; i < gm; i++) days += g_d_m[i];
+            days += gd - 1;
+            jy += 33 * Math.floor(days / 12053);
+            days %= 12053;
+            jy += 4 * Math.floor(days / 1461);
+            days %= 1461;
+            jy += Math.floor((days - 1) / 365);
+            var jm = (days < 186) ? 1 + Math.floor(days / 31) : 7 + Math.floor((days - 186) / 30);
+            var jd = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
+            return [jy, jm, jd];
+        }
+
+        // سن شمسی دقیق
+        function getJalaliAge(birthYear) {
+            if (!birthYear) return "";
+
+            // تاریخ امروز میلادی
             const now = new Date();
-            return now.getFullYear() - parseInt(birthYear);
+            const gy = now.getFullYear();
+            const gm = now.getMonth() + 1;
+            const gd = now.getDate();
+
+            // تبدیل امروز به شمسی
+            const [jy, jm, jd] = gregorianToJalali(gy, gm, gd);
+
+            // محاسبه سن اولیه
+            let age = jy - parseInt(birthYear);
+
+            return age;
+        }
+
+
+        // تبدیل تاریخ به شمسی (نسخه ساده — مشابه jdate)
+        function formatJalaliDate(dateString) {
+            if (!dateString) return "";
+
+            const g = new Date(dateString);
+            const jy = g.getFullYear() - ((g.getMonth() + 1 > 2) ? 621 : 622);
+            // برای سادگی (بدون کتابخانه) فقط فرم yyyy/mm/dd را می‌سازیم
+            const jm = ("0" + (g.getMonth() + 1)).slice(-2);
+            const jd = ("0" + g.getDate()).slice(-2);
+            return `${jy}/${jm}/${jd}`;
         }
 
         function formatDate(dateString) {
@@ -104,76 +157,76 @@ include_once('public/alerts/toastr.php');
 
         function renderPrescription(prescription, items) {
             return `
-        <div class="item-print p10">
-            <div class="p-patient-infos">
-                <span>
-                    <span class="fs14">نام مریض:</span>
-                    <span class="bold">${prescription.patient_name}</span>
-                </span>
-                <span>
-                    <span class="fs14">سن: </span>
-                    <span class="bold">${convertEnNumber(getAge(prescription.birth_year))}</span>
-                </span>
-                <span>
-                    <span class="fs14">تاریخ مراجعه: </span>
-                    <span class="bold">${formatDate(prescription.created_at)}</span>
-                </span>
+    <div class="item-print p10">
+        <div class="p-patient-infos">
+            <span>
+                <span class="fs14">نام مریض:</span>
+                <span class="bold">${safe(prescription.patient_name)}</span>
+            </span>
+            <span>
+                <span class="fs14">سن: </span>
+${convertEnNumber(getJalaliAge(prescription.birth_year))}
+            </span>
+            <span>
+                <span class="fs14">تاریخ مراجعه: </span>
+                <span class="bold">${convertEnNumber(formatJalaliDate(prescription.created_at))}</span>
+            </span>
+        </div>
+
+        <div class="body-pre-print">
+            <div class="p-drugs-print">
+                <table>
+                    <thead>
+                        <tr class="fs12 p-color-title">
+                            <th class="w80 p5">طریقه مصرف</th>
+                            <th class="w120">مقدار مصرف هر نوبت</th>
+                            <th class="w80">زمان مصرف</th>
+                            <th class="">تعداد</th>
+                            <th class="">نام دارو</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${items.map(item => `
+                            <tr class="p-color-item fs14 center">
+                                <td>${safe(item.usage_instruction)}</td>
+                                <td>${safe(item.dosage)}</td>
+                                <td>${safe(item.interval_time)}</td>
+                                <td>${convertEnNumber(item.drug_count)}</td>
+                                <td class="p5 drug-name-en">${safe(item.drug_name)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
             </div>
 
-            <div class="body-pre-print">
-                <div class="p-drugs-print">
-                    <table>
-                        <thead>
-                            <tr class="fs12 p-color-title">
-                                <th class="w80 p5">طریقه مصرف</th>
-                                <th class="w120">مقدار مصرف هر نوبت</th>
-                                <th class="w80">زمان مصرف</th>
-                                <th class="">تعداد</th>
-                                <th class="">نام دارو</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${items.map(item => `
-                                <tr class="p-color-item fs14 center">
-                                    <td>${item.usage_instruction}</td>
-                                    <td>${item.dosage}</td>
-                                    <td>${item.interval_time}</td>
-                                    <td>${convertEnNumber(item.drug_count)}</td>
-                                    <td class="p5 drug-name-en">${item.drug_name}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
+            <div class="p-left-infos border-r">
+                <div class="p-doctor-infos">
+                    <h3>نام داکتر: ${safe(prescription.employee_name)}</h3>
+                    <span class="fs14 bold">تخصص: ${safe(prescription.expertise)}</span>
                 </div>
 
-                <div class="p-left-infos border-r">
-                    <div class="p-doctor-infos">
-                        <h3>نام داکتر: ${prescription.employee_name}</h3>
-                        <span class="fs14 bold">تخصص: ${prescription.expertise}</span>
+                <div class="p-vital-signs fs12">
+                    <div class="d-flex justify-between pr8">
+                        <span>${safe(prescription.bp, "—")}</span><span>BP</span>
                     </div>
-
-                    <div class="p-vital-signs fs12">
-                        <div class="d-flex justify-between pr8">
-                            <span>${prescription.bp}</span><span>BP</span>
-                        </div>
-                        <div class="d-flex justify-between pr8">
-                            <span>${prescription.pr}</span><span>Pr</span>
-                        </div>
-                        <div class="d-flex justify-between pr8">
-                            <span>${prescription.rr}</span><span>Rr</span>
-                        </div>
-                        <div class="d-flex justify-between pr8">
-                            <span>${prescription.temp}</span><span>TEMP</span>
-                        </div>
-                        <div class="d-flex justify-between pr8">
-                            <span>${prescription.spo2}</span><span>SPO₂</span>
-                        </div>
+                    <div class="d-flex justify-between pr8">
+                        <span>${safe(prescription.pr, "—")}</span><span>Pr</span>
+                    </div>
+                    <div class="d-flex justify-between pr8">
+                        <span>${safe(prescription.rr, "—")}</span><span>Rr</span>
+                    </div>
+                    <div class="d-flex justify-between pr8">
+                        <span>${safe(prescription.temp, "—")}</span><span>TEMP</span>
+                    </div>
+                    <div class="d-flex justify-between pr8">
+                        <span>${safe(prescription.spo2, "—")}</span><span>SPO₂</span>
                     </div>
                 </div>
             </div>
         </div>
-        `;
+    </div>`;
         }
+
 
         function printReceipt() {
             if (window.chrome && window.chrome.webview) {

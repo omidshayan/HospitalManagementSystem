@@ -80,6 +80,9 @@ class Prints extends App
         }
     }
 
+
+
+
     // show presctiption for print
     public function prescriptionItemPrint($id)
     {
@@ -94,7 +97,9 @@ class Prints extends App
          WHERE p.status = ? AND p.id = ?',
             [3, $id]
         )->fetch();
+// NOTE
 
+// NOTE
         $items = [];
 
         if ($prescription) {
