@@ -109,11 +109,14 @@ include_once('public/alerts/toastr.php');
                         </div>
 
                         <!-- Recommended -->
+
                         <ul class="p-recommended fs12">
                             <?php
-                            foreach ($tests as $test) { ?>
-                                <li class="ol"><?= $test['test_name'] ?> </li>
+                            if (!empty($tests)) {
+                                foreach ($tests as $test) { ?>
+                                    <li class="ol"><?= $test['test_name'] ?> </li>
                             <?php }
+                            }
                             ?>
                         </ul>
 
