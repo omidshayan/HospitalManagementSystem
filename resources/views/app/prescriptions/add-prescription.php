@@ -106,7 +106,7 @@
 
             <!-- select details drug -->
             <div class="drug-container">
-                <form action="<?= url('drug-prescription-store') ?>" method="POST">
+                <form id="prescription_form" action="<?= url('drug-prescription-store') ?>" method="POST">
                     <div class="insert">
 
                         <!-- search box -->
@@ -115,7 +115,7 @@
                                 <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
                                 <input type="hidden" name="drug_id" id="item_id">
                                 <input type="text"
-                                    class="checkInput"
+                                    class=""
                                     name="drug_name"
                                     id="item_name"
                                     placeholder="نام دارو را جستجو نمایید"
@@ -185,7 +185,7 @@
 
 
                         <!-- Recommended -->
-                        <div class="accordion-title color-orange w89d">معاینات توصیه شده</div>
+                        <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
                         <div class="accordion-content-pre w89d">
                             <div class="child-accordioin">
                                 <div class="insert mt5">
@@ -419,5 +419,25 @@
             document.getElementById('recommended_list').appendChild(li);
         }
     </script>
+
+    <script>
+        document.getElementById('prescription_form').addEventListener('submit', function(e) {
+
+            const drugId = document.getElementById('item_id').value;
+            const hasDrug = drugId !== '';
+            const hasRecommended = document.querySelectorAll('input[name="recommended[]"]').length > 0;
+
+            if (!hasDrug && !hasRecommended) {
+                e.preventDefault();
+                document.getElementById('item_name').classList.add('checkInput');
+                return false;
+            }
+
+            if (hasRecommended && !hasDrug) {
+                document.getElementById('item_name').classList.remove('checkInput');
+            }
+        });
+    </script>
+
 
     <?php include_once('resources/views/layouts/footer.php') ?>
