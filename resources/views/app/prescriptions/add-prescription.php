@@ -102,39 +102,18 @@
                                     <div class="one m-auto w97d mb3">
                                         <select id="recommended_select">
                                             <option value="">انتخاب آزمایش</option>
-                                            <option value="cmc">CBC</option>
-                                            <option value="blood">Blood Sugar</option>
-                                            <option value="x-rey">X-Ray</option>
+                                            <option value="1">CBC</option>
+                                            <option value="2">Blood Sugar</option>
+                                            <option value="3">X-Ray</option>
                                         </select>
 
+
                                         <button type="button" onclick="addRecommended()">افزودن</button>
-                                        <ul id="recommended_list"></ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <script>
-                            function addRecommended() {
-                                const select = document.getElementById('recommended_select');
-                                const value = select.value;
-                                const text = select.options[select.selectedIndex].text;
-
-                                if (!value) return;
-
-                                if (document.getElementById('rec_' + value)) return;
-
-                                const li = document.createElement('li');
-                                li.id = 'rec_' + value;
-                                li.innerHTML = `
-                                        ${text}
-                                        <input type="hidden" name="recommended[]" value="${value}">
-                                        <button type="button" onclick="this.parentElement.remove()">✖</button>
-                                    `;
-
-                                document.getElementById('recommended_list').appendChild(li);
-                            }
-                        </script>
-
+                        <ul id="recommended_list"></ul>
 
                         <div class="center mt20">
                             <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
@@ -404,6 +383,36 @@
             });
 
         });
+    </script>
+
+    <!-- select recommender -->
+    <script>
+        function addRecommended() {
+            const select = document.getElementById('recommended_select');
+            const value = select.value;
+            if (!value) {
+                alert('لطفاً یک مورد را انتخاب کنید');
+                return;
+            }
+
+            const text = select.options[select.selectedIndex].text;
+
+            // جلوگیری از تکراری
+            if (document.getElementById('rec_' + value)) {
+                alert('این مورد قبلاً اضافه شده');
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.id = 'rec_' + value;
+            li.innerHTML = `
+                            ${text}
+                            <input type="hidden" name="recommended[]" value="${value}">
+                            <button type="button" onclick="this.parentElement.remove()">✖</button>
+                            `;
+
+            document.getElementById('recommended_list').appendChild(li);
+        }
     </script>
 
     <?php include_once('resources/views/layouts/footer.php') ?>
