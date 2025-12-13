@@ -1,7 +1,7 @@
     <?php
     $title = 'ثبت نسخه';
     include_once('resources/views/layouts/header.php');
-    include_once('public/alerts/check-inputs.php');
+    // include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/search.php');
     ?>
@@ -420,6 +420,7 @@
         }
     </script>
 
+<!-- validation -->
     <script>
         document.getElementById('prescription_form').addEventListener('submit', function(e) {
 
@@ -429,12 +430,12 @@
 
             if (!hasDrug && !hasRecommended) {
                 e.preventDefault();
-                document.getElementById('item_name').classList.add('checkInput');
+                document.getElementById('item_name').classList.add('checkSelect');
                 return false;
             }
 
             if (hasRecommended && !hasDrug) {
-                document.getElementById('item_name').classList.remove('checkInput');
+                document.getElementById('item_name').classList.remove('checkSelect');
             }
         });
     </script>
