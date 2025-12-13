@@ -107,7 +107,7 @@ include_once('public/alerts/toastr.php');
                             </div>
                         </div>
 
-                        <!-- infos -->
+                        <!-- Recommended -->
                         <div class="p-vital-signs fs12">
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['bp'] ?></span>
