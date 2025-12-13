@@ -1,7 +1,7 @@
     <?php
     $title = 'ثبت نسخه';
     include_once('resources/views/layouts/header.php');
-    // include_once('public/alerts/check-inputs.php');
+    include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/search.php');
     ?>
@@ -430,12 +430,12 @@
 
             if (!hasDrug && !hasRecommended) {
                 e.preventDefault();
-                document.getElementById('item_name').classList.add('checkSelect');
+                document.getElementById('item_name').classList.add('checkInput');
                 return false;
             }
 
             if (hasRecommended && !hasDrug) {
-                document.getElementById('item_name').classList.remove('checkSelect');
+                document.getElementById('item_name').classList.remove('checkInput');
             }
         });
     </script>
