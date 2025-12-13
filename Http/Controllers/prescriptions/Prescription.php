@@ -32,6 +32,7 @@ class Prescription extends App
 
         $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
 
+
         $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
 
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
@@ -39,6 +40,7 @@ class Prescription extends App
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
 
         if ($prescription) {
+            $recommended = $this->db->select('SELECT recommended FROM recommended WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
             $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
         }
 
