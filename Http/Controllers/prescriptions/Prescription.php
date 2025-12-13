@@ -219,12 +219,21 @@ class Prescription extends App
         if ($prescription) {
             $items = $this->db->select(
                 'SELECT *
-             FROM prescription_items
-             WHERE prescription_id = ?
-             ORDER BY id ASC',
+         FROM prescription_items
+         WHERE prescription_id = ?
+         ORDER BY id ASC',
+                [$prescription['id']]
+            )->fetchAll();
+
+            $tests = $this->db->select(
+                'SELECT r.*, t.test_name
+         FROM recommended r
+         JOIN tests t ON r.recommended = t.id
+         WHERE r.prescription_id = ?',
                 [$prescription['id']]
             )->fetchAll();
         }
+
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/show-prescription-item.php');
     }

@@ -20,7 +20,10 @@
         width: 99%;
         border: 1px solid rgba(0, 0, 0, 0.336) !important;
     }
-
+.ol{
+    list-style: decimal !important;
+    direction: ltr !important;
+}
     .item-print {
         background-color: white;
         width: 210mm;

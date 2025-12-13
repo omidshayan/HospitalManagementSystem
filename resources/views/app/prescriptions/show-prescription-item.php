@@ -109,13 +109,13 @@ include_once('public/alerts/toastr.php');
                         </div>
 
                         <!-- Recommended -->
-                        <div class="p-recommended fs12">
-                            <select name="recommended">
-                                <option value="">item</option>
-                                <option value="">item</option>
-                                <option value="">item</option>
-                            </select>
-                        </div>
+                        <ul class="p-recommended fs12">
+                            <?php
+                            foreach ($tests as $test) { ?>
+                                <li class="ol"><?= $test['test_name'] ?> </li>
+                            <?php }
+                            ?>
+                        </ul>
 
                     </div>
 
