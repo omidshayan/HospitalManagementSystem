@@ -98,7 +98,7 @@
                         <div class="accordion-title color-orange">معاینات توصیه شده</div>
                         <div class="accordion-content-pre">
                             <div class="child-accordioin">
-                                <div class="insert mt5">
+                                <!-- <div class="insert mt5">
                                     <div class="one m-auto w97d mb3">
                                         <select id="recommended_select">
                                             <option value="">انتخاب آزمایش</option>
@@ -106,14 +106,15 @@
                                             <option value="2">Blood Sugar</option>
                                             <option value="3">X-Ray</option>
                                         </select>
-
-
                                         <button type="button" onclick="addRecommended()">افزودن</button>
+                                        <div class="h-auto">
+
+                                            <ul id="recommended_list" class="bg-green-opacity h27"></ul>
+                                        </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
-                        <ul id="recommended_list"></ul>
 
                         <div class="center mt20">
                             <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
@@ -204,6 +205,22 @@
                             </div>
                         </div>
 
+                        <div class="insert mt5">
+                            <div class="one m-auto w97d mb3">
+                                <select id="recommended_select">
+                                    <option value="">انتخاب آزمایش</option>
+                                    <option value="1">CBC</option>
+                                    <option value="2">Blood Sugar</option>
+                                    <option value="3">X-Ray</option>
+                                </select>
+                                <button type="button" onclick="addRecommended()">افزودن</button>
+                                
+                                <div class="recommended-box">
+                                    <ul id="recommended_list"></ul>
+                                </div>
+
+                            </div>
+                        </div>
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                         <input type="submit" id="submit" value="افزودن به نسخه" class="btn bold" />
                     </div>

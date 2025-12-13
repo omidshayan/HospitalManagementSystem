@@ -364,7 +364,9 @@
 .h50 {
     height: 50px !important;
 }
-
+.h-auto{
+    height: auto !important;
+}
 .h250 {
     min-height: 250px !important;
     min-width: 99% !important;
