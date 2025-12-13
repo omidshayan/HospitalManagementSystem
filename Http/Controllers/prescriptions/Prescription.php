@@ -85,7 +85,6 @@ class Prescription extends App
         if ($drugInvalid && !$hasRecommended) {
             $this->flashMessage('error', _emptyInputs);
         }
-        dd('ok');
 
         $this->validateInputs($request);
 
@@ -93,7 +92,6 @@ class Prescription extends App
 
         $user_id = $this->currentUser();
 
-        //  Prepare invoice info
         $prescription = [
             'doctor_id' => $user_id['id'],
             'type' => 1,
@@ -101,31 +99,50 @@ class Prescription extends App
             'month' => $yearMonth['month'],
             'who_it' => $request['who_it'],
         ];
-        //  Create or get existing prescription
+
         $prescription_id = $this->prescription->InvoiceConfirm($prescription);
 
+        // ذخیره دارو فقط اگر دارو معتبر باشد
+        if (!$drugInvalid) {
+            $prescription_items = [
+                'prescription_id' => $prescription_id,
+                'drug_id' => $request['drug_id'],
+                'drug_name' => $request['drug_name'],
+                'drug_count' => $request['drug_count'],
+                'interval_time' => $request['interval_time'] ?? null,
+                'dosage' => $request['dosage'] ?? null,
+                'usage_instruction' => $request['usage_instruction'] ?? null,
+                'description' => $request['description'] ?? null,
+            ];
 
-        $prescription_items = [
-            'prescription_id' => $prescription_id,
-            'drug_id' => $request['drug_id'],
-            'drug_name' => $request['drug_name'],
-            'drug_count' => $request['drug_count'],
-            'interval_time' => $request['interval_time'] ?? null,
-            'dosage' => $request['dosage'] ?? null,
-            'usage_instruction' => $request['usage_instruction'] ?? null,
-            'description' => $request['description'] ?? null,
-        ];
+            $exist_item = $this->prescription->getPrescriptionItem($prescription_id, $request['drug_id']);
 
-        $exist_item = $this->prescription->getPrescriptionItem($prescription_id, $request['drug_id']);
+            if (!$exist_item) {
+                $this->db->insert('prescription_items', array_keys($prescription_items), $prescription_items);
+            } else {
+                $this->flashMessage('error', 'داروی انتخاب شده، قبلا ثبت شده!');
+            }
+        }
 
-        if (!$exist_item) {
-            $this->db->insert('prescription_items', array_keys($prescription_items), $prescription_items);
-        } else {
-            $this->flashMessage('error', 'داروی انتخاب شده، قبلا ثبت شده!');
+        // ذخیره آزمایش‌ها فقط اگر ازمایشی ارسال شده باشد
+        if ($hasRecommended) {
+            foreach ($request['recommended'] as $recommendedId) {
+                // چک تکراری بودن آزمایش
+                // $exist_recommended = $this->prescription->getRecommendedItem($prescription_id, $recommendedId);
+
+                // if (!$exist_recommended) {
+                $recommendedData = [
+                    'prescription_id' => $prescription_id,
+                    'recommended' => $recommendedId,
+                ];
+                $this->db->insert('recommended', array_keys($recommendedData), $recommendedData);
+                // }
+            }
         }
 
         $this->flashMessage('success', _success);
     }
+
 
     // show prescriptions
     public function prescriptions()
