@@ -48,7 +48,6 @@ class Prescription extends App
             WHERE r.prescription_id = ?
         ', [$prescription['id']])->fetchAll();
 
-            dd($recommended);
             $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
         }
 
