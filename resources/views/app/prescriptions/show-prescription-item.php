@@ -81,6 +81,7 @@ include_once('public/alerts/toastr.php');
                         <div class="p-doctor-infos">
                             <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
                             <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
+                            <hr class="hrp">
                         </div>
 
                         <!-- infos -->
