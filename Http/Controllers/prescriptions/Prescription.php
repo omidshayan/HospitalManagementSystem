@@ -112,7 +112,6 @@ class Prescription extends App
 
         $prescription_id = $this->prescription->InvoiceConfirm($prescription);
 
-        // ذخیره دارو فقط اگر دارو معتبر باشد
         if (!$drugInvalid) {
             $prescription_items = [
                 'prescription_id' => $prescription_id,
