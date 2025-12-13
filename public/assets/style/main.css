@@ -171,7 +171,9 @@
 .color {
     color: var(--text) !important;
 }
-
+.b0{
+    bottom: 0;
+}
 .text-white {
     color: white;
 }

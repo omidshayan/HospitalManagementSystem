@@ -12,9 +12,6 @@
     .justify-between {
         justify-content: space-between;
     }
-.flex-c{
-    flex-direction: column !important;
-}
     .pr8 {
         padding: 0 8px !important;
     }
