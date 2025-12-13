@@ -903,8 +903,9 @@ input:checked+.slider:before {
 .child-accordioin {
     width: 100%;
 }
-
-
+#recommended_list li{
+    color: black;
+}
 /* single btn */
 .btns {
     display: flex;

@@ -205,8 +205,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="recommended-box">
-                            <ul id="recommended_list"></ul>
+                        <div class="recommended-box color">
+                            <ul id="recommended_list" class="color"></ul>
                         </div>
 
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
@@ -413,7 +413,7 @@
             li.innerHTML = `
                             ${text}
                             <input type="hidden" name="recommended[]" value="${value}">
-                            <button type="button" onclick="this.parentElement.remove()">✖</button>
+                            <button type="button" onclick="this.parentElement.remove()" class="color-red cursor-p">✖</button>
                             `;
 
             document.getElementById('recommended_list').appendChild(li);
