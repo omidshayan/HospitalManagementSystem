@@ -58,6 +58,7 @@
                             </div>
                         </div>
 
+                        <!-- bp ... -->
                         <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
                         <div class="accordion-content-pre">
                             <div class="child-accordioin">
@@ -81,12 +82,13 @@
                             </div>
                         </div>
 
+                        <!-- diagnosis -->
                         <div class="accordion-title color-orange">تشخیص داکتر</div>
                         <div class="accordion-content-pre">
                             <div class="child-accordioin">
                                 <div class="insert mt5">
                                     <div class="one m-auto w97d mb3">
-                                        <textarea name="description" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                        <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
                                     </div>
                                 </div>
                             </div>
