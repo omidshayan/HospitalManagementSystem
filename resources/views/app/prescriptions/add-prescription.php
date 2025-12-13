@@ -192,12 +192,11 @@
                                     <div class="one m-auto mb3">
                                         <select id="recommended_select">
                                             <option value="" selected disabled>انتخاب آیتم</option>
-                                            <option value="1">CBC</option>
-                                            <option value="2">Blood Sugar</option>
-                                            <option value="3">X-Ray</option>
-                                            <option value="4">X-fdgfdgfd</option>
-                                            <option value="5">X-fdgfdgfd</option>
-                                            <option value="6">X-fdgddsffdgfd</option>
+                                            <?php
+                                                foreach($tests as $test) { ?>
+                                                <option value="<?=$test['id']?>"><?=$test['test_name']?></option>
+                                            <?php }
+                                            ?>
                                         </select>
                                         <button type="button" class="btn w80 p5" onclick="addRecommended()">افزودن</button>
 

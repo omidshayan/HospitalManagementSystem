@@ -35,8 +35,7 @@
             if (!empty($_SESSION['hms_admin']['image'])) {
               $image = asset('public/images/employees/' . $_SESSION['hms_admin']['image']);
             }
-          }
-          elseif (isset($_SESSION['hms_employee'])) {
+          } elseif (isset($_SESSION['hms_employee'])) {
 
             if (!empty($_SESSION['hms_employee']['image'])) {
               $image = asset('public/images/employees/' . $_SESSION['hms_employee']['image']);
@@ -261,6 +260,11 @@
                     <li class="sidebar-dropdown-menu-item">مدیریت طریقه مصرف</li>
                   </a>
                 <?php endif; ?>
+                <?php if ($this->hasAccess('intakeInstructions')): ?>
+                  <a href="<?= url('intake-instructions') ?>">
+                    <li class="sidebar-dropdown-menu-item">مدیریت آزمایشات</li>
+                  </a>
+                <?php endif; ?>
                 <?php if ($this->hasAccess('prescriptionSettings')): ?>
                   <a href="<?= url('prescription-settings') ?>">
                     <li class="sidebar-dropdown-menu-item">تنظیمات نسخه</li>
@@ -271,7 +275,7 @@
           <?php endif; ?>
 
 
-          
+
           <!-- profile -->
           <li class="sidebar-menu">
             <a href="<?= url('profile') ?>" class="d-flex align-center justify-between">
