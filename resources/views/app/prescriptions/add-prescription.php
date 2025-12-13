@@ -185,13 +185,13 @@
 
 
                         <!-- Recommended -->
-                        <div class="accordion-title color-orange">معاینات توصیه شده</div>
-                        <div class="accordion-content-pre">
+                        <div class="accordion-title color-orange w89d">معاینات توصیه شده</div>
+                        <div class="accordion-content-pre w89d">
                             <div class="child-accordioin">
                                 <div class="insert mt5">
-                                    <div class="one m-auto w97d mb3">
+                                    <div class="one m-auto mb3">
                                         <select id="recommended_select">
-                                            <option value="">انتخاب آزمایش</option>
+                                            <option value="" selected disabled>انتخاب آیتم</option>
                                             <option value="1">CBC</option>
                                             <option value="2">Blood Sugar</option>
                                             <option value="3">X-Ray</option>
@@ -199,7 +199,7 @@
                                             <option value="5">X-fdgfdgfd</option>
                                             <option value="6">X-fdgddsffdgfd</option>
                                         </select>
-                                        <button type="button" onclick="addRecommended()">افزودن</button>
+                                        <button type="button" class="btn w80 p5" onclick="addRecommended()">افزودن</button>
 
                                     </div>
                                 </div>

@@ -187,7 +187,7 @@ textarea::placeholder {
 }
 #recommended_list {
     display: flex;
-    flex-wrap: wrap;   /* خیلی مهم */
+    flex-wrap: wrap;
     gap: 6px;
     list-style: none;
     padding: 0;
@@ -892,7 +892,7 @@ input:checked+.slider:before {
     transition: all .3s ease-in-out;
 }
 .accordion-content-pre {
-    width: 90%;
+    width: 80%;
     height: 0;
     overflow: hidden;
     margin: 0 auto;

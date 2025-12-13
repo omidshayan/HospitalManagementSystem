@@ -352,6 +352,9 @@
 .w200 {
     width: 200px;
 }
+.w89d{
+    width: 89% !important;
+}
 .h27{
     height: 27px !important;
 }
