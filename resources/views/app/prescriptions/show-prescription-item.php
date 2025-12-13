@@ -69,7 +69,6 @@ include_once('public/alerts/toastr.php');
                             </tbody>
                         </table>
                     </div>
-
                     <!-- left infos -->
                     <div class="p-left-infos border-r">
 
