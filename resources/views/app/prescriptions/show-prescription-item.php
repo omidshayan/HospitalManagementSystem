@@ -110,27 +110,11 @@ include_once('public/alerts/toastr.php');
 
                         <!-- Recommended -->
                         <div class="p-recommended fs12">
-                            <div class="d-flex justify-between pr8">
-                                dsafsdfsdf
-                                <span><?= $prescription['bp'] ?></span>
-                                <span>BP</span>
-                            </div>
-                            <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['pr'] ?></span>
-                                <span>Pr</span>
-                            </div>
-                            <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['rr'] ?></span>
-                                <span>Rr</span>
-                            </div>
-                            <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['temp'] ?></span>
-                                <span>TEMP</span>
-                            </div>
-                            <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['spo2'] ?></span>
-                                <span>SPO₂</span>
-                            </div>
+                            <select name="recommended">
+                                <option value="">item</option>
+                                <option value="">item</option>
+                                <option value="">item</option>
+                            </select>
                         </div>
 
                     </div>
