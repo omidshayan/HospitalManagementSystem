@@ -39,7 +39,7 @@ include_once('public/alerts/toastr.php');
                 <div class="body-pre-print">
 
                     <!-- drugs list -->
-                    <div class="p-drugs-print d-flex">
+                    <div class="p-drugs-print d-flex flex-c bg-green-opacity pr">
                         <table>
                             <thead>
                                 <tr class="fs12 p-color-title">
@@ -68,7 +68,7 @@ include_once('public/alerts/toastr.php');
                                 ?>
                             </tbody>
                         </table>
-                        <div>dsfas sadf</div>
+                        <div class="pa">dsfas sadf</div>
                     </div>
 
                     <!-- left infos -->
