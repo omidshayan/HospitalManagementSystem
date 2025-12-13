@@ -193,8 +193,8 @@
                                         <select id="recommended_select">
                                             <option value="" selected disabled>انتخاب آیتم</option>
                                             <?php
-                                                foreach($tests as $test) { ?>
-                                                <option value="<?=$test['id']?>"><?=$test['test_name']?></option>
+                                            foreach ($tests as $test) { ?>
+                                                <option value="<?= $test['id'] ?>"><?= $test['test_name'] ?></option>
                                             <?php }
                                             ?>
                                         </select>
@@ -222,9 +222,10 @@
             <div class="content-container mb30 mt20">
                 <div class="mb10 fs14 d-flex justify-between">
                     <div class="mr30">
-                        <span><?= ($drugList) ? 'لیست دواها' : 'لیست خالی است' ?></span>
+                        <span><?= (!empty($drugList) || !empty($recommended)) ? 'لیست دواها | آزمایشات' : 'لیست خالی است' ?></span>
                         <?php
-                        if (empty($drugList)) { ?>
+                        if (empty($drugList) && empty($recommended)) { ?>
+
                             <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">حذف نسخه</a>
                         <?php }
                         ?>
@@ -419,7 +420,7 @@
         }
     </script>
 
-<!-- validation -->
+    <!-- validation -->
     <script>
         document.getElementById('prescription_form').addEventListener('submit', function(e) {
 
