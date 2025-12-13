@@ -167,6 +167,9 @@
 .pa{
     position: absolute;
 }
+.t0{
+    top: 0 !important;
+}
 /* colors */
 .color {
     color: var(--text) !important;
@@ -185,7 +188,6 @@
 .color-blue {
     color: #239cff;
 }
-
 .color-yellow {
     color: yellow;
 }

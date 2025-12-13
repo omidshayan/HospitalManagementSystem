@@ -52,9 +52,11 @@
     }
 
     .p-drugs-print {
-        width: 70%;
+        width: 70% !important;
         display: flex;
         flex-direction: column;
+        height: 650px !important;
+        justify-content: space-between;
     }
 
     .p-drugs-items {
