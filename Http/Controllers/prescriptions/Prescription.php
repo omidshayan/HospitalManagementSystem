@@ -137,19 +137,20 @@ class Prescription extends App
             }
         }
 
-        // ذخیره آزمایش‌ها فقط اگر ازمایشی ارسال شده باشد
         if ($hasRecommended) {
             foreach ($request['recommended'] as $recommendedId) {
-                // چک تکراری بودن آزمایش
-                // $exist_recommended = $this->prescription->getRecommendedItem($prescription_id, $recommendedId);
 
-                // if (!$exist_recommended) {
-                $recommendedData = [
-                    'prescription_id' => $prescription_id,
-                    'recommended' => $recommendedId,
-                ];
-                $this->db->insert('recommended', array_keys($recommendedData), $recommendedData);
-                // }
+                $test = $this->db->select('SELECT * FROM recommended WHERE recommended = ?', [$recommendedId])->fetch();
+
+                if (!$test) {
+                    $recommendedData = [
+                        'prescription_id' => $prescription_id,
+                        'recommended' => $recommendedId,
+                    ];
+                    $this->db->insert('recommended', array_keys($recommendedData), $recommendedData);
+                } else {
+                    $this->flashMessage('error', 'آزمایش انتخاب شده، قبلا ثبت شده!');
+                }
             }
         }
 
