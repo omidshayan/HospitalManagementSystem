@@ -23,7 +23,7 @@ include_once('public/alerts/toastr.php');
             <form id="myForm" action="<?=url('edit-test-store/' . $test['id'])?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
+                        <div class="label-form mb5 fs14">نام آزمایش <?= _star ?> </div>
                         <input type="text" name="test_name" class="checkInput" value="<?= $test['test_name'] ?>" placeholder="نام آزمایش را وارد نمایید" autocomplete="off" />
                     </div>
                 </div>
