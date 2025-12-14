@@ -1,8 +1,9 @@
 <?php
-require_once 'Http/Controllers/intake-times/IntakeTime.php';
+require_once 'Http/Controllers/tests/Test.php';
 
 // expenses routes
-uri('intake-times', 'App\IntakeTime', 'intakeTimes');
+uri('tests', 'App\Test', 'tests');
+
 uri('intake-time-store', 'App\IntakeTime', 'intakeTimeStore', 'POST');
 uri('edit-intake-time/{id}', 'App\IntakeTime', 'editIntakeTime');
 uri('edit-intake-time-store/{id}', 'App\IntakeTime', 'editIntakeTimeStore', 'POST');

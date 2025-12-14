@@ -24,11 +24,21 @@ class Login extends Auth
         }
     }
 
+    function convertPersionNumber($number)
+    {
+        $persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        $englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        return str_replace($persianDigits, $englishDigits, $number);
+    }
+
 
     public function checkLogin($request)
     {
         $phone = trim($request['phone']);
         $password = trim($request['password']);
+
+        $phone = $this->convertPersionNumber($phone);
+        $password = $this->convertPersionNumber($password);
 
         if ($phone == '' || $password == '') {
             $this->flashMessage('error', _emptyInputs);
