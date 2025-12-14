@@ -14,7 +14,7 @@ class Test extends App
     }
 
     // store intake_time
-    public function intakeTimeStore($request)
+    public function testStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
