@@ -33,12 +33,12 @@ class Test extends App
     }
 
     // intake_time page
-    public function editIntakeTime($id)
+    public function editTest($id)
     {
         $this->middleware(true, true, 'general');
-        $intake_time = $this->db->select('SELECT * FROM intake_times WHERE `id` = ?', [$id])->fetch();
-        if ($intake_time != null) {
-            require_once(BASE_PATH . '/resources/views/app/intake-times/edit-intake-time.php');
+        $test = $this->db->select('SELECT * FROM tests WHERE `id` = ?', [$id])->fetch();
+        if ($test != null) {
+            require_once(BASE_PATH . '/resources/views/app/tests/edit-test.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
