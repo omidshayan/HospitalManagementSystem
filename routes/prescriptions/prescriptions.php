@@ -19,6 +19,7 @@ uri('edit-close-prescription-store/{id}', 'App\Prescription', 'editClosePrescrip
 
 // prescription actions
 uri('delete-prescription-list/{id}', 'App\Prescription', 'deletePrescriptionItem');
+uri('delete-test-list/{id}', 'App\Prescription', 'deleteTestItem');
 uri('delete-prescription/{id}', 'App\Prescription', 'deletePrescription');
 
 uri('close-prescription-store/{id}', 'App\Prescription', 'closePrescriptionStore', 'POST');

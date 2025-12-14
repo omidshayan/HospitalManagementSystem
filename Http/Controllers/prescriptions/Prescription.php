@@ -263,6 +263,25 @@ class Prescription extends App
         $this->flashMessage('success', _success);
     }
 
+    // delete test from cart
+    public function deleteTestItem($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        if (!is_numeric($id)) {
+            $this->flashMessage('error', 'لطفا اطلاعات درست ارسال نمائید!');
+        }
+
+        $recommended = $this->db->select('SELECT id FROM recommended WHERE `id` = ?', [$id])->fetch();
+        if (!$recommended) {
+            require_once(BASE_PATH . '/404.php');
+            exit;
+        }
+
+        $this->db->delete('recommended', $id);
+        $this->flashMessage('success', _success);
+    }
+
     // delete prescription
     public function deletePrescription($id)
     {
