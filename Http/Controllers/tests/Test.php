@@ -70,12 +70,12 @@ class Test extends App
     }
 
     // test Details detiles page
-    public function intakeTimeDetails($id)
+    public function testDetails($id)
     {
         $this->middleware(true, true, 'general');
-        $intake_time = $this->db->select('SELECT * FROM intake_times WHERE `id` = ?', [$id])->fetch();
-        if ($intake_time != null) {
-            require_once(BASE_PATH . '/resources/views/app/intake-times/intake_time-details.php');
+        $test = $this->db->select('SELECT * FROM tests WHERE `id` = ?', [$id])->fetch();
+        if ($test != null) {
+            require_once(BASE_PATH . '/resources/views/app/tests/test-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -84,7 +84,7 @@ class Test extends App
     }
 
     // change status test
-    public function changeStatusIntakeTime($id)
+    public function changeStatusTest($id)
     {
         $this->middleware(true, true, 'general');
         $intake_time = $this->db->select('SELECT * FROM intake_times WHERE id = ?', [$id])->fetch();
