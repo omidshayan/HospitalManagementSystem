@@ -20,7 +20,7 @@ include_once('public/alerts/toastr.php');
     <!-- start page content -->
     <div class="mini-container">
         <div class="insert">
-            <form id="myForm" action="<?=url('edit-intake-time-store/' . $test['id'])?>" method="POST">
+            <form id="myForm" action="<?=url('edit-test-store/' . $test['id'])?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>

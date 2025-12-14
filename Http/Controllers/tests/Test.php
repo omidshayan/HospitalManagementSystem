@@ -13,7 +13,7 @@ class Test extends App
         require_once(BASE_PATH . '/resources/views/app/tests/tests.php');
     }
 
-    // store intake_time
+    // store test
     public function testStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
@@ -32,7 +32,7 @@ class Test extends App
         }
     }
 
-    // intake_time page
+    // test page
     public function editTest($id)
     {
         $this->middleware(true, true, 'general');
@@ -46,30 +46,30 @@ class Test extends App
         }
     }
 
-    // edit intake_time store
-    public function editIntakeTimeStore($request, $id)
+    // edit test store
+    public function editTestStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['intake_time'] == '') {
+        if ($request['test_name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $item = $this->db->select('SELECT * FROM intake_times WHERE `intake_time` = ?', [$request['intake_time']])->fetch();
+        $item = $this->db->select('SELECT * FROM tests WHERE `test_name` = ?', [$request['test_name']])->fetch();
 
         if ($item) {
             if ($item['id'] != $id) {
-                $this->flashMessage('error', 'این دسته قبلا ثبت شده است.');
+                $this->flashMessage('error', 'این آزمایش قبلا ثبت شده است.');
                 return;
             }
         }
 
-        $this->db->update('intake_times', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('intake-times'));
+        $this->db->update('tests', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('tests'));
     }
 
-    // intakeTimeDetails Details detiles page
+    // test Details detiles page
     public function intakeTimeDetails($id)
     {
         $this->middleware(true, true, 'general');
@@ -83,7 +83,7 @@ class Test extends App
         }
     }
 
-    // change status intake_time
+    // change status test
     public function changeStatusIntakeTime($id)
     {
         $this->middleware(true, true, 'general');
