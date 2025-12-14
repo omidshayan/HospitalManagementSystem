@@ -320,7 +320,7 @@
                 ?>
 
                 <div class="flex-justify-align mt20 paginate-section">
-                    <div class="table-info fs12">تعداد کل: <?= count($drugList) ?></div>
+                    <div class="table-info fs12">تعداد کل: <?= count($drugList) + count($recommended) ?></div>
                 </div>
             </div>
         <?php }
