@@ -18,15 +18,16 @@ class Test extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['intake_time'] == '') {
+        if ($request['test_name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        $intake_time = $this->db->select('SELECT intake_time FROM intake_times WHERE `intake_time` = ?', [$request['intake_time']])->fetch();
 
-        if (!empty($intake_time['intake_time'])) {
+        $test = $this->db->select('SELECT test_name FROM tests WHERE `test_name` = ?', [$request['test_name']])->fetch();
+
+        if (!empty($test['test_name'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('intake_times', array_keys($request), $request);
+            $this->db->insert('tests', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
