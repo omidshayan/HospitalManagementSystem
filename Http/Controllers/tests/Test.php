@@ -87,13 +87,13 @@ class Test extends App
     public function changeStatusTest($id)
     {
         $this->middleware(true, true, 'general');
-        $intake_time = $this->db->select('SELECT * FROM intake_times WHERE id = ?', [$id])->fetch();
-        if ($intake_time != null) {
-            if ($intake_time['status'] == 1) {
-                $this->db->update('intake_times', $intake_time['id'], ['status'], [2]);
+        $test = $this->db->select('SELECT * FROM tests WHERE id = ?', [$id])->fetch();
+        if ($test != null) {
+            if ($test['status'] == 1) {
+                $this->db->update('tests', $test['id'], ['status'], [2]);
                 $this->send_json_response(true, _success, 2);
             } else {
-                $this->db->update('intake_times', $intake_time['id'], ['status'], [1]);
+                $this->db->update('tests', $test['id'], ['status'], [1]);
                 $this->send_json_response(true, _success, 1);
             }
         } else {
