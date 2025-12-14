@@ -43,11 +43,15 @@ class Prescription extends App
         if ($prescription) {
 
             $recommended = $this->db->select('
-            SELECT r.recommended, t.test_name
-            FROM recommended r
-            JOIN tests t ON r.recommended = t.id
-            WHERE r.prescription_id = ?
-        ', [$prescription['id']])->fetchAll();
+                SELECT 
+                    r.id AS recommended_id,
+                    r.recommended AS test_id,
+                    t.test_name
+                FROM recommended r
+                JOIN tests t ON r.recommended = t.id
+                WHERE r.prescription_id = ?
+            ', [$prescription['id']])->fetchAll();
+
 
             $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
         }
