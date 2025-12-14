@@ -5,7 +5,7 @@ namespace App;
 class Test extends App
 {
     //  intakeTimes page
-    public function intakeTimes()
+    public function tests()
     {
         $this->middleware(true, true, 'intakeTime', true);
         $intakeTimes = $this->db->select('SELECT * FROM intake_times')->fetchAll();

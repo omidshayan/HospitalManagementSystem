@@ -261,7 +261,7 @@
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('intakeInstructions')): ?>
-                  <a href="<?= url('intake-instructions') ?>">
+                  <a href="<?= url('tests') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت آزمایشات</li>
                   </a>
                 <?php endif; ?>
