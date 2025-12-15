@@ -108,7 +108,7 @@ include_once('public/alerts/toastr.php');
                             </div>
                         </div>
 
-                        <!-- Recommended -->
+                        <!-- tests -->
                         <ul class="p-recommended fs12">
                             <?php
                             if (!empty($tests)) {
