@@ -42,7 +42,7 @@ class Prints extends App
          WHERE p.status = ? ORDER BY id DESC',
             [3]
         )->fetchAll();
-            
+
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
     }
 
@@ -97,17 +97,25 @@ class Prints extends App
          WHERE p.status = ? AND p.id = ?',
             [3, $id]
         )->fetch();
-// NOTE
+        // NOTE
 
-// NOTE
+        // NOTE
         $items = [];
 
         if ($prescription) {
             $items = $this->db->select(
                 'SELECT *
-             FROM prescription_items
-             WHERE prescription_id = ?
-             ORDER BY id ASC',
+         FROM prescription_items
+         WHERE prescription_id = ?
+         ORDER BY id ASC',
+                [$prescription['id']]
+            )->fetchAll();
+
+            $tests = $this->db->select(
+                'SELECT r.*, t.test_name
+         FROM recommended r
+         JOIN tests t ON r.recommended = t.id
+         WHERE r.prescription_id = ?',
                 [$prescription['id']]
             )->fetchAll();
         }

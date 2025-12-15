@@ -165,7 +165,7 @@ include_once('public/alerts/toastr.php');
             </span>
             <span>
                 <span class="fs14">سن: </span>
-${convertEnNumber(getJalaliAge(prescription.birth_year))}
+        ${convertEnNumber(getJalaliAge(prescription.birth_year))}
             </span>
             <span>
                 <span class="fs14">تاریخ مراجعه: </span>
@@ -262,13 +262,10 @@ ${convertEnNumber(getJalaliAge(prescription.birth_year))}
             }
         }
 
-        // اجرا اول صفحه
         checkForPrescription();
 
-        // چک هر 30 ثانیه
         setInterval(checkForPrescription, 2000);
 
-        // دکمه بررسی دستی
         document.getElementById('checkPrescriptions').addEventListener('click', checkForPrescription);
     </script>
 
