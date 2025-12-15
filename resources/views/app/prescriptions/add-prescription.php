@@ -60,8 +60,8 @@
 
                         <!-- bp ... -->
                         <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
-                        <div class="accordion-content-pre">
-                            <div class="child-accordioin">
+                        <div class="accordion-content-pre w100">
+                            <div class="child-accordioin w90d">
                                 <div class="insert dir-left mt5">
                                     <div class="one m-auto w97d mb3">
                                         <input type="text" name="bp" placeholder=" Blood Pressure  ">
@@ -84,8 +84,8 @@
 
                         <!-- diagnosis -->
                         <div class="accordion-title color-orange">تشخیص داکتر</div>
-                        <div class="accordion-content-pre">
-                            <div class="child-accordioin">
+                        <div class="accordion-content-pre w100">
+                            <div class="child-accordioin w90d">
                                 <div class="insert mt5">
                                     <div class="one m-auto w97d mb3">
                                         <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
