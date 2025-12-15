@@ -221,13 +221,13 @@ include_once('public/alerts/toastr.php');
 
                                     <!-- tests -->
                                     <ul class="p-recommended fs12">
-                                            <?php
-                                            if (!empty($tests)) {
-                                                foreach ($tests as $test) { ?>
-                                                    <li class="ol"><?= $test['test_name'] ?> </li>
-                                            <?php }
-                                            }
-                                            ?>
+                                        ${
+                                            tests && tests.length
+                                                ? tests.map(test => `
+                                                    <li class="ol">${safe(test.test_name)}</li>
+                                                `).join('')
+                                                : '<li class="ol">آزمایشی ثبت نشده</li>'
+                                        }
                                     </ul>
 
                             </div>

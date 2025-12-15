@@ -60,17 +60,32 @@ class Prints extends App
         )->fetch();
 
         if ($prescription) {
+
+            // تغییر وضعیت نسخه
             $this->db->update('prescriptions', $prescription['id'], ['status'], [3]);
 
+            // داروها
             $items = $this->db->select(
-                'SELECT * FROM prescription_items WHERE prescription_id = ? ORDER BY id ASC',
+                'SELECT * FROM prescription_items
+             WHERE prescription_id = ?
+             ORDER BY id ASC',
+                [$prescription['id']]
+            )->fetchAll();
+
+            // آزمایش‌ها (همین کوئری که خودت نوشتی)
+            $tests = $this->db->select(
+                'SELECT r.id, r.recommended, t.test_name
+             FROM recommended r
+             JOIN tests t ON r.recommended = t.id
+             WHERE r.prescription_id = ?',
                 [$prescription['id']]
             )->fetchAll();
 
             echo json_encode([
-                'success' => true,
+                'success'      => true,
                 'prescription' => $prescription,
-                'items' => $items
+                'items'        => $items,
+                'tests'        => $tests
             ], JSON_UNESCAPED_UNICODE);
 
             exit;
