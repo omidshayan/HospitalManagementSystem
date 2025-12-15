@@ -146,93 +146,97 @@ include_once('public/alerts/toastr.php');
             return `${y}/${m}/${d}`;
         }
 
-        function renderPrescription(prescription, items) {
+        function renderPrescription(prescription, items, tests) {
             return `
-                    <div class="item-print p10">
+        <div class="item-print p10">
 
+            <div class="p-patient-infos">
+                <span>
+                    <span class="fs14">نام مریض:</span>
+                    <span class="bold">${safe(prescription.patient_name)}</span>
+                </span>
+                <span>
+                    <span class="fs14">سن: </span>
+                    ${convertEnNumber(getJalaliAge(prescription.birth_year))}
+                </span>
+                <span>
+                    <span class="fs14">تاریخ مراجعه: </span>
+                    <span class="bold">${convertEnNumber(formatJalaliDate(prescription.created_at))}</span>
+                </span>
+            </div>
 
-                            <div class="p-patient-infos">
-                                <span>
-                                    <span class="fs14">نام مریض:</span>
-                                    <span class="bold">${safe(prescription.patient_name)}</span>
-                                </span>
-                                <span>
-                                    <span class="fs14">سن: </span>
-                            ${convertEnNumber(getJalaliAge(prescription.birth_year))}
-                                </span>
-                                <span>
-                                    <span class="fs14">تاریخ مراجعه: </span>
-                                    <span class="bold">${convertEnNumber(formatJalaliDate(prescription.created_at))}</span>
-                                </span>
-                            </div>
+            <div class="body-pre-print">
 
+                <div class="p-drugs-print">
+                    <table>
+                        <thead>
+                            <tr class="fs12 p-color-title">
+                                <th class="w80 p5">طریقه مصرف</th>
+                                <th class="w120">مقدار مصرف هر نوبت</th>
+                                <th class="w80">زمان مصرف</th>
+                                <th>تعداد</th>
+                                <th>نام دارو</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${
+                                items.map(item => `
+                                    <tr class="p-color-item fs14 center">
+                                        <td>${safe(item.usage_instruction)}</td>
+                                        <td>${safe(item.dosage)}</td>
+                                        <td>${safe(item.interval_time)}</td>
+                                        <td>${convertEnNumber(item.drug_count)}</td>
+                                        <td class="p5 drug-name-en">${safe(item.drug_name)}</td>
+                                    </tr>
+                                `).join('')
+                            }
+                        </tbody>
+                    </table>
 
-                        <div class="body-pre-print">
+                     <div class="fs14">${safe(prescription.diagnosis)}</div>
 
-                            <div class="p-drugs-print">
-                                <table>
-                                    <thead>
-                                        <tr class="fs12 p-color-title">
-                                            <th class="w80 p5">طریقه مصرف</th>
-                                            <th class="w120">مقدار مصرف هر نوبت</th>
-                                            <th class="w80">زمان مصرف</th>
-                                            <th class="">تعداد</th>
-                                            <th class="">نام دارو</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ${items.map(item => `
-                                            <tr class="p-color-item fs14 center">
-                                                <td>${safe(item.usage_instruction)}</td>
-                                                <td>${safe(item.dosage)}</td>
-                                                <td>${safe(item.interval_time)}</td>
-                                                <td>${convertEnNumber(item.drug_count)}</td>
-                                                <td class="p5 drug-name-en">${safe(item.drug_name)}</td>
-                                            </tr>
-                                        `).join('')}
-                                    </tbody>
-                                </table>
-                            </div>
+                </div>
 
-                            <div class="p-left-infos border-r">
+                <div class="p-left-infos border-r">
 
-                                <div class="p-doctor-infos">
-                                    <h3>نام داکتر: ${safe(prescription.employee_name)}</h3>
-                                    <span class="fs14 bold">تخصص: ${safe(prescription.expertise)}</span>
-                                </div>
+                    <div class="p-doctor-infos">
+                        <h3>نام داکتر: ${safe(prescription.employee_name)}</h3>
+                        <span class="fs14 bold">تخصص: ${safe(prescription.expertise)}</span>
+                    </div>
 
-                                <div class="p-vital-signs fs12">
-                                    <div class="d-flex justify-between pr8">
-                                        <span>${safe(prescription.bp, "—")}</span><span>BP</span>
-                                    </div>
-                                    <div class="d-flex justify-between pr8">
-                                        <span>${safe(prescription.pr, "—")}</span><span>Pr</span>
-                                    </div>
-                                    <div class="d-flex justify-between pr8">
-                                        <span>${safe(prescription.rr, "—")}</span><span>Rr</span>
-                                    </div>
-                                    <div class="d-flex justify-between pr8">
-                                        <span>${safe(prescription.temp, "—")}</span><span>TEMP</span>
-                                    </div>
-                                    <div class="d-flex justify-between pr8">
-                                        <span>${safe(prescription.spo2, "—")}</span><span>SPO₂</span>
-                                    </div>
-                                </div>
-
-                                    <!-- tests -->
-                                    <ul class="p-recommended fs12">
-                                        ${
-                                            tests && tests.length
-                                                ? tests.map(test => `
-                                                    <li class="ol">${safe(test.test_name)}</li>
-                                                `).join('')
-                                                : '<li class="ol">آزمایشی ثبت نشده</li>'
-                                        }
-                                    </ul>
-
-                            </div>
+                    <div class="p-vital-signs fs12">
+                        <div class="d-flex justify-between pr8">
+                            <span>${safe(prescription.bp, "—")}</span><span>BP</span>
                         </div>
-                    </div>`;
+                        <div class="d-flex justify-between pr8">
+                            <span>${safe(prescription.pr, "—")}</span><span>Pr</span>
+                        </div>
+                        <div class="d-flex justify-between pr8">
+                            <span>${safe(prescription.rr, "—")}</span><span>Rr</span>
+                        </div>
+                        <div class="d-flex justify-between pr8">
+                            <span>${safe(prescription.temp, "—")}</span><span>TEMP</span>
+                        </div>
+                        <div class="d-flex justify-between pr8">
+                            <span>${safe(prescription.spo2, "—")}</span><span>SPO₂</span>
+                        </div>
+                    </div>
+
+                    <!-- tests -->
+                    <ul class="p-recommended fs12">
+                        ${
+                            tests && tests.length
+                                ? tests.map(test => `
+                                    <li class="ol">${safe(test.test_name)}</li>
+                                `).join('')
+                                : '<li class="ol">آزمایشی ثبت نشده</li>'
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    `;
         }
 
 
@@ -258,7 +262,7 @@ include_once('public/alerts/toastr.php');
 
                 if (data.success) {
                     isPrinting = true;
-                    document.getElementById('printContainer').innerHTML = renderPrescription(data.prescription, data.items);
+                    document.getElementById('printContainer').innerHTML = renderPrescription(data.prescription, data.items, data.tests);
                     printReceipt();
 
                     setTimeout(() => {

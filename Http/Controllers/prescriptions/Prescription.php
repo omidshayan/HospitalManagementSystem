@@ -246,7 +246,6 @@ class Prescription extends App
             )->fetchAll();
         }
 
-
         require_once(BASE_PATH . '/resources/views/app/prescriptions/show-prescription-item.php');
     }
 
