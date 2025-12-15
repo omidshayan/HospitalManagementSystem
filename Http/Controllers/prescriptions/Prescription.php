@@ -329,10 +329,11 @@ class Prescription extends App
         // get invoice items
         $prescription_items = $this->prescription->getPrescriptionItems($prescription['id']);
         // check invoice items
-        if (!$prescription_items) {
-            $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');
-            return;
-        }
+        // NOTE این قسمت باید همراه با ازمایشات برسی بشه
+        // if (!$prescription_items) {
+        //     $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');
+        //     return;
+        // }
 
         $userId = null;
 
