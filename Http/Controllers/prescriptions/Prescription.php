@@ -92,7 +92,7 @@ class Prescription extends App
         $drugInvalid =
             empty($request['drug_id']) ||
             empty($request['drug_name']) ||
-            empty($request['drug_count']);
+            empty($request['drug_count']); 
 
         $hasRecommended = !empty($request['recommended']);
 
@@ -140,16 +140,25 @@ class Prescription extends App
         if ($hasRecommended) {
             foreach ($request['recommended'] as $recommendedId) {
 
-                $test = $this->db->select('SELECT * FROM recommended WHERE recommended = ?', [$recommendedId])->fetch();
+                $test = $this->db->select(
+                    'SELECT id FROM recommended 
+                    WHERE prescription_id = ? AND recommended = ?',
+                    [$prescription_id, $recommendedId]
+                )->fetch();
 
                 if (!$test) {
                     $recommendedData = [
                         'prescription_id' => $prescription_id,
-                        'recommended' => $recommendedId,
+                        'recommended'     => $recommendedId,
                     ];
-                    $this->db->insert('recommended', array_keys($recommendedData), $recommendedData);
+
+                    $this->db->insert(
+                        'recommended',
+                        array_keys($recommendedData),
+                        $recommendedData
+                    );
                 } else {
-                    $this->flashMessage('error', 'آزمایش انتخاب شده، قبلا ثبت شده!');
+                    $this->flashMessage('error', 'آزمایش انتخاب شده، قبلاً برای این نسخه ثبت شده!');
                 }
             }
         }
