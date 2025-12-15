@@ -103,7 +103,18 @@
     .bold {
         font-weight: bold;
     }
-
+.pr{
+    position: relative;
+}
+.pa{
+    position: absolute;
+}
+.t0{
+    top: 0 !important;
+}
+.w100 {
+    width: 100% !important;
+}
     /* body */
     .body-pre-print {
         color: black;
