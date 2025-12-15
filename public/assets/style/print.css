@@ -17,8 +17,9 @@
     }
 
     .hrp {
-        width: 99%;
+        width: 92% !important;
         border: 1px solid rgba(0, 0, 0, 0.336) !important;
+        margin-left: 10px !important;
     }
 .ol{
     list-style: decimal !important;
@@ -52,6 +53,7 @@
         width: 532px;
         padding: 5px;
         border-radius: 5px;
+        margin-right: 7px;
     }
 
     .p-drugs-print {
@@ -122,6 +124,7 @@
         display: flex;
         justify-content: space-between;
         gap: 10px;
+        margin-right: 7px;
     }
 
     .border-r {
