@@ -157,7 +157,6 @@ class Prescription extends App
         $this->flashMessage('success', _success);
     }
 
-
     // show prescriptions
     public function prescriptions()
     {
@@ -189,7 +188,6 @@ class Prescription extends App
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
-
 
     // patient Inquiry
     public function patientInquiry()

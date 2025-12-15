@@ -7,7 +7,7 @@ include_once('public/alerts/toastr.php');
 
 
 <div class="content">
-    <div class="content-title">نمایش نسخه: <?=$prescription['patient_name']?>
+    <div class="content-title mb20">نمایش نسخه: <?= $prescription['patient_name'] ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
 
@@ -39,8 +39,8 @@ include_once('public/alerts/toastr.php');
                 <div class="body-pre-print">
 
                     <!-- drugs list -->
-                    <div class="p-drugs-print">
-                        <table>
+                    <div class="p-drugs-print pr">
+                        <table class="pa t0 w100">
                             <thead>
                                 <tr class="fs12 p-color-title">
                                     <th class="w80 p5">طریقه مصرف</th>
@@ -68,6 +68,8 @@ include_once('public/alerts/toastr.php');
                                 ?>
                             </tbody>
                         </table>
+
+                        <div class="fs14"><?= $prescription['diagnosis'] ?></div>
                     </div>
 
                     <!-- left infos -->
@@ -77,6 +79,7 @@ include_once('public/alerts/toastr.php');
                         <div class="p-doctor-infos">
                             <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
                             <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
+                            <hr class="hrp">
                         </div>
 
                         <!-- infos -->
@@ -102,6 +105,17 @@ include_once('public/alerts/toastr.php');
                                 <span>SPO₂</span>
                             </div>
                         </div>
+
+                        <!-- Recommended -->
+                        <ul class="p-recommended fs12">
+                            <?php
+                            if (!empty($tests)) {
+                                foreach ($tests as $test) { ?>
+                                    <li class="ol"><?= $test['test_name'] ?> </li>
+                            <?php }
+                            }
+                            ?>
+                        </ul>
 
                     </div>
 
