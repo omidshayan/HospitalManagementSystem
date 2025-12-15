@@ -83,12 +83,10 @@ include_once('public/alerts/toastr.php');
 
         let isPrinting = false;
 
-        // جلوگیری از null
         function safe(value, fallback = "") {
             return (value === null || value === undefined || value === "null") ? fallback : value;
         }
 
-        // تبدیل عدد به فارسی
         function convertEnNumber(number) {
             if (!number) return "";
             const en = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -96,7 +94,6 @@ include_once('public/alerts/toastr.php');
             return number.toString().split('').map(n => fa[en.indexOf(n)] || n).join('');
         }
 
-        // تبدیل تاریخ میلادی به شمسی
         function gregorianToJalali(gy, gm, gd) {
             var g_d_m = [0, 31, (gy % 4 === 0 && gy % 100 !== 0 || gy % 400 === 0) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
             var jy = (gy <= 1600) ? 0 : 979;
@@ -115,33 +112,27 @@ include_once('public/alerts/toastr.php');
             return [jy, jm, jd];
         }
 
-        // سن شمسی دقیق
         function getJalaliAge(birthYear) {
             if (!birthYear) return "";
 
-            // تاریخ امروز میلادی
             const now = new Date();
             const gy = now.getFullYear();
             const gm = now.getMonth() + 1;
             const gd = now.getDate();
 
-            // تبدیل امروز به شمسی
             const [jy, jm, jd] = gregorianToJalali(gy, gm, gd);
 
-            // محاسبه سن اولیه
             let age = jy - parseInt(birthYear);
 
             return age;
         }
 
 
-        // تبدیل تاریخ به شمسی (نسخه ساده — مشابه jdate)
         function formatJalaliDate(dateString) {
             if (!dateString) return "";
 
             const g = new Date(dateString);
             const jy = g.getFullYear() - ((g.getMonth() + 1 > 2) ? 621 : 622);
-            // برای سادگی (بدون کتابخانه) فقط فرم yyyy/mm/dd را می‌سازیم
             const jm = ("0" + (g.getMonth() + 1)).slice(-2);
             const jd = ("0" + g.getDate()).slice(-2);
             return `${jy}/${jm}/${jd}`;
