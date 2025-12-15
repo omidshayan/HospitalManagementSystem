@@ -229,7 +229,7 @@ include_once('public/alerts/toastr.php');
                                 ? tests.map(test => `
                                     <li class="ol">${safe(test.test_name)}</li>
                                 `).join('')
-                                : '<li class="ol">آزمایشی ثبت نشده</li>'
+                                : ''
                         }
                     </ul>
 
