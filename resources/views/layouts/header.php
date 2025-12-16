@@ -260,7 +260,7 @@
                     <li class="sidebar-dropdown-menu-item">مدیریت طریقه مصرف</li>
                   </a>
                 <?php endif; ?>
-                <?php if ($this->hasAccess('intakeInstructions')): ?>
+                <?php if ($this->hasAccess('tests')): ?>
                   <a href="<?= url('tests') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت آزمایشات</li>
                   </a>
