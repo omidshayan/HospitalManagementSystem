@@ -399,11 +399,13 @@ class Prescription extends App
         }
     }
 
+    // single print
     public function singlePrint($id)
     {
         $this->middleware(true, true, 'prescriptionPrint', true);
 
-        $prescription = $this->db->select(
+        $print = '';
+        $prescriptionPrint = $this->db->select(
             'SELECT p.*, 
                 e.employee_name,
                 e.expertise
@@ -415,13 +417,13 @@ class Prescription extends App
 
         $items = [];
 
-        if ($prescription) {
+        if ($prescriptionPrint) {
             $items = $this->db->select(
                 'SELECT *
          FROM prescription_items
          WHERE prescription_id = ?
          ORDER BY id ASC',
-                [$prescription['id']]
+                [$prescriptionPrint['id']]
             )->fetchAll();
 
             $tests = $this->db->select(
@@ -429,7 +431,7 @@ class Prescription extends App
          FROM recommended r
          JOIN tests t ON r.recommended = t.id
          WHERE r.prescription_id = ?',
-                [$prescription['id']]
+                [$prescriptionPrint['id']]
             )->fetchAll();
         }
 
@@ -445,6 +447,18 @@ class Prescription extends App
 
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
+        $recommended = $this->db->select('
+                SELECT 
+                    r.id AS recommended_id,
+                    r.recommended AS test_id,
+                    t.test_name
+                FROM recommended r
+                JOIN tests t ON r.recommended = t.id
+                WHERE r.prescription_id = ?
+            ', [$prescriptionPrint['id']])->fetchAll();
+
+
+        $drugListPre = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescriptionPrint['id']])->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
     }

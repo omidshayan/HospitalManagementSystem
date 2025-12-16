@@ -327,6 +327,11 @@
         ?>
     </div>
 
+    <?php
+        if(isset($prescriptionPrint)){
+            dd('ok');
+        }
+    ?>
     <!-- estelam and change age -->
     <script>
         const patientName = document.getElementById('patient_name');
