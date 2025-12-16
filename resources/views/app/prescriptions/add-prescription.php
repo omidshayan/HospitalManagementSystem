@@ -218,7 +218,7 @@
 
         <!-- prescription items -->
         <?php
-        if ($prescription) { ?>
+        if (isset($prescription) && $prescription) { ?>
             <div class="content-container mb30 mt20">
                 <div class="mb10 fs14 d-flex justify-between">
                     <div class="mr30">
@@ -329,7 +329,7 @@
 
     <?php
         if(isset($prescriptionPrint)){
-            dd('ok');
+            
         }
     ?>
     <!-- estelam and change age -->
