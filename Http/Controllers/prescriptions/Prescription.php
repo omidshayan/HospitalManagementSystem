@@ -457,9 +457,6 @@ class Prescription extends App
                 WHERE r.prescription_id = ?
             ', [$prescriptionPrint['id']])->fetchAll();
 
-
-        $drugListPre = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescriptionPrint['id']])->fetchAll();
-
         require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
     }
 
