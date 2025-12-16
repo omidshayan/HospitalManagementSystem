@@ -44,7 +44,7 @@ class Setting extends App
         $this->flashMessage('success', 'عملیات موفقانه انجام شد.');
     }
 
-        // prescription page
+    // prescription page
     public function prescriptionSettings()
     {
         $this->middleware(true, true, 'general', true);
@@ -73,5 +73,11 @@ class Setting extends App
         $this->db->update('prescription_settings', $branch['id'], array_keys($request), $request);
 
         $this->flashMessage('success', 'اطلاعات با موفقیت ویرایش شد.');
+    }
+
+    ////////////////////////////////////
+    public function prePrintSettings()
+    {
+        dd('ok');
     }
 }
