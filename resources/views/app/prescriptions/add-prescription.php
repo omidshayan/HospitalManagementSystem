@@ -234,8 +234,10 @@
                         <?php }
                         ?>
                     </div>
+                    <?php
+                        if($singlePrint === 1){}
+                    ?>
                     <div>
-                        
                         <?= $drugList || $recommended ? '<a href="' . url('close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ثبت نسخه</a>' : '' ?>
                     </div>
                 </div>
