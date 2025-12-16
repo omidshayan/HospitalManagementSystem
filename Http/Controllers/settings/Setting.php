@@ -79,7 +79,7 @@ class Setting extends App
     public function prePrintSettings()
     {
         $this->middleware(true, true, 'general', true);
-        $prescription_infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
+        $settings = $this->db->select('SELECT * FROM settings')->fetch();
         require_once(BASE_PATH . '/resources/views/app/settings/settings.php');
     }
 }
