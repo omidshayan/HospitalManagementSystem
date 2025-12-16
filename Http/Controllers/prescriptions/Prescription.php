@@ -40,6 +40,8 @@ class Prescription extends App
 
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
 
+        $prescriptionl = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 2])->fetch();
+
         if ($prescription) {
 
             $recommended = $this->db->select('
@@ -392,73 +394,72 @@ class Prescription extends App
 
         $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
 
-        if ($settings['single_print'] == 1) {
-            $this->singlePrint($prescription['id']);
-        } else {
-            $this->flashMessage('success', _success);
-        }
+        $this->flashMessage('success', _success);
     }
 
     // single print
-    public function singlePrint($id)
-    {
-        $this->middleware(true, true, 'prescriptionPrint', true);
+    // public function singlePrint($id)
+    // {
+    //     $this->middleware(true, true, 'prescriptionPrint', true);
 
-        $print = '';
-        $prescriptionPrint = $this->db->select(
-            'SELECT p.*, 
-                e.employee_name,
-                e.expertise
-         FROM prescriptions p
-         JOIN employees e ON e.id = p.doctor_id
-         WHERE  p.id = ?',
-            [$id]
-        )->fetch();
+    //     $print = '';
+    //     $prescriptionPrint = $this->db->select(
+    //         'SELECT p.*, 
+    //             e.employee_name,
+    //             e.expertise
+    //      FROM prescriptions p
+    //      JOIN employees e ON e.id = p.doctor_id
+    //      WHERE  p.id = ?',
+    //         [$id]
+    //     )->fetch();
 
-        $items = [];
+    //     $items = [];
 
-        if ($prescriptionPrint) {
-            $items = $this->db->select(
-                'SELECT *
-         FROM prescription_items
-         WHERE prescription_id = ?
-         ORDER BY id ASC',
-                [$prescriptionPrint['id']]
-            )->fetchAll();
+    //     if ($prescriptionPrint) {
+    //         $items = $this->db->select(
+    //             'SELECT *
+    //      FROM prescription_items
+    //      WHERE prescription_id = ?
+    //      ORDER BY id ASC',
+    //             [$prescriptionPrint['id']]
+    //         )->fetchAll();
 
-            $tests = $this->db->select(
-                'SELECT r.*, t.test_name
-         FROM recommended r
-         JOIN tests t ON r.recommended = t.id
-         WHERE r.prescription_id = ?',
-                [$prescriptionPrint['id']]
-            )->fetchAll();
-        }
+    //         $tests = $this->db->select(
+    //             'SELECT r.*, t.test_name
+    //      FROM recommended r
+    //      JOIN tests t ON r.recommended = t.id
+    //      WHERE r.prescription_id = ?',
+    //             [$prescriptionPrint['id']]
+    //         )->fetchAll();
+    //     }
 
-        $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
+    //     $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
 
-        $intake_times = $this->db->select('SELECT intake_time FROM intake_times WHERE `status` = ?', [1])->fetchAll();
+    //     $intake_times = $this->db->select('SELECT intake_time FROM intake_times WHERE `status` = ?', [1])->fetchAll();
 
-        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
+    //     $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
 
-        $tests = $this->db->select('SELECT id, test_name FROM tests WHERE `status` = ?', [1])->fetchAll();
+    //     $tests = $this->db->select('SELECT id, test_name FROM tests WHERE `status` = ?', [1])->fetchAll();
 
-        $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
+    //     $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
 
-        $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
+    //     $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
-        $recommended = $this->db->select('
-                SELECT 
-                    r.id AS recommended_id,
-                    r.recommended AS test_id,
-                    t.test_name
-                FROM recommended r
-                JOIN tests t ON r.recommended = t.id
-                WHERE r.prescription_id = ?
-            ', [$prescriptionPrint['id']])->fetchAll();
+    //     $recommended = $this->db->select('
+    //             SELECT 
+    //                 r.id AS recommended_id,
+    //                 r.recommended AS test_id,
+    //                 t.test_name
+    //             FROM recommended r
+    //             JOIN tests t ON r.recommended = t.id
+    //             WHERE r.prescription_id = ?
+    //         ', [$prescriptionPrint['id']])->fetchAll();
 
-        require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
-    }
+
+    //     $drugListPre = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescriptionPrint['id']])->fetchAll();
+
+    //     require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
+    // }
 
     /////////////////// edit prescription ///////////////
 
