@@ -68,7 +68,7 @@ class Employee extends App
                 'parentPrescription' => ['addPrescription', 'showPrescription'],
                 'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
                 'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
-                'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription'],
+                'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription', 'tests'],
                 'prescriptionPrint' => null,
             ];
 
@@ -166,7 +166,7 @@ class Employee extends App
                 'parentPrescription' => ['addPrescription', 'showPrescription'],
                 'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
                 'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
-                'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription'],
+                'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription', 'tests'],
                 'parentPatients' => ['showPatients', 'addPatient'],
             ];
 

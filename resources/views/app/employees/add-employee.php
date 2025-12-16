@@ -180,9 +180,9 @@
                                 </label>
                             </div>
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
-                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="intakeInstructions">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="tests">
                                     <span> مدیریت آزمایشات</span>
-                                    <input type="checkbox" name="intakeInstructions" id="intakeInstructions" class="w20 p0 m0 h22">
+                                    <input type="checkbox" name="tests" id="tests" class="w20 p0 m0 h22">
                                 </label>
                             </div>
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
