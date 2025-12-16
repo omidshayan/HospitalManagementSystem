@@ -4,7 +4,6 @@
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/search.php');
-    $singlePrint = $settings['single_print'];
     ?>
 
     <!-- Start content -->
@@ -14,100 +13,96 @@
         <div class="d-flex alpha-container">
 
             <!-- patient infos -->
-            <?php
-            if ($singlePrint == 2) { ?>
-                <div class="patient-container">
-                    <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
-                        <div class="center fs14">اطلاعات مریض</div>
-                        <div class="insert">
-                            <div class="inputs d-flex">
-                                <div class="one">
-                                    <div class="label-form  fs14"> نام مریض <?= _star ?></div>
-                                    <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
-                                </div>
-                            </div>
-                            <div class="inputs d-flex mb3">
-                                <div class="one">
-                                    <div class="label-form fs14"> سن مریض <?= _star ?></div>
-                                    <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
-                                    <input type="hidden" name="birth_year" id="birthYearInput">
-                                </div>
-                            </div>
-                            <div class="">
-                                <span class="fs14">سال تولد: </span>
-                                <strong id="birthYear"></strong>
-                            </div>
-                            <div class="inputs d-flex">
-                                <div class="one">
-                                    <div class="label-form fs14"> نام پدر </div>
-                                    <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
-                                </div>
-                            </div>
-
-                            <div class="inputs d-flex">
-                                <div class="one">
-                                    <div class="label-form fs14"> جنسیت </div>
-                                    <select name="gender">
-                                        <option value="آقا">آقا</option>
-                                        <option value="خانم">خانم</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="inputs d-flex">
-                                <div class="one">
-                                    <div class="label-form fs14"> شماره موبایل </div>
-                                    <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
-                                </div>
-                            </div>
-
-                            <!-- bp ... -->
-                            <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
-                            <div class="accordion-content-pre w100">
-                                <div class="child-accordioin w90d">
-                                    <div class="insert dir-left mt5">
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="bp" placeholder=" Blood Pressure  ">
-                                        </div>
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="pr" placeholder=" Pulse Rate  ">
-                                        </div>
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="rr" placeholder=" Respiratory Rate  ">
-                                        </div>
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="temp" placeholder=" Temperature  ">
-                                        </div>
-                                        <div class="one m-auto w97d mb3">
-                                            <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- diagnosis -->
-                            <div class="accordion-title color-orange">تشخیص داکتر</div>
-                            <div class="accordion-content-pre w100">
-                                <div class="child-accordioin w90d">
-                                    <div class="insert mt5">
-                                        <div class="one m-auto w97d mb3">
-                                            <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="center mt20">
-                                <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
-                                    استعلام مریض
-                                </a>
+            <div class="patient-container">
+                <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
+                    <div class="center fs14">اطلاعات مریض</div>
+                    <div class="insert">
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form  fs14"> نام مریض <?= _star ?></div>
+                                <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
                             </div>
                         </div>
-                        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                    </form>
-                </div>
-            <?php }
-            ?>
+                        <div class="inputs d-flex mb3">
+                            <div class="one">
+                                <div class="label-form fs14"> سن مریض <?= _star ?></div>
+                                <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
+                                <input type="hidden" name="birth_year" id="birthYearInput">
+                            </div>
+                        </div>
+                        <div class="">
+                            <span class="fs14">سال تولد: </span>
+                            <strong id="birthYear"></strong>
+                        </div>
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form fs14"> نام پدر </div>
+                                <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                            </div>
+                        </div>
+
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form fs14"> جنسیت </div>
+                                <select name="gender">
+                                    <option value="آقا">آقا</option>
+                                    <option value="خانم">خانم</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form fs14"> شماره موبایل </div>
+                                <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
+                            </div>
+                        </div>
+
+                        <!-- bp ... -->
+                        <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
+                        <div class="accordion-content-pre w100">
+                            <div class="child-accordioin w90d">
+                                <div class="insert dir-left mt5">
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="bp" placeholder=" Blood Pressure  ">
+                                    </div>
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="pr" placeholder=" Pulse Rate  ">
+                                    </div>
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="rr" placeholder=" Respiratory Rate  ">
+                                    </div>
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="temp" placeholder=" Temperature  ">
+                                    </div>
+                                    <div class="one m-auto w97d mb3">
+                                        <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- diagnosis -->
+                        <div class="accordion-title color-orange">تشخیص داکتر</div>
+                        <div class="accordion-content-pre w100">
+                            <div class="child-accordioin w90d">
+                                <div class="insert mt5">
+                                    <div class="one m-auto w97d mb3">
+                                        <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="center mt20">
+                            <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
+                                استعلام مریض
+                            </a>
+                        </div>
+                    </div>
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
+                </form>
+            </div>
 
             <!-- select details drug -->
             <div class="drug-container">
@@ -230,13 +225,11 @@
                         <span><?= (!empty($drugList)) ? 'لیست دواها' : '' ?></span>
                         <?php
                         if (empty($drugList) && empty($recommended)) { ?>
+
                             <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">حذف نسخه</a>
                         <?php }
                         ?>
                     </div>
-                    <?php
-                        if($singlePrint === 1){}
-                    ?>
                     <div>
                         <?= $drugList || $recommended ? '<a href="' . url('close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ثبت نسخه</a>' : '' ?>
                     </div>

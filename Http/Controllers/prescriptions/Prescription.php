@@ -391,9 +391,48 @@ class Prescription extends App
         ];
 
         $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
+
+        if ($settings['single_print'] == 1) {
+        }
         $this->flashMessage('success', _success);
     }
 
+    public function singlePrint($id)
+    {
+        $this->middleware(true, true, 'prescriptionPrint', true);
+
+        $prescription = $this->db->select(
+            'SELECT p.*, 
+                e.employee_name,
+                e.expertise
+         FROM prescriptions p
+         JOIN employees e ON e.id = p.doctor_id
+         WHERE  p.id = ?',
+            [$id]
+        )->fetch();
+
+        $items = [];
+
+        if ($prescription) {
+            $items = $this->db->select(
+                'SELECT *
+         FROM prescription_items
+         WHERE prescription_id = ?
+         ORDER BY id ASC',
+                [$prescription['id']]
+            )->fetchAll();
+
+            $tests = $this->db->select(
+                'SELECT r.*, t.test_name
+         FROM recommended r
+         JOIN tests t ON r.recommended = t.id
+         WHERE r.prescription_id = ?',
+                [$prescription['id']]
+            )->fetchAll();
+        }
+
+        require_once(BASE_PATH . '/resources/views/app/prescriptions/show-prescription-item.php');
+    }
 
     /////////////////// edit prescription ///////////////
 
