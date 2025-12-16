@@ -38,8 +38,6 @@ class Prescription extends App
 
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
-        $settings = $this->db->select('SELECT single_print FROM settings')->fetch();
-
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
 
         if ($prescription) {
@@ -376,6 +374,8 @@ class Prescription extends App
         //     'type' => 1,
         // ];
         // $this->reports->updateDailyReports($dailyReports);
+
+        $settings = $this->db->select('SELECT single_print FROM settings')->fetch();
 
         $preInfos = [
             'patient_id' => $userId,
