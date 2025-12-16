@@ -26,6 +26,7 @@ uri('close-prescription-store/{id}', 'App\Prescription', 'closePrescriptionStore
 
 
 // uri('close-prescription', 'App\Prescription', 'test', 'POST');
+uri('single-prescriptions/print', 'App\Prescription', 'Single');
 
 
 // patient Inquiry
