@@ -230,12 +230,12 @@
                         <span><?= (!empty($drugList)) ? 'لیست دواها' : '' ?></span>
                         <?php
                         if (empty($drugList) && empty($recommended)) { ?>
-
                             <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">حذف نسخه</a>
                         <?php }
                         ?>
                     </div>
                     <div>
+                        
                         <?= $drugList || $recommended ? '<a href="' . url('close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ثبت نسخه</a>' : '' ?>
                     </div>
                 </div>
@@ -400,6 +400,7 @@
     <script>
         $(document).ready(function() {
 
+            const SINGLE_PRINT = <?= (int)$singlePrint ?>;
             // close prescription
             document.getElementById('closePrescriptionBtn').addEventListener('click', function(e) {
                 e.preventDefault();

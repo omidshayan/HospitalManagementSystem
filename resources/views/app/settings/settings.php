@@ -69,8 +69,8 @@ include_once('resources/views/scripts/activeNotActive.php');
         <div class="allow-invoice d-flex justify-between">
             <span>
                 چاپ نسخه در پنل داکتر
-                <span id="sellStatus" class="status-text <?= ($settings['single_drug'] == 1) ? 'color-green' : 'color-orange' ?>">
-                    (<?= ($settings['single_drug'] == 1) ? 'فعال' : 'غیر فعال' ?>)
+                <span id="sellStatus" class="status-text <?= ($settings['single_print'] == 1) ? 'color-green' : 'color-orange' ?>">
+                    (<?= ($settings['single_print'] == 1) ? 'فعال' : 'غیر فعال' ?>)
                 </span>
                 <span class="tool-c">
                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ include_once('resources/views/scripts/activeNotActive.php');
                     data-false-text="(غیر فعال)"
                     data-true-class="color-green"
                     data-false-class="color-orange"
-                    <?= ($settings['single_drug'] == 1) ? 'checked' : '' ?>>
+                    <?= ($settings['single_print'] == 1) ? 'checked' : '' ?>>
                 <span class="m-slider"></span>
             </label>
         </div>
