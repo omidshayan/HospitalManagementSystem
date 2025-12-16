@@ -25,9 +25,6 @@ uri('delete-prescription/{id}', 'App\Prescription', 'deletePrescription');
 uri('close-prescription-store/{id}', 'App\Prescription', 'closePrescriptionStore', 'POST');
 
 
-// uri('close-prescription', 'App\Prescription', 'test', 'POST');
-uri('single-prescriptions/print', 'App\Prescription', 'Single');
-
 
 // patient Inquiry
 uri('patient-inquiry', 'App\Prescription', 'patientInquiry');
