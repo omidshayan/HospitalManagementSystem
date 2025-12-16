@@ -89,7 +89,7 @@ include_once('resources/views/scripts/activeNotActive.php');
                 <input
                     type="checkbox"
                     class="setting-toggle"
-                    data-url="change-status-sale-invoice"
+                    data-url="change-status-pre-print"
                     data-target="#sellStatus"
                     data-true-text="(فعال)"
                     data-false-text="(غیر فعال)"

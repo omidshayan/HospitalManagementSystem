@@ -11,3 +11,4 @@ uri('change-status-years/{id}', 'App\Setting', 'changeStatusYears', 'POST');
 
 
 uri('pre-print-settings', 'App\Setting', 'prePrintSettings');
+uri('change-status-pre-print', 'App\Setting', 'changeStatusPrePrint', 'POST');

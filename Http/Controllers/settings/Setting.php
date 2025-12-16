@@ -83,7 +83,7 @@ class Setting extends App
         require_once(BASE_PATH . '/resources/views/app/settings/settings.php');
     }
 
-    public function changeStatusSaleInvoice()
+    public function changeStatusPrePrint()
     {
         $this->middleware(true, true, 'general');
         $row = $this->db->select('SELECT id, sell_any_situation FROM settings')->fetch();
