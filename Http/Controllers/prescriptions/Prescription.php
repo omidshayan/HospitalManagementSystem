@@ -38,7 +38,7 @@ class Prescription extends App
 
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
-        $settings = $this->db->select('SELECT id, single_drug FROM settings')->fetch();
+        $settings = $this->db->select('SELECT id, single_print FROM settings')->fetch();
 
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
 

@@ -13,6 +13,11 @@
         <div class="d-flex alpha-container">
 
             <!-- patient infos -->
+             <?php
+                if($settings['single-print']){
+                    
+                }
+             ?>
             <div class="patient-container">
                 <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
                     <div class="center fs14">اطلاعات مریض</div>
