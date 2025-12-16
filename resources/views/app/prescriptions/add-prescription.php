@@ -327,25 +327,26 @@
         ?>
     </div>
 
-    <?php if (!empty($prescription)) : ?>
 
-        <div class="center bg-whith">
+    <?php if (!empty($prescriptionPrint)) : ?>
+
+        <div class="center bg-whith d-none">
             <div class="item-print p10">
 
                 <!-- patient infos -->
                 <div class="p-patient-infos">
                     <span>
                         <span class="fs14">نام مریض:</span>
-                        <span class="bold"> <?= $prescription['patient_name'] ?></span>
+                        <span class="bold"> <?= $prescriptionPrint['patient_name'] ?></span>
                     </span>
                     <span>
                         <span class="fs14">سن: </span>
-                        <span class="bold"><?= $this->convertEnNumber($this->getAge($prescription['birth_year'])) ?></span>
+                        <span class="bold"><?= $this->convertEnNumber($this->getAge($prescriptionPrint['birth_year'])) ?></span>
                     </span>
 
                     <span>
                         <span class="fs14">تاریخ مراجعه: </span>
-                        <span class="bold"><?= jdate('Y/m/d', strtotime($prescription['created_at'])) ?></span>
+                        <span class="bold"><?= jdate('Y/m/d', strtotime($prescriptionPrint['created_at'])) ?></span>
                     </span>
                 </div>
 
@@ -354,7 +355,6 @@
 
                     <!-- drugs list -->
                     <div class="p-drugs-print pr">
-
                         <table class="pa t0 w100">
                             <thead>
                                 <tr class="fs12 p-color-title">
@@ -384,8 +384,7 @@
                             </tbody>
                         </table>
 
-                        <div class="fs14"><?= $prescription['diagnosis'] ?></div>
-
+                        <div class="fs14"><?= $prescriptionPrint['diagnosis'] ?></div>
                     </div>
 
                     <!-- left infos -->
@@ -393,36 +392,36 @@
 
                         <!-- doctor infos -->
                         <div class="p-doctor-infos">
-                            <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
-                            <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
+                            <h3>نام داکتر: <?= $prescriptionPrint['employee_name'] ?></h3>
+                            <span class="fs14 bold">تخصص: <?= $prescriptionPrint['expertise'] ?></span>
                             <hr class="hrp">
                         </div>
 
                         <!-- infos -->
                         <div class="p-vital-signs fs12">
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['bp'] ?></span>
+                                <span><?= $prescriptionPrint['bp'] ?></span>
                                 <span>BP</span>
                             </div>
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['pr'] ?></span>
+                                <span><?= $prescriptionPrint['pr'] ?></span>
                                 <span>Pr</span>
                             </div>
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['rr'] ?></span>
+                                <span><?= $prescriptionPrint['rr'] ?></span>
                                 <span>Rr</span>
                             </div>
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['temp'] ?></span>
+                                <span><?= $prescriptionPrint['temp'] ?></span>
                                 <span>TEMP</span>
                             </div>
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['spo2'] ?></span>
+                                <span><?= $prescriptionPrint['spo2'] ?></span>
                                 <span>SPO₂</span>
                             </div>
                         </div>
 
-                        <!-- tests -->
+                        <!-- Recommended -->
                         <ul class="p-recommended fs12">
                             <?php
                             if (!empty($tests)) {
@@ -439,8 +438,39 @@
 
             </div>
         </div>
-
+        <script>
+            window.onload = function() {
+                setTimeout(() => {
+                    printReceipt();
+                }, 200);
+            };
+        </script>
     <?php endif; ?>
+
+    <div class="center mt10 btn w120 color bold p20" onclick="printReceipt()">
+        چاپ مجدد
+    </div>
+
+
+    <!-- print -->
+    <script>
+        function printReceipt() {
+            if (window.chrome && window.chrome.webview) {
+                window.chrome.webview.hostObjects.bridge.PrintHtml(document.body.innerHTML);
+            } else {
+                const original = document.body.innerHTML;
+                const printArea = document.querySelector('.item-print').outerHTML;
+
+                document.body.innerHTML = printArea;
+
+                window.print();
+
+                document.body.innerHTML = original;
+            }
+        }
+    </script>
+
+
     <!-- estelam and change age -->
     <script>
         const patientName = document.getElementById('patient_name');
@@ -589,21 +619,5 @@
         });
     </script>
 
-    <!-- print -->
-    <script>
-        function printReceipt() {
-            if (window.chrome && window.chrome.webview) {
-                window.chrome.webview.hostObjects.bridge.PrintHtml(document.body.innerHTML);
-            } else {
-                const original = document.body.innerHTML;
-                const printArea = document.querySelector('.item-print').outerHTML;
 
-                document.body.innerHTML = printArea;
-
-                window.print();
-
-                document.body.innerHTML = original;
-            }
-        }
-    </script>
     <?php include_once('resources/views/layouts/footer.php') ?>
