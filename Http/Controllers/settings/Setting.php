@@ -86,15 +86,15 @@ class Setting extends App
     public function changeStatusPrePrint()
     {
         $this->middleware(true, true, 'general');
-        $row = $this->db->select('SELECT id, sell_any_situation FROM settings')->fetch();
+        $row = $this->db->select('SELECT id, single_drug FROM settings')->fetch();
 
         if (!$row) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
 
-        $newStatus = ($row['sell_any_situation'] == 1) ? 2 : 1;
-        $this->db->update('settings', $row['id'], ['sell_any_situation'], [$newStatus]);
+        $newStatus = ($row['single_drug'] == 1) ? 2 : 1;
+        $this->db->update('settings', $row['id'], ['single_drug'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
 }
