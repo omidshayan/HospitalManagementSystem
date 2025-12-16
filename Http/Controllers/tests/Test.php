@@ -7,8 +7,7 @@ class Test extends App
     //  intakeTimes page
     public function tests()
     {
-        // NOTE add test to permissions 
-        $this->middleware(true, true, 'intakeTime', true);
+        $this->middleware(true, true, 'tests', true);
         $tests = $this->db->select('SELECT * FROM tests')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/tests/tests.php');
     }
