@@ -431,7 +431,20 @@ class Prescription extends App
             )->fetchAll();
         }
 
-        require_once(BASE_PATH . '/resources/views/app/prescriptions/show-prescription-item.php');
+        $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
+
+        $intake_times = $this->db->select('SELECT intake_time FROM intake_times WHERE `status` = ?', [1])->fetchAll();
+
+        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
+
+        $tests = $this->db->select('SELECT id, test_name FROM tests WHERE `status` = ?', [1])->fetchAll();
+
+        $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
+
+        $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
+
+
+        require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
     }
 
     /////////////////// edit prescription ///////////////
