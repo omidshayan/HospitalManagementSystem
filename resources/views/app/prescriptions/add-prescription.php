@@ -400,7 +400,6 @@
     <script>
         $(document).ready(function() {
 
-            const SINGLE_PRINT = <?= (int)$singlePrint ?>;
             // close prescription
             document.getElementById('closePrescriptionBtn').addEventListener('click', function(e) {
                 e.preventDefault();
