@@ -328,7 +328,7 @@
     </div>
 
     <?php
-    if (!empty($prescriptionl)) { ?>
+    if (!empty($prescriptionPrintl)) { ?>
 
 
 
@@ -339,16 +339,16 @@
                 <div class="p-patient-infos">
                     <span>
                         <span class="fs14">نام مریض:</span>
-                        <span class="bold"> <?= $prescription['patient_name'] ?></span>
+                        <span class="bold"> <?= $prescriptionPrintl['patient_name'] ?></span>
                     </span>
                     <span>
                         <span class="fs14">سن: </span>
-                        <span class="bold"><?= $this->convertEnNumber($this->getAge($prescription['birth_year'])) ?></span>
+                        <span class="bold"><?= $this->convertEnNumber($this->getAge($prescriptionPrintl['birth_year'])) ?></span>
                     </span>
 
                     <span>
                         <span class="fs14">تاریخ مراجعه: </span>
-                        <span class="bold"><?= jdate('Y/m/d', strtotime($prescription['created_at'])) ?></span>
+                        <span class="bold"><?= jdate('Y/m/d', strtotime($prescriptionPrintl['created_at'])) ?></span>
                     </span>
                 </div>
 
@@ -386,7 +386,7 @@
                             </tbody>
                         </table>
 
-                        <div class="fs14"><?= $prescription['diagnosis'] ?></div>
+                        <div class="fs14"><?= $prescriptionPrintl['diagnosis'] ?></div>
                     </div>
 
                     <!-- left infos -->
@@ -394,31 +394,31 @@
 
                         <!-- doctor infos -->
                         <div class="p-doctor-infos">
-                            <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
-                            <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
+                            <h3>نام داکتر: <?= $prescriptionPrintl['employee_name'] ?></h3>
+                            <span class="fs14 bold">تخصص: <?= $prescriptionPrintl['expertise'] ?></span>
                             <hr class="hrp">
                         </div>
 
                         <!-- infos -->
                         <div class="p-vital-signs fs12">
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['bp'] ?></span>
+                                <span><?= $prescriptionPrintl['bp'] ?></span>
                                 <span>BP</span>
                             </div>
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['pr'] ?></span>
+                                <span><?= $prescriptionPrintl['pr'] ?></span>
                                 <span>Pr</span>
                             </div>
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['rr'] ?></span>
+                                <span><?= $prescriptionPrintl['rr'] ?></span>
                                 <span>Rr</span>
                             </div>
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['temp'] ?></span>
+                                <span><?= $prescriptionPrintl['temp'] ?></span>
                                 <span>TEMP</span>
                             </div>
                             <div class="d-flex justify-between pr8">
-                                <span><?= $prescription['spo2'] ?></span>
+                                <span><?= $prescriptionPrintl['spo2'] ?></span>
                                 <span>SPO₂</span>
                             </div>
                         </div>
@@ -426,9 +426,9 @@
                         <!-- Recommended -->
                         <ul class="p-recommended fs12">
                             <?php
-                            if (!empty($tests)) {
-                                foreach ($tests as $test) { ?>
-                                    <li class="ol"><?= $test['test_name'] ?> </li>
+                            if (!empty($testsp)) {
+                                foreach ($testsp as $testp) { ?>
+                                    <li class="ol"><?= $testp['test_name'] ?> </li>
                             <?php }
                             }
                             ?>

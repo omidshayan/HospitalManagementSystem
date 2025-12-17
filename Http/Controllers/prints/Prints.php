@@ -46,56 +46,56 @@ class Prints extends App
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionsPrint.php');
     }
 
-public function getNextPrescription()
-{
-    header('Content-Type: application/json; charset=utf-8');
+    public function getNextPrescription()
+    {
+        header('Content-Type: application/json; charset=utf-8');
 
-    $prescription = $this->db->select(
-        'SELECT p.*, e.employee_name, e.expertise
+        $prescription = $this->db->select(
+            'SELECT p.*, e.employee_name, e.expertise
          FROM prescriptions p
          JOIN employees e ON e.id = p.doctor_id
          WHERE p.status = ?
          ORDER BY p.id ASC
          LIMIT 1',
-        [2]
-    )->fetch();
+            [2]
+        )->fetch();
 
-    if ($prescription) {
+        if ($prescription) {
 
-        // تغییر وضعیت نسخه
-        $this->db->update('prescriptions', $prescription['id'], ['status'], [3]);
+            // تغییر وضعیت نسخه
+            $this->db->update('prescriptions', $prescription['id'], ['status'], [3]);
 
-        // داروها
-        $items = $this->db->select(
-            'SELECT *
+            // داروها
+            $items = $this->db->select(
+                'SELECT *
              FROM prescription_items
              WHERE prescription_id = ?
              ORDER BY id ASC',
-            [$prescription['id']]
-        )->fetchAll();
+                [$prescription['id']]
+            )->fetchAll();
 
-        // ✅ آزمایش‌ها
-        $tests = $this->db->select(
-            'SELECT r.id, t.test_name
+            // ✅ آزمایش‌ها
+            $tests = $this->db->select(
+                'SELECT r.id, t.test_name
              FROM recommended r
              JOIN tests t ON r.recommended = t.id
              WHERE r.prescription_id = ?',
-            [$prescription['id']]
-        )->fetchAll();
+                [$prescription['id']]
+            )->fetchAll();
 
-        echo json_encode([
-            'success' => true,
-            'prescription' => $prescription,
-            'items' => $items,
-            'tests' => $tests // ⭐ خیلی مهم
-        ], JSON_UNESCAPED_UNICODE);
+            echo json_encode([
+                'success' => true,
+                'prescription' => $prescription,
+                'items' => $items,
+                'tests' => $tests // ⭐ خیلی مهم
+            ], JSON_UNESCAPED_UNICODE);
 
+            exit;
+        }
+
+        echo json_encode(['success' => false]);
         exit;
     }
-
-    echo json_encode(['success' => false]);
-    exit;
-}
 
 
 
