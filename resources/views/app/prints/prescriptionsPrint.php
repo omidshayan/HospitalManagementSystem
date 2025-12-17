@@ -78,7 +78,7 @@ include_once('public/alerts/toastr.php');
 
     </div>
 
-    <!-- <script>
+     <script>
         const PRESC_URL = "<?= url('getNextPrescription') ?>";
 
         let isPrinting = false;
@@ -279,7 +279,7 @@ include_once('public/alerts/toastr.php');
         setInterval(checkForPrescription, 2000);
 
         document.getElementById('checkPrescriptions').addEventListener('click', checkForPrescription);
-    </script> -->
+    </script>
 
 </div>
 <!-- End content -->
