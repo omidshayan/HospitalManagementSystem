@@ -325,12 +325,11 @@
             </div>
         <?php }
         ?>
+        
     </div>
 
     <?php
     if (!empty($prescriptionPrintl)) { ?>
-
-
 
         <div class="center bg-whith">
             <div class="item-print p10">
@@ -440,6 +439,7 @@
 
             </div>
         </div>
+
         <script>
             window.onload = function() {
                 setTimeout(() => {
@@ -467,7 +467,7 @@
 
     <?php }
     ?>
-    <!-- estelam and change age -->
+
     <script>
         const patientName = document.getElementById('patient_name');
         const ageInput = document.getElementById('ageInput');
