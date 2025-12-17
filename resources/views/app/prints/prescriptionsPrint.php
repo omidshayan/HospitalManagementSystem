@@ -146,7 +146,7 @@ include_once('public/alerts/toastr.php');
 
         function renderPrescription(prescription, items, tests) {
             return `
-        <div class="item-print p10">
+            <div class="item-print p10">
 
             <div class="p-patient-infos">
                 <span>
@@ -234,9 +234,8 @@ include_once('public/alerts/toastr.php');
                 </div>
             </div>
         </div>
-    `;
+        `;
         }
-
 
         function printReceipt() {
             if (window.chrome && window.chrome.webview) {
