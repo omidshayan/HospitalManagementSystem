@@ -5,12 +5,10 @@ include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
 
-
 <div class="content">
     <div class="content-title">نمایش نسخه‌ها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
-
 
     <!-- show -->
     <div class="box-container">
