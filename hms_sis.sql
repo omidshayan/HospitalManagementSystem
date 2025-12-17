@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 13, 2025 at 04:15 PM
+-- Generation Time: Dec 17, 2025 at 07:22 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `csrf_token_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `csrf_token_logs`
@@ -193,7 +193,34 @@ INSERT INTO `csrf_token_logs` (`id`, `message`, `ip_address`, `created_at`, `upd
 (27, 'Invalid or missing CSRF token.', '::1', '2025-12-12 16:28:32', NULL),
 (28, 'Invalid or missing CSRF token.', '::1', '2025-12-12 16:29:07', NULL),
 (29, 'Invalid or missing CSRF token.', '::1', '2025-12-12 16:31:08', NULL),
-(30, 'Invalid or missing CSRF token.', '::1', '2025-12-12 16:32:03', NULL);
+(30, 'Invalid or missing CSRF token.', '::1', '2025-12-12 16:32:03', NULL),
+(31, 'Invalid or missing CSRF token.', '127.0.0.1', '2025-12-15 18:59:28', NULL),
+(32, 'Invalid or missing CSRF token.', '::1', '2025-12-16 00:17:04', NULL),
+(33, 'Invalid or missing CSRF token.', '::1', '2025-12-16 00:41:18', NULL),
+(34, 'Invalid or missing CSRF token.', '::1', '2025-12-16 00:51:49', NULL),
+(35, 'Invalid or missing CSRF token.', '::1', '2025-12-16 00:56:36', NULL),
+(36, 'Invalid or missing CSRF token.', '::1', '2025-12-16 01:21:25', NULL),
+(37, 'Invalid or missing CSRF token.', '::1', '2025-12-16 20:45:21', NULL),
+(38, 'Invalid or missing CSRF token.', '::1', '2025-12-16 21:24:17', NULL),
+(39, 'Invalid or missing CSRF token.', '::1', '2025-12-16 21:24:55', NULL),
+(40, 'Invalid or missing CSRF token.', '::1', '2025-12-16 21:25:51', NULL),
+(41, 'Invalid or missing CSRF token.', '::1', '2025-12-16 22:35:46', NULL),
+(42, 'Invalid or missing CSRF token.', '::1', '2025-12-16 22:50:32', NULL),
+(43, 'Invalid or missing CSRF token.', '::1', '2025-12-16 22:52:12', NULL),
+(44, 'Invalid or missing CSRF token.', '::1', '2025-12-16 23:01:41', NULL),
+(45, 'Invalid or missing CSRF token.', '::1', '2025-12-16 23:02:08', NULL),
+(46, 'Invalid or missing CSRF token.', '::1', '2025-12-17 00:35:15', NULL),
+(47, 'Invalid or missing CSRF token.', '::1', '2025-12-17 00:41:57', NULL),
+(48, 'Invalid or missing CSRF token.', '::1', '2025-12-17 01:10:22', NULL),
+(49, 'Invalid or missing CSRF token.', '::1', '2025-12-17 01:37:56', NULL),
+(50, 'Invalid or missing CSRF token.', '::1', '2025-12-17 01:38:17', NULL),
+(51, 'Invalid or missing CSRF token.', '::1', '2025-12-17 01:39:12', NULL),
+(52, 'Invalid or missing CSRF token.', '::1', '2025-12-17 01:39:50', NULL),
+(53, 'Invalid or missing CSRF token.', '::1', '2025-12-17 01:40:32', NULL),
+(54, 'Invalid or missing CSRF token.', '::1', '2025-12-17 01:40:46', NULL),
+(55, 'Invalid or missing CSRF token.', '::1', '2025-12-17 01:41:59', NULL),
+(56, 'Invalid or missing CSRF token.', '::1', '2025-12-17 01:42:11', NULL),
+(57, 'Invalid or missing CSRF token.', '127.0.0.1', '2025-12-17 01:49:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -289,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `drugs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `drugs`
@@ -411,12 +438,18 @@ INSERT INTO `drugs` (`id`, `name`, `generic_name`, `category_id`, `strength`, `u
 (113, 'Itraconazole', NULL, 'تاپلت', NULL, 'عدد', NULL, NULL, NULL, NULL, 1, '', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
 (114, 'Amphotericin B', NULL, 'سیرم', NULL, 'بسته', NULL, NULL, NULL, NULL, 1, '', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
 (115, 'Doxycycline', NULL, 'گولی', NULL, 'عدد', NULL, NULL, NULL, NULL, 1, '', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
-(116, 'Clarithromycin', NULL, 'تاپلت', NULL, 'بسته', NULL, NULL, NULL, NULL, 1, '', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
+(116, 'Clarithromycin', NULL, 'تاپلت', NULL, 'بسته', NULL, NULL, NULL, NULL, 2, '', '2025-01-01 00:00:00', '2025-12-14 03:14:47'),
 (117, 'Azithromycin', NULL, 'گولی', NULL, 'کارتن', NULL, NULL, NULL, NULL, 1, '', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
 (118, 'Tobramycin', NULL, 'سیرم', NULL, 'عدد', NULL, NULL, NULL, NULL, 1, '', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
-(119, 'Linezolid', NULL, 'تاپلت', NULL, 'بسته', NULL, NULL, NULL, NULL, 1, '', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
+(119, 'Linezolid', NULL, 'تاپلت', NULL, 'بسته', NULL, NULL, NULL, NULL, 1, '', '2025-01-01 00:00:00', '2025-12-14 03:40:34'),
 (120, 'Meropenem', NULL, 'سیرم', NULL, 'کارتن', NULL, NULL, NULL, NULL, 1, '', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
-(121, 'ostamin', NULL, '3', NULL, '8', NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-13 02:05:44', '2025-12-13 02:05:54');
+(121, 'ostamin', NULL, '3', NULL, '8', NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-13 02:05:44', '2025-12-14 03:41:08'),
+(122, 'amofdsf d500 ml', '', '3', NULL, '8', '', '', NULL, NULL, 1, 'احمد هاشمی', '2025-12-15 19:28:38', NULL),
+(123, 'amo sadlfjsadf asdf 250ml', '', '4', NULL, '9', '', '', NULL, NULL, 1, 'احمد هاشمی', '2025-12-15 19:28:49', NULL),
+(124, 'relief 500m', '', '3', NULL, '9', '', '', NULL, NULL, 1, 'احمد هاشمی', '2025-12-16 11:46:48', NULL),
+(125, 'relief 250m', '', '3', NULL, '9', '', '', NULL, NULL, 1, 'احمد هاشمی', '2025-12-16 11:47:20', NULL),
+(126, 'sadfadsfsadf sadflsjdf  500ml', '', '3', NULL, '9', '', '', NULL, NULL, 1, 'احمد هاشمی', '2025-12-17 02:04:59', NULL),
+(127, 'fdadsfsafsdf sadfasdf 500ml', '', '3', NULL, '9', '', '', NULL, NULL, 1, 'احمد هاشمی', '2025-12-17 02:10:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -434,7 +467,7 @@ CREATE TABLE IF NOT EXISTS `drug_categories` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `drug_categories`
@@ -443,7 +476,9 @@ CREATE TABLE IF NOT EXISTS `drug_categories` (
 INSERT INTO `drug_categories` (`id`, `cat_name`, `description`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
 (3, 'تابلت', '', 1, 'ali', '2025-12-07 12:35:59', NULL),
 (4, 'سیرم', '', 1, 'ali', '2025-12-07 12:36:04', NULL),
-(5, 'کپسول', NULL, 1, 'ali', '2025-12-07 12:36:10', '2025-12-09 20:00:08');
+(5, 'کپسول', NULL, 1, 'ali', '2025-12-07 12:36:10', '2025-12-09 20:00:08'),
+(6, 'sadfdsf', '', 1, 'احمد هاشمی', '2025-12-17 02:04:34', NULL),
+(7, 'سشیبسیب', '', 1, 'احمد هاشمی', '2025-12-17 02:10:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -480,25 +515,29 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `employee_name` (`employee_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `employees`
 --
 
 INSERT INTO `employees` (`id`, `branch_id`, `employee_name`, `father_name`, `phone`, `password`, `email`, `address`, `position`, `role`, `verify_token`, `forgot_token`, `forgot_token_expire`, `remember_token`, `expire_remember_token`, `expertise`, `image`, `description`, `salary_price`, `who_it`, `state`, `super_admin`, `notif`, `created_at`, `updated_at`) VALUES
-(1, 100, 'کاظم حسینی', NULL, '11', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '4156cd345269a805a6dd8d7971bfe71df6209bc2949a85705ecbab56648f5321', '3', 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-11 15:56:40'),
+(1, 100, 'کاظم حسینی', NULL, '11', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', NULL, NULL, 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-15 18:42:08'),
 (2, 100, 'احمد هاشمی', NULL, '0799458245', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '4156cd345269a805a6dd8d7971bfe71df6209bc2949a85705ecbab56648f5321', '3', 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-11 15:56:40'),
 (3, 100, 'جمشید حیدری', NULL, '0786452145', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '4156cd345269a805a6dd8d7971bfe71df6209bc2949a85705ecbab56648f5321', '3', 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-11 15:56:40'),
 (4, 100, 'رضا طاهری', NULL, '0700124584', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '4156cd345269a805a6dd8d7971bfe71df6209bc2949a85705ecbab56648f5321', '3', 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-11 15:56:40'),
 (5, 100, 'حسیب شیرزاد', NULL, '0728457852', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '4156cd345269a805a6dd8d7971bfe71df6209bc2949a85705ecbab56648f5321', '3', 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-11 15:56:40'),
-(6, 100, 'جواد عطایی', NULL, '0799652145', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '4156cd345269a805a6dd8d7971bfe71df6209bc2949a85705ecbab56648f5321', '3', 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-11 15:56:40'),
+(6, 100, 'جواد عطایی', NULL, '0799652145', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '4156cd345269a805a6dd8d7971bfe71df6209bc2949a85705ecbab56648f5321', '3', 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 2, 3, 2, '2024-09-01 23:53:55', '2025-12-14 03:39:28'),
 (149, 0, 'حسن رضایی', NULL, '0799999999', '$2y$10$/rBJVmIQFUIJ/CgvjMjHZ.und0NRQIuJA2VxXFC/XEED8MLfSk/SK', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, '', '2025-12-12-02-18-59_693b3c4ba0f10.jpg', '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-12 02:18:59', '2025-12-12 02:25:46'),
 (150, 0, 'حسن احمدی', NULL, '0788888888', '$2y$10$08VmLe.dDUmv2E4Gt9RRBubpgLe2G6vJCzKyXd6yNaIAYvLxqTpP2', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, '', NULL, '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-12 03:10:46', NULL),
 (151, 0, 'رضا احمدی', NULL, '0777888888', '$2y$10$JQb4cldY.cAZfrh/6rSqpu1C9xtKIB58awYlvyfhdxvbIx07tN9oi', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, 'فوق تخصص قلب', '2025-12-12-03-16-59_693b49e3a398b.jpg', '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-12 03:16:59', '2025-12-12 15:34:50'),
 (152, 0, 'رضا احمدی', NULL, '0785555555', '$2y$10$nxSrBOqTKbX1N.AOgmufXeL1MwB8zCDFxX71pZBvMzNO8LzffiNhK', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, '', NULL, '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-12 15:34:36', NULL),
-(153, 0, 'حسن احمدی', NULL, '0744444444', '$2y$10$eXuGS0ufO7HXY0ex9LF6WuOtvnwH5bq2N7rEzCWgyCLsokaI9CNM.', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, '', NULL, '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-12 15:37:35', '2025-12-13 20:43:42'),
-(154, 100, 'ادمین دمو', NULL, '12345', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '5cf2bae76c1af580698d5606a95b6e469a68300d56e75b24b1b8a04c24c6ff9e', '3', 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-13 20:43:53');
+(153, 0, 'حسن احمدی', NULL, '0744444444', '$2y$10$eXuGS0ufO7HXY0ex9LF6WuOtvnwH5bq2N7rEzCWgyCLsokaI9CNM.', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, '', NULL, '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-12 15:37:35', '2025-12-14 03:15:52'),
+(154, 100, 'ادمین دمو', NULL, '12345', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', NULL, NULL, 'متخصص گوش حلق بینی', '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-14 03:55:55'),
+(155, 0, 'محمد احمدی', NULL, '0766666666', '$2y$10$pYigrU23y3fu3FXo0zYPI.8EeGRLReHBiewCUoc.LCZl/BDbCIEu.', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, 'فوق تخصص جراحی', NULL, '', NULL, 'احمد هاشمی', 1, NULL, 1, '2025-12-15 18:41:55', '2025-12-16 16:32:44'),
+(156, 0, 'رضا هاشمی', NULL, '0741', '$2y$10$PYdMudKnCHAwj9twbAIG.OvEgK5mZSyipKo0j8/YCI3dx0LTsY6t2', '', '', 'تحویل دهی نسخه', 1, NULL, NULL, NULL, '36c9a3d7894436289e7310a55baf5a2f973cd654d355024fa2e23756911c8ab1', '1', '', NULL, '', NULL, 'احمد هاشمی', 1, NULL, 1, '2025-12-15 18:48:20', '2025-12-15 18:48:50'),
+(157, 0, 'احمد مرادی', NULL, '0793222222', '$2y$10$QU3AcxXsUezGsRFDjdQUu.tZ3GUNDOp2kjQWFE009K6Jq.2yTfbcK', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, 'فوق تخصص جراحی', NULL, '', NULL, 'احمد هاشمی', 1, NULL, 1, '2025-12-16 16:32:34', '2025-12-16 16:34:17'),
+(158, 0, 'تیمورشاه احمدی', NULL, '0700222222', '$2y$10$gNebdHVyxTwNTK6jD9y7hedFAEEfuL53baoAPvhbjd8uxPC5GDO/C', '', '', 'داکتر', 1, NULL, NULL, NULL, '980fab6a387b40d9a0f8d9b8501255bf0f4149cefecd667612e5cc8c29993c84', '1', 'فوق تخصص جراحی', NULL, '', NULL, 'احمد هاشمی', 1, NULL, 1, '2025-12-16 16:35:38', '2025-12-16 16:35:57');
 
 -- --------------------------------------------------------
 
@@ -596,7 +635,7 @@ CREATE TABLE IF NOT EXISTS `intake_times` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `intake_times`
@@ -605,7 +644,9 @@ CREATE TABLE IF NOT EXISTS `intake_times` (
 INSERT INTO `intake_times` (`id`, `intake_time`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
 (3, 'قبل از غذا', 1, 'کاظم حسینی', '2025-12-09 15:00:07', '2025-12-11 02:33:50'),
 (6, 'بعد از غذا', 1, 'کاظم حسینی', '2025-12-11 02:32:56', NULL),
-(7, 'هر شش ساعت', 1, 'کاظم حسینی', '2025-12-11 02:32:59', NULL);
+(7, 'هر شش ساعت', 1, 'کاظم حسینی', '2025-12-11 02:32:59', NULL),
+(8, 'همراه با غذا', 1, 'احمد هاشمی', '2025-12-15 18:54:15', NULL),
+(9, 'sadfsadfsd', 1, 'احمد هاشمی', '2025-12-17 02:06:23', NULL);
 
 -- --------------------------------------------------------
 
@@ -680,65 +721,18 @@ CREATE TABLE IF NOT EXISTS `not_access_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `not_access_logs`
 --
 
 INSERT INTO `not_access_logs` (`id`, `user_id`, `section_name`, `page_address`, `ip_address`, `user_agent`, `status`, `created_at`, `updated_at`) VALUES
-(22, 122, 'general', '/HospitalManagementSystem/patients', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0', 1, '2025-12-07 13:37:26', NULL),
-(23, 122, 'general', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0', 1, '2025-12-07 13:41:04', NULL),
-(24, 122, 'general', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0', 1, '2025-12-07 13:42:05', NULL),
-(25, 123, 'general', '/HospitalManagementSystem/', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0', 1, '2025-12-08 15:36:28', NULL),
-(26, 123, 'general', '/HospitalManagementSystem/', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0', 1, '2025-12-08 15:37:52', NULL),
-(27, 48, 'general', '/HospitalManagementSystem/employees', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-08 15:37:54', NULL),
-(28, 48, 'general', '/HospitalManagementSystem/employees', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-08 15:38:34', NULL),
-(29, 48, 'students', '/HospitalManagementSystem/manage-years', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-08 16:14:13', NULL),
-(30, 130, 'general', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0', 1, '2025-12-09 19:44:29', NULL),
-(31, 130, 'general', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0', 1, '2025-12-09 19:44:46', NULL),
-(32, 130, 'general', '/HospitalManagementSystem/prescription-print', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0', 1, '2025-12-09 19:44:47', NULL),
-(33, 130, 'general', '/HospitalManagementSystem/prescription-print', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0', 1, '2025-12-09 19:44:49', NULL),
-(34, 130, 'general', '/HospitalManagementSystem/profile', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0', 1, '2025-12-09 19:44:50', NULL),
-(35, 48, 'prescriptionPrint', '/HospitalManagementSystem/prescription-print', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-09 19:54:21', NULL),
-(36, 48, 'showPatients', '/HospitalManagementSystem/patients', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-09 20:13:50', NULL),
-(37, 48, 'showPatients', '/HospitalManagementSystem/patients', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-09 20:13:52', NULL),
-(38, 48, 'showPatients', '/HospitalManagementSystem/patients', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-09 20:14:01', NULL),
-(39, 48, 'showPatients', '/HospitalManagementSystem/patients', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-09 20:14:30', NULL),
-(40, 48, 'showPatients', '/HospitalManagementSystem/patients', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-09 20:14:33', NULL),
-(41, 48, 'patients', '/HospitalManagementSystem/patients', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-09 20:16:01', NULL),
-(42, 48, 'patients', '/HospitalManagementSystem/patients', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-09 20:16:03', NULL),
-(43, 48, 'patients', '/HospitalManagementSystem/patients', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 1, '2025-12-09 20:16:05', NULL),
-(44, 141, 'dashboard', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-09 23:55:35', NULL),
-(45, 141, 'dashboard', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-09 23:55:42', NULL),
-(46, 141, 'dashboard', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-09 23:55:43', NULL),
-(47, 142, 'general', '/HospitalManagementSystem/add-employee', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 00:00:54', NULL),
-(48, 142, 'general', '/HospitalManagementSystem/add-employee', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 00:00:56', NULL),
-(49, 142, 'general', '/HospitalManagementSystem/employees', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 00:00:59', NULL),
-(50, 142, 'general', '/HospitalManagementSystem/profile', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 00:01:15', NULL),
-(51, 142, 'general', '/HospitalManagementSystem/profile', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 00:02:23', NULL),
-(52, 142, 'general', '/HospitalManagementSystem/search-product-purchase', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 00:36:07', NULL),
-(53, 143, 'dashboard', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 01:41:56', NULL),
-(54, 143, 'dashboard', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 01:42:01', NULL),
-(55, 143, 'general', '/HospitalManagementSystem/profile', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 01:42:26', NULL),
-(56, 143, 'prescriptionPrint', '/HospitalManagementSystem/prescription-print', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 02:00:44', NULL),
-(57, 143, 'dashboard', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 02:00:46', NULL),
-(58, 143, 'general', '/HospitalManagementSystem/profile', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 02:00:52', NULL),
-(59, 143, 'addPrescription', '/HospitalManagementSystem/add-prescription', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 02:08:34', NULL),
-(60, 143, 'showDrugs', '/HospitalManagementSystem/drugs', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 02:10:40', NULL),
-(61, 143, 'showDrugs', '/HospitalManagementSystem/drugs', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 02:11:00', NULL),
-(62, 143, 'showDrugs', '/HospitalManagementSystem/drugs', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 02:11:20', NULL),
-(63, 143, 'addEmployee', '/HospitalManagementSystem/add-employee', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 02:11:44', NULL),
-(64, 145, 'showEmployees', '/HospitalManagementSystem/employees', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 12:37:23', NULL),
-(65, 145, 'showEmployees', '/HospitalManagementSystem/employees', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 12:38:38', NULL),
-(66, 145, 'addEmployee', '/HospitalManagementSystem/add-employee', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 17:25:44', NULL),
-(67, 146, 'addPatient', '/HospitalManagementSystem/add-user', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 22:19:58', NULL),
-(68, 146, 'dashboard', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 22:20:13', NULL),
-(69, 146, 'general', '/HospitalManagementSystem/profile', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 22:20:15', NULL),
-(70, 146, 'dashboard', '/HospitalManagementSystem/', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-10 22:20:16', NULL),
-(71, 148, 'prescriptionPrint', '/HospitalManagementSystem/prescription-print', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-11 17:45:33', NULL),
-(72, 151, 'addEmployee', '/HospitalManagementSystem/add-employee', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-12 15:34:45', NULL),
-(73, 153, 'addEmployee', '/HospitalManagementSystem/add-employee', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-13 20:43:39', NULL);
+(75, 155, 'showDrugs', '/HospitalManagementSystem/drugs', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-15 18:46:37', NULL),
+(76, 155, 'addEmployee', '/HospitalManagementSystem/add-employee', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-16 15:15:58', NULL),
+(77, 155, 'intakeTime', '/HospitalManagementSystem/tests', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-16 15:22:11', NULL),
+(78, 155, 'addEmployee', '/HospitalManagementSystem/add-employee', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-16 16:32:42', NULL),
+(79, 158, 'addEmployee', '/HospitalManagementSystem/add-employee', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0', 1, '2025-12-17 00:35:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -762,7 +756,7 @@ CREATE TABLE IF NOT EXISTS `number_of_drugs` (
 --
 
 INSERT INTO `number_of_drugs` (`id`, `number`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(1, 20, 1, '', '2025-12-09 09:50:25', '2025-12-12 14:50:56');
+(1, 20, 1, '', '2025-12-09 09:50:25', '2025-12-17 02:06:04');
 
 -- --------------------------------------------------------
 
@@ -778,7 +772,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=847 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=915 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `permissions`
@@ -832,7 +826,43 @@ INSERT INTO `permissions` (`id`, `section_name`, `employee_id`, `created_at`, `u
 (843, 'showPrescription', 153, '2025-12-12 15:37:35', NULL),
 (844, 'dashboard', 153, '2025-12-12 15:37:35', NULL),
 (845, 'profile', 153, '2025-12-12 15:37:35', NULL),
-(846, 'general', 153, '2025-12-12 15:37:35', NULL);
+(846, 'general', 153, '2025-12-12 15:37:35', NULL),
+(867, 'prescriptionPrint', 156, '2025-12-15 18:48:20', NULL),
+(868, 'dashboard', 156, '2025-12-15 18:48:20', NULL),
+(869, 'profile', 156, '2025-12-15 18:48:20', NULL),
+(870, 'general', 156, '2025-12-15 18:48:20', NULL),
+(883, 'addPrescription', 155, '2025-12-16 15:19:59', NULL),
+(884, 'showPrescription', 155, '2025-12-16 15:19:59', NULL),
+(885, 'parentPrescription', 155, '2025-12-16 15:19:59', NULL),
+(886, 'addDrug', 155, '2025-12-16 15:19:59', NULL),
+(887, 'parentDrug', 155, '2025-12-16 15:19:59', NULL),
+(888, 'tests', 155, '2025-12-16 15:19:59', NULL),
+(889, 'parentSetting', 155, '2025-12-16 15:19:59', NULL),
+(890, 'showPatients', 155, '2025-12-16 15:19:59', NULL),
+(891, 'addPatient', 155, '2025-12-16 15:19:59', NULL),
+(892, 'parentPatients', 155, '2025-12-16 15:19:59', NULL),
+(893, 'prescriptionPrint', 155, '2025-12-16 15:19:59', NULL),
+(894, 'dashboard', 155, '2025-12-16 15:19:59', NULL),
+(895, 'profile', 155, '2025-12-16 15:19:59', NULL),
+(896, 'general', 155, '2025-12-16 15:19:59', NULL),
+(897, 'parentPatients', 157, '2025-12-16 16:32:34', NULL),
+(898, 'showPatients', 157, '2025-12-16 16:32:34', NULL),
+(899, 'addPatient', 157, '2025-12-16 16:32:34', NULL),
+(900, 'parentPrescription', 157, '2025-12-16 16:32:34', NULL),
+(901, 'addPrescription', 157, '2025-12-16 16:32:34', NULL),
+(902, 'showPrescription', 157, '2025-12-16 16:32:34', NULL),
+(903, 'dashboard', 157, '2025-12-16 16:32:34', NULL),
+(904, 'profile', 157, '2025-12-16 16:32:34', NULL),
+(905, 'general', 157, '2025-12-16 16:32:34', NULL),
+(906, 'parentPatients', 158, '2025-12-16 16:35:38', NULL),
+(907, 'showPatients', 158, '2025-12-16 16:35:38', NULL),
+(908, 'addPatient', 158, '2025-12-16 16:35:38', NULL),
+(909, 'parentPrescription', 158, '2025-12-16 16:35:38', NULL),
+(910, 'addPrescription', 158, '2025-12-16 16:35:38', NULL),
+(911, 'showPrescription', 158, '2025-12-16 16:35:38', NULL),
+(912, 'dashboard', 158, '2025-12-16 16:35:38', NULL),
+(913, 'profile', 158, '2025-12-16 16:35:38', NULL),
+(914, 'general', 158, '2025-12-16 16:35:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -850,7 +880,7 @@ CREATE TABLE IF NOT EXISTS `positions` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `positions`
@@ -859,7 +889,9 @@ CREATE TABLE IF NOT EXISTS `positions` (
 INSERT INTO `positions` (`id`, `branch_id`, `name`, `who_it`, `state`, `created_at`, `updated_at`) VALUES
 (1, 0, 'داکتر', 'کاظم حسینی', 1, '2025-12-08 15:31:51', '2025-12-11 00:39:55'),
 (8, 0, 'حسابدار', 'کاظم حسینی', 1, '2025-12-11 01:54:52', NULL),
-(12, 0, 'آشپز', 'کاظم حسینی', 1, '2025-12-11 02:22:13', NULL);
+(12, 0, 'آشپز', 'کاظم حسینی', 2, '2025-12-11 02:22:13', '2025-12-14 03:40:01'),
+(13, 0, 'گارد', 'احمد هاشمی', 1, '2025-12-15 18:40:14', NULL),
+(14, 0, 'تحویل دهی نسخه', 'احمد هاشمی', 1, '2025-12-15 18:47:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -875,6 +907,7 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
   `patient_name` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `doctor_id` int DEFAULT NULL,
   `birth_year` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `diagnosis` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `bp` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `pr` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `rr` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -890,77 +923,77 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
   PRIMARY KEY (`id`),
   KEY `patient_id` (`patient_id`),
   KEY `doctor_id` (`doctor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prescriptions`
 --
 
-INSERT INTO `prescriptions` (`id`, `patient_id`, `visit_id`, `patient_name`, `doctor_id`, `birth_year`, `bp`, `pr`, `rr`, `temp`, `spo2`, `year`, `month`, `type`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(1, 34, 0, 'علی رضایی', 5, '1378', '120/80', '78', '16', '36.7', '98', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 02:59:52'),
-(2, 12, 0, 'مریم احمدی', 1, '1385', '110/70', '74', '17', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
-(3, 77, 0, 'سارا محمدی', 2, '1370', '115/75', '80', '18', '37.0', '99', '1404', 9, 1, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
-(4, 52, 0, 'حسن عباسی', 1, '1392', '125/85', '72', '15', '36.4', '96', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-12 01:08:57'),
-(5, 90, 0, 'نیلوفر سادات', 3, '1381', '118/76', '79', '17', '36.6', '97', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
-(6, 63, 0, 'جواد رحیمی', 4, '1375', '130/90', '85', '19', '37.1', '99', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
-(7, 18, 0, 'زهرا اکبری', 1, '1390', '108/68', '70', '16', '36.3', '97', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
-(8, 41, 0, 'فاطمه یوسفی', 4, '1387', '112/72', '76', '17', '36.5', '98', '1404', 9, 1, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
-(9, 25, 0, 'علی احمدی', 4, '1373', '118/78', '83', '18', '36.9', '98', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(10, 57, 0, 'سارا هاشمی', 3, '1391', '122/80', '77', '17', '36.6', '96', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(11, 88, 0, 'نگین رسولی', 1, '1384', '119/74', '75', '16', '36.4', '98', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(12, 12, 0, 'حسین موسوی', 3, '1380', '128/82', '84', '18', '37.0', '99', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(13, 44, 0, 'زهرا کریمی', 4, '1393', '114/73', '71', '15', '36.3', '97', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(14, 101, 0, 'ندا مرادی', 6, '1379', '116/74', '79', '16', '36.5', '96', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(15, 73, 0, 'مهدی قربانی', 5, '1394', '111/71', '72', '15', '36.3', '98', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(16, 7, 0, 'راضیه انوری', 1, '1372', '124/81', '78', '17', '36.8', '99', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(17, 95, 0, 'شیما عزیزی', 2, '1386', '113/69', '70', '15', '36.4', '98', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(18, 60, 0, 'یاسین روستا', 6, '1377', '125/83', '82', '18', '37.1', '99', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(19, 22, 0, 'فریبا سهرابی', 1, '1383', '109/67', '74', '16', '36.2', '97', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(20, 48, 0, 'شیرین نوروزی', 5, '1388', '132/89', '86', '19', '37.3', '99', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(21, 102, 0, 'فرزاد طاهری', 6, '1376', '117/76', '80', '17', '36.7', '97', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(22, 31, 0, 'بهاره رستگار', 5, '1390', '120/74', '77', '15', '36.4', '98', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(23, 40, 0, 'کاظم یعقوبی', 6, '1382', '115/72', '76', '17', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(24, 68, 0, 'زهرا نعمتی', 4, '1389', '118/79', '81', '18', '36.8', '98', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(25, 11, 0, 'شقایق فضلی', 6, '1374', '122/81', '83', '17', '36.6', '99', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(26, 70, 0, 'امید مرادی', 6, '1395', '128/86', '88', '19', '37.2', '98', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(27, 27, 0, 'حمید رسولی', 4, '1371', '110/69', '73', '16', '36.4', '96', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(28, 53, 0, 'مونا فرهمند', 4, '1392', '116/74', '78', '16', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(29, 118, 0, 'زهرا وطن‌دوست', 6, '1384', '113/71', '75', '16', '36.4', '98', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(30, 16, 0, 'الهام صدیقی', 6, '1387', '121/80', '82', '18', '36.9', '99', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(31, 92, 0, 'حمیده هراتی', 1, '1378', '130/90', '86', '19', '37.3', '99', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(32, 36, 0, 'سلمان فرجی', 5, '1381', '119/77', '76', '17', '36.6', '98', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(33, 101, 0, 'ابراهیم سلیمانی', 2, '1375', '117/74', '74', '16', '36.4', '96', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(34, 55, 0, 'معصومه شکوری', 2, '1393', '115/73', '78', '17', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(35, 80, 0, 'شیوا احمدپور', 4, '1383', '122/82', '84', '18', '36.9', '99', '1404', 9, 1, 3, 'admin', '1900-01-06 00:00:00', '2025-12-08 01:08:57'),
-(36, 14, 0, 'فاطمه ذبیحی', 5, '1376', '112/70', '72', '16', '36.3', '97', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(37, 84, 0, 'امیر جعفری', 3, '1391', '120/79', '80', '18', '36.8', '98', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(38, 10, 0, 'سمیه بخشی', 5, '1380', '118/75', '76', '17', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-06 00:00:00', '2025-12-07 01:08:57'),
-(39, 49, 0, 'کاوه سعیدی', 5, '1386', '130/87', '85', '19', '37.2', '99', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(40, 22, 0, 'الهه محمودی', 3, '1394', '116/74', '72', '16', '36.4', '96', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-07 01:08:57'),
-(41, 97, 0, 'ابراهیم جمالی', 1, '1379', '121/81', '79', '17', '36.6', '98', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(42, 61, 0, 'آرزو یکتا', 5, '1389', '114/73', '74', '16', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(43, 33, 0, 'پویا شیرازی', 3, '1392', '125/83', '81', '18', '37.0', '99', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(44, 28, 0, 'سعیده مقیمی', 5, '1384', '118/78', '79', '17', '36.6', '97', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(45, 50, 0, 'پدرام قائمی', 5, '1371', '126/84', '83', '19', '37.1', '98', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(46, 93, 0, 'فاطمه محسنی', 2, '1390', '112/71', '73', '16', '36.4', '97', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(47, 15, 0, 'نیما یوسفی', 3, '1387', '115/72', '74', '16', '36.3', '98', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(48, 71, 0, 'بیتا فرجی', 3, '1375', '130/90', '86', '19', '37.3', '99', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(49, 109, 0, 'محمد افکاری', 3, '1393', '117/76', '78', '17', '36.6', '98', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(50, 6, 0, 'الهام ناصری', 5, '1373', '113/69', '72', '15', '36.3', '96', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(51, 6, 0, 'الهام ناصری', 6, '1373', '113/69', '72', '15', '36.3', '96', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(52, 51, 0, 'محمد احمدی', 1, '1379', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 01:49:57', '2025-12-12 01:50:41'),
-(54, 52, 0, 'حسین رضایی', 1, '1379', '33', NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 02:23:29', '2025-12-12 02:25:04'),
-(71, 67, 0, 'حسن مرادی', 1, '1374', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 14:43:35', '2025-12-12 14:53:02'),
-(72, 68, 0, 'احمد حسینی', 1, '1360', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 14:57:05', '2025-12-12 15:01:57'),
-(73, 69, 0, 'محمد رضا احمدی', 1, '1379', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 15:02:35', '2025-12-12 15:02:49'),
-(74, 70, 0, 'اسد غلامی', 1, '1381', '33', NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 15:03:26', '2025-12-12 15:24:48'),
-(75, 71, 0, 'محمد رضا احمدی', 1, '1363', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:26:20', '2025-12-12 16:27:20'),
-(76, 72, 0, 'کاظم احمدی', 1, '1381', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:29:12', '2025-12-12 16:30:15'),
-(77, 73, 0, 'کاظم', 1, '1379', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:31:17', '2025-12-12 16:31:27'),
-(78, 74, 0, 'کاظم ', 1, '1384', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:32:07', '2025-12-12 16:32:40'),
-(79, 75, 0, 'فهیم', 1, '1384', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:33:18', '2025-12-12 16:34:08'),
-(80, 76, 0, 'احمد', 154, '1382', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 2, 'ادمین دمو', '2025-12-12 22:56:13', '2025-12-13 20:44:52'),
-(81, NULL, 0, NULL, 154, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 1, 'ادمین دمو', '2025-12-13 20:44:59', NULL);
+INSERT INTO `prescriptions` (`id`, `patient_id`, `visit_id`, `patient_name`, `doctor_id`, `birth_year`, `diagnosis`, `bp`, `pr`, `rr`, `temp`, `spo2`, `year`, `month`, `type`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, 34, 0, 'علی رضایی', 5, '1378', NULL, '120/80', '78', '16', '36.7', '98', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 02:59:52'),
+(2, 12, 0, 'مریم احمدی', 1, '1385', NULL, '110/70', '74', '17', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
+(3, 77, 0, 'سارا محمدی', 2, '1370', NULL, '115/75', '80', '18', '37.0', '99', '1404', 9, 1, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
+(4, 52, 0, 'حسن عباسی', 1, '1392', NULL, '125/85', '72', '15', '36.4', '96', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-12 01:08:57'),
+(5, 90, 0, 'نیلوفر سادات', 3, '1381', NULL, '118/76', '79', '17', '36.6', '97', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
+(6, 63, 0, 'جواد رحیمی', 4, '1375', NULL, '130/90', '85', '19', '37.1', '99', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
+(7, 18, 0, 'زهرا اکبری', 1, '1390', NULL, '108/68', '70', '16', '36.3', '97', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
+(8, 41, 0, 'فاطمه یوسفی', 4, '1387', NULL, '112/72', '76', '17', '36.5', '98', '1404', 9, 1, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
+(9, 25, 0, 'علی احمدی', 4, '1373', NULL, '118/78', '83', '18', '36.9', '98', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(10, 57, 0, 'سارا هاشمی', 3, '1391', NULL, '122/80', '77', '17', '36.6', '96', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(11, 88, 0, 'نگین رسولی', 1, '1384', NULL, '119/74', '75', '16', '36.4', '98', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(12, 12, 0, 'حسین موسوی', 3, '1380', NULL, '128/82', '84', '18', '37.0', '99', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(13, 44, 0, 'زهرا کریمی', 4, '1393', NULL, '114/73', '71', '15', '36.3', '97', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(14, 101, 0, 'ندا مرادی', 6, '1379', NULL, '116/74', '79', '16', '36.5', '96', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(15, 73, 0, 'مهدی قربانی', 5, '1394', NULL, '111/71', '72', '15', '36.3', '98', '1404', 9, 1, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(16, 7, 0, 'راضیه انوری', 1, '1372', NULL, '124/81', '78', '17', '36.8', '99', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(17, 95, 0, 'شیما عزیزی', 2, '1386', NULL, '113/69', '70', '15', '36.4', '98', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(18, 60, 0, 'یاسین روستا', 6, '1377', NULL, '125/83', '82', '18', '37.1', '99', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(19, 22, 0, 'فریبا سهرابی', 1, '1383', NULL, '109/67', '74', '16', '36.2', '97', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(20, 48, 0, 'شیرین نوروزی', 5, '1388', NULL, '132/89', '86', '19', '37.3', '99', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(21, 102, 0, 'فرزاد طاهری', 6, '1376', NULL, '117/76', '80', '17', '36.7', '97', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(22, 31, 0, 'بهاره رستگار', 5, '1390', NULL, '120/74', '77', '15', '36.4', '98', '1404', 9, 1, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(23, 40, 0, 'کاظم یعقوبی', 6, '1382', NULL, '115/72', '76', '17', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(24, 68, 0, 'زهرا نعمتی', 4, '1389', NULL, '118/79', '81', '18', '36.8', '98', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(25, 11, 0, 'شقایق فضلی', 6, '1374', NULL, '122/81', '83', '17', '36.6', '99', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(26, 70, 0, 'امید مرادی', 6, '1395', NULL, '128/86', '88', '19', '37.2', '98', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(27, 27, 0, 'حمید رسولی', 4, '1371', NULL, '110/69', '73', '16', '36.4', '96', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(28, 53, 0, 'مونا فرهمند', 4, '1392', NULL, '116/74', '78', '16', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(29, 118, 0, 'زهرا وطن‌دوست', 6, '1384', NULL, '113/71', '75', '16', '36.4', '98', '1404', 9, 1, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(30, 16, 0, 'الهام صدیقی', 6, '1387', NULL, '121/80', '82', '18', '36.9', '99', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(31, 92, 0, 'حمیده هراتی', 1, '1378', NULL, '130/90', '86', '19', '37.3', '99', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(32, 36, 0, 'سلمان فرجی', 5, '1381', NULL, '119/77', '76', '17', '36.6', '98', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(33, 101, 0, 'ابراهیم سلیمانی', 2, '1375', NULL, '117/74', '74', '16', '36.4', '96', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(34, 55, 0, 'معصومه شکوری', 2, '1393', NULL, '115/73', '78', '17', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(35, 80, 0, 'شیوا احمدپور', 4, '1383', NULL, '122/82', '84', '18', '36.9', '99', '1404', 9, 1, 3, 'admin', '1900-01-06 00:00:00', '2025-12-08 01:08:57'),
+(36, 14, 0, 'فاطمه ذبیحی', 5, '1376', NULL, '112/70', '72', '16', '36.3', '97', '1404', 9, 1, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(37, 84, 0, 'امیر جعفری', 3, '1391', NULL, '120/79', '80', '18', '36.8', '98', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(38, 10, 0, 'سمیه بخشی', 5, '1380', NULL, '118/75', '76', '17', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-06 00:00:00', '2025-12-07 01:08:57'),
+(39, 49, 0, 'کاوه سعیدی', 5, '1386', NULL, '130/87', '85', '19', '37.2', '99', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(40, 22, 0, 'الهه محمودی', 3, '1394', NULL, '116/74', '72', '16', '36.4', '96', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-07 01:08:57'),
+(41, 97, 0, 'ابراهیم جمالی', 1, '1379', NULL, '121/81', '79', '17', '36.6', '98', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(42, 61, 0, 'آرزو یکتا', 5, '1389', NULL, '114/73', '74', '16', '36.5', '97', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(43, 33, 0, 'پویا شیرازی', 3, '1392', NULL, '125/83', '81', '18', '37.0', '99', '1404', 9, 1, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(44, 28, 0, 'سعیده مقیمی', 5, '1384', NULL, '118/78', '79', '17', '36.6', '97', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(45, 50, 0, 'پدرام قائمی', 5, '1371', NULL, '126/84', '83', '19', '37.1', '98', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(46, 93, 0, 'فاطمه محسنی', 2, '1390', NULL, '112/71', '73', '16', '36.4', '97', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(47, 15, 0, 'نیما یوسفی', 3, '1387', NULL, '115/72', '74', '16', '36.3', '98', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(48, 71, 0, 'بیتا فرجی', 3, '1375', NULL, '130/90', '86', '19', '37.3', '99', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(49, 109, 0, 'محمد افکاری', 3, '1393', NULL, '117/76', '78', '17', '36.6', '98', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(50, 6, 0, 'الهام ناصری', 5, '1373', NULL, '113/69', '72', '15', '36.3', '96', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(51, 6, 0, 'الهام ناصری', 6, '1373', NULL, '113/69', '72', '15', '36.3', '96', '1404', 9, 1, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(52, 51, 0, 'محمد احمدی', 1, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 01:49:57', '2025-12-12 01:50:41'),
+(54, 52, 0, 'حسین رضایی', 1, '1379', NULL, '33', NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 02:23:29', '2025-12-12 02:25:04'),
+(71, 67, 0, 'حسن مرادی', 1, '1374', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 14:43:35', '2025-12-12 14:53:02'),
+(72, 68, 0, 'احمد حسینی', 1, '1360', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 14:57:05', '2025-12-12 15:01:57'),
+(73, 69, 0, 'محمد رضا احمدی', 1, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 15:02:35', '2025-12-12 15:02:49'),
+(74, 70, 0, 'اسد غلامی', 1, '1381', NULL, '33', NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 15:03:26', '2025-12-12 15:24:48'),
+(75, 71, 0, 'محمد رضا احمدی', 1, '1363', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:26:20', '2025-12-12 16:27:20'),
+(76, 72, 0, 'کاظم احمدی', 1, '1381', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:29:12', '2025-12-12 16:30:15'),
+(77, 73, 0, 'کاظم', 1, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:31:17', '2025-12-12 16:31:27'),
+(78, 74, 0, 'کاظم ', 1, '1384', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:32:07', '2025-12-12 16:32:40'),
+(79, 75, 0, 'فهیم', 1, '1384', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'کاظم حسینی', '2025-12-12 16:33:18', '2025-12-12 16:34:08'),
+(80, 76, 0, 'احمد', 154, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 3, 'ادمین دمو', '2025-12-12 22:56:13', '2025-12-13 22:56:05'),
+(174, 126, 0, 'علی رضایی', 2, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, 2, 'احمد هاشمی', '2025-12-17 02:11:58', '2025-12-17 02:12:57');
 
 -- --------------------------------------------------------
 
@@ -985,7 +1018,7 @@ CREATE TABLE IF NOT EXISTS `prescription_items` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `drug_name` (`drug_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=319 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prescription_items`
@@ -1199,7 +1232,102 @@ INSERT INTO `prescription_items` (`id`, `drug_name`, `prescription_id`, `drug_id
 (206, 'Amoxicillin', 80, 3, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-13 20:44:16', NULL),
 (207, 'Atenolol', 80, 45, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-13 20:44:26', NULL),
 (208, 'Atorvastatin', 80, 18, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-13 20:44:33', NULL),
-(209, 'Atenolol', 81, 45, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-13 20:44:59', NULL);
+(209, 'Atenolol', 81, 45, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-13 20:44:59', NULL),
+(210, 'Apixaban', 81, 65, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-13 20:51:37', NULL),
+(211, 'Alteplase', 81, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-13 22:54:21', NULL),
+(212, 'Amiloride', 82, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-13 22:55:32', NULL),
+(213, 'Alteplase', 85, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 02:51:35', NULL),
+(216, 'Amiloride', 87, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 03:23:49', NULL),
+(217, 'Amphotericin B', 87, 114, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 03:23:58', NULL),
+(218, 'Azithromycin', 87, 4, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 03:24:01', NULL),
+(222, 'Amiloride', 89, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 03:48:06', NULL),
+(223, 'Alteplase', 90, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 03:52:02', NULL),
+(224, 'Apixaban', 90, 65, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 03:52:05', NULL),
+(225, 'Atorvastatin', 90, 18, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 03:52:12', NULL),
+(226, 'Amoxicillin', 91, 3, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 03:53:55', NULL),
+(227, 'Atorvastatin', 92, 56, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-14 03:54:49', NULL),
+(229, 'Apixaban', 94, 65, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 03:24:23', NULL),
+(231, 'Insulin Aspart', 97, 85, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 15:09:09', NULL),
+(233, 'Amiloride', 101, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 16:24:46', NULL),
+(234, 'Apixaban', 101, 65, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 16:24:48', NULL),
+(235, 'Atenolol', 102, 45, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 18:55:34', NULL),
+(236, 'Amphotericin B', 102, 114, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 18:55:42', NULL),
+(237, 'Atorvastatin', 102, 18, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 18:55:44', NULL),
+(238, 'Bisoprolol', 102, 46, NULL, NULL, NULL, NULL, 'این دارو خاص است', 1, 1, '2025-12-15 18:56:12', NULL),
+(239, 'Amiloride', 103, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 18:59:31', NULL),
+(240, 'Alteplase', 104, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 19:03:19', NULL),
+(241, 'amofdsf d500 ml', 105, 122, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 19:30:03', NULL),
+(242, 'Amiloride', 105, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 23:47:26', NULL),
+(243, 'Alteplase', 106, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-15 23:51:09', NULL),
+(244, 'Amiloride', 107, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 00:17:07', NULL),
+(245, 'Amiloride', 108, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 00:17:35', NULL),
+(246, 'Amiloride', 109, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 00:41:23', NULL),
+(247, 'amofdsf d500 ml', 110, 122, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 00:48:11', NULL),
+(248, 'Amiloride', 111, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 00:48:56', NULL),
+(249, 'Amiloride', 112, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 00:51:52', NULL),
+(250, 'Alteplase', 113, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 00:52:25', NULL),
+(251, 'Amiloride', 114, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 00:55:20', NULL),
+(252, 'Amiloride', 115, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 00:56:39', NULL),
+(253, 'Glucose 10%', 116, 33, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 01:21:29', NULL),
+(255, 'relief 250m', 119, 125, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 11:49:16', NULL),
+(256, 'relief 500m', 119, 124, 'یک دانه در روز', 'بعد از غذا', NULL, 'خوراکی', '', 5, 1, '2025-12-16 11:49:44', NULL),
+(257, 'amo sadlfjsadf asdf 250ml', 119, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 16:33:29', NULL),
+(258, 'Amiloride', 120, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 16:36:23', NULL),
+(259, 'Amphotericin B', 121, 114, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 16:38:09', NULL),
+(260, 'Amiloride', 122, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 20:44:14', NULL),
+(261, 'Amlodipine', 123, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 20:44:50', NULL),
+(262, 'Amlodipine', 124, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 20:45:34', NULL),
+(263, 'amo sadlfjsadf asdf 250ml', 125, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 21:24:34', NULL),
+(264, 'amo sadlfjsadf asdf 250ml', 126, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 21:25:42', NULL),
+(265, 'Amlodipine', 127, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 21:26:19', NULL),
+(266, 'amo sadlfjsadf asdf 250ml', 128, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 22:38:25', NULL),
+(267, 'Alteplase', 129, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 22:42:05', NULL),
+(268, 'amo sadlfjsadf asdf 250ml', 130, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 22:46:15', NULL),
+(269, 'Amiloride', 131, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 22:49:16', NULL),
+(270, 'Amiloride', 132, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 22:51:25', NULL),
+(271, 'Amiloride', 133, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 22:52:17', NULL),
+(272, 'Alteplase', 134, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 23:01:54', NULL),
+(273, 'Amiloride', 135, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 23:02:10', NULL),
+(274, 'Alteplase', 136, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 23:46:49', NULL),
+(275, 'Apixaban', 137, 65, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-16 23:47:06', NULL),
+(276, 'amo sadlfjsadf asdf 250ml', 138, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:15:12', NULL),
+(277, 'Amiloride', 139, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:22:00', NULL),
+(278, 'Amiloride', 140, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:22:26', NULL),
+(279, 'Amlodipine', 140, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:22:35', NULL),
+(280, 'Amiloride', 141, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:27:16', NULL),
+(281, 'Amiloride', 142, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:29:02', NULL),
+(282, 'Amlodipine', 143, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:30:44', NULL),
+(283, 'Amlodipine', 144, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:31:03', NULL),
+(284, 'amo sadlfjsadf asdf 250ml', 145, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:33:31', NULL),
+(285, 'amo sadlfjsadf asdf 250ml', 146, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:35:04', NULL),
+(286, 'Amiloride', 147, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:41:28', NULL),
+(287, 'Amlodipine', 148, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:42:02', NULL),
+(288, 'amo sadlfjsadf asdf 250ml', 149, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:42:14', NULL),
+(289, 'Amoxicillin', 150, 3, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:42:44', NULL),
+(290, 'Amiloride', 151, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 00:59:52', NULL),
+(291, 'Amiloride', 152, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:01:09', NULL),
+(294, 'Amiloride', 155, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:07:55', NULL),
+(295, 'amofdsf d500 ml', 156, 122, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:08:14', NULL),
+(296, 'Alteplase', 157, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:09:41', NULL),
+(297, 'amo sadlfjsadf asdf 250ml', 158, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:13:24', NULL),
+(298, 'amo sadlfjsadf asdf 250ml', 159, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:14:02', NULL),
+(299, 'Amlodipine', 160, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:15:12', NULL),
+(300, 'amo sadlfjsadf asdf 250ml', 161, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:18:28', NULL),
+(301, 'Alteplase', 162, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:36:08', NULL),
+(302, 'Amiloride', 163, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:37:18', NULL),
+(303, 'Alteplase', 164, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:37:59', NULL),
+(304, 'Amiloride', 165, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:38:19', NULL),
+(305, 'amo sadlfjsadf asdf 250ml', 166, 123, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:39:14', NULL),
+(306, 'Amoxicillin', 167, 3, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:39:52', NULL),
+(307, 'Amphotericin B', 168, 114, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:40:35', NULL),
+(308, 'Amiloride', 169, 53, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:41:19', NULL),
+(309, 'Alteplase', 170, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:42:03', NULL),
+(310, 'Alteplase', 171, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:42:13', NULL),
+(311, 'Amlodipine', 172, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 01:49:58', NULL),
+(315, 'Amlodipine', 174, 7, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 02:11:58', NULL),
+(316, 'Alteplase', 174, 72, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 02:12:06', NULL),
+(317, 'Azithromycin', 174, 4, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 02:12:10', NULL),
+(318, 'Atenolol', 174, 45, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-17 02:12:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -1233,7 +1361,59 @@ CREATE TABLE IF NOT EXISTS `prescription_settings` (
 --
 
 INSERT INTO `prescription_settings` (`id`, `branch_id`, `center_name`, `slogan`, `phone1`, `phone2`, `phone3`, `phone4`, `address`, `website`, `email`, `image`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(1, 20, 'کلینیک مهر سلامت', 'مهر سلامت آرامش دل، تندرستی تن', '0799999999', '0700999999', NULL, NULL, 'افغانستان، هرات، بکرآباد', 'www.demo.com', 'demo@info.com', '2025-12-11-01-16-51_6939dc3b38207.png', 1, 'کاظم حسینی', '2025-11-13 19:12:30', '2025-12-11 02:40:36');
+(1, 20, 'کلینیک مهر سلامت', 'مهر سلامت آرامش دل، تندرستی تن', '0795444444', '0700999999', NULL, NULL, 'افغانستان، هرات، شهرنو', 'www.demo.com', 'demo@info.com', '2025-12-15-19-15-39_69401f132ec49.jpg', 1, 'احمد هاشمی', '2025-11-13 19:12:30', '2025-12-15 19:15:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recommended`
+--
+
+DROP TABLE IF EXISTS `recommended`;
+CREATE TABLE IF NOT EXISTS `recommended` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `prescription_id` int NOT NULL,
+  `recommended` varchar(1024) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `recommended`
+--
+
+INSERT INTO `recommended` (`id`, `prescription_id`, `recommended`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(22, 94, '12', 1, '', '2025-12-15 03:29:03', NULL),
+(23, 94, '15', 1, '', '2025-12-15 03:29:49', NULL),
+(24, 101, '13', 1, '', '2025-12-15 16:24:22', NULL),
+(25, 101, '15', 1, '', '2025-12-15 16:24:34', NULL),
+(26, 104, '16', 1, '', '2025-12-15 19:02:48', NULL),
+(27, 104, '17', 1, '', '2025-12-15 19:02:48', NULL),
+(28, 104, '13', 1, '', '2025-12-15 19:02:48', NULL),
+(29, 105, '16', 1, '', '2025-12-15 19:30:03', NULL),
+(30, 105, '17', 1, '', '2025-12-15 19:30:03', NULL),
+(31, 106, '16', 1, '', '2025-12-15 23:51:09', NULL),
+(32, 107, '12', 1, '', '2025-12-16 00:17:12', NULL),
+(33, 107, '16', 1, '', '2025-12-16 00:17:12', NULL),
+(34, 108, '12', 1, '', '2025-12-16 00:17:38', NULL),
+(35, 109, '16', 1, '', '2025-12-16 00:41:32', NULL),
+(36, 109, '17', 1, '', '2025-12-16 00:41:32', NULL),
+(37, 110, '16', 1, '', '2025-12-16 00:48:19', NULL),
+(38, 110, '17', 1, '', '2025-12-16 00:48:19', NULL),
+(39, 111, '16', 1, '', '2025-12-16 00:49:00', NULL),
+(40, 112, '16', 1, '', '2025-12-16 00:52:02', NULL),
+(41, 112, '17', 1, '', '2025-12-16 00:52:02', NULL),
+(42, 112, '15', 1, '', '2025-12-16 00:52:02', NULL),
+(43, 113, '16', 1, '', '2025-12-16 00:52:32', NULL),
+(44, 113, '17', 1, '', '2025-12-16 00:52:32', NULL),
+(45, 114, '16', 1, '', '2025-12-16 00:55:26', NULL),
+(46, 115, '16', 1, '', '2025-12-16 00:56:44', NULL),
+(47, 117, '16', 1, '', '2025-12-16 01:22:35', NULL),
+(48, 161, '16', 1, '', '2025-12-17 01:18:32', NULL),
+(49, 171, '16', 1, '', '2025-12-17 01:42:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -1328,7 +1508,7 @@ CREATE TABLE IF NOT EXISTS `sections` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `sections`
@@ -1360,7 +1540,8 @@ INSERT INTO `sections` (`id`, `name`, `en_name`, `section_id`, `who_it`, `state`
 (23, NULL, 'dashboard', NULL, '', 1, NULL, NULL),
 (24, NULL, 'showPatients', NULL, '', 1, NULL, NULL),
 (25, NULL, 'addPatient', NULL, '', 1, NULL, NULL),
-(26, NULL, 'parentSetting', NULL, '', 1, NULL, NULL);
+(26, NULL, 'parentSetting', NULL, '', 1, NULL, NULL),
+(27, NULL, 'tests', NULL, '', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1372,8 +1553,7 @@ DROP TABLE IF EXISTS `settings`;
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int NOT NULL AUTO_INCREMENT,
   `branch_id` int NOT NULL,
-  `sell_any_situation` tinyint NOT NULL DEFAULT '1' COMMENT '1 -> permission to sell any situation, 2 -> not permission',
-  `buy_any_situation` tinyint NOT NULL DEFAULT '1' COMMENT '1 -> permission to buy any situation, 2 -> not permission',
+  `single_print` tinyint NOT NULL DEFAULT '1',
   `expiration_date` tinyint DEFAULT '1',
   `warehouse` tinyint NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
@@ -1385,8 +1565,37 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `branch_id`, `sell_any_situation`, `buy_any_situation`, `expiration_date`, `warehouse`, `created_at`, `updated_at`) VALUES
-(1, 20, 1, 1, 2, 2, '2025-04-01 13:30:36', '2025-11-04 02:13:45');
+INSERT INTO `settings` (`id`, `branch_id`, `single_print`, `expiration_date`, `warehouse`, `created_at`, `updated_at`) VALUES
+(1, 20, 1, 2, 2, '2025-04-01 13:30:36', '2025-12-17 00:19:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tests`
+--
+
+DROP TABLE IF EXISTS `tests`;
+CREATE TABLE IF NOT EXISTS `tests` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `test_name` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tests`
+--
+
+INSERT INTO `tests` (`id`, `test_name`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(12, 'aa', 2, 'احمد هاشمی', '2025-12-15 02:36:04', '2025-12-16 15:23:59'),
+(13, 'aa', 1, 'احمد هاشمی', '2025-12-15 02:36:22', NULL),
+(14, 'aa', 1, 'احمد هاشمی', '2025-12-15 02:36:25', NULL),
+(15, 'aaa', 1, 'احمد هاشمی', '2025-12-15 02:36:51', NULL),
+(16, 'ازمایش قند خون', 1, 'احمد هاشمی', '2025-12-15 19:02:05', NULL),
+(17, 'ازمایش دیابت', 1, 'احمد هاشمی', '2025-12-15 19:02:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -1448,7 +1657,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `users`
@@ -1507,9 +1716,6 @@ INSERT INTO `users` (`id`, `user_code`, `user_name`, `password`, `father_name`, 
 (50, 'UC050', 'الهام', 'pass123', 'محمدی', '07001230050', 'elham@example.com', 'خانم', 1370, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'admin', '2024-06-19 17:35:00', '2024-06-19 17:35:00'),
 (62, NULL, 'اسد رضایی', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 03:22:41', NULL),
 (63, NULL, 'aaa', NULL, '', '', NULL, 'آقا', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 14:12:19', NULL),
-(64, NULL, 'aaaaa3', NULL, '', '', NULL, 'آقا', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 14:21:52', NULL),
-(65, NULL, 'ddddf', NULL, '', '', NULL, 'آقا', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 14:23:47', NULL),
-(66, NULL, 'gggg', NULL, '', '', NULL, 'آقا', 1360, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 14:25:46', NULL),
 (67, NULL, 'حسن مرادی', NULL, '', '', NULL, 'آقا', 1374, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 14:52:35', NULL),
 (68, NULL, 'احمد حسینی', NULL, '', '', NULL, 'آقا', 1360, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 15:01:57', NULL),
 (69, NULL, 'محمد رضا احمدی', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 15:02:48', NULL),
@@ -1518,8 +1724,7 @@ INSERT INTO `users` (`id`, `user_code`, `user_name`, `password`, `father_name`, 
 (72, NULL, 'کاظم احمدی', NULL, '', '', NULL, 'آقا', 1381, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 16:30:14', NULL),
 (73, NULL, 'کاظم', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 16:31:27', NULL),
 (74, NULL, 'کاظم ', NULL, '', '', NULL, 'آقا', 1384, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 16:32:38', NULL),
-(75, NULL, 'فهیم', NULL, '', '', NULL, 'آقا', 1384, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-12 16:34:07', NULL),
-(76, NULL, 'احمد', NULL, '', '', NULL, 'آقا', 1382, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-13 20:44:52', NULL);
+(126, NULL, 'علی رضایی', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-17 02:12:57', NULL);
 
 -- --------------------------------------------------------
 
