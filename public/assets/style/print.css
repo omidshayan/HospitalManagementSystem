@@ -12,10 +12,15 @@
 }
 .pre-p-title{
     right: 20px !important;
+    top: -10px;
+}
+.pre-p-slogan{
+    top: 80px !important;
+    right:50px;
 }
 .pre-p-logo{
-    left: -300px !important;
-    top: 30px;
+    left: 20px !important;
+    top: 30px !important;
 }
 
 /* footer */

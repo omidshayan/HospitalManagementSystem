@@ -23,9 +23,9 @@ include_once('public/alerts/toastr.php');
                 <div class="pa w100">
                     <div class="pre-p-title pa">
                         <h1 class="pre-color pre-title mr10"><?= $preInfos['center_name'] ?></h1>
-                        <div class="pre-color bold"><?= $preInfos['slogan'] ?></div>
+                        <div class="pre-color bold pre-p-slogan pa"><?= $preInfos['slogan'] ?></div>
                     </div>
-                    <div class="pr pre-p-logo">
+                    <div class="pa pre-p-logo">
                         <?= $preInfos['image']
                             ? '<img class="w130 pre-p-logo" src="' . asset('public/images/public/' . $preInfos['image']) . '" alt="logo" onclick="openModal(\'' . asset('public/images/public/' . $preInfos['image']) . '\')">'
                             : ' - - - - ' ?>
