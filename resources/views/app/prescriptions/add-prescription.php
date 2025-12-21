@@ -331,9 +331,17 @@
     <?php
     if (isset($_SESSION['flash_id'])) {
         $id = $_SESSION['flash_id'];
-    }
-
+        unset($_SESSION['flash_id']);
+        $url = url('print-item/' . $id);
     ?>
+        <script>
+            window.open('<?php echo $url; ?>', '_blank');
+        </script>
+    <?php
+    }
+    ?>
+
+
     <!-- <?php
             if (!empty($prescriptionPrintl)) { ?>
 
