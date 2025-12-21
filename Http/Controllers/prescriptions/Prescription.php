@@ -393,7 +393,8 @@ class Prescription extends App
         $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
 
         if ($settings['single_print'] == 1) {
-            $this->singlePrint($prescription['id']);
+            $preId = $prescription['id'];
+            $this->flashMessageId('success', _success, $preId);
         } else {
             $this->flashMessage('success', _success);
         }
