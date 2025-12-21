@@ -4,7 +4,34 @@
         box-sizing: border-box !important;
         border: none !important;
     }
+.pre-color{
+    color: rgb(19, 19, 19);
+}
+.pre-title{
+    font-size: 43px;
+}
+.pre-p-title{
+    right: 20px !important;
+}
+.pre-p-logo{
+    left: -300px !important;
+    top: 30px;
+}
 
+/* footer */
+.pre-p-right-infos{
+    right: 130px;
+    bottom: -120px;
+}
+.pre-p-phones{
+    right: 100px;
+    bottom: -183px;
+}
+
+
+.w130{
+    width: 130px !important;
+}
     .d-flex {
         display: flex;
     }
