@@ -149,6 +149,23 @@ trait Middleware
         exit();
     }
 
+    function flashMessageId($type, $message, $id = null)
+    {
+        flash($type, $message);
+
+        if ($id !== null) {
+            $_SESSION['flash_id'] = $id;
+        }
+
+        if ($type === 'success') {
+            unset($_SESSION['old']);
+            unset($_SESSION['temporary_old']);
+        }
+
+        $this->redirectBack();
+        exit();
+    }
+
     // redirect back
     protected function redirectBack()
     {
