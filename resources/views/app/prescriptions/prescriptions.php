@@ -26,6 +26,7 @@ include_once('public/alerts/toastr.php');
                     <th>نام داکتر</th>
                     <th>نام مریض</th>
                     <th>تاریخ ثبت</th>
+                    <th>چاپ</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
                 </tr>
@@ -43,6 +44,7 @@ include_once('public/alerts/toastr.php');
                         <td><?= $item['employee_name'] ?></td>
                         <td><?= $item['patient_name'] ?? '- - - -' ?></td>
                         <td><?= jdate('Y/m/d', strtotime($item['created_at'])) ?></td>
+                        <td><a href="<?=url('print-item/' . $item['id'])?>" target="_blank" class="text-underline color">چاپ</a></td>
 
                         <td>
                             <a href="<?= url('edit-prescription/' . $item['id']) ?>" class="color-orange">
