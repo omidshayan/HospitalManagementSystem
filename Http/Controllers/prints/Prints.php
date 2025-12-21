@@ -152,12 +152,10 @@ class Prints extends App
                 e.expertise
          FROM prescriptions p
          JOIN employees e ON e.id = p.doctor_id
-         WHERE p.status = ? AND p.id = ?',
-            [3, $id]
+         WHERE p.id = ?',
+            [$id]
         )->fetch();
-        // NOTE
 
-        // NOTE
         $items = [];
 
         if ($prescription) {
@@ -178,6 +176,6 @@ class Prints extends App
             )->fetchAll();
         }
 
-        require_once(BASE_PATH . '/resources/views/app/prints/prescriptionPrint.php');
+        require_once(BASE_PATH . '/resources/views/app/prints/print-item.php');
     }
 }
