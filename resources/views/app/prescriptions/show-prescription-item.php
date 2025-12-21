@@ -146,7 +146,7 @@ include_once('public/alerts/toastr.php');
                         <div class="pre-p-address bold"><?= $preInfos['phone1'] ?></div>
                         <div class="pre-p-address bold"><?= $preInfos['phone2'] ?></div>
                     </div>
-                    <div class="pre-p-phones pa">
+                    <div class="pre-p-phones-2 pa">
                         <div class="pre-p-address bold"><?= $preInfos['phone3'] ?></div>
                         <div class="pre-p-address bold"><?= $preInfos['phone4'] ?></div>
                     </div>
