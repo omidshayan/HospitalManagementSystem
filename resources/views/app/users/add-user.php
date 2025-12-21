@@ -58,7 +58,34 @@
                         <img src="" class="img" alt="">
                     </div>
 
-                    <!-- <div class="accordion-title color-orange">ثبت علائم حیاطی</div>
+
+                    <div class="accordion-title color-orange mb5">اطلاعات تکمیلی</div>
+                    <div class="accordion-content-pre">
+                        <div class="child-accordioin">
+                            <div class="inputs d-flex">
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">قد</div>
+                                    <input type="text" name="father_name" placeholder="قد را وارد نمایید" maxlength="40" />
+                                </div>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">وزن </div>
+                                    <input type="number" name="phone" placeholder="وزن را وارد نمایید" />
+                                </div>
+                            </div>
+                            <div class="inputs d-flex">
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">فشار خون</div>
+                                    <input type="text" name="father_name" placeholder="فشار خون را وارد نمایید" maxlength="40" />
+                                </div>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">نبض </div>
+                                    <input type="number" name="phone" placeholder="نبض را وارد نمایید" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-title color-orange">ثبت علائم حیاطی</div>
                     <div class="accordion-content-pre">
                         <div class="child-accordioin">
                             <div class="insert dir-left mt5">
@@ -79,7 +106,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                     <input type="submit" id="submit" value="ثبت" class="btn" />
