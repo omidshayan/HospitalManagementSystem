@@ -97,11 +97,52 @@ class Prints extends App
         exit;
     }
 
+    // show presctiption for print
+    public function prescriptionItemPrint($id)
+    {
+        $this->middleware(true, true, 'prescriptionPrint', true);
+
+        $prescription = $this->db->select(
+            'SELECT p.*, 
+                e.employee_name,
+                e.expertise
+         FROM prescriptions p
+         JOIN employees e ON e.id = p.doctor_id
+         WHERE p.status = ? AND p.id = ?',
+            [3, $id]
+        )->fetch();
+        // NOTE
+
+        // NOTE
+        $items = [];
+
+        if ($prescription) {
+            $items = $this->db->select(
+                'SELECT *
+         FROM prescription_items
+         WHERE prescription_id = ?
+         ORDER BY id ASC',
+                [$prescription['id']]
+            )->fetchAll();
+
+            $tests = $this->db->select(
+                'SELECT r.*, t.test_name
+         FROM recommended r
+         JOIN tests t ON r.recommended = t.id
+         WHERE r.prescription_id = ?',
+                [$prescription['id']]
+            )->fetchAll();
+        }
+
+        require_once(BASE_PATH . '/resources/views/app/prints/prescriptionPrint.php');
+    }
+
+
 
 
 
     // show presctiption for print
-    public function prescriptionItemPrint($id)
+    public function printItem($id)
     {
         $this->middleware(true, true, 'prescriptionPrint', true);
 

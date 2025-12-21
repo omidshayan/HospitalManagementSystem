@@ -12,3 +12,6 @@ uri('auto-print', 'App\Prints', 'autoPrint');
 
 
 uri('getNextPrescription', 'App\Prints', 'getNextPrescription');
+
+uri('print-item/{id}', 'App\Prints', 'printItem');
+
