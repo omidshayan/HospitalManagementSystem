@@ -12,7 +12,7 @@ include_once('public/alerts/toastr.php');
     </div>
     <?php
     $help_title = 'راهنمای بخش ';
-    $help_content = 'ننمایش نسخه ها ';
+    $help_content = 'نمایش نسخه ها ';
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
