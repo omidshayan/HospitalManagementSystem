@@ -244,6 +244,8 @@ class Prescription extends App
          WHERE r.prescription_id = ?',
                 [$prescription['id']]
             )->fetchAll();
+
+            $preInfos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
         }
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/show-prescription-item.php');
