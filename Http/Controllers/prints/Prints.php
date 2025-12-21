@@ -176,6 +176,7 @@ class Prints extends App
             )->fetchAll();
         }
 
+        $preInfos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
         require_once(BASE_PATH . '/resources/views/app/prints/print-item.php');
     }
 }

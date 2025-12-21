@@ -153,6 +153,7 @@ include_once('public/alerts/toastr.php');
 
                     <div class="pre-p-left-infos"></div>
                 </div>
+                
             </div>
         </div>
 

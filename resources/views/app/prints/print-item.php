@@ -7,7 +7,7 @@ include_once('public/alerts/toastr.php');
 
 <div class="content">
     <div class="mb50">
-        <a href="<?=url('prescriptions')?>" class="btn p20 color bold">لیست تمام نسخه‌ها</a>
+        <a href="<?= url('prescriptions') ?>" class="btn p20 color bold">لیست تمام نسخه‌ها</a>
     </div>
     <div class="content-title mb20 mt20">چاپ نسخه: <?= $prescription['patient_name'] ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
@@ -18,6 +18,19 @@ include_once('public/alerts/toastr.php');
 
         <div class="center bg-whith">
             <div class="item-print p10">
+
+                <!-- top pre infos  -->
+                <div class="pa w100">
+                    <div class="pre-p-title pa">
+                        <h1 class="pre-color pre-title mr10"><?= $preInfos['center_name'] ?></h1>
+                        <div class="pre-color bold"><?= $preInfos['slogan'] ?></div>
+                    </div>
+                    <div class="pr pre-p-logo">
+                        <?= $preInfos['image']
+                            ? '<img class="w130 pre-p-logo" src="' . asset('public/images/public/' . $preInfos['image']) . '" alt="logo" onclick="openModal(\'' . asset('public/images/public/' . $preInfos['image']) . '\')">'
+                            : ' - - - - ' ?>
+                    </div>
+                </div>
 
                 <!-- patient infos -->
                 <div class="p-patient-infos">
@@ -120,6 +133,25 @@ include_once('public/alerts/toastr.php');
 
                     </div>
 
+                </div>
+
+                <!-- footer pre infos -->
+                <div class="pre-color pa w100">
+
+                    <div class="pre-p-right-infos pa">
+                        <div class="pre-p-address bold"><?= $preInfos['address'] ?></div>
+                    </div>
+
+                    <div class="pre-p-phones pa">
+                        <div class="pre-p-address bold"><?= $preInfos['phone1'] ?></div>
+                        <div class="pre-p-address bold"><?= $preInfos['phone2'] ?></div>
+                    </div>
+                    <div class="pre-p-phones-2 pa">
+                        <div class="pre-p-address bold"><?= $preInfos['phone3'] ?></div>
+                        <div class="pre-p-address bold"><?= $preInfos['phone4'] ?></div>
+                    </div>
+
+                    <div class="pre-p-left-infos"></div>
                 </div>
 
             </div>
