@@ -59,7 +59,7 @@
                     </div>
 
 
-                    <div class="accordion-title color-orange mb5">اطلاعات تکمیلی</div>
+                    <!-- <div class="accordion-title color-orange mb5">اطلاعات تکمیلی</div>
                     <div class="accordion-content-pre">
                         <div class="child-accordioin">
                             <div class="inputs d-flex">
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                     <input type="submit" id="submit" value="ثبت" class="btn" />
