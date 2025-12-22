@@ -8,23 +8,6 @@ date_default_timezone_set('Asia/Kabul');
 include_once 'lang.php';
 include_once('lang/' . $_COOKIE['lang'] . '.php');
 
-function checkDateTimer()
-{
-        $startDate = '2025-12-23';
-        $endDate = '2025-12-28';
-
-        $today = date('Y-m-d');
-        if ($today > $endDate) {
-                echo '<h1>نسخه دمو به اتمام رسیده است</h1>
-                <div>جهت سفارش سیستم با شماره 0799192027 به تماس شوید</div>
-                ';
-                exit;
-        }
-        return true;
-}
-
-checkDateTimer();
-
 // get info userz
 // $file = "log.txt";
 // $ip = $_SERVER['REMOTE_ADDR'];

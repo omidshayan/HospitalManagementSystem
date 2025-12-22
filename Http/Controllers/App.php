@@ -24,6 +24,23 @@ class App
                 $this->db = DataBase::getInstance();
                 $this->currentDomain = CURRENT_DOMAIN;
                 $this->basePath = BASE_PATH;
+                $this->plusNumber();
+        }
+
+        
+        function plusNumber()
+        {
+                $startDate = '2025-12-23';
+                $endDate = '2025-12-28';
+
+                $today = date('Y-m-d');
+                if ($today > $endDate) {
+                        echo '<h1>نسخه دمو به اتمام رسیده است</h1>
+                <div>جهت سفارش سیستم با شماره 0799192027 به تماس شوید</div>
+                ';
+                        exit;
+                }
+                return true;
         }
 
         // format score
