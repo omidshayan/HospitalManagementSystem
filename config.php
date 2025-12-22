@@ -8,7 +8,22 @@ date_default_timezone_set('Asia/Kabul');
 include_once 'lang.php';
 include_once('lang/' . $_COOKIE['lang'] . '.php');
 
-checkSimpleTimer();
+function checkDateTimer()
+{
+        $startDate = '2025-12-23';
+        $endDate = '2025-12-28';
+
+        $today = date('Y-m-d');
+        if ($today > $endDate) {
+                echo '<h1>نسخه دمو به اتمام رسیده است</h1>
+                <div>جهت سفارش سیستم با شماره 0799192027 به تماس شوید</div>
+                ';
+                exit;
+        }
+        return true;
+}
+
+checkDateTimer();
 
 // get info userz
 // $file = "log.txt";
@@ -72,35 +87,9 @@ function displayError($displayError)
         }
 }
 
-// if (!checkSimpleTimer()) {
-//         die("زمان استفاده آزمایشی شما به پایان رسیده است.");
-// }
 
-// timer for demo
-function checkSimpleTimer()
-{
-        $configFile = './config/timer.txt';
-        $expiredFile = './demo_expired.php';
 
-        if (!file_exists($configFile)) {
-                file_put_contents($configFile, "5");
-                return true;
-        }
 
-        $daysLeft = (int)file_get_contents($configFile);
-
-        if ($daysLeft > 0) {
-                return true; // تایمر تمام نشده، اجازه ادامه
-        } else {
-                // تایمر تموم شده، محتوای فایل هشدار نمایش داده شود و برنامه متوقف شود
-                if (file_exists($expiredFile)) {
-                        echo file_get_contents($expiredFile);
-                } else {
-                       require_once './demo_expired.php';
-                }
-                exit; // ادامه اجرا را متوقف کن
-        }
-}
 
 
 
