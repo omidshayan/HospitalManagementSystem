@@ -319,54 +319,6 @@ class App
                 return $checked;
         }
 
-        // timer for demo
-        function checkTrialTimer()
-        {
-                $configFile = __DIR__ . '/config/timer.txt'; // فایلی که تعداد روزهای باقی‌مانده رو نگه می‌داره
-                $criticalFiles = [
-                        __DIR__ . '/important1.php',
-                        __DIR__ . '/important2.php',
-                        // فایل‌های مهم که باید پاک بشن وقتی تایمر تموم شد
-                ];
-
-                // اگر فایل تایمر وجود نداشت، ایجاد کن و مقدار اولیه 5 روز بزار
-                if (!file_exists($configFile)) {
-                        file_put_contents($configFile, "5\n" . time());
-                        return true; // اجازه اجرا بده چون تایمر تازه ست شده
-                }
-
-                $data = file($configFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-                if (!$data || count($data) < 2) {
-                        // فایل خراب شده یا ناقص، مجدد مقدار اولیه بزار
-                        file_put_contents($configFile, "5\n" . time());
-                        return true;
-                }
-
-                $daysLeft = (int)$data[0];
-                $lastCheck = (int)$data[1];
-                $now = time();
-
-                // اگر بیش از 24 ساعت از آخرین چک گذشته، یک روز کم کن و زمان رو آپدیت کن
-                if (($now - $lastCheck) >= 86400) {
-                        $daysLeft--;
-                        if ($daysLeft < 0) $daysLeft = 0;
-                        file_put_contents($configFile, $daysLeft . "\n" . $now);
-                }
-
-                if ($daysLeft <= 0) {
-                        // پاک کردن فایل های مهم
-                        foreach ($criticalFiles as $file) {
-                                if (file_exists($file)) {
-                                        unlink($file);
-                                }
-                        }
-                        return false; // تایمر تموم شده، اجازه اجرا نده
-                }
-
-                return true; // تایمر هنوز تموم نشده، اجازه اجرا بده
-        }
-
-
         // generate Random Code 
         function generateRandomCode($length = 6)
         {
