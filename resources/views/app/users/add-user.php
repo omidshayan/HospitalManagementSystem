@@ -65,21 +65,21 @@
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">قد</div>
-                                    <input type="text" name="father_name" placeholder="قد را وارد نمایید" maxlength="40" />
+                                    <input type="text" placeholder="قد را وارد نمایید" maxlength="40" />
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">وزن </div>
-                                    <input type="number" name="phone" placeholder="وزن را وارد نمایید" />
+                                    <input type="number" placeholder="وزن را وارد نمایید" />
                                 </div>
                             </div>
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">فشار خون</div>
-                                    <input type="text" name="father_name" placeholder="فشار خون را وارد نمایید" maxlength="40" />
+                                    <input type="text" placeholder="فشار خون را وارد نمایید" maxlength="40" />
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">نبض </div>
-                                    <input type="number" name="phone" placeholder="نبض را وارد نمایید" />
+                                    <input type="number" placeholder="نبض را وارد نمایید" />
                                 </div>
                             </div>
                         </div>
@@ -90,19 +90,19 @@
                         <div class="child-accordioin">
                             <div class="insert dir-left mt5">
                                 <div class="one m-auto w97d mb3">
-                                    <input type="text" name="bp" placeholder=" Blood Pressure  ">
+                                    <input type="text" placeholder=" Blood Pressure  ">
                                 </div>
                                 <div class="one m-auto w97d mb3">
-                                    <input type="text" name="pr" placeholder=" Pulse Rate  ">
+                                    <input type="text" placeholder=" Pulse Rate  ">
                                 </div>
                                 <div class="one m-auto w97d mb3">
-                                    <input type="text" name="rr" placeholder=" Respiratory Rate  ">
+                                    <input type="text" placeholder=" Respiratory Rate  ">
                                 </div>
                                 <div class="one m-auto w97d mb3">
-                                    <input type="text" name="temp" placeholder=" Temperature  ">
+                                    <input type="text" placeholder=" Temperature  ">
                                 </div>
                                 <div class="one m-auto w97d mb3">
-                                    <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
+                                    <input type="text" placeholder=" Oxygen Saturation  ">
                                 </div>
                             </div>
                         </div>
