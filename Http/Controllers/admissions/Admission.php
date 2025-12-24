@@ -8,9 +8,32 @@ class Admission extends App
     public function admissionCreate()
     {
         $this->middleware(true, true, 'general', true);
-        $doctors = $this->db->select('SELECT id, employee_name FROM employees WHERE position = ? AND `state` = ?', ['داکتر', 1])->fetchAll();
+
+        // داکترها
+        $doctors = $this->db->select(
+            'SELECT id, employee_name 
+         FROM employees 
+         WHERE position = ? AND `state` = ?',
+            ['داکتر', 1]
+        )->fetchAll();
+
+        // تعداد پذیرش‌های امروز برای هر داکتر
+        $todayAdmissions = $this->db->select(
+            'SELECT doctor_id, COUNT(*) AS total
+         FROM admissions
+         WHERE DATE(admission_date) = CURDATE()
+         GROUP BY doctor_id'
+        )->fetchAll();
+
+        // تبدیل به آرایه قابل استفاده
+        $doctorQueues = [];
+        foreach ($todayAdmissions as $row) {
+            $doctorQueues[$row['doctor_id']] = $row['total'];
+        }
+
         require_once(BASE_PATH . '/resources/views/app/admissions/admission-create.php');
     }
+
 
     // store employee
     public function admissionStore($request)
