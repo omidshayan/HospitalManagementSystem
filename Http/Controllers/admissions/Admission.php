@@ -38,27 +38,20 @@ class Admission extends App
     // store employee
     public function admissionStore($request)
     {
-        dd($request);
         $this->middleware(true, true, 'addDrug', true, $request, true);
 
         // check empty form
-        if ($request['name'] == '' || $request['category_id'] == '' || $request['unit'] == '') {
-            $this->flashMessage('error', _emptyInputs);
-        }
+        // if ($request['name'] == '' || $request['category_id'] == '' || $request['unit'] == '') {
+        //     $this->flashMessage('error', _emptyInputs);
+        // }
 
-        $existingDrug = $this->db->select('SELECT * FROM drugs WHERE `name` = ?', [$request['name']])->fetch();
-        if ($existingDrug) {
-            $this->flashMessage('error', _repeat);
-        } else {
+        $request = $this->validateInputs($request, ['image' => false]);
 
-            $request = $this->validateInputs($request, ['image' => false]);
+        // check image
+        $this->handleImageUpload($request['image'], 'images/drugs');
 
-            // check image
-            $this->handleImageUpload($request['image'], 'images/drugs');
-
-            $this->db->insert('drugs', array_keys($request), $request);
-            $this->flashMessage('success', _success);
-        }
+        $this->db->insert('drugs', array_keys($request), $request);
+        $this->flashMessage('success', _success);
     }
 
     // show drugs
