@@ -54,7 +54,7 @@
                     <div class="w100 m10 center status status-column" id="status"><?= ($department['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
                 </div>
             </div>
-            <a href="<?= url('dosage') ?>">
+            <a href="<?= url('departments') ?>">
                 <div class="btn center p5">برگشت</div>
             </a>
         </div>

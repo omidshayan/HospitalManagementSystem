@@ -48,7 +48,7 @@ include_once('public/alerts/toastr.php');
                 <input type="submit" id="submit" value="ویــرایــش" class="btn bold" />
             </form>
         </div>
-        <a href="<?= url('dosage') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
+        <a href="<?= url('departments') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
     </div>
 </div>
 <!-- End content -->
