@@ -72,12 +72,19 @@ class Department extends App
     }
 
     // dosage Details detiles page
-    public function dosageDetails($id)
+    public function departmentDetiles($id)
     {
         $this->middleware(true, true, 'general');
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
-        if ($dosage != null) {
-            require_once(BASE_PATH . '/resources/views/app/dosage/dosage-details.php');
+        $department = $this->db->select(
+            'SELECT departments.*, users.employee_name 
+            FROM departments 
+            LEFT JOIN users ON users.id = departments.manager_id
+            WHERE departments.id = ?',
+            [$id]
+        )->fetch();
+
+        if ($department != null) {
+            require_once(BASE_PATH . '/resources/views/app/departments/department-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
