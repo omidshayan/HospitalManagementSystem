@@ -349,6 +349,7 @@ class Prescription extends App
                 'father_name' => $request['father_name'] ?? null,
                 'gender' => $request['gender'],
                 'phone' => $request['phone'] ?? null,
+                'who_id' => $request['who_id'],
             ];
             $this->db->insert('users', array_keys($userData), $userData);
             $userId = $this->db->lastInsertId();
