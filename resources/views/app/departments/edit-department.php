@@ -23,7 +23,7 @@ include_once('public/alerts/toastr.php');
             <form id="myForm" action="<?= url('edit-department-store/' . $department['id']) ?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
+                        <div class="label-form mb5 fs14">نام دپارتمنت <?= _star ?> </div>
                         <input type="text" name="name" class="checkInput" value="<?= $department['name'] ?>" placeholder="مقدار مصرف را وارد نمایید" autocomplete="off" />
                     </div>
                 </div>
