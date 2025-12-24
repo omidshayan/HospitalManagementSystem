@@ -45,7 +45,7 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14" for="name">دیپارتمنت</div>
-                            <select name="department" id="departmentSelect" class="checkSelect" disabled>
+                            <select name="department_id" id="departmentSelect" class="checkSelect" disabled>
                                 <option selected disabled>لطفا دیپارتمنت را انتخاب نمائید</option>
                                 <?php foreach ($departments as $department) { ?>
                                     <option value="<?= $department['id'] ?>"><?= $department['name'] ?></option>

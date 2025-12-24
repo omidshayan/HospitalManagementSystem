@@ -51,6 +51,7 @@ class Employee extends App
                 'employee_name' => $request['employee_name'],
                 'phone' => $request['phone'],
                 'password' => $request['password'],
+                'department_id' => $request['department_id'],
                 'email' => $request['email'],
                 'address' => $request['address'],
                 'position' => $request['position'],
