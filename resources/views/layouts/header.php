@@ -150,14 +150,14 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('addDepartment')): ?>
-                  <a href="<?= url('add-department') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت دیپارتمنت</li>
+                  <a href="<?= url('departments') ?>">
+                    <li class="sidebar-dropdown-menu-item">دپارتمنت‌ها</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('showDepartment')): ?>
                   <a href="<?= url('departments') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش دیپارتمنت‌ها</li>
+                    <li class="sidebar-dropdown-menu-item">جزئیات دپارتمنت‌ها</li>
                   </a>
                 <?php endif; ?>
               </ul>
