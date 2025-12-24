@@ -23,13 +23,32 @@ class Admission extends App
          GROUP BY doctor_id'
         )->fetchAll();
 
+        $waitingAdmissions = $this->db->select(
+            'SELECT doctor_id, COUNT(*) AS waiting_total
+         FROM admissions
+         WHERE DATE(created_at) = CURDATE() AND status = 1
+         GROUP BY doctor_id'
+        )->fetchAll();
+
         $doctorQueues = [];
         foreach ($todayAdmissions as $row) {
-            $doctorQueues[$row['doctor_id']] = $row['total'];
+            $doctorQueues[$row['doctor_id']]['total'] = $row['total'];
         }
+
+        foreach ($waitingAdmissions as $row) {
+            $doctorQueues[$row['doctor_id']]['waiting'] = $row['waiting_total'];
+        }
+
+        foreach ($doctors as &$doctor) {
+            $doctorId = $doctor['id'];
+            $doctor['total_admissions'] = $doctorQueues[$doctorId]['total'] ?? 0;
+            $doctor['waiting_admissions'] = $doctorQueues[$doctorId]['waiting'] ?? 0;
+        }
+        unset($doctor);
 
         require_once(BASE_PATH . '/resources/views/app/admissions/admission-create.php');
     }
+
 
     // store employee
     public function admissionStore($request)
@@ -48,7 +67,7 @@ class Admission extends App
 
         $department = $this->db->select('SELECT id FROM departments WHERE id = ? AND `status` = ?', [$doctor['department_id'], 1])->fetch();
         if (!$department) {
-            $this->flashMessage('error', 'دپارتمنت معتبر نیست');
+            $this->flashMessage('error', 'دپارتمنت یافت نشد');
             return;
         }
 
@@ -67,7 +86,7 @@ class Admission extends App
         } else {
 
             // check empty form
-            if ($request['user_name'] == '' || $request['birth_year'] == '' || $request['doctor_id'] == '' || $request['queue_number'] == '' || $request['age'] == '') {
+            if ($request['user_name'] == '' || $request['birth_year'] == '' || $request['doctor_id'] == '' || $request['queue_number'] == '') {
                 $this->flashMessage('error', _emptyInputs);
             }
 
@@ -78,7 +97,7 @@ class Admission extends App
                 'gender' => $request['gender'],
                 'phone' => $request['phone'] ?? null,
                 'description' => $request['description'] ?? null,
-                'who_it' => $request['who_it'],
+                'who_it' => $user['name'],
             ];
             $this->db->insert('users', array_keys($userData), $userData);
             $userId = $this->db->lastInsertId();
@@ -87,8 +106,8 @@ class Admission extends App
                 'patient_id' => $userId,
                 'doctor_id' => $request['doctor_id'],
                 'queue_number' => $request['queue_number'] ?? null,
-                'department_id' => 1,
-                'who_it' => $request['who_it'],
+                'department_id' => $doctor['department_id'],
+                'who_it' => $user['name'],
             ];
 
             $this->db->insert('admissions', array_keys($adminssionData), $adminssionData);
