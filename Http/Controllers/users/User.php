@@ -100,7 +100,7 @@ class User extends App
                 WHERE p.patient_id = ?',
                 [$id]
             )->fetchAll();
-            
+
             require_once(BASE_PATH . '/resources/views/app/users/user-details.php');
             exit();
         } else {
@@ -152,6 +152,23 @@ class User extends App
         $response = [
             'status' => 'success',
             'items' => $usre,
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
+
+    // live search
+    public function searchEmployee($request)
+    {
+        $this->isLoggedIn();
+        $db = new Database();
+
+        $infos = $db->select("SELECT * FROM employees WHERE employee_name LIKE ?", ['%' . $request['customer_name'] . '%'])->fetchAll();
+
+        $response = [
+            'status' => 'success',
+            'items' => $infos,
         ];
         header('Content-Type: application/json');
         echo json_encode($response);

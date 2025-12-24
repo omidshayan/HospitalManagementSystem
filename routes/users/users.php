@@ -17,6 +17,6 @@ uri('change-status-user/{id}', 'App\User', 'changeStatusUser');
 uri('search', 'App\User', 'searchPage');
 uri('live-search', 'App\User', 'searchUserDetails', 'POST');
 
-
+uri('search-em', 'App\User', 'searchUser', 'POST');
 
 

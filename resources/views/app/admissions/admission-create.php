@@ -4,7 +4,7 @@
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
-    include_once('resources/views/scripts/live-search.php');
+    include_once('resources/views/scripts/live-search-users.php');
     ?>
     <!-- end sidebar -->
 
@@ -53,7 +53,7 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </a>
-                <input type="text" class="p5 fs15 input w100" id="search_seller" placeholder="جستجوی کارمند..." />
+                <input type="text" class="p5 fs15 input w100" id="search_seller" placeholder="جستجوی مریض..." />
                 <ul class="search-back d-none" id="backResponseSeller">
                     <li class="resSel search-item color" role="option"></li>
                 </ul>
