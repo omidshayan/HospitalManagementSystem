@@ -13,7 +13,7 @@ class Department extends App
         require_once(BASE_PATH . '/resources/views/app/departments/departments.php');
     }
 
-    // store dosage
+    // store department
     public function departmentStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
@@ -32,14 +32,15 @@ class Department extends App
         }
     }
 
-    // dosage page
-    public function editDosage($id)
+    // department page
+    public function editDepartment($id)
     {
         $this->middleware(true, true, 'general');
 
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
-        if ($dosage != null) {
-            require_once(BASE_PATH . '/resources/views/app/dosage/edit-dosage.php');
+        $department = $this->db->select('SELECT * FROM departments WHERE `id` = ?', [$id])->fetch();
+        $users = $this->db->select('SELECT * FROM employees WHERE `state` = 1')->fetchAll();
+        if ($department != null) {
+            require_once(BASE_PATH . '/resources/views/app/departments/edit-department.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
