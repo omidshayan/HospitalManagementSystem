@@ -38,6 +38,7 @@ class Admission extends App
     // store employee
     public function admissionStore($request)
     {
+        dd($request);
         $this->middleware(true, true, 'addDrug', true, $request, true);
 
         // check empty form
@@ -59,7 +60,16 @@ class Admission extends App
         $this->db->insert('users', array_keys($userData), $userData);
         $userId = $this->db->lastInsertId();
 
-        $this->db->insert('drugs', array_keys($request), $request);
+        $adminssionData = [
+            'patient_id' => $request['user_name'],
+            'doctor_id' => $request['doctor_id'],
+            'queue_number' => $request['queue_number'] ?? null,
+            'department_id' => 1,
+            'who_it' => $request['who_it'],
+        ];
+
+
+        $this->db->insert('admissions', array_keys($adminssionData), $adminssionData);
         $this->flashMessage('success', _success);
     }
 
