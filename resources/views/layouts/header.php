@@ -89,15 +89,15 @@
                 </svg>
               </a>
               <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('addPrescription')): ?>
-                  <a href="<?= url('add-prescription') ?>">
-                    <li class="sidebar-dropdown-menu-item">پذیرش جدید</li>
+                <?php if ($this->hasAccess('addAdmission')): ?>
+                  <a href="<?= url('admissions/create') ?>">
+                    <li class="sidebar-dropdown-menu-item">پذیرش مریض</li>
                   </a>
                 <?php endif; ?>
 
-                <?php if ($this->hasAccess('showPrescription')): ?>
-                  <a href="<?= url('prescriptions') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش پذیرش‌ها</li>
+                <?php if ($this->hasAccess('showAdmissions')): ?>
+                  <a href="<?= url('admissions') ?>">
+                    <li class="sidebar-dropdown-menu-item">لیست پذیرش‌ها</li>
                   </a>
                 <?php endif; ?>
               </ul>
