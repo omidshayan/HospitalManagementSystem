@@ -164,6 +164,7 @@ class Employee extends App
 
             $menuStructure = [
                 'parentPrescription' => ['addPrescription', 'showPrescription'],
+                'parentAdmission' => ['addAdmission', 'showAdmissions'],
                 'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
                 'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
                 'parentSetting' => ['numberDrugs', 'intakeTime', 'dosage', 'intakeInstructions', 'settingPrescription', 'tests'],
