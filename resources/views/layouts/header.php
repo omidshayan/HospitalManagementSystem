@@ -75,10 +75,11 @@
           </li>
 
           <!-- admissions -->
-<?php
-
-?>
-          <?php if ($this->hasAccess('parentAdmission') && $settings['admission'] == 1): ?>
+          <?php if (
+            $this->hasAccess('general') &&
+            isset($_SESSION['settings']['admission']) &&
+            $_SESSION['settings']['admission'] == 1
+            ): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
