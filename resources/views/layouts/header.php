@@ -82,6 +82,36 @@
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 2c0-2.67 3.33-4 6-4s6 1.33 6 4v1h-12v-1zm10-9h-2V5h-4v1H8V5H6v2h12V5z" />
                   </svg>
+                  <span class="mr5">پذیرش</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                </svg>
+              </a>
+              <ul class="sidebar-dropdown-menu">
+                <?php if ($this->hasAccess('addPrescription')): ?>
+                  <a href="<?= url('add-prescription') ?>">
+                    <li class="sidebar-dropdown-menu-item">پذیرش جدید</li>
+                  </a>
+                <?php endif; ?>
+
+                <?php if ($this->hasAccess('showPrescription')): ?>
+                  <a href="<?= url('prescriptions') ?>">
+                    <li class="sidebar-dropdown-menu-item">نمایش پذیرش‌ها</li>
+                  </a>
+                <?php endif; ?>
+              </ul>
+            </li>
+          <?php endif; ?>
+
+          <!-- prescriptions -->
+          <?php if ($this->hasAccess('parentPrescription')): ?>
+            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
+              <a href="#" class="d-flex align-center justify-between dddd">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 2c0-2.67 3.33-4 6-4s6 1.33 6 4v1h-12v-1zm10-9h-2V5h-4v1H8V5H6v2h12V5z" />
+                  </svg>
                   <span class="mr5">مدیریت نسخه‌ها</span>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
