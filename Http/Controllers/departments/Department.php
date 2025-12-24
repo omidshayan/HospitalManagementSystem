@@ -75,13 +75,14 @@ class Department extends App
     public function departmentDetails($id)
     {
         $this->middleware(true, true, 'general');
+
         $department = $this->db->select(
-            'SELECT departments.*, users.employee_name 
-            FROM departments 
-            LEFT JOIN users ON users.id = departments.manager_id
-            WHERE departments.id = ?',
-            [$id]
-        )->fetch();
+    'SELECT departments.*, employees.employee_name 
+     FROM departments 
+     LEFT JOIN employees ON employees.id = departments.manager_id
+     WHERE departments.id = ?',
+    [$id]
+)->fetch();
 
         if ($department != null) {
             require_once(BASE_PATH . '/resources/views/app/departments/department-details.php');
