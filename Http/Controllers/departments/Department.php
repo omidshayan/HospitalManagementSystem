@@ -7,10 +7,9 @@ class Department extends App
     //  departments page
     public function departments()
     {
-        dd('ol"0');
-        $this->middleware(true, true, 'dosage', true);
-        $dosage = $this->db->select('SELECT * FROM dosage')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/dosage/dosage.php');
+        $this->middleware(true, true, 'departments', true);
+        $departments = $this->db->select('SELECT * FROM departments')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/departments/departments.php');
     }
 
     // store dosage
