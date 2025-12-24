@@ -17,46 +17,56 @@
                 <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
                     <div class="center fs14">اطلاعات مریض</div>
                     <div class="insert">
-                        <div class="inputs d-flex">
-                            <div class="one">
-                                <div class="label-form  fs14"> نام مریض <?= _star ?></div>
-                                <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
-                            </div>
-                        </div>
-                        <div class="inputs d-flex mb3">
-                            <div class="one">
-                                <div class="label-form fs14"> سن مریض <?= _star ?></div>
-                                <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
-                                <input type="hidden" name="birth_year" id="birthYearInput">
-                            </div>
-                        </div>
-                        <div class="">
-                            <span class="fs14">سال تولد: </span>
-                            <strong id="birthYear"></strong>
-                        </div>
-                        <div class="inputs d-flex">
-                            <div class="one">
-                                <div class="label-form fs14"> نام پدر </div>
-                                <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
-                            </div>
-                        </div>
+                        <?php
+                        if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) { ?>
 
-                        <div class="inputs d-flex">
-                            <div class="one">
-                                <div class="label-form fs14"> جنسیت </div>
-                                <select name="gender">
-                                    <option value="آقا">آقا</option>
-                                    <option value="خانم">خانم</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="inputs d-flex">
-                            <div class="one">
-                                <div class="label-form fs14"> شماره موبایل </div>
-                                <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
+                        <?php } else { ?>
+
+                            <div class="inputs d-flex">
+                                <div class="one">
+                                    <div class="label-form  fs14"> نام مریض <?= _star ?></div>
+                                    <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
+                                </div>
                             </div>
-                        </div>
+                            <div class="inputs d-flex mb3">
+                                <div class="one">
+                                    <div class="label-form fs14"> سن مریض <?= _star ?></div>
+                                    <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
+                                    <input type="hidden" name="birth_year" id="birthYearInput">
+                                </div>
+                            </div>
+                            <div class="">
+                                <span class="fs14">سال تولد: </span>
+                                <strong id="birthYear"></strong>
+                            </div>
+                            <div class="inputs d-flex">
+                                <div class="one">
+                                    <div class="label-form fs14"> نام پدر </div>
+                                    <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                                </div>
+                            </div>
+
+                            <div class="inputs d-flex">
+                                <div class="one">
+                                    <div class="label-form fs14"> جنسیت </div>
+                                    <select name="gender">
+                                        <option value="آقا">آقا</option>
+                                        <option value="خانم">خانم</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="inputs d-flex">
+                                <div class="one">
+                                    <div class="label-form fs14"> شماره موبایل </div>
+                                    <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
+                                </div>
+                            </div>
+                            <!-- end patient infos -->
+                        <?php }
+                        ?>
+
 
                         <!-- bp ... -->
                         <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
@@ -99,6 +109,7 @@
                                 استعلام مریض
                             </a>
                         </div>
+
                     </div>
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                 </form>
