@@ -8,6 +8,7 @@ class Admission extends App
     public function admissionCreate()
     {
         $this->middleware(true, true, 'general', true);
+        $doctors = $this->db->select('SELECT id, employee_name FROM employees WHERE position = ? AND `state` = ?', ['داکتر', 1])->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/admissions/admission-create.php');
     }
 
