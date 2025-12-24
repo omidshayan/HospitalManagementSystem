@@ -99,6 +99,8 @@ class Dashboard extends App
         $totalPrescriptions = $this->db->select("SELECT COUNT(*) AS total_prescriptions FROM prescriptions")->fetch();
         $totalDrugs = $this->db->select("SELECT COUNT(*) AS total_drugs FROM drugs")->fetch();
 
+        $settings = $this->db->select("SELECT * FROM settings")->fetch();
+
         require_once(BASE_PATH . '/resources/views/app/dashboard/index.php');
     }
 }
