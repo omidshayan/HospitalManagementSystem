@@ -1,6 +1,6 @@
     <!-- start sidebar -->
     <?php
-    $title = 'ثبت پذیریش جدید';
+    $title = 'پذیریش جدید';
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
@@ -10,7 +10,7 @@
 
     <!-- Start content -->
     <div class="content">
-        <div class="content-title">ثبت پذیریش جدید
+        <div class="content-title">پذیریش جدید
             <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
         </div>
         <?php
@@ -39,7 +39,7 @@
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
-                <form action="<?= url('user-store') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= url('admission/store') ?>" method="POST" enctype="multipart/form-data">
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">نام و تخلص <?= _star ?> </div>
@@ -51,6 +51,9 @@
                             <input type="hidden" name="birth_year" id="birthYearInput">
                         </div>
                     </div>
+
+                    <input type="hidden" name="user_id" id="user_id">
+
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">نام پدر</div>
@@ -150,5 +153,5 @@
             document.querySelector("input[name='user_name']").value = this.value;
         });
     </script>
-    
+
     <?php include_once('resources/views/layouts/footer.php') ?>

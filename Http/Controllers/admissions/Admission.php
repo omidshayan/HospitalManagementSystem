@@ -8,13 +8,13 @@ class Admission extends App
     public function admissionCreate()
     {
         $this->middleware(true, true, 'general', true);
-        
         require_once(BASE_PATH . '/resources/views/app/admissions/admission-create.php');
     }
 
     // store employee
-    public function drugStore($request)
+    public function admissionStore($request)
     {
+        dd($request);
         $this->middleware(true, true, 'addDrug', true, $request, true);
 
         // check empty form
