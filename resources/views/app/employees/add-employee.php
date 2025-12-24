@@ -47,13 +47,11 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14" for="name">دیپارتمنت</div>
-                            <select name="position" id="mySelect" class="checkSelect">
+                            <select name="department" id="departmentSelect" class="checkSelect" disabled>
                                 <option selected disabled>لطفا دیپارتمنت را انتخاب نمائید</option>
-                                <?php
-                                foreach ($departments as $department) { ?>
+                                <?php foreach ($departments as $department) { ?>
                                     <option value="<?= $department['id'] ?>"><?= $department['name'] ?></option>
-                                    <?php }
-                                    ?>>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -250,6 +248,37 @@
         <!-- end page content -->
     </div>
     <!-- End content -->
+
+    <!-- select department -->
+    <script>
+        const positionSelect = document.getElementById('mySelect');
+        const departmentSelect = document.getElementById('departmentSelect');
+
+        // حالت پیش‌فرض
+        departmentSelect.disabled = true;
+        departmentSelect.classList.remove('checkSelect');
+
+        positionSelect.addEventListener('change', function() {
+            const selectedValue = this.value;
+
+            if (selectedValue === 'داکتر') {
+                // فعال شود
+                departmentSelect.disabled = false;
+
+                // اجباری شود
+                departmentSelect.classList.add('checkSelect');
+            } else {
+                // غیرفعال شود
+                departmentSelect.disabled = true;
+
+                // مقدار انتخاب شده پاک شود
+                departmentSelect.selectedIndex = 0;
+
+                // اجباری نباشد
+                departmentSelect.classList.remove('checkSelect');
+            }
+        });
+    </script>
 
     <script>
         document.getElementById('phone').addEventListener('input', function() {
