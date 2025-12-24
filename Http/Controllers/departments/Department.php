@@ -71,7 +71,7 @@ class Department extends App
         $this->flashMessageTo('success', _success, url('departments'));
     }
 
-    // dosage Details detiles page
+    // department Details detiles page
     public function departmentDetails($id)
     {
         $this->middleware(true, true, 'general');
@@ -93,20 +93,20 @@ class Department extends App
         }
     }
 
-    // change status dosage
-    public function changeStatusDosage($id)
+    // change status department
+    public function changeStatusDepartment($id)
     {
         $this->middleware(true, true, 'general');
 
-        $dosage = $this->db->select('SELECT id, `status` FROM dosage WHERE id = ?', [$id])->fetch();
-        if (!$dosage) {
+        $department = $this->db->select('SELECT id, `status` FROM departments WHERE id = ?', [$id])->fetch();
+        if (!$department) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
 
-        $newStatus = ($dosage['status'] == 1) ? 2 : 1;
+        $newStatus = ($department['status'] == 1) ? 2 : 1;
 
-        $this->db->update('dosage', $id, ['status'], [$newStatus]);
+        $this->db->update('departments', $id, ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
 }
