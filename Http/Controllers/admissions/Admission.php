@@ -36,8 +36,14 @@ class Admission extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        if($request['user_id']){
-            dd('ok');
+        if ($request['user_id']) {
+            $adminssionData = [
+                'patient_id' => $request['user_id'],
+                'doctor_id' => $request['doctor_id'],
+                'queue_number' => $request['queue_number'] ?? null,
+                'department_id' => 1,
+                'who_it' => $request['who_it'],
+            ];
         }
 
         // check empty form

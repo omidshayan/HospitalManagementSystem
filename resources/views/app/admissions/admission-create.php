@@ -40,6 +40,9 @@
         <div class="box-container">
             <div class="insert">
                 <form action="<?= url('admission/store') ?>" method="POST" enctype="multipart/form-data">
+
+                    <input type="hidden" name="user_id" id="user_id">
+
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">نام و تخلص <?= _star ?> </div>
@@ -51,8 +54,6 @@
                             <input type="hidden" name="birth_year" id="birthYearInput">
                         </div>
                     </div>
-
-                    <input type="hidden" name="user_id" id="user_id">
 
                     <div class="inputs d-flex">
                         <div class="one">
@@ -109,6 +110,7 @@
     </div>
     <!-- End content -->
 
+    <!-- fonfirm number -->
     <script>
         const doctorQueues = <?= json_encode($doctorQueues) ?>;
 
@@ -118,7 +120,6 @@
             document.getElementById('queue_number').value = currentCount + 1;
         });
     </script>
-
 
     <!-- // copy text in input name -->
     <script type="text/javascript">
