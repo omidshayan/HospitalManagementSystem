@@ -36,23 +36,32 @@ class Admission extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $doctor = $this->db->select('SELECT id, department_id FROM employees WHERE id = ? AND `status` = ?', [$request['doctor_id'], [1]])->fetchAll();
-        $departments = $this->db->select('SELECT * FROM departments WHERE id = ? AND `status` = ?', [$doctor['department_id'], [1]])->fetchAll();
+        $user = $this->currentUser();
+
+        $doctor = $this->db->select('SELECT id, department_id FROM employees WHERE id = ? AND `state` = ?', [$request['doctor_id'], 1])->fetch();
+
+        $department = $this->db->select('SELECT id FROM departments WHERE id = ? AND `status` = ?', [$doctor['department_id'], 1])->fetch();
 
         if ($request['user_id']) {
+
             $adminssionData = [
                 'patient_id' => $request['user_id'],
-                'doctor_id' => $request['doctor_id'],
+                'doctor_id' => $doctor['id'],
                 'queue_number' => $request['queue_number'] ?? null,
-                'department_id' => 1,
-                'who_it' => $request['who_it'],
+                'department_id' => $department['id'],
+                'who_it' => $user['name'],
             ];
+            $this->db->insert('admissions', array_keys($adminssionData), $adminssionData);
+
+            $this->flashMessage('success', _success);
+        } else {
+
+            // check empty form
+            if ($request['user_name'] == '' || $request['birth_year'] == '' || $request['doctor_id'] == '' || $request['queue_number'] == '' || $request['age'] == '') {
+                $this->flashMessage('error', _emptyInputs);
+            }
         }
 
-        // check empty form
-        if ($request['user_name'] == '' || $request['birth_year'] == '' || $request['doctor_id'] == '' || $request['queue_number'] == '' || $request['age'] == '') {
-            $this->flashMessage('error', _emptyInputs);
-        }
 
 
         unset($request['user_id']);
