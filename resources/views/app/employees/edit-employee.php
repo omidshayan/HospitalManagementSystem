@@ -88,8 +88,8 @@
                                 <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="addPatient">
                                     <span> ثبت مریض</span>
                                     <input type="checkbox" name="addPatient" id="addPatient" class="w20 p0 m0 h22"
-                                    <?= in_array('addPatient', $employeePermissions) ? 'checked' : '' ?>>
-                                     
+                                        <?= in_array('addPatient', $employeePermissions) ? 'checked' : '' ?>>
+
                                 </label>
                             </div>
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
@@ -137,6 +137,30 @@
                                     <span> مدیریت وظایف کارمندان</span>
                                     <input type="checkbox" name="positions" id="positions" class="w20 p0 m0 h22"
                                         <?= in_array('positions', $employeePermissions) ? 'checked' : '' ?>>
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="parentAdmission">
+                                    <span>پذیرش</span>
+                                    <input type="checkbox" name="parentAdmission" id="parentAdmission" class="w20 p0 m0 h22"
+                                        <?= in_array('parentAdmission', $employeePermissions) ? 'checked' : '' ?>>
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="addAdmission">
+                                    <span> پذیرش مریض</span>
+                                    <input type="checkbox" name="addAdmission" id="addAdmission" class="w20 p0 m0 h22"
+                                        <?= in_array('addAdmission', $employeePermissions) ? 'checked' : '' ?>>
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="admissions">
+                                    <span> لیست پذیرش‌ها</span>
+                                    <input type="checkbox" name="admissions" id="admissions" class="w20 p0 m0 h22"
+                                        <?= in_array('admissions', $employeePermissions) ? 'checked' : '' ?>>
                                 </label>
                             </div>
 
