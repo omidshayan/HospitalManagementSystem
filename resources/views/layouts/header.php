@@ -75,7 +75,7 @@
           </li>
 
           <!-- prescriptions -->
-          <?php if ($this->hasAccess('parentPrescription')): ?>
+          <?php if ($this->hasAccess('parentAdmission')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>

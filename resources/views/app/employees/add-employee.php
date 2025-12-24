@@ -127,6 +127,29 @@
                                 </label>
                             </div>
 
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="parentAdmission">
+                                    <span>پذیرش</span>
+                                    <input type="checkbox" name="parentAdmission" id="parentAdmission" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="addAdmission">
+                                    <span> پذیرش مریض</span>
+                                    <input type="checkbox" name="addAdmission" id="addAdmission" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+                            <div class="detailes-culomn d-flex cursor-p h30 align-center">
+                                <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="admissions">
+                                    <span> لیست پذیرش‌ها</span>
+                                    <input type="checkbox" name="admissions" id="admissions" class="w20 p0 m0 h22">
+                                </label>
+                            </div>
+
+
                             <div class="detailes-culomn d-flex cursor-p h30 align-center">
                                 <label class="title-detaile d-flex justify-between w100 h30 align-center cursor-p" for="addDrug">
                                     <span> ثبت دارو</span>
