@@ -20,17 +20,18 @@ include_once('public/alerts/toastr.php');
     <!-- start page content -->
     <div class="mini-container">
         <div class="insert">
-            <form id="myForm" action="<?= url('dosage-store') ?>" method="POST">
+            <form id="myForm" action="<?= url('department-store') ?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14">نام دپارتمنت <?= _star ?> </div>
-                        <input type="text" name="dosage" class="checkInput" placeholder="مقدار مصرف را وارد نمایید" autocomplete="off" autofocus />
+                        <input type="text" name="name" class="checkInput" placeholder="مقدار مصرف را وارد نمایید" autocomplete="off" autofocus />
                     </div>
                 </div>
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14">مسئول دپارتمنت <?= _star ?> </div>
                         <select name="manager_id">
+                            <option selected disabled>لطفا مسئول دپارتمنت رو انتخاب نمائید</option>
                             <?php
                                 foreach($users as $user) { ?>
                                     <option value="<?=$user['id']?>"><?=$user['employee_name']?></option>
