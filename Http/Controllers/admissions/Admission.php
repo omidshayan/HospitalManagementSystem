@@ -38,9 +38,19 @@ class Admission extends App
 
         $user = $this->currentUser();
 
+
         $doctor = $this->db->select('SELECT id, department_id FROM employees WHERE id = ? AND `state` = ?', [$request['doctor_id'], 1])->fetch();
+        if (!$doctor) {
+            $this->flashMessage('error', 'دکتر یافت نشد');
+            return;
+        }
+
 
         $department = $this->db->select('SELECT id FROM departments WHERE id = ? AND `status` = ?', [$doctor['department_id'], 1])->fetch();
+        if (!$department) {
+            $this->flashMessage('error', 'دپارتمنت معتبر نیست');
+            return;
+        }
 
         if ($request['user_id']) {
 
@@ -60,36 +70,31 @@ class Admission extends App
             if ($request['user_name'] == '' || $request['birth_year'] == '' || $request['doctor_id'] == '' || $request['queue_number'] == '' || $request['age'] == '') {
                 $this->flashMessage('error', _emptyInputs);
             }
+
+            $userData = [
+                'user_name' => $request['user_name'],
+                'birth_year' => $request['birth_year'],
+                'father_name' => $request['father_name'] ?? null,
+                'gender' => $request['gender'],
+                'phone' => $request['phone'] ?? null,
+                'description' => $request['description'] ?? null,
+                'who_it' => $request['who_it'],
+            ];
+            $this->db->insert('users', array_keys($userData), $userData);
+            $userId = $this->db->lastInsertId();
+
+            $adminssionData = [
+                'patient_id' => $userId,
+                'doctor_id' => $request['doctor_id'],
+                'queue_number' => $request['queue_number'] ?? null,
+                'department_id' => 1,
+                'who_it' => $request['who_it'],
+            ];
+
+            $this->db->insert('admissions', array_keys($adminssionData), $adminssionData);
+
+            $this->flashMessage('success', _success);
         }
-
-
-
-        unset($request['user_id']);
-
-        $userData = [
-            'user_name' => $request['user_name'],
-            'birth_year' => $request['birth_year'],
-            'father_name' => $request['father_name'] ?? null,
-            'gender' => $request['gender'],
-            'phone' => $request['phone'] ?? null,
-            'description' => $request['description'] ?? null,
-            'who_it' => $request['who_it'],
-        ];
-        $this->db->insert('users', array_keys($userData), $userData);
-        $userId = $this->db->lastInsertId();
-
-        $adminssionData = [
-            'patient_id' => $userId,
-            'doctor_id' => $request['doctor_id'],
-            'queue_number' => $request['queue_number'] ?? null,
-            'department_id' => 1,
-            'who_it' => $request['who_it'],
-        ];
-
-
-        $this->db->insert('admissions', array_keys($adminssionData), $adminssionData);
-
-        $this->flashMessage('success', _success);
     }
 
 
