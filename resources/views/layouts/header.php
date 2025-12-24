@@ -90,7 +90,7 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('addAdmission')): ?>
-                  <a href="<?= url('admissions/create') ?>">
+                  <a href="<?= url('admission/create') ?>">
                     <li class="sidebar-dropdown-menu-item">پذیرش مریض</li>
                   </a>
                 <?php endif; ?>

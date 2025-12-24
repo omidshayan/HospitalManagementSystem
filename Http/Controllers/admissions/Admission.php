@@ -2,11 +2,12 @@
 
 namespace App;
 
-class Drug extends App
+class Admission extends App
 {
-    // drugs
-    public function addDrug()
+    // Admission create
+    public function admissionCreate()
     {
+        dd('ol');
         $this->middleware(true, true, 'general', true);
         $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
         $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
