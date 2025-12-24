@@ -37,7 +37,7 @@ class Admission extends App
         $this->middleware(true, true, 'addDrug', true, $request, true);
 
         // check empty form
-        if ($request['name'] == '' || $request['category_id'] == '' || $request['unit'] == '') {
+        if ($request['user_name'] == '' || $request['birth_year'] == '' || $request['doctor_id'] == '' || $request['queue_number'] == '' || $request['age'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
