@@ -29,12 +29,19 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </a>
-                <input type="text" class="p5 fs15 input w100" id="search_seller" placeholder="جستجوی مریض..." autofocus/>
-                <ul class="search-back d-none" id="backResponseSeller">
+                <input type="text" class="p5 fs15 input w100" id="search_seller" placeholder="جستجوی مریض..." autofocus />
+                <ul class="search-back t34 d-none" id="backResponseSeller">
                     <li class="resSel search-item color" role="option"></li>
                 </ul>
             </div>
         </div>
+
+        <script type="text/javascript">
+            // copy text in input name
+            document.getElementById("search_seller").addEventListener("input", function() {
+                document.querySelector("input[name='employee_name']").value = this.value;
+            });
+        </script>
 
 
         <!-- start page content -->
