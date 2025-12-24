@@ -96,7 +96,7 @@
                             </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">نوبت <?= _star ?> </div>
+                            <div class="label-form mb5 fs14">نوبت <?= _star ?> <span id="waitingPatients" class=""></span></div>
                             <input type="number" name="queue_number" class="checkInput" id="queue_number" placeholder="شماره مریض را وارد نمائید">
                         </div>
                     </div>
@@ -111,22 +111,22 @@
     <!-- End content -->
 
     <!-- confirm number -->
-<script>
-    const doctorQueues = <?= json_encode($doctorQueues) ?>;
+    <script>
+        const doctorQueues = <?= json_encode($doctorQueues) ?>;
 
-    document.getElementById('doctor_id').addEventListener('change', function() {
-        const doctorId = this.value;
-        const queueData = doctorQueues[doctorId] || { total: 0, waiting: 0 };
+        document.getElementById('doctor_id').addEventListener('change', function() {
+            const doctorId = this.value;
+            const queueData = doctorQueues[doctorId] || {
+                total: 0,
+                waiting: 0
+            };
 
-        // تنظیم شماره نوبت جدید
-        document.getElementById('queue_number').value = queueData.total + 1;
+            document.getElementById('queue_number').value = queueData.total + 1;
 
-        // نمایش تعداد مریض‌های منتظر
-        const waitingSpan = document.getElementById('waitingPatients');
-        waitingSpan.textContent = `تعداد مریض‌های منتظر: ${queueData.waiting}`;
-    });
-</script>
-
+            const waitingSpan = document.getElementById('waitingPatients');
+            waitingSpan.textContent = ` (تعداد مریض‌های منتظر: ${queueData.waiting}) `;
+        });
+    </script>
 
     <!-- // copy text in input name -->
     <script type="text/javascript">
