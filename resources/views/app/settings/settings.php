@@ -107,7 +107,7 @@ include_once('resources/views/scripts/activeNotActive.php');
         <div class="allow-invoice d-flex justify-between mt50">
             <span>
                 فعال کردن بخش پذیریش
-                <span id="sellStatus" class="status-text <?= ($settings['admission'] == 1) ? 'color-green' : 'color-orange' ?>">
+                <span id="admission" class="status-text <?= ($settings['admission'] == 1) ? 'color-green' : 'color-orange' ?>">
                     (<?= ($settings['admission'] == 1) ? 'فعال' : 'غیر فعال' ?>)
                 </span>
                 <span class="tool-c">
@@ -127,7 +127,7 @@ include_once('resources/views/scripts/activeNotActive.php');
                     type="checkbox"
                     class="setting-toggle"
                     data-url="change-status-admission"
-                    data-target="#sellStatus"
+                    data-target="#admission"
                     data-true-text="(فعال)"
                     data-false-text="(غیر فعال)"
                     data-true-class="color-green"
