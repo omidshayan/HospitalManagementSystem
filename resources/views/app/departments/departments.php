@@ -30,7 +30,7 @@ include_once('public/alerts/toastr.php');
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14">مسئول دپارتمنت <?= _star ?> </div>
-                        <select name="manager_id">
+                        <select name="manager_id" class="checkSelect">
                             <option selected disabled>لطفا مسئول دپارتمنت رو انتخاب نمائید</option>
                             <?php
                                 foreach($users as $user) { ?>

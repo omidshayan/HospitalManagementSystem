@@ -14,19 +14,20 @@ class Department extends App
     }
 
     // store dosage
-    public function dosageStore($request)
+    public function departmentStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['dosage'] == '') {
+        if ($request['name'] == '' || $request['manager_id'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
 
-        if (!empty($dosage['dosage'])) {
+        $department = $this->db->select('SELECT `name` FROM departments WHERE `name` = ?', [$request['name']])->fetch();
+
+        if (!empty($department['name'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('dosage', array_keys($request), $request);
+            $this->db->insert('departments', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
