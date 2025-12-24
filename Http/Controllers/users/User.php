@@ -159,12 +159,11 @@ class User extends App
     }
 
     // live search
-    public function searchEmployee($request)
+    public function searchUser($request)
     {
-        $this->isLoggedIn();
-        $db = new Database();
+        $this->middleware(true, true, 'general', true);
 
-        $infos = $db->select("SELECT * FROM employees WHERE employee_name LIKE ?", ['%' . $request['customer_name'] . '%'])->fetchAll();
+        $infos = $this->db->select("SELECT * FROM users WHERE user_name LIKE ?", ['%' . $request['customer_name'] . '%'])->fetchAll();
 
         $response = [
             'status' => 'success',

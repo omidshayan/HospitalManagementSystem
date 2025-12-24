@@ -21,30 +21,6 @@
         ?>
 
         <!-- search box -->
-        <!-- <div class="flex-justify-align mb20">
-            <div class="border search-database-s flex-justify-align">
-                <a href="#" class="color search-icon-database-s">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-10 search-icon w17">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </a>
-                <input
-                    type="text"
-                    id="item_name"
-                    class="p5 fs15 input w100 live-search-input border"
-                    data-search-url="<?= url('live-search-patient') ?>"
-                    data-redirect-url="<?= url('user-details') ?>/"
-                    data-edit-url="<?= url('edit-user') ?>/"
-                    data-template="user_name"
-                    data-id-key="id"
-                    placeholder="جستجوی مریض..."
-                    autocomplete="off"
-                    autofocus />
-                <ul class="search-back d-none live-search-result t35 top35"></ul>
-            </div>
-        </div> -->
-
         <div class=" flex-justify-align mb10">
             <div class="border search-database-s flex-justify-align">
                 <a href="#" class="color search-icon-database-s">
