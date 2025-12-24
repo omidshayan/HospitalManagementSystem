@@ -149,7 +149,7 @@
                 </svg>
               </a>
               <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('addDepartment')): ?>
+                <?php if ($this->hasAccess('departments')): ?>
                   <a href="<?= url('departments') ?>">
                     <li class="sidebar-dropdown-menu-item">دپارتمنت‌ها</li>
                   </a>

@@ -31,13 +31,17 @@ include_once('public/alerts/toastr.php');
                     <div class="one">
                         <div class="label-form mb5 fs14">مسئول دپارتمنت <?= _star ?> </div>
                         <select name="manager_id" class="checkSelect">
-                            <option selected disabled>لطفا مسئول دپارتمنت رو انتخاب نمائید</option>
+                            <option disabled>لطفا مسئول دپارتمنت رو انتخاب نمائید</option>
                             <?php
                             foreach ($users as $user) { ?>
-                                <option value="<?= $user['id'] ?>"><?= $user['employee_name'] ?></option>
+                                <option value="<?= $user['id'] ?>"
+                                    <?= (isset($department['manager_id']) && $department['manager_id'] == $user['id']) ? 'selected' : '' ?>>
+                                    <?= $user['employee_name'] ?>
+                                </option>
                             <?php }
                             ?>
                         </select>
+
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
