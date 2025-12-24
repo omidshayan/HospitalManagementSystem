@@ -46,10 +46,30 @@
                             </select>
                         </div>
                         <div class="one">
+                            <div class="label-form mb5 fs14" for="name">دیپارتمنت</div>
+                            <select name="position" id="mySelect" class="checkSelect">
+                                <option value="آقا">آقا</option>
+                                <option value="خانم">خانم</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="inputs d-flex">
+                        <div class="one">
+                            <div class="label-form mb5 fs14" for="name">جنسیت</div>
+                            <select name="position" id="mySelect" class="checkSelect">
+                                <option value="آقا">آقا</option>
+                                <option value="خانم">خانم</option>
+                            </select>
+                        </div>
+
+                        <div class="one">
                             <div class="label-form mb5 fs14">ایمیل </div>
                             <input type="text" name="email" placeholder="ایمیل را وارد نمایید" />
                         </div>
                     </div>
+
+
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
