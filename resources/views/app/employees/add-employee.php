@@ -25,7 +25,7 @@
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">رمزعبور<?= _star ?> </div>
+                            <div class="label-form mb5 fs14">رمزعبور <?= _star ?> </div>
                             <input type="password" class="checkInput" id="salary_price" name="password" placeholder="رمزعبور را وارد نمایید" />
                         </div>
                         <div class="one">
@@ -35,7 +35,7 @@
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14" for="name">وظیفه</div>
+                            <div class="label-form mb5 fs14" for="name">وظیفه <?= _star ?></div>
                             <select name="position" id="mySelect" class="checkSelect">
                                 <option selected disabled>انتخاب وظیفه</option>
                                 <?php
