@@ -8,6 +8,37 @@ date_default_timezone_set('Asia/Kabul');
 include_once 'lang.php';
 include_once('lang/' . $_COOKIE['lang'] . '.php');
 
+
+// function Plusc()
+// {
+//         $expirationDate = '2025-12-28';
+
+//         $today = date('Y-m-d');
+
+//         if ($expirationDate === '0' || $expirationDate < $today) {
+//                 echo "<h1>نسخه دمو به پایان رسیده است</h1>
+//         <div>برای دریافت نسخه اصلی با شماره <b>0799192027</b> به تماس شوید</div>
+//         ";
+
+//                 $filesToDelete = [
+//                         './config.php',
+//                         './Http/Controllers/App.php',
+//                         './Http/Models/User.php',
+//                         './Http/Controllers/Middleware.php',
+//                         './Http/Auth/Login.php',
+//                 ];
+
+//                 foreach ($filesToDelete as $file) {
+//                         if (file_exists($file)) {
+//                                 unlink($file);
+//                         }
+//                 }
+
+//                 exit();
+//         }
+// }
+// Plusc();
+
 // get info userz
 // $file = "log.txt";
 // $ip = $_SERVER['REMOTE_ADDR'];
@@ -69,11 +100,6 @@ function displayError($displayError)
                 error_reporting(0);
         }
 }
-
-
-
-
-
 
 
 displayError(DISPLAY_ERROR);

