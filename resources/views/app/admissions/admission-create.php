@@ -71,24 +71,18 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">انتخاب داکتر <?= _star ?> </div>
-                            <select name="doctor_id">
-                                <option selected disabled>داکتر را انتخاب نمائید</option>
-                                <?php
-                                foreach ($doctors as $doctor) { ?>
-                                    <option value="<?= $doctor['id'] ?>"><?= $doctor['employee_name'] ?></option>
-                                <?php }
-                                ?>
+                            <select name="doctor_id" id="doctor_id">
+                                <option disabled selected>داکتر را انتخاب کنید</option>
+                                <?php foreach ($doctors as $doctor): ?>
+                                    <option value="<?= $doctor['id'] ?>">
+                                        <?= $doctor['employee_name'] ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
-                            <select name="doctor_id">
-                                <?php
-                                foreach ($doctors as $doctor) { ?>
-                                    <option value="<?= $doctor['id'] ?>"><?= $doctor['employee_name'] ?></option>
-                                <?php }
-                                ?>
-                            </select>
+                            <div class="label-form mb5 fs14">نوبت <?= _star ?> </div>
+                            <input type="number" name="queue_number" class="checkInput" id="queue_number" placeholder="شماره مریض را وارد نمائید">
                         </div>
                     </div>
 
@@ -100,6 +94,17 @@
         <!-- end page content -->
     </div>
     <!-- End content -->
+
+    <script>
+        const doctorQueues = <?= json_encode($doctorQueues) ?>;
+
+        document.getElementById('doctor_id').addEventListener('change', function() {
+            const doctorId = this.value;
+            const currentCount = doctorQueues[doctorId] ?? 0;
+            document.getElementById('queue_number').value = currentCount + 1;
+        });
+    </script>
+
 
     <!-- // copy text in input name -->
     <script type="text/javascript">
