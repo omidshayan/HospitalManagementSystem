@@ -65,6 +65,7 @@ class Employee extends App
 
             $parentChildMap = [
                 'parentPatients' => ['showPatients', 'addPatient'],
+                'parentAdmission' => ['addAdmission', 'showAdmissions'],
                 'parentPrescription' => ['addPrescription', 'showPrescription'],
                 'parentEmployee' => ['addEmployee', 'showEmployees', 'positions'],
                 'parentDrug' => ['addDrug', 'showDrugs', 'catDrug', 'unitDrug'],
