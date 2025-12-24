@@ -18,7 +18,6 @@
             const query = $input.val().trim();
             if (!["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
 
-                // اگر کاربر دوباره تایپ کرد، آی‌دی قبلی پاک شود
                 $('#user_id').val('');
 
                 if (query.length === 0) {
@@ -83,17 +82,6 @@
             $input.val(item.user_name);
 
             $('#user_id').val(item.id);
-
-            $('#employee_id').val(item.id).trigger('change');
-            $('#bast').val(item.bast);
-            $('#position').val(item.position);
-            $('#appointment_type').val(item.appointment_type);
-            $('#office_name').val(item.office_name);
-            $('#employee_name').val(item.user_name);
-            $('#father_name').val(item.father_name);
-            $('#grand_father').val(item.grand_father);
-            $('#ghadam').val(item.ghadam);
-
             $resultBox.hide();
         }
 

@@ -2,7 +2,7 @@
     <?php
     $title = 'پذیریش جدید';
     include_once('resources/views/layouts/header.php');
-    include_once('public/alerts/check-inputs.php');
+    // include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/live-search-users.php');
     ?>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
+                    <!-- <input type="hidden" name="csrf_token"  value="<?= $_SESSION['csrf_token'] ?>" /> -->
                     <input type="submit" id="submit" value="ثبت" class="btn" />
                 </form>
             </div>

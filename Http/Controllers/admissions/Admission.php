@@ -34,12 +34,17 @@ class Admission extends App
     // store employee
     public function admissionStore($request)
     {
-        $this->middleware(true, true, 'addDrug', true, $request, true);
+        $this->middleware(true, true, 'general', true);
+
+        if($request['user_id']){
+            dd('ok');
+        }
 
         // check empty form
         if ($request['user_name'] == '' || $request['birth_year'] == '' || $request['doctor_id'] == '' || $request['queue_number'] == '' || $request['age'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
+
 
         unset($request['user_id']);
 
@@ -68,6 +73,21 @@ class Admission extends App
 
         $this->flashMessage('success', _success);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // show drugs
     public function showDrugs()
