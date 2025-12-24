@@ -6,7 +6,7 @@
     ?>
     <!-- end sidebar -->
 
-    <div id="alert" class="alert" style="display: none;"><?=_error_programmer?></div>
+    <div id="alert" class="alert" style="display: none;"><?= _error_programmer ?></div>
     <!-- loading and overlay -->
     <div class="overlay" id="loadingOverlay">
         <div class="spinner"></div>
@@ -17,6 +17,12 @@
         <div class="content-title"> جزئیات دپارتمنت: <?= $department['name'] ?></div>
         <!-- start page content -->
         <div class="mini-container">
+            <div class="details">
+                <div class="detail-item d-flex">
+                    <div class="w100 m10 center">نام دپارتمنت</div>
+                    <div class="w100 m10 center"><?= $department['name'] ?></div>
+                </div>
+            </div>
             <div class="details">
                 <div class="detail-item d-flex">
                     <div class="w100 m10 center">مسئول دپارتمنت</div>
