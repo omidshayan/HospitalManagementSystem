@@ -48,27 +48,27 @@ class Department extends App
         }
     }
 
-    // edit dosage store
-    public function editDosageStore($request, $id)
+    // edit department store
+    public function editDepartmentStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['dosage'] == '') {
+        if ($request['name'] == '' || $request['manager_id'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
+        $department = $this->db->select('SELECT * FROM departments WHERE `name` = ?', [$request['name']])->fetch();
 
-        if ($dosage) {
-            if ($dosage['id'] != $id) {
+        if ($department) {
+            if ($department['id'] != $id) {
                 $this->flashMessage('error', 'این مقدار مصرف ثبت شده است.');
                 return;
             }
         }
 
-        $this->db->update('dosage', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('dosage'));
+        $this->db->update('departments', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('departments'));
     }
 
     // dosage Details detiles page
