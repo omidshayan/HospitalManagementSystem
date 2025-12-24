@@ -57,7 +57,7 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14" for="name">جنسیت</div>
-                            <select name="position" id="mySelect" class="checkSelect">
+                            <select name="gender" id="mySelect" class="checkSelect">
                                 <option value="آقا">آقا</option>
                                 <option value="خانم">خانم</option>
                             </select>
