@@ -45,10 +45,19 @@ class Admission extends App
         //     $this->flashMessage('error', _emptyInputs);
         // }
 
-        $request = $this->validateInputs($request, ['image' => false]);
+        unset($request['user_id']);
 
-        // check image
-        $this->handleImageUpload($request['image'], 'images/drugs');
+        $userData = [
+            'user_name' => $request['user_name'],
+            'birth_year' => $request['birth_year'],
+            'father_name' => $request['father_name'] ?? null,
+            'gender' => $request['gender'],
+            'phone' => $request['phone'] ?? null,
+            'description' => $request['description'] ?? null,
+            'who_it' => $request['who_it'],
+        ];
+        $this->db->insert('users', array_keys($userData), $userData);
+        $userId = $this->db->lastInsertId();
 
         $this->db->insert('drugs', array_keys($request), $request);
         $this->flashMessage('success', _success);

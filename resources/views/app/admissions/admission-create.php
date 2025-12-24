@@ -70,6 +70,20 @@
 
                     <div class="inputs d-flex">
                         <div class="one">
+                            <div class="label-form mb5 fs14">جنسیت</div>
+                            <select name="gender">
+                                <option value="آقا">آقا</option>
+                                <option value="خانم">خانم</option>
+                            </select>
+                        </div>
+                        <div class="one">
+                            <div class="label-form mb5 fs14">توضیحات</div>
+                            <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="inputs d-flex">
+                        <div class="one">
                             <div class="label-form mb5 fs14">انتخاب داکتر <?= _star ?> </div>
                             <select name="doctor_id" id="doctor_id">
                                 <option disabled selected>داکتر را انتخاب کنید</option>
