@@ -1,10 +1,8 @@
-    <!-- start sidebar -->
     <?php
     $title = 'ثبت کارمند';
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php'); ?>
-    <!-- end sidebar -->
 
     <!-- Start content -->
     <div class="content">
