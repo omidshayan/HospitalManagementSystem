@@ -72,7 +72,7 @@ class Department extends App
     }
 
     // dosage Details detiles page
-    public function departmentDetiles($id)
+    public function departmentDetails($id)
     {
         $this->middleware(true, true, 'general');
         $department = $this->db->select(
