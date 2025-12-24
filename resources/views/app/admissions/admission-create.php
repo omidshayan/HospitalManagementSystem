@@ -110,16 +110,23 @@
     </div>
     <!-- End content -->
 
-    <!-- fonfirm number -->
-    <script>
-        const doctorQueues = <?= json_encode($doctorQueues) ?>;
+    <!-- confirm number -->
+<script>
+    const doctorQueues = <?= json_encode($doctorQueues) ?>;
 
-        document.getElementById('doctor_id').addEventListener('change', function() {
-            const doctorId = this.value;
-            const currentCount = doctorQueues[doctorId] ?? 0;
-            document.getElementById('queue_number').value = currentCount + 1;
-        });
-    </script>
+    document.getElementById('doctor_id').addEventListener('change', function() {
+        const doctorId = this.value;
+        const queueData = doctorQueues[doctorId] || { total: 0, waiting: 0 };
+
+        // تنظیم شماره نوبت جدید
+        document.getElementById('queue_number').value = queueData.total + 1;
+
+        // نمایش تعداد مریض‌های منتظر
+        const waitingSpan = document.getElementById('waitingPatients');
+        waitingSpan.textContent = `تعداد مریض‌های منتظر: ${queueData.waiting}`;
+    });
+</script>
+
 
     <!-- // copy text in input name -->
     <script type="text/javascript">
