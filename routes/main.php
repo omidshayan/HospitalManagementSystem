@@ -74,6 +74,9 @@ require_once 'tests/tests.php';
 // admissions
 require_once 'admissions/admissions.php';
 
+// departments
+require_once 'departments/departments.php';
+
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
         //current url array
