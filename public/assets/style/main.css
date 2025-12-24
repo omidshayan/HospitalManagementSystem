@@ -28,7 +28,10 @@
     box-shadow: 0 0 8px var(--hover);
     transition: 0.5s;
 }
-
+.border{
+    border-radius: 5px;
+    border: 1px solid var(--border) !important;
+}
 .border-radius {
     border-radius: 10px;
 }
