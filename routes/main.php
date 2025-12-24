@@ -71,6 +71,9 @@ require_once 'drug-categories/drug-categories.php';
 // tests
 require_once 'tests/tests.php';
 
+// admissions
+require_once 'admissions/admissions.php';
+
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
         //current url array
