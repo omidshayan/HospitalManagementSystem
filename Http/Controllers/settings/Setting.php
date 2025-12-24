@@ -102,7 +102,10 @@ class Setting extends App
     public function changeStatusAdmission()
     {
         $this->middleware(true, true, 'general');
-        $row = $this->db->select('SELECT id, admission FROM settings')->fetch();
+
+        $row = $this->db->select(
+            'SELECT id, admission FROM settings LIMIT 1'
+        )->fetch();
 
         if (!$row) {
             require_once(BASE_PATH . '/404.php');
@@ -110,7 +113,20 @@ class Setting extends App
         }
 
         $newStatus = ($row['admission'] == 1) ? 2 : 1;
-        $this->db->update('settings', $row['id'], ['admission'], [$newStatus]);
+
+        $this->db->update(
+            'settings',
+            $row['id'],
+            ['admission'],
+            [$newStatus]
+        );
+
+        if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
+            $_SESSION['settings'] = [];
+        }
+
+        $_SESSION['settings']['admission'] = $newStatus;
+
         $this->send_json_response(true, _success, $newStatus);
     }
 }
