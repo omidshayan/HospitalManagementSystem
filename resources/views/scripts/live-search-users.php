@@ -40,7 +40,7 @@
                                 response.items.forEach(function(item) {
                                     itemsData.push(item);
                                     output += '<li class="resSel search-item color" role="option" data-id="' + item.id + '">' +
-                                        item.employee_name + ' - ' + item.father_name + ' - ' + item.phone +
+                                        item.user_name + ' - ' + item.birth_year + ' - ' + item.phone +
                                         '</li>';
                                 });
                             } else {
