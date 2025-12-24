@@ -36,8 +36,8 @@ class Admission extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $departments = $this->db->select('SELECT * FROM departments WHERE `status` = 1')->fetchAll();
-        $doctor = $this->db->select('SELECT * FROM employees WHERE `status` = 1')->fetchAll();
+        $doctor = $this->db->select('SELECT id, department_id FROM employees WHERE id = ? AND `status` = ?', [$request['doctor_id'], [1]])->fetchAll();
+        $departments = $this->db->select('SELECT * FROM departments WHERE id = ? AND `status` = ?', [$doctor['department_id'], [1]])->fetchAll();
 
         if ($request['user_id']) {
             $adminssionData = [
