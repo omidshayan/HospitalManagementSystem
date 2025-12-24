@@ -7,11 +7,9 @@ class Admission extends App
     // Admission create
     public function admissionCreate()
     {
-        dd('ol');
         $this->middleware(true, true, 'general', true);
-        $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
-        $units = $this->db->select('SELECT * FROM units WHERE `status` = ?', [1])->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/drugs/add-drug.php');
+        
+        require_once(BASE_PATH . '/resources/views/app/admissions/admission-create.php');
     }
 
     // store employee
