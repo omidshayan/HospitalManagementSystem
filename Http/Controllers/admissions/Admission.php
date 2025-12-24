@@ -9,7 +9,6 @@ class Admission extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        // داکترها
         $doctors = $this->db->select(
             'SELECT id, employee_name 
          FROM employees 
@@ -17,7 +16,6 @@ class Admission extends App
             ['داکتر', 1]
         )->fetchAll();
 
-        // تعداد پذیرش‌های امروز برای هر داکتر
         $todayAdmissions = $this->db->select(
             'SELECT doctor_id, COUNT(*) AS total
          FROM admissions
@@ -25,7 +23,6 @@ class Admission extends App
          GROUP BY doctor_id'
         )->fetchAll();
 
-        // تبدیل به آرایه قابل استفاده
         $doctorQueues = [];
         foreach ($todayAdmissions as $row) {
             $doctorQueues[$row['doctor_id']] = $row['total'];
@@ -33,7 +30,6 @@ class Admission extends App
 
         require_once(BASE_PATH . '/resources/views/app/admissions/admission-create.php');
     }
-
 
     // store employee
     public function admissionStore($request)
