@@ -48,8 +48,12 @@
                         <div class="one">
                             <div class="label-form mb5 fs14" for="name">دیپارتمنت</div>
                             <select name="position" id="mySelect" class="checkSelect">
-                                <option value="آقا">آقا</option>
-                                <option value="خانم">خانم</option>
+                                <option selected disabled>لطفا دیپارتمنت را انتخاب نمائید</option>
+                                <?php
+                                foreach ($departments as $department) { ?>
+                                    <option value="<?= $department['id'] ?>"><?= $department['name'] ?></option>
+                                    <?php }
+                                    ?>>
                             </select>
                         </div>
                     </div>

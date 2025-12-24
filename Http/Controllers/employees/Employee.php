@@ -14,6 +14,7 @@ class Employee extends App
     {
         $this->middleware(true, true, 'addEmployee', true);
         $positions = $this->db->select('SELECT * FROM positions')->fetchAll();
+        $departments = $this->db->select('SELECT * FROM departments WHERE `status` = 1')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/employees/add-employee.php');
     }
 
