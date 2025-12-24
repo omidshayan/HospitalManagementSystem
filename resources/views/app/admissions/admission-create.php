@@ -36,14 +36,6 @@
             </div>
         </div>
 
-        <script type="text/javascript">
-            // copy text in input name
-            document.getElementById("search_seller").addEventListener("input", function() {
-                document.querySelector("input[name='employee_name']").value = this.value;
-            });
-        </script>
-
-
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
@@ -152,4 +144,11 @@
     </div>
     <!-- End content -->
 
+    <!-- // copy text in input name -->
+    <script type="text/javascript">
+        document.getElementById("search_seller").addEventListener("input", function() {
+            document.querySelector("input[name='user_name']").value = this.value;
+        });
+    </script>
+    
     <?php include_once('resources/views/layouts/footer.php') ?>
