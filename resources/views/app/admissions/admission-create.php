@@ -68,6 +68,30 @@
                         <strong id="birthYear"></strong>
                     </div>
 
+                    <div class="inputs d-flex">
+                        <div class="one">
+                            <div class="label-form mb5 fs14">انتخاب داکتر <?= _star ?> </div>
+                            <select name="doctor_id">
+                                <option selected disabled>داکتر را انتخاب نمائید</option>
+                                <?php
+                                foreach ($doctors as $doctor) { ?>
+                                    <option value="<?= $doctor['id'] ?>"><?= $doctor['employee_name'] ?></option>
+                                <?php }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="one">
+                            <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
+                            <select name="doctor_id">
+                                <?php
+                                foreach ($doctors as $doctor) { ?>
+                                    <option value="<?= $doctor['id'] ?>"><?= $doctor['employee_name'] ?></option>
+                                <?php }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                     <input type="submit" id="submit" value="ثبت" class="btn" />
                 </form>
