@@ -21,7 +21,7 @@ class Admission extends App
         $todayAdmissions = $this->db->select(
             'SELECT doctor_id, COUNT(*) AS total
          FROM admissions
-         WHERE DATE(admission_date) = CURDATE()
+         WHERE DATE(created_at) = CURDATE()
          GROUP BY doctor_id'
         )->fetchAll();
 
@@ -38,7 +38,6 @@ class Admission extends App
     // store employee
     public function admissionStore($request)
     {
-        dd($request);
         $this->middleware(true, true, 'addDrug', true, $request, true);
 
         // check empty form
@@ -61,7 +60,7 @@ class Admission extends App
         $userId = $this->db->lastInsertId();
 
         $adminssionData = [
-            'patient_id' => $request['user_name'],
+            'patient_id' => $userId,
             'doctor_id' => $request['doctor_id'],
             'queue_number' => $request['queue_number'] ?? null,
             'department_id' => 1,
@@ -70,6 +69,7 @@ class Admission extends App
 
 
         $this->db->insert('admissions', array_keys($adminssionData), $adminssionData);
+
         $this->flashMessage('success', _success);
     }
 
