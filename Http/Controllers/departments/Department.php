@@ -9,6 +9,7 @@ class Department extends App
     {
         $this->middleware(true, true, 'departments', true);
         $departments = $this->db->select('SELECT * FROM departments')->fetchAll();
+        $users = $this->db->select('SELECT * FROM employees WHERE `state` = 1')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/departments/departments.php');
     }
 
