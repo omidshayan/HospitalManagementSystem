@@ -53,6 +53,7 @@ class Admission extends App
     // store employee
     public function admissionStore($request)
     {
+        dd($request);
         $this->middleware(true, true, 'general', true);
 
         $user = $this->currentUser();

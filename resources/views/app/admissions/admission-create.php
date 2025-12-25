@@ -42,6 +42,7 @@
                 <form action="<?= url('admission/store') ?>" method="POST" enctype="multipart/form-data">
 
                     <input type="hidden" name="user_id" id="user_id">
+                    <input type="hidden" name="patient_name" id="patient_name">
 
                     <div class="inputs d-flex">
                         <div class="one">

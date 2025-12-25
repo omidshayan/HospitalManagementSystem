@@ -19,6 +19,7 @@
             if (!["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
 
                 $('#user_id').val('');
+                $('#patient_name').val('');
 
                 if (query.length === 0) {
                     $resultBox.addClass('d-none').hide();
@@ -82,6 +83,7 @@
             $input.val(item.user_name);
 
             $('#user_id').val(item.id);
+            $('#patient_name').val(item.user_name);
             $resultBox.hide();
         }
 

@@ -15,11 +15,18 @@
             <!-- patient infos -->
             <div class="patient-container">
                 <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
-                    <div class="center fs14">اطلاعات مریض</div>
+                    <div class="center fs14 mb10">اطلاعات مریض</div>
                     <div class="insert">
                         <?php
                         if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) { ?>
 
+                        <select name="" id="">
+                            <option value="">ddddd</option>
+                            <option value="">ddddd</option>
+                            <option value="">ddddd</option>
+                            <option value="">ddddd</option>
+                            <option value="">ddddd</option>
+                        </select>
 
                         <?php } else { ?>
 
