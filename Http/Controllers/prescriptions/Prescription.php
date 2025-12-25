@@ -341,14 +341,29 @@ class Prescription extends App
 
         if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) {
             $patient = $this->db->select('SELECT id FROM admissions WHERE id = ?', [$request['patient_id']])->fetch();
+
+            $preInfos = [
+                'patient_id' => $userId,
+                'patient_name' => $request['user_name'],
+                'birth_year' => $request['birth_year'],
+                'diagnosis' => $request['diagnosis'],
+                'bp' => $request['bp'],
+                'pr' => $request['pr'],
+                'rr' => $request['rr'],
+                'temp' => $request['temp'],
+                'spo2' => $request['spo2'],
+                'status' => 2,
+            ];
+
             $this->db->update('admissions', $patient['id'], ['status'], [2]);
+            $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
         } else {
 
             if (empty($request['user_name']) || empty($request['birth_year'])) {
                 $this->flashMessage('error', _emptyInputs);
             }
 
-            
+
 
             // select and check user
             $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$request['user_name'], $request['birth_year']])->fetch();
