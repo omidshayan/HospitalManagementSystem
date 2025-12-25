@@ -339,117 +339,124 @@ class Prescription extends App
             exit();
         }
 
+        if ($prescription['status'] == 2) {
+            $this->flashMessage('error', 'این نسخه قبلاً بسته شده است');
+            return;
+        }
+
         if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) {
 
-            $patient = $this->db->select('SELECT id, patient_id FROM admissions WHERE id = ?', [$request['admission_id']])->fetch();
+            $patient = $this->db->select(
+                'SELECT id, patient_id, status FROM admissions WHERE id = ?',
+                [$request['admission_id']]
+            )->fetch();
 
-            $user = $this->db->select('SELECT * FROM users WHERE id = ?', [$patient['patient_id']])->fetch();
+            if (!$patient) {
+                $this->flashMessage('error', 'پذیرش معتبر نیست');
+                return;
+            }
+
+            if ($patient['status'] == 2) {
+                $this->flashMessage('error', 'این مریض قبلاً ویزیت شده است');
+                return;
+            }
+
+            $user = $this->db->select(
+                'SELECT * FROM users WHERE id = ?',
+                [$patient['patient_id']]
+            )->fetch();
+
+            if (!$user) {
+                $this->flashMessage('error', 'مریض یافت نشد');
+                return;
+            }
 
             $preInfos = [
-                'patient_id' => $user['id'],
+                'patient_id'   => $user['id'],
                 'patient_name' => $user['user_name'],
-                'birth_year' => $user['birth_year'],
+                'birth_year'   => $user['birth_year'],
                 'admission_id' => $patient['id'],
-                'diagnosis' => $request['diagnosis'],
-                'bp' => $request['bp'],
-                'pr' => $request['pr'],
-                'rr' => $request['rr'],
-                'temp' => $request['temp'],
-                'spo2' => $request['spo2'],
-                'status' => 2,
+                'diagnosis'    => $request['diagnosis'],
+                'bp'           => $request['bp'],
+                'pr'           => $request['pr'],
+                'rr'           => $request['rr'],
+                'temp'         => $request['temp'],
+                'spo2'         => $request['spo2'],
+                'status'       => 2,
             ];
 
-            $this->db->update('admissions', $patient['id'], ['status'], [2]);
-            $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
-            dd('ok');
+            $this->db->update(
+                'admissions',
+                $patient['id'],
+                ['status'],
+                [2]
+            );
+
+            $this->db->update(
+                'prescriptions',
+                $prescription['id'],
+                array_keys($preInfos),
+                $preInfos
+            );
         } else {
 
             if (empty($request['user_name']) || empty($request['birth_year'])) {
                 $this->flashMessage('error', _emptyInputs);
+                return;
             }
 
-
-
-            // select and check user
-            $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$request['user_name'], $request['birth_year']])->fetch();
+            $user = $this->db->select(
+                'SELECT * FROM users WHERE user_name = ? AND birth_year = ?',
+                [$request['user_name'], $request['birth_year']]
+            )->fetch();
 
             if (!$user) {
                 $userData = [
-                    'user_name' => $request['user_name'],
-                    'birth_year' => $request['birth_year'],
+                    'user_name'   => $request['user_name'],
+                    'birth_year'  => $request['birth_year'],
                     'father_name' => $request['father_name'] ?? null,
-                    'gender' => $request['gender'],
-                    'phone' => $request['phone'] ?? null,
-                    'who_it' => $request['who_it'],
+                    'gender'      => $request['gender'],
+                    'phone'       => $request['phone'] ?? null,
+                    'who_it'      => $request['who_it'],
                 ];
+
                 $this->db->insert('users', array_keys($userData), $userData);
                 $userId = $this->db->lastInsertId();
             } else {
                 $userId = $user['id'];
             }
+
+            $preInfos = [
+                'patient_id'   => $userId,
+                'patient_name' => $request['user_name'],
+                'birth_year'   => $request['birth_year'],
+                'diagnosis'    => $request['diagnosis'],
+                'bp'           => $request['bp'],
+                'pr'           => $request['pr'],
+                'rr'           => $request['rr'],
+                'temp'         => $request['temp'],
+                'spo2'         => $request['spo2'],
+                'status'       => 2,
+            ];
+
+            $this->db->update(
+                'prescriptions',
+                $prescription['id'],
+                array_keys($preInfos),
+                $preInfos
+            );
         }
-
-
-
-        // get invoice items
-        $prescription_items = $this->prescription->getPrescriptionItems($prescription['id']);
-        // check invoice items
-        // NOTE این قسمت باید همراه با ازمایشات برسی بشه
-        // if (!$prescription_items) {
-        //     $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');
-        //     return;
-        // }
-
-
-
-
-
-
-        $newPrescription = [];
-        // send notificatons
-        // $this->notification->sendNotif([
-        //     'branch_id' => $request['branch_id'],
-        //     'user_id' => $request['seller_id'],
-        //     'ref_id' => $invoice['id'],
-        //     'type' => 1,
-        // ]);
-
-
-
-        // update daily reports
-        // $dailyReports = [
-        //     'branch_id' => $request['branch_id'],
-        //     'total_price' =>  $request['total_price'],
-        //     'paid_amount' => $request['paid_amount'],
-        //     'discount' => $request['total_discount'],
-        //     'type' => 1,
-        // ];
-        // $this->reports->updateDailyReports($dailyReports);
 
         $settings = $this->db->select('SELECT single_print FROM settings')->fetch();
 
-        $preInfos = [
-            'patient_id' => $userId,
-            'patient_name' => $request['user_name'],
-            'birth_year' => $request['birth_year'],
-            'diagnosis' => $request['diagnosis'],
-            'bp' => $request['bp'],
-            'pr' => $request['pr'],
-            'rr' => $request['rr'],
-            'temp' => $request['temp'],
-            'spo2' => $request['spo2'],
-            'status' => 2,
-        ];
-
-        $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
-
         if ($settings['single_print'] == 1) {
-            $preId = $prescription['id'];
-            $this->flashMessageId('success', _success, $preId);
+            $this->flashMessageId('success', _success, $prescription['id']);
         } else {
             $this->flashMessage('success', _success);
         }
     }
+
+
 
     // single print
     public function singlePrint($id)
