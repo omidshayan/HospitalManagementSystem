@@ -230,11 +230,21 @@
                         </div>
                         <div class="inputs d-flex">
                             <div class="one">
+                                <div class="label-form mb5 fs14">تولید کننده</div>
+                                <select name="interval_time" required>
+                                    <option selected disabled>تولید کننده یا نوع دارو را انتخاب نمائید</option>
+                                    <?php
+                                    foreach ($intake_times as $intake_time) { ?>
+                                        <option value="<?= $intake_time['intake_time'] ?>"><?= $intake_time['intake_time'] ?></option>
+                                    <?php }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="one">
                                 <div class="label-form mb5 fs14">توضیحات اضافی</div>
                                 <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
                             </div>
                         </div>
-
 
                         <!-- Recommended -->
                         <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
