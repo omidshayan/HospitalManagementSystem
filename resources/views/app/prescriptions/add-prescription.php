@@ -36,8 +36,6 @@
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-
-
                         <?php } else { ?>
 
                             <div class="inputs d-flex">
@@ -497,6 +495,7 @@
     </script>
 
     <!-- validation -->
+
     <script>
         document.getElementById('prescription_form').addEventListener('submit', function(e) {
 

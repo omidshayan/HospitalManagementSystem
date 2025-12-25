@@ -333,9 +333,10 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-
-        if (empty($request['user_name']) || empty($request['birth_year'])) {
-            $this->flashMessage('error', _emptyInputs);
+        if (!isset($request['patient_id'])) {
+            if (empty($request['user_name']) || empty($request['birth_year'])) {
+                $this->flashMessage('error', _emptyInputs);
+            }
         }
 
         $prescription = $this->prescription->getPrescription($id);
