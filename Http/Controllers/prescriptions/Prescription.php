@@ -333,17 +333,43 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if (!isset($request['patient_id'])) {
-            if (empty($request['user_name']) || empty($request['birth_year'])) {
-                $this->flashMessage('error', _emptyInputs);
-            }
-        }
-
         $prescription = $this->prescription->getPrescription($id);
         if (!$prescription) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
+
+        if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) {
+            $patient = $this->db->select('SELECT id FROM admissions WHERE id = ?', [$request['patient_id']])->fetch();
+            $this->db->update('admissions', $patient['id'], ['status'], [2]);
+        } else {
+
+            if (empty($request['user_name']) || empty($request['birth_year'])) {
+                $this->flashMessage('error', _emptyInputs);
+            }
+
+            
+
+            // select and check user
+            $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$request['user_name'], $request['birth_year']])->fetch();
+
+            if (!$user) {
+                $userData = [
+                    'user_name' => $request['user_name'],
+                    'birth_year' => $request['birth_year'],
+                    'father_name' => $request['father_name'] ?? null,
+                    'gender' => $request['gender'],
+                    'phone' => $request['phone'] ?? null,
+                    'who_it' => $request['who_it'],
+                ];
+                $this->db->insert('users', array_keys($userData), $userData);
+                $userId = $this->db->lastInsertId();
+            } else {
+                $userId = $user['id'];
+            }
+        }
+
+
 
         // get invoice items
         $prescription_items = $this->prescription->getPrescriptionItems($prescription['id']);
@@ -354,25 +380,10 @@ class Prescription extends App
         //     return;
         // }
 
-        $userId = null;
 
-        // select and check user
-        $user = $this->db->select('SELECT * FROM users WHERE user_name = ? AND birth_year = ?', [$request['user_name'], $request['birth_year']])->fetch();
 
-        if (!$user) {
-            $userData = [
-                'user_name' => $request['user_name'],
-                'birth_year' => $request['birth_year'],
-                'father_name' => $request['father_name'] ?? null,
-                'gender' => $request['gender'],
-                'phone' => $request['phone'] ?? null,
-                'who_it' => $request['who_it'],
-            ];
-            $this->db->insert('users', array_keys($userData), $userData);
-            $userId = $this->db->lastInsertId();
-        } else {
-            $userId = $user['id'];
-        }
+
+
 
         $newPrescription = [];
         // send notificatons
