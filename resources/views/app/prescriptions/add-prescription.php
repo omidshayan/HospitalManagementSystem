@@ -28,25 +28,40 @@
                             }
                         ?>
                             <select name="admission_id" id="admissionSelect" class="mb20">
-                                <?php foreach ($patients as $patient): ?>
-                                    <option
-                                        class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
-                                        value="<?= $patient['id'] ?>"
-                                        data-name-add="<?= htmlspecialchars($patient['user_name'] ?? '') ?>"
-                                        data-age-add="<?= $patient['age'] ?? '' ?>"
-                                        <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
-                                        <?= $patient['queue_number'] ?>
-                                        - <?= $patient['user_name'] ?? 'نامشخص' ?>
-                                        - (<?= $patient['age'] ?? '—' ?> ساله)
+
+                                <?php if (empty($patients)): ?>
+                                    <option value="" disabled selected>
+                                        مریضی ثبت نشده است
                                     </option>
-                                <?php endforeach; ?>
+                                <?php else: ?>
+                                    <?php foreach ($patients as $patient): ?>
+                                        <option
+                                            class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
+                                            value="<?= $patient['id'] ?>"
+                                            data-name-add="<?= htmlspecialchars($patient['user_name'] ?? '') ?>"
+                                            data-age-add="<?= $patient['age'] ?? '' ?>"
+                                            <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
+
+                                            <?= $patient['queue_number'] ?>
+                                            - <?= $patient['user_name'] ?? 'نامشخص' ?>
+                                            - (<?= $patient['age'] ?? '—' ?> ساله)
+
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </select>
 
-                            <div class="center mb20">
-                                <a href="<?= url('patient-inquiry') ?>" target="_blank" id="patientInquiryBtn" class="p5-20 bg-success btn fs14">
-                                    استعلام مریض
-                                </a>
-                            </div>
+                            <!-- btn -->
+                            <?php if (!empty($patients)): ?>
+                                <div class="center mb20">
+                                    <a href="<?= url('patient-inquiry') ?>"
+                                        target="_blank"
+                                        id="patientInquiryBtn"
+                                        class="p5-20 bg-success btn fs14">
+                                        استعلام مریض
+                                    </a>
+                                </div>
+                            <?php endif; ?>
 
                         <?php } else { ?>
 
