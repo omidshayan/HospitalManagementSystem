@@ -28,7 +28,6 @@
                             }
                         ?>
                             <select name="admission_id" id="admissionSelect" class="mb20">
-
                                 <?php if (empty($patients)): ?>
                                     <option value="" disabled selected>
                                         مریضی ثبت نشده است
@@ -64,8 +63,6 @@
                             <?php endif; ?>
 
                         <?php } else { ?>
-
-
 
                             <div class="inputs d-flex">
                                 <div class="one">
