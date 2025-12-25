@@ -18,15 +18,27 @@
                     <div class="center fs14 mb10">اطلاعات مریض</div>
                     <div class="insert">
                         <?php
-                        if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) { ?>
+                        if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) {
+                            $currentPatientId = null;
 
-                            <select name="" id="">
-                                <?php
-                                foreach ($patients as $patient) { ?>
-                                    <option value=""><?= $patient['user_name'] ?></option>
-                                <?php }
-                                ?>
+                            foreach ($patients as $p) {
+                                if ($p['status'] == 1) {
+                                    $currentPatientId = $p['id'];
+                                    break;
+                                }
+                            }
+                        ?>
+                            <select name="patient_id" class="mb20">
+                                <?php foreach ($patients as $patient): ?>
+                                    <option
+                                        value="<?= $patient['id'] ?>"
+                                        <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
+                                        <?= $patient['queue_number'] . ' - ' . $patient['user_name'] ?>
+                                        <?= ($patient['status'] == 2) ? ' (ویزیت شده)' : '' ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
+
 
                         <?php } else { ?>
 

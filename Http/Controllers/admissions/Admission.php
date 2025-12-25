@@ -105,6 +105,7 @@ class Admission extends App
 
             $adminssionData = [
                 'patient_id' => $userId,
+                'user_name' => $request['user_name'],
                 'doctor_id' => $request['doctor_id'],
                 'queue_number' => $request['queue_number'] ?? null,
                 'department_id' => $doctor['department_id'],

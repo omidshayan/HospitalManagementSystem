@@ -42,14 +42,15 @@ class Prescription extends App
 
         // if active admissions
         if (
-            isset($_SESSION['settings']['admission']) &&
-            $_SESSION['settings']['admission'] == 1
+            isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1
         ) {
             $patients = $this->db->select(
-                'SELECT id, patient_id, user_name
-         FROM admissions
-         WHERE doctor_id = ?
-         AND DATE(created_at) = CURDATE()',
+                'SELECT id, patient_id, user_name, queue_number, status
+            FROM admissions
+            WHERE doctor_id = ?
+            AND created_at >= CURDATE()
+            AND created_at < CURDATE() + INTERVAL 1 DAY
+            ORDER BY queue_number ASC',
                 [$userId['id']]
             )->fetchAll();
         }
