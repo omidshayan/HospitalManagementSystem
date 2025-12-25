@@ -45,7 +45,7 @@ class Prescription extends App
             isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1
         ) {
             $patients = $this->db->select(
-                'SELECT id, patient_id, user_name, queue_number, status
+                'SELECT id, patient_id, user_name, queue_number, age, `status`
             FROM admissions
             WHERE doctor_id = ?
             AND created_at >= CURDATE()

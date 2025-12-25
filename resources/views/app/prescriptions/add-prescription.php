@@ -32,7 +32,7 @@
                                     <option class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
                                         value="<?= $patient['id'] ?>"
                                         <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
-                                        <?= $patient['queue_number'] . ' - ' . $patient['user_name'] ?>
+                                        <?= $patient['queue_number'] . ' - ' . $patient['user_name'] . ' - (' . $patient['age'] . ' ساله )'?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
