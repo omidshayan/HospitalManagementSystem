@@ -20,7 +20,6 @@
                         <?php
                         if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) {
                             $currentPatientId = null;
-
                             foreach ($patients as $p) {
                                 if ($p['status'] == 1) {
                                     $currentPatientId = $p['id'];
@@ -30,11 +29,10 @@
                         ?>
                             <select name="patient_id" class="mb20">
                                 <?php foreach ($patients as $patient): ?>
-                                    <option
+                                    <option class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
                                         value="<?= $patient['id'] ?>"
                                         <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
                                         <?= $patient['queue_number'] . ' - ' . $patient['user_name'] ?>
-                                        <?= ($patient['status'] == 2) ? ' (ویزیت شده)' : '' ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
