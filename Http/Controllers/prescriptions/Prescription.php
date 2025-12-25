@@ -340,12 +340,15 @@ class Prescription extends App
         }
 
         if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) {
-            $patient = $this->db->select('SELECT id FROM admissions WHERE id = ?', [$request['patient_id']])->fetch();
+
+            $patient = $this->db->select('SELECT id, patient_id FROM admissions WHERE id = ?', [$request['admission_id']])->fetch();
+
+            $user = $this->db->select('SELECT * FROM users WHERE id = ?', [$patient['patient_id']])->fetch();
 
             $preInfos = [
-                'patient_id' => $userId,
-                'patient_name' => $request['user_name'],
-                'birth_year' => $request['birth_year'],
+                'patient_id' => $user['id'],
+                'patient_name' => $user['user_name'],
+                'birth_year' => $user['birth_year'],
                 'diagnosis' => $request['diagnosis'],
                 'bp' => $request['bp'],
                 'pr' => $request['pr'],

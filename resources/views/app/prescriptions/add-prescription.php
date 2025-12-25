@@ -27,7 +27,7 @@
                                 }
                             }
                         ?>
-                            <select name="patient_id" class="mb20">
+                            <select name="admission_id" class="mb20">
                                 <?php foreach ($patients as $patient): ?>
                                     <option class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
                                         value="<?= $patient['id'] ?>"
