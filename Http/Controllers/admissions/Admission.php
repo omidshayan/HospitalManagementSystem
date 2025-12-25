@@ -73,9 +73,13 @@ class Admission extends App
 
         if ($request['user_id']) {
 
+            $userInfos = $this->db->select('SELECT birth_year FROM users WHERE id = ?', [$request['user_id']])->fetch();
+            $age = $this->getAge($userInfos['birth_year']);
+
             $adminssionData = [
                 'patient_id' => $request['user_id'],
                 'user_name' => $request['patient_name'],
+                'age' => $age,
                 'doctor_id' => $doctor['id'],
                 'queue_number' => $request['queue_number'] ?? null,
                 'department_id' => $department['id'],
@@ -106,6 +110,7 @@ class Admission extends App
             $adminssionData = [
                 'patient_id' => $userId,
                 'user_name' => $request['user_name'],
+                'age' => $request['age'],
                 'doctor_id' => $request['doctor_id'],
                 'queue_number' => $request['queue_number'] ?? null,
                 'department_id' => $doctor['department_id'],
