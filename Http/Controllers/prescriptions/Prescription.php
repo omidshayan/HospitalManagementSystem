@@ -40,9 +40,20 @@ class Prescription extends App
 
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
 
-        if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) {
-            $patients = $this->db->select('SELECT id, patient_id FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
+        // if active admissions
+        if (
+            isset($_SESSION['settings']['admission']) &&
+            $_SESSION['settings']['admission'] == 1
+        ) {
+            $patients = $this->db->select(
+                'SELECT id, patient_id, user_name
+         FROM admissions
+         WHERE doctor_id = ?
+         AND DATE(created_at) = CURDATE()',
+                [$userId['id']]
+            )->fetchAll();
         }
+
 
         if ($prescription) {
 
