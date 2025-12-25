@@ -36,6 +36,13 @@
                                     </option>
                                 <?php endforeach; ?>
                             </select>
+
+                            <div class="center mt20 mb">
+                                <a href="<?= url('patient-inquiry') ?>" target="_blank" class="p5-20 bg-success btn fs14">
+                                    استعلام مریض
+                                </a>
+                            </div>
+
                         <?php } else { ?>
 
                             <div class="inputs d-flex">
