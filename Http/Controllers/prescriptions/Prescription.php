@@ -456,8 +456,6 @@ class Prescription extends App
         }
     }
 
-
-
     // single print
     public function singlePrint($id)
     {
