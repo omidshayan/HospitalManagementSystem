@@ -114,6 +114,12 @@ class App
                 $request[$fieldName] = $this->saveImage($file, 'images/' . $destinationPath);
         }
 
+        // get convert age to jalali
+        function getBirthYearFromAge(int $age): int
+        {
+                return (int)jdate('Y') - $age;
+        }
+
         // change english number to persion
         function convertEnNumber($number)
         {

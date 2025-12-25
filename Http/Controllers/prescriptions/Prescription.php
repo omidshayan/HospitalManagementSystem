@@ -221,7 +221,7 @@ class Prescription extends App
 
         $user = $_GET['patient_name'];
         $birth_year = $_GET['birth_year'];
-
+        dd($birth_year);
         $userSearch = $this->db->select("SELECT prescriptions.*, users.phone, users.father_name FROM prescriptions LEFT JOIN users ON prescriptions.patient_id = users.id WHERE LOWER(prescriptions.patient_name) LIKE ? AND prescriptions.birth_year = ?", ['%' . strtolower($user) . '%', $birth_year])->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/result-search.php');
