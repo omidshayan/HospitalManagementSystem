@@ -349,6 +349,7 @@ class Prescription extends App
                 'patient_id' => $user['id'],
                 'patient_name' => $user['user_name'],
                 'birth_year' => $user['birth_year'],
+                'admission_id' => $patient['id'],
                 'diagnosis' => $request['diagnosis'],
                 'bp' => $request['bp'],
                 'pr' => $request['pr'],
@@ -360,6 +361,7 @@ class Prescription extends App
 
             $this->db->update('admissions', $patient['id'], ['status'], [2]);
             $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
+            dd('ok');
         } else {
 
             if (empty($request['user_name']) || empty($request['birth_year'])) {
