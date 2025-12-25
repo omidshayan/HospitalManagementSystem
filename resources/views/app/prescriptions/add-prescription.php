@@ -32,8 +32,8 @@
                                     <option
                                         class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
                                         value="<?= $patient['id'] ?>"
-                                        data-name="<?= htmlspecialchars($patient['user_name'] ?? '') ?>"
-                                        data-age="<?= $patient['age'] ?? '' ?>"
+                                        data-name-add="<?= htmlspecialchars($patient['user_name'] ?? '') ?>"
+                                        data-age-add="<?= $patient['age'] ?? '' ?>"
                                         <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
                                         <?= $patient['queue_number'] ?>
                                         - <?= $patient['user_name'] ?? 'نامشخص' ?>
@@ -42,20 +42,35 @@
                                 <?php endforeach; ?>
                             </select>
 
-
                             <div class="center mt20 mb">
-                                <a href="<?= url('patient-inquiry') ?>"
-                                    id="patientInquiryBtn"
-                                    target="_blank"
-                                    class="p5-20 bg-success btn fs14">
+                                <a href="<?= url('patient-inquiry') ?>" target="_blank" id="patientInquiryBtn" class="p5-20 bg-success btn fs14">
                                     استعلام مریض
                                 </a>
                             </div>
 
+                            <script>
+                                const admissionSelect = document.getElementById('admissionSelect');
+                                const patientInquiryBtn = document.getElementById('patientInquiryBtn');
+                                const baseUrl1 = patientInquiryBtn.getAttribute('href');
+
+                                function updateInquiryLink() {
+                                    const selectedOption = admissionSelect.options[admissionSelect.selectedIndex];
+                                    const patientName = selectedOption.getAttribute('data-name-add') || '';
+                                    const patientAge = selectedOption.getAttribute('data-age-add') || '';
+
+                                    const encodedName = encodeURIComponent(patientName);
+                                    const encodedAge = encodeURIComponent(patientAge);
+
+                                    patientInquiryBtn.href = `${baseUrl1}?patient_name=${encodedName}&birth_year=${encodedAge}`;
+                                }
+
+                                updateInquiryLink();
+
+                                admissionSelect.addEventListener('change', updateInquiryLink);
+                            </script>
+
 
                         <?php } else { ?>
-
-
 
 
 
@@ -388,7 +403,7 @@
     }
     ?>
 
-<!-- estelam -->
+    <!-- estelam -->
     <script>
         const patientName = document.getElementById('patient_name');
         const ageInput = document.getElementById('ageInput');
