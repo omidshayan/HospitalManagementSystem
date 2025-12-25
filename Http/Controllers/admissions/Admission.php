@@ -53,7 +53,6 @@ class Admission extends App
     // store employee
     public function admissionStore($request)
     {
-        dd($request);
         $this->middleware(true, true, 'general', true);
 
         $user = $this->currentUser();
@@ -76,6 +75,7 @@ class Admission extends App
 
             $adminssionData = [
                 'patient_id' => $request['user_id'],
+                'user_name' => $request['patient_name'],
                 'doctor_id' => $doctor['id'],
                 'queue_number' => $request['queue_number'] ?? null,
                 'department_id' => $department['id'],
