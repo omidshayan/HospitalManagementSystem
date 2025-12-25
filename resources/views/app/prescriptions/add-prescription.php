@@ -42,33 +42,11 @@
                                 <?php endforeach; ?>
                             </select>
 
-                            <div class="center mt20 mb">
+                            <div class="center mb20">
                                 <a href="<?= url('patient-inquiry') ?>" target="_blank" id="patientInquiryBtn" class="p5-20 bg-success btn fs14">
                                     استعلام مریض
                                 </a>
                             </div>
-
-                            <script>
-                                const admissionSelect = document.getElementById('admissionSelect');
-                                const patientInquiryBtn = document.getElementById('patientInquiryBtn');
-                                const baseUrl1 = patientInquiryBtn.getAttribute('href');
-
-                                function updateInquiryLink() {
-                                    const selectedOption = admissionSelect.options[admissionSelect.selectedIndex];
-                                    const patientName = selectedOption.getAttribute('data-name-add') || '';
-                                    const patientAge = selectedOption.getAttribute('data-age-add') || '';
-
-                                    const encodedName = encodeURIComponent(patientName);
-                                    const encodedAge = encodeURIComponent(patientAge);
-
-                                    patientInquiryBtn.href = `${baseUrl1}?patient_name=${encodedName}&birth_year=${encodedAge}`;
-                                }
-
-                                updateInquiryLink();
-
-                                admissionSelect.addEventListener('change', updateInquiryLink);
-                            </script>
-
 
                         <?php } else { ?>
 
@@ -465,6 +443,26 @@
 
             checkInputs();
         });
+    </script>
+    <!-- admission -->
+    <script>
+        const admissionSelect = document.getElementById('admissionSelect');
+        const patientInquiryBtn = document.getElementById('patientInquiryBtn');
+        const baseUrl1 = patientInquiryBtn.getAttribute('href');
+
+        function updateInquiryLink() {
+            const selectedOption = admissionSelect.options[admissionSelect.selectedIndex];
+            const patientName = selectedOption.getAttribute('data-name-add') || '';
+            const patientAge = selectedOption.getAttribute('data-age-add') || '';
+
+            const encodedName = encodeURIComponent(patientName);
+            const encodedAge = encodeURIComponent(patientAge);
+
+            patientInquiryBtn.href = `${baseUrl1}?patient_name=${encodedName}&birth_year=${encodedAge}`;
+        }
+
+        updateInquiryLink();
+        admissionSelect.addEventListener('change', updateInquiryLink);
     </script>
 
     <!-- confirm for delete -->
