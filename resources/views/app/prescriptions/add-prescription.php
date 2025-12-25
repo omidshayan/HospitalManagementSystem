@@ -20,13 +20,13 @@
                         <?php
                         if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) { ?>
 
-                        <select name="" id="">
-                            <option value="">ddddd</option>
-                            <option value="">ddddd</option>
-                            <option value="">ddddd</option>
-                            <option value="">ddddd</option>
-                            <option value="">ddddd</option>
-                        </select>
+                            <select name="" id="">
+                                <?php
+                                foreach ($patients as $patient) { ?>
+                                    <option value=""><?= $patient['user_name'] ?></option>
+                                <?php }
+                                ?>
+                            </select>
 
                         <?php } else { ?>
 

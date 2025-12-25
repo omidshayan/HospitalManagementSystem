@@ -67,7 +67,7 @@ class Admission extends App
 
         $department = $this->db->select('SELECT id FROM departments WHERE id = ? AND `status` = ?', [$doctor['department_id'], 1])->fetch();
         if (!$department) {
-            $this->flashMessage('error', 'دپارتمنت یافت نشد');
+            $this->flashMessage('error', 'داکتر مورد نظر، در هیچ دپارتمنتی ثبت نیست');
             return;
         }
 
