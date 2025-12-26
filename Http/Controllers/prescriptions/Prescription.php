@@ -573,6 +573,17 @@ class Prescription extends App
             $this->flashMessage('error', _emptyInputs);
         }
 
+        $drugInvalid =
+            empty($request['drug_id']) ||
+            empty($request['drug_name']) ||
+            empty($request['drug_count']);
+
+        $hasRecommended = !empty($request['recommended']);
+
+        if ($drugInvalid && !$hasRecommended) {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
         $this->validateInputs($request);
 
         $yearMonth = $this->calendar->getYearMonth();
