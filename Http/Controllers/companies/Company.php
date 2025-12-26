@@ -8,7 +8,7 @@ class Company extends App
     public function companies()
     {
         $this->middleware(true, true, 'companies', true);
-        $dosage = $this->db->select('SELECT * FROM companies')->fetchAll();
+        $companies = $this->db->select('SELECT * FROM companies')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/companies/companies.php');
     }
 
