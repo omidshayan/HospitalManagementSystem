@@ -4,7 +4,6 @@ $title = 'تنظیمات عمومی';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/error.php');
 include_once('resources/views/scripts/activeNotActive.php');
-include_once('resources/views/helps/toggle.php');
 ?>
 <!-- end sidebar -->
 <style>
@@ -67,6 +66,8 @@ include_once('resources/views/helps/toggle.php');
 
     <!-- change allow sell status invoce -->
     <div class="mini-container">
+        <div class="fs14 color-green">تنظیمات عمومی</div>
+        <hr class="hr">
 
         <!-- print in doctor panel -->
         <div class="allow-invoice d-flex justify-between">
@@ -105,7 +106,7 @@ include_once('resources/views/helps/toggle.php');
         </div>
 
         <!-- existing admissions -->
-        <!-- <div class="allow-invoice d-flex justify-between mt50">
+        <div class="allow-invoice d-flex justify-between mt50">
             <span>
                 فعال کردن بخش پذیریش
                 <span id="admission" class="status-text <?= ($settings['admission'] == 1) ? 'color-green' : 'color-orange' ?>">
@@ -136,20 +137,13 @@ include_once('resources/views/helps/toggle.php');
                     <?= ($settings['admission'] == 1) ? 'checked' : '' ?>>
                 <span class="m-slider"></span>
             </label>
-        </div> -->
-        <?php
-        $title = 'فعال کردن بخش پذیرش';
-        $key = 'admission';
-        $id = 'admission';
-        $url = 'change-status-admission';
-        $tooltip = 'با فعال کردن این گزینه، داکتر قادر خواهد بود لیست مریضان مرتبط با خود را مشاهده کند...';
-        $marginClass = 'mt50';
-        ?>
+        </div>
 
     </div>
 
+    <!-- prescription settings -->
     <div class="mini-container">
-        <div class="fs14">تنظیمات ثبت نسخه</div>
+        <div class="fs14 color-green">تنظیمات ثبت نسخه</div>
         <hr class="hr">
 
         <!-- existing count_drug -->
@@ -182,6 +176,40 @@ include_once('resources/views/helps/toggle.php');
                     data-true-class="color-green"
                     data-false-class="color-orange"
                     <?= ($settings['count_drug'] == 1) ? 'checked' : '' ?>>
+                <span class="m-slider"></span>
+            </label>
+        </div>
+
+        <!-- intake time -->
+        <div class="allow-invoice d-flex justify-between mt20">
+            <span>
+                نمایش زمان مصرف دارو
+                <span id="intake_time" class="status-text <?= ($settings['intake_time'] == 1) ? 'color-green' : 'color-orange' ?>">
+                    (<?= ($settings['intake_time'] == 1) ? 'فعال' : 'غیر فعال' ?>)
+                </span>
+                <span class="tool-c">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                        width="16" height="16" fill="currentColor"
+                        style="vertical-align: middle;" class="cursor-p">
+                        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
+                    </svg>
+                    <div class="tool-t">
+                        با غیرفعال کردن این قسمت، آیتم مزان مصرف دارو نمایش داده نمی شود.
+                    </div>
+                </span>
+            </span>
+            <label class="m-switch">
+                <input
+                    type="checkbox"
+                    class="setting-toggle"
+                    data-url="change-status-intake-time"
+                    data-target="#intake_time"
+                    data-true-text="(فعال)"
+                    data-false-text="(غیر فعال)"
+                    data-true-class="color-green"
+                    data-false-class="color-orange"
+                    <?= ($settings['intake_time'] == 1) ? 'checked' : '' ?>>
                 <span class="m-slider"></span>
             </label>
         </div>

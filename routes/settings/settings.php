@@ -18,3 +18,4 @@ uri('change-status-admission', 'App\Setting', 'changeStatusAdmission', 'POST');
 
 // add prescription
 uri('change-status-count-drug', 'App\Setting', 'changeStatusCountDrug', 'POST');
+uri('change-status-intake-time', 'App\Setting', 'changeStatusIntakeTime', 'POST');
