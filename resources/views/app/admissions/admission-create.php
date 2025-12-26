@@ -2,7 +2,7 @@
     <?php
     $title = 'پذیریش جدید';
     include_once('resources/views/layouts/header.php');
-    // include_once('public/alerts/check-inputs.php');
+    include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/live-search-users.php');
     ?>
@@ -87,7 +87,7 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">انتخاب داکتر <?= _star ?> </div>
-                            <select name="doctor_id" id="doctor_id">
+                            <select name="doctor_id" id="doctor_id" class="checkSelect">
                                 <option disabled selected>داکتر را انتخاب کنید</option>
                                 <?php foreach ($doctors as $doctor): ?>
                                     <option value="<?= $doctor['id'] ?>">
