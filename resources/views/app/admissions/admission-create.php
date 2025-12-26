@@ -122,10 +122,11 @@
                 waiting: 0
             };
 
-            document.getElementById('queue_number').value = queueData.total + 1;
+            document.getElementById('queue_number').value = (queueData.total || 0) + 1;
 
             const waitingSpan = document.getElementById('waitingPatients');
-            waitingSpan.textContent = ` (تعداد مریض‌های منتظر: ${queueData.waiting}) `;
+            const waitingCount = queueData.waiting ?? 0;
+            waitingSpan.textContent = ` (تعداد مریض‌های منتظر: ${waitingCount}) `;
         });
     </script>
 
