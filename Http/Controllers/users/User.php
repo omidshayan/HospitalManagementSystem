@@ -85,7 +85,8 @@ class User extends App
         $this->handleImageUpdate($request, 'users', $id, 'image', 'images/users', $_FILES['image']);
 
         $this->db->update('users', $id, array_keys($request), $request);
-        $this->flashMessage('success', _success);
+
+        $this->flashMessageTo('success', _success, url('patients'));
     }
 
     // user detiles page

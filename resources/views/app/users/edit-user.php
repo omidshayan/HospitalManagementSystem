@@ -38,6 +38,10 @@
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
+                            <div class="label-form mb5 fs14">آدرس</div>
+                            <textarea name="address" placeholder="توضیحات را وارد نمایید"><?= $user['address'] ?></textarea>
+                        </div>
+                        <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"><?= $user['description'] ?></textarea>
                         </div>
