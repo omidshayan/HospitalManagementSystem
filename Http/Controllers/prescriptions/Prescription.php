@@ -682,6 +682,27 @@ class Prescription extends App
         if (!$user) {
             $this->flashMessage('error', 'مریض مورد نظر معتبر نیست!');
         } else {
+
+            $oldUserInfos = [
+                'user_name' => $user['user_name'],
+                'birth_year' => $user['birth_year'],
+                'father_name' => $user['father_name'],
+                'gender' => $user['gender'],
+                'phone' => $user['phone'],
+            ];
+            $thisUserInfos = [
+                'user_name' => $request['user_name'],
+                'birth_year' => $request['birth_year'],
+                'father_name' => $request['father_name'],
+                'gender' => $request['gender'],
+                'phone' => $request['phone'],
+            ];
+
+            if ($oldUserInfos != $thisUserInfos) {
+                // اطلاعات تغییر کرده → عملیات انجام شود
+            }
+
+
             $userId = $user['id'];
         }
 
