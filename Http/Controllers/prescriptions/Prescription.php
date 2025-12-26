@@ -575,7 +575,7 @@ class Prescription extends App
             'who_it' => $request['who_it'],
         ];
         //  Create or get existing prescription
-        $prescription_id = $this->prescription->editInvoiceConfirm($prescription);
+        $prescription = $this->db->select('SELECT id FROM prescriptions WHERE `id` = ?', [$id])->fetch();
 
         $prescription_items = [
             'prescription_id' => $prescription_id,
@@ -655,6 +655,7 @@ class Prescription extends App
         ];
 
         $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
+        dd('ok');
         $this->flashMessageTo('success', _success, url('prescriptions'));
     }
 
