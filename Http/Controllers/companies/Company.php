@@ -46,27 +46,27 @@ class Company extends App
         }
     }
 
-    // edit dosage store
-    public function editDosageStore($request, $id)
+    // edit Company store
+    public function editCompanyStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['dosage'] == '') {
+        if ($request['name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
+        $company = $this->db->select('SELECT * FROM companies WHERE `name` = ?', [$request['name']])->fetch();
 
-        if ($dosage) {
-            if ($dosage['id'] != $id) {
-                $this->flashMessage('error', 'این مقدار مصرف ثبت شده است.');
+        if ($company) {
+            if ($company['id'] != $id) {
+                $this->flashMessage('error', 'این تولید کننده قبلا ثبت شده است.');
                 return;
             }
         }
 
-        $this->db->update('dosage', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('dosage'));
+        $this->db->update('companies', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('companies'));
     }
 
     // dosage Details detiles page

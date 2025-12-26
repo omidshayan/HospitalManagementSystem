@@ -23,8 +23,8 @@ include_once('public/alerts/toastr.php');
             <form id="myForm" action="<?= url('edit-company-store/' . $company['id']) ?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="name" class="checkInput" value="<?= $company['name'] ?>" placeholder="مقدار مصرف را وارد نمایید" autocomplete="off" />
+                        <div class="label-form mb5 fs14">نام تولید کننده <?= _star ?> </div>
+                        <input type="text" name="name" class="checkInput" value="<?= $company['name'] ?>" placeholder="نام کشور یا تولید کننده را وارد نمایید" autocomplete="off" />
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
