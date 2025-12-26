@@ -569,10 +569,6 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if (empty($request['drug_id']) || empty($request['drug_name'] || empty($request['drug_count']))) {
-            $this->flashMessage('error', _emptyInputs);
-        }
-
         $drugInvalid =
             empty($request['drug_id']) ||
             empty($request['drug_name']) ||
@@ -600,26 +596,27 @@ class Prescription extends App
         ];
         //  Create or get existing prescription
         $prescription = $this->db->select('SELECT id FROM prescriptions WHERE `id` = ?', [$id])->fetch();
+        
+        if (!$drugInvalid) {
+            $prescription_items = [
+                'prescription_id' => $prescription['id'],
+                'drug_id' => $request['drug_id'],
+                'drug_name' => $request['drug_name'],
+                'drug_count' => $request['drug_count'],
+                'interval_time' => $request['interval_time'] ?? null,
+                'dosage' => $request['dosage'] ?? null,
+                'usage_instruction' => $request['usage_instruction'] ?? null,
+                'description' => $request['description'] ?? null,
+            ];
 
-        $prescription_items = [
-            'prescription_id' => $prescription['id'],
-            'drug_id' => $request['drug_id'],
-            'drug_name' => $request['drug_name'],
-            'drug_count' => $request['drug_count'],
-            'interval_time' => $request['interval_time'] ?? null,
-            'dosage' => $request['dosage'] ?? null,
-            'usage_instruction' => $request['usage_instruction'] ?? null,
-            'description' => $request['description'] ?? null,
-        ];
+            $exist_item = $this->prescription->getPrescriptionItem($prescription['id'], $request['drug_id']);
 
-        $exist_item = $this->prescription->getPrescriptionItem($prescription['id'], $request['drug_id']);
-
-        if (!$exist_item) {
-            $this->db->insert('prescription_items', array_keys($prescription_items), $prescription_items);
-        } else {
-            $this->flashMessage('error', 'داروی انتخاب شده، قبلا ثبت شده!');
+            if (!$exist_item) {
+                $this->db->insert('prescription_items', array_keys($prescription_items), $prescription_items);
+            } else {
+                $this->flashMessage('error', 'داروی انتخاب شده، قبلا ثبت شده!');
+            }
         }
-
         if ($hasRecommended) {
             foreach ($request['recommended'] as $recommendedId) {
 
