@@ -210,7 +210,7 @@
                         ?>
                     </div>
                     <div>
-                        <?= $drugList ? '<a href="' . url('edit-close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ثبت نسخه</a>' : '' ?>
+                        <?= $drugList ? '<a href="' . url('edit-close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p" id="closePrescriptionBtn">ویرایش نسخه</a>' : '' ?>
                     </div>
                 </div>
                 <table class="fl-table">
