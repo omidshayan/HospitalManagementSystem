@@ -4,6 +4,7 @@ $title = 'تنظیمات عمومی';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/error.php');
 include_once('resources/views/scripts/activeNotActive.php');
+include_once('resources/views/helps/toggle.php');
 ?>
 <!-- end sidebar -->
 <style>
@@ -104,7 +105,7 @@ include_once('resources/views/scripts/activeNotActive.php');
         </div>
 
         <!-- existing admissions -->
-        <div class="allow-invoice d-flex justify-between mt50">
+        <!-- <div class="allow-invoice d-flex justify-between mt50">
             <span>
                 فعال کردن بخش پذیریش
                 <span id="admission" class="status-text <?= ($settings['admission'] == 1) ? 'color-green' : 'color-orange' ?>">
@@ -135,7 +136,15 @@ include_once('resources/views/scripts/activeNotActive.php');
                     <?= ($settings['admission'] == 1) ? 'checked' : '' ?>>
                 <span class="m-slider"></span>
             </label>
-        </div>
+        </div> -->
+        <?php
+        $title = 'فعال کردن بخش پذیرش';
+        $key = 'admission';
+        $id = 'admission';
+        $url = 'change-status-admission';
+        $tooltip = 'با فعال کردن این گزینه، داکتر قادر خواهد بود لیست مریضان مرتبط با خود را مشاهده کند...';
+        $marginClass = 'mt50';
+        ?>
 
     </div>
 
