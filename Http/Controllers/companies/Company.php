@@ -12,20 +12,21 @@ class Company extends App
         require_once(BASE_PATH . '/resources/views/app/companies/companies.php');
     }
 
-    // store dosage
-    public function dosageStore($request)
+    // store companies
+    public function companyStore($request)
     {
-        $this->middleware(true, true, 'general', true, $request, true);
+        $this->middleware(true, true, 'companies', true, $request, true);
 
-        if ($request['dosage'] == '') {
+        if ($request['name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
 
-        if (!empty($dosage['dosage'])) {
+        $companies = $this->db->select('SELECT `name` FROM companies WHERE `name` = ?', [$request['name']])->fetch();
+
+        if (!empty($companies['name'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('dosage', array_keys($request), $request);
+            $this->db->insert('companies', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
