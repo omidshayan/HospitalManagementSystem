@@ -77,6 +77,9 @@ require_once 'admissions/admissions.php';
 // departments
 require_once 'departments/departments.php';
 
+// companies
+require_once 'companies/companies.php';
+
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
         //current url array
