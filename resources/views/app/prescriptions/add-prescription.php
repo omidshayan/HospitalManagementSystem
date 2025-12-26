@@ -232,11 +232,11 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form mb5 fs14">تولید کننده</div>
-                                <select name="interval_time" required>
+                                <select name="company" required>
                                     <option selected disabled>تولید کننده یا نوع دارو را انتخاب نمائید</option>
                                     <?php
-                                    foreach ($intake_times as $intake_time) { ?>
-                                        <option value="<?= $intake_time['intake_time'] ?>"><?= $intake_time['intake_time'] ?></option>
+                                    foreach ($companies as $company) { ?>
+                                        <option value="<?= $company['name'] ?>"><?= $company['name'] ?></option>
                                     <?php }
                                     ?>
                                 </select>

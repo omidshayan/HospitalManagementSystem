@@ -79,7 +79,7 @@
             $this->hasAccess('general') &&
             isset($_SESSION['settings']['admission']) &&
             $_SESSION['settings']['admission'] == 1
-            ): ?>
+          ): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -283,6 +283,11 @@
                 <?php if ($this->hasAccess('unitDrug')): ?>
                   <a href="<?= url('units') ?>">
                     <li class="sidebar-dropdown-menu-item">واحدهای شمارش</li>
+                  </a>
+                <?php endif; ?>
+                <?php if ($this->hasAccess('unitDrug')): ?>
+                  <a href="<?= url('units') ?>">
+                    <li class="sidebar-dropdown-menu-item">مدیریت تولید کننده‌ها</li>
                   </a>
                 <?php endif; ?>
               </ul>
