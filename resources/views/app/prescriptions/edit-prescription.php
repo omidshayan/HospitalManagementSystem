@@ -19,11 +19,6 @@
 
 
                     <div class="insert">
-                    <?php
-                        if(isset($admission) && $admission == true){ ?>
-
-                        <?php }
-                    ?>
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form  fs14"> نام مریض <?= _star ?></div>
@@ -65,8 +60,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
                         <div class="accordion-content-pre">
                             <div class="child-accordioin">
@@ -88,6 +81,23 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="accordion-title color-orange">تشخیص داکتر</div>
+                        <div class="accordion-content-pre w100">
+                            <div class="child-accordioin w90d">
+                                <div class="insert mt5">
+                                    <div class="one m-auto w97d mb3">
+                                        <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="center mt20">
+                            <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14">
+                                استعلام مریض
+                            </a>
                         </div>
 
                     </div>
