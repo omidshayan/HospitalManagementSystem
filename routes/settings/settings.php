@@ -20,3 +20,4 @@ uri('change-status-admission', 'App\Setting', 'changeStatusAdmission', 'POST');
 uri('change-status-count-drug', 'App\Setting', 'changeStatusCountDrugShow', 'POST');
 uri('change-status-intake-time', 'App\Setting', 'changeStatusIntakeTimeShow', 'POST');
 uri('change-status-dosage', 'App\Setting', 'changeStatusDosageShow', 'POST');
+uri('change-status-intake-instructions', 'App\Setting', 'changeStatusIntakeInstructionsShow', 'POST');

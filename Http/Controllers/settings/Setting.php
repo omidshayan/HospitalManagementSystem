@@ -200,7 +200,7 @@ class Setting extends App
         $this->middleware(true, true, 'general');
 
         $row = $this->db->select(
-            'SELECT id, intake_time FROM settings LIMIT 1'
+            'SELECT id, dosage FROM settings LIMIT 1'
         )->fetch();
 
         if (!$row) {
@@ -208,12 +208,12 @@ class Setting extends App
             exit();
         }
 
-        $newStatus = ($row['intake_time'] == 1) ? 2 : 1;
+        $newStatus = ($row['dosage'] == 1) ? 2 : 1;
 
         $this->db->update(
             'settings',
             $row['id'],
-            ['intake_time'],
+            ['dosage'],
             [$newStatus]
         );
 
@@ -221,7 +221,39 @@ class Setting extends App
             $_SESSION['settings'] = [];
         }
 
-        $_SESSION['settings']['intake_time'] = $newStatus;
+        $_SESSION['settings']['dosage'] = $newStatus;
+
+        $this->send_json_response(true, _success, $newStatus);
+    }    
+
+    // change status Intake Instructions
+    public function changeStatusIntakeInstructionsShow()
+    {
+        $this->middleware(true, true, 'general');
+
+        $row = $this->db->select(
+            'SELECT id, intake_instructions FROM settings LIMIT 1'
+        )->fetch();
+
+        if (!$row) {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+
+        $newStatus = ($row['intake_instructions'] == 1) ? 2 : 1;
+
+        $this->db->update(
+            'settings',
+            $row['id'],
+            ['intake_instructions'],
+            [$newStatus]
+        );
+
+        if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
+            $_SESSION['settings'] = [];
+        }
+
+        $_SESSION['settings']['intake_instructions'] = $newStatus;
 
         $this->send_json_response(true, _success, $newStatus);
     }
