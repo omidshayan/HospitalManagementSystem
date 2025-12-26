@@ -38,6 +38,8 @@ class Prescription extends App
 
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
+        $companies = $this->db->select('SELECT `name` FROM companies WHERE `status` = 1')->fetchAll();
+
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
 
         // if active admissions
