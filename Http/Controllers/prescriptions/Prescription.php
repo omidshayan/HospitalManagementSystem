@@ -540,6 +540,8 @@ class Prescription extends App
 
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
+        $tests = $this->db->select('SELECT id, test_name FROM tests WHERE `status` = ?', [1])->fetchAll();
+
         if ($prescription != null) {
             $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
             require_once(BASE_PATH . '/resources/views/app/prescriptions/edit-prescription.php');

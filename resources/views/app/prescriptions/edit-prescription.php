@@ -188,6 +188,33 @@
                             </div>
                         </div>
 
+
+                        <!-- Recommended -->
+                        <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
+                        <div class="accordion-content-pre w89d">
+                            <div class="child-accordioin">
+                                <div class="insert mt5">
+                                    <div class="one m-auto mb3">
+                                        <select id="recommended_select">
+                                            <option value="" selected disabled>انتخاب آیتم</option>
+                                            <?php
+                                            foreach ($tests as $test) { ?>
+                                                <option value="<?= $test['id'] ?>"><?= $test['test_name'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                        <button type="button" class="btn w80 p5" onclick="addRecommended()">افزودن</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recommended-box color">
+                            <ul id="recommended_list" class="color"></ul>
+                        </div>
+
+
+
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                         <input type="submit" id="submit" value="افزودن به نسخه" class="btn bold" />
                     </div>
@@ -369,4 +396,33 @@
         });
     </script>
 
+    <!-- select recommender -->
+    <script>
+        function addRecommended() {
+            const select = document.getElementById('recommended_select');
+            const value = select.value;
+            if (!value) {
+                alert('لطفاً یک مورد را انتخاب کنید');
+                return;
+            }
+
+            const text = select.options[select.selectedIndex].text;
+
+            // جلوگیری از تکراری
+            if (document.getElementById('rec_' + value)) {
+                alert('این مورد قبلاً اضافه شده');
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.id = 'rec_' + value;
+            li.innerHTML = `
+                            ${text}
+                            <input type="hidden" name="recommended[]" value="${value}">
+                            <button type="button" onclick="this.parentElement.remove()" class="color-red cursor-p">✖</button>
+                            `;
+
+            document.getElementById('recommended_list').appendChild(li);
+        }
+    </script>
     <?php include_once('resources/views/layouts/footer.php') ?>
