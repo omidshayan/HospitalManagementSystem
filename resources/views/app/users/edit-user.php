@@ -21,18 +21,20 @@
                             <input type="text" class="checkInput" name="user_name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" value="<?= $user['user_name'] ?>" />
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">نام پدر</div>
-                            <input type="text" name="father_name" placeholder="نام پدر را وارد نمایید" maxlength="40" value="<?= $user['father_name'] ?>" />
+                            <div class="label-form mb5 fs14">سن <?= _star ?></div>
+                            <input type="number" id="ageInput" value="<?= $this->getAge($user['birth_year']) ?>" class="checkInput" placeholder="سن مریض را وارد نمائید">
+                            <input type="hidden" name="birth_year" id="birthYearInput">
                         </div>
+
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
-                            <input type="number" class="checkInput" name="phone" placeholder="شماره را وارد نمایید" value="<?= $user['phone'] ?>" />
+                            <div class="label-form mb5 fs14">نام پدر</div>
+                            <input type="text" name="father_name" placeholder="نام پدر را وارد نمایید" maxlength="40" value="<?= $user['father_name'] ?>" />
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">رمزعبور</div>
-                            <input type="password" name="password" placeholder="رمزعبور را وارد نمایید" value="<?= $user['password'] ?>" disabled />
+                            <div class="label-form mb5 fs14">شماره </div>
+                            <input type="number" name="phone" placeholder="شماره را وارد نمایید" value="<?= $user['phone'] ?>" />
                         </div>
                     </div>
                     <div class="inputs d-flex">
@@ -56,7 +58,7 @@
                     <div class="fs11">تصویر فعلی</div>
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                    <input type="submit" id="submit" value="<?=_edit_btn?>" class="btn" />
+                    <input type="submit" id="submit" value="<?= _edit_btn ?>" class="btn" />
                 </form>
             </div>
             <a href="<?= url('patients') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>

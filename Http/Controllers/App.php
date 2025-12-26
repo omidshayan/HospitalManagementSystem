@@ -117,12 +117,11 @@ class App
         // get convert age to jalali
         function getBirthYearFromAge($age)
         {
-                $jalaliYearFa = jdate('Y');       // '۱۴۰۴'
-                $jalaliYearEn = $this->convertPersionNumber($jalaliYearFa); // '1404'
+                $jalaliYearFa = jdate('Y');
+                $jalaliYearEn = $this->convertPersionNumber($jalaliYearFa);
 
                 return (int)$jalaliYearEn - (int)$age;
         }
-
 
         // change english number to persion
         function convertEnNumber($number)
