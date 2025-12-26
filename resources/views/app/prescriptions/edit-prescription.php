@@ -1,5 +1,5 @@
     <?php
-    $title = 'ویرایش نسخه:' . $prescription['patient_name'];
+    $title = 'ویرایش نسخه: ' . $prescription['patient_name'];
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');

@@ -699,9 +699,8 @@ class Prescription extends App
             ];
 
             if ($oldUserInfos != $thisUserInfos) {
-                // اطلاعات تغییر کرده → عملیات انجام شود
+                $this->db->update('users', $user['id'], array_keys($thisUserInfos), $thisUserInfos);
             }
-
 
             $userId = $user['id'];
         }
@@ -718,7 +717,7 @@ class Prescription extends App
             'diagnosis' => $request['diagnosis'],
         ];
 
-        $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
+        $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
         $this->flashMessageTo('success', _success, url('prescriptions'));
     }
 
