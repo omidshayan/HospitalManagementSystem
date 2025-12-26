@@ -16,7 +16,14 @@
             <div class="patient-container">
                 <form action="<?= url('edit-close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
                     <div class="center fs14">اطلاعات مریض</div>
+
+
                     <div class="insert">
+                    <?php
+                        if(isset($admission) && $admission == true){ ?>
+
+                        <?php }
+                    ?>
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form  fs14"> نام مریض <?= _star ?></div>
@@ -58,6 +65,8 @@
                             </div>
                         </div>
 
+
+
                         <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
                         <div class="accordion-content-pre">
                             <div class="child-accordioin">
@@ -80,7 +89,10 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
+
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                 </form>
             </div>
