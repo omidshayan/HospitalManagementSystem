@@ -321,4 +321,36 @@ class Setting extends App
 
         $this->send_json_response(true, _success, $newStatus);
     }
+
+    // change status description
+    public function changeStatusDescriptionActive()
+    {
+        $this->middleware(true, true, 'general');
+
+        $row = $this->db->select(
+            'SELECT id, description FROM settings LIMIT 1'
+        )->fetch();
+
+        if (!$row) {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+
+        $newStatus = ($row['description'] == 1) ? 2 : 1;
+
+        $this->db->update(
+            'settings',
+            $row['id'],
+            ['description'],
+            [$newStatus]
+        );
+
+        if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
+            $_SESSION['settings'] = [];
+        }
+
+        $_SESSION['settings']['description'] = $newStatus;
+
+        $this->send_json_response(true, _success, $newStatus);
+    }
 }
