@@ -663,8 +663,11 @@ class Prescription extends App
             exit();
         }
 
+        $age = $this->getAge($request['birth_year']);
+
         // get invoice items
         $prescription_items = $this->prescription->getPrescriptionItems($prescription['id']);
+
         // check invoice items
         if (!$prescription_items) {
             $this->flashMessage('error', 'فاکتور مورد نظر خالی است!');
@@ -693,7 +696,7 @@ class Prescription extends App
         $preInfos = [
             'patient_id' => $userId,
             'patient_name' => $request['user_name'],
-            'birth_year' => $request['birth_year'],
+            'birth_year' => $age,
             'bp' => $request['bp'],
             'pr' => $request['pr'],
             'rr' => $request['rr'],
