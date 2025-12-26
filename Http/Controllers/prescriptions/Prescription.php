@@ -578,7 +578,7 @@ class Prescription extends App
         $prescription = $this->db->select('SELECT id FROM prescriptions WHERE `id` = ?', [$id])->fetch();
 
         $prescription_items = [
-            'prescription_id' => $prescription_id,
+            'prescription_id' => $prescription['id'],
             'drug_id' => $request['drug_id'],
             'drug_name' => $request['drug_name'],
             'drug_count' => $request['drug_count'],
@@ -588,7 +588,7 @@ class Prescription extends App
             'description' => $request['description'] ?? null,
         ];
 
-        $exist_item = $this->prescription->getPrescriptionItem($prescription_id, $request['drug_id']);
+        $exist_item = $this->prescription->getPrescriptionItem($prescription['id'], $request['drug_id']);
 
         if (!$exist_item) {
             $this->db->insert('prescription_items', array_keys($prescription_items), $prescription_items);
