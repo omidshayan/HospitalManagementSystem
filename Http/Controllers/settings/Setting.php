@@ -193,7 +193,7 @@ class Setting extends App
 
         $this->send_json_response(true, _success, $newStatus);
     }
-    
+
     // change status dosage
     public function changeStatusDosageShow()
     {
@@ -224,7 +224,7 @@ class Setting extends App
         $_SESSION['settings']['dosage'] = $newStatus;
 
         $this->send_json_response(true, _success, $newStatus);
-    }    
+    }
 
     // change status Intake Instructions
     public function changeStatusIntakeInstructionsShow()
@@ -254,6 +254,38 @@ class Setting extends App
         }
 
         $_SESSION['settings']['intake_instructions'] = $newStatus;
+
+        $this->send_json_response(true, _success, $newStatus);
+    }
+
+    // change status tests
+    public function changeStatusTestsShow()
+    {
+        $this->middleware(true, true, 'general');
+
+        $row = $this->db->select(
+            'SELECT id, tests FROM settings LIMIT 1'
+        )->fetch();
+
+        if (!$row) {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+
+        $newStatus = ($row['tests'] == 1) ? 2 : 1;
+
+        $this->db->update(
+            'settings',
+            $row['id'],
+            ['tests'],
+            [$newStatus]
+        );
+
+        if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
+            $_SESSION['settings'] = [];
+        }
+
+        $_SESSION['settings']['tests'] = $newStatus;
 
         $this->send_json_response(true, _success, $newStatus);
     }

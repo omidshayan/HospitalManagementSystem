@@ -21,3 +21,4 @@ uri('change-status-count-drug', 'App\Setting', 'changeStatusCountDrugShow', 'POS
 uri('change-status-intake-time', 'App\Setting', 'changeStatusIntakeTimeShow', 'POST');
 uri('change-status-dosage', 'App\Setting', 'changeStatusDosageShow', 'POST');
 uri('change-status-intake-instructions', 'App\Setting', 'changeStatusIntakeInstructionsShow', 'POST');
+uri('change-status-tests', 'App\Setting', 'changeStatusTestsShow', 'POST');
