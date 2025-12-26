@@ -109,8 +109,7 @@ class Prescription extends App
 
         $drugInvalid =
             empty($request['drug_id']) ||
-            empty($request['drug_name']) ||
-            empty($request['drug_count']);
+            empty($request['drug_name']);
 
         $hasRecommended = !empty($request['recommended']);
 
@@ -139,7 +138,7 @@ class Prescription extends App
                 'prescription_id' => $prescription_id,
                 'drug_id' => $request['drug_id'],
                 'drug_name' => $request['drug_name'],
-                'drug_count' => $request['drug_count'],
+                'drug_count' => $request['drug_count'] ?? null,
                 'interval_time' => $request['interval_time'] ?? null,
                 'dosage' => $request['dosage'] ?? null,
                 'company' => $request['company'] ?? null,
@@ -355,7 +354,7 @@ class Prescription extends App
             )->fetch();
 
             if (!$patient) {
-                $this->flashMessage('error', 'پذیرش معتبر نیست');
+                $this->flashMessage('error', 'مریض یافت نشد');
                 return;
             }
 

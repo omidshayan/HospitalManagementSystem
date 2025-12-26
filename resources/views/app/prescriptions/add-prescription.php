@@ -4,13 +4,13 @@
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/search.php');
-    $count_drug = isset($_SESSION['settings']['count_drug']) && $_SESSION['settings']['count_drug'] == 1;
-    $intake_time = isset($_SESSION['settings']['intake_time']) && $_SESSION['settings']['intake_time'] == 1;
-    $dosage = isset($_SESSION['settings']['dosage']) && $_SESSION['settings']['dosage'] == 1;
-    $company = isset($_SESSION['settings']['company']) && $_SESSION['settings']['company'] == 1;
-    $description = isset($_SESSION['settings']['description']) && $_SESSION['settings']['description'] == 1;
-    $intake_instructions = isset($_SESSION['settings']['intake_instructions']) && $_SESSION['settings']['intake_instructions'] == 1;
-    $tests = isset($_SESSION['settings']['tests']) && $_SESSION['settings']['tests'] == 1;
+    $count_drugActive = isset($_SESSION['settings']['count_drug']) && $_SESSION['settings']['count_drug'] == 1;
+    $intake_timeActive = isset($_SESSION['settings']['intake_time']) && $_SESSION['settings']['intake_time'] == 1;
+    $dosageActive = isset($_SESSION['settings']['dosage']) && $_SESSION['settings']['dosage'] == 1;
+    $companyActive = isset($_SESSION['settings']['company']) && $_SESSION['settings']['company'] == 1;
+    $descriptionActive = isset($_SESSION['settings']['description']) && $_SESSION['settings']['description'] == 1;
+    $intake_instructionsActive = isset($_SESSION['settings']['intake_instructions']) && $_SESSION['settings']['intake_instructions'] == 1;
+    $testsActive = isset($_SESSION['settings']['tests']) && $_SESSION['settings']['tests'] == 1;
     ?>
 
     <!-- Start content -->
@@ -190,7 +190,7 @@
 
                         <div class="inputs d-flex">
                             <?php
-                            if ($count_drug) { ?>
+                            if ($count_drugActive) { ?>
                                 <div class="one">
                                     <div class="label-form mb5 fs14"> تعداد دارو </div>
                                     <select name="drug_count" required>
@@ -204,7 +204,7 @@
                             <?php }
                             ?>
                             <?php
-                            if ($intake_time) { ?>
+                            if ($intake_timeActive) { ?>
                                 <div class="one">
                                     <div class="label-form mb5 fs14"> زمان مصرف </div>
                                     <select name="interval_time" required>
@@ -222,7 +222,7 @@
 
                         <div class="inputs d-flex">
                             <?php
-                            if ($dosage) { ?>
+                            if ($dosageActive) { ?>
                                 <div class="one">
                                     <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
                                     <select name="dosage" required>
@@ -237,7 +237,7 @@
                             <?php }
                             ?>
                             <?php
-                            if ($intake_instructions) { ?>
+                            if ($intake_instructionsActive) { ?>
                                 <div class="one">
                                     <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
                                     <select name="usage_instruction" required>
@@ -256,7 +256,7 @@
 
                         <div class="inputs d-flex">
                             <?php
-                            if ($company) { ?>
+                            if ($companyActive) { ?>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">تولید کننده</div>
                                     <select name="company" required>
@@ -272,7 +272,7 @@
                             ?>
 
                             <?php
-                            if ($description) { ?>
+                            if ($descriptionActive) { ?>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">توضیحات اضافی</div>
                                     <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
@@ -284,7 +284,7 @@
 
                         <!-- Recommended -->
                         <?php
-                        if ($tests) { ?>
+                        if ($testsActive) { ?>
                             <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
                             <div class="accordion-content-pre w89d">
                                 <div class="child-accordioin">
@@ -362,7 +362,7 @@
                                 <tr>
                                     <td class="color-orange"><?= $number ?></td>
                                     <td><?= $item['drug_name'] ?></td>
-                                    <td><?= $item['drug_count'] ?></td>
+                                    <td><?= $item['drug_count'] ?: '- - - -' ?></td>
                                     <td><?= $item['company'] ?: '- - - -' ?></td>
                                     <td><?= ($item['interval_time']) ?: '- - - -' ?></td>
                                     <td><?= ($item['dosage']) ?: '- - - -' ?></td>
