@@ -551,9 +551,7 @@
             document.getElementById('recommended_list').appendChild(li);
         }
     </script>
-
-    <!-- validation -->
-
+    <!-- validation input and select -->
     <script>
         document.getElementById('prescription_form').addEventListener('submit', function(e) {
 

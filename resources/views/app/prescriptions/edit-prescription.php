@@ -111,7 +111,7 @@
 
             <!-- select details drug -->
             <div class="drug-container">
-                <form action="<?= url('edit-drug-prescription-store/' . $prescription['id']) ?>" method="POST">
+                <form id="prescription_form" action="<?= url('edit-drug-prescription-store/' . $prescription['id']) ?>" method="POST">
                     <div class="insert">
 
                         <!-- search box -->
@@ -425,4 +425,24 @@
             document.getElementById('recommended_list').appendChild(li);
         }
     </script>
+    <!-- validation input and select -->
+    <script>
+        document.getElementById('prescription_form').addEventListener('submit', function(e) {
+
+            const drugId = document.getElementById('item_id').value;
+            const hasDrug = drugId !== '';
+            const hasRecommended = document.querySelectorAll('input[name="recommended[]"]').length > 0;
+
+            if (!hasDrug && !hasRecommended) {
+                e.preventDefault();
+                document.getElementById('item_name').classList.add('checkInput');
+                return false;
+            }
+
+            if (hasRecommended && !hasDrug) {
+                document.getElementById('item_name').classList.remove('checkInput');
+            }
+        });
+    </script>
+
     <?php include_once('resources/views/layouts/footer.php') ?>
