@@ -31,14 +31,14 @@ class Company extends App
         }
     }
 
-    // dosage page
-    public function editDosage($id)
+    // companies page
+    public function editCompany($id)
     {
         $this->middleware(true, true, 'general');
 
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
-        if ($dosage != null) {
-            require_once(BASE_PATH . '/resources/views/app/dosage/edit-dosage.php');
+        $company = $this->db->select('SELECT * FROM companies WHERE `id` = ?', [$id])->fetch();
+        if ($company != null) {
+            require_once(BASE_PATH . '/resources/views/app/companies/edit-company.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
