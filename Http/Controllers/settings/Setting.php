@@ -129,4 +129,36 @@ class Setting extends App
 
         $this->send_json_response(true, _success, $newStatus);
     }
+
+    // change status count drug
+    public function changeStatusCountDrug()
+    {
+        $this->middleware(true, true, 'general');
+
+        $row = $this->db->select(
+            'SELECT id, count_drug FROM settings LIMIT 1'
+        )->fetch();
+
+        if (!$row) {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+
+        $newStatus = ($row['count_drug'] == 1) ? 2 : 1;
+
+        $this->db->update(
+            'settings',
+            $row['id'],
+            ['count_drug'],
+            [$newStatus]
+        );
+
+        if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
+            $_SESSION['settings'] = [];
+        }
+
+        $_SESSION['settings']['count_drug'] = $newStatus;
+
+        $this->send_json_response(true, _success, $newStatus);
+    }
 }

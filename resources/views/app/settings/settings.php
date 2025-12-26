@@ -179,7 +179,6 @@ include_once('resources/views/scripts/activeNotActive.php');
 
     </div>
 
-
 </div>
 <!-- End content -->
 
