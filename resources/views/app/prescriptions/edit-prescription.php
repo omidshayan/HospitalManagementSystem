@@ -29,7 +29,7 @@
                             <div class="one">
                                 <div class="label-form fs14"> سن مریض <?= _star ?></div>
                                 <input type="number" id="ageInput" class="checkInput" value="<?= $this->getAge($prescription['birth_year']) ?>" placeholder="سن مریض را وارد نمائید">
-                                <input type="hidden" name="birth_year" value="<?= $this->getAge($prescription['birth_year']) ?>" id="birthYearInput">
+                                <input type="hidden" name="birth_year" value="<?= $prescription['birth_year'] ?>" id="birthYearInput">
                             </div>
                         </div>
                         <div class="">

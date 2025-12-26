@@ -18,7 +18,8 @@
                     <div class="center fs14 mb10">اطلاعات مریض</div>
                     <div class="insert">
                         <?php
-                        if (isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1) {
+                        $admissionStatus = isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1;
+                        if ($admissionStatus) {
                             $currentPatientId = null;
                             foreach ($patients as $p) {
                                 if ($p['status'] == 1) {
@@ -466,7 +467,7 @@
             checkInputs();
         });
     </script>
-    
+
     <!-- admission -->
     <script>
         const admissionSelect = document.getElementById('admissionSelect');
@@ -551,7 +552,7 @@
             document.getElementById('recommended_list').appendChild(li);
         }
     </script>
-    
+
     <!-- validation input and select -->
     <script>
         document.getElementById('prescription_form').addEventListener('submit', function(e) {
