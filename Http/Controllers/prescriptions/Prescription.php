@@ -542,6 +542,23 @@ class Prescription extends App
         $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
 
         if ($prescription != null) {
+
+            $admission = false;
+            if (
+                isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1
+            ) {
+            //     $patients = $this->db->select(
+            //         'SELECT id, patient_id, user_name, queue_number, age, `status`
+            // FROM admissions
+            // WHERE doctor_id = ?
+            // AND created_at >= CURDATE()
+            // AND created_at < CURDATE() + INTERVAL 1 DAY
+            // ORDER BY queue_number ASC',
+            //         [$userId['id']]
+            //     )->fetchAll();
+            $admission = true;
+            }
+
             $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
             require_once(BASE_PATH . '/resources/views/app/prescriptions/edit-prescription.php');
             exit();
