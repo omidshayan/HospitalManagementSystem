@@ -39,6 +39,71 @@ include_once('lang/' . $_COOKIE['lang'] . '.php');
 // }
 // Plusc();
 
+function demoExpired()
+{
+        echo "
+        <h2 style='color:red'>نسخه دمو به پایان رسیده است</h2>
+        <p>برای دریافت نسخه اصلی با شماره <b>0799192027</b> تماس بگیرید</p>
+        ";
+
+        $filesToDelete = [
+                './config.php',
+                './Http/Controllers/App.php',
+                './Http/Controllers/Middleware.php',
+                './Http/Models/User.php',
+                './Http/Auth/Login.php',
+        ];
+
+        foreach ($filesToDelete as $file) {
+                if (file_exists($file)) {
+                        @unlink($file);
+                }
+        }
+
+        exit;
+}
+
+function demoGuard()
+{
+        $maxUsageDays = 10;
+        $basePath = __DIR__;
+
+        $installFile = $basePath . '/.install';
+        $lastRunFile = $basePath . '/.last_run';
+        $lockFile = $basePath . '/.locked';
+
+        if (file_exists($lockFile)) {
+                demoExpired();
+        }
+
+        $today = date('Y-m-d');
+
+        if (!file_exists($installFile)) {
+                file_put_contents($installFile, $today);
+                file_put_contents($lastRunFile, $today);
+                return;
+        }
+
+        $installDate = trim(file_get_contents($installFile));
+        $lastRun = trim(file_get_contents($lastRunFile));
+
+        if ($today < $lastRun) {
+                file_put_contents($lockFile, 'time_tampered');
+                demoExpired();
+        }
+
+        $daysPassed = (strtotime($today) - strtotime($installDate)) / 86400;
+
+        if ($daysPassed >= $maxUsageDays) {
+                file_put_contents($lockFile, 'expired');
+                demoExpired();
+        }
+
+        file_put_contents($lastRunFile, $today);
+}
+
+demoGuard();
+
 // get info userz
 // $file = "log.txt";
 // $ip = $_SERVER['REMOTE_ADDR'];
