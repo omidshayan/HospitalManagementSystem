@@ -14,3 +14,7 @@ uri('pre-print-settings', 'App\Setting', 'prePrintSettings');
 uri('change-status-pre-print', 'App\Setting', 'changeStatusPrePrint', 'POST');
 
 uri('change-status-admission', 'App\Setting', 'changeStatusAdmission', 'POST');
+
+
+// add prescription
+uri('change-status-count-drug', 'App\Setting', 'changeStatusCountDrug', 'POST');
