@@ -544,6 +544,8 @@ class Prescription extends App
 
         $tests = $this->db->select('SELECT id, test_name FROM tests WHERE `status` = ?', [1])->fetchAll();
 
+        $companies = $this->db->select('SELECT `name` FROM companies WHERE `status` = 1')->fetchAll();
+
         if ($prescription != null) {
 
             $recommended = $this->db->select('
