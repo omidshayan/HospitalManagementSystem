@@ -9,7 +9,7 @@ class Company extends App
     {
         $this->middleware(true, true, 'companies', true);
         $dosage = $this->db->select('SELECT * FROM companies')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/dosage/dosage.php');
+        require_once(BASE_PATH . '/resources/views/app/companies/companies.php');
     }
 
     // store dosage
