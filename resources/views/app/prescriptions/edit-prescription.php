@@ -88,7 +88,7 @@
                             <div class="child-accordioin w90d">
                                 <div class="insert mt5">
                                     <div class="one m-auto w97d mb3">
-                                        <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                        <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"><?=$prescription['diagnosis']?></textarea>
                                     </div>
                                 </div>
                             </div>
