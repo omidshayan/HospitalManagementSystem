@@ -466,6 +466,7 @@
             checkInputs();
         });
     </script>
+    
     <!-- admission -->
     <script>
         const admissionSelect = document.getElementById('admissionSelect');

@@ -218,7 +218,6 @@ class Prescription extends App
     public function patientInquiry()
     {
         $this->middleware(true, true, 'showPrescription', true);
-
         $user = $_GET['patient_name'];
         $birth_year = $_GET['birth_year'];
         $birth_year = $this->getBirthYearFromAge($birth_year);

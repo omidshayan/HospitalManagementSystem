@@ -4,6 +4,7 @@
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/search.php');
+    $age = $this->getAge($prescription['birth_year']);
     ?>
 
     <!-- Start content -->
@@ -16,7 +17,6 @@
             <div class="patient-container">
                 <form action="<?= url('edit-close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
                     <div class="center fs14">اطلاعات مریض</div>
-
 
                     <div class="insert">
                         <div class="inputs d-flex">
@@ -95,7 +95,9 @@
                         </div>
 
                         <div class="center mt20">
-                            <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14">
+                            <a href="<?= url('patient-inquiry') . '?patient_name=' . $prescription['patient_name'] . '&birth_year=' . $age ?>"
+                                target="_blank"
+                                class="p5-20 bg-success btn fs14">
                                 استعلام مریض
                             </a>
                         </div>
