@@ -82,8 +82,6 @@ include_once('public/alerts/toastr.php');
                             </tbody>
                         </table>
 
-                        <div class="fs14"><?= $prescription['diagnosis'] ?></div>
-
                     </div>
 
                     <!-- left infos -->
@@ -131,6 +129,7 @@ include_once('public/alerts/toastr.php');
                             ?>
                         </ul>
 
+                         <div class="fs14 mt50 text-left ml-10"><?= $prescription['diagnosis'] ?></div>
                     </div>
 
                 </div>
