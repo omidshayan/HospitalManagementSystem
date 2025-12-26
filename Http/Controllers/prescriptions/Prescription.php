@@ -657,9 +657,9 @@ class Prescription extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
 
-        if (empty($request['user_name']) || empty($request['birth_year'])) {
-            $this->flashMessage('error', _emptyInputs);
-        }
+        // if (empty($request['user_name']) || empty($request['birth_year'])) {
+        //     $this->flashMessage('error', _emptyInputs);
+        // }
 
         $prescription = $this->prescription->getPrescription($id);
         if (!$prescription) {
@@ -717,6 +717,7 @@ class Prescription extends App
             'temp' => $request['temp'],
             'spo2' => $request['spo2'],
             'diagnosis' => $request['diagnosis'],
+            'edited' => 1,
         ];
 
         $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
