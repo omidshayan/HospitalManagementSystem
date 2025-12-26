@@ -4,11 +4,11 @@ namespace App;
 
 class Company extends App
 {
-    //  Dosage page
+    //  companies page
     public function companies()
     {
-        $this->middleware(true, true, 'dosage', true);
-        $dosage = $this->db->select('SELECT * FROM dosage')->fetchAll();
+        $this->middleware(true, true, 'companies', true);
+        $dosage = $this->db->select('SELECT * FROM companies')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/dosage/dosage.php');
     }
 

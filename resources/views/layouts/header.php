@@ -285,8 +285,8 @@
                     <li class="sidebar-dropdown-menu-item">واحدهای شمارش</li>
                   </a>
                 <?php endif; ?>
-                <?php if ($this->hasAccess('company')): ?>
-                  <a href="<?= url('company') ?>">
+                <?php if ($this->hasAccess('companies')): ?>
+                  <a href="<?= url('companies') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت تولید کننده‌ها</li>
                   </a>
                 <?php endif; ?>
