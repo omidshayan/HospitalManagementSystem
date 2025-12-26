@@ -197,7 +197,7 @@ class Prescription extends App
                 'SELECT p.*, e.employee_name
              FROM prescriptions p
              JOIN employees e ON e.id = p.doctor_id
-             WHERE p.status != ?',
+             WHERE p.status != ? ORDER BY id DESC',
                 [$status]
             )->fetchAll();
         } else {
@@ -206,7 +206,7 @@ class Prescription extends App
                 'SELECT p.*, e.employee_name
              FROM prescriptions p
              JOIN employees e ON e.id = p.doctor_id
-             WHERE p.doctor_id = ? AND p.status != ?',
+             WHERE p.doctor_id = ? AND p.status != ? ORDER BY id DESC',
                 [$user['id'], $status]
             )->fetchAll();
         }
