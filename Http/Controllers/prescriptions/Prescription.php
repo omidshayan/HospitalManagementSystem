@@ -663,8 +663,6 @@ class Prescription extends App
             exit();
         }
 
-        $age = $this->getAge($request['birth_year']);
-
         // get invoice items
         $prescription_items = $this->prescription->getPrescriptionItems($prescription['id']);
 
@@ -708,7 +706,7 @@ class Prescription extends App
         $preInfos = [
             'patient_id' => $userId,
             'patient_name' => $request['user_name'],
-            'birth_year' => $age,
+            'birth_year' => $request['birth_year'],
             'bp' => $request['bp'],
             'pr' => $request['pr'],
             'rr' => $request['rr'],
