@@ -5,6 +5,7 @@
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/search.php');
     $age = $this->getAge($prescription['birth_year']);
+    $admissionStatus = isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1;
     ?>
 
     <!-- Start content -->
@@ -22,13 +23,13 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form  fs14"> نام مریض <?= _star ?></div>
-                                <input type="text" name="user_name" value="<?= $prescription['patient_name'] ?>" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
+                                <input type="text" name="user_name" <?=($admissionStatus) ? 'disabled' : '' ?> value="<?= $prescription['patient_name'] ?>" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
                             </div>
                         </div>
                         <div class="inputs d-flex mb3">
                             <div class="one">
                                 <div class="label-form fs14"> سن مریض <?= _star ?></div>
-                                <input type="number" id="ageInput" class="checkInput" value="<?= $this->getAge($prescription['birth_year']) ?>" placeholder="سن مریض را وارد نمائید">
+                                <input type="number" id="ageInput" <?=($admissionStatus) ? 'disabled' : '' ?> class="checkInput" value="<?= $this->getAge($prescription['birth_year']) ?>" placeholder="سن مریض را وارد نمائید">
                                 <input type="hidden" name="birth_year" value="<?= $prescription['birth_year'] ?>" id="birthYearInput">
                             </div>
                         </div>
@@ -39,14 +40,14 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form fs14"> نام پدر </div>
-                                <input type="text" name="father_name" value="<?= $user['father_name'] ?>" placeholder="نام پدر را وارد نمائید">
+                                <input type="text" name="father_name" <?=($admissionStatus) ? 'disabled' : '' ?> value="<?= $user['father_name'] ?>" placeholder="نام پدر را وارد نمائید">
                             </div>
                         </div>
 
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form fs14"> جنسیت </div>
-                                <select name="gender">
+                                <select name="gender" <?=($admissionStatus) ? 'disabled' : '' ?>>
                                     <option value="آقا" <?= ($user['gender'] === 'آقا') ? 'selected' : '' ?>>آقا</option>
                                     <option value="خانم" <?= ($user['gender'] === 'خانم') ? 'selected' : '' ?>>خانم</option>
                                 </select>
@@ -56,7 +57,7 @@
                         <div class="inputs d-flex">
                             <div class="one">
                                 <div class="label-form fs14"> شماره موبایل </div>
-                                <input type="text" name="phone" value="<?= $user['phone'] ?>" placeholder="شماره موبایل را وارد نمائید">
+                                <input type="text" <?=($admissionStatus) ? 'disabled' : '' ?> name="phone" value="<?= $user['phone'] ?>" placeholder="شماره موبایل را وارد نمائید">
                             </div>
                         </div>
 
