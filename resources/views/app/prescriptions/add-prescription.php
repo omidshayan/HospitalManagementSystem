@@ -4,6 +4,13 @@
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/search.php');
+    $admissionStatus = isset($_SESSION['settings']['count_drug']) && $_SESSION['settings']['count_drug'] == 1;
+    $admissionStatus = isset($_SESSION['settings']['count_drug']) && $_SESSION['settings']['count_drug'] == 1;
+    $admissionStatus = isset($_SESSION['settings']['dosage']) && $_SESSION['settings']['dosage'] == 1;
+    $admissionStatus = isset($_SESSION['settings']['company']) && $_SESSION['settings']['company'] == 1;
+    $admissionStatus = isset($_SESSION['settings']['description']) && $_SESSION['settings']['description'] == 1;
+    $admissionStatus = isset($_SESSION['settings']['intake_instructions']) && $_SESSION['settings']['intake_instructions'] == 1;
+    $admissionStatus = isset($_SESSION['settings']['tests']) && $_SESSION['settings']['tests'] == 1;
     ?>
 
     <!-- Start content -->
