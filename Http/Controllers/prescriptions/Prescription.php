@@ -142,6 +142,7 @@ class Prescription extends App
                 'drug_count' => $request['drug_count'],
                 'interval_time' => $request['interval_time'] ?? null,
                 'dosage' => $request['dosage'] ?? null,
+                'company' => $request['company'] ?? null,
                 'usage_instruction' => $request['usage_instruction'] ?? null,
                 'description' => $request['description'] ?? null,
             ];

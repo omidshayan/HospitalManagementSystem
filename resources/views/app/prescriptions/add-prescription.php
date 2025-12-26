@@ -306,6 +306,7 @@
                                 <th>#</th>
                                 <th>نام دارو</th>
                                 <th>تعداد</th>
+                                <th>تولید کننده</th>
                                 <th>زمان مصرف</th>
                                 <th>مقدار | واحد</th>
                                 <th>طریقه مصرف</th>
@@ -322,6 +323,7 @@
                                     <td class="color-orange"><?= $number ?></td>
                                     <td><?= $item['drug_name'] ?></td>
                                     <td><?= $item['drug_count'] ?></td>
+                                    <td><?= $item['company'] ?: '- - - -' ?></td>
                                     <td><?= ($item['interval_time']) ?: '- - - -' ?></td>
                                     <td><?= ($item['dosage']) ?: '- - - -' ?></td>
                                     <td><?= ($item['usage_instruction']) ?: '- - - -' ?></td>
