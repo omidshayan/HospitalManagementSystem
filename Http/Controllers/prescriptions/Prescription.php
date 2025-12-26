@@ -646,7 +646,6 @@ class Prescription extends App
         $this->flashMessage('success', _success);
     }
 
-    // NOTE باگ قسمت ویرایش سن وجود داره
     // edit close invoice
     public function editClosePrescriptionStore($request, $id)
     {
