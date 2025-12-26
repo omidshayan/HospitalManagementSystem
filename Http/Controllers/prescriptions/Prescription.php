@@ -620,6 +620,32 @@ class Prescription extends App
             $this->flashMessage('error', 'داروی انتخاب شده، قبلا ثبت شده!');
         }
 
+        if ($hasRecommended) {
+            foreach ($request['recommended'] as $recommendedId) {
+
+                $test = $this->db->select(
+                    'SELECT id FROM recommended 
+                    WHERE prescription_id = ? AND recommended = ?',
+                    [$id, $recommendedId]
+                )->fetch();
+
+                if (!$test) {
+                    $recommendedData = [
+                        'prescription_id' => $id,
+                        'recommended'     => $recommendedId,
+                    ];
+
+                    $this->db->insert(
+                        'recommended',
+                        array_keys($recommendedData),
+                        $recommendedData
+                    );
+                } else {
+                    $this->flashMessage('error', 'آزمایش انتخاب شده، قبلاً برای این نسخه ثبت شده!');
+                }
+            }
+        }
+
         $this->flashMessage('success', _success);
     }
 
