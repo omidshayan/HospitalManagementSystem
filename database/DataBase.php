@@ -23,7 +23,9 @@ class DataBase
     private function __construct()
     {
         try {
-            $this->connection = new PDO("mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName, $this->dbUserName, $this->dbPassword, $this->options);
+            // $this->connection = new PDO("mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName, $this->dbUserName, $this->dbPassword, $this->options);
+            $this->connection = new PDO("mysql:host=" . $this->dbHost . ";port=3306;dbname=" . $this->dbName, $this->dbUserName, $this->dbPassword, $this->options);
+
         } catch (PDOException $e) {
             echo $e->getMessage();
             exit;
