@@ -274,8 +274,8 @@
                             <tr>
                                 <td class="color-orange"><?= $number ?></td>
                                 <td><?= $item['drug_name'] ?></td>
-                                <td><?= $item['drug_count'] ?></td>
-                                <td><?= $item['company'] ?></td>
+                                <td><?= $item['drug_count'] ?: '- - - -' ?></td>
+                                <td><?= $item['company'] ?: '- - - -' ?></td>
                                 <td><?= ($item['interval_time']) ?: '- - - -' ?></td>
                                 <td><?= ($item['dosage']) ?: '- - - -' ?></td>
                                 <td><?= ($item['usage_instruction']) ?: '- - - -' ?></td>
