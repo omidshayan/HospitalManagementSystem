@@ -6,6 +6,13 @@
     include_once('resources/views/scripts/search.php');
     $age = $this->getAge($prescription['birth_year']);
     $admissionStatus = isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1;
+    $count_drugActive = isset($_SESSION['settings']['count_drug']) && $_SESSION['settings']['count_drug'] == 1;
+    $intake_timeActive = isset($_SESSION['settings']['intake_time']) && $_SESSION['settings']['intake_time'] == 1;
+    $dosageActive = isset($_SESSION['settings']['dosage']) && $_SESSION['settings']['dosage'] == 1;
+    $companyActive = isset($_SESSION['settings']['company']) && $_SESSION['settings']['company'] == 1;
+    $descriptionActive = isset($_SESSION['settings']['description']) && $_SESSION['settings']['description'] == 1;
+    $intake_instructionsActive = isset($_SESSION['settings']['intake_instructions']) && $_SESSION['settings']['intake_instructions'] == 1;
+    $testsActive = isset($_SESSION['settings']['tests']) && $_SESSION['settings']['tests'] == 1;
     ?>
 
     <!-- Start content -->
@@ -135,97 +142,129 @@
                         </div>
 
                         <div class="inputs d-flex">
-                            <div class="one">
-                                <div class="label-form mb5 fs14"> تعداد دارو </div>
-                                <select name="drug_count" required>
-                                    <?php for ($i = 1; $i <= $number['number']; $i++): ?>
-                                        <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
-                                            <?= $i ?>
-                                        </option>
-                                    <?php endfor; ?>
-                                </select>
-                            </div>
-                            <div class="one">
-                                <div class="label-form mb5 fs14"> زمان مصرف </div>
-                                <select name="interval_time" required>
-                                    <option selected disabled>زمان مصرف را انتخاب نمائید</option>
-                                    <?php
-                                    foreach ($intake_times as $intake_time) { ?>
-                                        <option value="<?= $intake_time['intake_time'] ?>"><?= $intake_time['intake_time'] ?></option>
-                                    <?php }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="inputs d-flex">
-                            <div class="one">
-                                <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
-                                <select name="dosage" required>
-                                    <option selected disabled>مقدار مصرف در هر نوبت</option>
-                                    <?php
-                                    foreach ($dosage as $dos) { ?>
-                                        <option value="<?= $dos['dosage'] ?>"><?= $dos['dosage'] ?></option>
-                                    <?php }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="one">
-                                <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
-                                <select name="usage_instruction" required>
-                                    <option selected disabled>طریقه مصرف در هر نوبت</option>
-                                    <?php
-                                    foreach ($intakeInstructions as $intakeInstruction) { ?>
-                                        <option value="<?= $intakeInstruction['intake_instructions'] ?>"><?= $intakeInstruction['intake_instructions'] ?></option>
-                                    <?php }
-                                    ?>
-                                </select>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="inputs d-flex">
-                            <div class="one">
-                                <div class="label-form mb5 fs14">تولید کننده</div>
-                                <select name="company" required>
-                                    <option selected disabled>تولید کننده یا نوع دارو را انتخاب نمائید</option>
-                                    <?php
-                                    foreach ($companies as $company) { ?>
-                                        <option value="<?= $company['name'] ?>"><?= $company['name'] ?></option>
-                                    <?php }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="one">
-                                <div class="label-form mb5 fs14">توضیحات اضافی</div>
-                                <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
-                            </div>
+                            <?php
+                            if ($count_drugActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14"> تعداد دارو </div>
+                                    <select name="drug_count" required>
+                                        <?php for ($i = 1; $i <= $number['number']; $i++): ?>
+                                            <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
+                                                <?= $i ?>
+                                            </option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+
+                            <?php
+                            if ($intake_timeActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14"> زمان مصرف </div>
+                                    <select name="interval_time" required>
+                                        <option selected disabled>زمان مصرف را انتخاب نمائید</option>
+                                        <?php
+                                        foreach ($intake_times as $intake_time) { ?>
+                                            <option value="<?= $intake_time['intake_time'] ?>"><?= $intake_time['intake_time'] ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+
                         </div>
 
+                        <div class="inputs d-flex">
+                            <?php
+                            if ($dosageActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
+                                    <select name="dosage" required>
+                                        <option selected disabled>مقدار مصرف در هر نوبت</option>
+                                        <?php
+                                        foreach ($dosage as $dos) { ?>
+                                            <option value="<?= $dos['dosage'] ?>"><?= $dos['dosage'] ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+
+                            <?php
+                            if ($intake_instructionsActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
+                                    <select name="usage_instruction" required>
+                                        <option selected disabled>طریقه مصرف در هر نوبت</option>
+                                        <?php
+                                        foreach ($intakeInstructions as $intakeInstruction) { ?>
+                                            <option value="<?= $intakeInstruction['intake_instructions'] ?>"><?= $intakeInstruction['intake_instructions'] ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+
+                        </div>
+
+                        <div class="inputs d-flex">
+                            <?php
+                            if ($companyActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">تولید کننده</div>
+                                    <select name="company" required>
+                                        <option selected disabled>تولید کننده یا نوع دارو را انتخاب نمائید</option>
+                                        <?php
+                                        foreach ($companies as $company) { ?>
+                                            <option value="<?= $company['name'] ?>"><?= $company['name'] ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+                            <?php
+                            if ($descriptionActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">توضیحات اضافی</div>
+                                    <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
+                                </div>
+                            <?php }
+                            ?>
+
+                        </div>
 
                         <!-- Recommended -->
-                        <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
-                        <div class="accordion-content-pre w89d">
-                            <div class="child-accordioin">
-                                <div class="insert mt5">
-                                    <div class="one m-auto mb3">
-                                        <select id="recommended_select">
-                                            <option value="" selected disabled>انتخاب آیتم</option>
-                                            <?php
-                                            foreach ($tests as $test) { ?>
-                                                <option value="<?= $test['id'] ?>"><?= $test['test_name'] ?></option>
-                                            <?php }
-                                            ?>
-                                        </select>
-                                        <button type="button" class="btn w80 p5" onclick="addRecommended()">افزودن</button>
+                        <?php
+                        if ($testsActive) { ?>
+                            <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
+                            <div class="accordion-content-pre w89d">
+                                <div class="child-accordioin">
+                                    <div class="insert mt5">
+                                        <div class="one m-auto mb3">
+                                            <select id="recommended_select">
+                                                <option value="" selected disabled>انتخاب آیتم</option>
+                                                <?php
+                                                foreach ($tests as $test) { ?>
+                                                    <option value="<?= $test['id'] ?>"><?= $test['test_name'] ?></option>
+                                                <?php }
+                                                ?>
+                                            </select>
+                                            <button type="button" class="btn w80 p5" onclick="addRecommended()">افزودن</button>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="recommended-box color">
-                            <ul id="recommended_list" class="color"></ul>
-                        </div>
-
-
+                            <div class="recommended-box color">
+                                <ul id="recommended_list" class="color"></ul>
+                            </div>
+                        <?php }
+                        ?>
 
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                         <input type="submit" id="submit" value="افزودن به نسخه" class="btn bold" />
