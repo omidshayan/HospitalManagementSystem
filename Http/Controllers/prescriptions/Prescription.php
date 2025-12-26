@@ -596,7 +596,7 @@ class Prescription extends App
         ];
         //  Create or get existing prescription
         $prescription = $this->db->select('SELECT id FROM prescriptions WHERE `id` = ?', [$id])->fetch();
-        
+
         if (!$drugInvalid) {
             $prescription_items = [
                 'prescription_id' => $prescription['id'],
@@ -699,10 +699,10 @@ class Prescription extends App
             'rr' => $request['rr'],
             'temp' => $request['temp'],
             'spo2' => $request['spo2'],
+            'diagnosis' => $request['diagnosis'],
         ];
 
         $inserted = $this->db->update('prescriptions', $prescription['id'], array_keys($preInfos), $preInfos);
-        dd('ok');
         $this->flashMessageTo('success', _success, url('prescriptions'));
     }
 
