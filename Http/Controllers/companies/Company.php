@@ -69,13 +69,13 @@ class Company extends App
         $this->flashMessageTo('success', _success, url('companies'));
     }
 
-    // dosage Details detiles page
-    public function dosageDetails($id)
+    // company Details detiles page
+    public function companyDetails($id)
     {
         $this->middleware(true, true, 'general');
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
-        if ($dosage != null) {
-            require_once(BASE_PATH . '/resources/views/app/dosage/dosage-details.php');
+        $company = $this->db->select('SELECT * FROM companies WHERE `id` = ?', [$id])->fetch();
+        if ($company != null) {
+            require_once(BASE_PATH . '/resources/views/app/companies/company-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -83,20 +83,20 @@ class Company extends App
         }
     }
 
-    // change status dosage
-    public function changeStatusDosage($id)
+    // change status company
+    public function changeStatusCompany($id)
     {
         $this->middleware(true, true, 'general');
 
-        $dosage = $this->db->select('SELECT id, `status` FROM dosage WHERE id = ?', [$id])->fetch();
-        if (!$dosage) {
+        $company = $this->db->select('SELECT id, `status` FROM companies WHERE id = ?', [$id])->fetch();
+        if (!$company) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
 
-        $newStatus = ($dosage['status'] == 1) ? 2 : 1;
+        $newStatus = ($company['status'] == 1) ? 2 : 1;
 
-        $this->db->update('dosage', $id, ['status'], [$newStatus]);
+        $this->db->update('companies', $id, ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
 }
