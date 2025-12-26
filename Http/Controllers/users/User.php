@@ -66,21 +66,23 @@ class User extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['user_name'] == '' || $request['phone'] == '') {
+        if ($request['user_name'] == '' || $request['birth_year'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $existUser = $this->db->select('SELECT * FROM users WHERE `phone` = ?', [$request['phone']])->fetch();
+        $request['birth_year'] = $this->getBirthYearFromAge($request['birth_year']);
 
-        if ($existUser) {
-            if ($existUser['id'] != $id) {
-                $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
-                return;
-            }
-        }
+        // $existUser = $this->db->select('SELECT * FROM users WHERE `phone` = ?', [$request['phone']])->fetch();
+
+        // if ($existUser) {
+        //     if ($existUser['id'] != $id) {
+        //         $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
+        //         return;
+        //     }
+        // }
 
         // check upload photo
-        $this->handleImageUpdate($request, 'users', $existUser['id'], 'image', 'images/users', $_FILES['image']);
+        $this->handleImageUpdate($request, 'users', $id, 'image', 'images/users', $_FILES['image']);
 
         $this->db->update('users', $id, array_keys($request), $request);
         $this->flashMessage('success', _success);

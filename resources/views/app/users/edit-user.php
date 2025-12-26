@@ -22,8 +22,7 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">سن <?= _star ?></div>
-                            <input type="number" id="ageInput" value="<?= $this->getAge($user['birth_year']) ?>" class="checkInput" placeholder="سن مریض را وارد نمائید">
-                            <input type="hidden" name="birth_year" id="birthYearInput">
+                            <input type="number" name="birth_year" id="ageInput" value="<?= $this->getAge($user['birth_year']) ?>" class="checkInput" placeholder="سن مریض را وارد نمائید">
                         </div>
 
                     </div>
