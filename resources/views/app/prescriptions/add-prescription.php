@@ -29,6 +29,7 @@
                 <form action="">
 
                     <div class="pre-main d-flex">
+
                         <div class="pre-body-right">
 
                             <!-- row 1 -->
@@ -408,6 +409,7 @@
                             </div>
 
                         </div>
+                        
                     </div>
 
 

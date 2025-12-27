@@ -39,11 +39,9 @@
 
     /* Modal */
     .modal-cont {
-        position: fixed;
-        top: 30px;
-        right: 30px;
-        bottom: 30px;
-        left: 30px;
+        width: calc(100% - 80px) !important;
+        margin: 30px auto 0 auto;
+        height: calc(100svh - 70px);
         background: var(--main);
         border-radius: 12px;
         overflow: hidden;
@@ -88,6 +86,21 @@
         resize: vertical;
     }
 
+    /* body */
+    .pre-main {
+        margin: 0 auto;
+        justify-content: space-between;
+        background-color: green;
+    }
+
+    .pre-body-right {
+        width: 80%;
+        background-color: red;
+    }
+
+    .pre-body-left {
+        width: 17% !important;
+    }
 
     .inputs-pre {
         width: 99%;
@@ -105,8 +118,8 @@
         padding: 4px;
         font-size: 17px;
     }
-.search-input-pre{
-    width: 320px !important;
-}
-    .search-box-pre {}
+
+    .search-input-pre {
+        width: 320px !important;
+    }
 </style>
