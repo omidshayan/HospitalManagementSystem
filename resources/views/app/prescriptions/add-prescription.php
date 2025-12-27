@@ -18,23 +18,17 @@
         <div class="content-title mb10">ثبت نسخه جدید</div>
 
         <!-- modal -->
-        <button id="openModal">ثبت نسخه جدید</button>
+        <button id="openModal-cont">ثبت نسخه جدید</button>
 
-        <div class="modal-overlay" id="modal">
-            <div class="modal">
-                <div class="modal-header">
-                    <h3>ثبت نسخه الکترونیکی</h3>
-                    <button class="close-btn" id="closeModal">✕</button>
-                </div>
-
-                <div class="modal-body">
-                    <!-- اینجا فرم نسخه‌نویسی میاد -->
-                    <p>فرم ثبت نسخه اینجا قرار می‌گیرد...</p>
-                </div>
+        <div class="modal-overlay-cont" id="modalOverlay-cont">
+            <div class="modal-cont">
+                <button class="close-btn-cont text-right" id="closeModal-cont">✕</button>
             </div>
         </div>
 
 
+
+        <?php include_once('resources/views/scripts/modal.php'); ?>
 
         <div class="d-flex alpha-container">
 
