@@ -13,17 +13,14 @@ openBtnCont.addEventListener('click', () => {
   document.body.style.overflow = 'hidden';
 });
 
-/* بستن با دکمه × */
 closeBtnCont.addEventListener('click', closeModalCont);
 
-/* بستن با کلیک روی فضای خالی */
 overlayCont.addEventListener('click', (e) => {
   if (e.target === overlayCont) {
     closeModalCont();
   }
 });
 
-/* بستن با دکمه ESC */
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && overlayCont.style.display === 'block') {
     closeModalCont();
@@ -48,12 +45,8 @@ document.addEventListener('keydown', (e) => {
   right: 30px;
   bottom: 30px;
   left: 30px;
-
   background: var(--main);
   border-radius: 12px;
-
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
 }
 

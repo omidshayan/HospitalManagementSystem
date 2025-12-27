@@ -17,11 +17,13 @@
     <div class="content">
         <div class="content-title mb10">ثبت نسخه جدید</div>
 
-        
+
         <!-- modal -->
         <button id="openModal-cont">ثبت نسخه جدید</button>
 
         <div class="modal-overlay-cont" id="modalOverlay-cont">
+
+        
             <div class="modal-cont">
                 <button class="close-btn-cont text-right" id="closeModal-cont">✕</button>
             </div>
