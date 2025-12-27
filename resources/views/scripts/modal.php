@@ -75,16 +75,6 @@
         margin: 10px 15px 0 0;
     }
 
-    .desc-prescription {
-        height: 34px !important;
-        min-height: 34px !important;
-        line-height: 18px;
-        font-size: 14px;
-        padding: 6px 8px;
-        box-sizing: border-box;
-        resize: vertical;
-    }
-
     /* body */
     .pre-main {
         width: 100%;
@@ -132,17 +122,39 @@
     }
 
     .add-drug-pre {
-        border-radius: 10px;
+        border-radius: 5px;
         height: 50px;
         padding: 10px;
-        margin-top: 20px;
+        margin-top: 27px;
     }
 
-    
-    .count-pre{
+    .count-pre {
         width: 5%;
     }
-    .count-pre-select{
+
+    .count-pre-select {
         width: 100%;
+    }
+
+    .other-select-p {
+        width: 10%;
+    }
+
+    .other-select-p-item {
+        width: 100%;
+    }
+
+    .desc-pre {
+        width: 20% !important;
+    }
+
+    .desc-prescription {
+        min-height: 34px !important;
+        line-height: 18px;
+        font-size: 14px;
+        padding: 6px 8px;
+        box-sizing: border-box;
+        resize: vertical;
+        width: 100% !important;
     }
 </style>

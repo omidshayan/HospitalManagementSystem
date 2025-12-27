@@ -73,9 +73,9 @@
 
                                 <?php
                                 if ($companyActive) { ?>
-                                    <div class="input-pre">
+                                    <div class="input-pre other-select-p">
                                         <div class="label-form mb5 fs14">تولید کننده</div>
-                                        <select name="company" class="w150" required>
+                                        <select name="company" class="other-select-p-item" required>
                                             <option selected disabled>نوعیت دارو</option>
                                             <?php
                                             foreach ($companies as $company) { ?>
@@ -89,9 +89,9 @@
 
                                 <?php
                                 if ($intake_timeActive) { ?>
-                                    <div class="input-pre">
+                                    <div class="input-pre other-select-p">
                                         <div class="label-form mb5 fs14"> زمان مصرف </div>
-                                        <select name="interval_time" class="150" required>
+                                        <select name="interval_time" class="other-select-p-item" required>
                                             <option selected disabled>زمان مصرف </option>
                                             <?php
                                             foreach ($intake_times as $intake_time) { ?>
@@ -106,9 +106,9 @@
 
                                 <?php
                                 if ($dosageActive) { ?>
-                                    <div class="input-pre">
+                                    <div class="input-pre other-select-p">
                                         <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
-                                        <select name="dosage" required class="150">
+                                        <select name="dosage" required class="other-select-p-item">
                                             <option selected disabled>مقدار مصرف </option>
                                             <?php
                                             foreach ($dosage as $dos) { ?>
@@ -121,9 +121,9 @@
                                 ?>
                                 <?php
                                 if ($intake_instructionsActive) { ?>
-                                    <div class="input-pre">
+                                    <div class="input-pre other-select-p">
                                         <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
-                                        <select name="usage_instruction" required class="150">
+                                        <select name="usage_instruction" required class="other-select-p-item">
                                             <option selected disabled>طریقه مصرف </option>
                                             <?php
                                             foreach ($intakeInstructions as $intakeInstruction) { ?>
@@ -138,14 +138,14 @@
 
                                 <?php
                                 if ($descriptionActive) { ?>
-                                    <div class="input-pre">
+                                    <div class="input-pre desc-pre">
                                         <div class="label-form mb5 fs14">توضیحات اضافی</div>
                                         <textarea rows="2" name="description" class="border-input desc-prescription" placeholder="توضیحات دارو  "></textarea>
                                     </div>
                                 <?php }
                                 ?>
 
-                            <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p">
+                                <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p">
                             </div>
 
                         </div>
@@ -297,7 +297,7 @@
                             </div>
 
                         </div>
-                        
+
                     </div>
 
 
@@ -310,6 +310,7 @@
         <?php include_once('resources/views/scripts/modal.php'); ?>
         <!-- end modal -->
 
+        <!-- type 2 -->
         <div class="d-flex alpha-container">
 
             <!-- patient infos -->
