@@ -101,9 +101,11 @@
         margin-left: 2px;
         text-align: left !important;
     }
-.patient-container{
-    width: 265px !important;
-}
+
+    .patient-container {
+        width: 265px !important;
+    }
+
     .inputs-pre {
         width: 99%;
         margin: 20px auto !important;
@@ -121,7 +123,26 @@
         font-size: 17px;
     }
 
+    .search-box-pre {
+        width: 25%;
+    }
+
     .search-input-pre {
-        width: 320px !important;
+        width: 100% !important;
+    }
+
+    .add-drug-pre {
+        border-radius: 10px;
+        height: 50px;
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    
+    .count-pre{
+        width: 5%;
+    }
+    .count-pre-select{
+        width: 100%;
     }
 </style>

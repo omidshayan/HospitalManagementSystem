@@ -34,6 +34,7 @@
 
                             <!-- row 1 -->
                             <div class="inputs-pre">
+
                                 <!-- search box -->
                                 <div class="search-box-pre">
                                     <div class="input-pre">
@@ -56,9 +57,9 @@
                                 <!-- count -->
                                 <?php
                                 if ($intake_timeActive) { ?>
-                                    <div class="input-pre w120">
+                                    <div class="input-pre count-pre">
                                         <div class="label-form mb5 fs14"> تعداد دارو </div>
-                                        <select name="drug_count border-pre" required>
+                                        <select name="drug_count border-pre" class="count-pre-select" required>
                                             <option selected disabled>تعداد دارو</option>
                                             <?php for ($i = 1; $i <= $number['number']; $i++): ?>
                                                 <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
@@ -144,7 +145,7 @@
                                 <?php }
                                 ?>
 
-                            <input type="submit" value="افزودن به نسخه" class="add-drug-pre">
+                            <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p">
                             </div>
 
                         </div>
