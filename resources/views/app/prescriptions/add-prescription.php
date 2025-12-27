@@ -17,6 +17,25 @@
     <div class="content">
         <div class="content-title mb10">ثبت نسخه جدید</div>
 
+        <!-- modal -->
+        <button id="openModal">ثبت نسخه جدید</button>
+
+        <div class="modal-overlay" id="modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>ثبت نسخه الکترونیکی</h3>
+                    <button class="close-btn" id="closeModal">✕</button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- اینجا فرم نسخه‌نویسی میاد -->
+                    <p>فرم ثبت نسخه اینجا قرار می‌گیرد...</p>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="d-flex alpha-container">
 
             <!-- patient infos -->
