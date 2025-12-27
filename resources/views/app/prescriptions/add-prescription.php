@@ -27,118 +27,391 @@
 
                 <!-- modal data -->
                 <form action="">
-                    <div class="inputs-pre">
 
-                        <!-- search box -->
-                        <div class="search-box-pre">
-                            <div class="input-pre">
-                                <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
-                                <input type="hidden" name="drug_id" id="item_id">
-                                <input type="text"
-                                    class="border-input"
-                                    name="drug_name"
-                                    id="item_name"
-                                    placeholder="نام دارو را جستجو نمایید"
-                                    autocomplete="off"
-                                    autofocus
-                                    data-search-url="<?= url('search-product-purchase') ?>" />
+                    <div class="pre-main d-flex">
+                        <div class="pre-body-right">
+
+                            <!-- row 1 -->
+                            <div class="inputs-pre">
+                                <!-- search box -->
+                                <div class="search-box-pre">
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
+                                        <input type="hidden" name="drug_id" id="item_id">
+                                        <input type="text"
+                                            class="border-input search-input-pre"
+                                            name="drug_name"
+                                            id="item_name"
+                                            placeholder="نام دارو را جستجو نمایید"
+                                            autocomplete="off"
+                                            autofocus
+                                            data-search-url="<?= url('search-product-purchase') ?>" />
+                                    </div>
+                                    <ul class="search-back d-none" id="backResponse">
+                                        <li class="res search-item color" role="option"></li>
+                                    </ul>
+                                </div>
+
+                                <!-- count -->
+                                <?php
+                                if ($intake_timeActive) { ?>
+                                    <div class="input-pre w120">
+                                        <div class="label-form mb5 fs14"> تعداد دارو </div>
+                                        <select name="drug_count border-pre" required>
+                                            <option selected disabled>تعداد دارو</option>
+                                            <?php for ($i = 1; $i <= $number['number']; $i++): ?>
+                                                <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
+                                                    <?= $i ?>
+                                                </option>
+                                            <?php endfor; ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+
+                                <?php
+                                if ($companyActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14">تولید کننده</div>
+                                        <select name="company" class="w150" required>
+                                            <option selected disabled>نوعیت دارو</option>
+                                            <?php
+                                            foreach ($companies as $company) { ?>
+                                                <option value="<?= $company['name'] ?>"><?= $company['name'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+
+                                <?php
+                                if ($intake_timeActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14"> زمان مصرف </div>
+                                        <select name="interval_time" class="150" required>
+                                            <option selected disabled>زمان مصرف </option>
+                                            <?php
+                                            foreach ($intake_times as $intake_time) { ?>
+                                                <option value="<?= $intake_time['intake_time'] ?>"><?= $intake_time['intake_time'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+
+
+                                <?php
+                                if ($dosageActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
+                                        <select name="dosage" required class="150">
+                                            <option selected disabled>مقدار مصرف </option>
+                                            <?php
+                                            foreach ($dosage as $dos) { ?>
+                                                <option value="<?= $dos['dosage'] ?>"><?= $dos['dosage'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+                                <?php
+                                if ($intake_instructionsActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
+                                        <select name="usage_instruction" required class="150">
+                                            <option selected disabled>طریقه مصرف </option>
+                                            <?php
+                                            foreach ($intakeInstructions as $intakeInstruction) { ?>
+                                                <option value="<?= $intakeInstruction['intake_instructions'] ?>"><?= $intakeInstruction['intake_instructions'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+
+
+                                <?php
+                                if ($descriptionActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14">توضیحات اضافی</div>
+                                        <textarea rows="2" name="description" class="border-input desc-prescription" placeholder="توضیحات دارو  "></textarea>
+                                    </div>
+                                <?php }
+                                ?>
+
                             </div>
-                            <ul class="search-back d-none" id="backResponse">
-                                <li class="res search-item color" role="option"></li>
-                            </ul>
+
+                            <!-- row 2 -->
+                            <div class="inputs-pre">
+                                <!-- search box -->
+                                <div class="search-box-pre">
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
+                                        <input type="hidden" name="drug_id" id="item_id">
+                                        <input type="text"
+                                            class="border-input search-input-pre"
+                                            name="drug_name"
+                                            id="item_name"
+                                            placeholder="نام دارو را جستجو نمایید"
+                                            autocomplete="off"
+                                            autofocus
+                                            data-search-url="<?= url('search-product-purchase') ?>" />
+                                    </div>
+                                    <ul class="search-back d-none" id="backResponse">
+                                        <li class="res search-item color" role="option"></li>
+                                    </ul>
+                                </div>
+
+                                <!-- count -->
+                                <?php
+                                if ($intake_timeActive) { ?>
+                                    <div class="input-pre w120">
+                                        <div class="label-form mb5 fs14"> تعداد دارو </div>
+                                        <select name="drug_count border-pre" required>
+                                            <option selected disabled>تعداد دارو</option>
+                                            <?php for ($i = 1; $i <= $number['number']; $i++): ?>
+                                                <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
+                                                    <?= $i ?>
+                                                </option>
+                                            <?php endfor; ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+
+                                <?php
+                                if ($companyActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14">تولید کننده</div>
+                                        <select name="company" class="w150" required>
+                                            <option selected disabled>نوعیت دارو</option>
+                                            <?php
+                                            foreach ($companies as $company) { ?>
+                                                <option value="<?= $company['name'] ?>"><?= $company['name'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+
+                                <?php
+                                if ($intake_timeActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14"> زمان مصرف </div>
+                                        <select name="interval_time" class="150" required>
+                                            <option selected disabled>زمان مصرف </option>
+                                            <?php
+                                            foreach ($intake_times as $intake_time) { ?>
+                                                <option value="<?= $intake_time['intake_time'] ?>"><?= $intake_time['intake_time'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+
+
+                                <?php
+                                if ($dosageActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
+                                        <select name="dosage" required class="150">
+                                            <option selected disabled>مقدار مصرف </option>
+                                            <?php
+                                            foreach ($dosage as $dos) { ?>
+                                                <option value="<?= $dos['dosage'] ?>"><?= $dos['dosage'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+                                <?php
+                                if ($intake_instructionsActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
+                                        <select name="usage_instruction" required class="150">
+                                            <option selected disabled>طریقه مصرف </option>
+                                            <?php
+                                            foreach ($intakeInstructions as $intakeInstruction) { ?>
+                                                <option value="<?= $intakeInstruction['intake_instructions'] ?>"><?= $intakeInstruction['intake_instructions'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                    </div>
+                                <?php }
+                                ?>
+
+
+                                <?php
+                                if ($descriptionActive) { ?>
+                                    <div class="input-pre">
+                                        <div class="label-form mb5 fs14">توضیحات اضافی</div>
+                                        <textarea rows="2" name="description" class="border-input desc-prescription" placeholder="توضیحات دارو  "></textarea>
+                                    </div>
+                                <?php }
+                                ?>
+
+                            </div>
+
                         </div>
-                        
-                        <?php
-                        if ($intake_timeActive) { ?>
-                            <div class="input-pre">
-                                <div class="label-form mb5 fs14"> تعداد دارو </div>
-                                <select name="drug_count border-pre" required>
-                                    <option selected disabled>تعداد دارو</option>
-                                    <?php for ($i = 1; $i <= $number['number']; $i++): ?>
-                                        <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
-                                            <?= $i ?>
-                                        </option>
-                                    <?php endfor; ?>
-                                </select>
+
+                        <div class="pre-body-left">
+
+                            <div class="patient-container">
+                                <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
+                                    <div class="center fs14 mb10">اطلاعات مریض</div>
+                                    <div class="insert">
+                                        <?php
+                                        $admissionStatus = isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1;
+                                        if ($admissionStatus) {
+                                            $currentPatientId = null;
+                                            foreach ($patients as $p) {
+                                                if ($p['status'] == 1) {
+                                                    $currentPatientId = $p['id'];
+                                                    break;
+                                                }
+                                            }
+                                        ?>
+                                            <select name="admission_id" id="admissionSelect" class="mb20">
+                                                <?php if (empty($patients)): ?>
+                                                    <option value="" disabled selected>
+                                                        مریضی ثبت نشده است
+                                                    </option>
+                                                <?php else: ?>
+                                                    <?php foreach ($patients as $patient): ?>
+                                                        <option
+                                                            class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
+                                                            value="<?= $patient['id'] ?>"
+                                                            data-name-add="<?= htmlspecialchars($patient['user_name'] ?? '') ?>"
+                                                            data-age-add="<?= $patient['age'] ?? '' ?>"
+                                                            <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
+
+                                                            <?= $patient['queue_number'] ?>
+                                                            - <?= $patient['user_name'] ?? 'نامشخص' ?>
+                                                            - (<?= $patient['age'] ?? '—' ?> ساله)
+
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+                                            </select>
+
+                                            <!-- btn -->
+                                            <?php if (!empty($patients)): ?>
+                                                <div class="center mb20">
+                                                    <a href="<?= url('patient-inquiry') ?>"
+                                                        target="_blank"
+                                                        id="patientInquiryBtn"
+                                                        class="p5-20 bg-success btn fs14">
+                                                        استعلام مریض
+                                                    </a>
+                                                </div>
+                                            <?php endif; ?>
+
+                                        <?php } else { ?>
+
+                                            <div class="inputs d-flex">
+                                                <div class="one">
+                                                    <div class="label-form  fs14"> نام مریض <?= _star ?></div>
+                                                    <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
+                                                </div>
+                                            </div>
+                                            <div class="inputs d-flex mb3">
+                                                <div class="one">
+                                                    <div class="label-form fs14"> سن مریض <?= _star ?></div>
+                                                    <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
+                                                    <input type="hidden" name="birth_year" id="birthYearInput">
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <span class="fs14">سال تولد: </span>
+                                                <strong id="birthYear"></strong>
+                                            </div>
+                                            <div class="inputs d-flex">
+                                                <div class="one">
+                                                    <div class="label-form fs14"> نام پدر </div>
+                                                    <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                                                </div>
+                                            </div>
+
+                                            <div class="inputs d-flex">
+                                                <div class="one">
+                                                    <div class="label-form fs14"> جنسیت </div>
+                                                    <select name="gender">
+                                                        <option value="آقا">آقا</option>
+                                                        <option value="خانم">خانم</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="inputs d-flex">
+                                                <div class="one">
+                                                    <div class="label-form fs14"> شماره موبایل </div>
+                                                    <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
+                                                </div>
+                                            </div>
+                                            <!-- end patient infos -->
+                                        <?php }
+                                        ?>
+
+
+                                        <!-- bp ... -->
+                                        <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
+                                        <div class="accordion-content-pre w100">
+                                            <div class="child-accordioin w90d">
+                                                <div class="insert dir-left mt5">
+                                                    <div class="one m-auto w97d mb3">
+                                                        <input type="text" name="bp" placeholder=" Blood Pressure  ">
+                                                    </div>
+                                                    <div class="one m-auto w97d mb3">
+                                                        <input type="text" name="pr" placeholder=" Pulse Rate  ">
+                                                    </div>
+                                                    <div class="one m-auto w97d mb3">
+                                                        <input type="text" name="rr" placeholder=" Respiratory Rate  ">
+                                                    </div>
+                                                    <div class="one m-auto w97d mb3">
+                                                        <input type="text" name="temp" placeholder=" Temperature  ">
+                                                    </div>
+                                                    <div class="one m-auto w97d mb3">
+                                                        <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- diagnosis -->
+                                        <div class="accordion-title color-orange">تشخیص داکتر</div>
+                                        <div class="accordion-content-pre w100">
+                                            <div class="child-accordioin w90d">
+                                                <div class="insert mt5">
+                                                    <div class="one m-auto w97d mb3">
+                                                        <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="center mt20">
+                                            <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
+                                                استعلام مریض
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
+                                </form>
                             </div>
-                        <?php }
-                        ?>
 
-                        <?php
-                        if ($companyActive) { ?>
-                            <div class="">
-                                <div class="label-form mb5 fs14">تولید کننده</div>
-                                <select name="company" required>
-                                    <option selected disabled>نوعیت دارو</option>
-                                    <?php
-                                    foreach ($companies as $company) { ?>
-                                        <option value="<?= $company['name'] ?>"><?= $company['name'] ?></option>
-                                    <?php }
-                                    ?>
-                                </select>
-                            </div>
-                        <?php }
-                        ?>
-
-                        <?php
-                        if ($intake_timeActive) { ?>
-                            <div class="">
-                                <div class="label-form mb5 fs14"> زمان مصرف </div>
-                                <select name="interval_time" required>
-                                    <option selected disabled>زمان مصرف </option>
-                                    <?php
-                                    foreach ($intake_times as $intake_time) { ?>
-                                        <option value="<?= $intake_time['intake_time'] ?>"><?= $intake_time['intake_time'] ?></option>
-                                    <?php }
-                                    ?>
-                                </select>
-                            </div>
-                        <?php }
-                        ?>
-
-
-                        <?php
-                        if ($dosageActive) { ?>
-                            <div class="">
-                                <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
-                                <select name="dosage" required>
-                                    <option selected disabled>مقدار مصرف </option>
-                                    <?php
-                                    foreach ($dosage as $dos) { ?>
-                                        <option value="<?= $dos['dosage'] ?>"><?= $dos['dosage'] ?></option>
-                                    <?php }
-                                    ?>
-                                </select>
-                            </div>
-                        <?php }
-                        ?>
-                        <?php
-                        if ($intake_instructionsActive) { ?>
-                            <div class="">
-                                <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
-                                <select name="usage_instruction" required>
-                                    <option selected disabled>طریقه مصرف </option>
-                                    <?php
-                                    foreach ($intakeInstructions as $intakeInstruction) { ?>
-                                        <option value="<?= $intakeInstruction['intake_instructions'] ?>"><?= $intakeInstruction['intake_instructions'] ?></option>
-                                    <?php }
-                                    ?>
-                                </select>
-                            </div>
-                        <?php }
-                        ?>
-
-
-                        <?php
-                        if ($descriptionActive) { ?>
-                            <div class="">
-                                <div class="label-form mb5 fs14">توضیحات اضافی</div>
-                                <textarea rows="2" name="description" class="border-input desc-prescription" placeholder="توضیحات دارو  "></textarea>
-                            </div>
-                        <?php }
-                        ?>
-
+                        </div>
                     </div>
+
+
+
                 </form>
 
 

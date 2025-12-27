@@ -100,11 +100,13 @@
 
     .input-pre>select,
     .input-pre>input {
-        height: 29px;
+        height: 35px;
         border-radius: 3px;
         padding: 4px;
         font-size: 17px;
     }
-
+.search-input-pre{
+    width: 320px !important;
+}
     .search-box-pre {}
 </style>
