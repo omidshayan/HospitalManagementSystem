@@ -88,64 +88,23 @@
         resize: vertical;
     }
 
-    .count-pre {
-        width: 100% !important;
+
+    .inputs-pre {
+        width: 99%;
+        margin: 20px auto !important;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
     }
 
-    .count-pre>select {
-        width: 70px !important;
-        border: 1px solid var(--border) !important;
-    }
-
-    .insert-pre {
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        border-radius: 5px;
-    }
-
-    .insert-pre>div {
-        text-align: right;
-        margin-right: 5.5%;
-        margin-bottom: 4px;
-    }
-
-    .insert-pre input {
-        background-color: var(--main);
-        border: none;
-        width: 90%;
-        height: 35px;
-        padding: 8px;
+    .input-pre>select,
+    .input-pre>input {
+        height: 29px;
         border-radius: 3px;
-        color: var(--text);
-        font-size: 16px;
-        transition: 0.5s;
-        outline: none;
-        border: 1px solid var(--border);
-        margin-bottom: 25px;
-    }
-
-    .insert-pre select {
-        background-color: var(--main);
-        border: none;
-        width: 90%;
-        height: 35px;
         padding: 4px;
-        border-radius: 3px;
-        color: var(--text);
-        font-size: 16px;
-        outline: none;
-        border: 1px solid var(--bg);
+        font-size: 17px;
     }
 
-    .insert-pre select option {
-        font-size: 16px;
-    }
-
-    .insert-pre input:focus {
-        outline: none !important;
-        border: 1px solid var(--hover);
-        box-shadow: 0 0 8px var(--hover);
-        transition: 0.5s;
-    }
+    .search-box-pre {}
 </style>
