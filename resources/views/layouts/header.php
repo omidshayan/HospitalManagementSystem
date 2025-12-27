@@ -169,7 +169,7 @@
           <?php endif; ?>
 
           <!-- print -->
-          <!-- <?php if ($this->hasAccess('prescriptionPrint')): ?>
+          <?php if ($this->hasAccess('prescriptionPrint')): ?>
             <li class="sidebar-menu">
               <a href="<?= url('prescription-print') ?>" class="d-flex align-center justify-between">
                 <span>
@@ -180,7 +180,7 @@
                 </span>
               </a>
             </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
 
           <!-- users -->
           <?php if ($this->hasAccess('parentPatients')): ?>
