@@ -32,6 +32,9 @@
     border-radius: 5px;
     border: 1px solid var(--border) !important;
 }
+.border-input{
+    border: 1px solid var(--border-input) !important;
+}
 .border-radius {
     border-radius: 10px;
 }

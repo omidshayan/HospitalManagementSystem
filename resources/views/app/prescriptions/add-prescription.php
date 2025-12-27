@@ -22,10 +22,61 @@
         <button id="openModal-cont">ثبت نسخه جدید</button>
 
         <div class="modal-overlay-cont" id="modalOverlay-cont">
-
-        
             <div class="modal-cont">
                 <button class="close-btn-cont text-right" id="closeModal-cont">✕</button>
+
+                <!-- modal data -->
+                <form action="">
+                    <div class="insert">
+                        <div class="inputs d-flex">
+                            <div class="one">
+                                <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
+                                <input type="hidden" name="drug_id" id="item_id">
+                                <input type="text"
+                                    class="border-input"
+                                    name="drug_name"
+                                    id="item_name"
+                                    placeholder="نام دارو را جستجو نمایید"
+                                    autocomplete="off"
+                                    autofocus
+                                    data-search-url="<?= url('search-product-purchase') ?>" />
+                            </div>
+                            <ul class="search-back d-none" id="backResponse">
+                                <li class="res search-item color" role="option"></li>
+                            </ul>
+
+
+                            <?php
+                            if ($companyActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">تولید کننده</div>
+                                    <select name="company" required>
+                                        <option selected disabled>تولید کننده یا نوع دارو را انتخاب نمائید</option>
+                                        <?php
+                                        foreach ($companies as $company) { ?>
+                                            <option value="<?= $company['name'] ?>"><?= $company['name'] ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+
+                            <?php
+                            if ($descriptionActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">توضیحات اضافی</div>
+                                    <textarea name="description" class="border-input" placeholder="توضیحات را وارد نمایید"></textarea>
+                                </div>
+                            <?php }
+                            ?>
+
+                        </div>
+
+                    </div>
+                </form>
+
+
             </div>
         </div>
         <?php include_once('resources/views/scripts/modal.php'); ?>
