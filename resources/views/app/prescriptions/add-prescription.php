@@ -27,7 +27,6 @@
 
                 <!-- modal data -->
                 <form action="">
-                    <div class="insert">
                         <div class="inputs-pre d-flex">
                             <div class="one">
                                 <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
@@ -46,6 +45,21 @@
                             </ul>
 
                             <?php
+                            if ($count_drugActive) { ?>
+                                <div class="count-pre ">
+                                    <div class="label-form mb5 fs14"> تعداد دارو </div>
+                                    <select name="drug_count" required>
+                                        <?php for ($i = 1; $i <= $number['number']; $i++): ?>
+                                            <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
+                                                <?= $i ?>
+                                            </option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+
+                            <?php
                             if ($companyActive) { ?>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">تولید کننده</div>
@@ -61,21 +75,6 @@
                             <?php }
                             ?>
 
-
-                            <?php
-                            if ($count_drugActive) { ?>
-                                <div class="one">
-                                    <div class="label-form mb5 fs14"> تعداد دارو </div>
-                                    <select name="drug_count" required>
-                                        <?php for ($i = 1; $i <= $number['number']; $i++): ?>
-                                            <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
-                                                <?= $i ?>
-                                            </option>
-                                        <?php endfor; ?>
-                                    </select>
-                                </div>
-                            <?php }
-                            ?>
                             <?php
                             if ($intake_timeActive) { ?>
                                 <div class="one">
@@ -135,8 +134,6 @@
                             ?>
 
                         </div>
-
-                    </div>
                 </form>
 
 
