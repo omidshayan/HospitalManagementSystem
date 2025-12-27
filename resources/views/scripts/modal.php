@@ -45,6 +45,7 @@
         background: var(--main);
         border-radius: 12px;
         overflow: hidden;
+        padding: 0 10px 0 0;
     }
 
     /* Header */
@@ -77,31 +78,32 @@
     .desc-prescription {
         height: 34px !important;
         min-height: 34px !important;
-
         line-height: 18px;
         font-size: 14px;
         padding: 6px 8px;
-
         box-sizing: border-box;
         resize: vertical;
     }
 
     /* body */
     .pre-main {
+        width: 100%;
         margin: 0 auto;
         justify-content: space-between;
-        background-color: green;
     }
 
     .pre-body-right {
-        width: 80%;
-        background-color: red;
+        width: 84%;
     }
 
     .pre-body-left {
-        width: 17% !important;
+        width: 280px !important;
+        margin-left: 2px;
+        text-align: left !important;
     }
-
+.patient-container{
+    width: 265px !important;
+}
     .inputs-pre {
         width: 99%;
         margin: 20px auto !important;
