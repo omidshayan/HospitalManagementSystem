@@ -149,12 +149,23 @@
     }
 
     .desc-prescription {
-        min-height: 34px !important;
+        min-height: 37px !important;
         line-height: 18px;
         font-size: 14px;
         padding: 6px 8px;
         box-sizing: border-box;
         resize: vertical;
         width: 100% !important;
+    }
+
+    /* ////// pre items */
+    .content-create-pre {
+        width: 100%;
+        background-color: var(--simillar);
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid var(--border);
+        margin: 0 auto;
+        position: relative;
     }
 </style>
