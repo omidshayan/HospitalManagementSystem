@@ -17,6 +17,7 @@
     <div class="content">
         <div class="content-title mb10">ثبت نسخه جدید</div>
 
+        
         <!-- modal -->
         <button id="openModal-cont">ثبت نسخه جدید</button>
 
@@ -25,10 +26,8 @@
                 <button class="close-btn-cont text-right" id="closeModal-cont">✕</button>
             </div>
         </div>
-
-
-
         <?php include_once('resources/views/scripts/modal.php'); ?>
+        <!-- end modal -->
 
         <div class="d-flex alpha-container">
 
