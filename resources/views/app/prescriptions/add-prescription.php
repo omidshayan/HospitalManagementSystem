@@ -28,7 +28,7 @@
                 <!-- modal data -->
                 <form action="">
                     <div class="insert">
-                        <div class="inputs d-flex">
+                        <div class="inputs-pre d-flex">
                             <div class="one">
                                 <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
                                 <input type="hidden" name="drug_id" id="item_id">
@@ -44,7 +44,6 @@
                             <ul class="search-back d-none" id="backResponse">
                                 <li class="res search-item color" role="option"></li>
                             </ul>
-
 
                             <?php
                             if ($companyActive) { ?>
@@ -62,11 +61,75 @@
                             <?php }
                             ?>
 
+
+                            <?php
+                            if ($count_drugActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14"> تعداد دارو </div>
+                                    <select name="drug_count" required>
+                                        <?php for ($i = 1; $i <= $number['number']; $i++): ?>
+                                            <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
+                                                <?= $i ?>
+                                            </option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+                            <?php
+                            if ($intake_timeActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14"> زمان مصرف </div>
+                                    <select name="interval_time" required>
+                                        <option selected disabled>زمان مصرف را انتخاب نمائید</option>
+                                        <?php
+                                        foreach ($intake_times as $intake_time) { ?>
+                                            <option value="<?= $intake_time['intake_time'] ?>"><?= $intake_time['intake_time'] ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+
+
+                            <?php
+                            if ($dosageActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
+                                    <select name="dosage" required>
+                                        <option selected disabled>مقدار مصرف در هر نوبت</option>
+                                        <?php
+                                        foreach ($dosage as $dos) { ?>
+                                            <option value="<?= $dos['dosage'] ?>"><?= $dos['dosage'] ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+                            <?php
+                            if ($intake_instructionsActive) { ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
+                                    <select name="usage_instruction" required>
+                                        <option selected disabled>طریقه مصرف در هر نوبت</option>
+                                        <?php
+                                        foreach ($intakeInstructions as $intakeInstruction) { ?>
+                                            <option value="<?= $intakeInstruction['intake_instructions'] ?>"><?= $intakeInstruction['intake_instructions'] ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            <?php }
+                            ?>
+
+
                             <?php
                             if ($descriptionActive) { ?>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">توضیحات اضافی</div>
-                                    <textarea name="description" class="border-input" placeholder="توضیحات را وارد نمایید"></textarea>
+                                    <textarea rows="2" name="description" class="border-input desc-prescription" placeholder="توضیحات را وارد نمایید"></textarea>
                                 </div>
                             <?php }
                             ?>
@@ -316,7 +379,6 @@
                                 </div>
                             <?php }
                             ?>
-
                         </div>
 
                         <div class="inputs d-flex">
