@@ -176,291 +176,293 @@
                                 </div>
                                 <textarea rows=" 2" name="description" class="border-input desc-prescription nav-item" placeholder="Drug description  "></textarea>
                                 </div>
-                        <?php }
-                        ?>
+                            <?php }
+                            ?>
 
-                    </div>
+                            </div>
 
-                    <input type="submit" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
-                    <!-- end select drug -->
+                            <input type="submit" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
+                            <!-- end select drug -->
 
                             <hr class="hr">
 
-                            <!-- drug list and user infos -->
-                            <div class="pre-main d-flex">
+                </form>
 
-                                <!-- drug list -->
-                                <div class="pre-body-right">
 
-                                    <!-- prescription items -->
-                                    <?php
-                                    if ($prescription) { ?>
-                                        <div class="content-create-pre mb30 mt20">
-                                            <div class="mb10 fs14 d-flex justify-between">
-                                                <div class="mr30">
-                                                    <span><?= (!empty($drugList)) ? 'لیست دواها' : '' ?></span>
-                                                    <?php
-                                                    if (empty($drugList) && empty($recommended)) { ?>
+                <!-- drug list and user infos -->
+                <div class="pre-main d-flex">
 
-                                                        <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">حذف نسخه</a>
-                                                    <?php }
-                                                    ?>
-                                                </div>
-                                            </div>
+                    <!-- drug list -->
+                    <div class="pre-body-right">
 
+                        <!-- prescription items -->
+                        <?php
+                        if ($prescription) { ?>
+                            <div class="content-create-pre mb30 mt20">
+                                <div class="mb10 fs14 d-flex justify-between">
+                                    <div class="mr30">
+                                        <span><?= (!empty($drugList)) ? 'لیست دواها' : '' ?></span>
+                                        <?php
+                                        if (empty($drugList) && empty($recommended)) { ?>
+
+                                            <a href="<?= url('delete-prescription/' . $prescription['id']) ?>" class="color-red text-underline delete-prescription">حذف نسخه</a>
+                                        <?php }
+                                        ?>
+                                    </div>
+                                </div>
+
+                                <?php
+                                if (!empty($drugList)) { ?>
+                                    <table class="fl-table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>نام دارو</th>
+                                                <th>تعداد</th>
+                                                <th>تولید کننده</th>
+                                                <th>زمان مصرف</th>
+                                                <th>مقدار | واحد</th>
+                                                <th>طریقه مصرف</th>
+                                                <th>توضیحات</th>
+                                                <th>حذف</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                             <?php
-                                            if (!empty($drugList)) { ?>
-                                                <table class="fl-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>نام دارو</th>
-                                                            <th>تعداد</th>
-                                                            <th>تولید کننده</th>
-                                                            <th>زمان مصرف</th>
-                                                            <th>مقدار | واحد</th>
-                                                            <th>طریقه مصرف</th>
-                                                            <th>توضیحات</th>
-                                                            <th>حذف</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $number = 1;
-                                                        foreach ($drugList as $item) {
-                                                        ?>
-                                                            <tr>
-                                                                <td class="color-orange"><?= $number ?></td>
-                                                                <td class="fs18"><?= $item['drug_name'] ?></td>
-                                                                <td><?= $item['drug_count'] ?: '- - - -' ?></td>
-                                                                <td><?= $item['company'] ?: '- - - -' ?></td>
-                                                                <td><?= ($item['interval_time']) ?: '- - - -' ?></td>
-                                                                <td><?= ($item['dosage']) ?: '- - - -' ?></td>
-                                                                <td><?= ($item['usage_instruction']) ?: '- - - -' ?></td>
-                                                                <td><?= $item['description'] ?: '- - - -' ?></td>
-                                                                <td>
-                                                                    <a href="<?= url('delete-prescription-list/' . $item['id']) ?>" class="delete-drug flex-justify-align">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
-                                                                            <path fill="#ff0000" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
-                                                                        </svg>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        <?php
-                                                            $number++;
-                                                        }
-                                                        ?>
-                                                    </tbody>
-                                                </table>
-                                            <?php }
+                                            $number = 1;
+                                            foreach ($drugList as $item) {
                                             ?>
-
-
+                                                <tr>
+                                                    <td class="color-orange"><?= $number ?></td>
+                                                    <td class="fs18"><?= $item['drug_name'] ?></td>
+                                                    <td><?= $item['drug_count'] ?: '- - - -' ?></td>
+                                                    <td><?= $item['company'] ?: '- - - -' ?></td>
+                                                    <td><?= ($item['interval_time']) ?: '- - - -' ?></td>
+                                                    <td><?= ($item['dosage']) ?: '- - - -' ?></td>
+                                                    <td><?= ($item['usage_instruction']) ?: '- - - -' ?></td>
+                                                    <td><?= $item['description'] ?: '- - - -' ?></td>
+                                                    <td>
+                                                        <a href="<?= url('delete-prescription-list/' . $item['id']) ?>" class="delete-drug flex-justify-align">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
+                                                                <path fill="#ff0000" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
                                             <?php
-                                            if (!empty($recommended)) { ?>
-
-                                                <div class="p5">لیست آزمایشات</div>
-                                                <table class="fl-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>نام آزمایش</th>
-                                                            <th>حذف</th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <tbody>
-                                                        <?php
-                                                        $number = 1;
-                                                        foreach ($recommended as $item) {
-                                                        ?>
-                                                            <tr>
-                                                                <td class="color-orange"><?= $number ?></td>
-                                                                <td><?= $item['test_name'] ?></td>
-                                                                <td>
-                                                                    <a href="<?= url('delete-test-list/' . $item['recommended_id']) ?>" class="delete-drug flex-justify-align">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
-                                                                            <path fill="#ff0000" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
-                                                                        </svg>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        <?php
-                                                            $number++;
-                                                        }
-                                                        ?>
-                                                    </tbody>
-                                                </table>
-                                            <?php }
+                                                $number++;
+                                            }
                                             ?>
+                                        </tbody>
+                                    </table>
+                                <?php }
+                                ?>
 
-                                            <div class="flex-justify-align mt20 paginate-section">
-                                                <div class="table-info fs12">تعداد کل: <?= count($drugList) + count($recommended) ?></div>
-                                                <?= $drugList || $recommended ? '
+
+                                <?php
+                                if (!empty($recommended)) { ?>
+
+                                    <div class="p5">لیست آزمایشات</div>
+                                    <table class="fl-table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>نام آزمایش</th>
+                                                <th>حذف</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <?php
+                                            $number = 1;
+                                            foreach ($recommended as $item) {
+                                            ?>
+                                                <tr>
+                                                    <td class="color-orange"><?= $number ?></td>
+                                                    <td><?= $item['test_name'] ?></td>
+                                                    <td>
+                                                        <a href="<?= url('delete-test-list/' . $item['recommended_id']) ?>" class="delete-drug flex-justify-align">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
+                                                                <path fill="#ff0000" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $number++;
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                <?php }
+                                ?>
+
+                                <div class="flex-justify-align mt20 paginate-section">
+                                    <div class="table-info fs12">تعداد کل: <?= count($drugList) + count($recommended) ?></div>
+                                    <?= $drugList || $recommended ? '
                                     <a href="' . url('close-prescription-store/' . $prescription['id']) . '"
                                     class="color btn p5-20 bg-success bold pa close-p"
                                     id="closePrescriptionBtn">
                                     <span class="heart-beat">❤</span>
                                     بــسـتن نــسـخـه
                                     </a>' : '' ?>
+                                </div>
+                            </div>
+                        <?php }
+                        ?>
+                    </div>
+                    <!-- end drug list -->
+
+                    <!-- user infos -->
+                    <div class="pre-body-left mt20">
+                        <div class="patient-container">
+                            <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
+                                <div class="center fs14 mb10">اطلاعات مریض</div>
+                                <div class="insert">
+                                    <?php
+                                    $admissionStatus = isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1;
+                                    if ($admissionStatus) {
+                                        $currentPatientId = null;
+                                        foreach ($patients as $p) {
+                                            if ($p['status'] == 1) {
+                                                $currentPatientId = $p['id'];
+                                                break;
+                                            }
+                                        }
+                                    ?>
+                                        <select name="admission_id" id="admissionSelect" class="mb20">
+                                            <?php if (empty($patients)): ?>
+                                                <option value="" disabled selected>
+                                                    مریضی ثبت نشده است
+                                                </option>
+                                            <?php else: ?>
+                                                <?php foreach ($patients as $patient): ?>
+                                                    <option
+                                                        class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
+                                                        value="<?= $patient['id'] ?>"
+                                                        data-name-add="<?= htmlspecialchars($patient['user_name'] ?? '') ?>"
+                                                        data-age-add="<?= $patient['age'] ?? '' ?>"
+                                                        <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
+
+                                                        <?= $patient['queue_number'] ?>
+                                                        - <?= $patient['user_name'] ?? 'نامشخص' ?>
+                                                        - (<?= $patient['age'] ?? '—' ?> ساله)
+
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        </select>
+
+                                        <!-- btn -->
+                                        <?php if (!empty($patients)): ?>
+                                            <div class="center mb20">
+                                                <a href="<?= url('patient-inquiry') ?>"
+                                                    target="_blank"
+                                                    id="patientInquiryBtn"
+                                                    class="p5-20 bg-success btn fs14">
+                                                    استعلام مریض
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+
+                                    <?php } else { ?>
+
+                                        <div class="inputs d-flex">
+                                            <div class="one">
+                                                <div class="label-form  fs14"> نام مریض <?= _star ?></div>
+                                                <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
                                             </div>
                                         </div>
+                                        <div class="inputs d-flex mb3">
+                                            <div class="one">
+                                                <div class="label-form fs14"> سن مریض <?= _star ?></div>
+                                                <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
+                                                <input type="hidden" name="birth_year" id="birthYearInput">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <span class="fs14">سال تولد: </span>
+                                            <strong id="birthYear"></strong>
+                                        </div>
+                                        <div class="inputs d-flex">
+                                            <div class="one">
+                                                <div class="label-form fs14"> نام پدر </div>
+                                                <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                                            </div>
+                                        </div>
+
+                                        <div class="inputs d-flex">
+                                            <div class="one">
+                                                <div class="label-form fs14"> جنسیت </div>
+                                                <select name="gender">
+                                                    <option value="آقا">آقا</option>
+                                                    <option value="خانم">خانم</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="inputs d-flex">
+                                            <div class="one">
+                                                <div class="label-form fs14"> شماره موبایل </div>
+                                                <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
+                                            </div>
+                                        </div>
+                                        <!-- end patient infos -->
                                     <?php }
                                     ?>
-                                </div>
-                                <!-- end drug list -->
-
-                                <!-- user infos -->
-                                <div class="pre-body-left mt20">
-                                    <div class="patient-container">
-                                        <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
-                                            <div class="center fs14 mb10">اطلاعات مریض</div>
-                                            <div class="insert">
-                                                <?php
-                                                $admissionStatus = isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1;
-                                                if ($admissionStatus) {
-                                                    $currentPatientId = null;
-                                                    foreach ($patients as $p) {
-                                                        if ($p['status'] == 1) {
-                                                            $currentPatientId = $p['id'];
-                                                            break;
-                                                        }
-                                                    }
-                                                ?>
-                                                    <select name="admission_id" id="admissionSelect" class="mb20">
-                                                        <?php if (empty($patients)): ?>
-                                                            <option value="" disabled selected>
-                                                                مریضی ثبت نشده است
-                                                            </option>
-                                                        <?php else: ?>
-                                                            <?php foreach ($patients as $patient): ?>
-                                                                <option
-                                                                    class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
-                                                                    value="<?= $patient['id'] ?>"
-                                                                    data-name-add="<?= htmlspecialchars($patient['user_name'] ?? '') ?>"
-                                                                    data-age-add="<?= $patient['age'] ?? '' ?>"
-                                                                    <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
-
-                                                                    <?= $patient['queue_number'] ?>
-                                                                    - <?= $patient['user_name'] ?? 'نامشخص' ?>
-                                                                    - (<?= $patient['age'] ?? '—' ?> ساله)
-
-                                                                </option>
-                                                            <?php endforeach; ?>
-                                                        <?php endif; ?>
-                                                    </select>
-
-                                                    <!-- btn -->
-                                                    <?php if (!empty($patients)): ?>
-                                                        <div class="center mb20">
-                                                            <a href="<?= url('patient-inquiry') ?>"
-                                                                target="_blank"
-                                                                id="patientInquiryBtn"
-                                                                class="p5-20 bg-success btn fs14">
-                                                                استعلام مریض
-                                                            </a>
-                                                        </div>
-                                                    <?php endif; ?>
-
-                                                <?php } else { ?>
-
-                                                    <div class="inputs d-flex">
-                                                        <div class="one">
-                                                            <div class="label-form  fs14"> نام مریض <?= _star ?></div>
-                                                            <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
-                                                        </div>
-                                                    </div>
-                                                    <div class="inputs d-flex mb3">
-                                                        <div class="one">
-                                                            <div class="label-form fs14"> سن مریض <?= _star ?></div>
-                                                            <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
-                                                            <input type="hidden" name="birth_year" id="birthYearInput">
-                                                        </div>
-                                                    </div>
-                                                    <div class="">
-                                                        <span class="fs14">سال تولد: </span>
-                                                        <strong id="birthYear"></strong>
-                                                    </div>
-                                                    <div class="inputs d-flex">
-                                                        <div class="one">
-                                                            <div class="label-form fs14"> نام پدر </div>
-                                                            <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="inputs d-flex">
-                                                        <div class="one">
-                                                            <div class="label-form fs14"> جنسیت </div>
-                                                            <select name="gender">
-                                                                <option value="آقا">آقا</option>
-                                                                <option value="خانم">خانم</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="inputs d-flex">
-                                                        <div class="one">
-                                                            <div class="label-form fs14"> شماره موبایل </div>
-                                                            <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
-                                                        </div>
-                                                    </div>
-                                                    <!-- end patient infos -->
-                                                <?php }
-                                                ?>
 
 
-                                                <!-- bp ... -->
-                                                <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
-                                                <div class="accordion-content-pre w100">
-                                                    <div class="child-accordioin w90d">
-                                                        <div class="insert dir-left mt5">
-                                                            <div class="one m-auto w97d mb3">
-                                                                <input type="text" name="bp" placeholder=" Blood Pressure  ">
-                                                            </div>
-                                                            <div class="one m-auto w97d mb3">
-                                                                <input type="text" name="pr" placeholder=" Pulse Rate  ">
-                                                            </div>
-                                                            <div class="one m-auto w97d mb3">
-                                                                <input type="text" name="rr" placeholder=" Respiratory Rate  ">
-                                                            </div>
-                                                            <div class="one m-auto w97d mb3">
-                                                                <input type="text" name="temp" placeholder=" Temperature  ">
-                                                            </div>
-                                                            <div class="one m-auto w97d mb3">
-                                                                <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                    <!-- bp ... -->
+                                    <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
+                                    <div class="accordion-content-pre w100">
+                                        <div class="child-accordioin w90d">
+                                            <div class="insert dir-left mt5">
+                                                <div class="one m-auto w97d mb3">
+                                                    <input type="text" name="bp" placeholder=" Blood Pressure  ">
                                                 </div>
-
-                                                <!-- diagnosis -->
-                                                <div class="accordion-title color-orange">تشخیص داکتر</div>
-                                                <div class="accordion-content-pre w100">
-                                                    <div class="child-accordioin w90d">
-                                                        <div class="insert mt5">
-                                                            <div class="one m-auto w97d mb3">
-                                                                <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="one m-auto w97d mb3">
+                                                    <input type="text" name="pr" placeholder=" Pulse Rate  ">
                                                 </div>
-
-                                                <div class="center mt20">
-                                                    <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
-                                                        استعلام مریض
-                                                    </a>
+                                                <div class="one m-auto w97d mb3">
+                                                    <input type="text" name="rr" placeholder=" Respiratory Rate  ">
                                                 </div>
-
+                                                <div class="one m-auto w97d mb3">
+                                                    <input type="text" name="temp" placeholder=" Temperature  ">
+                                                </div>
+                                                <div class="one m-auto w97d mb3">
+                                                    <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
+                                                </div>
                                             </div>
-                                            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- end user infos -->
 
-                            </div>
-                            <!-- end drug list and user infos -->
-                </form>
+                                    <!-- diagnosis -->
+                                    <div class="accordion-title color-orange">تشخیص داکتر</div>
+                                    <div class="accordion-content-pre w100">
+                                        <div class="child-accordioin w90d">
+                                            <div class="insert mt5">
+                                                <div class="one m-auto w97d mb3">
+                                                    <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="center mt20">
+                                        <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
+                                            استعلام مریض
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end user infos -->
+
+                </div>
+                <!-- end drug list and user infos -->
 
             </div>
         </div>

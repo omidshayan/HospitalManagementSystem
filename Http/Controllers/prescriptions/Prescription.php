@@ -105,7 +105,7 @@ class Prescription extends App
     //    add drug in Prescription Store
     public function drugPrescriptionStore($request)
     {
-        $this->middleware(true, true, 'general', true, $request, true);
+        $this->middleware(true, true, 'general', true);
 
         $drugInvalid =
             empty($request['drug_id']) ||
