@@ -3,15 +3,21 @@
     const closeBtnCont = document.getElementById('closeModal-cont');
     const overlayCont = document.getElementById('modalOverlay-cont');
 
+    function openModalCont() {
+        overlayCont.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
     function closeModalCont() {
         overlayCont.classList.remove('show');
         document.body.style.overflow = '';
     }
 
-    openBtnCont.addEventListener('click', () => {
-        overlayCont.classList.add('show');
-        document.body.style.overflow = 'hidden';
+    window.addEventListener('DOMContentLoaded', () => {
+        openModalCont();
     });
+
+    openBtnCont.addEventListener('click', openModalCont);
 
     closeBtnCont.addEventListener('click', closeModalCont);
 
@@ -27,6 +33,7 @@
         }
     });
 </script>
+
 <style>
     /* Overlay */
     .modal-overlay-cont {
@@ -171,11 +178,13 @@
         flex-grow: 1.5 !important;
         min-width: 260px !important;
     }
-    .search-box-pre > ul{
+
+    .search-box-pre>ul {
         flex-grow: 1.5 !important;
         min-width: 260px !important;
         width: 19% !important;
     }
+
     .desc-pre {
         min-width: 170px !important;
     }

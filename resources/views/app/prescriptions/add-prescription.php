@@ -31,7 +31,6 @@
 
                 <!-- modal data -->
                 <form id="prescription_form" action="<?= url('drug-prescription-store') ?>" method="POST">
-
                     <!-- select deug -->
                     <div class="inputs-pre">
 
@@ -175,11 +174,11 @@
                                     </a>
                                 </div>
                                 <textarea rows=" 2" name="description" class="border-input desc-prescription nav-item" placeholder="Drug description  "></textarea>
-                                </div>
-                            <?php }
-                            ?>
-
                             </div>
+                        <?php }
+                        ?>
+
+                         </div>
 
                             <input type="submit" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
                             <!-- end select drug -->
@@ -189,7 +188,7 @@
                 </form>
 
 
-                <!-- drug list and user infos -->
+                <!-- drug list and user infos CLOSE -->
                 <div class="pre-main d-flex">
 
                     <!-- drug list -->
@@ -462,7 +461,7 @@
                     <!-- end user infos -->
 
                 </div>
-                <!-- end drug list and user infos -->
+                <!-- end drug list and user infos CLOSE-->
 
             </div>
         </div>
