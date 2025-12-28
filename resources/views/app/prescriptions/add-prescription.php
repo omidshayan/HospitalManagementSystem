@@ -41,13 +41,13 @@
                                 <!-- search box -->
                                 <div class="search-box-pre">
                                     <div class="input-pre">
-                                        <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> <span class="close-btn">&times;</span></div>
+                                        <div class="label-form mb5 fs14 text-left">جستجوی دارو <?= _star ?> <span class="close-btn">&times;</span></div>
                                         <input type="hidden" name="drug_id" id="item_id">
                                         <input type="text"
                                             class="border-input search-input-pre nav-item"
                                             name="drug_name"
                                             id="item_name"
-                                            placeholder="نام دارو را جستجو نمایید"
+                                            placeholder="Search for the name of the drug"
                                             autocomplete="off"
                                             autofocus
                                             data-search-url="<?= url('search-product-purchase') ?>" />
@@ -61,7 +61,7 @@
                                 <?php
                                 if ($count_drugActive) { ?>
                                     <div class="input-pre count-pre input-wrapper">
-                                        <div class="label-form mb5 fs14"> تعداد دارو
+                                        <div class="label-form mb5 fs14 text-left"> تعداد دارو
                                             <a href="javascript:void(0)" class="close-btn toggle-item"
                                                 data-url="change-status-count-drug"
                                                 data-target="#count_drug">&times;
@@ -83,7 +83,7 @@
                                 <?php
                                 if ($companyActive) { ?>
                                     <div class="input-pre other-select-p input-wrapper">
-                                        <div class="label-form mb5 fs14">تولید کننده
+                                        <div class="label-form mb5 fs14 text-left">تولید کننده
                                             <a href="javascript:void(0)" class="close-btn toggle-item"
                                                 data-url="change-status-company-active"
                                                 data-target="#company">&times;
@@ -105,7 +105,7 @@
                                 <?php
                                 if ($intake_timeActive) { ?>
                                     <div class="input-pre other-select-p input-wrapper">
-                                        <div class="label-form mb5 fs14"> زمان مصرف
+                                        <div class="label-form mb5 fs14 text-left"> زمان مصرف
                                             <a href="javascript:void(0)" class="close-btn toggle-item"
                                                 data-url="change-status-intake-time"
                                                 data-target="#intake_time">&times;
@@ -127,7 +127,7 @@
                                 <?php
                                 if ($dosageActive) { ?>
                                     <div class="input-pre other-select-p input-wrapper">
-                                        <div class="label-form mb5 fs14" for="name">مقدار مصرف
+                                        <div class="label-form mb5 fs14 text-left" for="name">مقدار مصرف
                                             <a href="javascript:void(0)" class="close-btn toggle-item"
                                                 data-url="change-status-dosage"
                                                 data-target="#dosage">&times;
@@ -149,7 +149,7 @@
                                 <?php
                                 if ($intake_instructionsActive) { ?>
                                     <div class="input-pre other-select-p input-wrapper">
-                                        <div class="label-form mb5 fs14" for="name">طریقه مصرف
+                                        <div class="label-form mb5 fs14 text-left" for="name">طریقه مصرف
                                             <a href="javascript:void(0)" class="close-btn toggle-item"
                                                 data-url="change-status-intake-instructions"
                                                 data-target="#intake_instructions">&times;
@@ -171,13 +171,13 @@
                                 <?php
                                 if ($descriptionActive) { ?>
                                     <div class="input-pre desc-pre input-wrapper">
-                                        <div class="label-form mb5 fs14">توضیحات اضافی
+                                        <div class="label-form mb5 fs14 text-left">توضیحات اضافی
                                             <a href="javascript:void(0)" class="close-btn toggle-item"
                                                 data-url="change-status-description-active"
                                                 data-target="#description"">&times;
                                             </a>
                                         </div>
-                                        <textarea rows=" 2" name="description" class="border-input desc-prescription nav-item" placeholder="توضیحات دارو  "></textarea>
+                                        <textarea rows=" 2" name="description" class="border-input desc-prescription nav-item" placeholder="Drug description  "></textarea>
                                         </div>
                                     <?php }
                                     ?>
