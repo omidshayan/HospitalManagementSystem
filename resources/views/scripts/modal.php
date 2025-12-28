@@ -124,62 +124,91 @@
         width: 265px !important;
     }
 
+    /* top items */
     .inputs-pre {
+        display: flex;
+        gap: 10px;
         width: 99%;
         margin: 5px auto !important;
-        position: relative;
-        display: flex;
-        gap: 5px;
+        overflow-x: auto;
         box-sizing: border-box;
+        flex-wrap: nowrap;
+        align-items: flex-start;
     }
 
-    .input-pre>select,
-    .input-pre>input {
-        height: 35px;
-        border-radius: 3px;
-        padding: 4px;
-        transition: 0.4s;
-        background-color: var(--main) !important;
-        min-width: 130px !important;
+    .inputs-pre>.input-pre,
+    .inputs-pre>.search-box-pre,
+    .inputs-pre>.count-pre,
+    .inputs-pre>.other-select-p,
+    .inputs-pre>.desc-pre {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0;
+        min-width: 130px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
     }
 
     .search-box-pre {
-        width: 25%;
+        flex-grow: 2;
         min-width: 260px !important;
     }
 
-    .search-input-pre {
-        font-size: 19px !important;
-        width: 100% !important;
-    }
-
-    .count-pre {
-        min-width: 100px !important;
-    }
-
-    .count-pre> select {
-        min-width: 100px !important;
-    }
-.other-select-p{
-    min-width: 120px;
-}
-.other-select-p > select{
-    min-width: 120px;
-}
-
     .desc-pre {
-        width: 20% !important;
+        min-width: 170px !important;
+    }
+
+    .input-pre>select,
+    .input-pre>input,
+    .search-box-pre>input,
+    .count-pre>select,
+    .other-select-p>select,
+    .desc-pre>textarea {
+        height: 35px;
+        border-radius: 3px;
+        padding: 4px 8px;
+        transition: 0.4s;
+        background-color: var(--main) !important;
+        min-width: 100%;
+        box-sizing: border-box;
     }
 
     .desc-prescription {
         min-height: 37px !important;
         line-height: 18px;
         font-size: 14px;
-        padding: 6px 8px;
-        box-sizing: border-box;
         resize: vertical;
-        width: 100% !important;
     }
+
+    .add-drug-pre {
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 150px;
+        min-width: 150px;
+        height: 40px;
+        margin-top: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .inputs-pre {
+            flex-wrap: wrap;
+        }
+
+        .inputs-pre>div {
+            flex-basis: 100%;
+            min-width: auto;
+        }
+
+        .add-drug-pre {
+            width: 100%;
+            min-width: auto;
+            margin-top: 10px;
+        }
+    }
+
+    /* end top itmes */
+
 
     /* ////// pre items */
     .content-create-pre {
@@ -266,6 +295,7 @@
         margin-top: 49px;
         font-weight: bold !important;
         font-size: 16px;
+        min-width: 100px !important;
     }
 
     .add-drug-pre:hover {

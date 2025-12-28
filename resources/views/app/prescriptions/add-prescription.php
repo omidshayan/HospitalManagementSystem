@@ -34,7 +34,7 @@
                         <div class="pre-body-right">
                             <!-- row 1 -->
 
-                            <div class="inputs-pre bg-green-opacity">
+                            <div class="inputs-pre">
 
                                 <!-- search box -->
                                 <div class="search-box-pre">
@@ -177,10 +177,10 @@
                                             </div>
                                             <textarea rows=" 2" name="description" class="border-input desc-prescription nav-item" placeholder="Drug description  "></textarea>
                                         </div>
-                                    <?php }
-                                    ?>
+                                <?php }
+                                ?>
 
-                                    <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p btn-pre nav-item">
+                                    <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p btn-pre">
                                     </div>
 
 
