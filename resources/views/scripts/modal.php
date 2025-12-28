@@ -55,7 +55,7 @@
         border-radius: 12px;
         overflow: hidden;
         padding: 0 10px 0 10px;
-
+position: relative; 
         opacity: 0;
         transform: translateY(-30px) scale(0.95);
         filter: blur(2px);
@@ -186,8 +186,6 @@
         flex-shrink: 0;
         width: 150px;
         min-width: 150px;
-        height: 40px;
-        margin-top: 24px;
     }
 
     @media screen and (max-width: 768px) {
@@ -284,25 +282,38 @@
     }
 
     /* btns */
-    .add-drug-pre {
-        background-color: var(--bg) !important;
-        color: black !important;
-        transition: all .4s ease-in;
-        border: 1px solid var(--bg) !important;
-        border-radius: 5px;
-        height: 52px;
-        padding: 10px;
-        margin-top: 49px;
-        font-weight: bold !important;
-        font-size: 16px;
-        min-width: 100px !important;
-    }
+.add-drug-pre {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--bg);
+    background-color: var(--bg);
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: grab;
+    user-select: none;
+    z-index: 1000;
+    transition: background-color 0.4s ease-in, color 0.4s ease-in;
+}
+
+.add-drug-pre:active {
+    cursor: grabbing;
+}
+
+
 
     .add-drug-pre:hover {
         background-color: var(--main) !important;
         color: var(--text) !important;
         border: 1px solid var(--bg);
     }
+
+
+
 
     select option:disabled {
         color: #0ebbffff;
