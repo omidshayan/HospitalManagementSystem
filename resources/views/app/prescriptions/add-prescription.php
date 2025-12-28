@@ -4,7 +4,7 @@
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/search.php');
-    include_once('resources/views/scripts/change-status.php');
+    include_once('resources/views/scripts/activeNotActive.php');
     $count_drugActive = isset($_SESSION['settings']['count_drug']) && $_SESSION['settings']['count_drug'] == 1;
     $intake_timeActive = isset($_SESSION['settings']['intake_time']) && $_SESSION['settings']['intake_time'] == 1;
     $dosageActive = isset($_SESSION['settings']['dosage']) && $_SESSION['settings']['dosage'] == 1;
@@ -57,9 +57,21 @@
 
                                 <!-- count -->
                                 <?php
-                                if ($intake_timeActive) { ?>
+                                if ($count_drugActive) { ?>
                                     <div class="input-pre count-pre">
-                                        <div class="label-form mb5 fs14"> تعداد دارو <span class="close-btn">&times;</span></div>
+                                        <div class="label-form mb5 fs14"> تعداد دارو
+                                            <a href="javascript:void(0)"
+                                                class="close-btn setting-toggle"
+                                                data-url="change-status-count-drug"
+                                                data-target="#count_drug"
+                                                data-true-text="(فعال)"
+                                                data-false-text="(غیر فعال)"
+                                                data-true-class="color-green"
+                                                data-false-class="color-orange"
+                                                title="تغییر وضعیت">
+                                                &times;
+                                            </a>
+                                        </div>
                                         <select name="drug_count" class="count-pre-select border-input nav-item" required>
                                             <option selected disabled>تعداد دارو</option>
                                             <?php for ($i = 1; $i <= $number['number']; $i++): ?>
