@@ -24,7 +24,9 @@
 
         <div class="modal-overlay-cont" id="modalOverlay-cont">
             <div class="modal-cont">
-                <button class="close-btn-cont text-right" id="closeModal-cont">✕</button>
+                <div class="colse-btn-modal">
+                    <button class="close-btn-cont" id="closeModal-cont">✕</button>
+                </div>
 
                 <!-- modal data -->
                 <form action="">

@@ -65,15 +65,20 @@
         overflow-y: auto;
     }
 
+    .colse-btn-modal
+    {
+        text-align: right;
+    }
     /* Close Button */
     .close-btn-cont {
         background: none;
         border: none;
-        font-size: 22px;
+        font-size: 24px;
         cursor: pointer;
         color: red;
         font-weight: bold;
-        margin: 10px 15px 0 0;
+        margin: 7px 7px 0 0;
+        direction: rtl !important;
     }
 
     /* body */
