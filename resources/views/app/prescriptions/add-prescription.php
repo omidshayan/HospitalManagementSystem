@@ -182,7 +182,12 @@
                                     <?php }
                                     ?>
 
-                                    <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p btn-pre nav-item">
+                                    <div class="add-drug-wrap">
+                                        <span class="ecg-mini"></span>
+                                        <input type="submit"
+                                            value="افزودن به نسخه"
+                                            class="add-drug-pre bold cursor-p btn-pre nav-item">
+                                    </div>
                                     </div>
 
                                     <hr class="hr">
