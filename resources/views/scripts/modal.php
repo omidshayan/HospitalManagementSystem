@@ -300,5 +300,39 @@
 .search-item-left:hover {
     background-color: var(--border);
 }
+#closePrescriptionBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.heart-beat {
+    display: inline-block;
+    color: #d10000;
+    font-size: 18px;
+    animation: heartbeat 1.4s infinite;
+    transform-origin: center;
+}
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    14% {
+        transform: scale(1.3);
+    }
+    28% {
+        transform: scale(1);
+    }
+    42% {
+        transform: scale(1.3);
+    }
+    70% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
 </style>
