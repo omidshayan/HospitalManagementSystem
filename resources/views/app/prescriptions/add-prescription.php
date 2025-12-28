@@ -65,7 +65,7 @@
                                                 data-target="#count_drug">&times;
                                             </a>
                                         </div>
-                                        <select name="drug_count" class="count-pre-select border-input nav-item" required>
+                                        <select name="drug_count" class="border-input nav-item" required>
                                             <option selected disabled>تعداد دارو</option>
                                             <?php for ($i = 1; $i <= $number['number']; $i++): ?>
                                                 <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>

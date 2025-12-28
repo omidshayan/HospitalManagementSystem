@@ -130,7 +130,6 @@
         position: relative;
         display: flex;
         gap: 5px;
-        overflow-x: auto;
         box-sizing: border-box;
     }
 
@@ -146,6 +145,7 @@
 
     .search-box-pre {
         width: 25%;
+        min-width: 260px !important;
     }
 
     .search-input-pre {
@@ -154,20 +154,18 @@
     }
 
     .count-pre {
-        width: 7%;
+        min-width: 100px !important;
     }
 
-    .count-pre-select {
-        width: 100%;
+    .count-pre> select {
+        min-width: 100px !important;
     }
-
-    .other-select-p {
-        width: 10%;
-    }
-
-    .other-select-p-item {
-        width: 100%;
-    }
+.other-select-p{
+    min-width: 120px;
+}
+.other-select-p > select{
+    min-width: 120px;
+}
 
     .desc-pre {
         width: 20% !important;
