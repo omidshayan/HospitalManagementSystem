@@ -98,7 +98,7 @@
 
     .inputs-pre {
         width: 99%;
-        margin: 20px auto !important;
+        margin: 5px auto !important;
         position: relative;
         display: flex;
         justify-content: space-between;
