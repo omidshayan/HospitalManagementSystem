@@ -30,13 +30,11 @@
 
                 <!-- modal data -->
                 <form action="">
-
                     <div class="pre-main d-flex">
-
                         <div class="pre-body-right">
-
                             <!-- row 1 -->
-                            <div class="inputs-pre">
+
+                            <div class="inputs-pre bg-green-opacity">
 
                                 <!-- search box -->
                                 <div class="search-box-pre">
@@ -175,9 +173,9 @@
                                             <a href="javascript:void(0)" class="close-btn toggle-item"
                                                 data-url="change-status-description-active"
                                                 data-target="#description"">&times;
-                                            </a>
-                                        </div>
-                                        <textarea rows=" 2" name="description" class="border-input desc-prescription nav-item" placeholder="Drug description  "></textarea>
+                                                </a>
+                                            </div>
+                                            <textarea rows=" 2" name="description" class="border-input desc-prescription nav-item" placeholder="Drug description  "></textarea>
                                         </div>
                                     <?php }
                                     ?>
@@ -185,8 +183,8 @@
                                     <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p btn-pre nav-item">
                                     </div>
 
-                                    <hr class="hr">
 
+                                    <hr class="hr">
                                     <!-- prescription items -->
                                     <?php
                                     if ($prescription) { ?>
@@ -292,12 +290,12 @@
                                             <div class="flex-justify-align mt20 paginate-section">
                                                 <div class="table-info fs12">تعداد کل: <?= count($drugList) + count($recommended) ?></div>
                                                 <?= $drugList || $recommended ? '
-                                                    <a href="' . url('close-prescription-store/' . $prescription['id']) . '"
-                                                    class="color btn p5-20 bg-success bold pa close-p"
-                                                    id="closePrescriptionBtn">
-                                                    <span class="heart-beat">❤</span>
-                                                    بــسـتن نــسـخـه
-                                                </a>' : '' ?>
+                                    <a href="' . url('close-prescription-store/' . $prescription['id']) . '"
+                                    class="color btn p5-20 bg-success bold pa close-p"
+                                    id="closePrescriptionBtn">
+                                    <span class="heart-beat">❤</span>
+                                    بــسـتن نــسـخـه
+                                </a>' : '' ?>
                                             </div>
                                         </div>
                                     <?php }
@@ -305,7 +303,6 @@
                             </div>
 
                             <div class="pre-body-left">
-
                                 <div class="patient-container">
                                     <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
                                         <div class="center fs14 mb10">اطلاعات مریض</div>
@@ -449,11 +446,8 @@
                                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                                     </form>
                                 </div>
-
                             </div>
-
                         </div>
-
                 </form>
 
             </div>

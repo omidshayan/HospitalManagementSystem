@@ -1,76 +1,75 @@
 <script>
-const openBtnCont = document.getElementById('openModal-cont');
-const closeBtnCont = document.getElementById('closeModal-cont');
-const overlayCont = document.getElementById('modalOverlay-cont');
+    const openBtnCont = document.getElementById('openModal-cont');
+    const closeBtnCont = document.getElementById('closeModal-cont');
+    const overlayCont = document.getElementById('modalOverlay-cont');
 
-function closeModalCont() {
-    overlayCont.classList.remove('show');
-    document.body.style.overflow = '';
-}
-
-openBtnCont.addEventListener('click', () => {
-    overlayCont.classList.add('show');
-    document.body.style.overflow = 'hidden';
-});
-
-closeBtnCont.addEventListener('click', closeModalCont);
-
-overlayCont.addEventListener('click', (e) => {
-    if (e.target === overlayCont) {
-        closeModalCont();
+    function closeModalCont() {
+        overlayCont.classList.remove('show');
+        document.body.style.overflow = '';
     }
-});
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlayCont.classList.contains('show')) {
-        closeModalCont();
-    }
-});
+    openBtnCont.addEventListener('click', () => {
+        overlayCont.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    });
 
+    closeBtnCont.addEventListener('click', closeModalCont);
+
+    overlayCont.addEventListener('click', (e) => {
+        if (e.target === overlayCont) {
+            closeModalCont();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlayCont.classList.contains('show')) {
+            closeModalCont();
+        }
+    });
 </script>
 <style>
     /* Overlay */
-.modal-overlay-cont {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: block;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 9999;
-    direction: ltr !important;
+    .modal-overlay-cont {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 9999;
+        direction: ltr !important;
 
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-.modal-overlay-cont.show {
-    opacity: 1;
-    pointer-events: auto;
-}
+    .modal-overlay-cont.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
 
-.modal-cont {
-    width: calc(100% - 80px) !important;
-    margin: 30px auto 0 auto;
-    height: calc(100svh - 70px);
-    background: var(--main);
-    border-radius: 12px;
-    overflow: hidden;
-    padding: 0 10px 0 10px;
+    .modal-cont {
+        width: calc(100% - 80px) !important;
+        margin: 30px auto 0 auto;
+        height: calc(100svh - 70px);
+        background: var(--main);
+        border-radius: 12px;
+        overflow: hidden;
+        padding: 0 10px 0 10px;
 
-    opacity: 0;
-    transform: translateY(-30px) scale(0.95);
-    filter: blur(2px);
-    transition:
-        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+        filter: blur(2px);
+        transition:
+            opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-.modal-overlay-cont.show .modal-cont {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-}
+    .modal-overlay-cont.show .modal-cont {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
 
     /* Header */
     .modal-header-cont {
@@ -130,8 +129,9 @@ document.addEventListener('keydown', (e) => {
         margin: 5px auto !important;
         position: relative;
         display: flex;
-        justify-content: space-between;
         gap: 5px;
+        overflow-x: auto;
+        box-sizing: border-box;
     }
 
     .input-pre>select,
@@ -141,6 +141,7 @@ document.addEventListener('keydown', (e) => {
         padding: 4px;
         transition: 0.4s;
         background-color: var(--main) !important;
+        min-width: 130px !important;
     }
 
     .search-box-pre {
@@ -361,5 +362,28 @@ document.addEventListener('keydown', (e) => {
         100% {
             transform: scale(1);
         }
+    }
+
+    .mmm>div {
+        flex-grow: 1;
+        /* همه آیتم‌ها رشد مساوی دارن */
+        flex-shrink: 1;
+        /* اجازه کوچیک شدن دارن */
+        flex-basis: 150px;
+        /* حداقل عرض پیشنهادی */
+        min-width: 150px;
+        /* حداقل عرض اجباری */
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mmm>div.big {
+        flex-grow: 2;
+        /* این آیتم دو برابر بقیه رشد می‌کنه */
+        flex-basis: 250px;
+        /* حداقل عرض بزرگتر */
+        min-width: 250px;
+        /* حداقل عرض بزرگتر */
     }
 </style>
