@@ -38,9 +38,10 @@
                                 <!-- search box -->
                                 <div class="search-box-pre">
                                     <div class="input-pre">
+                                        <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
                                         <input type="hidden" name="drug_id" id="item_id">
                                         <input type="text"
-                                            class="border-input search-input-pre"
+                                            class="border-input search-input-pre nav-item"
                                             name="drug_name"
                                             id="item_name"
                                             placeholder="نام دارو را جستجو نمایید"
@@ -57,10 +58,11 @@
                                 <?php
                                 if ($intake_timeActive) { ?>
                                     <div class="input-pre count-pre">
-                                        <select name="drug_count border-pre" class="count-pre-select border-input" required>
+                                        <div class="label-form mb5 fs14"> تعداد دارو </div>
+                                        <select name="drug_count" class="count-pre-select border-input nav-item" required>
                                             <option selected disabled>تعداد دارو</option>
                                             <?php for ($i = 1; $i <= $number['number']; $i++): ?>
-                                                <option value="<?= $i ?>" <?= ($i == 1 ? '' : '') ?>>
+                                                <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
                                                     <?= $i ?>
                                                 </option>
                                             <?php endfor; ?>
@@ -72,7 +74,8 @@
                                 <?php
                                 if ($companyActive) { ?>
                                     <div class="input-pre other-select-p">
-                                        <select name="company" class="other-select-p-item border-input" required>
+                                        <div class="label-form mb5 fs14">تولید کننده</div>
+                                        <select name="company" class="other-select-p-item border-input nav-item" required>
                                             <option selected disabled>نوعیت دارو</option>
                                             <?php
                                             foreach ($companies as $company) { ?>
@@ -87,7 +90,8 @@
                                 <?php
                                 if ($intake_timeActive) { ?>
                                     <div class="input-pre other-select-p">
-                                        <select name="interval_time" class="other-select-p-item border-input" required>
+                                        <div class="label-form mb5 fs14"> زمان مصرف </div>
+                                        <select name="interval_time" class="other-select-p-item border-input nav-item" required>
                                             <option selected disabled>زمان مصرف </option>
                                             <?php
                                             foreach ($intake_times as $intake_time) { ?>
@@ -103,7 +107,8 @@
                                 <?php
                                 if ($dosageActive) { ?>
                                     <div class="input-pre other-select-p">
-                                        <select name="dosage" required class="other-select-p-item border-input">
+                                        <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
+                                        <select name="dosage" required class="other-select-p-item border-input nav-item">
                                             <option selected disabled>مقدار مصرف </option>
                                             <?php
                                             foreach ($dosage as $dos) { ?>
@@ -118,7 +123,8 @@
                                 <?php
                                 if ($intake_instructionsActive) { ?>
                                     <div class="input-pre other-select-p">
-                                        <select name="usage_instruction" required class="other-select-p-item border-input">
+                                        <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
+                                        <select name="usage_instruction" required class="other-select-p-item border-input nav-item">
                                             <option selected disabled>طریقه مصرف </option>
                                             <?php
                                             foreach ($intakeInstructions as $intakeInstruction) { ?>
@@ -133,12 +139,13 @@
                                 <?php
                                 if ($descriptionActive) { ?>
                                     <div class="input-pre desc-pre">
-                                        <textarea rows="2" name="description" class="border-input desc-prescription" placeholder="توضیحات دارو  "></textarea>
+                                        <div class="label-form mb5 fs14">توضیحات اضافی</div>
+                                        <textarea rows="2" name="description" class="border-input desc-prescription nav-item" placeholder="توضیحات دارو  "></textarea>
                                     </div>
                                 <?php }
                                 ?>
 
-                                <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p btn-pre">
+                                <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p btn-pre nav-item">
                             </div>
 
                             <hr class="hr">
@@ -1016,5 +1023,45 @@
         });
     </script>
 
+    <!-- move in tags -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = Array.from(document.querySelectorAll('.nav-item'));
+            const isRTL = getComputedStyle(document.body).direction === 'rtl';
 
+            navItems.forEach((item, index) => {
+                item.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        if (isRTL) {
+                            let prevIndex = (index - 1 + navItems.length) % navItems.length;
+                            navItems[prevIndex].focus();
+                        } else {
+                            let nextIndex = (index + 1) % navItems.length;
+                            navItems[nextIndex].focus();
+                        }
+                    } else if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        if (isRTL) {
+                            let nextIndex = (index + 1) % navItems.length;
+                            navItems[nextIndex].focus();
+                        } else {
+                            let prevIndex = (index - 1 + navItems.length) % navItems.length;
+                            navItems[prevIndex].focus();
+                        }
+                    } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                        // باز کردن select در صورت وجود
+                        if (item.tagName.toLowerCase() === 'select') {
+                            e.preventDefault();
+                            // تریگر باز شدن dropdown
+                            const event = new MouseEvent('mousedown', {
+                                bubbles: true
+                            });
+                            item.dispatchEvent(event);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
     <?php include_once('resources/views/layouts/footer.php') ?>

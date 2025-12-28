@@ -234,6 +234,7 @@
         border-radius: 5px;
         height: 52px;
         padding: 10px;
+        margin-top: 27px;
         font-weight: bold !important;
         font-size: 16px;
     }
@@ -247,4 +248,12 @@
     select option:disabled {
         color: #0ebbffff;
     }
+    .search-back{
+        width: 24% !important;
+    }
+    .nav-item:focus {
+  outline: 2px solid #007BFF; /* یا هر رنگ و استایل دلخواه */
+  background-color: #e6f0ff;
+}
+
 </style>
