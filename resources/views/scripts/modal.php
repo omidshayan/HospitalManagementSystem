@@ -46,7 +46,7 @@
         background: var(--main);
         border-radius: 12px;
         overflow: hidden;
-        padding: 0 10px 0 0;
+        padding: 0 10px 0 10px;
     }
 
     /* Header */
