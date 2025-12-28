@@ -8,11 +8,11 @@
         const $backResponse = $('#backResponse');
         const searchUrl = $productName.data('search-url');
 
-        // جستجو زنده
         $productName.on('keyup', function(e) {
             const query = $(this).val();
 
             if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) return;
+
             if (!query.length) {
                 $backResponse.hide();
                 return;
@@ -41,7 +41,6 @@
             }, 'json');
         });
 
-        // انتخاب با کلیک
         $(document).on('click', '#backResponse li', function() {
             if ($(this).hasClass('color')) return;
 
@@ -54,7 +53,6 @@
             $backResponse.hide();
         });
 
-        // انتخاب با کیبورد
         $productName.on('keydown', function(e) {
             const items = $backResponse.find('li');
 
@@ -77,10 +75,17 @@
             }
         });
 
-        // مخفی کردن لیست وقتی بیرون کلیک شود
         $(document).on('click', function(e) {
             if (!$(e.target).closest('#item_name, #backResponse').length) {
                 $backResponse.hide();
+            }
+        });
+
+        $productName.on('focus', function() {
+            const val = $(this).val().trim();
+
+            if (val.length && $backResponse.find('li').length) {
+                $backResponse.show();
             }
         });
 
