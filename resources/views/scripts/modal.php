@@ -35,6 +35,7 @@
         background: rgba(0, 0, 0, 0.45);
         display: none;
         z-index: 9999;
+        direction: ltr !important;
     }
 
     /* Modal */
@@ -248,26 +249,29 @@
     select option:disabled {
         color: #0ebbffff;
     }
-    .search-back{
+
+    .search-back {
         width: 24% !important;
     }
+
     .nav-item:focus {
-  outline: 2px solid blue;
-  background-color: #64646413;
-}
+        outline: 2px solid blue;
+        background-color: #64646413;
+    }
 
 
-/* status */
-.close-btn{
-    font-size: 28px;
-    margin-right: 7px;
-    color: red;
-    font-weight: bold;
-    opacity: 0;
-    transition: 0.3s;
-}
-.label-form:hover .close-btn{
-    opacity: 1;
-    cursor: pointer;
-}
+    /* status */
+    .close-btn {
+        font-size: 28px;
+        margin-right: 7px;
+        color: red;
+        font-weight: bold;
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .label-form:hover .close-btn {
+        opacity: 1;
+        cursor: pointer;
+    }
 </style>

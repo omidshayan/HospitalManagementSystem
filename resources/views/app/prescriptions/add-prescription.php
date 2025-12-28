@@ -1062,7 +1062,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navItems = Array.from(document.querySelectorAll('.nav-item'));
-            const isRTL = getComputedStyle(document.body).direction === 'rtl';
+            const isRTL = getComputedStyle(document.body).direction === 'ltr';
 
             navItems.forEach((item, index) => {
                 item.addEventListener('keydown', (e) => {
