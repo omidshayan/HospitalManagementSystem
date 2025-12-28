@@ -168,10 +168,14 @@
     }
 
     .search-box-pre {
-        flex-grow: 2 !important;
+        flex-grow: 1.5 !important;
         min-width: 260px !important;
     }
-
+    .search-box-pre > ul{
+        flex-grow: 1.5 !important;
+        min-width: 260px !important;
+        width: 19% !important;
+    }
     .desc-pre {
         min-width: 170px !important;
     }
@@ -213,12 +217,6 @@
         .inputs-pre>div {
             flex-basis: 100%;
             min-width: auto;
-        }
-
-        .add-drug-pre {
-            width: 100%;
-            min-width: auto;
-            margin-top: 10px;
         }
     }
 
