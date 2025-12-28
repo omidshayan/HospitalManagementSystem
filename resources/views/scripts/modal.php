@@ -138,19 +138,6 @@
         background-clip: content-box;
     }
 
-    .inputs-pre::-webkit-scrollbar-track {
-        background-color: rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-    }
-
-    .inputs-pre::-webkit-scrollbar-thumb:hover {
-        background-color: rgba(100, 100, 100, 0.8);
-    }
-
-    .inputs-pre {
-        scrollbar-width: thin;
-        scrollbar-color: rgba(100, 100, 100, 0.5) rgba(0, 0, 0, 0.1);
-    }
 
 
     /* top items */
@@ -181,7 +168,7 @@
     }
 
     .search-box-pre {
-        flex-grow: 2;
+        flex-grow: 2 !important;
         min-width: 260px !important;
     }
 
@@ -379,7 +366,7 @@
     }
 
     .t84 {
-        top: 84px;
+        top: 136px;
     }
 
     .search-item-left {
