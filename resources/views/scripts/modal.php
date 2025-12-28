@@ -1,53 +1,76 @@
 <script>
-    const openBtnCont = document.getElementById('openModal-cont');
-    const closeBtnCont = document.getElementById('closeModal-cont');
-    const overlayCont = document.getElementById('modalOverlay-cont');
+const openBtnCont = document.getElementById('openModal-cont');
+const closeBtnCont = document.getElementById('closeModal-cont');
+const overlayCont = document.getElementById('modalOverlay-cont');
 
-    function closeModalCont() {
-        overlayCont.style.display = 'none';
-        document.body.style.overflow = '';
+function closeModalCont() {
+    overlayCont.classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+openBtnCont.addEventListener('click', () => {
+    overlayCont.classList.add('show');
+    document.body.style.overflow = 'hidden';
+});
+
+closeBtnCont.addEventListener('click', closeModalCont);
+
+overlayCont.addEventListener('click', (e) => {
+    if (e.target === overlayCont) {
+        closeModalCont();
     }
+});
 
-    openBtnCont.addEventListener('click', () => {
-        overlayCont.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    });
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlayCont.classList.contains('show')) {
+        closeModalCont();
+    }
+});
 
-    closeBtnCont.addEventListener('click', closeModalCont);
-
-    overlayCont.addEventListener('click', (e) => {
-        if (e.target === overlayCont) {
-            closeModalCont();
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && overlayCont.style.display === 'block') {
-            closeModalCont();
-        }
-    });
 </script>
 <style>
     /* Overlay */
-    .modal-overlay-cont {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-        display: none;
-        z-index: 9999;
-        direction: ltr !important;
-    }
+.modal-overlay-cont {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    direction: ltr !important;
 
-    /* Modal */
-    .modal-cont {
-        width: calc(100% - 80px) !important;
-        margin: 30px auto 0 auto;
-        height: calc(100svh - 70px);
-        background: var(--main);
-        border-radius: 12px;
-        overflow: hidden;
-        padding: 0 10px 0 10px;
-    }
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay-cont.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-cont {
+    width: calc(100% - 80px) !important;
+    margin: 30px auto 0 auto;
+    height: calc(100svh - 70px);
+    background: var(--main);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0 10px 0 10px;
+
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+    filter: blur(2px);
+    transition:
+        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay-cont.show .modal-cont {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
 
     /* Header */
     .modal-header-cont {
@@ -116,7 +139,8 @@
         height: 35px;
         border-radius: 3px;
         padding: 4px;
-        transition: 0.5s;
+        transition: 0.7s;
+        background-color: var(--main) !important;
     }
 
     .search-box-pre {
@@ -179,7 +203,7 @@
         border-radius: 3px;
         color: var(--text);
         font-size: 16px;
-        transition: 0.5s;
+        transition: 0.7s;
         outline: none;
         border: 1px solid var(--border);
         margin-bottom: 25px;
@@ -206,13 +230,13 @@
         outline: none !important;
         border: 1px solid var(--hover);
         box-shadow: 0 0 8px var(--hover);
-        transition: 0.5s;
+        transition: 0.7s;
     }
 
     .input-pre>textarea {
         background-color: var(--main);
         border: 1px solid var(--border);
-        transition: 0.5s;
+        transition: 0.7s;
         color: var(--color);
         font-size: 18px !important;
         padding: 8px !important;
@@ -235,7 +259,7 @@
     .add-drug-pre {
         background-color: var(--bg) !important;
         color: black !important;
-        transition: all .3s ease-in;
+        transition: all .7s ease-in;
         border: 1px solid var(--bg) !important;
         border-radius: 5px;
         height: 52px;
@@ -272,7 +296,7 @@
         color: red;
         font-weight: bold;
         opacity: 0;
-        transition: 0.3s;
+        transition: 0.7s;
     }
 
     .label-form:hover .close-btn {
