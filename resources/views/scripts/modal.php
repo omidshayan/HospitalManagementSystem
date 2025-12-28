@@ -55,7 +55,7 @@
         border-radius: 12px;
         overflow: hidden;
         padding: 0 10px 0 10px;
-position: relative; 
+        position: relative;
         opacity: 0;
         transform: translateY(-30px) scale(0.95);
         filter: blur(2px);
@@ -63,6 +63,7 @@ position: relative;
             opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
             transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
             filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
     }
 
     .modal-overlay-cont.show .modal-cont {
@@ -124,6 +125,34 @@ position: relative;
         width: 265px !important;
     }
 
+
+    .inputs-pre::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    .inputs-pre::-webkit-scrollbar-thumb {
+        background-color: rgba(100, 100, 100, 0.5);
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+    }
+
+    .inputs-pre::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .inputs-pre::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(100, 100, 100, 0.8);
+    }
+
+    .inputs-pre {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(100, 100, 100, 0.5) rgba(0, 0, 0, 0.1);
+    }
+
+
     /* top items */
     .inputs-pre {
         display: flex;
@@ -134,6 +163,7 @@ position: relative;
         box-sizing: border-box;
         flex-wrap: nowrap;
         align-items: flex-start;
+        user-select: none;
     }
 
     .inputs-pre>.input-pre,
@@ -282,27 +312,27 @@ position: relative;
     }
 
     /* btns */
-.add-drug-pre {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    min-width: 100px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid var(--bg);
-    background-color: var(--bg);
-    color: black;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: grab;
-    user-select: none;
-    z-index: 1000;
-    transition: background-color 0.4s ease-in, color 0.4s ease-in;
-}
+    .add-drug-pre {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        min-width: 100px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid var(--bg);
+        background-color: var(--bg);
+        color: black;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: grab;
+        user-select: none;
+        z-index: 1000;
+        transition: background-color 0.4s ease-in, color 0.4s ease-in;
+    }
 
-.add-drug-pre:active {
-    cursor: grabbing;
-}
+    .add-drug-pre:active {
+        cursor: grabbing;
+    }
 
 
 
