@@ -38,7 +38,7 @@
                                 <!-- search box -->
                                 <div class="search-box-pre">
                                     <div class="input-pre">
-                                        <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> </div>
+                                        <div class="label-form mb5 fs14">جستجوی دارو <?= _star ?> <span class="close-btn">&times;</span></div>
                                         <input type="hidden" name="drug_id" id="item_id">
                                         <input type="text"
                                             class="border-input search-input-pre nav-item"
@@ -58,7 +58,7 @@
                                 <?php
                                 if ($intake_timeActive) { ?>
                                     <div class="input-pre count-pre">
-                                        <div class="label-form mb5 fs14"> تعداد دارو </div>
+                                        <div class="label-form mb5 fs14"> تعداد دارو <span class="close-btn">&times;</span></div>
                                         <select name="drug_count" class="count-pre-select border-input nav-item" required>
                                             <option selected disabled>تعداد دارو</option>
                                             <?php for ($i = 1; $i <= $number['number']; $i++): ?>
@@ -74,7 +74,7 @@
                                 <?php
                                 if ($companyActive) { ?>
                                     <div class="input-pre other-select-p">
-                                        <div class="label-form mb5 fs14">تولید کننده</div>
+                                        <div class="label-form mb5 fs14">تولید کننده <span class="close-btn">&times;</span></div>
                                         <select name="company" class="other-select-p-item border-input nav-item" required>
                                             <option selected disabled>نوعیت دارو</option>
                                             <?php
@@ -90,7 +90,7 @@
                                 <?php
                                 if ($intake_timeActive) { ?>
                                     <div class="input-pre other-select-p">
-                                        <div class="label-form mb5 fs14"> زمان مصرف </div>
+                                        <div class="label-form mb5 fs14"> زمان مصرف <span class="close-btn">&times;</span></div>
                                         <select name="interval_time" class="other-select-p-item border-input nav-item" required>
                                             <option selected disabled>زمان مصرف </option>
                                             <?php
@@ -107,7 +107,7 @@
                                 <?php
                                 if ($dosageActive) { ?>
                                     <div class="input-pre other-select-p">
-                                        <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
+                                        <div class="label-form mb5 fs14" for="name">مقدار مصرف <span class="close-btn">&times;</span></div>
                                         <select name="dosage" required class="other-select-p-item border-input nav-item">
                                             <option selected disabled>مقدار مصرف </option>
                                             <?php
@@ -123,7 +123,7 @@
                                 <?php
                                 if ($intake_instructionsActive) { ?>
                                     <div class="input-pre other-select-p">
-                                        <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
+                                        <div class="label-form mb5 fs14" for="name">طریقه مصرف <span class="close-btn">&times;</span></div>
                                         <select name="usage_instruction" required class="other-select-p-item border-input nav-item">
                                             <option selected disabled>طریقه مصرف </option>
                                             <?php
@@ -139,7 +139,7 @@
                                 <?php
                                 if ($descriptionActive) { ?>
                                     <div class="input-pre desc-pre">
-                                        <div class="label-form mb5 fs14">توضیحات اضافی</div>
+                                        <div class="label-form mb5 fs14">توضیحات اضافی <span class="close-btn">&times;</span></div>
                                         <textarea rows="2" name="description" class="border-input desc-prescription nav-item" placeholder="توضیحات دارو  "></textarea>
                                     </div>
                                 <?php }

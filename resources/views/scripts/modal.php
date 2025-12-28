@@ -234,7 +234,7 @@
         border-radius: 5px;
         height: 52px;
         padding: 10px;
-        margin-top: 27px;
+        margin-top: 49px;
         font-weight: bold !important;
         font-size: 16px;
     }
@@ -252,8 +252,22 @@
         width: 24% !important;
     }
     .nav-item:focus {
-  outline: 2px solid #007BFF; /* یا هر رنگ و استایل دلخواه */
-  background-color: #e6f0ff;
+  outline: 2px solid blue;
+  background-color: #64646413;
 }
 
+
+/* status */
+.close-btn{
+    font-size: 28px;
+    margin-right: 7px;
+    color: red;
+    font-weight: bold;
+    opacity: 0;
+    transition: 0.3s;
+}
+.label-form:hover .close-btn{
+    opacity: 1;
+    cursor: pointer;
+}
 </style>
