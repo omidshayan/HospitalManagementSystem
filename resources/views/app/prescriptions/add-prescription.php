@@ -176,47 +176,14 @@
                                 </div>
                                 <textarea rows=" 2" name="description" class="border-input desc-prescription nav-item" placeholder="Drug description  "></textarea>
                                 </div>
-                            <?php }
-                            ?>
+                        <?php }
+                        ?>
 
-                            </div>
+                    </div>
 
-                            <input type="submit" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
-                            <!-- end select drug -->
+                    <input type="submit" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
+                    <!-- end select drug -->
 
-                            <!-- move container -->
-                            <script>
-                                const slider = document.querySelector('.inputs-pre');
-
-                                let isDown = false;
-                                let startXx;
-                                let scrollLeft;
-
-                                slider.addEventListener('mousedown', (e) => {
-                                    isDown = true;
-                                    slider.classList.add('active');
-                                    startXx = e.pageX - slider.offsetLeft;
-                                    scrollLeft = slider.scrollLeft;
-                                });
-
-                                slider.addEventListener('mouseleave', () => {
-                                    isDown = false;
-                                    slider.classList.remove('active');
-                                });
-
-                                slider.addEventListener('mouseup', () => {
-                                    isDown = false;
-                                    slider.classList.remove('active');
-                                });
-
-                                slider.addEventListener('mousemove', (e) => {
-                                    if (!isDown) return;
-                                    e.preventDefault(); // جلوگیری از انتخاب متن
-                                    const x = e.pageX - slider.offsetLeft;
-                                    const walk = (x - startXx) * 2; // سرعت اسکرول
-                                    slider.scrollLeft = scrollLeft - walk;
-                                });
-                            </script>
                             <hr class="hr">
 
                             <!-- drug list and user infos -->
@@ -807,6 +774,40 @@
         });
 
         btnMove.ondragstart = () => false;
+    </script>
+
+    <!-- move container -->
+    <script>
+        const slider = document.querySelector('.inputs-pre');
+
+        let isDown = false;
+        let startXx;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startXx = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startXx) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
     </script>
 
     <?php include_once('resources/views/layouts/footer.php') ?>
