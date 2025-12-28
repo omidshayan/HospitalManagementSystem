@@ -302,8 +302,6 @@
                                         </div>
                                     <?php }
                                     ?>
-
-
                             </div>
 
                             <div class="pre-body-left">
