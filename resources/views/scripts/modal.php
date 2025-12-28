@@ -102,7 +102,6 @@
         position: relative;
         display: flex;
         justify-content: space-between;
-        gap: 10px;
     }
 
     .input-pre>select,
@@ -110,14 +109,15 @@
         height: 35px;
         border-radius: 3px;
         padding: 4px;
-        font-size: 17px;
+        transition: 0.5s;
     }
-
+    
     .search-box-pre {
         width: 25%;
     }
-
+    
     .search-input-pre {
+        font-size: 19px !important;
         width: 100% !important;
     }
 
@@ -166,6 +166,87 @@
         padding: 20px;
         border: 1px solid var(--border);
         margin: 0 auto;
+        overflow-x: auto;
         position: relative;
     }
+
+    .input-pre input {
+    background-color: var(--main);
+    border: none;
+    width: 90%;
+    height: 35px;
+    padding: 8px;
+    border-radius: 3px;
+    color: var(--text);
+    font-size: 16px;
+    transition: 0.5s;
+    outline: none;
+    border: 1px solid var(--border);
+    margin-bottom: 25px;
+}
+
+.input-pre select {
+    background-color: var(--main);
+    border: none;
+    width: 90%;
+    height: 35px;
+    padding: 4px;
+    border-radius: 3px;
+    color: var(--text);
+    font-size: 16px;
+    outline: none;
+    border: 1px solid var(--bg);
+}
+
+.input-pre select option {
+    font-size: 16px;
+}
+
+.input-pre input:focus {
+    outline: none !important;
+    border: 1px solid var(--hover);
+    box-shadow: 0 0 8px var(--hover);
+    transition: 0.5s;
+}
+
+.input-pre>textarea {
+    background-color: var(--main);
+    border: 1px solid var(--border);
+    transition: 0.5s;
+    color: var(--color);
+    font-size: 18px !important;
+    padding: 8px !important;
+}
+
+.input-pre textarea:focus {
+    outline: none !important;
+    border: 1px solid var(--hover);
+    box-shadow: 0 0 4px var(--hover);
+}
+
+.input-pre select:focus {
+    outline: none !important;
+    border: 1px solid var(--hover);
+    box-shadow: 0 0 4px var(--hover);
+}
+
+/* btns */
+.btn-pre {
+    width: 88%;
+    background-color: var(--bg) !important;
+    cursor: pointer;
+    color: var(--text) !important;
+    margin: 20px auto;
+    transition: all .3s ease-in;
+    border-radius: 3px !important;
+    font-size: 13px;
+    border: 1px solid var(--bg) !important;
+}
+
+.btn-pre:hover {
+    background-color: var(--main) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--bg);
+}
+
 </style>

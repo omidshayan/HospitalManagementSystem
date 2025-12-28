@@ -59,7 +59,7 @@
                                 if ($intake_timeActive) { ?>
                                     <div class="input-pre count-pre">
                                         <div class="label-form mb5 fs14"> تعداد دارو </div>
-                                        <select name="drug_count border-pre" class="count-pre-select" required>
+                                        <select name="drug_count border-pre" class="count-pre-select border-input" required>
                                             <option selected disabled>تعداد دارو</option>
                                             <?php for ($i = 1; $i <= $number['number']; $i++): ?>
                                                 <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
@@ -75,7 +75,7 @@
                                 if ($companyActive) { ?>
                                     <div class="input-pre other-select-p">
                                         <div class="label-form mb5 fs14">تولید کننده</div>
-                                        <select name="company" class="other-select-p-item" required>
+                                        <select name="company" class="other-select-p-item border-input" required>
                                             <option selected disabled>نوعیت دارو</option>
                                             <?php
                                             foreach ($companies as $company) { ?>
@@ -91,7 +91,7 @@
                                 if ($intake_timeActive) { ?>
                                     <div class="input-pre other-select-p">
                                         <div class="label-form mb5 fs14"> زمان مصرف </div>
-                                        <select name="interval_time" class="other-select-p-item" required>
+                                        <select name="interval_time" class="other-select-p-item border-input" required>
                                             <option selected disabled>زمان مصرف </option>
                                             <?php
                                             foreach ($intake_times as $intake_time) { ?>
@@ -108,7 +108,7 @@
                                 if ($dosageActive) { ?>
                                     <div class="input-pre other-select-p">
                                         <div class="label-form mb5 fs14" for="name">مقدار مصرف </div>
-                                        <select name="dosage" required class="other-select-p-item">
+                                        <select name="dosage" required class="other-select-p-item border-input">
                                             <option selected disabled>مقدار مصرف </option>
                                             <?php
                                             foreach ($dosage as $dos) { ?>
@@ -119,11 +119,12 @@
                                     </div>
                                 <?php }
                                 ?>
+
                                 <?php
                                 if ($intake_instructionsActive) { ?>
                                     <div class="input-pre other-select-p">
                                         <div class="label-form mb5 fs14" for="name">طریقه مصرف</div>
-                                        <select name="usage_instruction" required class="other-select-p-item">
+                                        <select name="usage_instruction" required class="other-select-p-item border-input">
                                             <option selected disabled>طریقه مصرف </option>
                                             <?php
                                             foreach ($intakeInstructions as $intakeInstruction) { ?>
@@ -135,7 +136,6 @@
                                 <?php }
                                 ?>
 
-
                                 <?php
                                 if ($descriptionActive) { ?>
                                     <div class="input-pre desc-pre">
@@ -145,7 +145,7 @@
                                 <?php }
                                 ?>
 
-                                <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p">
+                                <input type="submit" value="افزودن به نسخه" class="add-drug-pre bold cursor-p btn-pre">
                             </div>
 
                             <hr class="hr">
