@@ -139,7 +139,7 @@ document.addEventListener('keydown', (e) => {
         height: 35px;
         border-radius: 3px;
         padding: 4px;
-        transition: 0.7s;
+        transition: 0.4s;
         background-color: var(--main) !important;
     }
 
@@ -203,7 +203,7 @@ document.addEventListener('keydown', (e) => {
         border-radius: 3px;
         color: var(--text);
         font-size: 16px;
-        transition: 0.7s;
+        transition: 0.4s;
         outline: none;
         border: 1px solid var(--border);
         margin-bottom: 25px;
@@ -230,13 +230,13 @@ document.addEventListener('keydown', (e) => {
         outline: none !important;
         border: 1px solid var(--hover);
         box-shadow: 0 0 8px var(--hover);
-        transition: 0.7s;
+        transition: 0.4s;
     }
 
     .input-pre>textarea {
         background-color: var(--main);
         border: 1px solid var(--border);
-        transition: 0.7s;
+        transition: 0.4s;
         color: var(--color);
         font-size: 18px !important;
         padding: 8px !important;
@@ -259,7 +259,7 @@ document.addEventListener('keydown', (e) => {
     .add-drug-pre {
         background-color: var(--bg) !important;
         color: black !important;
-        transition: all .7s ease-in;
+        transition: all .4s ease-in;
         border: 1px solid var(--bg) !important;
         border-radius: 5px;
         height: 52px;
@@ -296,7 +296,7 @@ document.addEventListener('keydown', (e) => {
         color: red;
         font-weight: bold;
         opacity: 0;
-        transition: 0.7s;
+        transition: 0.4s;
     }
 
     .label-form:hover .close-btn {
