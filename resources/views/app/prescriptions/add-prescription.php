@@ -41,7 +41,7 @@
                                 <!-- search box -->
                                 <div class="search-box-pre">
                                     <div class="input-pre">
-                                        <div class="label-form mb5 fs14 text-left">جستجوی دارو <?= _star ?> <span class="close-btn">&times;</span></div>
+                                        <div class="label-form mb5 fs14 text-left">جستجوی دارو <?= _star ?> <span class="close-btn"></span></div>
                                         <input type="hidden" name="drug_id" id="item_id">
                                         <input type="text"
                                             class="border-input search-input-pre nav-item"
@@ -52,8 +52,8 @@
                                             autofocus
                                             data-search-url="<?= url('search-product-purchase') ?>" />
                                     </div>
-                                    <ul class="search-back d-none" id="backResponse">
-                                        <li class="res search-item color" role="option"></li>
+                                    <ul class="search-back d-none text-left t84 p5" id="backResponse">
+                                        <li class="res search-item text-left color" role="option"></li>
                                     </ul>
                                 </div>
 

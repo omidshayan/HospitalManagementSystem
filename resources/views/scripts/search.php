@@ -18,7 +18,7 @@
                 return;
             }
 
-            $backResponse.html('<li class="search-item text-center">در حال جستجو...</li>').show();
+            $backResponse.html('<li class="search-item-left text-center">در حال جستجو...</li>').show();
 
             $.post(searchUrl, {
                 customer_name: query,
@@ -30,10 +30,10 @@
                 if (response.status === 'success' && response.products.length) {
                     response.products.forEach(p => {
                         itemsData.push(p);
-                        output += `<li class="res search-item" data-id="${p.id}">${p.name}</li>`;
+                        output += `<li class="res search-item-left" data-id="${p.id}">${p.name}</li>`;
                     });
                 } else {
-                    output = '<li class="res search-item color">چیزی یافت نشد</li>';
+                    output = '<li class="res search-item-left color">چیزی یافت نشد</li>';
                 }
 
                 $backResponse.html(output);

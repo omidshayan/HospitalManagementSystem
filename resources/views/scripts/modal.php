@@ -65,10 +65,10 @@
         overflow-y: auto;
     }
 
-    .colse-btn-modal
-    {
+    .colse-btn-modal {
         text-align: right;
     }
+
     /* Close Button */
     .close-btn-cont {
         background: none;
@@ -279,4 +279,26 @@
         opacity: 1;
         cursor: pointer;
     }
+
+    .search-item-left {
+        text-align: left !important;
+    }
+
+    .t84 {
+        top: 84px;
+    }
+
+    .search-item-left {
+    text-align: right;
+}
+
+.search-item-left {
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+.search-item-left:hover {
+    background-color: var(--border);
+}
+
 </style>

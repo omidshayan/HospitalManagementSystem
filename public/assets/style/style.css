@@ -1244,7 +1244,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     top: 34px;
 }
 .search-item {
-    text-align: right !important;
+    text-align: right;
 }
 
 .search-item {
