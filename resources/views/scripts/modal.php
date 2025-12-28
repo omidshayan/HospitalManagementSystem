@@ -102,6 +102,7 @@
         position: relative;
         display: flex;
         justify-content: space-between;
+        gap: 5px;
     }
 
     .input-pre>select,
@@ -122,7 +123,7 @@
     }
 
     .count-pre {
-        width: 5%;
+        width: 7%;
     }
 
     .count-pre-select {
@@ -233,7 +234,6 @@
         border-radius: 5px;
         height: 52px;
         padding: 10px;
-        margin-top: 27px;
         font-weight: bold !important;
         font-size: 16px;
     }
@@ -242,5 +242,9 @@
         background-color: var(--main) !important;
         color: var(--text) !important;
         border: 1px solid var(--bg);
+    }
+
+    select option:disabled {
+        color: #0ebbffff;
     }
 </style>
