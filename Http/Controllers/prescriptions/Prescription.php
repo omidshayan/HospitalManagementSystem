@@ -135,14 +135,14 @@ class Prescription extends App
 
         $yearMonth = $this->calendar->getYearMonth();
 
-        $user_id = $this->currentUser();
+        $userInfo = $this->currentUser();
 
         $prescription = [
-            'doctor_id' => $user_id['id'],
+            'doctor_id' => $userInfo['id'],
             'type' => 1,
             'year' => $yearMonth['year'],
             'month' => $yearMonth['month'],
-            'who_it' => $request['who_it'],
+            'who_it' => $userInfo['name'],
         ];
 
         $prescription_id = $this->prescription->InvoiceConfirm($prescription);
