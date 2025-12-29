@@ -5,4 +5,4 @@ require_once 'Http/Controllers/settings/PrescriptionSetting.php';
 
 uri('prescription-change', 'App\PrescriptionSetting', 'prescriptionSettings');
 
-uri('change-status-description-active', 'App\PrescriptionSetting', 'changeStatusDescriptionActive', 'POST');
+uri('prescription-change-store', 'App\PrescriptionSetting', 'prescriptionSettingsStore', 'POST');
