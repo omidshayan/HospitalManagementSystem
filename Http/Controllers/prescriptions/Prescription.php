@@ -49,9 +49,9 @@ class Prescription extends App
                 e.employee_name
             FROM prescriptions AS p
             INNER JOIN employees AS e ON e.id = p.doctor_id
-            WHERE p.doctor_id = ?
+            WHERE p.doctor_id = ? AND `status` = ?
             AND DATE(p.created_at) = CURDATE()',
-            [$userId['id']]
+            [$userId['id'], 2]
         )->fetchAll();
         // dd($prescriptions);
 
