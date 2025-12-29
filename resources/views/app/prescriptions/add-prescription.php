@@ -246,13 +246,13 @@
 
                                     <?php } else { ?>
 
-                                        <div class="inputs d-flex">
+                                        <div class="inputs d-flex m6">
                                             <div class="one">
                                                 <div class="label-form  fs14 rtl"> نام مریض <?= _star ?></div>
                                                 <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
                                             </div>
                                         </div>
-                                        <div class="inputs d-flex mb3">
+                                        <div class="inputs d-flex m6">
                                             <div class="one">
                                                 <div class="label-form fs14 rtl"> سن مریض <?= _star ?>
                                                     <span class="fs14"></span>
@@ -288,7 +288,7 @@
                                     <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
                                     <div class="accordion-content-pre w100">
                                         <div class="child-accordioin w90d">
-                                            <div class="insert dir-left mt5">
+                                            <div class="insert dir-left mt5 ml-10">
                                                 <div class="one m-auto w97d mb3">
                                                     <input type="text" name="bp" placeholder=" Blood Pressure  ">
                                                 </div>
@@ -312,8 +312,8 @@
                                     <div class="accordion-title color-orange">تشخیص داکتر</div>
                                     <div class="accordion-content-pre w100">
                                         <div class="child-accordioin w90d">
-                                            <div class="insert mt5">
-                                                <div class="one m-auto w97d mb3">
+                                            <div class="insert mt5 ml-10">
+                                                <div class="one m-auto w100 mb3">
                                                     <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
                                                 </div>
                                             </div>
@@ -323,25 +323,26 @@
                                     <!-- diagnosis -->
                                     <div class="accordion-title color-orange">ثبت اطلاعات بیشتر مریض</div>
                                     <div class="accordion-content-pre w100">
-                                        <div class="child-accordioin w90d">
+                                        <div class="child-accordioin">
 
-                                            <div class="inputs d-flex">
+                                            <div class="inputs m6">
                                                 <div class="one">
                                                     <div class="label-form fs14"> شماره موبایل </div>
                                                     <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
                                                 </div>
                                             </div>
 
-                                            <div class="inputs d-flex">
+                                            <div class="inputs m6">
                                                 <div class="one">
                                                     <div class="label-form fs14"> نام پدر </div>
                                                     <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
                                                 </div>
                                             </div>
 
-                                            <div class="insert mt5">
+                                            <div class="insert m6">
                                                 <div class="one m-auto w97d mb3">
-                                                    <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                                    <div class="label-form fs14"> توضیحات </div>
+                                                    <textarea name="diagnosis" placeholder="توضیحات مریض را وارد نمایید"></textarea>
                                                 </div>
                                             </div>
                                         </div>

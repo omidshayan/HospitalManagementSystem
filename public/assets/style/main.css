@@ -426,7 +426,9 @@
     border: 1px solid var(--bg);
     border-radius: 50%;
 }
-
+.m6{
+    margin: 6px auto !important;
+}
 /* btns */
 .btn {
     width: 88%;
