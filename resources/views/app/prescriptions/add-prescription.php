@@ -183,9 +183,41 @@
                             <!-- end select drug -->
 
                             <hr class="hr">
-<div id="prescriptionMessage" class="mt10"></div>
+                            <div id="prescriptionMessage" class="mt10"></div>
 
                 </form>
+                
+                <script>
+                    document.getElementById('prescription_form').addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        const form = this;
+                        const url = form.getAttribute('action');
+                        const submit = document.getElementById('submitPrescription');
+                        const msgBox = document.getElementById('prescriptionMessage');
+
+                        const formData = new FormData(form);
+
+                        fetch(url, {
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(res => {
+                                if (res.status === 'success') {
+                                    msgBox.innerHTML = `<div class="success-msg">${res.message}</div>`;
+                                } else {
+                                    msgBox.innerHTML = `<div class="error-msg">${res.message}</div>`;
+                                }
+                            })
+                            .catch(() => {
+                                msgBox.innerHTML = `<div class="error-msg">خطا در ارتباط با سرور</div>`;
+                            });
+                    });
+                </script>
 
 
                 <!-- drug list and user infos CLOSE -->
