@@ -47,7 +47,6 @@ class Prescription extends App
         $start = $today . ' 00:00:00';
         $end   = $today . ' 23:59:59';
 
-        // اجرای کوئری
         $prescriptions = $this->db->select(
             'SELECT *
             FROM prescriptions

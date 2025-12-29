@@ -18,7 +18,6 @@
     <div class="content">
         <div class="content-title mb10">مدیریت نسخه‌ها</div>
 
-
         <!-- modal -->
         <button id="openModal-cont" class="btn">ثبت نسخه جدید</button>
 
@@ -470,6 +469,7 @@
 
         <!-- prescriptions -->
         <div class="box-container">
+           <div class="mb5 fs14"> نسخه‌های امروز</div>
             <table class="fl-table">
                 <thead>
                     <tr>
