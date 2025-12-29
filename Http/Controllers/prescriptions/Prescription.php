@@ -51,7 +51,7 @@ class Prescription extends App
             INNER JOIN employees AS e ON e.id = p.doctor_id
             WHERE p.doctor_id = ?
             AND DATE(p.created_at) = CURDATE()',
-                    [$userId['id']]
+            [$userId['id']]
         )->fetchAll();
         // dd($prescriptions);
 
@@ -120,9 +120,9 @@ class Prescription extends App
     public function drugPrescriptionStore($request)
     {
         $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-          strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+            strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 
-          
+
         $this->middleware(true, true, 'general', true);
 
         $drugInvalid =
@@ -131,7 +131,13 @@ class Prescription extends App
 
         $hasRecommended = !empty($request['recommended']);
 
+        // if ($drugInvalid && !$hasRecommended) {
+        //     $this->flashMessage('error', _emptyInputs);
+        // }
         if ($drugInvalid && !$hasRecommended) {
+            if ($isAjax) {
+                $this->jsonResponse('error', _emptyInputs);
+            }
             $this->flashMessage('error', _emptyInputs);
         }
 

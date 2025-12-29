@@ -793,7 +793,7 @@ class App
         }
 
         // json return
-        private function jsonResponse($status, $message = '', $data = [])
+        public function jsonResponse($status, $message = '', $data = [])
         {
                 header('Content-Type: application/json; charset=utf-8');
                 echo json_encode([
