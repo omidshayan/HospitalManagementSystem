@@ -1601,7 +1601,9 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     width: 18px !important;
     margin: 0 6px 0 0 !important;
 }
-
+.mm10{
+    margin-top: -10px !important;
+}
 /* tooltip cost add-student */
 .tooltip {
     display: none;

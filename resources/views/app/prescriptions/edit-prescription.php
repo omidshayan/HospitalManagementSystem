@@ -288,7 +288,7 @@
                         ?>
                     </div>
                     <div>
-                        <?= $drugList ? '<a href="' . url('edit-close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p w120" id="closePrescriptionBtn">ویرایش نسخه</a>' : '' ?>
+                        <?= $drugList ? '<a href="' . url('edit-close-prescription-store/' . $prescription['id']) . '" class="color btn p5-20 bg-success bold pa close-p w180 mm10" id="closePrescriptionBtn">ویرایش نسخه</a>' : '' ?>
                     </div>
                 </div>
                 <table class="fl-table">
