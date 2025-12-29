@@ -306,6 +306,8 @@
                                     </a>' : '' ?>
                                 </div>
                             </div>
+                        <?php } else { ?>
+                        <div class="color-red fs14 center mt50 bg-success p10">نسخه خالی است</div>
                         <?php }
                         ?>
                     </div>
