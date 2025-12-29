@@ -32,6 +32,9 @@ require_once 'number-drugs/number-drugs.php';
 // settings
 require_once 'settings/settings.php';
 
+// prescriptions-settings
+require_once 'settings/prescriptions-settings.php';
+
 // user agent
 require_once 'user-agent.php';
 
