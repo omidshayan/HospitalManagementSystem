@@ -248,15 +248,15 @@
 
                                         <div class="inputs d-flex">
                                             <div class="one">
-                                                <div class="label-form  fs14"> نام مریض <?= _star ?></div>
+                                                <div class="label-form  fs14 rtl"> نام مریض <?= _star ?></div>
                                                 <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
                                             </div>
                                         </div>
                                         <div class="inputs d-flex mb3">
                                             <div class="one">
-                                                <div class="label-form fs14"> سن مریض <?= _star ?>
+                                                <div class="label-form fs14 rtl"> سن مریض <?= _star ?>
                                                     <span class="fs14"></span>
-                                                    <strong id="birthYear"></strong>
+                                                    <strong id="birthYear"> </strong>
                                                 </div>
                                                 <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
                                                 <input type="hidden" name="birth_year" id="birthYearInput">
@@ -532,7 +532,7 @@
             let currentPersianYear = getCurrentPersianYear();
             let birthYear = currentPersianYear - age;
 
-            birthYearTag.textContent = 'سال تولد: ' +birthYear;
+            birthYearTag.textContent = ' سال تولد : ' +birthYear;
             birthYearInputField.value = '' + birthYear;
 
             checkInputs();

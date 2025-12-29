@@ -566,7 +566,9 @@
 .align-center {
     align-items: center !important;
 }
-
+.rtl{
+    direction: rtl;
+}
 /* print styles */
 @media print {
     @page {
