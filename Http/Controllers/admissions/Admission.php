@@ -49,7 +49,6 @@ class Admission extends App
         require_once(BASE_PATH . '/resources/views/app/admissions/admission-create.php');
     }
 
-
     // store employee
     public function admissionStore($request)
     {
@@ -123,29 +122,29 @@ class Admission extends App
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // show drugs
+    // show admissions
     public function showDrugs()
     {
-        $this->middleware(true, true, 'showDrugs');
-        $drugs = $this->db->select('SELECT * FROM drugs ORDER BY id DESC')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/drugs/show-drugs.php');
+        $this->middleware(true, true, 'admissions');
+        $admissions = $this->db->select('SELECT * FROM admissions ORDER BY id DESC')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/admissions/admissions.php');
         exit();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // edit drug page
     public function editDrug($id)
