@@ -42,6 +42,21 @@ class Prescription extends App
 
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
 
+        // get today prescriptions
+        $today = date('Y-m-d');
+        $start = $today . ' 00:00:00';
+        $end   = $today . ' 23:59:59';
+
+        // اجرای کوئری
+        $prescriptions = $this->db->select(
+            'SELECT *
+            FROM prescriptions
+            WHERE doctor_id = ?
+            AND created_at BETWEEN ? AND ?',
+            [$userId['id'], $start, $end]
+        )->fetchAll();
+
+
         // if active admissions
         if (
             isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1

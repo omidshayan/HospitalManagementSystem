@@ -3,10 +3,10 @@
     const closeBtnCont = document.getElementById('closeModal-cont');
     const overlayCont = document.getElementById('modalOverlay-cont');
 
-    function openModalCont() {
-        overlayCont.classList.add('show');
-        document.body.style.overflow = 'hidden';
-    }
+    // function openModalCont() {
+    //     overlayCont.classList.add('show');
+    //     document.body.style.overflow = 'hidden';
+    // }
 
     function closeModalCont() {
         overlayCont.classList.remove('show');
@@ -17,7 +17,7 @@
         openModalCont();
     });
 
-    openBtnCont.addEventListener('click', openModalCont);
+    // openBtnCont.addEventListener('click', openModalCont);
 
     closeBtnCont.addEventListener('click', closeModalCont);
 

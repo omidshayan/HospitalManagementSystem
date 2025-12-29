@@ -17,7 +17,6 @@ include_once('public/alerts/toastr.php');
     ?>
     <!-- start page content -->
 
-    <!-- show employees -->
     <div class="box-container">
         <table class="fl-table">
             <thead>
@@ -85,7 +84,7 @@ include_once('public/alerts/toastr.php');
             ?>
         </div>
     </div>
-    <!-- end page content -->
+
 </div>
 <!-- End content -->
 
