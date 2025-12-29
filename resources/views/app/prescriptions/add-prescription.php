@@ -272,7 +272,7 @@
                                                     </label>
 
                                                     <label class="radio-label" for="man">
-                                                        <input type="radio" id="man" name="gender" value="آقا" class="radio-select">
+                                                        <input type="radio" id="man" name="gender" checked value="آقا" class="radio-select">
                                                         آقا
                                                     </label>
                                                 </div>
