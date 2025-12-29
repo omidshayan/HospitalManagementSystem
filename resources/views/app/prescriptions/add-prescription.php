@@ -22,7 +22,7 @@
         <button id="openModal-cont" class="addBtn">ثبت نسخه جدید</button>
 
         <div class="modal-overlay-cont" id="modalOverlay-cont">
-            <div class="modal-cont">
+            <div class="modal-cont border">
 
                 <div class="colse-btn-modal">
                     <button class="close-btn-cont" id="closeModal-cont">✕</button>
