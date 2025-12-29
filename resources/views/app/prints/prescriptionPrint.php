@@ -10,7 +10,6 @@ include_once('public/alerts/toastr.php');
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
 
-
     <!-- form print -->
     <?php if (!empty($prescription)) : ?>
 
