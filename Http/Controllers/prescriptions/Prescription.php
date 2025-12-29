@@ -44,13 +44,17 @@ class Prescription extends App
 
         // get today prescriptions
         $prescriptions = $this->db->select(
-            'SELECT *
-            FROM prescriptions
-            WHERE doctor_id = ?
-            AND DATE(created_at) = CURDATE()',
+            'SELECT 
+                p.*,
+                e.employee_name
+            FROM prescriptions AS p
+            INNER JOIN employees AS e ON e.id = p.doctor_id
+            WHERE p.doctor_id = ?
+            AND DATE(p.created_at) = CURDATE()',
                     [$userId['id']]
         )->fetchAll();
-            // dd($prescriptions);
+
+        // dd($prescriptions);
 
 
         // if active admissions
