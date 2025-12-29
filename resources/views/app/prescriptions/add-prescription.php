@@ -224,8 +224,8 @@
                 <div class="pre-main d-flex">
 
                     <!-- drug list -->
-                    <div id="prescriptionTable">
-                        <?php include_once('resources/views/app/prescriptions/drug-list.php'); ?>
+                     <div id="prescriptionTable">
+                    <?php include_once('resources/views/app/prescriptions/drug-list.php'); ?>
                     </div>
                     <!-- end drug list -->
 

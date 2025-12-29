@@ -91,6 +91,29 @@ class Prescription extends App
         require_once(BASE_PATH . '/resources/views/app/prescriptions/add-prescription.php');
     }
 
+    public function prescriptionTableBody()
+    {
+        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
+
+        if ($prescription) {
+
+            $recommended = $this->db->select('
+                SELECT 
+                    r.id AS recommended_id,
+                    r.recommended AS test_id,
+                    t.test_name
+                FROM recommended r
+                JOIN tests t ON r.recommended = t.id
+                WHERE r.prescription_id = ?
+            ', [$prescription['id']])->fetchAll();
+
+
+            $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
+        }
+        include_once('resources/views/app/prescriptions/drug-list.php');
+    }
+
+
     // search prescription for inventory
     public function searchProdut($request)
     {
