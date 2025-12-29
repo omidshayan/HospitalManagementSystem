@@ -2,13 +2,13 @@
 
 namespace App;
 
-class Setting extends App
+class PrescriptionSetting extends App
 {
-
     // management of years page
-    public function manageYears()
+    public function prescriptionChange()
     {
-        $this->middleware(true, true, 'students', true);
+        dd('ok');
+        $this->middleware(true, true, 'general', true);
         $years = $this->db->select('SELECT * FROM years ORDER BY id DESC')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/settings/manage-years.php');
     }
@@ -36,5 +36,4 @@ class Setting extends App
 
         $this->flashMessage('success', 'اطلاعات با موفقیت ویرایش شد.');
     }
-
 }
