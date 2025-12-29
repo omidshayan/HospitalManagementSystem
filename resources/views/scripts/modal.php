@@ -445,4 +445,21 @@
         color: var(--text) !important;
         border: 1px solid var(--bg);
     }
+
+    .btn-loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-loading::after {
+    content: ' ...';
+    animation: dots 1.2s infinite;
+}
+
+@keyframes dots {
+    0%   { content: ' .'; }
+    33%  { content: ' ..'; }
+    66%  { content: ' ...'; }
+}
+
 </style>

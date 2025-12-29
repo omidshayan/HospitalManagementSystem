@@ -179,14 +179,14 @@
 
                             </div>
 
-                            <input type="submit" id="submitPrescription" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
+                            <input type="submit" id="submitPrescription" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border" data-text="افزودن دارو به نسخه">
                             <!-- end select drug -->
 
                             <hr class="hr">
                             <div id="prescriptionMessage" class="mt10"></div>
 
                 </form>
-                
+
                 <script>
                     document.getElementById('prescription_form').addEventListener('submit', function(e) {
                         e.preventDefault();
@@ -256,7 +256,7 @@
                                                 <th>حذف</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="drugListBody">
                                             <?php
                                             $number = 1;
                                             foreach ($drugList as $item) {
