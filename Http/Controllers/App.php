@@ -791,4 +791,16 @@ class App
                 else
                         return '<span style="direction:ltr; display:inline-block;">' . $formatted . '</span>';
         }
+
+        // json return
+        private function jsonResponse($status, $message = '', $data = [])
+        {
+                header('Content-Type: application/json; charset=utf-8');
+                echo json_encode([
+                        'status'  => $status, // success | error
+                        'message' => $message,
+                        'data'    => $data
+                ]);
+                exit;
+        }
 }

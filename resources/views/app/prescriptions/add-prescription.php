@@ -192,8 +192,6 @@
 
                     <!-- drug list -->
                     <div class="pre-body-right">
-
-                        <!-- prescription items -->
                         <?php
                         if ($prescription) { ?>
                             <div class="content-create-pre mb30 mt20">

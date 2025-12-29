@@ -119,6 +119,10 @@ class Prescription extends App
     //    add drug in Prescription Store
     public function drugPrescriptionStore($request)
     {
+        $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+          strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+
+          
         $this->middleware(true, true, 'general', true);
 
         $drugInvalid =
