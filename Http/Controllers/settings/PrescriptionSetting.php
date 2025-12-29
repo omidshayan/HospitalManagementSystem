@@ -12,6 +12,38 @@ class PrescriptionSetting extends App
         require_once(BASE_PATH . '/resources/views/app/settings/prescription-change.php');
     }
 
+    // change status tests
+    public function changeStatusTestsShow()
+    {
+        $this->middleware(true, true, 'general');
+
+        $row = $this->db->select(
+            'SELECT id, active_infos_pre FROM settings LIMIT 1'
+        )->fetch();
+
+        if (!$row) {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+
+        $newStatus = ($row['active_infos_pre'] == 1) ? 2 : 1;
+
+        $this->db->update(
+            'settings',
+            $row['id'],
+            ['active_infos_pre'],
+            [$newStatus]
+        );
+
+        if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
+            $_SESSION['settings'] = [];
+        }
+
+        $_SESSION['settings']['active_infos_pre'] = $newStatus;
+
+        $this->send_json_response(true, _success, $newStatus);
+    }
+
 
     // prescription settings store
     public function prescriptionChangeStore($request)
