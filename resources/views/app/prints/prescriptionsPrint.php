@@ -76,7 +76,7 @@ include_once('public/alerts/toastr.php');
 
     </div>
 
-     <script>
+    <script>
         const PRESC_URL = "<?= url('getNextPrescription') ?>";
 
         let isPrinting = false;
