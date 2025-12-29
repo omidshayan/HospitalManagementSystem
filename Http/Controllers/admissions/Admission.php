@@ -123,9 +123,9 @@ class Admission extends App
     }
 
     // show admissions
-    public function showDrugs()
+    public function admissions()
     {
-        $this->middleware(true, true, 'admissions');
+        $this->middleware(true, true, 'showAdmissions');
         $admissions = $this->db->select('SELECT * FROM admissions ORDER BY id DESC')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/admissions/admissions.php');
         exit();

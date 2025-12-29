@@ -1,17 +1,17 @@
 <?php
-$title = 'نمایش دواها';
+$title = 'پذیرش‌ها';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/toastr.php');
 ?>
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title">نمایش دواها
+    <div class="content-title">پذیرش‌ها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
-    $help_title = 'راهنمای بخش نمایش داروها';
-    $help_content = 'اگر شماره آیتمی به رنگ سرخ بود، یعنی آیتم مورد نظر غیر فعال است!';
+    $help_title = 'راهنمای بخش نمایش پذیرش‌ها';
+    $help_content = 'متن راهنما!';
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
@@ -22,10 +22,10 @@ include_once('public/alerts/toastr.php');
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>نام</th>
-                    <th>نام انحصاری</th>
-                    <th>دسته بندی</th>
-                    <th>واحد شمارش</th>
+                    <th>نام مریض</th>
+                    <th>سن</th>
+                    <th>نام داکتر</th>
+                    <th>نوبت</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
                 </tr>
@@ -33,7 +33,7 @@ include_once('public/alerts/toastr.php');
             <tbody>
                 <?php
                 $perPage = 10;
-                $data = paginate($drugs, $perPage);
+                $data = paginate($admissions, $perPage);
                 $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                 $number = ($currentPage - 1) * $perPage + 1;
                 foreach ($data as $item) {
@@ -42,10 +42,10 @@ include_once('public/alerts/toastr.php');
                         <td class="color-orange <?= ($item['status'] == 2) ? 'color-red' : '' ?>">
                             <?= $number ?>
                         </td>
-                        <td><?= $item['name'] ?></td>
-                        <td><?= ($item['generic_name']) ?: '- - - -' ?></td>
-                        <td><?= $item['category_id'] ?></td>
-                        <td><?= $item['unit'] ?></td>
+                        <td><?= $item['user_name'] ?></td>
+                        <td><?= $item['age'] ?></td>
+                        <td><?= ($item['doctor_name']) ?: '- - - -' ?></td>
+                        <td><?= $item['queue_number'] ?></td>
                         <td>
                             <a href="<?= url('edit-drug/' . $item['id']) ?>" class="color-orange flex-justify-align">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -70,16 +70,16 @@ include_once('public/alerts/toastr.php');
             </tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
-            <div class="table-info fs14">تعداد کل: <?= count($drugs) ?></div>
+            <div class="table-info fs14">تعداد کل: <?= count($admissions) ?></div>
             <?php
-            if (count($drugs) == null) { ?>
+            if (count($admissions) == null) { ?>
                 <div class="center fs14 color-red">
                     <i class="fa fa-comment"></i>
                     <?= 'اطلاعاتی ثبت نشده است' ?>
                 </div>
             <?php } else {
-                if (count($drugs) > 10) {
-                    echo paginateView($drugs, 10);
+                if (count($admissions) > 10) {
+                    echo paginateView($admissions, 10);
                 }
             }
             ?>
