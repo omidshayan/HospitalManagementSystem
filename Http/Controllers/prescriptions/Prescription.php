@@ -53,7 +53,6 @@ class Prescription extends App
             AND DATE(p.created_at) = CURDATE()',
                     [$userId['id']]
         )->fetchAll();
-
         // dd($prescriptions);
 
 

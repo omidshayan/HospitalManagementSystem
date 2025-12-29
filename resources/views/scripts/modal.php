@@ -3,10 +3,10 @@
     const closeBtnCont = document.getElementById('closeModal-cont');
     const overlayCont = document.getElementById('modalOverlay-cont');
 
-    // function openModalCont() {
-    //     overlayCont.classList.add('show');
-    //     document.body.style.overflow = 'hidden';
-    // }
+    function openModalCont() {
+        overlayCont.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
 
     function closeModalCont() {
         overlayCont.classList.remove('show');
@@ -17,7 +17,7 @@
         openModalCont();
     });
 
-    // openBtnCont.addEventListener('click', openModalCont);
+    openBtnCont.addEventListener('click', openModalCont);
 
     closeBtnCont.addEventListener('click', closeModalCont);
 
@@ -45,7 +45,6 @@
         pointer-events: none;
         z-index: 9999;
         direction: ltr !important;
-
         transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -158,6 +157,7 @@
         flex-wrap: nowrap;
         align-items: flex-start;
         user-select: none;
+        padding: 0 5px;
     }
 
     .inputs-pre>.input-pre,
@@ -440,6 +440,7 @@
         padding: 10px;
         font-weight: bold;
     }
+
     .addBtn:hover {
         background-color: var(--main) !important;
         color: var(--text) !important;
