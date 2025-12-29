@@ -182,7 +182,6 @@
     .search-box-pre>ul {
         flex-grow: 1.5 !important;
         min-width: 260px !important;
-        width: 19% !important;
     }
 
     .desc-pre {
