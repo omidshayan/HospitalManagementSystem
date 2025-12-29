@@ -14,22 +14,19 @@ class PrescriptionSetting extends App
 
 
     // prescription settings store
-    public function prescriptionSettingsStore($request)
+    public function prescriptionChangeStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if (empty($request['center_name'])) {
-            $this->flashMessage('error', _emptyInputs);
-        }
+        $infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
 
-        $branch = $this->db->select('SELECT * FROM prescription_settings')->fetch();
-
-        if (!$branch) {
+        if (!$infos) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
 
         $this->updateImageUpload($request, 'image', 'public', 'prescription_settings', $branch['id']);
+        $this->updateImageUpload($request, 'image', 'employees', 'employees', $id);
 
         $this->db->update('prescription_settings', $branch['id'], array_keys($request), $request);
 
