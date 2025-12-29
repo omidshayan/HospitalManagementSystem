@@ -5,7 +5,6 @@ include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
 
-
 <div class="content">
     <div class="content-title">نمایش نسخه: <?= $prescription['patient_name'] ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
@@ -15,7 +14,10 @@ include_once('public/alerts/toastr.php');
     <?php if (!empty($prescription)) : ?>
 
         <div class="center bg-whith">
-            <div class="item-print p10">
+            <?php
+            $imagePath = asset('public/images/public') . '/' . $_SESSION['settings']['image'];
+            ?>
+            <div class="item-print p10" style="background-image: url('<?= $imagePath ?>');">
 
                 <!-- top pre infos  -->
                 <div class="pa w100">
@@ -129,7 +131,7 @@ include_once('public/alerts/toastr.php');
                             ?>
                         </ul>
 
-                         <div class="fs14 mt50 text-left ml-10"><?= $prescription['diagnosis'] ?></div>
+                        <div class="fs14 mt50 text-left ml-10"><?= $prescription['diagnosis'] ?></div>
                     </div>
 
                 </div>

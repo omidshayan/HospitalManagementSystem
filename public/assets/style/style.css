@@ -1681,9 +1681,11 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     height: 20px !important;
     display: flex;
 }
-.item-print {
+
+/* .item-print {
     background-image: url('../img/img.jpg') !important;
-}
+} */
+ 
 /* accourdion menu employees */
 .accordion-select {
     width: 100% !important;
