@@ -283,7 +283,6 @@
                                     <?php }
                                     ?>
 
-
                                     <!-- bp ... -->
                                     <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
                                     <div class="accordion-content-pre w100">
