@@ -18,17 +18,20 @@ class PrescriptionSetting extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        $infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
+        $infos = $this->db->select('SELECT * FROM settings')->fetch();
 
         if (!$infos) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
 
-        $this->updateImageUpload($request, 'image', 'public', 'prescription_settings', $branch['id']);
-        $this->updateImageUpload($request, 'image', 'employees', 'employees', $id);
+        $this->updateImageUpload($request, 'image', 'public', 'settings', $infos['id']);
+        // $this->updateImageUpload($request, 'image', 'employees', 'employees', $id);
+        $data = [
+            'image' => $request['image'],
+        ];
 
-        $this->db->update('prescription_settings', $branch['id'], array_keys($request), $request);
+        $this->db->update('settings', $infos['id'], array_keys($data), $data);
 
         $this->flashMessage('success', 'اطلاعات با موفقیت ویرایش شد.');
     }
