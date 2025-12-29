@@ -24,3 +24,7 @@ uri('change-status-intake-instructions', 'App\Setting', 'changeStatusIntakeInstr
 uri('change-status-tests', 'App\Setting', 'changeStatusTestsShow', 'POST');
 uri('change-status-company-active', 'App\Setting', 'changeStatusCompanyActive', 'POST');
 uri('change-status-description-active', 'App\Setting', 'changeStatusDescriptionActive', 'POST');
+
+
+// prescription change
+uri('prescription-change', 'App\Setting', 'prescriptionChange');
