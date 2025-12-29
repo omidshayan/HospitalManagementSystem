@@ -126,7 +126,13 @@ class Admission extends App
     public function admissions()
     {
         $this->middleware(true, true, 'showAdmissions');
-        $admissions = $this->db->select('SELECT * FROM admissions ORDER BY id DESC')->fetchAll();
+        $admissions = $this->db->select("
+            SELECT a.*, e.employee_name
+            FROM admissions a
+            LEFT JOIN employees e ON a.doctor_id = e.id
+            WHERE DATE(a.created_at) = CURDATE()
+            ORDER BY a.id DESC
+        ")->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/admissions/admissions.php');
         exit();
     }
