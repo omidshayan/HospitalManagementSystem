@@ -1583,6 +1583,25 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     height: 20px !important;
 }
 
+/* radio in add pre */
+.radio-group {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-around;
+}
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.radio-label input {
+    height: 18px !important;
+    width: 18px !important;
+    margin: 0 6px 0 0 !important;
+}
+
 /* tooltip cost add-student */
 .tooltip {
     display: none;

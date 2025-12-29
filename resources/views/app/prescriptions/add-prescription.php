@@ -264,12 +264,18 @@
                                         </div>
 
                                         <div class="inputs d-flex">
-                                            <div class="one">
-                                                <div class="label-form fs14"> جنسیت </div>
-                                                <select name="gender">
-                                                    <option value="آقا">آقا</option>
-                                                    <option value="خانم">خانم</option>
-                                                </select>
+                                            <div class="one d-flex">
+                                                <div class="radio-group">
+                                                    <label class="radio-label" for="woman">
+                                                        <input type="radio" id="woman" name="gender" value="خانم" class="radio-select">
+                                                        خانم
+                                                    </label>
+
+                                                    <label class="radio-label" for="man">
+                                                        <input type="radio" id="man" name="gender" value="آقا" class="radio-select">
+                                                        آقا
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -532,7 +538,7 @@
             let currentPersianYear = getCurrentPersianYear();
             let birthYear = currentPersianYear - age;
 
-            birthYearTag.textContent = ' سال تولد : ' +birthYear;
+            birthYearTag.textContent = ' سال تولد : ' + birthYear;
             birthYearInputField.value = '' + birthYear;
 
             checkInputs();
