@@ -179,10 +179,11 @@
 
                             </div>
 
-                            <input type="submit" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
+                            <input type="submit" id="submitPrescription" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
                             <!-- end select drug -->
 
                             <hr class="hr">
+<div id="prescriptionMessage" class="mt10"></div>
 
                 </form>
 
@@ -305,7 +306,7 @@
                                 </div>
                             </div>
                         <?php } else { ?>
-                        <div class="color-red fs14 center mt50 bg-success p10">نسخه خالی است</div>
+                            <div class="color-red fs14 center mt50 bg-success p10">نسخه خالی است</div>
                         <?php }
                         ?>
                     </div>
@@ -447,7 +448,7 @@
                                     </div>
 
                                     <!-- <?php
-                                    if ($testsActive) { ?>
+                                            if ($testsActive) { ?>
                                         <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
                                         <div class="accordion-content-pre w89d">
                                             <div class="child-accordioin">

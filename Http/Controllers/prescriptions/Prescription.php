@@ -141,6 +141,8 @@ class Prescription extends App
             $this->flashMessage('error', _emptyInputs);
         }
 
+
+
         $this->validateInputs($request);
 
         $yearMonth = $this->calendar->getYearMonth();
@@ -205,6 +207,12 @@ class Prescription extends App
             }
         }
 
+        // $this->flashMessage('success', _success);
+        if ($isAjax) {
+            $this->jsonResponse('success', _success, [
+                'prescription_id' => $prescription_id
+            ]);
+        }
         $this->flashMessage('success', _success);
     }
 
