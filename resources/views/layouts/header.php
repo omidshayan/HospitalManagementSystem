@@ -74,7 +74,7 @@
             </a>
           </li>
 
-                    <!-- print -->
+          <!-- print -->
           <?php if ($this->hasAccess('prescriptionPrint')): ?>
             <li class="sidebar-menu">
               <a href="<?= url('prescription-print') ?>" class="d-flex align-center justify-between">
@@ -182,8 +182,8 @@
             </li>
           <?php endif; ?>
 
-                    <!-- employee salary -->
-          <?php if ($this->hasAccess('general')): ?>
+          <!-- funds -->
+          <!-- <?php if ($this->hasAccess('general')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -202,8 +202,6 @@
                     <li class="sidebar-dropdown-menu-item">موجودی</li>
                   </a>
                 <?php endif; ?>
-
-                <!-- // NOTE باید برسی کنه که آیا مرکز دارای شعبه است یا نه، اگر نبود نباید نمایش داده بشه  -->
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('center-fund') ?>">
                     <li class="sidebar-dropdown-menu-item">جزئیات صندوق مرکزی</li>
@@ -212,7 +210,7 @@
 
               </ul>
             </li>
-          <?php endif; ?>
+          <?php endif; ?> -->
 
           <!-- employee salary -->
           <?php if ($this->hasAccess('general')): ?>
