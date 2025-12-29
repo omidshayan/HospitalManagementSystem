@@ -427,26 +427,22 @@
         }
     }
 
-    .mmm>div {
-        flex-grow: 1;
-        /* همه آیتم‌ها رشد مساوی دارن */
-        flex-shrink: 1;
-        /* اجازه کوچیک شدن دارن */
-        flex-basis: 150px;
-        /* حداقل عرض پیشنهادی */
-        min-width: 150px;
-        /* حداقل عرض اجباری */
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
+    .addBtn {
+        width: 140px;
+        background-color: var(--bg) !important;
+        cursor: pointer;
+        color: var(--text) !important;
+        margin: 20px 30px 0 0;
+        transition: all .3s ease-in;
+        border-radius: 3px !important;
+        font-size: 15px;
+        border: 1px solid var(--bg) !important;
+        padding: 10px;
+        font-weight: bold;
     }
-
-    .mmm>div.big {
-        flex-grow: 2;
-        /* این آیتم دو برابر بقیه رشد می‌کنه */
-        flex-basis: 250px;
-        /* حداقل عرض بزرگتر */
-        min-width: 250px;
-        /* حداقل عرض بزرگتر */
+    .addBtn:hover {
+        background-color: var(--main) !important;
+        color: var(--text) !important;
+        border: 1px solid var(--bg);
     }
 </style>

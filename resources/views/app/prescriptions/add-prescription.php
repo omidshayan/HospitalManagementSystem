@@ -19,7 +19,7 @@
         <div class="content-title mb10">مدیریت نسخه‌ها</div>
 
         <!-- modal -->
-        <button id="openModal-cont" class="btn">ثبت نسخه جدید</button>
+        <button id="openModal-cont" class="addBtn">ثبت نسخه جدید</button>
 
         <div class="modal-overlay-cont" id="modalOverlay-cont">
             <div class="modal-cont">
