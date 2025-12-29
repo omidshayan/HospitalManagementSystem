@@ -17,20 +17,27 @@ include_once('public/alerts/toastr.php');
     <?php if (!empty($prescription)) : ?>
 
         <div class="center bg-whith">
-            <div class="item-print p10">
+            <?php
+            $imagePath = asset('public/images/public') . '/' . $_SESSION['settings']['image'];
+            ?>
+            <div class="item-print p10" style="background-image: url('<?= $imagePath ?>');">
 
                 <!-- top pre infos  -->
-                <div class="pa w100">
-                    <div class="pre-p-title pa">
-                        <h1 class="pre-color pre-title mr10"><?= $preInfos['center_name'] ?></h1>
-                        <div class="pre-color bold pre-p-slogan pa"><?= $preInfos['slogan'] ?></div>
+                <?php
+                if ($prescrption_change['active_infos_pre'] == 1) : ?>
+                    <div class="pa w100">
+                        <div class="pre-p-title pa">
+                            <h1 class="pre-color pre-title mr10"><?= $preInfos['center_name'] ?></h1>
+                            <div class="pre-color bold pre-p-slogan pa"><?= $preInfos['slogan'] ?></div>
+                        </div>
+                        <div class="pa pre-p-logo">
+                            <?= $preInfos['image']
+                                ? '<img class="w130 pre-p-logo" src="' . asset('public/images/public/' . $preInfos['image']) . '" alt="logo" onclick="openModal(\'' . asset('public/images/public/' . $preInfos['image']) . '\')">'
+                                : ' - - - - ' ?>
+                        </div>
                     </div>
-                    <div class="pa pre-p-logo">
-                        <?= $preInfos['image']
-                            ? '<img class="w130 pre-p-logo" src="' . asset('public/images/public/' . $preInfos['image']) . '" alt="logo" onclick="openModal(\'' . asset('public/images/public/' . $preInfos['image']) . '\')">'
-                            : ' - - - - ' ?>
-                    </div>
-                </div>
+                <?php endif; ?>
+
 
                 <!-- patient infos -->
                 <div class="p-patient-infos">
@@ -90,11 +97,13 @@ include_once('public/alerts/toastr.php');
                     <div class="p-left-infos border-r">
 
                         <!-- doctor infos -->
-                        <div class="p-doctor-infos">
-                            <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
-                            <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
-                            <hr class="hrp">
-                        </div>
+                        <?php if ($prescrption_change['active_infos_pre'] == 1) : ?>
+                            <div class="p-doctor-infos">
+                                <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
+                                <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
+                                <hr class="hrp">
+                            </div>
+                        <?php endif; ?>
 
                         <!-- infos -->
                         <div class="p-vital-signs fs12">
@@ -136,23 +145,25 @@ include_once('public/alerts/toastr.php');
                 </div>
 
                 <!-- footer pre infos -->
-                <div class="pre-color pa w100">
+                <?php if ($prescrption_change['active_infos_pre'] == 1) : ?>
+                    <div class="pre-color pa w100">
 
-                    <div class="pre-p-right-infos pa">
-                        <div class="pre-p-address bold"><?= $preInfos['address'] ?></div>
-                    </div>
+                        <div class="pre-p-right-infos pa">
+                            <div class="pre-p-address bold"><?= $preInfos['address'] ?></div>
+                        </div>
 
-                    <div class="pre-p-phones pa">
-                        <div class="pre-p-address bold"><?= $preInfos['phone1'] ?></div>
-                        <div class="pre-p-address bold"><?= $preInfos['phone2'] ?></div>
-                    </div>
-                    <div class="pre-p-phones-2 pa">
-                        <div class="pre-p-address bold"><?= $preInfos['phone3'] ?></div>
-                        <div class="pre-p-address bold"><?= $preInfos['phone4'] ?></div>
-                    </div>
+                        <div class="pre-p-phones pa">
+                            <div class="pre-p-address bold"><?= $preInfos['phone1'] ?></div>
+                            <div class="pre-p-address bold"><?= $preInfos['phone2'] ?></div>
+                        </div>
+                        <div class="pre-p-phones-2 pa">
+                            <div class="pre-p-address bold"><?= $preInfos['phone3'] ?></div>
+                            <div class="pre-p-address bold"><?= $preInfos['phone4'] ?></div>
+                        </div>
 
-                    <div class="pre-p-left-infos"></div>
-                </div>
+                        <div class="pre-p-left-infos"></div>
+                    </div>
+                <?php endif; ?>
 
             </div>
         </div>

@@ -137,14 +137,12 @@ class Prints extends App
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionPrint.php');
     }
 
-
-
-
-
     // show presctiption for print
     public function printItem($id)
     {
         $this->middleware(true, true, 'prescriptionPrint', true);
+
+        $prescrption_change = $this->db->select('SELECT * FROM settings')->fetch();
 
         $prescription = $this->db->select(
             'SELECT p.*, 
