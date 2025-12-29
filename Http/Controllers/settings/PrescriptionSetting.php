@@ -5,12 +5,11 @@ namespace App;
 class PrescriptionSetting extends App
 {
     // management of years page
-    public function prescriptionChange()
+    public function prescriptionSettings()
     {
-        dd('ok');
         $this->middleware(true, true, 'general', true);
-        $years = $this->db->select('SELECT * FROM years ORDER BY id DESC')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/settings/manage-years.php');
+        $prescrption_change = $this->db->select('SELECT * FROM settings')->fetch();
+        require_once(BASE_PATH . '/resources/views/app/settings/prescription-change.php');
     }
 
 
