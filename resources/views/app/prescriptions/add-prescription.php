@@ -179,12 +179,10 @@
 
                             </div>
 
-                            <input type="submit" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border" data-text="افزودن دارو به نسخه">
+                            <input type="submit" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
                             <!-- end select drug -->
 
                             <hr class="hr">
-                            <div id="prescriptionMessage" class="mt10"></div>
-
                 </form>
 
                 <!-- drug list and user infos CLOSE -->
@@ -256,19 +254,12 @@
                                         </div>
                                         <div class="inputs d-flex mb3">
                                             <div class="one">
-                                                <div class="label-form fs14"> سن مریض <?= _star ?></div>
+                                                <div class="label-form fs14"> سن مریض <?= _star ?>
+                                                    <span class="fs14"></span>
+                                                    <strong id="birthYear"></strong>
+                                                </div>
                                                 <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
                                                 <input type="hidden" name="birth_year" id="birthYearInput">
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <span class="fs14">سال تولد: </span>
-                                            <strong id="birthYear"></strong>
-                                        </div>
-                                        <div class="inputs d-flex">
-                                            <div class="one">
-                                                <div class="label-form fs14"> نام پدر </div>
-                                                <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
                                             </div>
                                         </div>
 
@@ -282,12 +273,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="inputs d-flex">
-                                            <div class="one">
-                                                <div class="label-form fs14"> شماره موبایل </div>
-                                                <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
-                                            </div>
-                                        </div>
                                         <!-- end patient infos -->
                                     <?php }
                                     ?>
@@ -321,6 +306,33 @@
                                     <div class="accordion-title color-orange">تشخیص داکتر</div>
                                     <div class="accordion-content-pre w100">
                                         <div class="child-accordioin w90d">
+                                            <div class="insert mt5">
+                                                <div class="one m-auto w97d mb3">
+                                                    <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- diagnosis -->
+                                    <div class="accordion-title color-orange">ثبت اطلاعات بیشتر مریض</div>
+                                    <div class="accordion-content-pre w100">
+                                        <div class="child-accordioin w90d">
+
+                                            <div class="inputs d-flex">
+                                                <div class="one">
+                                                    <div class="label-form fs14"> شماره موبایل </div>
+                                                    <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
+                                                </div>
+                                            </div>
+
+                                            <div class="inputs d-flex">
+                                                <div class="one">
+                                                    <div class="label-form fs14"> نام پدر </div>
+                                                    <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                                                </div>
+                                            </div>
+
                                             <div class="insert mt5">
                                                 <div class="one m-auto w97d mb3">
                                                     <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
@@ -520,8 +532,8 @@
             let currentPersianYear = getCurrentPersianYear();
             let birthYear = currentPersianYear - age;
 
-            birthYearTag.textContent = birthYear;
-            birthYearInputField.value = birthYear;
+            birthYearTag.textContent = 'سال تولد: ' +birthYear;
+            birthYearInputField.value = '' + birthYear;
 
             checkInputs();
         });
