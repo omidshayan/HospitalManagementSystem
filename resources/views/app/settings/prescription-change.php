@@ -83,7 +83,7 @@
                     <input
                         type="checkbox"
                         class="setting-toggle"
-                        data-url="change-status-count-drug"
+                        data-url="change-status-active-infos-pre"
                         data-target="#count_drug"
                         data-true-text="(فعال)"
                         data-false-text="(غیر فعال)"
