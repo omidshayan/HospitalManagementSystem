@@ -20,17 +20,21 @@ include_once('public/alerts/toastr.php');
             <div class="item-print p10" style="background-image: url('<?= $imagePath ?>');">
 
                 <!-- top pre infos  -->
-                <div class="pa w100">
-                    <div class="pre-p-title pa">
-                        <h1 class="pre-color pre-title mr10"><?= $preInfos['center_name'] ?></h1>
-                        <div class="pre-color bold pre-p-slogan pa"><?= $preInfos['slogan'] ?></div>
+                <?php
+                if ($prescrption_change['active_infos_pre'] == 1) : ?>
+                    <div class="pa w100">
+                        <div class="pre-p-title pa">
+                            <h1 class="pre-color pre-title mr10"><?= $preInfos['center_name'] ?></h1>
+                            <div class="pre-color bold pre-p-slogan pa"><?= $preInfos['slogan'] ?></div>
+                        </div>
+                        <div class="pa pre-p-logo">
+                            <?= $preInfos['image']
+                                ? '<img class="w130 pre-p-logo" src="' . asset('public/images/public/' . $preInfos['image']) . '" alt="logo" onclick="openModal(\'' . asset('public/images/public/' . $preInfos['image']) . '\')">'
+                                : ' - - - - ' ?>
+                        </div>
                     </div>
-                    <div class="pa pre-p-logo">
-                        <?= $preInfos['image']
-                            ? '<img class="w130 pre-p-logo" src="' . asset('public/images/public/' . $preInfos['image']) . '" alt="logo" onclick="openModal(\'' . asset('public/images/public/' . $preInfos['image']) . '\')">'
-                            : ' - - - - ' ?>
-                    </div>
-                </div>
+                <?php endif; ?>
+
 
                 <!-- patient infos -->
                 <div class="p-patient-infos">

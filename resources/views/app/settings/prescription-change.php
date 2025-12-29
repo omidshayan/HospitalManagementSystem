@@ -64,8 +64,8 @@
             <div class="allow-invoice d-flex justify-between mt15">
                 <span>
                     نمایش اطلاعات در نسخه
-                    <span id="count_drug" class="status-text <?= ($prescrption_change['count_drug'] == 1) ? 'color-green' : 'color-orange' ?>">
-                        (<?= ($prescrption_change['count_drug'] == 1) ? 'فعال' : 'غیر فعال' ?>)
+                    <span id="active_infos_pre" class="status-text <?= ($prescrption_change['active_infos_pre'] == 1) ? 'color-green' : 'color-orange' ?>">
+                        (<?= ($prescrption_change['active_infos_pre'] == 1) ? 'فعال' : 'غیر فعال' ?>)
                     </span>
                     <span class="tool-c">
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -84,12 +84,12 @@
                         type="checkbox"
                         class="setting-toggle"
                         data-url="change-status-active-infos-pre"
-                        data-target="#count_drug"
+                        data-target="#active_infos_pre"
                         data-true-text="(فعال)"
                         data-false-text="(غیر فعال)"
                         data-true-class="color-green"
                         data-false-class="color-orange"
-                        <?= ($prescrption_change['count_drug'] == 1) ? 'checked' : '' ?>>
+                        <?= ($prescrption_change['active_infos_pre'] == 1) ? 'checked' : '' ?>>
                     <span class="m-slider"></span>
                 </label>
             </div>

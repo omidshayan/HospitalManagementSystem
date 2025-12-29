@@ -13,7 +13,7 @@ class PrescriptionSetting extends App
     }
 
     // change status tests
-    public function changeStatusTestsShow()
+    public function changeStatusActiveInfosPre()
     {
         $this->middleware(true, true, 'general');
 

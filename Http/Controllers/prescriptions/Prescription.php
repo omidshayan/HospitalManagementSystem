@@ -266,6 +266,8 @@ class Prescription extends App
     {
         $this->middleware(true, true, 'prescriptionPrint', true);
 
+        $prescrption_change = $this->db->select('SELECT * FROM settings')->fetch();
+        
         $prescription = $this->db->select(
             'SELECT p.*, 
                 e.employee_name,
