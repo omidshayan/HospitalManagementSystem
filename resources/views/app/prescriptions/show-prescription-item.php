@@ -160,9 +160,9 @@ include_once('public/alerts/toastr.php');
 
     <?php endif; ?>
 
-    <!-- <div class="center mt10 btn w120 color bold p20" onclick="printReceipt()">
-        چاپ مجدد
-    </div> -->
+    <div class="center mt10 btn w120 color bold p20" onclick="printReceipt()">
+        چاپ نسخه
+    </div>
 
     <!-- print -->
     <script>
