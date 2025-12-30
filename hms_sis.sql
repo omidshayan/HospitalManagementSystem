@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 28, 2025 at 05:44 PM
+-- Generation Time: Dec 30, 2025 at 01:33 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `admissions` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `created_at` (`created_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admissions`
@@ -138,7 +138,8 @@ INSERT INTO `admissions` (`id`, `patient_id`, `user_name`, `age`, `doctor_id`, `
 (30, 179, 'asi', '14', 1, 3, NULL, 2, NULL, NULL, NULL, NULL, 2, 'کاظم حسینی', '2025-12-26 16:20:18', '2025-12-26 16:49:42'),
 (31, 183, 'غلام رضا احمدی', '25', 1, 4, NULL, 2, NULL, NULL, NULL, NULL, 2, 'کاظم حسینی', '2025-12-26 16:59:13', '2025-12-26 17:23:01'),
 (32, 185, 'جمشید رضایی', '40', 1, 5, NULL, 2, NULL, NULL, NULL, NULL, 2, 'کاظم حسینی', '2025-12-26 17:30:14', '2025-12-26 17:30:26'),
-(33, 151, 'sadfsdf', '22', 1, 1, NULL, 2, NULL, NULL, NULL, NULL, 2, 'کاظم حسینی', '2025-12-27 01:18:58', '2025-12-27 01:19:08');
+(33, 151, 'sadfsdf', '22', 1, 1, NULL, 2, NULL, NULL, NULL, NULL, 2, 'کاظم حسینی', '2025-12-27 01:18:58', '2025-12-27 01:19:08'),
+(34, 188, 'احمد حسینی aaa', '34', 1, 1, NULL, 2, NULL, NULL, NULL, NULL, 2, 'کاظم حسینی', '2025-12-30 01:43:39', '2025-12-30 01:53:58');
 
 -- --------------------------------------------------------
 
@@ -232,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `csrf_token_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `csrf_token_logs`
@@ -328,7 +329,14 @@ INSERT INTO `csrf_token_logs` (`id`, `message`, `ip_address`, `created_at`, `upd
 (92, 'Invalid or missing CSRF token.', '::1', '2025-12-26 17:34:34', NULL),
 (93, 'Invalid or missing CSRF token.', '::1', '2025-12-26 17:35:31', NULL),
 (94, 'Invalid or missing CSRF token.', '::1', '2025-12-26 21:14:10', NULL),
-(95, 'Invalid or missing CSRF token.', '::1', '2025-12-26 23:06:09', NULL);
+(95, 'Invalid or missing CSRF token.', '::1', '2025-12-26 23:06:09', NULL),
+(96, 'Invalid or missing CSRF token.', '::1', '2025-12-29 04:06:54', NULL),
+(97, 'Invalid or missing CSRF token.', '::1', '2025-12-29 04:07:23', NULL),
+(98, 'Invalid or missing CSRF token.', '::1', '2025-12-29 04:08:30', NULL),
+(99, 'Invalid or missing CSRF token.', '::1', '2025-12-29 21:04:32', NULL),
+(100, 'Invalid or missing CSRF token.', '::1', '2025-12-29 21:04:35', NULL),
+(101, 'Invalid or missing CSRF token.', '::1', '2025-12-29 21:04:44', NULL),
+(102, 'Invalid or missing CSRF token.', '::1', '2025-12-29 21:04:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -853,7 +861,7 @@ CREATE TABLE IF NOT EXISTS `not_access_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `not_access_logs`
@@ -868,7 +876,8 @@ INSERT INTO `not_access_logs` (`id`, `user_id`, `section_name`, `page_address`, 
 (80, 1, 'students', '/HospitalManagementSystem/search-em', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 1, '2025-12-24 21:26:02', NULL),
 (81, 1, 'students', '/HospitalManagementSystem/search-em', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 1, '2025-12-24 21:28:16', NULL),
 (82, 1, 'students', '/HospitalManagementSystem/search-em', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 1, '2025-12-24 21:28:19', NULL),
-(83, 1, 'departments', '/HospitalManagementSystem/departments', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 1, '2025-12-24 23:34:18', NULL);
+(83, 1, 'departments', '/HospitalManagementSystem/departments', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 1, '2025-12-24 23:34:18', NULL),
+(84, 1, 'admissions', '/HospitalManagementSystem/admissions', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 1, '2025-12-30 01:38:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -1076,7 +1085,7 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
   PRIMARY KEY (`id`),
   KEY `patient_id` (`patient_id`),
   KEY `doctor_id` (`doctor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=238 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prescriptions`
@@ -1147,26 +1156,26 @@ INSERT INTO `prescriptions` (`id`, `patient_id`, `visit_id`, `patient_name`, `do
 (79, 75, 0, 'فهیم', 1, NULL, '1384', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:33:18', '2025-12-12 16:34:08'),
 (80, 76, 0, 'احمد', 154, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'ادمین دمو', '2025-12-12 22:56:13', '2025-12-13 22:56:05'),
 (174, 126, 0, 'علی رضایی', 2, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'احمد هاشمی', '2025-12-17 02:11:58', '2025-12-18 01:53:17'),
-(175, 127, 0, 'dsfsdfd', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-21 19:24:32', '2025-12-22 00:59:33'),
-(176, 128, 0, 'احمد حسینی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:07:16', '2025-12-22 01:08:58'),
-(177, 129, 0, 'sadfdsfd', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:11:11', '2025-12-22 01:11:15'),
-(178, 130, 0, 'dsfsdf3', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:11:32', '2025-12-22 01:11:34'),
-(179, 131, 0, '333', 1, NULL, '1402', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:12:11', '2025-12-22 01:12:14'),
-(180, 132, 0, '33', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:12:33', '2025-12-22 01:12:35'),
-(181, 133, 0, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:15:33', '2025-12-22 01:15:37'),
-(182, 134, 0, '3334', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:16:24', '2025-12-22 01:16:27'),
-(183, 135, 0, 'sdfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:16:48', '2025-12-22 01:16:52'),
-(184, 136, 0, 'sdfdsf', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:17:09', '2025-12-22 01:17:12'),
-(185, 137, 0, 'dsfsdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:20:47', '2025-12-22 01:20:49'),
-(186, 138, 0, 'afsdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:21:57', '2025-12-22 01:22:00'),
-(187, 133, 0, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:29:37', '2025-12-22 01:29:40'),
-(188, 139, 0, 'dfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:30:39', '2025-12-22 01:30:41'),
-(189, 135, 0, 'sdfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 01:31:23', '2025-12-22 01:31:25'),
-(190, 140, 0, 'sadfsadf', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 02:31:49', '2025-12-22 02:31:52'),
-(191, 141, 0, 'trytry', 1, NULL, '1349', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 02:42:21', '2025-12-22 02:43:48'),
-(192, 128, 0, 'احمد حسینی', 1, NULL, '1371', 'باید ازمایش دهد', '33', '33', '4', NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 02:44:31', '2025-12-22 02:45:46'),
-(193, 142, 0, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 02:56:40', '2025-12-22 02:57:02'),
-(197, 143, 0, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 03:22:18', '2025-12-22 03:23:06'),
+(175, 127, 0, 'dsfsdfd', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-21 19:24:32', '2025-12-29 04:15:26'),
+(176, 128, 0, 'احمد حسینی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:07:16', '2025-12-29 04:15:30'),
+(177, 129, 0, 'sadfdsfd', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:11:11', '2025-12-30 01:23:54'),
+(178, 130, 0, 'dsfsdf3', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:11:32', '2025-12-30 03:21:05'),
+(179, 131, 0, '333', 1, NULL, '1402', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:12:11', '2025-12-30 03:21:09'),
+(180, 132, 0, '33', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:12:33', '2025-12-30 03:21:16'),
+(181, 133, 0, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:15:33', '2025-12-30 03:21:18'),
+(182, 134, 0, '3334', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:16:24', '2025-12-30 03:23:15'),
+(183, 135, 0, 'sdfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:16:48', '2025-12-30 03:23:19'),
+(184, 136, 0, 'sdfdsf', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:17:09', '2025-12-30 03:23:25'),
+(185, 137, 0, 'dsfsdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:20:47', '2025-12-30 03:23:28'),
+(186, 138, 0, 'afsdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:21:57', '2025-12-30 03:23:32'),
+(187, 133, 0, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:29:37', '2025-12-30 03:23:34'),
+(188, 139, 0, 'dfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:30:39', '2025-12-30 03:23:45'),
+(189, 135, 0, 'sdfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:31:23', '2025-12-30 03:25:26'),
+(190, 140, 0, 'sadfsadf', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:31:49', '2025-12-30 03:26:28'),
+(191, 141, 0, 'trytry', 1, NULL, '1349', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:42:21', '2025-12-30 03:26:36'),
+(192, 128, 0, 'احمد حسینی', 1, NULL, '1371', 'باید ازمایش دهد', '33', '33', '4', NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:44:31', '2025-12-30 03:26:40'),
+(193, 142, 0, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:56:40', '2025-12-30 03:26:47'),
+(197, 143, 0, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:22:18', '2025-12-30 03:27:33'),
 (200, 144, 0, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 03:33:43', '2025-12-22 03:34:33'),
 (202, 145, 0, 'احمد حسینی', 1, NULL, '1381', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 03:40:18', '2025-12-22 03:41:17'),
 (203, 146, 0, 'محمد رضا احمدی', 1, NULL, '1349', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 03:54:32', '2025-12-22 03:54:48'),
@@ -1200,7 +1209,16 @@ INSERT INTO `prescriptions` (`id`, `patient_id`, `visit_id`, `patient_name`, `do
 (231, 185, NULL, 'fffffff', 1, 32, '1364', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, 1, 2, 'کاظم حسینی', '2025-12-26 17:30:25', '2025-12-27 01:57:21'),
 (232, 172, NULL, 'احمد حسینی', 1, NULL, '1371', 'f', '1.5', '22', NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 22:56:23', '2025-12-26 23:09:28'),
 (236, 151, NULL, 'sadfsdf', 1, 33, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-27 01:10:04', '2025-12-27 01:19:08'),
-(237, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 1, 'کاظم حسینی', '2025-12-28 04:09:30', '2025-12-28 04:09:36');
+(238, 187, NULL, 'ashe', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-29 21:06:02', '2025-12-29 21:09:13'),
+(239, 188, NULL, 'احمد حسینی aaa', 1, NULL, '1370', 'asdaf asdf dsf', 'a', '3', '33', NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-29 21:09:40', '2025-12-29 21:10:02'),
+(241, 189, NULL, 'woma', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-29 22:37:35', '2025-12-30 00:49:50'),
+(242, 190, NULL, 'ff', 1, NULL, '1402', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, 1, 2, 'کاظم حسینی', '2025-12-30 00:55:56', '2025-12-30 01:03:02'),
+(243, 188, NULL, 'احمد حسینی aaa', 1, 34, '1370', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 01:53:56', '2025-12-30 01:53:58'),
+(244, 191, NULL, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 03:17:49', '2025-12-30 03:18:11'),
+(251, 192, NULL, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:35:02', '2025-12-30 04:36:16'),
+(252, 192, NULL, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:42:58', '2025-12-30 04:44:05'),
+(255, 192, NULL, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:53:04', '2025-12-30 04:54:20'),
+(257, 192, NULL, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:58:11', '2025-12-30 04:59:09');
 
 -- --------------------------------------------------------
 
@@ -1226,7 +1244,7 @@ CREATE TABLE IF NOT EXISTS `prescription_items` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `drug_name` (`drug_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=420 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=469 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prescription_items`
@@ -1610,9 +1628,29 @@ INSERT INTO `prescription_items` (`id`, `drug_name`, `prescription_id`, `drug_id
 (413, 'Bisacodyl', 232, 107, NULL, NULL, NULL, NULL, 'هندی', '', 1, 1, '2025-12-26 23:05:23', NULL),
 (415, 'Alteplase', 236, 72, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2025-12-27 01:10:04', NULL),
 (416, 'Glucose 10%', 231, 33, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-27 01:54:22', NULL),
-(417, 'Amlodipine', 237, 7, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-28 04:09:30', NULL),
 (418, 'Alteplase', 237, 72, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-28 04:09:33', NULL),
-(419, 'amo 500ml pk', 237, 128, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-28 04:09:36', NULL);
+(423, 'amo sadlfjsadf asdf 250ml', 237, 123, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 04:23:34', NULL),
+(424, 'Amlodipine', 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 21:00:06', NULL),
+(425, 'amo 500ml ir', 0, 129, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 21:01:42', NULL),
+(426, 'Alteplase', 0, 72, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 21:02:21', NULL),
+(427, 'Amlodipine', 238, 7, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 21:06:02', NULL),
+(428, 'amo 500ml ir', 238, 129, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 21:06:08', NULL),
+(429, 'amo 500ml pk', 239, 128, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 21:09:40', NULL),
+(430, 'Amphotericin B', 239, 114, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 21:09:42', NULL),
+(431, 'Amoxicillin', 239, 3, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 21:09:45', NULL),
+(440, 'Alteplase', 241, 72, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 22:37:35', NULL),
+(441, 'Amlodipine', 241, 7, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2025-12-29 22:37:40', NULL),
+(442, 'Amiloride', 242, 53, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-30 00:55:56', NULL),
+(443, 'amo 250ml pk', 243, 130, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-30 01:53:56', NULL),
+(444, 'Amlodipine', 244, 7, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-30 03:17:49', NULL),
+(455, 'Amlodipine', 251, 7, NULL, NULL, NULL, NULL, NULL, '', 5, 1, '2025-12-30 04:35:02', NULL),
+(456, 'Budesonide', 251, 90, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-30 04:35:10', NULL),
+(457, 'Amlodipine', 252, 7, NULL, NULL, NULL, NULL, NULL, '', 5, 1, '2025-12-30 04:42:58', NULL),
+(458, 'Budesonide', 252, 90, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-30 04:43:05', NULL),
+(463, 'Amlodipine', 255, 7, NULL, NULL, NULL, NULL, NULL, '', 5, 1, '2025-12-30 04:53:04', NULL),
+(464, 'Cromolyn Sodium', 255, 96, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-30 04:53:11', NULL),
+(467, 'Amlodipine', 257, 7, NULL, NULL, NULL, NULL, NULL, '', 5, 1, '2025-12-30 04:58:11', NULL),
+(468, 'Bisoprolol', 257, 46, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2025-12-30 04:58:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -1646,7 +1684,7 @@ CREATE TABLE IF NOT EXISTS `prescription_settings` (
 --
 
 INSERT INTO `prescription_settings` (`id`, `branch_id`, `center_name`, `slogan`, `phone1`, `phone2`, `phone3`, `phone4`, `address`, `website`, `email`, `image`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(1, 20, 'نام کلینیک شما', 'متن کوتاه برای شعار مرکز', '0795444444', '0700999999', '0799999999', '0799999999', 'آدرس معاینه خانه، کلینیک یا شفاخانه شما', 'www.demo.com', 'demo@info.com', '2025-12-25-16-38-19_694d29339a4cf.jpg', 1, 'کاظم حسینی', '2025-11-13 19:12:30', '2025-12-25 16:38:19');
+(1, 20, 'نام کلینیک شما', 'متن کوتاه برای شعار مرکز', '0795444444', '0700999999', '0799999999', '0799999999', 'آدرس معاینه خانه، کلینیک یا شفاخانه شما', 'www.demo.com', 'demo@info.com', '2025-12-30-03-42-26_69530ada642f1.png', 1, 'کاظم حسینی', '2025-11-13 19:12:30', '2025-12-30 03:42:26');
 
 -- --------------------------------------------------------
 
@@ -1859,6 +1897,7 @@ DROP TABLE IF EXISTS `settings`;
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int NOT NULL AUTO_INCREMENT,
   `branch_id` int NOT NULL,
+  `image` varchar(128) DEFAULT NULL,
   `single_print` tinyint NOT NULL DEFAULT '1',
   `admission` tinyint DEFAULT '1',
   `count_drug` tinyint NOT NULL DEFAULT '1',
@@ -1868,7 +1907,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `description` tinyint NOT NULL DEFAULT '1',
   `intake_instructions` tinyint NOT NULL DEFAULT '1',
   `tests` tinyint NOT NULL DEFAULT '1',
-  `warehouse` tinyint NOT NULL DEFAULT '1',
+  `active_infos_pre` tinyint NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -1878,8 +1917,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `branch_id`, `single_print`, `admission`, `count_drug`, `intake_time`, `dosage`, `company`, `description`, `intake_instructions`, `tests`, `warehouse`, `created_at`, `updated_at`) VALUES
-(1, 20, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, '2025-04-01 13:30:36', '2025-12-28 17:01:19');
+INSERT INTO `settings` (`id`, `branch_id`, `image`, `single_print`, `admission`, `count_drug`, `intake_time`, `dosage`, `company`, `description`, `intake_instructions`, `tests`, `active_infos_pre`, `created_at`, `updated_at`) VALUES
+(1, 20, '2025-12-30-04-38-07_695317e7383e6.jpg', 1, 2, 1, 2, 2, 1, 1, 2, 1, 2, '2025-04-01 13:30:36', '2025-12-30 05:02:56');
 
 -- --------------------------------------------------------
 
@@ -1968,7 +2007,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `users`
@@ -2061,7 +2100,14 @@ INSERT INTO `users` (`id`, `user_code`, `user_name`, `password`, `father_name`, 
 (181, NULL, 'asi', NULL, '', '', NULL, 'آقا', 1385, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-26 16:50:38', NULL),
 (182, NULL, 'asi', NULL, '', '', NULL, 'آقا', 14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-26 16:54:35', NULL),
 (184, NULL, 'غلام رضا احمدی', NULL, NULL, NULL, NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', '2025-12-26 17:23:33', '2025-12-26 21:13:51'),
-(185, NULL, 'fffffff', NULL, NULL, NULL, NULL, 'آقا', 1364, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'herat', 'desc', NULL, 1, 'کاظم حسینی', '2025-12-26 17:29:52', '2025-12-27 01:57:21');
+(185, NULL, 'fffffff', NULL, NULL, NULL, NULL, 'آقا', 1364, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'herat', 'desc', NULL, 1, 'کاظم حسینی', '2025-12-26 17:29:52', '2025-12-27 01:57:21'),
+(186, NULL, 'mola mand', NULL, '', '', NULL, 'آقا', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-29 04:23:47', NULL),
+(187, NULL, 'ashe', NULL, '', '', NULL, 'آقا', 1382, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-29 21:09:13', NULL),
+(188, NULL, 'احمد حسینی aaa', NULL, '', '', NULL, 'آقا', 1370, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-29 21:10:02', NULL),
+(189, NULL, 'woma', NULL, '', '', NULL, 'خانم', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-30 00:49:50', NULL),
+(190, NULL, 'ff', NULL, '', '', NULL, 'خانم', 1402, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-30 00:58:28', NULL),
+(191, NULL, 'احمد حسینی', NULL, '', '', NULL, 'آقا', 1401, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-30 03:18:11', NULL),
+(192, NULL, 'ali', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-30 04:36:16', NULL);
 
 -- --------------------------------------------------------
 
