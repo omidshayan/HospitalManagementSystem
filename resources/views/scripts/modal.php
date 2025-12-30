@@ -461,5 +461,7 @@
     33%  { content: ' ..'; }
     66%  { content: ' ...'; }
 }
-
+.wwww{
+    width: 350px !important;
+}
 </style>

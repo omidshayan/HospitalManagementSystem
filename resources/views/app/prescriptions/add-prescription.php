@@ -47,7 +47,7 @@
                                     autofocus
                                     data-search-url="<?= url('search-product-purchase') ?>" />
                             </div>
-                            <ul class="search-back d-none text-left t84 p5" id="backResponse">
+                            <ul class="search-back d-none text-left t84 p5 wwww" id="backResponse">
                                 <li class="res search-item text-left color" role="option"></li>
                             </ul>
                         </div>

@@ -63,6 +63,10 @@ class PrescriptionSetting extends App
             'image' => $request['image'],
         ];
 
+        if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
+            $_SESSION['settings'] = [];
+        }
+
         $this->db->update('settings', $infos['id'], array_keys($data), $data);
 
         $this->flashMessage('success', 'اطلاعات با موفقیت ویرایش شد.');
