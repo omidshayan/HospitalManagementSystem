@@ -75,7 +75,7 @@
           </li>
 
           <!-- print -->
-          <!-- <?php if ($this->hasAccess('prescriptionPrint')): ?>
+          <?php if ($this->hasAccess('prescriptionPrint')): ?>
             <li class="sidebar-menu">
               <a href="<?= url('prescription-print') ?>" class="d-flex align-center justify-between">
                 <span>
@@ -86,10 +86,10 @@
                 </span>
               </a>
             </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
 
           <!-- admissions -->
-          <!-- <?php if (
+          <?php if (
             $this->hasAccess('general') &&
             isset($_SESSION['settings']['admission']) &&
             $_SESSION['settings']['admission'] == 1
@@ -120,7 +120,7 @@
                 <?php endif; ?>
               </ul>
             </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
 
           <!-- prescriptions -->
           <?php if ($this->hasAccess('parentPrescription')): ?>
@@ -153,7 +153,7 @@
           <?php endif; ?>
 
           <!-- departments -->
-          <!-- <?php if ($this->hasAccess('parentDepartment')): ?>
+          <?php if ($this->hasAccess('parentDepartment')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -180,7 +180,7 @@
                 <?php endif; ?>
               </ul>
             </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
 
           <!-- funds -->
           <!-- <?php if ($this->hasAccess('general')): ?>
@@ -213,7 +213,7 @@
           <?php endif; ?> -->
 
           <!-- employee salary -->
-          <!-- <?php if ($this->hasAccess('general')): ?>
+          <?php if ($this->hasAccess('general')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -240,7 +240,7 @@
                 <?php endif; ?>
               </ul>
             </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
 
           <!-- users -->
           <?php if ($this->hasAccess('parentPatients')): ?>
@@ -273,7 +273,7 @@
           <?php endif; ?>
 
           <!-- employees -->
-          <!-- <?php if ($this->hasAccess('parentEmployee')): ?>
+          <?php if ($this->hasAccess('parentEmployee')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -306,7 +306,7 @@
                 <?php endif; ?>
               </ul>
             </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
 
           <!-- Drug -->
           <?php if ($this->hasAccess('parentDrug')): ?>
@@ -354,7 +354,7 @@
             </li>
           <?php endif; ?>
 
-          <!-- <?php if ($this->hasAccess('general')): ?>
+          <?php if ($this->hasAccess('general')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -387,7 +387,7 @@
                 <?php endif; ?>
               </ul>
             </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
 
           <!-- manage sections -->
           <?php if ($this->hasAccess('parentSetting')): ?>
