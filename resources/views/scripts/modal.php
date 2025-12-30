@@ -464,4 +464,20 @@
 .wwww{
     width: 350px !important;
 }
+
+@media screen and (max-width: 972px) {
+    .pre-main{
+        display: block;
+    }
+    .pre-body-right {
+        width: 100% !important;
+    }
+    .pre-body-left {
+        width: 100% !important;
+    }
+    .patient-container{
+        width: 100% !important;
+    }
+}
+
 </style>

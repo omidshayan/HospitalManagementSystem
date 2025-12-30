@@ -30,6 +30,7 @@
 
                 <!-- modal data -->
                 <form id="prescription_form" action="<?= url('drug-prescription-store') ?>" method="POST">
+
                     <!-- select deug -->
                     <div class="inputs-pre">
 
@@ -464,7 +465,6 @@
                 ?>
             </div>
         </div>
-
 
     </div>
 
