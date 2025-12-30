@@ -2252,3 +2252,12 @@ box-shadow: 0px 10px 14px -9px rgba(66, 68, 90, 1);}
         width: 100% !important;
 }
 }
+@media screen and (max-width: 972px) {
+    .search-back{
+        font-size: 15px;
+    }
+    .edit-btn{
+        font-size: 11px !important;
+        width: 40px !important;
+    }
+}

@@ -131,7 +131,7 @@ class Login extends Auth
                 exit();
             }
 
-            if (!isset($_SESSION['settidngs']) || !is_array($_SESSION['settings'])) {
+            if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
                 $_SESSION['settings'] = $db->select('SELECT * FROM settings LIMIT 1')->fetch();
             }
 
