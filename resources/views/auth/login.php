@@ -1,5 +1,4 @@
 <?php
-$title = 'ورود به سیستم';
 include_once('resources/views/auth/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/error.php'); ?>
