@@ -675,39 +675,39 @@
 
             navItems.forEach((item, index) => {
                 item.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowRight') {
+
+                    // حرکت چپ و راست
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
                         e.preventDefault();
-                        if (isRTL) {
-                            let prevIndex = (index - 1 + navItems.length) % navItems.length;
-                            navItems[prevIndex].focus();
+
+                        let nextIndex;
+                        if (e.key === 'ArrowRight') {
+                            nextIndex = isRTL ?
+                                (index - 1 + navItems.length) % navItems.length :
+                                (index + 1) % navItems.length;
                         } else {
-                            let nextIndex = (index + 1) % navItems.length;
-                            navItems[nextIndex].focus();
+                            nextIndex = isRTL ?
+                                (index + 1) % navItems.length :
+                                (index - 1 + navItems.length) % navItems.length;
                         }
-                    } else if (e.key === 'ArrowLeft') {
-                        e.preventDefault();
-                        if (isRTL) {
-                            let nextIndex = (index + 1) % navItems.length;
-                            navItems[nextIndex].focus();
-                        } else {
-                            let prevIndex = (index - 1 + navItems.length) % navItems.length;
-                            navItems[prevIndex].focus();
-                        }
-                    } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-                        // باز کردن select در صورت وجود
-                        if (item.tagName.toLowerCase() === 'select') {
-                            e.preventDefault();
-                            // تریگر باز شدن dropdown
-                            const event = new MouseEvent('mousedown', {
-                                bubbles: true
-                            });
-                            item.dispatchEvent(event);
-                        }
+
+                        navItems[nextIndex].focus();
+                    }
+
+                    // باز شدن select با ArrowDown
+                    if (
+                        item.tagName.toLowerCase() === 'select' &&
+                        e.key === 'ArrowDown'
+                    ) {
+                        // اجازه بده رفتار پیش‌فرض اجرا شود
+                        // فقط جلوی جابجایی بین navItems را بگیر
+                        return;
                     }
                 });
             });
         });
     </script>
+
 
     <!-- btn move -->
     <script>
