@@ -163,6 +163,7 @@ class Prescription extends App
             $prescription_items = [
                 'prescription_id' => $prescription_id,
                 'drug_id' => $request['drug_id'],
+                'drug_type' => $request['drug_type'],
                 'drug_name' => $request['drug_name'],
                 'drug_count' => $request['drug_count'] ?? null,
                 'interval_time' => $request['interval_time'] ?? null,

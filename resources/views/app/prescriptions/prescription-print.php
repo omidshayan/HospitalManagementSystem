@@ -65,7 +65,7 @@
                                             <td><?= $item['interval_time'] ?></td>
                                             <td><?= $this->convertEnNumber($item['drug_count']) ?></td>
                                             <td class="p5 drug-name-en"> <?= $item['drug_name'] ?></td>
-                                            <td class="p5 drug-name-en"> <?= $item['drug_type'] ?></td>
+                                            <td class="p5"> <?= $item['drug_type'] ?></td>
                                         </tr>
                                     </div>
 
