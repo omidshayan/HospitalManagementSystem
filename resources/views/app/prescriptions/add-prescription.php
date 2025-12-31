@@ -53,6 +53,23 @@
                             </ul>
                         </div>
 
+                        <!-- drug type -->
+                        <div class="input-pre count-pre input-wrapper">
+                            <div class="label-form mb5 fs14 text-left"> نوع دارو
+                                <a href="javascript:void(0)" class="close-btn toggle-item"
+                                    data-url="change-status-count-drug"
+                                    data-target="#count_drug">&times;
+                                </a>
+                            </div>
+                            <select name="drug_count" class="border-input nav-item" required>
+                                <option selected disabled>نوع دارو</option>
+                                <option>Vial</option>
+                                <option>T</option>
+                                <option>s</option>
+                                <option>Sp</option>
+                            </select>
+                        </div>
+
                         <!-- count -->
                         <?php
                         if ($count_drugActive) { ?>
