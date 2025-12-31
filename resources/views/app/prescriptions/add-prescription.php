@@ -61,7 +61,7 @@
                                     data-target="#count_drug">&times;
                                 </a>
                             </div>
-                            <select name="drug_count" class="border-input nav-item" required>
+                            <select name="drug_type" class="border-input nav-item" required>
                                 <option selected disabled>نوع دارو</option>
                                 <option>Vial</option>
                                 <option>T</option>
@@ -103,7 +103,7 @@
                                     </a>
                                 </div>
                                 <select name="company" class="other-select-p-item border-input nav-item" required>
-                                    <option selected disabled>نوعیت دارو</option>
+                                    <option selected disabled>تولید کننده</option>
                                     <?php
                                     foreach ($companies as $company) { ?>
                                         <option value="<?= $company['name'] ?>"><?= $company['name'] ?></option>
