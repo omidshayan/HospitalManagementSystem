@@ -195,6 +195,81 @@
                             <?php }
                             ?>
 
+<div style="position:relative; width:300px;">
+    <textarea id="msg" rows="4" style="width:100%;"></textarea>
+    <ul id="suggestions"></ul>
+</div>
+
+<style>
+#suggestions {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    max-height: 120px;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+#suggestions li {
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+#suggestions li:hover {
+    background: #f0f0f0;
+}
+</style>
+
+
+<script>
+const textarea = document.getElementById('msg');
+const list = document.getElementById('suggestions');
+
+const items = [
+    'سلام',
+    'خداحافظ',
+    'لطفاً تماس بگیرید',
+    'پیام شما دریافت شد',
+    'با تشکر'
+];
+
+textarea.addEventListener('input', () => {
+    const value = textarea.value.trim();
+
+    list.innerHTML = '';
+
+    if (value.length === 0) {
+        list.style.display = 'none';
+        return;
+    }
+
+    items.forEach(item => {
+        if (item.startsWith(value)) {
+            const li = document.createElement('li');
+            li.textContent = item;
+
+            li.addEventListener('mousedown', () => {
+                textarea.value = item;
+                list.style.display = 'none';
+                textarea.focus();
+            });
+
+            list.appendChild(li);
+        }
+    });
+
+    list.style.display = list.children.length ? 'block' : 'none';
+});
+</script>
+
+
                             </div>
 
                             <input type="submit" value="افزودن دارو به نسخه" class="add-drug-pre bold cursor-p btn-pre border">
