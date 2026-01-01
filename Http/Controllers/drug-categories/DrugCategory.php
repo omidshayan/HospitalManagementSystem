@@ -2,10 +2,6 @@
 
 namespace App;
 
-require_once 'Http/Controllers/App.php';
-
-use database\DataBase;
-
 class DrugCategory extends App
 {
     //  categoriesDrugs page
