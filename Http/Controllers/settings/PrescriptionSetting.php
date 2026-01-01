@@ -44,7 +44,6 @@ class PrescriptionSetting extends App
         $this->send_json_response(true, _success, $newStatus);
     }
 
-
     // prescription settings store
     public function prescriptionChangeStore($request)
     {

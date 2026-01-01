@@ -4,7 +4,6 @@ namespace App;
 
 class Setting extends App
 {
-
     // management of years page
     public function manageYears()
     {

@@ -4,7 +4,6 @@ namespace App;
 
 class Section extends App
 {
-
     // Section page
     public function index()
     {
