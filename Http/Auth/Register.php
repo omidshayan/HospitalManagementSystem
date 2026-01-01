@@ -12,7 +12,6 @@ use Auth\Auth;
 
 use database\DataBase;
 
-
 class Register extends Auth
 {
     use SendMail;
