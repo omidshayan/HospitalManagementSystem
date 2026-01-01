@@ -35,16 +35,6 @@ class User extends App
         $this->flashMessage('success', _success);
     }
 
-    // show users
-    // public function showUsers()
-    // {
-    //     dd('ok');
-    //     $this->middleware(true, true, 'showPatients');
-    //     $users = $this->db->select('SELECT * FROM users ORDER BY id DESC')->fetchAll();
-    //     require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
-    //     exit();
-    // }
-
     // edit user page
     public function editUser($id)
     {
@@ -131,9 +121,6 @@ class User extends App
         $this->db->update('users', $user['id'], ['status'], [$newState]);
         $this->send_json_response(true, _success, $newState);
     }
-
-
-
 
 
     // search page
