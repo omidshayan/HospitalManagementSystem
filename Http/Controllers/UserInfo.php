@@ -9,7 +9,6 @@ use PDO;
 
 class UserInfo extends App
 {
-
 	private static function get_user_agent()
 	{
 		return  $_SERVER['HTTP_USER_AGENT'];
@@ -76,7 +75,6 @@ class UserInfo extends App
 
 	public static function  get_browser()
 	{
-
 		$user_agent = self::get_user_agent();
 
 		$browser        =   "Unknown Browser";
@@ -108,7 +106,6 @@ class UserInfo extends App
 
 	public static function  get_device()
 	{
-
 		$tablet_browser = 0;
 		$mobile_browser = 0;
 
