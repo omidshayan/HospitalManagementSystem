@@ -4,8 +4,6 @@ namespace App;
 
 require_once 'Http/Controllers/App.php';
 
-use database\DataBase;
-
 class ExpensesCategory extends App
 {
     //  expenses_categories page

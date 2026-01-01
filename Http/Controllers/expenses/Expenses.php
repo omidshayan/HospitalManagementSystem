@@ -4,11 +4,8 @@ namespace App;
 
 require_once 'Http/Controllers/App.php';
 
-use database\DataBase;
-
 class Expenses extends App
 {
-
     // add expense page
     public function addExpense()
     {
