@@ -4,13 +4,11 @@ namespace App;
 
 require_once 'Http/Controllers/App.php';
 
-
 use Models\Calendar\Calendar;
 
 class Branches extends App
 {
     private $calendar;
-
     public function __construct()
     {
         parent::__construct();
