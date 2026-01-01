@@ -1,14 +1,6 @@
 <?php
 $title = 'نسخه دمو پایان یافته است';
-$keyWords = '';
 $description = 'Not Access This Page';
-$subject = '';
-$short_link = '';
-$og_title = '';
-$og_image = '';
-$op_short_link = '';
-$t_title = '';
-$t_image = '';
 require_once(BASE_PATH . '/resources/views/layouts/header.php') ?>
 
 <!-- contetn start -->
