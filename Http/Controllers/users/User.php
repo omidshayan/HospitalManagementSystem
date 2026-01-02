@@ -4,8 +4,6 @@ namespace App;
 
 require_once 'Http/Controllers/App.php';
 
-use Models\Invoice\Invoice;
-
 class User extends App
 {
     // add User page
@@ -121,7 +119,6 @@ class User extends App
         $this->db->update('users', $user['id'], ['status'], [$newState]);
         $this->send_json_response(true, _success, $newState);
     }
-
 
     // search page
     public function searchPage()
