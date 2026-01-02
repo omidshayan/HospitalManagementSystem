@@ -2,6 +2,8 @@
 
 namespace App;
 
+require_once 'Http/Controllers/App.php';
+
 class Dashboard extends App
 {
     public function index()
