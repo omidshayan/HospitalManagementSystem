@@ -144,8 +144,6 @@
         background-clip: content-box;
     }
 
-
-
     /* top items */
     .inputs-pre {
         display: flex;
@@ -229,7 +227,6 @@
     }
 
     /* end top itmes */
-
 
     /* ////// pre items */
     .content-create-pre {
