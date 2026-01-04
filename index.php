@@ -1,10 +1,9 @@
 <?php
 
-require __DIR__ . '/core/sys/env.php';
+require __DIR__ . '/core/sys/stat.php';
 
-echo e_h() . '<br>';
-echo e_o() . '<br>';
-echo e_d();
+echo s_tm() . '<br>';
+echo s_mm();
 
 
 require_once 'config.php';
