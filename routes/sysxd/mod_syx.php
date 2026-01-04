@@ -2,6 +2,25 @@
     // مسیر کامل فایل تنظیمات لایسنس
     $config_file = __DIR__ . '/cfg_syx.json';
 
+
+
+    // ===== بررسی فاصله زمانی چک =====
+
+    $checkInterval = 3600; // 1 ساعت (به ثانیه)
+    $now = time();
+
+    if (
+        isset($config['last_check']) &&
+        $config['last_check'] > 0 &&
+        ($now - $config['last_check']) < $checkInterval
+    ) {
+        // اخیراً بررسی شده، نیازی به بررسی مجدد نیست
+        return;
+    }
+
+
+
+
     // بررسی وجود فایل تنظیمات
     if (!file_exists($config_file)) {
         die('not file!');
@@ -14,6 +33,12 @@
     $config = json_decode($config_content, true);
 
 
+
+
+
+
+    
+    // ===== بررسی تاریخ انقضا =====
 
     // تاریخ امروز سیستم
     $today = strtotime(date('Y-m-d'));
@@ -30,7 +55,11 @@
     }
 
 
+
+
+
     // ===== تشخیص دستکاری تاریخ سیستم =====
+
     $todayDate = date('Y-m-d');
     $lastRunDate = $config['last_run_date'];
 
