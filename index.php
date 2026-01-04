@@ -1,5 +1,6 @@
 <?php
 
+// NOTE این قسمت باید چند بخش دیگه تکرار بشه تا امینت داشته باشه
 $core_path = __DIR__ . '/core/sys/';
 $required_files = ['env.php', 'map.php', 'stat.php'];
 
