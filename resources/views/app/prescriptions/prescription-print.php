@@ -80,13 +80,12 @@
                     <div class="p-left-infos border-r">
 
                         <!-- doctor infos -->
-                        <?php if ($prescrption_change['active_infos_pre'] == 1) : ?>
                             <div class="p-doctor-infos">
                                 <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
                                 <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
                                 <hr class="hrp">
                             </div>
-                        <?php endif; ?>
+                        
 
                         <!-- infos -->
                         <div class="p-vital-signs fs12">
