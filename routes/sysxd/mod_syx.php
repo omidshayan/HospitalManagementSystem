@@ -4,6 +4,44 @@
 
 
 
+
+    
+    function generateHardwareId()
+    {
+        $data = [];
+
+        // نام سیستم
+        $data[] = php_uname('n');
+
+        // سیستم عامل
+        $data[] = php_uname('s') . php_uname('r');
+
+        // مسیر اصلی دیسک
+        $data[] = __DIR__;
+
+        // MAC Address (در صورت امکان)
+        $mac = '';
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            @exec('getmac', $output);
+            if (!empty($output[0])) {
+                $mac = $output[0];
+            }
+        } else {
+            @exec("ifconfig -a | grep ether", $output);
+            if (!empty($output[0])) {
+                $mac = $output[0];
+            }
+        }
+
+        $data[] = $mac;
+
+        // ساخت هش نهایی
+        return hash('sha256', implode('|', $data));
+    }
+
+
+
+
     // ===== بررسی فاصله زمانی چک =====
 
     $checkInterval = 3600; // 1 ساعت (به ثانیه)
@@ -37,7 +75,7 @@
 
 
 
-    
+
     // ===== بررسی تاریخ انقضا =====
 
     // تاریخ امروز سیستم
@@ -72,6 +110,17 @@
     $config['last_run_date'] = $todayDate;
 
     // ذخیره مجدد در فایل
+    file_put_contents(
+        $config_file,
+        json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+    );
+
+
+
+    // ===== ذخیره زمان آخرین بررسی =====
+
+    $config['last_check'] = $now;
+
     file_put_contents(
         $config_file,
         json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
