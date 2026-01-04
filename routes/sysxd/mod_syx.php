@@ -14,7 +14,6 @@
     $config = json_decode($config_content, true);
 
 
-    // ===== بررسی تاریخ انقضا =====
 
     // تاریخ امروز سیستم
     $today = strtotime(date('Y-m-d'));
@@ -25,8 +24,6 @@
     if ($today > $expireDate) {
         die('❌ لایسنس منقضی شده است. لطفاً لایسنس را تمدید نمایید.');
     }
-
-
 
     if (!$config) {
         die('خطا در خواندن یا تجزیه فایل تنظیمات لایسنس!');
