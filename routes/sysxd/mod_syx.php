@@ -1,6 +1,6 @@
  <?php
     // مسیر کامل فایل تنظیمات لایسنس
-$config_file = __DIR__ . '/cfg_syx.json';
+    $config_file = __DIR__ . '/cfg_syx.json';
 
     // بررسی وجود فایل تنظیمات
     if (!file_exists($config_file)) {
@@ -12,6 +12,21 @@ $config_file = __DIR__ . '/cfg_syx.json';
 
     // تبدیل JSON به آرایه PHP
     $config = json_decode($config_content, true);
+
+
+    // ===== بررسی تاریخ انقضا =====
+
+    // تاریخ امروز سیستم
+    $today = strtotime(date('Y-m-d'));
+
+    // تاریخ انقضا از فایل لایسنس
+    $expireDate = strtotime($config['expiration_date']);
+
+    if ($today > $expireDate) {
+        die('❌ لایسنس منقضی شده است. لطفاً لایسنس را تمدید نمایید.');
+    }
+
+
 
     if (!$config) {
         die('خطا در خواندن یا تجزیه فایل تنظیمات لایسنس!');
