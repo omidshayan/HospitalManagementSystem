@@ -1,0 +1,10 @@
+{
+    "data": {
+        "license_key": "OMID-9F3K-A72D-1QXZ",
+        "fingerprint": "e8abdb4c0d0eccf94481932ff3b935457c8cccd1e45dc7e59ddb6bd2a2328440",
+        "issue_date": "2026-01-04",
+        "expire_date": "2027-01-04",
+        "product": "MyOfflineSystem"
+    },
+    "signature": "a9d8558b6b86c4034cbaf97af6837538653112246ac10f34bf9f69e9d980573b"
+}

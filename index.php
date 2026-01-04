@@ -14,8 +14,18 @@ if (!file_exists($licenseFile)) {
 $licenseJson = file_get_contents($licenseFile);
 $currentFingerprint = m_x();
 
-if (!verify_license($licenseJson, $currentFingerprint)) {
-    die("License is invalid or expired. Please contact support.");
+$result = verify_license($licenseJson, $currentFingerprint);
+
+if (!$result['valid']) {
+    die("License is invalid: " . $result['message']);
 }
+
+if ($result['days_left'] <= 30) {
+    echo "<div style='color:orange; font-weight:bold;'>Warning: Your license will expire in {$result['days_left']} day(s).</div>";
+}
+
+// ادامه اجرای برنامه ...
+
+
 require_once 'config.php';
 header('location: login');
