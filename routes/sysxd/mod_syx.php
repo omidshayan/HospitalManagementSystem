@@ -1,6 +1,6 @@
  <?php
     // مسیر کامل فایل تنظیمات لایسنس
-    $config_file = __DIR__ . '/routes/sysxd/cfg_syx.json';
+$config_file = __DIR__ . '/cfg_syx.json';
 
     // بررسی وجود فایل تنظیمات
     if (!file_exists($config_file)) {
