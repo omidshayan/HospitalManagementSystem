@@ -9,5 +9,7 @@ function m_x()
     $b = e_d();
     $c = substr(s_mm(), 0, 4);
 
-    return $a . '::' . $b . '::' . $c;
+    $raw = $a . '::' . $b . '::' . $c;
+
+    return hash('sha256', $raw);
 }
