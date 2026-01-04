@@ -3,9 +3,6 @@
     $config_file = __DIR__ . '/cfg_syx.json';
 
 
-
-
-
     function generateHardwareId()
     {
         $data = [];
