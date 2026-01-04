@@ -5,7 +5,7 @@
 
 
 
-    
+
     function generateHardwareId()
     {
         $data = [];
@@ -114,6 +114,26 @@
         $config_file,
         json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
     );
+
+
+
+
+    // ===== بررسی سخت‌افزار =====
+
+    $currentHardwareId = generateHardwareId();
+
+    // اگر برای اولین بار اجرا می‌شود
+    if (empty($config['hardware_id']) || $config['hardware_id'] === 'sample-hardware-id') {
+        // قفل روی این سیستم
+        $config['hardware_id'] = $currentHardwareId;
+    } else {
+        // مقایسه با مقدار ذخیره‌شده
+        if ($config['hardware_id'] !== $currentHardwareId) {
+            die('❌ این لایسنس مخصوص این سیستم نیست.');
+        }
+    }
+
+
 
 
 

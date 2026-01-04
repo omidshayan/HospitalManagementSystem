@@ -1,7 +1,7 @@
 {
     "expiration_date": "2026-12-31",
-    "hardware_id": "sample-hardware-id",
-    "last_check": 0,
+    "hardware_id": "88f6ea41139a8d80c5823a7bb10373f4c3c5824f9bd38a6ddc79a6030039a89c",
+    "last_check": 1767554903,
     "last_run_date": "2026-01-04",
     "user_id": "123456789",
     "license_id": "lic_abcdef1234",
