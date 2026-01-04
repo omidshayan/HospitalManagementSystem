@@ -50,7 +50,6 @@
 
 
 
-
     // نمایش اطلاعات لایسنس
     echo "<h3>اطلاعات لایسنس:</h3>";
     echo "تاریخ انقضا: " . htmlspecialchars($config['expiration_date']) . "<br>";
