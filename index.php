@@ -1,9 +1,9 @@
 <?php
 
-require __DIR__ . '/core/sys/stat.php';
+require __DIR__ . '/core/sys/map.php';
 
-echo s_tm() . '<br>';
-echo s_mm();
+echo m_x();
+
 
 
 require_once 'config.php';
