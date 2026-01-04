@@ -29,6 +29,28 @@
         die('خطا در خواندن یا تجزیه فایل تنظیمات لایسنس!');
     }
 
+
+    // ===== تشخیص دستکاری تاریخ سیستم =====
+    $todayDate = date('Y-m-d');
+    $lastRunDate = $config['last_run_date'];
+
+    if (strtotime($todayDate) < strtotime($lastRunDate)) {
+        die('❌ خطا: تاریخ سیستم دستکاری شده است.');
+    }
+
+
+    // ذخیره تاریخ اجرای فعلی
+    $config['last_run_date'] = $todayDate;
+
+    // ذخیره مجدد در فایل
+    file_put_contents(
+        $config_file,
+        json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+    );
+
+
+
+
     // نمایش اطلاعات لایسنس
     echo "<h3>اطلاعات لایسنس:</h3>";
     echo "تاریخ انقضا: " . htmlspecialchars($config['expiration_date']) . "<br>";
