@@ -3,6 +3,38 @@
     $config_file = __DIR__ . '/cfg_syx.json';
 
 
+    function getCpuId()
+    {
+        $cpuId = '';
+
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            @exec('wmic cpu get ProcessorId', $output);
+            if (isset($output[1])) {
+                $cpuId = trim($output[1]);
+            }
+        }
+
+        return $cpuId;
+    }
+
+    function getDiskSerial()
+    {
+        $diskId = '';
+
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            @exec('wmic diskdrive get SerialNumber', $output);
+            if (isset($output[1])) {
+                $diskId = trim($output[1]);
+            }
+        }
+
+        return $diskId;
+    }
+
+
+
+    
+
     function generateHardwareId()
     {
         $data = [];
