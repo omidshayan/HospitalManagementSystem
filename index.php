@@ -1,5 +1,6 @@
 <?php
 
+
 // NOTE این قسمت باید چند بخش دیگه تکرار بشه تا امینت داشته باشه
 require_once __DIR__ . '/core/sys/license_check.php';
 require_once __DIR__ . '/core/sys/map.php';
