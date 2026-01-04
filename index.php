@@ -1,18 +1,20 @@
 <?php
 
 // NOTE این قسمت باید چند بخش دیگه تکرار بشه تا امینت داشته باشه
-$core_path = __DIR__ . '/core/sys/';
-$required_files = ['env.php', 'map.php', 'stat.php'];
+require_once __DIR__ . '/core/sys/license_check.php';
+require_once __DIR__ . '/core/sys/map.php';
 
-if (!is_dir(__DIR__ . '/core')) {
-    die("Critical system folder missing!");
+$licenseFile = __DIR__ . '/license.lic';
+
+if (!file_exists($licenseFile)) {
+    die("License file not found!");
 }
 
-foreach ($required_files as $file) {
-    if (!file_exists($core_path . $file)) {
-        die("Critical system file missing: $file");
-    }
-}
+$licenseJson = file_get_contents($licenseFile);
+$currentFingerprint = m_x();
 
+if (!verify_license($licenseJson, $currentFingerprint)) {
+    die("License is invalid or expired. Please contact support.");
+}
 require_once 'config.php';
 header('location: login');
