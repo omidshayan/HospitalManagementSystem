@@ -148,15 +148,25 @@
     $currentHardwareId = generateHardwareId();
 
     // اگر برای اولین بار اجرا می‌شود
+    // اگر برای اولین بار اجرا می‌شود
+    // اگر برای اولین بار اجرا یا هش نمونه است
     if (empty($config['hardware_id']) || $config['hardware_id'] === 'sample-hardware-id') {
-        // قفل روی این سیستم
         $config['hardware_id'] = $currentHardwareId;
-    } else {
-        // مقایسه با مقدار ذخیره‌شده
+        $config['lock_version'] = LOCK_VERSION;
+    }
+    // مهاجرت نسخه قفل قدیمی به جدید
+    elseif (!isset($config['lock_version']) || $config['lock_version'] < LOCK_VERSION) {
+        $config['hardware_id'] = $currentHardwareId;
+        $config['lock_version'] = LOCK_VERSION;
+    }
+    // بررسی نهایی نسخه قفل جدید
+    else {
         if ($config['hardware_id'] !== $currentHardwareId) {
             die('❌ این لایسنس مخصوص این سیستم نیست.');
         }
     }
+
+
 
 
 
@@ -170,6 +180,7 @@
         $config_file,
         json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
     );
+
 
 
 
