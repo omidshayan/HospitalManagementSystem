@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/hardware.php';
+require_once __DIR__ . '/zephyr_x.php';
 require_once __DIR__ . '/env.php';
 require_once __DIR__ . '/stat.php';
 

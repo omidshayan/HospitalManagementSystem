@@ -31,10 +31,19 @@ function verify_license(string $jsonLicense, string $currentFingerprint): array
         return ['valid' => false, 'message' => 'Fingerprint mismatch'];
     }
 
-    $daysLeft = days_until_expire($info['expire_date']);
-    if ($daysLeft <= 0) {
+    $today = new DateTime();
+    $issueDate = DateTime::createFromFormat('Y-m-d', $info['issue_date']);
+    $expireDate = DateTime::createFromFormat('Y-m-d', $info['expire_date']);
+
+    if ($today < $issueDate) {
+        return ['valid' => false, 'message' => 'License not active yet'];
+    }
+
+    if ($today > $expireDate) {
         return ['valid' => false, 'message' => 'License expired'];
     }
+
+    $daysLeft = (int)$today->diff($expireDate)->format('%a');
 
     return ['valid' => true, 'days_left' => $daysLeft];
 }
