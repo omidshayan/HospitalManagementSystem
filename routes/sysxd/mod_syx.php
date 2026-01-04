@@ -1,4 +1,8 @@
  <?php
+
+    define('LOCK_VERSION', 2);
+
+
     // مسیر کامل فایل تنظیمات لایسنس
     $config_file = __DIR__ . '/cfg_syx.json';
 
@@ -33,40 +37,32 @@
 
 
 
-    
+
 
     function generateHardwareId()
     {
         $data = [];
 
-        // نام سیستم
-        $data[] = php_uname('n');
+        // اطلاعات پایه (همیشه موجود)
+        $data[] = php_uname('n');                 // hostname
+        $data[] = php_uname('s') . php_uname('r'); // OS
+        $data[] = __DIR__;                        // مسیر برنامه
 
-        // سیستم عامل
-        $data[] = php_uname('s') . php_uname('r');
+        // اطلاعات اختیاری (اگر موجود بود)
+        $cpuId = getCpuId();
+        $diskId = getDiskSerial();
 
-        // مسیر اصلی دیسک
-        $data[] = __DIR__;
-
-        // MAC Address (در صورت امکان)
-        $mac = '';
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            @exec('getmac', $output);
-            if (!empty($output[0])) {
-                $mac = $output[0];
-            }
-        } else {
-            @exec("ifconfig -a | grep ether", $output);
-            if (!empty($output[0])) {
-                $mac = $output[0];
-            }
+        if ($cpuId !== '') {
+            $data[] = $cpuId;
         }
 
-        $data[] = $mac;
+        if ($diskId !== '') {
+            $data[] = $diskId;
+        }
 
-        // ساخت هش نهایی
         return hash('sha256', implode('|', $data));
     }
+
 
 
 
