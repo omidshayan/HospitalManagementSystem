@@ -1,5 +1,7 @@
-<?php
-$title = 'مشکل لایسنس برنامه'; ?>
+<head>
+	<title>مشکل در لایسنس برنامه</title>
+</head>
+
 <style>
 	* {
 		padding: 0;

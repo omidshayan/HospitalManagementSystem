@@ -1,5 +1,7 @@
-<?php
-$title = 'ختم لایسنس برنامه'; ?>
+<head>
+	<title>ختم لایسنس برنامه</title>
+</head>
+
 <style>
 	* {
 		padding: 0;

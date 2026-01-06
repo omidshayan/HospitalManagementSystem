@@ -1,5 +1,7 @@
-<?php
-$title = 'محدودیت دسترسی کامپیوتر'; ?>
+<head>
+	<title>محدودیت دسترسی کامپیوتر</title>
+</head>
+
 <style>
 	* {
 		padding: 0;
