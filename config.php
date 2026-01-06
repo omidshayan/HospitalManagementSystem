@@ -29,6 +29,10 @@ define('DB_NAME', 'hms_sis');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 
+define('CPU', '');
+define('HDD', '');
+
+
 // define('BASE_PATH', __DIR__);
 // define('CURRENT_DOMAIN', currentDomain() . '/sis');
 // define('DISPLAY_ERROR', true);
