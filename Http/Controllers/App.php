@@ -21,7 +21,6 @@ class App
         {
                 $auth = new Login();
                 $auth->userCheck();
-                $this->checkLicensePeriodically(12);
                 $this->db = DataBase::getInstance();
                 $this->currentDomain = CURRENT_DOMAIN;
                 $this->basePath = BASE_PATH;
@@ -662,14 +661,18 @@ class App
 
                 $this->validateLicenseDate();
 
-                if (!isset($_SESSION['last_hardware_check']) || ($now - $_SESSION['last_hardware_check']) > $interval) {
-                        $this->validateHardware();
+                if (
+                        !isset($_SESSION['last_hardware_check']) ||
+                        ($now - $_SESSION['last_hardware_check']) >= $interval
+                ) {
+                        $this->validateHardware(); 
+                        $this->updateEncryptedDate(); 
                         $_SESSION['last_hardware_check'] = $now;
                 }
         }
 
-        // کلید رمزنگاری باید مخفی و ثابت باشه و طول مناسب داشته باشه
-        private $encryption_key = 's3cureP@ssw0rdKey'; // کلید 16 کاراکتری
+
+        private $encryption_key = 's3cureP@ssw0rdKey'; 
 
         public function encrypt(string $data)
         {
@@ -690,7 +693,6 @@ class App
                 }
                 return $row['shwo_section'];
         }
-
         public function updateEncryptedDate(): bool
         {
                 $id = 1;
@@ -725,9 +727,9 @@ class App
 
 
 
-
-
         //////////////////////////////////////
+
+
         // get branch id
         public function getBranchId()
         {
