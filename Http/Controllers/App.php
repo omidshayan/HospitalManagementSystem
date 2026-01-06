@@ -643,12 +643,12 @@ class App
                 $now = time();
 
                 if ($now < $start) {
-                        require_once(BASE_PATH . '/resources/views/app/errors/hardware-error.php');
+                        require_once(BASE_PATH . '/resources/views/app/errors/date-error.php');
                         exit();
                 }
 
                 if ($now > $end) {
-                        require_once(BASE_PATH . '/resources/views/app/errors/hardware-error.php');
+                        require_once(BASE_PATH . '/resources/views/app/errors/date-error.php');
                         exit();
                 }
         }

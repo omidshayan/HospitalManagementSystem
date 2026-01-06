@@ -9,6 +9,7 @@ class Dashboard extends App
     public function index()
     {
         $customHardware = $this->validateHardware();
+        $dateCheck = $this->validateLicenseDate();
 
         $this->middleware(true, true, 'dashboard', true);
 

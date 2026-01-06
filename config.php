@@ -22,7 +22,7 @@ define('CPU', 'BFEBFBFF000306C3');
 define('HDD', 'S250NXAH334410L');
 
 define('start_date', '2026-01-01');
-define('end_date', '2026-12-31');
+define('end_date', '2025-12-31');
 
 //mail
 require_once 'lib/PHPMailer/PHPMailer/PHPMailer.php';
