@@ -2,22 +2,11 @@
 //session start
 session_start();
 // session_regenerate_id(true);
-// session_set_cookie_params(0, '/', 'localhost', true, true);
+
 date_default_timezone_set('Asia/Kabul');
 
 include_once 'lang.php';
 include_once('lang/' . $_COOKIE['lang'] . '.php');
-
-// get info userz
-// $file = "log.txt";
-// $ip = $_SERVER['REMOTE_ADDR'];
-// $date = date("d-m-y");
-// $time = date("H:i:s");
-// $browser = $_SERVER['HTTP_USER_AGENT'];
-// $data = "IP: ".$ip.", Date: ".$date.", Time:".$time.", Browser: ".$browser;
-// $f=fopen($file, 'a');
-// fwrite($f,$data."\n");
-// fclose($f);
 
 require_once 'helper.php';
 //config
@@ -31,15 +20,6 @@ define('DB_PASSWORD', '');
 
 define('CPU', 'BFEBFBFF000306C3');
 define('HDD', 'S250NXAH334410L');
-
-
-// define('BASE_PATH', __DIR__);
-// define('CURRENT_DOMAIN', currentDomain() . '/sis');
-// define('DISPLAY_ERROR', true);
-// define('DB_HOST', 'localhost');
-// define('DB_NAME', 'msclinic_mehr');
-// define('DB_USERNAME', 'msclinic_mehr');
-// define('DB_PASSWORD', 'Salmehr111');
 
 
 //mail

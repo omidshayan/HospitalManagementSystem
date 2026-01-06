@@ -8,9 +8,8 @@ class Dashboard extends App
 {
     public function index()
     {
-        $hard = $this->getSysh();
-        $hard = $this->getManualSysh();
-        dd($hard);
+        $customHardware = $this->validateHardware();
+
         $this->middleware(true, true, 'dashboard', true);
 
         $userId = $_SESSION['hms_employee']['id']

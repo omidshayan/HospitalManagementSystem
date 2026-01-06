@@ -591,17 +591,22 @@ class App
         // get sys infos
         function getSysh(): string
         {
-                // CPU ID
-                $cpu = shell_exec('wmic cpu get ProcessorId');
-                $cpu = preg_replace('/\s+/', '', $cpu);
-                $cpu = str_ireplace('ProcessorId', '', $cpu);
+                $cpu = @shell_exec('wmic cpu get ProcessorId 2>NUL');
+                $hdd = @shell_exec('wmic diskdrive get SerialNumber 2>NUL');
 
-                // HDD Serial
-                $hdd = shell_exec('wmic diskdrive get SerialNumber');
-                $hdd = preg_replace('/\s+/', '', $hdd);
-                $hdd = str_ireplace('SerialNumber', '', $hdd);
+                if (!$cpu || !$hdd) {
+                        return '';
+                }
 
-                $raw = $cpu . '|' . $hdd;
+                $cpuLines = explode("\n", trim($cpu));
+                $cpuId = $cpuLines[1] ?? '';
+                $hddLines = explode("\n", trim($hdd));
+                $hddId = $hddLines[1] ?? '';
+
+                $cpuId = preg_replace('/\s+/', '', $cpuId);
+                $hddId = preg_replace('/\s+/', '', $hddId);
+
+                $raw = $cpuId . '|' . $hddId;
 
                 if (strlen($raw) < 10) {
                         return '';
@@ -609,36 +614,25 @@ class App
 
                 return hash('sha256', $raw);
         }
-        
-        function validateHardware(): void
-        {
-                $hash = $this->getSysh();
-
-                if ($hash === '') {
-                        $this->blockSystem('SYS-01');
-                }
-
-                if (strlen($hash) !== 64) {
-                        $this->blockSystem('SYS-02');
-                }
-
-                if (!ctype_xdigit($hash)) {
-                        $this->blockSystem('SYS-03');
-                }
-        }
-        function blockSystem(string $reason = ''): void
-        {
-                require_once(BASE_PATH . '/resources/views/app/errors/hardware-error.php');;
-                exit();
-        }
 
         function getManualSysh(): string
         {
                 if (empty(CPU) || empty(HDD)) {
-                        require_once(BASE_PATH . '/resources/views/app/errors/hardware-error.php');;
+                        require_once(BASE_PATH . '/resources/views/app/errors/hardware-error.php');
                         exit();
                 }
                 return hash('sha256', CPU . '|' . HDD);
+        }
+
+        function validateHardware(): void
+        {
+                $realHash = $this->getSysh();
+                $manualHash = $this->getManualSysh();
+
+                if ($realHash === '' || $manualHash === '' || !hash_equals($realHash, $manualHash)) {
+                        require_once(BASE_PATH . '/resources/views/app/errors/hardware-error.php');
+                        exit();
+                }
         }
 
 
