@@ -589,9 +589,25 @@ class App
         }
 
         // get sys infos
-        public function getSysIn()
+        function getSysh(): string
         {
-                dd('ok');
+                // CPU ID
+                $cpu = shell_exec('wmic cpu get ProcessorId');
+                $cpu = preg_replace('/\s+/', '', $cpu);
+                $cpu = str_ireplace('ProcessorId', '', $cpu);
+
+                // HDD Serial
+                $hdd = shell_exec('wmic diskdrive get SerialNumber');
+                $hdd = preg_replace('/\s+/', '', $hdd);
+                $hdd = str_ireplace('SerialNumber', '', $hdd);
+
+                $raw = $cpu . '|' . $hdd;
+
+                if (strlen($raw) < 10) {
+                        return '';
+                }
+
+                return hash('sha256', $raw);
         }
 
         // get branch id

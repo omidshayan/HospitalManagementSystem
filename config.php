@@ -8,7 +8,6 @@ date_default_timezone_set('Asia/Kabul');
 include_once 'lang.php';
 include_once('lang/' . $_COOKIE['lang'] . '.php');
 
-
 // get info userz
 // $file = "log.txt";
 // $ip = $_SERVER['REMOTE_ADDR'];
