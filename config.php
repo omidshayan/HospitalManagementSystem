@@ -9,6 +9,8 @@ include_once 'lang.php';
 include_once('lang/' . $_COOKIE['lang'] . '.php');
 
 require_once 'helper.php';
+
+
 //config
 define('BASE_PATH', __DIR__);
 define('CURRENT_DOMAIN', currentDomain() . '/HospitalManagementSystem');
@@ -27,7 +29,6 @@ define('end_date', '2026-12-31');
 //mail
 require_once 'lib/PHPMailer/PHPMailer/PHPMailer.php';
 require_once 'lib/PHPMailer/PHPMailer/SMTP.php';
-
 
 require_once 'database/DataBase.php';
 require_once 'routes/main.php';

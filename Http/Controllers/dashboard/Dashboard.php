@@ -8,8 +8,6 @@ class Dashboard extends App
 {
     public function index()
     {
-        $dateCheck = $this->checkLicensePeriodically(1/3600);
-        $this->updateEncryptedDate(12);
 
         $this->middleware(true, true, 'dashboard', true);
 
