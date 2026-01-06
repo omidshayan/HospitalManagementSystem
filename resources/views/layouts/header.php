@@ -495,9 +495,7 @@
 
         </ul>
       </div>
-      <!-- <a href="" class="fs12 text-underline color sidebar-arya">شرکت نرم افزاری آریا تِک</a> -->
-      
-      <a href="https://sehhatyar.com" target="_blank" class="sidebar-tech bold">  آریـــــا تـــــکــــ (2026)</a>
+      <a href="https://sehhatyar.com" target="_blank" class="sidebar-tech bold text-underline"> آریـــــا تـــــکــــ <span class="fs12">(2026)</span></a>
     </div>
   </div>
   <!-- end sidebar -->

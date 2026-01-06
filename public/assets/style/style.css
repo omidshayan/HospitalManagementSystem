@@ -217,11 +217,6 @@ textarea::placeholder {
 .sidebar-dropdown-menu li:hover {
     background-color: #125a2227;
 }
-.sidebar-arya{
-    position: absolute;
-    bottom: 30px;
-    left: 92px;
-}
 .sidebar-tech{
     position: absolute;
     bottom: 30px;
