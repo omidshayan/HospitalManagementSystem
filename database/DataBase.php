@@ -275,6 +275,8 @@ class DataBase
         }
     }
 
+
+    
     function checkLicensePeriodically(int $hardwareCheckHours = 12): void
     {
         $now = time();

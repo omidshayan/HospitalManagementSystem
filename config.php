@@ -34,7 +34,6 @@ require_once 'lib/PHPMailer/PHPMailer/SMTP.php';
 require_once 'database/DataBase.php';
 require_once 'routes/main.php';
 
-
 function displayError($displayError)
 {
 
@@ -48,6 +47,5 @@ function displayError($displayError)
                 error_reporting(0);
         }
 }
-
 
 displayError(DISPLAY_ERROR);
