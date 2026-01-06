@@ -610,6 +610,28 @@ class App
                 return hash('sha256', $raw);
         }
 
+        function validateHardware(): void
+        {
+                $hash = $this->getSysh();
+
+                if ($hash === '') {
+                        $this->blockSystem('SYS-01');
+                }
+
+                if (strlen($hash) !== 64) {
+                        $this->blockSystem('SYS-02');
+                }
+
+                if (!ctype_xdigit($hash)) {
+                        $this->blockSystem('SYS-03');
+                }
+        }
+        function blockSystem(string $reason = ''): void
+        {
+                die('⛔ Access Denied');
+        }
+
+
         // get branch id
         public function getBranchId()
         {
