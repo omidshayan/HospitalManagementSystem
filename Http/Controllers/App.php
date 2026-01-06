@@ -684,15 +684,17 @@ class App
         // check date
         public function getEncryptedDate(): ?string
         {
-                $row = $this->db->select('SELECT shwo_section FROM settings')->fetch();
+                $row = $this->db->select('SELECT shwo_section FROM settings LIMIT 1')->fetch();
                 if (!$row) {
                         return null;
                 }
                 return $row['shwo_section'];
         }
 
-        public function updateEncryptedDate(int $id): bool
+        public function updateEncryptedDate(): bool
         {
+                $id = 1;
+
                 $now = date('Y-m-d H:i:s');
                 $encryptedNow = $this->encrypt($now);
 
