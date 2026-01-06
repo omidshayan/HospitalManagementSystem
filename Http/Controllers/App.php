@@ -635,6 +635,24 @@ class App
                 }
         }
 
+        // get and check date
+        function validateLicenseDate(): void
+        {
+                $start = strtotime(start_date);
+                $end = strtotime(end_date);
+                $now = time();
+
+                if ($now < $start) {
+                        require_once(BASE_PATH . '/resources/views/app/errors/hardware-error.php');
+                        exit();
+                }
+
+                if ($now > $end) {
+                        require_once(BASE_PATH . '/resources/views/app/errors/hardware-error.php');
+                        exit();
+                }
+        }
+
 
 
         // get branch id
