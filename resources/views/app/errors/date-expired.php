@@ -1,5 +1,5 @@
 <?php
-$title = 'مشکل لایسنس برنامه'; ?>
+$title = 'ختم لایسنس برنامه'; ?>
 <style>
 	* {
 		padding: 0;
@@ -37,7 +37,7 @@ $title = 'مشکل لایسنس برنامه'; ?>
 		<div class="center">
 			<img src="<?= asset('public/assets/img/warning.svg') ?>" class="w200" alt="warning">
 		</div>
-		<h2 class="err-title">لایسنس برنامه معتبر نمی‌باشد</h2>
+		<h2 class="err-title">لایسنس برنامه به پایان رسیده است</h2>
 		<div>لطفاً با پشتیبانی تماس بگیرید</div>
 		<div>0799192027</div>
 	</div>

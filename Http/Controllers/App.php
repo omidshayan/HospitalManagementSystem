@@ -648,10 +648,11 @@ class App
                 }
 
                 if ($now > $end) {
-                        require_once(BASE_PATH . '/resources/views/app/errors/date-error.php');
+                        require_once(BASE_PATH . '/resources/views/app/errors/date-expired.php');
                         exit();
                 }
         }
+
 
 
 
