@@ -440,7 +440,7 @@
           <?php endif; ?>
 
           <!-- settings -->
-          <?php if ($this->hasAccess('parentDrug')): ?>
+          <!-- <?php if ($this->hasAccess('parentDrug')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -466,7 +466,7 @@
                 <?php endif; ?>
               </ul>
             </li>
-          <?php endif; ?>
+          <?php endif; ?> -->
 
           <!-- profile -->
           <li class="sidebar-menu">
@@ -496,6 +496,8 @@
         </ul>
       </div>
       <!-- <a href="" class="fs12 text-underline color sidebar-arya">شرکت نرم افزاری آریا تِک</a> -->
+      
+      <a href="https://sehhatyar.com" target="_blank" class="sidebar-tech bold">  آریـــــا تـــــکــــ (2026)</a>
     </div>
   </div>
   <!-- end sidebar -->
