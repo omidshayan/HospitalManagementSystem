@@ -29,15 +29,6 @@ require_once 'lib/PHPMailer/PHPMailer/PHPMailer.php';
 require_once 'lib/PHPMailer/PHPMailer/SMTP.php';
 
 
-//mail
-define('MAIL_HOST', 'mail.e-elcs.com');
-define('SMTP_AUTH', true);
-define('MAIL_USERNAME', 'info@e-elcs.com');
-define('MAIL_PASSWORD', 'Y[e}bpZ&@X*p');
-define('MAIL_PORT', 587);
-define('SENDER_MAIL', 'info@e-elcs.com');
-define('SENDER_NAME', 'آموزشگاه اِرتقاء - مرکز آموزش انگلیسی');
-
 require_once 'database/DataBase.php';
 require_once 'routes/main.php';
 

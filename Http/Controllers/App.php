@@ -21,6 +21,7 @@ class App
         {
                 $auth = new Login();
                 $auth->userCheck();
+                $this->checkLicensePeriodically(12);
                 $this->db = DataBase::getInstance();
                 $this->currentDomain = CURRENT_DOMAIN;
                 $this->basePath = BASE_PATH;
@@ -652,21 +653,18 @@ class App
                         exit();
                 }
         }
-        function validateDateManipulation(): void
+
+        function checkLicensePeriodically(int $hardwareCheckHours = 12): void
         {
-                $file = BASE_PATH . '/license/last_run.txt';
                 $now = time();
+                $interval = $hardwareCheckHours * 3600;
 
-                if (file_exists($file)) {
-                        $lastRun = (int) file_get_contents($file);
+                $this->validateLicenseDate();
 
-                        if ($now < $lastRun) {
-                                require_once(BASE_PATH . '/resources/views/app/errors/date-expired.php');
-                                exit();
-                        }
+                if (!isset($_SESSION['last_hardware_check']) || ($now - $_SESSION['last_hardware_check']) > $interval) {
+                        $this->validateHardware();
+                        $_SESSION['last_hardware_check'] = $now;
                 }
-
-                file_put_contents($file, $now);
         }
 
 
