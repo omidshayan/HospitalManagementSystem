@@ -29,8 +29,8 @@ define('DB_NAME', 'hms_sis');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 
-define('CPU', '');
-define('HDD', '');
+define('CPU', 'BFEBFBFF000306C3');
+define('HDD', 'S250NXAH334410L');
 
 
 // define('BASE_PATH', __DIR__);
