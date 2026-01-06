@@ -588,6 +588,12 @@ class App
                 return '';
         }
 
+        // get sys infos
+        public function getSysIn()
+        {
+                dd('ok');
+        }
+
         // get branch id
         public function getBranchId()
         {
