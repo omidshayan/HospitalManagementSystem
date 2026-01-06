@@ -668,17 +668,61 @@ class App
                 }
         }
 
-        private $encryption_key = 'کلید_خیلی_مخفی_و_بلند_که_کسی_نمیدونه!';
+        // کلید رمزنگاری باید مخفی و ثابت باشه و طول مناسب داشته باشه
+        private $encryption_key = 's3cureP@ssw0rdKey'; // کلید 16 کاراکتری
 
-        public function encrypt($data)
+        public function encrypt(string $data)
         {
                 return openssl_encrypt($data, 'AES-128-ECB', $this->encryption_key);
         }
 
-        public function decrypt($data)
+        public function decrypt(string $encryptedData)
         {
-                return openssl_decrypt($data, 'AES-128-ECB', $this->encryption_key);
+                return openssl_decrypt($encryptedData, 'AES-128-ECB', $this->encryption_key);
         }
+
+        // check date
+        public function getEncryptedDate(): ?string
+        {
+                $row = $this->db->select('SELECT shwo_section FROM settings')->fetch();
+                if (!$row) {
+                        return null;
+                }
+                return $row['shwo_section'];
+        }
+
+        public function updateEncryptedDate(int $id): bool
+        {
+                $now = date('Y-m-d H:i:s');
+                $encryptedNow = $this->encrypt($now);
+
+                $currentEncryptedDate = $this->getEncryptedDate();
+
+                if (!$currentEncryptedDate) {
+                        throw new \Exception("تاریخ قبلی یافت نشد.");
+                }
+
+                $currentDate = $this->decrypt($currentEncryptedDate);
+
+                if (!$currentDate) {
+                        throw new \Exception("خطا در رمزگشایی تاریخ.");
+                }
+
+                if (strtotime($currentDate) > strtotime($now)) {
+                        throw new \Exception("خطا: تاریخ سیستم کاربر غیرمجاز است.");
+                }
+
+                return $this->db->update(
+                        'settings',
+                        $id,
+                        ['shwo_section'],
+                        [$encryptedNow]
+                );
+        }
+
+
+
+
 
 
         //////////////////////////////////////
