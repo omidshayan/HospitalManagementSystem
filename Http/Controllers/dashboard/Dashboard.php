@@ -8,7 +8,7 @@ class Dashboard extends App
 {
     public function index()
     {
-        $hard = $this->getSysh();
+        $hard = $this->blockSystem();
 
         $this->middleware(true, true, 'dashboard', true);
 

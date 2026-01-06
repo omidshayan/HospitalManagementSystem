@@ -592,22 +592,25 @@ class App
         function getSysh(): string
         {
                 // CPU ID
-                $cpu = shell_exec('wmic cpu get ProcessorId');
-                $cpu = preg_replace('/\s+/', '', $cpu);
-                $cpu = str_ireplace('ProcessorId', '', $cpu);
+                // $cpu = shell_exec('wmic cpu get ProcessorId');
+                // $cpu = preg_replace('/\s+/', '', $cpu);
+                // $cpu = str_ireplace('ProcessorId', '', $cpu);
 
-                // HDD Serial
-                $hdd = shell_exec('wmic diskdrive get SerialNumber');
-                $hdd = preg_replace('/\s+/', '', $hdd);
-                $hdd = str_ireplace('SerialNumber', '', $hdd);
+                // // HDD Serial
+                // $hdd = shell_exec('wmic diskdrive get SerialNumber');
+                // $hdd = preg_replace('/\s+/', '', $hdd);
+                // $hdd = str_ireplace('SerialNumber', '', $hdd);
 
-                $raw = $cpu . '|' . $hdd;
+                // $raw = $cpu . '|' . $hdd;
 
-                if (strlen($raw) < 10) {
-                        return '';
-                }
+                // if (strlen($raw) < 10) {
+                //         return '';
+                // }
 
-                return hash('sha256', $raw);
+                // return hash('sha256', $raw);
+
+
+                return '';
         }
 
         function validateHardware(): void
@@ -628,7 +631,8 @@ class App
         }
         function blockSystem(string $reason = ''): void
         {
-                die('⛔ Access Denied');
+                require_once(BASE_PATH . '/resources/views/app/errors/hardware-error.php');;
+                exit();
         }
 
 
