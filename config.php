@@ -20,15 +20,11 @@ define('DB_NAME', 'hms_sis');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 
-// define('CPU', 'BFEBFBFF000306C3');
-// define('HDD', 'S250NXAH334410L');
+define('CPU', 'BFEBFBFF000306C3');
+define('HDD', 'S250NXAH334410L');
 
-// define('start_date', '2020-01-01');
-// define('end_date', '2026-12-31');
-
-
-define('LICENSE_SECRET', 'd672a818646926f9fb2bcc71effbb0243bd2556ce9fa171e2f6d79b781c67ee8');
-
+define('start_date', '2020-01-01');
+define('end_date', '2026-12-31');
 
 
 //mail
