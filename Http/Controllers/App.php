@@ -589,6 +589,7 @@ class App
                 return '';
         }
 
+        /////////////////////////////////////////////
         // get sys infos
         function getSysh(): string
         {
@@ -667,9 +668,20 @@ class App
                 }
         }
 
+        private $encryption_key = 'کلید_خیلی_مخفی_و_بلند_که_کسی_نمیدونه!';
+
+        public function encrypt($data)
+        {
+                return openssl_encrypt($data, 'AES-128-ECB', $this->encryption_key);
+        }
+
+        public function decrypt($data)
+        {
+                return openssl_decrypt($data, 'AES-128-ECB', $this->encryption_key);
+        }
 
 
-
+        //////////////////////////////////////
         // get branch id
         public function getBranchId()
         {
