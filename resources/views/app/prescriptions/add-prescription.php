@@ -708,7 +708,6 @@
         });
     </script>
 
-
     <!-- btn move -->
     <script>
         const btnMove = document.querySelector('.add-drug-pre');
