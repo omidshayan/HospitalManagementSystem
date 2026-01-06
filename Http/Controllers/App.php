@@ -652,6 +652,22 @@ class App
                         exit();
                 }
         }
+        function validateDateManipulation(): void
+        {
+                $file = BASE_PATH . '/license/last_run.txt';
+                $now = time();
+
+                if (file_exists($file)) {
+                        $lastRun = (int) file_get_contents($file);
+
+                        if ($now < $lastRun) {
+                                require_once(BASE_PATH . '/resources/views/app/errors/date-expired.php');
+                                exit();
+                        }
+                }
+
+                file_put_contents($file, $now);
+        }
 
 
 
