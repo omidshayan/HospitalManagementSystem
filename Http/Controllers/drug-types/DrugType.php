@@ -83,19 +83,19 @@ class DrugType extends App
     }
 
     // change status dosage
-    public function changeStatusDosage($id)
+    public function changeStatusDrugType($id)
     {
         $this->middleware(true, true, 'general');
 
-        $dosage = $this->db->select('SELECT id, `status` FROM dosage WHERE id = ?', [$id])->fetch();
-        if (!$dosage) {
+        $drug_type = $this->db->select('SELECT id, `status` FROM drug_types WHERE id = ?', [$id])->fetch();
+        if (!$drug_type) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
 
-        $newStatus = ($dosage['status'] == 1) ? 2 : 1;
+        $newStatus = ($drug_type['status'] == 1) ? 2 : 1;
 
-        $this->db->update('dosage', $id, ['status'], [$newStatus]);
+        $this->db->update('drug_types', $id, ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
 }

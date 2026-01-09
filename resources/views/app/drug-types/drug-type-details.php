@@ -41,7 +41,7 @@
                         <!-- HTML -->
                         <div class="w100 m10 center">
                             <td>
-                                <a href="#" data-url="<?= url('change-status-dosage') ?>" data-id="<?= $drug_type['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
+                                <a href="#" data-url="<?= url('change-status-drug-type') ?>" data-id="<?= $drug_type['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
                             </td>
                         </div>
                     </div>
