@@ -4,10 +4,10 @@ require_once 'Http/Controllers/drug-types/DrugType.php';
 // dosage routes
 uri('drug-types', 'App\DrugType', 'drugTypes');
 uri('drug-type-store', 'App\DrugType', 'drugTypeStore', 'POST');
+uri('drug-type-dosage/{id}', 'App\DrugType', 'editDrugType');
+uri('drug-type-edit-store/{id}', 'App\DrugType', 'editDrugTypeStore', 'POST');
+uri('drug-type-details/{id}', 'App\DrugType', 'drugTypeDetails');
+uri('change-status-drug-type/{id}', 'App\DrugType', 'changeStatusDrugType');
 
 
 
-uri('edit-dosage/{id}', 'App\Dosage', 'editDosage');
-uri('edit-dosage-store/{id}', 'App\Dosage', 'editDosageStore', 'POST');
-uri('dosage-details/{id}', 'App\Dosage', 'dosageDetails');
-uri('change-status-dosage/{id}', 'App\Dosage', 'changeStatusDosage');
