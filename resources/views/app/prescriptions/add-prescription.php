@@ -87,9 +87,9 @@
                                     </a>
                                 </div>
                                 <select name="drug_count" class="border-input nav-item" required>
-                                    <option selected disabled>تعداد دارو</option>
+                                    <option value="" selected disabled>تعداد دارو</option>
                                     <?php for ($i = 1; $i <= $number['number']; $i++): ?>
-                                        <option value="<?= $i ?>" <?= ($i == 1 ? 'selected' : '') ?>>
+                                        <option value="<?= $i ?>">
                                             <?= $i ?>
                                         </option>
                                     <?php endfor; ?>
@@ -384,7 +384,7 @@
                                     </div>
 
                                     <!-- <?php
-                                    if ($testsActive) { ?>
+                                            if ($testsActive) { ?>
                                         <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
                                         <div class="accordion-content-pre w89d">
                                             <div class="child-accordioin">
