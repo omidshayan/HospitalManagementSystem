@@ -12,6 +12,7 @@
     $descriptionActive = isset($_SESSION['settings']['description']) && $_SESSION['settings']['description'] == 1;
     $intake_instructionsActive = isset($_SESSION['settings']['intake_instructions']) && $_SESSION['settings']['intake_instructions'] == 1;
     $testsActive = isset($_SESSION['settings']['tests']) && $_SESSION['settings']['tests'] == 1;
+    $drugType = isset($_SESSION['settings']['drug_type']) && $_SESSION['settings']['drug_type'] == 1;
     ?>
 
     <!-- Start content -->
@@ -55,25 +56,26 @@
 
                         <!-- drug type -->
                         <?php
-                        if ($drug_type) { ?>
+                        if ($drugType) { ?>
                             <div class="input-pre count-pre input-wrapper">
                                 <div class="label-form mb5 fs14 text-left"> نوع دارو
                                     <a href="javascript:void(0)" class="close-btn toggle-item"
-                                        data-url="change-status-count-drug"
-                                        data-target="#count_drug">&times;
+                                        data-url="change-status-drug-type-active"
+                                        data-target="#drug_type">&times;
                                     </a>
                                 </div>
                                 <select name="drug_type" class="border-input nav-item" required>
                                     <option selected disabled>نوع دارو</option>
                                     <?php
-                                    foreach ($drugType as $drugTyp) { ?>
-                                        <option id="<?= $drugTyp['drug_type'] ?>"><?= $drugTyp['drug_type'] ?></option>
+                                    foreach ($drugTypes as $drugType) { ?>
+                                        <option id="<?= $drugType['drug_type'] ?>"><?= $drugType['drug_type'] ?></option>
                                     <?php }
                                     ?>
                                 </select>
                             </div>
                         <?php }
                         ?>
+                        
                         <!-- count -->
                         <?php
                         if ($count_drugActive) { ?>

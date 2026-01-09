@@ -34,7 +34,7 @@ class Prescription extends App
 
         $tests = $this->db->select('SELECT id, test_name FROM tests WHERE `status` = ?', [1])->fetchAll();
 
-        $drugType = $this->db->select('SELECT id, drug_type FROM drug_types WHERE `status` = ?', [1])->fetchAll();
+        $drugTypes = $this->db->select('SELECT id, drug_type FROM drug_types WHERE `status` = ?', [1])->fetchAll();
 
         $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
 
