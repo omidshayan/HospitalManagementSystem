@@ -12,20 +12,20 @@ class DrugType extends App
         require_once(BASE_PATH . '/resources/views/app/drug-types/drug-types.php');
     }
 
-    // store dosage
-    public function dosageStore($request)
+    // store drug_type
+    public function drugTypeStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['dosage'] == '') {
+        if ($request['drug_type'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
-        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
+        $drug_type = $this->db->select('SELECT drug_type FROM drug_types WHERE `drug_type` = ?', [$request['drug_type']])->fetch();
 
-        if (!empty($dosage['dosage'])) {
+        if (!empty($drug_type['drug_type'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('dosage', array_keys($request), $request);
+            $this->db->insert('drug_types', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
