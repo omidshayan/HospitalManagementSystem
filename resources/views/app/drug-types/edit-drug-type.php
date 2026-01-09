@@ -1,6 +1,6 @@
 <!-- start sidebar -->
 <?php
-$title = 'ویرایش  مقدار مصرف: ' . $dosage['dosage'];
+$title = 'ویرایش  نوع دارو: ' . $drug_type['drug_type'];
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
@@ -9,7 +9,7 @@ include_once('public/alerts/toastr.php');
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> ویرایش مقدار مصرف: <?= $dosage['dosage'] ?>
+    <div class="content-title"> ویرایش نوع دارو: <?= $drug_type['drug_type'] ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
@@ -20,11 +20,11 @@ include_once('public/alerts/toastr.php');
     <!-- start page content -->
     <div class="mini-container">
         <div class="insert">
-            <form id="myForm" action="<?=url('edit-dosage-store/' . $dosage['id'])?>" method="POST">
+            <form id="myForm" action="<?=url('edit-drug-type-store/' . $drug_type['id'])?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14"><?= _name ?> <?= _star ?> </div>
-                        <input type="text" name="dosage" class="checkInput" value="<?= $dosage['dosage'] ?>" placeholder="مقدار مصرف را وارد نمایید" autocomplete="off" />
+                        <div class="label-form mb5 fs14">نوع دارو <?= _star ?> </div>
+                        <input type="text" name="drug_type" class="checkInput" value="<?= $drug_type['drug_type'] ?>" placeholder="نوع دارو را وارد نمایید" autocomplete="off" />
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">

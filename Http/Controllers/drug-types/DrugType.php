@@ -31,13 +31,13 @@ class DrugType extends App
     }
 
     // dosage page
-    public function editDosage($id)
+    public function editDrugType($id)
     {
         $this->middleware(true, true, 'general');
 
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
-        if ($dosage != null) {
-            require_once(BASE_PATH . '/resources/views/app/dosage/edit-dosage.php');
+        $drug_type = $this->db->select('SELECT * FROM drug_types WHERE `id` = ?', [$id])->fetch();
+        if ($drug_type != null) {
+            require_once(BASE_PATH . '/resources/views/app/drug-types/edit-drug-type.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -46,26 +46,26 @@ class DrugType extends App
     }
 
     // edit dosage store
-    public function editDosageStore($request, $id)
+    public function editDrugTypeStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['dosage'] == '') {
+        if ($request['drug_type'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `dosage` = ?', [$request['dosage']])->fetch();
+        $drug_type = $this->db->select('SELECT * FROM drug_types WHERE `drug_type` = ?', [$request['drug_type']])->fetch();
 
-        if ($dosage) {
-            if ($dosage['id'] != $id) {
+        if ($drug_type) {
+            if ($drug_type['id'] != $id) {
                 $this->flashMessage('error', 'این مقدار مصرف ثبت شده است.');
                 return;
             }
         }
 
-        $this->db->update('dosage', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('dosage'));
+        $this->db->update('drug_types', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('drug-types'));
     }
 
     // dosage Details detiles page
