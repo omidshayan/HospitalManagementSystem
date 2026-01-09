@@ -383,7 +383,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- <?php
+                                    <?php
                                             if ($testsActive) { ?>
                                         <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
                                         <div class="accordion-content-pre w89d">
@@ -408,7 +408,7 @@
                                             <ul id="recommended_list" class="color"></ul>
                                         </div>
                                     <?php }
-                                    ?> -->
+                                    ?>
 
                                     <div class="center mt20">
                                         <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
