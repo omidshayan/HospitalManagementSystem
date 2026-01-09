@@ -337,7 +337,7 @@
                                         <div class="child-accordioin w90d">
                                             <div class="insert mt5 ml-10">
                                                 <div class="one m-auto w100 mb3">
-                                                    <textarea name="diagnosis" placeholder="Enter Doctor's Diagnosis"></textarea>
+                                                    <textarea name="diagnosis" placeholder="Enter Doctor's Diagnosis..."></textarea>
                                                 </div>
                                             </div>
                                         </div>
