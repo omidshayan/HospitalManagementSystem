@@ -345,6 +345,11 @@
                     <li class="sidebar-dropdown-menu-item">واحدهای شمارش</li>
                   </a>
                 <?php endif; ?>
+                <?php if ($this->hasAccess('unitDrug')): ?>
+                  <a href="<?= url('unit_type') ?>">
+                    <li class="sidebar-dropdown-menu-item">نوع دارو</li>
+                  </a>
+                <?php endif; ?>
                 <?php if ($this->hasAccess('companies')): ?>
                   <a href="<?= url('companies') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت تولید کننده‌ها</li>
@@ -440,7 +445,7 @@
           <?php endif; ?>
 
           <!-- settings -->
-          <!-- <?php if ($this->hasAccess('parentDrug')): ?>
+          <?php if ($this->hasAccess('parentDrug')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -466,7 +471,7 @@
                 <?php endif; ?>
               </ul>
             </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
 
           <!-- profile -->
           <li class="sidebar-menu">

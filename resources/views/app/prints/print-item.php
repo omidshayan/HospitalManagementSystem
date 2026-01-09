@@ -17,7 +17,7 @@ include_once('public/alerts/toastr.php');
     <?php if (!empty($prescription)) : ?>
 
         
-          <?php include_once('resources/views/app/prescriptions/prescription-print.php'); ?>
+        <?php include_once('resources/views/app/prescriptions/prescription-print.php'); ?>
 
         <script>
             window.onload = function() {

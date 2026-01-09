@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 03, 2026 at 08:17 PM
+-- Generation Time: Jan 06, 2026 at 07:45 PM
 -- Server version: 9.1.0
--- PHP Version: 8.3.14
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -670,7 +670,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
 --
 
 INSERT INTO `employees` (`id`, `branch_id`, `employee_name`, `father_name`, `phone`, `password`, `email`, `address`, `position`, `role`, `department_id`, `verify_token`, `forgot_token`, `forgot_token_expire`, `remember_token`, `expire_remember_token`, `expertise`, `gender`, `image`, `description`, `salary_price`, `who_it`, `state`, `super_admin`, `notif`, `created_at`, `updated_at`) VALUES
-(1, 100, 'کاظم حسینی', NULL, '11', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, 'داکتر', 2, 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', 'f11ddeaf0673da44956ac9e6e5f3dfecc276edd9ce2ebe01db47ba7e5c069014', '3', 'متخصص گوش حلق بینی', NULL, '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2026-01-03 20:43:33'),
+(1, 100, 'کاظم حسینی', NULL, '11', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, 'داکتر', 2, 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '6367f13fbf8d48e4e39cee7f681babe8484a14ff9a1baa259927bcd4eb1be267', '3', 'متخصص گوش حلق بینی', NULL, '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2026-01-06 13:52:30'),
 (149, 0, 'حسن رضایی', NULL, '0799999999', '$2y$10$/rBJVmIQFUIJ/CgvjMjHZ.und0NRQIuJA2VxXFC/XEED8MLfSk/SK', '', '', '', 1, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, '2025-12-12-02-18-59_693b3c4ba0f10.jpg', '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-12 02:18:59', '2025-12-12 02:25:46'),
 (154, 100, 'ادمین دمو', NULL, '12345', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', NULL, NULL, 'متخصص گوش حلق بینی', NULL, '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-14 03:55:55'),
 (155, 0, 'محمد احمدی', NULL, '0766666666', '$2y$10$pYigrU23y3fu3FXo0zYPI.8EeGRLReHBiewCUoc.LCZl/BDbCIEu.', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, NULL, 'فوق تخصص جراحی', NULL, NULL, '', NULL, 'احمد هاشمی', 1, NULL, 1, '2025-12-15 18:41:55', '2025-12-16 16:32:44'),
@@ -1084,7 +1084,7 @@ CREATE TABLE IF NOT EXISTS `prescriptions` (
   PRIMARY KEY (`id`),
   KEY `patient_id` (`patient_id`),
   KEY `doctor_id` (`doctor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=264 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prescriptions`
@@ -1179,7 +1179,7 @@ INSERT INTO `prescriptions` (`id`, `patient_id`, `patient_name`, `doctor_id`, `a
 (202, 145, 'احمد حسینی', 1, NULL, '1381', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:40:18', '2026-01-01 01:11:14'),
 (203, 146, 'محمد رضا احمدی', 1, NULL, '1349', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:54:32', '2026-01-01 01:12:13'),
 (204, 147, 'احمد حسینی', 1, NULL, '1359', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:59:16', '2026-01-01 01:12:17'),
-(205, 148, 'احمد حسینی', 1, NULL, '1384', 'باید ازمایش دهد', '33', '33', '22', NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-22 04:00:00', '2025-12-22 04:00:29'),
+(205, 148, 'احمد حسینی', 1, NULL, '1384', 'باید ازمایش دهد', '33', '33', '22', NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 04:00:00', '2026-01-05 22:01:26'),
 (206, 149, 'شش', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-23 02:55:10', '2025-12-23 02:55:14'),
 (207, NULL, 'احمد حسینی a', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-24 17:24:33', '2025-12-24 17:24:42'),
 (208, 150, 'احمد حسینی 22', 1, NULL, '1360', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-24 17:25:17', '2025-12-24 17:25:36'),
@@ -1221,7 +1221,9 @@ INSERT INTO `prescriptions` (`id`, `patient_id`, `patient_name`, `doctor_id`, `a
 (258, 193, 'a', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 16:34:53', '2026-01-01 01:03:35'),
 (259, 194, 'احمد حسینی', 1, NULL, '-1929', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-01 01:09:42', '2026-01-01 01:09:47'),
 (260, 195, '333', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-01 15:26:20', '2026-01-01 15:26:25'),
-(261, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 1, 'کاظم حسینی', '2026-01-03 04:26:43', NULL);
+(261, 152, 'احمد حسینی', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-03 04:26:43', '2026-01-05 02:25:05'),
+(262, 196, 'احمد حسینی', 1, NULL, '1368', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-05 02:35:22', '2026-01-05 02:35:27'),
+(263, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 1, 'کاظم حسینی', '2026-01-05 22:11:25', '2026-01-06 02:56:36');
 
 -- --------------------------------------------------------
 
@@ -1248,7 +1250,7 @@ CREATE TABLE IF NOT EXISTS `prescription_items` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `drug_name` (`drug_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=474 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=477 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prescription_items`
@@ -1659,7 +1661,9 @@ INSERT INTO `prescription_items` (`id`, `drug_name`, `prescription_id`, `drug_id
 (470, 'Glucose 10%', 258, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2026-01-01 00:52:55', NULL),
 (471, 'Amlodipine', 259, 7, 'T', NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2026-01-01 01:09:42', NULL),
 (472, 'Glucose 10%', 260, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2026-01-01 15:26:20', NULL),
-(473, 'Alteplase', 261, 72, NULL, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2026-01-03 04:26:43', NULL);
+(473, 'Alteplase', 261, 72, NULL, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2026-01-03 04:26:43', NULL),
+(474, 'Glucose 10%', 262, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-05 02:35:22', NULL),
+(475, 'Glucose 10%', 263, 33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2026-01-05 22:11:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -1916,6 +1920,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `description` tinyint NOT NULL DEFAULT '1',
   `intake_instructions` tinyint NOT NULL DEFAULT '1',
   `tests` tinyint NOT NULL DEFAULT '1',
+  `shwo_section` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `active_infos_pre` tinyint NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -1926,8 +1931,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `branch_id`, `image`, `single_print`, `admission`, `count_drug`, `intake_time`, `dosage`, `company`, `description`, `intake_instructions`, `tests`, `active_infos_pre`, `created_at`, `updated_at`) VALUES
-(1, 20, '2025-12-30-04-38-07_695317e7383e6.jpg', 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, '2025-04-01 13:30:36', '2026-01-03 20:43:51');
+INSERT INTO `settings` (`id`, `branch_id`, `image`, `single_print`, `admission`, `count_drug`, `intake_time`, `dosage`, `company`, `description`, `intake_instructions`, `tests`, `shwo_section`, `active_infos_pre`, `created_at`, `updated_at`) VALUES
+(1, 20, '2025-12-30-04-38-07_695317e7383e6.jpg', 1, 2, 1, 1, 1, 2, 2, 1, 1, 'ireqUVWnyfEVyvmGbrzWgG2GSKlli6TvlTWAwnQwMPY=', 2, '2025-04-01 13:30:36', '2026-01-06 22:59:03');
 
 -- --------------------------------------------------------
 
@@ -2016,7 +2021,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `users`
@@ -2119,7 +2124,8 @@ INSERT INTO `users` (`id`, `user_code`, `user_name`, `password`, `father_name`, 
 (192, NULL, 'ali', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-30 04:36:16', NULL),
 (193, NULL, 'a', NULL, '', '', NULL, 'آقا', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-01 01:03:35', NULL),
 (194, NULL, 'احمد حسینی', NULL, '', '', NULL, 'آقا', -1929, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-01 01:09:47', NULL),
-(195, NULL, '333', NULL, '', '', NULL, 'آقا', 1382, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-01 15:26:25', NULL);
+(195, NULL, '333', NULL, '', '', NULL, 'آقا', 1382, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-01 15:26:25', NULL),
+(196, NULL, 'احمد حسینی', NULL, '', '', NULL, 'آقا', 1368, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-05 02:35:27', NULL);
 
 -- --------------------------------------------------------
 
