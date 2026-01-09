@@ -426,7 +426,7 @@
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('unitDrug')): ?>
-                  <a href="<?= url('unit_type') ?>">
+                  <a href="<?= url('drug-types') ?>">
                     <li class="sidebar-dropdown-menu-item">نوع دارو</li>
                   </a>
                 <?php endif; ?>
