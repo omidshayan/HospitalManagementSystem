@@ -4,7 +4,7 @@ namespace App;
 
 class DrugType extends App
 {
-    //  Dosage page
+    //  DrugType page
     public function drugTypes()
     {
         $this->middleware(true, true, 'dosage', true);
@@ -30,7 +30,7 @@ class DrugType extends App
         }
     }
 
-    // dosage page
+    // DrugType page
     public function editDrugType($id)
     {
         $this->middleware(true, true, 'general');
@@ -45,7 +45,7 @@ class DrugType extends App
         }
     }
 
-    // edit dosage store
+    // edit DrugType store
     public function editDrugTypeStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
@@ -68,7 +68,7 @@ class DrugType extends App
         $this->flashMessageTo('success', _success, url('drug-types'));
     }
 
-    // dosage Details detiles page
+    // DrugType Details detiles page
     public function drugTypeDetails($id)
     {
         $this->middleware(true, true, 'general');
@@ -82,7 +82,7 @@ class DrugType extends App
         }
     }
 
-    // change status dosage
+    // change status DrugType
     public function changeStatusDrugType($id)
     {
         $this->middleware(true, true, 'general');
