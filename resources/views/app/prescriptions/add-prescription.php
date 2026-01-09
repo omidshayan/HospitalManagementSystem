@@ -54,23 +54,26 @@
                         </div>
 
                         <!-- drug type -->
-                        <div class="input-pre count-pre input-wrapper">
-                            <div class="label-form mb5 fs14 text-left"> نوع دارو
-                                <a href="javascript:void(0)" class="close-btn toggle-item"
-                                    data-url="change-status-count-drug"
-                                    data-target="#count_drug">&times;
-                                </a>
+                        <?php
+                        if ($drug_type) { ?>
+                            <div class="input-pre count-pre input-wrapper">
+                                <div class="label-form mb5 fs14 text-left"> نوع دارو
+                                    <a href="javascript:void(0)" class="close-btn toggle-item"
+                                        data-url="change-status-count-drug"
+                                        data-target="#count_drug">&times;
+                                    </a>
+                                </div>
+                                <select name="drug_type" class="border-input nav-item" required>
+                                    <option selected disabled>نوع دارو</option>
+                                    <?php
+                                    foreach ($drugType as $drugTyp) { ?>
+                                        <option id="<?= $drugTyp['drug_type'] ?>"><?= $drugTyp['drug_type'] ?></option>
+                                    <?php }
+                                    ?>
+                                </select>
                             </div>
-                            <select name="drug_type" class="border-input nav-item" required>
-                                <option selected disabled>نوع دارو</option>
-                                <?php
-                                foreach ($drugType as $drugTyp) { ?>
-                                    <option id="<?= $drugTyp['drug_type'] ?>"><?= $drugTyp['drug_type'] ?></option>
-                                <?php }
-                                ?>
-                            </select>
-                        </div>
-
+                        <?php }
+                        ?>
                         <!-- count -->
                         <?php
                         if ($count_drugActive) { ?>
