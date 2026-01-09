@@ -75,7 +75,7 @@
                             </div>
                         <?php }
                         ?>
-                        
+
                         <!-- count -->
                         <?php
                         if ($count_drugActive) { ?>
@@ -338,6 +338,18 @@
                                             <div class="insert mt5 ml-10">
                                                 <div class="one m-auto w100 mb3">
                                                     <textarea name="diagnosis" placeholder="تشخیص خود را وارد نمایید"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Clinical Findings -->
+                                    <div class="accordion-title color-orange">یافته‌های کلینیکی</div>
+                                    <div class="accordion-content-pre w100">
+                                        <div class="child-accordioin w90d">
+                                            <div class="insert mt5 ml-10">
+                                                <div class="one m-auto w100 mb3">
+                                                    <textarea name="diagnosis" placeholder="Enter Clinical Findings..."></textarea>
                                                 </div>
                                             </div>
                                         </div>
