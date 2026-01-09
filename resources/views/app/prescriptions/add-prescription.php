@@ -383,8 +383,8 @@
                                         </div>
                                     </div>
 
-                                    <?php
-                                            if ($testsActive) { ?>
+                                    <!-- <?php
+                                    if ($testsActive) { ?>
                                         <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
                                         <div class="accordion-content-pre w89d">
                                             <div class="child-accordioin">
@@ -399,7 +399,6 @@
                                                             ?>
                                                         </select>
                                                         <button type="button" class="btn w80 p5" onclick="addRecommended()">افزودن</button>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -408,7 +407,7 @@
                                             <ul id="recommended_list" class="color"></ul>
                                         </div>
                                     <?php }
-                                    ?>
+                                    ?> -->
 
                                     <div class="center mt20">
                                         <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
@@ -636,7 +635,7 @@
     </script>
 
     <!-- select recommender -->
-    <script>
+    <!-- <script>
         function addRecommended() {
             const select = document.getElementById('recommended_select');
             const value = select.value;
@@ -647,7 +646,6 @@
 
             const text = select.options[select.selectedIndex].text;
 
-            // جلوگیری از تکراری
             if (document.getElementById('rec_' + value)) {
                 alert('این مورد قبلاً اضافه شده');
                 return;
@@ -663,7 +661,7 @@
 
             document.getElementById('recommended_list').appendChild(li);
         }
-    </script>
+    </script> -->
 
     <!-- validation input and select -->
     <script>
