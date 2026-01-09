@@ -63,10 +63,11 @@
                             </div>
                             <select name="drug_type" class="border-input nav-item" required>
                                 <option selected disabled>نوع دارو</option>
-                                <option>Vial</option>
-                                <option>T</option>
-                                <option>s</option>
-                                <option>Sp</option>
+                                <?php
+                                foreach ($drugType as $drugTyp) { ?>
+                                    <option id="<?= $drugTyp['drug_type'] ?>"><?= $drugTyp['drug_type'] ?></option>
+                                <?php }
+                                ?>
                             </select>
                         </div>
 
