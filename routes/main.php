@@ -83,6 +83,9 @@ require_once 'departments/departments.php';
 // companies
 require_once 'companies/companies.php';
 
+// drug-types
+require_once 'drug-types/drug-types.php';
+
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
         //current url array
