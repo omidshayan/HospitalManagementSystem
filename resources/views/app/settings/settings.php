@@ -73,8 +73,8 @@ include_once('resources/views/scripts/activeNotActive.php');
         <div class="allow-invoice d-flex justify-between mt20">
             <span>
                 نمایش نوع دارو
-                <span id="intake_time" class="status-text <?= ($settings['intake_time'] == 1) ? 'color-green' : 'color-orange' ?>">
-                    (<?= ($settings['intake_time'] == 1) ? 'فعال' : 'غیر فعال' ?>)
+                <span id="drug_type" class="status-text <?= ($settings['drug_type'] == 1) ? 'color-green' : 'color-orange' ?>">
+                    (<?= ($settings['drug_type'] == 1) ? 'فعال' : 'غیر فعال' ?>)
                 </span>
                 <span class="tool-c">
                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -92,13 +92,13 @@ include_once('resources/views/scripts/activeNotActive.php');
                 <input
                     type="checkbox"
                     class="setting-toggle"
-                    data-url="change-status-intake-time"
-                    data-target="#intake_time"
+                    data-url="change-status-drug-type-active"
+                    data-target="#drug_type"
                     data-true-text="(فعال)"
                     data-false-text="(غیر فعال)"
                     data-true-class="color-green"
                     data-false-class="color-orange"
-                    <?= ($settings['intake_time'] == 1) ? 'checked' : '' ?>>
+                    <?= ($settings['drug_type'] == 1) ? 'checked' : '' ?>>
                 <span class="m-slider"></span>
             </label>
         </div>
