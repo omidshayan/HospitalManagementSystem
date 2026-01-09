@@ -69,12 +69,12 @@ class DrugType extends App
     }
 
     // dosage Details detiles page
-    public function dosageDetails($id)
+    public function drugTypeDetails($id)
     {
         $this->middleware(true, true, 'general');
-        $dosage = $this->db->select('SELECT * FROM dosage WHERE `id` = ?', [$id])->fetch();
-        if ($dosage != null) {
-            require_once(BASE_PATH . '/resources/views/app/dosage/dosage-details.php');
+        $drug_type = $this->db->select('SELECT * FROM drug_types WHERE `id` = ?', [$id])->fetch();
+        if ($drug_type != null) {
+            require_once(BASE_PATH . '/resources/views/app/drug-types/drug-type-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
