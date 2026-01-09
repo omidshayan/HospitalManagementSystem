@@ -121,8 +121,9 @@ class Prescription extends App
     //    add drug in Prescription Store
     public function drugPrescriptionStore($request)
     {
-        // $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-        //     strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+        dd($request);
+        $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+            strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 
         $this->middleware(true, true, 'general', true);
 
@@ -135,12 +136,12 @@ class Prescription extends App
         // if ($drugInvalid && !$hasRecommended) {
         //     $this->flashMessage('error', _emptyInputs);
         // }
-        // if ($drugInvalid && !$hasRecommended) {
-        //     if ($isAjax) {
-        //         $this->jsonResponse('error', _emptyInputs);
-        //     }
-        //     $this->flashMessage('error', _emptyInputs);
-        // }
+        if ($drugInvalid && !$hasRecommended) {
+            if ($isAjax) {
+                $this->jsonResponse('error', _emptyInputs);
+            }
+            $this->flashMessage('error', _emptyInputs);
+        }
 
         $this->validateInputs($request);
 
