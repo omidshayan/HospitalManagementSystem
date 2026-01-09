@@ -121,9 +121,8 @@ class Prescription extends App
     //    add drug in Prescription Store
     public function drugPrescriptionStore($request)
     {
-        $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-            strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-
+        // $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+        //     strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 
         $this->middleware(true, true, 'general', true);
 
@@ -136,14 +135,12 @@ class Prescription extends App
         // if ($drugInvalid && !$hasRecommended) {
         //     $this->flashMessage('error', _emptyInputs);
         // }
-        if ($drugInvalid && !$hasRecommended) {
-            if ($isAjax) {
-                $this->jsonResponse('error', _emptyInputs);
-            }
-            $this->flashMessage('error', _emptyInputs);
-        }
-
-
+        // if ($drugInvalid && !$hasRecommended) {
+        //     if ($isAjax) {
+        //         $this->jsonResponse('error', _emptyInputs);
+        //     }
+        //     $this->flashMessage('error', _emptyInputs);
+        // }
 
         $this->validateInputs($request);
 
@@ -270,7 +267,7 @@ class Prescription extends App
         $this->middleware(true, true, 'prescriptionPrint', true);
 
         $prescrption_change = $this->db->select('SELECT * FROM settings')->fetch();
-        
+
         $prescription = $this->db->select(
             'SELECT p.*, 
                 e.employee_name,
