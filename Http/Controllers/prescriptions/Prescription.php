@@ -585,6 +585,8 @@ class Prescription extends App
 
         $companies = $this->db->select('SELECT `name` FROM companies WHERE `status` = 1')->fetchAll();
 
+        $drugTypes = $this->db->select('SELECT id, drug_type FROM drug_types WHERE `status` = ?', [1])->fetchAll();
+
         if ($prescription != null) {
 
             $recommended = $this->db->select('
@@ -605,7 +607,6 @@ class Prescription extends App
             exit();
         }
     }
-
 
     //    add drug in edit Prescription Store
     public function editDrugPrescriptionStore($request, $id)

@@ -36,7 +36,7 @@
                 <!-- modal data -->
 
                 <!-- select new drug -->
-                <form id="prescription_form" action="<?= url('edit-drug-prescription-store/' . ($prescription['id'] ?? '')) ?>"         method="POST">
+                <form id="prescription_form" action="<?= url('edit-drug-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="POST">
 
                     <!-- select deug -->
                     <div class="inputs-pre">
