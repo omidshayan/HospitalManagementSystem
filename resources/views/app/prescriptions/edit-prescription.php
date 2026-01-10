@@ -288,7 +288,7 @@
                                         <div class="inputs d-flex m6">
                                             <div class="one">
                                                 <div class="label-form  fs14 rtl"> نام مریض <?= _star ?></div>
-                                                <input type="text" name="user_name" id="patient_name" class="checkInput" placeholder="نام مریض را وارد نمائید">
+                                                <input type="text" name="user_name" value="<?= $user['user_name'] ?>" id="patient_name" class="checkInput" placeholder="Enter the patient's name...">
                                             </div>
                                         </div>
                                         <div class="inputs d-flex m6">
@@ -297,7 +297,7 @@
                                                     <span class="fs14"></span>
                                                     <strong id="birthYear"> </strong>
                                                 </div>
-                                                <input type="number" id="ageInput" class="checkInput" placeholder="سن مریض را وارد نمائید">
+                                                <input type="number" id="ageInput" value="<?= $age ?>" class="checkInput" placeholder="Enter the patient's age...">
                                                 <input type="hidden" name="birth_year" id="birthYearInput">
                                             </div>
                                         </div>
@@ -305,17 +305,32 @@
                                         <div class="inputs d-flex">
                                             <div class="one d-flex">
                                                 <div class="radio-group">
+
                                                     <label class="radio-label" for="woman">
-                                                        <input type="radio" id="woman" name="gender" value="خانم" class="radio-select">
+                                                        <input
+                                                            type="radio"
+                                                            id="woman"
+                                                            name="gender"
+                                                            value="خانم"
+                                                            class="radio-select"
+                                                            <?= ($user['gender'] ?? '') === 'خانم' ? 'checked' : '' ?>>
                                                         خانم
                                                     </label>
 
                                                     <label class="radio-label" for="man">
-                                                        <input type="radio" id="man" name="gender" checked value="آقا" class="radio-select">
+                                                        <input
+                                                            type="radio"
+                                                            id="man"
+                                                            name="gender"
+                                                            value="آقا"
+                                                            class="radio-select"
+                                                            <?= ($user['gender'] ?? '') === 'آقا' ? 'checked' : '' ?>>
                                                         آقا
                                                     </label>
+
                                                 </div>
                                             </div>
+
                                         </div>
 
                                         <!-- end patient infos -->
