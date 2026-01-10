@@ -115,6 +115,7 @@ class App
                 $request[$fieldName] = $this->saveImage($file, 'images/' . $destinationPath);
         }
 
+
         // get convert age to jalali
         function getBirthYearFromAge($age)
         {
@@ -280,11 +281,8 @@ class App
                 $uploadPath = $uploadDir . $imageName;
                 $fileSizeInBytes = filesize($image['tmp_name']);
                 $fileSizeInKb = round($fileSizeInBytes / 1024, 2);
-                if ($fileSizeInKb > 700) {
-                        $this->send_json_response(false, 'حجم عکس نباید بیشتر از یک ام بی باشد!');
-                        // flash('error', 'حجم تصویر بیشتر از حد مجاز می‌باشد.');
-                        // $this->redirectBack();
-                        // exit();
+                if ($fileSizeInKb > 1024) {
+                        $this->flashMessage('error', 'حجم عکس نباید بیشتر از یک ام بی باشد!');
                 }
                 if (is_uploaded_file($image['tmp_name'])) {
                         if (move_uploaded_file($image['tmp_name'], $uploadPath)) {
