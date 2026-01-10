@@ -229,9 +229,10 @@ class Prescription extends App
 
             $prescriptions = $this->db->select(
                 'SELECT p.*, e.employee_name
-             FROM prescriptions p
-             JOIN employees e ON e.id = p.doctor_id
-             WHERE p.status != ? ORDER BY id DESC',
+                    FROM prescriptions p
+                    LEFT JOIN employees e ON e.id = p.doctor_id
+                    WHERE p.status != ?
+                    ORDER BY p.id DESC',
                 [$status]
             )->fetchAll();
         } else {
@@ -270,19 +271,6 @@ class Prescription extends App
         $companies = $this->db->select('SELECT `name` FROM companies WHERE `status` = 1')->fetchAll();
 
         $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
-
-        // get today prescriptions
-        $prescriptions = $this->db->select(
-            'SELECT 
-                p.*,
-                e.employee_name
-            FROM prescriptions AS p
-            INNER JOIN employees AS e ON e.id = p.doctor_id
-            WHERE p.doctor_id = ? AND `status` = ?
-            AND DATE(p.created_at) = CURDATE()',
-            [$userId['id'], 2]
-        )->fetchAll();
-        // dd($prescriptions);
 
 
         // if active admissions
