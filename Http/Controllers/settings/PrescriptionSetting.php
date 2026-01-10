@@ -44,6 +44,38 @@ class PrescriptionSetting extends App
         $this->send_json_response(true, _success, $newStatus);
     }
 
+    // show doctor infos
+    public function changeStatusActiveDoctorInfos()
+    {
+        $this->middleware(true, true, 'general');
+
+        $row = $this->db->select(
+            'SELECT id, active_doctor_infos FROM settings LIMIT 1'
+        )->fetch();
+
+        if (!$row) {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+
+        $newStatus = ($row['active_doctor_infos'] == 1) ? 2 : 1;
+
+        $this->db->update(
+            'settings',
+            $row['id'],
+            ['active_doctor_infos'],
+            [$newStatus]
+        );
+
+        if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
+            $_SESSION['settings'] = [];
+        }
+
+        $_SESSION['settings']['active_doctor_infos'] = $newStatus;
+
+        $this->send_json_response(true, _success, $newStatus);
+    }
+
     // prescription settings store
     public function prescriptionChangeStore($request)
     {
