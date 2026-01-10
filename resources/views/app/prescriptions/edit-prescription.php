@@ -4,9 +4,11 @@
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/search.php');
+    include_once('resources/views/scripts/toggle-item.php');
 
     $age = $this->getAge($prescription['birth_year']);
     $admissionStatus = isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1;
+
     $count_drugActive = isset($_SESSION['settings']['count_drug']) && $_SESSION['settings']['count_drug'] == 1;
     $intake_timeActive = isset($_SESSION['settings']['intake_time']) && $_SESSION['settings']['intake_time'] == 1;
     $dosageActive = isset($_SESSION['settings']['dosage']) && $_SESSION['settings']['dosage'] == 1;
@@ -14,6 +16,9 @@
     $descriptionActive = isset($_SESSION['settings']['description']) && $_SESSION['settings']['description'] == 1;
     $intake_instructionsActive = isset($_SESSION['settings']['intake_instructions']) && $_SESSION['settings']['intake_instructions'] == 1;
     $testsActive = isset($_SESSION['settings']['tests']) && $_SESSION['settings']['tests'] == 1;
+    $drugType = isset($_SESSION['settings']['drug_type']) && $_SESSION['settings']['drug_type'] == 1;
+
+
     ?>
 
     <!-- Start content -->
@@ -62,7 +67,8 @@
                                 <div class="label-form mb5 fs14 text-left"> نوع دارو
                                     <a href="javascript:void(0)" class="close-btn toggle-item"
                                         data-url="change-status-drug-type-active"
-                                        data-target="#drug_type">&times;
+                                        data-target="#drug_type">
+                                        <!-- &times; -->
                                     </a>
                                 </div>
                                 <select name="drug_type" class="border-input nav-item" required>
@@ -84,7 +90,8 @@
                                 <div class="label-form mb5 fs14 text-left"> تعداد دارو
                                     <a href="javascript:void(0)" class="close-btn toggle-item"
                                         data-url="change-status-count-drug"
-                                        data-target="#count_drug">&times;
+                                        data-target="#count_drug">
+                                        <!-- &times; -->
                                     </a>
                                 </div>
                                 <select name="drug_count" class="border-input nav-item">
@@ -106,7 +113,8 @@
                                 <div class="label-form mb5 fs14 text-left">تولید کننده
                                     <a href="javascript:void(0)" class="close-btn toggle-item"
                                         data-url="change-status-company-active"
-                                        data-target="#company">&times;
+                                        data-target="#company">
+                                        <!-- &times; -->
                                     </a>
                                 </div>
                                 <select name="company" class="other-select-p-item border-input nav-item" required>
@@ -128,7 +136,8 @@
                                 <div class="label-form mb5 fs14 text-left"> زمان مصرف
                                     <a href="javascript:void(0)" class="close-btn toggle-item"
                                         data-url="change-status-intake-time"
-                                        data-target="#intake_time">&times;
+                                        data-target="#intake_time">
+                                        <!-- &times; -->
                                     </a>
                                 </div>
                                 <select name=" interval_time" class="other-select-p-item border-input nav-item" required>
@@ -150,7 +159,8 @@
                                 <div class="label-form mb5 fs14 text-left" for="name">مقدار مصرف
                                     <a href="javascript:void(0)" class="close-btn toggle-item"
                                         data-url="change-status-dosage"
-                                        data-target="#dosage">&times;
+                                        data-target="#dosage">
+                                        <!-- &times; -->
                                     </a>
                                 </div>
                                 <select name=" dosage" required class="other-select-p-item border-input nav-item">
@@ -172,7 +182,8 @@
                                 <div class="label-form mb5 fs14 text-left" for="name">طریقه مصرف
                                     <a href="javascript:void(0)" class="close-btn toggle-item"
                                         data-url="change-status-intake-instructions"
-                                        data-target="#intake_instructions">&times;
+                                        data-target="#intake_instructions">
+                                        <!-- &times; -->
                                     </a>
                                 </div>
                                 <select name="usage_instruction" required class="other-select-p-item border-input nav-item">
@@ -194,7 +205,8 @@
                                 <div class="label-form mb5 fs14 text-left">توضیحات اضافی
                                     <a href="javascript:void(0)" class="close-btn toggle-item"
                                         data-url="change-status-description-active"
-                                        data-target="#description"">&times;
+                                        data-target="#description"">
+                                        <!-- &times; -->
                                     </a>
                                 </div>
                                 <textarea rows=" 2" name="description" class="border-input desc-prescription nav-item" placeholder="Drug description  "></textarea>
