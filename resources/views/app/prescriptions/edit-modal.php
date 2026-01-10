@@ -1,4 +1,14 @@
-        <!-- modal -->
+<?php
+    $count_drugActive = isset($_SESSION['settings']['count_drug']) && $_SESSION['settings']['count_drug'] == 1;
+    $intake_timeActive = isset($_SESSION['settings']['intake_time']) && $_SESSION['settings']['intake_time'] == 1;
+    $dosageActive = isset($_SESSION['settings']['dosage']) && $_SESSION['settings']['dosage'] == 1;
+    $companyActive = isset($_SESSION['settings']['company']) && $_SESSION['settings']['company'] == 1;
+    $descriptionActive = isset($_SESSION['settings']['description']) && $_SESSION['settings']['description'] == 1;
+    $intake_instructionsActive = isset($_SESSION['settings']['intake_instructions']) && $_SESSION['settings']['intake_instructions'] == 1;
+    $testsActive = isset($_SESSION['settings']['tests']) && $_SESSION['settings']['tests'] == 1;
+    $drugType = isset($_SESSION['settings']['drug_type']) && $_SESSION['settings']['drug_type'] == 1;
+?>
+<!-- modal -->
         <button id="openModal-cont" class="addBtn">ثبت نسخه جدید</button>
 
         <div class="modal-overlay-cont" id="modalOverlay-cont">

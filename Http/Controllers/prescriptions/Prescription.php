@@ -245,6 +245,81 @@ class Prescription extends App
             )->fetchAll();
         }
 
+
+
+
+
+        // for modal
+
+        $userId = $this->currentUser();
+
+        $drugCategories = $this->db->select('SELECT * FROM drug_categories WHERE `status` = ?', [1])->fetchAll();
+
+        $intake_times = $this->db->select('SELECT intake_time FROM intake_times WHERE `status` = ?', [1])->fetchAll();
+
+        $dosage = $this->db->select('SELECT dosage FROM dosage WHERE `status` = ?', [1])->fetchAll();
+
+        $tests = $this->db->select('SELECT id, test_name FROM tests WHERE `status` = ?', [1])->fetchAll();
+
+        $drugTypes = $this->db->select('SELECT id, drug_type FROM drug_types WHERE `status` = ?', [1])->fetchAll();
+
+        $intakeInstructions = $this->db->select('SELECT intake_instructions FROM intake_instructions WHERE `status` = ?', [1])->fetchAll();
+
+        $number = $this->db->select('SELECT `number` FROM number_of_drugs')->fetch();
+
+        $companies = $this->db->select('SELECT `name` FROM companies WHERE `status` = 1')->fetchAll();
+
+        $prescription = $this->db->select('SELECT * FROM prescriptions WHERE doctor_id = ? AND `type` = ? AND `status` = ?', [$userId['id'], 1, 1])->fetch();
+
+        // get today prescriptions
+        $prescriptions = $this->db->select(
+            'SELECT 
+                p.*,
+                e.employee_name
+            FROM prescriptions AS p
+            INNER JOIN employees AS e ON e.id = p.doctor_id
+            WHERE p.doctor_id = ? AND `status` = ?
+            AND DATE(p.created_at) = CURDATE()',
+            [$userId['id'], 2]
+        )->fetchAll();
+        // dd($prescriptions);
+
+
+        // if active admissions
+        if (
+            isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1
+        ) {
+            $patients = $this->db->select(
+                'SELECT id, patient_id, user_name, queue_number, age, `status`
+            FROM admissions
+            WHERE doctor_id = ?
+            AND created_at >= CURDATE()
+            AND created_at < CURDATE() + INTERVAL 1 DAY
+            ORDER BY queue_number ASC',
+                [$userId['id']]
+            )->fetchAll();
+        }
+
+
+        if ($prescription) {
+
+            $recommended = $this->db->select('
+                SELECT 
+                    r.id AS recommended_id,
+                    r.recommended AS test_id,
+                    t.test_name
+                FROM recommended r
+                JOIN tests t ON r.recommended = t.id
+                WHERE r.prescription_id = ?
+            ', [$prescription['id']])->fetchAll();
+
+
+            $drugList = $this->db->select('SELECT * FROM prescription_items WHERE `prescription_id` = ?', [$prescription['id']])->fetchAll();
+        }
+
+
+
+
         require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
 
@@ -299,7 +374,7 @@ class Prescription extends App
 
             $preInfos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
         }
-        
+
         $settings = $this->db->select('SELECT * FROM settings')->fetch();
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/show-prescription-item.php');
