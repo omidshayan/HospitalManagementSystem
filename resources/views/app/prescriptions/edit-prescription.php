@@ -384,6 +384,32 @@
                                         </div>
                                     </div>
 
+                                    <!-- <?php
+                                            if ($testsActive) { ?>
+                                        <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
+                                        <div class="accordion-content-pre w89d">
+                                            <div class="child-accordioin">
+                                                <div class="insert mt5">
+                                                    <div class="one m-auto mb3">
+                                                        <select id="recommended_select">
+                                                            <option value="" selected disabled>انتخاب آیتم</option>
+                                                            <?php
+                                                            foreach ($tests as $test) { ?>
+                                                                <option value="<?= $test['id'] ?>"><?= $test['test_name'] ?></option>
+                                                            <?php }
+                                                            ?>
+                                                        </select>
+                                                        <button type="button" class="btn w80 p5" onclick="addRecommended()">افزودن</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="recommended-box color">
+                                            <ul id="recommended_list" class="color"></ul>
+                                        </div>
+                                    <?php }
+                                    ?> -->
+
                                     <div class="center mt20">
                                         <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">
                                             استعلام مریض
@@ -402,6 +428,8 @@
 
             </div>
         </div>
+        <?php include_once('resources/views/scripts/modal.php'); ?>
+        <!-- end modal -->
 
     </div>
 
