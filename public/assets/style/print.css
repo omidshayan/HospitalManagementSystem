@@ -199,14 +199,14 @@
         margin-left: 10px;
         margin-top:30px !important;
     }
-    .fs22 {
-    font-size: 22px;
+    .fs20 {
+    font-size: 20px;
 }
 .ml-10{
     margin-left: 10px;
 }
 .ml-5{
-    margin-left: 5px;
+    margin-left: 5px !important;
 }
     .p10 {
         padding: 10px;

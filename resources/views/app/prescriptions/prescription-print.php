@@ -88,7 +88,7 @@
 
                         <!-- infos -->
                         <div class="p-vital-signs fs12">
-                            <div class="fs22 bold ml-5">Vital Signs</div>
+                            <div class="fs20 bold ml-5">Vital Signs</div>
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['bp'] ?></span>
                                 <span>BP</span>
@@ -110,6 +110,10 @@
                                 <span>SPO₂</span>
                             </div>
                         </div>
+
+                        <!-- clinical findings -->
+                        <div class="fs20 bold mt20 text-left ml-10">Clinical Findings</div>
+                        <div class="fs14 mt50 text-left ml-10"><?= $prescription['clinical_findings'] ?></div>
 
                         <!-- tests -->
                         <ul class="p-recommended fs12">
