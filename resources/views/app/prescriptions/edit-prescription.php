@@ -343,19 +343,19 @@
                                         <div class="child-accordioin w90d">
                                             <div class="insert dir-left mt5 ml-10">
                                                 <div class="one m-auto w97d mb3">
-                                                    <input type="text" name="bp" placeholder=" Blood Pressure  ">
+                                                    <input type="text" name="bp" value="<?= $prescription['bp'] ?>" placeholder=" Blood Pressure  ">
                                                 </div>
                                                 <div class="one m-auto w97d mb3">
-                                                    <input type="text" name="pr" placeholder=" Pulse Rate  ">
+                                                    <input type="text" name="pr" value="<?= $prescription['pr'] ?>" placeholder=" Pulse Rate  ">
                                                 </div>
                                                 <div class="one m-auto w97d mb3">
-                                                    <input type="text" name="rr" placeholder=" Respiratory Rate  ">
+                                                    <input type="text" name="rr" value="<?= $prescription['rr'] ?>" placeholder=" Respiratory Rate  ">
                                                 </div>
                                                 <div class="one m-auto w97d mb3">
-                                                    <input type="text" name="temp" placeholder=" Temperature  ">
+                                                    <input type="text" name="temp" value="<?= $prescription['temp'] ?>" placeholder=" Temperature  ">
                                                 </div>
                                                 <div class="one m-auto w97d mb3">
-                                                    <input type="text" name="spo2" placeholder=" Oxygen Saturation  ">
+                                                    <input type="text" name="spo2" value="<?= $prescription['spo2'] ?>" placeholder=" Oxygen Saturation  ">
                                                 </div>
                                             </div>
                                         </div>
@@ -367,7 +367,7 @@
                                         <div class="child-accordioin w90d">
                                             <div class="insert mt5 ml-10">
                                                 <div class="one m-auto w100 mb3">
-                                                    <textarea name="diagnosis" placeholder="Enter Doctor's Diagnosis..."></textarea>
+                                                    <textarea name="diagnosis" placeholder="Enter Doctor's Diagnosis..."><?= htmlspecialchars($prescription['diagnosis'] ?? '') ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -379,7 +379,7 @@
                                         <div class="child-accordioin w90d">
                                             <div class="insert mt5 ml-10">
                                                 <div class="one m-auto w100 mb3">
-                                                    <textarea name="clinical_findings" placeholder="Enter Clinical Findings..."></textarea>
+                                                    <textarea name="clinical_findings" placeholder="Enter Clinical Findings..."><?= $prescription['clinical_findings'] ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -393,21 +393,21 @@
                                             <div class="inputs m6">
                                                 <div class="one">
                                                     <div class="label-form fs14"> شماره موبایل </div>
-                                                    <input type="text" name="phone" placeholder="شماره موبایل را وارد نمائید">
+                                                    <input type="text" name="phone" value="<?= $user['phone'] ?>" placeholder="شماره موبایل را وارد نمائید">
                                                 </div>
                                             </div>
 
                                             <div class="inputs m6">
                                                 <div class="one">
                                                     <div class="label-form fs14"> نام پدر </div>
-                                                    <input type="text" name="father_name" placeholder="نام پدر را وارد نمائید">
+                                                    <input type="text" name="father_name" value="<?= $user['father_name'] ?>" placeholder="نام پدر را وارد نمائید">
                                                 </div>
                                             </div>
 
                                             <div class="insert m6">
                                                 <div class="one m-auto w97d mb3">
                                                     <div class="label-form fs14"> توضیحات </div>
-                                                    <textarea name="description" placeholder="توضیحات مریض را وارد نمایید"></textarea>
+                                                    <textarea name="description" placeholder="توضیحات مریض را وارد نمایید"><?= $user['description'] ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
