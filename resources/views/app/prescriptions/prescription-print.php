@@ -86,7 +86,7 @@
                             <hr class="hrp">
                         </div>
 
-                        <!-- infos -->
+                        <!-- Vital Signs -->
                         <div class="p-vital-signs fs12">
                             <div class="fs20 bold ml-5">Vital Signs</div>
                             <div class="d-flex justify-between pr8">
