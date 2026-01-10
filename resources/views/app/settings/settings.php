@@ -385,6 +385,7 @@ include_once('resources/views/scripts/activeNotActive.php');
         </div>
 
         <!-- tests -->
+         <!-- // NOTE disabled -->
         <div class="allow-invoice d-flex justify-between mt20">
             <span>
                 نمایش بخش آزمایش‌ها
@@ -405,6 +406,7 @@ include_once('resources/views/scripts/activeNotActive.php');
             </span>
             <label class="m-switch">
                 <input
+                    disabled
                     type="checkbox"
                     class="setting-toggle"
                     data-url="change-status-tests"
