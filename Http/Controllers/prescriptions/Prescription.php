@@ -308,6 +308,8 @@ class Prescription extends App
 
 
 
+        
+
         require_once(BASE_PATH . '/resources/views/app/prescriptions/prescriptions.php');
     }
 

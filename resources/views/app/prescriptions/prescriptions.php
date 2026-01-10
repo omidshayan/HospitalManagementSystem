@@ -16,11 +16,6 @@ include_once('public/alerts/toastr.php');
     include_once('resources/views/helps/help.php');
     ?>
     <!-- start page content -->
-    
-    <?php
-    include_once('resources/views/app/prescriptions/edit-modal.php');
-    ?>
-
 
     <div class="box-container">
         <table class="fl-table">
