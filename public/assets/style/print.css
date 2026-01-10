@@ -202,11 +202,17 @@
     .fs20 {
     font-size: 20px;
 }
+.text-left{
+    text-align: left !important;
+}
 .ml-10{
     margin-left: 10px;
 }
 .mt50{
     margin-top: 50px;
+}
+.mt20 {
+    margin-top: 20px !important;
 }
 .ml-5{
     margin-left: 5px !important;

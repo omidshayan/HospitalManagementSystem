@@ -4,7 +4,7 @@
             ?>
             <div class="item-print p10" style="background-image: url('<?= $imagePath ?>');">
 
-            <!-- top pre infos  -->
+                <!-- top pre infos  -->
                 <?php
                 if ($prescrption_change['active_infos_pre'] == 1) : ?>
                     <div class="pa w100">
@@ -112,9 +112,9 @@
                         </div>
 
                         <!-- clinical findings -->
-                        <div class="fs20 bold mt20 text-left ml-10">Clinical Findings</div>
-                        <div class="fs14 text-left ml-10"><?= $prescription['clinical_findings'] ?></div>
-                        
+                            <div class="fs20 bold mt20 text-left ml-10">Clinical Findings</div>
+                            <div class="fs14 text-left ml-10"><?= $prescription['clinical_findings'] ?></div>
+
                         <!-- tests -->
                         <!-- <ul class="p-recommended fs12">
                             <?php
