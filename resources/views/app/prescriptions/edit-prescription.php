@@ -17,8 +17,6 @@
     $intake_instructionsActive = isset($_SESSION['settings']['intake_instructions']) && $_SESSION['settings']['intake_instructions'] == 1;
     $testsActive = isset($_SESSION['settings']['tests']) && $_SESSION['settings']['tests'] == 1;
     $drugType = isset($_SESSION['settings']['drug_type']) && $_SESSION['settings']['drug_type'] == 1;
-
-
     ?>
 
     <!-- Start content -->
@@ -36,7 +34,9 @@
                 </div>
 
                 <!-- modal data -->
-                <form id="prescription_form" action="<?= url('drug-prescription-store') ?>" method="POST">
+
+                <!-- select new drug -->
+                <form id="prescription_form" action="<?= url('edit-drug-prescription-store/' . ($prescription['id'] ?? '')) ?>"         method="POST">
 
                     <!-- select deug -->
                     <div class="inputs-pre">
@@ -220,7 +220,9 @@
                             <!-- end select drug -->
 
                             <hr class="hr">
+
                 </form>
+                <!-- end select new drug -->
 
                 <!-- drug list and user infos CLOSE -->
                 <div class="pre-main d-flex">
@@ -395,32 +397,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- <?php
-                                            if ($testsActive) { ?>
-                                        <div class="accordion-title color-orange w89d">معاینات / آزمایشات توصیه شده</div>
-                                        <div class="accordion-content-pre w89d">
-                                            <div class="child-accordioin">
-                                                <div class="insert mt5">
-                                                    <div class="one m-auto mb3">
-                                                        <select id="recommended_select">
-                                                            <option value="" selected disabled>انتخاب آیتم</option>
-                                                            <?php
-                                                            foreach ($tests as $test) { ?>
-                                                                <option value="<?= $test['id'] ?>"><?= $test['test_name'] ?></option>
-                                                            <?php }
-                                                            ?>
-                                                        </select>
-                                                        <button type="button" class="btn w80 p5" onclick="addRecommended()">افزودن</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="recommended-box color">
-                                            <ul id="recommended_list" class="color"></ul>
-                                        </div>
-                                    <?php }
-                                    ?> -->
 
                                     <div class="center mt20">
                                         <a id="checkPatientBtn" href="" target="_blank" class="p5-20 bg-success btn fs14 d-none">

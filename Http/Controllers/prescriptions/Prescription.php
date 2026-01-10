@@ -610,12 +610,11 @@ class Prescription extends App
     //    add drug in edit Prescription Store
     public function editDrugPrescriptionStore($request, $id)
     {
-        $this->middleware(true, true, 'general', true, $request, true);
+        $this->middleware(true, true, 'general');
 
         $drugInvalid =
             empty($request['drug_id']) ||
-            empty($request['drug_name']) ||
-            empty($request['drug_count']);
+            empty($request['drug_name']);
 
         $hasRecommended = !empty($request['recommended']);
 
@@ -635,7 +634,7 @@ class Prescription extends App
             'type' => 1,
             'year' => $yearMonth['year'],
             'month' => $yearMonth['month'],
-            'who_it' => $request['who_it'],
+            'who_it' => $user_id['name'],
         ];
         //  Create or get existing prescription
         $prescription = $this->db->select('SELECT id FROM prescriptions WHERE `id` = ?', [$id])->fetch();
