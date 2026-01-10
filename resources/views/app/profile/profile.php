@@ -2,13 +2,13 @@
 $title = 'مشخصات اکانت';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
-include_once('public/alerts/error.php');
+include_once('public/alerts/toastr.php');
 ?>
 <script src="<?= asset('lib/chart.js') ?>"></script>
 
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> جزئیات حساب کاربری: <?= $profile['employee_name'] ?></div>
+    <div class="content-title"> جزئیات پروفایل: <?= $profile['employee_name'] ?></div>
 
     <!-- start page content -->
     <div class="mini-container">
@@ -18,7 +18,7 @@ include_once('public/alerts/error.php');
                 <div class="w100 m10 center"><?= $profile['employee_name'] ?></div>
             </div>
         </div>
-                <div class="details">
+        <div class="details">
             <div class="detail-item d-flex">
                 <div class="w100 m10 center">تعداد نسخه‌های تجویز شده</div>
                 <div class="w100 m10 center"><?= $totalPrescriptions ?> نسخه</div>
@@ -52,6 +52,38 @@ include_once('public/alerts/error.php');
             <canvas id="myChart"></canvas>
         </div>
     </div>
+
+    <!-- change profile infos -->
+    <div class="mini-container">
+        <div class="change-password center">
+            تغییر اطلاعات پروفایل
+            <div class="insert">
+                <form action="<?= url('change-profile-infos/' . $profile['id']) ?>" method="POST">
+                    <div class="inputs d-flex">
+                        <div class="one">
+                            <div class="label-form mb5 fs14">نام <?= _star ?> </div>
+                            <input type="text" class="checkInput" name="employee_name" value="<?= $profile['employee_name'] ?>" placeholder=" نام خود را وارد نمایید" />
+                        </div>
+                    </div>
+                    <div class="inputs d-flex">
+                        <div class="one">
+                            <div class="label-form mb5 fs14">شماره موبایل <?= _star ?> </div>
+                            <input type="text" class="checkInput" name="phone" value="<?= $profile['phone'] ?>" placeholder="شماره موبایل خود را وارد نمایید" />
+                        </div>
+                    </div>
+                    <div class="inputs d-flex">
+                        <div class="one">
+                            <div class="label-form mb5 fs14">ایمیل </div>
+                            <input type="text" name="email" value="<?= $profile['email'] ?>" placeholder="ایمیل خود را وارد نمایید" />
+                        </div>
+                    </div>
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                    <input type="submit" id="submit" value="ویرایش" class="btn bold" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end page content -->
 
     <!-- change password -->
     <div class="mini-container">
@@ -148,9 +180,6 @@ include_once('public/alerts/error.php');
     function getPersianDay(dateStr) {
         const date = new Date(dateStr);
         let dayNumber = date.getDay();
-        // جاوااسکریپت یکشنبه رو 0 می‌دونه، ولی تو میخوای شنبه اول باشه:
-        // چون تو روزهای فارسی شنبه اولین روز هفته است، باید عدد را تغییر بدیم
-        // دقت کن که روز هفته به صورت 0=یکشنبه هست، پس میخوایم تبدیل کنیم به 0=شنبه
         dayNumber = (dayNumber + 1) % 7;
         return daysFa[dayNumber];
     }
