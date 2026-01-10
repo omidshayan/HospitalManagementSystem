@@ -151,8 +151,8 @@
                         <!-- clinical findings -->
                         <?php
                         if ($prescription['clinical_findings'] != '') { ?>
-                            <div class="fs20 bold mt20 text-left ml-10">Clinical Findings</div>
-                            <div class="fs14 text-left ml-10"><?= $prescription['clinical_findings'] ?></div>
+                            <div class="fs20 bold mt20 text-left ml-13">Clinical Findings</div>
+                            <div class="fs14 text-left ml20"><?= $prescription['clinical_findings'] ?></div>
                         <?php }
                         ?>
 
@@ -169,8 +169,8 @@
 
                         <?php
                         if ($prescription['clinical_findings'] != '') { ?>
-                            <div class="fs20 bold mt20 text-left ml-10 mt50">Diagnosis</div>
-                            <div class="fs14 text-left ml-10"><?= $prescription['diagnosis'] ?></div>
+                            <div class="fs20 bold mt20 text-left ml-13 mt50">Diagnosis</div>
+                            <div class="fs14 text-left ml20"><?= $prescription['diagnosis'] ?></div>
                         <?php }
                         ?>
 

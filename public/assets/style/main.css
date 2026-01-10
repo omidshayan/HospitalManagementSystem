@@ -251,7 +251,9 @@
 .ml-10 {
     margin-left: 10px;
 }
-
+.ml16{
+    margin-left: 16px;
+}
 .ml-100 {
     margin-left: 100px;
 }
