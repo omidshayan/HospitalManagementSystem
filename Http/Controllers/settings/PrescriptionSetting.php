@@ -81,6 +81,10 @@ class PrescriptionSetting extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
+        if (!isset($request['image']) || !is_uploaded_file($request['image']['tmp_name'])) {
+            $this->flashMessage('error', 'لطفا یک عکس انتخاب نمایید');
+        }
+
         $infos = $this->db->select('SELECT * FROM settings')->fetch();
 
         if (!$infos) {
@@ -94,8 +98,8 @@ class PrescriptionSetting extends App
             'image' => $request['image'],
         ];
 
-        if (!isset($_SESSION['settings']) || !is_array($_SESSION['settings'])) {
-            $_SESSION['settings'] = [];
+        if (isset($_SESSION['settings']) || is_array($_SESSION['settings'])) {
+            unset($_SESSION['settings']);
         }
 
         $this->db->update('settings', $infos['id'], array_keys($data), $data);
