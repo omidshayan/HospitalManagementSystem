@@ -95,11 +95,11 @@
                             </div>
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['pr'] ?></span>
-                                <span>Pr</span>
+                                <span>PR</span>
                             </div>
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['rr'] ?></span>
-                                <span>Rr</span>
+                                <span>RR</span>
                             </div>
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['temp'] ?></span>
@@ -113,10 +113,10 @@
 
                         <!-- clinical findings -->
                         <div class="fs20 bold mt20 text-left ml-10">Clinical Findings</div>
-                        <div class="fs14 mt50 text-left ml-10"><?= $prescription['clinical_findings'] ?></div>
-
+                        <div class="fs14 text-left ml-10"><?= $prescription['clinical_findings'] ?></div>
+                        
                         <!-- tests -->
-                        <ul class="p-recommended fs12">
+                        <!-- <ul class="p-recommended fs12">
                             <?php
                             if (!empty($tests)) {
                                 foreach ($tests as $test) { ?>
@@ -124,9 +124,10 @@
                             <?php }
                             }
                             ?>
-                        </ul>
+                        </ul> -->
 
-                        <div class="fs14 mt50 text-left ml-10"><?= $prescription['diagnosis'] ?></div>
+                        <div class="fs20 bold mt20 text-left ml-10 mt50">Diagnosis</div>
+                        <div class="fs14 text-left ml-10"><?= $prescription['diagnosis'] ?></div>
                     </div>
 
                 </div>
