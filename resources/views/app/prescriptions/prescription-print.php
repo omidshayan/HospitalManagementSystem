@@ -4,7 +4,7 @@
             ?>
             <div class="item-print p10" style="background-image: url('<?= $imagePath ?>');">
 
-                <!-- top pre infos  -->
+            <!-- top pre infos  -->
                 <?php
                 if ($prescrption_change['active_infos_pre'] == 1) : ?>
                     <div class="pa w100">
@@ -88,6 +88,7 @@
 
                         <!-- infos -->
                         <div class="p-vital-signs fs12">
+                            <div class="fs22 bold ml-5">Vital Signs</div>
                             <div class="d-flex justify-between pr8">
                                 <span><?= $prescription['bp'] ?></span>
                                 <span>BP</span>
