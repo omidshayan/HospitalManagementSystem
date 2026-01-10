@@ -80,12 +80,15 @@
                     <div class="p-left-infos border-r">
 
                         <!-- doctor infos -->
-
-                        <div class="p-doctor-infos">
-                            <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
-                            <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
-                            <hr class="hrp">
-                        </div>
+                        <?php
+                        if ($settings['active_doctor_infos'] == 1) { ?>
+                            <div class="p-doctor-infos">
+                                <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
+                                <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
+                                <hr class="hrp">
+                            </div>
+                        <?php }
+                        ?>
 
                         <!-- Vital Signs -->
                         <div class="p-vital-signs fs12">
@@ -113,8 +116,8 @@
                         </div>
 
                         <!-- clinical findings -->
-                            <div class="fs20 bold mt20 text-left ml-10">Clinical Findings</div>
-                            <div class="fs14 text-left ml-10"><?= $prescription['clinical_findings'] ?></div>
+                        <div class="fs20 bold mt20 text-left ml-10">Clinical Findings</div>
+                        <div class="fs14 text-left ml-10"><?= $prescription['clinical_findings'] ?></div>
 
                         <!-- tests -->
                         <!-- <ul class="p-recommended fs12">
