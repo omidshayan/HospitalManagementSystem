@@ -111,7 +111,7 @@
 
     .drug-name-en {
         direction: ltr;
-        text-align: justify;
+        min-width: 100px !important;
     }
 
     .fs14 {

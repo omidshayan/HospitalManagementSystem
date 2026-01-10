@@ -46,29 +46,62 @@
                         <table class="pa t0 w100">
                             <thead>
                                 <tr class="fs12 p-color-title">
-                                    <th class="w80 p5">طریقه مصرف</th>
-                                    <th class="w120">مقدار مصرف هر نوبت</th>
-                                    <th class="w80">زمان مصرف</th>
-                                    <th class="">تعداد</th>
-                                    <th class="">نام دارو</th>
-                                    <th class="">نوع</th>
+                                    <?= ($settings['description'] == 1) ? '<th class="w80 p5 fs11">توضیحات</th>' : '' ?>
+
+                                    <?= ($settings['intake_instructions'] == 1) ? '<th class="w80 p5 fs11">طریقه مصرف</th>' : '' ?>
+
+                                    <?= ($settings['dosage'] == 1) ? '<th class="w120 fs11">مقدار مصرف</th>' : '' ?>
+
+                                    <?= ($settings['intake_time'] == 1) ? '<th class="w80 fs11">زمان مصرف</th>' : '' ?>
+
+                                    <?= ($settings['company'] == 1) ? '<th class="fs11">تولیدکننده</th>' : '' ?>
+
+                                    <?= ($settings['count_drug'] == 1) ? '<th class="fs11">تعداد</th>' : '' ?>
+
+                                    <th class="fs11">نام دارو</th>
+                                    
+                                    <?= ($settings['drug_type'] == 1) ? '<th class="fs11">نوع</th>' : '' ?>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 foreach ($items as $item) { ?>
-
                                     <div class="p-drugs-items">
                                         <tr class="p-color-item fs14 center">
-                                            <td><?= $item['usage_instruction'] ?></td>
-                                            <td><?= $item['dosage'] ?></td>
-                                            <td><?= $item['interval_time'] ?></td>
-                                            <td><?= $this->convertEnNumber($item['drug_count']) ?></td>
-                                            <td class="p5 drug-name-en"> <?= $item['drug_name'] ?></td>
-                                            <td class="p5"> <?= $item['drug_type'] ?></td>
+
+                                            <?php if (!empty($settings['description']) && (int)$settings['description'] === 1): ?>
+                                                <td><?= htmlspecialchars($item['description'] ?? '') ?></td>
+                                            <?php endif; ?>
+
+                                            <?php if (!empty($settings['intake_instructions']) && (int)$settings['intake_instructions'] === 1): ?>
+                                                <td><?= htmlspecialchars($item['usage_instruction'] ?? '') ?></td>
+                                            <?php endif; ?>
+
+                                            <?php if (!empty($settings['dosage']) && (int)$settings['dosage'] === 1): ?>
+                                                <td><?= htmlspecialchars($item['dosage'] ?? '') ?></td>
+                                            <?php endif; ?>
+
+                                            <?php if (!empty($settings['intake_time']) && (int)$settings['intake_time'] === 1): ?>
+                                                <td><?= htmlspecialchars($item['interval_time'] ?? '') ?></td>
+                                            <?php endif; ?>
+
+                                            <?php if (!empty($settings['company']) && (int)$settings['company'] === 1): ?>
+                                                <td><?= htmlspecialchars($item['company'] ?? '') ?></td>
+                                            <?php endif; ?>
+
+                                            <?php if (!empty($settings['count_drug']) && (int)$settings['count_drug'] === 1): ?>
+                                                <td><?= $this->convertEnNumber($item['drug_count'] ?? 0) ?></td>
+                                            <?php endif; ?>
+
+                                            <td class="p5 drug-name-en center"><?= htmlspecialchars($item['drug_name'] ?? '') ?></td>
+
+                                            <?php if (!empty($settings['drug_type']) && (int)$settings['drug_type'] === 1): ?>
+                                                <td class="p5 w30"><?= htmlspecialchars($item['drug_type'] ?? '') ?></td>
+                                            <?php endif; ?>
+
                                         </tr>
                                     </div>
-
                                 <?php }
                                 ?>
                             </tbody>
