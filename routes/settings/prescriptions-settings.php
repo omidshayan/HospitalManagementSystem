@@ -8,3 +8,5 @@ uri('prescription-change', 'App\PrescriptionSetting', 'prescriptionSettings');
 uri('prescription-change-store', 'App\PrescriptionSetting', 'prescriptionChangeStore', 'POST');
 
 uri('change-status-active-infos-pre', 'App\PrescriptionSetting', 'changeStatusActiveInfosPre', 'POST');
+
+uri('change-status-active-doctor-infos', 'App\PrescriptionSetting', 'changeStatusActiveDoctorInfos', 'POST');
