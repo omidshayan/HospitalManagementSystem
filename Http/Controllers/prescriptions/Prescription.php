@@ -261,7 +261,7 @@ class Prescription extends App
         require_once(BASE_PATH . '/resources/views/app/prescriptions/result-search.php');
     }
 
-    // showPrescriptionItem
+    // show Prescription Item
     public function showPrescriptionItem($id)
     {
         $this->middleware(true, true, 'prescriptionPrint', true);
@@ -299,6 +299,8 @@ class Prescription extends App
 
             $preInfos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
         }
+        
+        $settings = $this->db->select('SELECT * FROM settings')->fetch();
 
         require_once(BASE_PATH . '/resources/views/app/prescriptions/show-prescription-item.php');
     }
