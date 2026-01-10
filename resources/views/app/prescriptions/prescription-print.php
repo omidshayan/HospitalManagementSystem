@@ -59,7 +59,7 @@
                                     <?= ($settings['count_drug'] == 1) ? '<th class="fs11">تعداد</th>' : '' ?>
 
                                     <th class="fs11">نام دارو</th>
-                                    
+
                                     <?= ($settings['drug_type'] == 1) ? '<th class="fs11">نوع</th>' : '' ?>
 
                                 </tr>
@@ -91,7 +91,7 @@
                                             <?php endif; ?>
 
                                             <?php if (!empty($settings['count_drug']) && (int)$settings['count_drug'] === 1): ?>
-                                                <td><?= $this->convertEnNumber($item['drug_count'] ?? 0) ?></td>
+                                                <td><?= $item['drug_count'] ?></td>
                                             <?php endif; ?>
 
                                             <td class="p5 drug-name-en center"><?= htmlspecialchars($item['drug_name'] ?? '') ?></td>
