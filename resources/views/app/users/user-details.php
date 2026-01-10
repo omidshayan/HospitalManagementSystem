@@ -25,7 +25,7 @@ include_once('resources/views/scripts/show-img-modal.php');
     <!-- start page content -->
     <div class="box-container">
 
-        <div class="accordion-title color-orange">مشخصات عمومی</div>
+        <div class="accordion-title color-orange border">مشخصات عمومی</div>
         <div class="accordion-content">
             <div class="child-accordioin">
                 <div class="detailes-culomn d-flex cursor-p">
@@ -41,6 +41,10 @@ include_once('resources/views/scripts/show-img-modal.php');
                             - - - -
                         <?php endif; ?>
                     </div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">جنسیت</div>
+                    <div class="info-detaile"><?= ($user['gender'] == 'آقا') ? 'آقا' : 'خانم ' ?></div>
                 </div>
                 <div class="detailes-culomn d-flex cursor-p">
                     <div class="title-detaile">نام پدر</div>
@@ -83,7 +87,7 @@ include_once('resources/views/scripts/show-img-modal.php');
             </div>
         </div>
 
-        <div class="accordion-title color-orange">جزئیات مراجعه</div>
+        <div class="accordion-title color-orange mt5 border">جزئیات مراجعه</div>
         <div class="accordion-content">
             <div class="child-accordioin">
 
