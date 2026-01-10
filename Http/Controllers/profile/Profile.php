@@ -79,4 +79,28 @@ class Profile extends App
             }
         }
     }
+
+    // edit profile store
+    public function changeProfileInfosStore($request, $id)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        if ($request['employee_name'] == '' || $request['phone'] == '') {
+            $this->flashMessage('error', _emptyInputs);
+            return;
+        }
+
+        $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
+        if ($existEmployee && $existEmployee['id'] != $id) {
+            $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
+            return;
+        }
+
+        $infos = [
+            'employee_name' => $request['employee_name'],
+            'phone' => $request['phone'],
+        ];
+        $this->db->update('employees', $id, array_keys($infos), $infos);
+        $this->flashMessage('success', _success);
+    }
 }
