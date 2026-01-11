@@ -339,7 +339,7 @@
                                     class="color btn p5-20 bg-success bold pa close-p"
                                     id="closePrescriptionBtn">
                                     <span class="heart-beat">❤</span>
-                                    بــسـتن نــسـخـه
+                                    ویــرایــش نــسـخـه
                                     </a>' : '' ?>
                                 </div>
                             </div>
