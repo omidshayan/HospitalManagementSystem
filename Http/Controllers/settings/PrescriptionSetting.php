@@ -126,7 +126,7 @@ class PrescriptionSetting extends App
             mkdir($backupDir, 0755, true);
         }
 
-        $baseName = 'db_backup_' . date('Y_m_d_H_i_s');
+        $baseName = 'backup_' . date('Y_m_d_H_i_s');
         $sqlFile  = $backupDir . $baseName . '.sql';
         $zipFile  = $backupDir . $baseName . '.zip';
 

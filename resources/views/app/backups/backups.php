@@ -42,8 +42,8 @@ include_once('public/alerts/toastr.php');
                 ?>
                     <tr>
                         <td class="color-orange <?= ($item['status'] == 2) ? 'color-red' : '' ?>"><?= $number ?></td>
-                        <td><?= $item['backups'] ?></td>
-                        <td><?= jdate('Y/m/d', $item['created_at']) ?></td>
+                        <td><?= $item['backup'] ?></td>
+                        <td><?= jdate('Y/m/d', strtotime($item['created_at'])) ?></td>
                         <td><?= $item['who_it'] ?></td>
                         <td>بازگردانی</td>
                     </tr>
