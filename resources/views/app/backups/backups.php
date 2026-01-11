@@ -18,6 +18,7 @@ include_once('public/alerts/toastr.php');
     include_once('resources/views/helps/help.php');
     ?>
 
+    <a href="<?=url('backup-create')?>">پشتیبان گیری</a>
     <!-- show packages -->
     <div class="mini-container">
         <div class="mb10 fs14"> بکاپ‌های ثبت شده</div>
