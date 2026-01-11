@@ -469,6 +469,11 @@
                     <li class="sidebar-dropdown-menu-item">تنظیمات نسخه</li>
                   </a>
                 <?php endif; ?>
+                <?php if ($this->hasAccess('addDrug')): ?>
+                  <a href="<?= url('backup') ?>">
+                    <li class="sidebar-dropdown-menu-item">پشتیبان گیری</li>
+                  </a>
+                <?php endif; ?>
               </ul>
             </li>
           <?php endif; ?>

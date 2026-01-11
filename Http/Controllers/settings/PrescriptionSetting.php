@@ -106,4 +106,9 @@ class PrescriptionSetting extends App
 
         $this->flashMessage('success', 'اطلاعات با موفقیت ویرایش شد.');
     }
+
+    // backup
+    public function backup() {
+        dd('ok');
+    }
 }
