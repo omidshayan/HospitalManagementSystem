@@ -25,9 +25,10 @@ include_once('public/alerts/toastr.php');
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>نوع دارو</th>
-                    <th>ویرایش</th>
-                    <th>جزئیات</th>
+                    <th>نام بکاپ</th>
+                    <th>تاریخ ثبت</th>
+                    <th>توسط</th>
+                    <th>بازگردانی</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +43,8 @@ include_once('public/alerts/toastr.php');
                         <td class="color-orange <?= ($item['status'] == 2) ? 'color-red' : '' ?>"><?= $number ?></td>
                         <td><?= $item['backups'] ?></td>
                         <td><?= jdate('Y/m/d', $item['created_at']) ?></td>
-
+                        <td><?= $item['who_it'] ?></td>
+                        <td>بازگردانی</td>
                     </tr>
                 <?php
                     $number++;
