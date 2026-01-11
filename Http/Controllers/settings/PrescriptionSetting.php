@@ -152,7 +152,7 @@ class PrescriptionSetting extends App
             return false;
         }
 
-        $password = $db . _NAME;
+        $password = $db . APP_NAME;
 
         $zip->setPassword($password);
         $zip->addFile($sqlFile, basename($sqlFile));
