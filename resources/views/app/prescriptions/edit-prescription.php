@@ -230,7 +230,6 @@
 
 
                     <!-- drug list -->
-
                     <div class="pre-body-right">
                         <?php
                         if ($prescription) { ?>
@@ -357,7 +356,7 @@
                     <!-- user infos -->
                     <div class="pre-body-left mt20">
                         <div class="patient-container">
-                            <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
+                            <form action="<?= url('edit-close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
                                 <div class="center fs14 mb10">اطلاعات مریض</div>
                                 <div class="insert">
                                     <?php
@@ -558,6 +557,39 @@
         <!-- end modal -->
 
     </div>
+
+    <script>
+        $(document).ready(function() {
+
+            // close prescription
+            document.getElementById('closePrescriptionBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.getElementById('prescriptionForm').requestSubmit(
+                    document.getElementById('hiddenSubmit')
+                );
+            });
+
+            document.querySelectorAll(".delete-drug").forEach(function(element) {
+                element.addEventListener("click", function(event) {
+                    let confirmDelete = confirm("آیا از حذف دارو اطمینان دارید؟");
+                    if (!confirmDelete) {
+                        event.preventDefault();
+                    }
+                });
+            });
+
+            document.querySelectorAll(".delete-prescription").forEach(function(element) {
+                element.addEventListener("click", function(event) {
+                    let confirmDelete = confirm("آیا از حذف نسخه اطمینان دارید؟");
+                    if (!confirmDelete) {
+                        event.preventDefault();
+                    }
+                });
+            });
+
+        });
+    </script>
 
     <!-- move in tags -->
     <script>
