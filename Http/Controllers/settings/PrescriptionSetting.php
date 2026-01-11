@@ -162,6 +162,14 @@ class PrescriptionSetting extends App
 
         unlink($sqlFile);
 
+        $userInfo = $this->currentUser();
+        $backupInfo = [
+            'backup' => $baseName,
+            'who_it' => $userInfo['name'],
+        ];
+
+        $this->db->insert('backups', array_keys($backupInfo), $backupInfo);
+
         $this->flashMessage('success', 'بکاپ دیتابیس با موفقیت رمزگذاری و ذخیره شد');
         return true;
     }
