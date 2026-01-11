@@ -19,7 +19,7 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'hms_sis');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('MY_NAME', 'sehhatHerat');
+define('_NAME', 'sehhatHerat');
 
 define('CPU', 'BFEBFBFF000306C3');
 define('HDD', 'S250NXAH334410L');

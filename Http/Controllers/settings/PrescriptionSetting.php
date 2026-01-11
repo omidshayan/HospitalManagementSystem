@@ -107,8 +107,17 @@ class PrescriptionSetting extends App
         $this->flashMessage('success', 'اطلاعات با موفقیت ویرایش شد.');
     }
 
-    // backup
     public function backup()
+    {
+        $this->middleware(true, true, 'general');
+
+        $backups = $this->db->select('SELECT * FROM backups')->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/backups/backups.php');
+    }
+
+    // backup
+    public function backupCreate()
     {
         $this->middleware(true, true, 'general', true);
 
@@ -143,8 +152,7 @@ class PrescriptionSetting extends App
             return false;
         }
 
-        // رمز عبور بر اساس نام دیتابیس
-        $password = $db;
+        $password = $db . _NAME;
 
         $zip->setPassword($password);
         $zip->addFile($sqlFile, basename($sqlFile));
