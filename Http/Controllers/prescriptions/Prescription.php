@@ -693,6 +693,7 @@ class Prescription extends App
     // edit close invoice
     public function editClosePrescriptionStore($request, $id)
     {
+        dd('ok');
         $this->middleware(true, true, 'general', true, $request, true);
 
 
