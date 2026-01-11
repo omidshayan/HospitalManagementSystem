@@ -91,7 +91,7 @@ include_once('public/alerts/toastr.php');
                     </div>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                <input type="submit" id="backupBtn" value="اعمال" class="btn" />
+                <input type="submit" id="submit" value="اعمال" class="btn" />
             </div>
         </form>
     </div>
@@ -117,6 +117,7 @@ include_once('public/alerts/toastr.php');
         });
     });
 </script>
+
 <style>
     .load-spinner {
         border: 3px solid #f3f3f3 !important;
