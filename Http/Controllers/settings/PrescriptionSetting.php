@@ -233,47 +233,42 @@ class PrescriptionSetting extends App
             return;
         }
 
-        $backup = $this->db->select('SELECT id, `backup` FROM backups WHERE `backup` = ?', [$request['restor_backup']])->fetch();
-
-        if (!$backup) {
-            $this->flashMessage('error', 'فایل مورد نظر یافت نشد');
-            return;
-        }
+        // مسیر فایل آپلود شده یا انتخاب شده توسط کاربر
+        $backupFile = $request['restor_backup']; // باید مسیر کامل یا نام فایل باشه
 
         $backupDir = BASE_PATH . '/storage/backups/';
-        $zipFile = $backupDir . $backup['backup'];
+
+        // اگر کاربر فایل رو آپلود کرده، اول باید اونو به مسیر سرور منتقل کنیم
+        // (اگر فرم آپلود فایل هست، اینجا باید move_uploaded_file اجرا بشه و مسیر فایل ذخیره بشه)
+
+        $zipFile = $backupDir . $backupFile;
 
         if (!file_exists($zipFile)) {
             $this->flashMessage('error', 'فایل بکاپ در سرور موجود نیست');
             return;
         }
 
-        // رمز فایل (ترکیب ثابت + نام دیتابیس)
         $password = DB_NAME . APP_NAME;
 
         $zip = new \ZipArchive();
         if ($zip->open($zipFile) === true) {
 
-            // تنظیم پسورد
             if (!$zip->setPassword($password)) {
                 $this->flashMessage('error', 'خطا در تنظیم رمز فایل زیپ');
                 $zip->close();
                 return;
             }
 
-            // اسم فایل sql داخل زیپ (معمولاً همون backup_yyy_mm_dd_hh_mm_ss.sql)
-            $sqlFileName = $zip->getNameIndex(0); // اولین فایل داخل زیپ
+            $sqlFileName = $zip->getNameIndex(0);
 
-            // استخراج فایل sql به مسیر موقت
-            $extractPath = $backupDir . 'temp_restore.sql';
-            if (!$zip->extractTo($backupDir, $sqlFileName)) {
+            if (!$zip->extractTo($backupDir)) {
                 $this->flashMessage('error', 'خطا در استخراج فایل بکاپ');
                 $zip->close();
                 return;
             }
+
             $zip->close();
 
-            // مسیر فایل استخراج شده
             $extractedFile = $backupDir . $sqlFileName;
 
             if (!file_exists($extractedFile)) {
@@ -281,7 +276,6 @@ class PrescriptionSetting extends App
                 return;
             }
 
-            // خواندن محتوای فایل SQL
             $sqlContent = file_get_contents($extractedFile);
             if ($sqlContent === false) {
                 $this->flashMessage('error', 'خطا در خواندن فایل SQL');
@@ -289,16 +283,13 @@ class PrescriptionSetting extends App
                 return;
             }
 
-            // اجرای کوئری‌های SQL
-            try {
-                $this->db->connection->exec($sqlContent);
-            } catch (PDOException $e) {
-                $this->flashMessage('error', 'خطا در بازگردانی دیتابیس: ' . $e->getMessage());
+            $result = $this->db->exec($sqlContent);
+            if ($result === false) {
+                $this->flashMessage('error', 'خطا در بازگردانی دیتابیس');
                 unlink($extractedFile);
                 return;
             }
 
-            // حذف فایل استخراج شده بعد از استفاده
             unlink($extractedFile);
 
             $this->flashMessage('success', 'دیتابیس با موفقیت بازگردانی شد');
