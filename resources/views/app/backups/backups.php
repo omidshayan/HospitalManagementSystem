@@ -18,7 +18,7 @@ include_once('public/alerts/toastr.php');
     include_once('resources/views/helps/help.php');
     ?>
 
-    <a href="<?=url('backup-create')?>">پشتیبان گیری</a>
+    <a href="<?= url('backup-create') ?>">پشتیبان گیری</a>
     <!-- show packages -->
     <div class="mini-container">
         <div class="mb10 fs14"> بکاپ‌های ثبت شده</div>
@@ -40,20 +40,26 @@ include_once('public/alerts/toastr.php');
                 $number = ($currentPage - 1) * $perPage + 1;
                 foreach ($data as $item) {
                 ?>
-                    <tr>
+                    <tr class="<?= $item['exists'] ? '' : 'color-red' ?>">
                         <td class="color-orange <?= ($item['status'] == 2) ? 'color-red' : '' ?>"><?= $number ?></td>
-                        <td><?= $item['backup'] ?></td>
+                        <td><?= htmlspecialchars($item['backup']) ?></td>
                         <td><?= jdate('Y/m/d', strtotime($item['created_at'])) ?></td>
-                        <td><?= $item['who_it'] ?></td>
-                        <td><a href="<?=url('backup-download/' . $item['id'])?>" class="text-underline color">دانلود</a></td>
+                        <td class="fs12"><?= htmlspecialchars($item['who_it']) ?></td>
+                        <td>
+                            <?php if ($item['exists']): ?>
+                                <a href="<?= url('backup-download/' . $item['id']) ?>" class="text-underline color">دانلود</a>
+                            <?php else: ?>
+                                <span class="fs12">فایل موجود نیست</span>
+                            <?php endif; ?>
+                        </td>
                     </tr>
                 <?php
                     $number++;
                 }
                 ?>
             </tbody>
-            <tbody></tbody>
         </table>
+
         <div class="flex-justify-align mt20 paginate-section">
             <div class="table-info fs12">تعداد کل: <?= count($backups) ?></div>
             <?php

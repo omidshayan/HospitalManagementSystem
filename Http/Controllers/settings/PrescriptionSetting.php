@@ -108,21 +108,30 @@ class PrescriptionSetting extends App
     }
 
     // backup page
-    public function backup()
-    {
-        $this->middleware(true, true, 'general');
+public function backup()
+{
+    $this->middleware(true, true, 'general');
 
-        $backups = $this->db->select('SELECT * FROM backups ORDER BY id DESC')->fetchAll();
+    $backups = $this->db->select('SELECT * FROM backups ORDER BY id DESC')->fetchAll();
 
-        require_once(BASE_PATH . '/resources/views/app/backups/backups.php');
+    $backupDir = BASE_PATH . '/storage/backups/';
+
+    foreach ($backups as &$item) {
+        $filePath = $backupDir . $item['backup'];
+        $item['exists'] = file_exists($filePath);
     }
+    unset($item);
+
+    require_once(BASE_PATH . '/resources/views/app/backups/backups.php');
+}
+
+
 
     // backup download
     public function backupDownload($id)
     {
         $this->middleware(true, true, 'general');
 
-        // گرفتن نام فایل بکاپ از دیتابیس
         $backup = $this->db->select('SELECT `backup` FROM backups WHERE id = ?', [$id])->fetch();
 
         if (!$backup) {
@@ -131,14 +140,13 @@ class PrescriptionSetting extends App
         }
 
         $backupDir = BASE_PATH . '/storage/backups/';
-        $filePath = $backupDir . $backup['backup'];  // مثل: backup_2026_01_11_21_00_00.zip
+        $filePath = $backupDir . $backup['backup'];
 
         if (!file_exists($filePath)) {
             $this->flashMessage('error', 'فایل بکاپ موجود نیست');
             return;
         }
 
-        // ارسال هدرهای دانلود فایل
         header('Content-Description: File Transfer');
         header('Content-Type: application/zip');
         header('Content-Disposition: attachment; filename="' . basename($filePath) . '"');
@@ -147,15 +155,12 @@ class PrescriptionSetting extends App
         header('Pragma: public');
         header('Content-Length: ' . filesize($filePath));
 
-        // پاک کردن خروجی قبلی
         flush();
 
-        // خواندن و ارسال فایل
         readfile($filePath);
 
-        exit();  // بعد از ارسال فایل اسکریپت رو متوقف می‌کنیم
+        exit();
     }
-
 
     // backup
     public function backupCreate()
