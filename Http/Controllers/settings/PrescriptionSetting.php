@@ -108,24 +108,22 @@ class PrescriptionSetting extends App
     }
 
     // backup page
-public function backup()
-{
-    $this->middleware(true, true, 'general');
+    public function backup()
+    {
+        $this->middleware(true, true, 'general');
 
-    $backups = $this->db->select('SELECT * FROM backups ORDER BY id DESC')->fetchAll();
+        $backups = $this->db->select('SELECT * FROM backups ORDER BY id DESC')->fetchAll();
 
-    $backupDir = BASE_PATH . '/storage/backups/';
+        $backupDir = BASE_PATH . '/storage/backups/';
 
-    foreach ($backups as &$item) {
-        $filePath = $backupDir . $item['backup'];
-        $item['exists'] = file_exists($filePath);
+        foreach ($backups as &$item) {
+            $filePath = $backupDir . $item['backup'];
+            $item['exists'] = file_exists($filePath);
+        }
+        unset($item);
+
+        require_once(BASE_PATH . '/resources/views/app/backups/backups.php');
     }
-    unset($item);
-
-    require_once(BASE_PATH . '/resources/views/app/backups/backups.php');
-}
-
-
 
     // backup download
     public function backupDownload($id)
@@ -221,7 +219,7 @@ public function backup()
             return false;
         }
 
-        $this->flashMessage('success', 'بکاپ دیتابیس با موفقیت رمزگذاری و ذخیره شد');
+        $this->flashMessage('success', 'عملیات با موفقیت انجام شد');
         return true;
     }
 }

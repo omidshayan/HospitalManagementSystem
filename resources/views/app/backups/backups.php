@@ -18,7 +18,8 @@ include_once('public/alerts/toastr.php');
     include_once('resources/views/helps/help.php');
     ?>
 
-    <a href="<?= url('backup-create') ?>">پشتیبان گیری</a>
+    <a href="<?= url('backup-create') ?>" class="btn p10 bold mr10 fs14" id="backupBtn">بکاپ گیری</a>
+
     <!-- show packages -->
     <div class="mini-container">
         <div class="mb10 fs14"> بکاپ‌های ثبت شده</div>
@@ -77,7 +78,56 @@ include_once('public/alerts/toastr.php');
         </div>
     </div>
     <!-- end page content -->
+
+    <!-- load backup -->
+    <div class="mini-container">
+
+    </div>
+    <!-- end load backup -->
+
 </div>
 <!-- End content -->
+
+<!-- loading btn -->
+<script>
+    $(document).ready(function() {
+        $('#backupBtn').on('click', function(e) {
+            e.preventDefault();
+
+            var $btn = $(this);
+            $btn.prop('disabled', true);
+
+            var originalText = $btn.text();
+
+            $btn.html('<span class="load-spinner"></span> در حال پردازش...');
+
+            window.location.href = $btn.attr('href');
+        });
+    });
+</script>
+<style>
+    .load-spinner {
+        border: 3px solid #f3f3f3 !important;
+        border-top: 3px solid #3498db !important;
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        vertical-align: middle;
+        animation: load-spin 1s linear infinite;
+        margin-left: 6px;
+        font-size: 10px !important;
+    }
+
+    @keyframes load-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
 
 <?php include_once('resources/views/layouts/footer.php') ?>
