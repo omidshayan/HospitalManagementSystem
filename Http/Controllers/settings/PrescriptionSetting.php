@@ -222,4 +222,10 @@ class PrescriptionSetting extends App
         $this->flashMessage('success', 'عملیات با موفقیت انجام شد');
         return true;
     }
+
+    // restore backup
+    public function restorBackup($request)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+    }
 }
