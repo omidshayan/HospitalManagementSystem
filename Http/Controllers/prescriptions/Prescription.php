@@ -587,6 +587,34 @@ class Prescription extends App
 
         $drugTypes = $this->db->select('SELECT id, drug_type FROM drug_types WHERE `status` = ?', [1])->fetchAll();
 
+        // get all pre
+        $userInfo = $this->currentUser();
+
+        $status = 1;
+
+        if ($userInfo['role'] === 'admin') {
+
+            $prescriptions = $this->db->select(
+                'SELECT p.*, e.employee_name
+                FROM prescriptions p
+                LEFT JOIN employees e ON e.id = p.doctor_id
+                WHERE p.status != ?
+                ORDER BY p.id DESC',
+                [$status]
+            )->fetchAll();
+        } else {
+
+            $prescriptions = $this->db->select(
+                'SELECT p.*, e.employee_name
+             FROM prescriptions p
+             JOIN employees e ON e.id = p.doctor_id
+             WHERE p.doctor_id = ? AND p.status != ? ORDER BY id DESC',
+                [$userInfo['id'], $status]
+            )->fetchAll();
+        }
+        // end get all
+
+
         if ($prescription != null) {
 
             $recommended = $this->db->select('
