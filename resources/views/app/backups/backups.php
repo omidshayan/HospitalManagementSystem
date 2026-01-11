@@ -81,7 +81,19 @@ include_once('public/alerts/toastr.php');
 
     <!-- load backup -->
     <div class="mini-container">
-
+        <div class="text-right fs14">بازگردانی اطلاعات</div>
+        <form action="<?=url('restor-backup')?>" method="post">
+            <div class="insert">
+                <div class="inputs d-flex">
+                    <div class="one">
+                        <div class="label-form mb5 fs14">انتخاب بکاپ</div>
+                        <input type="file"  name="restor_backup" accept="zip/*">
+                    </div>
+                </div>
+                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
+                <input type="submit" id="submit" value="اعمال" class="btn" />
+            </div>
+        </form>
     </div>
     <!-- end load backup -->
 
