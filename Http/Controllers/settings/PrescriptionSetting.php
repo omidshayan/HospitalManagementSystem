@@ -168,7 +168,13 @@ class PrescriptionSetting extends App
             'who_it' => $userInfo['name'],
         ];
 
-        $this->db->insert('backups', array_keys($backupInfo), $backupInfo);
+
+        $inserted = $this->db->insert('backups', array_keys($backupInfo), $backupInfo);
+
+        if (!$inserted) {
+            $this->flashMessage('error', 'خطا در ثبت اطلاعات بکاپ در دیتابیس');
+            return false;
+        }
 
         $this->flashMessage('success', 'بکاپ دیتابیس با موفقیت رمزگذاری و ذخیره شد');
         return true;
