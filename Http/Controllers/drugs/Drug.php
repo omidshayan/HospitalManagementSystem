@@ -42,7 +42,16 @@ class Drug extends App
     public function showDrugs()
     {
         $this->middleware(true, true, 'showDrugs');
-        $drugs = $this->db->select('SELECT * FROM drugs ORDER BY id DESC')->fetchAll();
+        $drugs = $this->db->select("
+            SELECT 
+                drugs.*,
+                drug_categories.cat_name,
+                units.unit_name
+            FROM drugs
+            LEFT JOIN drug_categories ON drug_categories.id = drugs.category_id
+            LEFT JOIN units ON units.id = drugs.unit
+            ORDER BY drugs.id DESC
+        ")->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/drugs/show-drugs.php');
         exit();
     }

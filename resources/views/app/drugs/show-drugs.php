@@ -44,8 +44,8 @@ include_once('public/alerts/toastr.php');
                         </td>
                         <td><?= $item['name'] ?></td>
                         <td><?= ($item['generic_name']) ?: '- - - -' ?></td>
-                        <td><?= $item['category_id'] ?></td>
-                        <td><?= $item['unit'] ?></td>
+                        <td><?= $item['cat_name'] ?></td>
+                        <td><?= $item['unit_name'] ?></td>
                         <td>
                             <a href="<?= url('edit-drug/' . $item['id']) ?>" class="color-orange flex-justify-align">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
