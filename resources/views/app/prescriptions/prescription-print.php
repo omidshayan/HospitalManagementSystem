@@ -66,7 +66,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                foreach ($drugList as $item) { ?>
+                                foreach ($items as $item) { ?>
                                     <div class="p-drugs-items">
                                         <tr class="p-color-item fs14 center">
 
