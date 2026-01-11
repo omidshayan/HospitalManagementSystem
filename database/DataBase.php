@@ -275,8 +275,16 @@ class DataBase
         }
     }
 
+    public function exec($sql)
+    {
+        try {
+            return $this->connection->exec($sql);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
 
-    
     function checkLicensePeriodically(int $hardwareCheckHours = 12): void
     {
         $now = time();
