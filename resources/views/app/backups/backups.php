@@ -29,7 +29,7 @@ include_once('public/alerts/toastr.php');
                     <th>نام بکاپ</th>
                     <th>تاریخ ثبت</th>
                     <th>توسط</th>
-                    <th>بازگردانی</th>
+                    <th>دانلود</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,7 +45,7 @@ include_once('public/alerts/toastr.php');
                         <td><?= $item['backup'] ?></td>
                         <td><?= jdate('Y/m/d', strtotime($item['created_at'])) ?></td>
                         <td><?= $item['who_it'] ?></td>
-                        <td>بازگردانی</td>
+                        <td><a href="<?=url('backup-download')?>" class="text-underline color">دانلود</a></td>
                     </tr>
                 <?php
                     $number++;

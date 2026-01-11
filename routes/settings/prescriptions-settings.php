@@ -15,3 +15,5 @@ uri('change-status-active-doctor-infos', 'App\PrescriptionSetting', 'changeStatu
 uri('backup', 'App\PrescriptionSetting', 'backup');
 
 uri('backup-create', 'App\PrescriptionSetting', 'backupCreate');
+
+uri('backup-download', 'App\PrescriptionSetting', 'backupDownload');
