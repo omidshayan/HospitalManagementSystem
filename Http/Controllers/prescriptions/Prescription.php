@@ -750,6 +750,8 @@ class Prescription extends App
             'patient_id' => $userId,
             'patient_name' => $request['user_name'],
             'birth_year' => $request['birth_year'],
+            'diagnosis'    => $request['diagnosis'],
+            'clinical_findings'    => $request['clinical_findings'],
             'bp' => $request['bp'],
             'pr' => $request['pr'],
             'rr' => $request['rr'],
