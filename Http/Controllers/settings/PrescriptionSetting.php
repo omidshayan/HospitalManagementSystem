@@ -107,7 +107,18 @@ class PrescriptionSetting extends App
         $this->flashMessage('success', 'اطلاعات با موفقیت ویرایش شد.');
     }
 
+    // backup page
     public function backup()
+    {
+        $this->middleware(true, true, 'general');
+
+        $backups = $this->db->select('SELECT * FROM backups ORDER BY id DESC')->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/backups/backups.php');
+    }
+
+    // backup download
+    public function backupDownload()
     {
         $this->middleware(true, true, 'general');
 

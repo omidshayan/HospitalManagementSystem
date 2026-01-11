@@ -45,7 +45,7 @@ include_once('public/alerts/toastr.php');
                         <td><?= $item['backup'] ?></td>
                         <td><?= jdate('Y/m/d', strtotime($item['created_at'])) ?></td>
                         <td><?= $item['who_it'] ?></td>
-                        <td><a href="<?=url('backup-download')?>" class="text-underline color">دانلود</a></td>
+                        <td><a href="<?=url('backup-download/' . $item['id'])?>" class="text-underline color">دانلود</a></td>
                     </tr>
                 <?php
                     $number++;

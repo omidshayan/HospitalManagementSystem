@@ -16,4 +16,4 @@ uri('backup', 'App\PrescriptionSetting', 'backup');
 
 uri('backup-create', 'App\PrescriptionSetting', 'backupCreate');
 
-uri('backup-download', 'App\PrescriptionSetting', 'backupDownload');
+uri('backup-download/{id}', 'App\PrescriptionSetting', 'backupDownload');
