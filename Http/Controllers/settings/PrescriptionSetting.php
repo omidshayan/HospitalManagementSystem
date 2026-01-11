@@ -168,7 +168,6 @@ class PrescriptionSetting extends App
             'who_it' => $userInfo['name'],
         ];
 
-
         $inserted = $this->db->insert('backups', array_keys($backupInfo), $backupInfo);
 
         if (!$inserted) {
