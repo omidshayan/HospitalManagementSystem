@@ -118,14 +118,44 @@ class PrescriptionSetting extends App
     }
 
     // backup download
-    public function backupDownload()
+    public function backupDownload($id)
     {
         $this->middleware(true, true, 'general');
 
-        $backups = $this->db->select('SELECT * FROM backups ORDER BY id DESC')->fetchAll();
+        // گرفتن نام فایل بکاپ از دیتابیس
+        $backup = $this->db->select('SELECT `backup` FROM backups WHERE id = ?', [$id])->fetch();
 
-        require_once(BASE_PATH . '/resources/views/app/backups/backups.php');
+        if (!$backup) {
+            $this->flashMessage('error', 'فایل مورد نظر یافت نشد');
+            return;
+        }
+
+        $backupDir = BASE_PATH . '/storage/backups/';
+        $filePath = $backupDir . $backup['backup'];  // مثل: backup_2026_01_11_21_00_00.zip
+
+        if (!file_exists($filePath)) {
+            $this->flashMessage('error', 'فایل بکاپ موجود نیست');
+            return;
+        }
+
+        // ارسال هدرهای دانلود فایل
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header('Content-Disposition: attachment; filename="' . basename($filePath) . '"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($filePath));
+
+        // پاک کردن خروجی قبلی
+        flush();
+
+        // خواندن و ارسال فایل
+        readfile($filePath);
+
+        exit();  // بعد از ارسال فایل اسکریپت رو متوقف می‌کنیم
     }
+
 
     // backup
     public function backupCreate()
@@ -175,7 +205,7 @@ class PrescriptionSetting extends App
 
         $userInfo = $this->currentUser();
         $backupInfo = [
-            'backup' => $baseName,
+            'backup' => $baseName . '.zip',
             'who_it' => $userInfo['name'],
         ];
 
