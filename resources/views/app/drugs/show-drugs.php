@@ -34,7 +34,7 @@ include_once('public/alerts/toastr.php');
                 data-edit-url="<?= url('edit-drug') ?>/"
                 data-template="name"
                 data-id-key="id"
-                placeholder="جستجوی مریض..."
+                placeholder="جستجوی دارو..."
                 autocomplete="off"
                 autofocus />
             <ul class="search-back d-none live-search-result t35 top35"></ul>
@@ -69,8 +69,8 @@ include_once('public/alerts/toastr.php');
                         </td>
                         <td><?= $item['name'] ?></td>
                         <td><?= ($item['generic_name']) ?: '- - - -' ?></td>
-                        <td><?= $item['cat_name'] ?></td>
-                        <td><?= $item['unit_name'] ?></td>
+                        <td><?= $item['cat_name'] ?: '- - - -' ?></td>
+                        <td><?= $item['unit_name'] ?: '- - - -' ?></td>
                         <td>
                             <a href="<?= url('edit-drug/' . $item['id']) ?>" class="color-orange flex-justify-align">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

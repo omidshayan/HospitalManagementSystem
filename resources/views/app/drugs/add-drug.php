@@ -36,8 +36,8 @@
                             </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14" for="name">انتخاب واحد شمارش <?= _star ?></div>
-                            <select name="unit" class="checkSelect">
+                            <div class="label-form mb5 fs14" for="name">انتخاب واحد شمارش</div>
+                            <select name="unit">
                                 <option selected disabled>واحد شمارش را انتخاب نمائید</option>
                                 <?php
                                 foreach ($units as $unit) { ?>
