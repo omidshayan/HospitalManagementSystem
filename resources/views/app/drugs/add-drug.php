@@ -94,4 +94,11 @@
     </div>
     <!-- End content -->
 
+    <!-- copy text search -->
+    <script type="text/javascript">
+        document.getElementById("search_seller").addEventListener("input", function() {
+            document.querySelector("input[name='name']").value = this.value;
+        });
+    </script>
+
     <?php include_once('resources/views/layouts/footer.php') ?>
