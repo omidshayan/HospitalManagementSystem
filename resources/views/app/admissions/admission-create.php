@@ -65,7 +65,6 @@
             </div>
         </div>
 
-
         <!-- start page content -->
         <div class="box-container">
             <div class="insert">
