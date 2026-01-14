@@ -1,4 +1,3 @@
-    <!-- start sidebar -->
     <?php
     $title = 'پذیریش جدید';
     include_once('resources/views/layouts/header.php');
@@ -6,7 +5,6 @@
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/live-search-users.php');
     ?>
-    <!-- end sidebar -->
 
     <!-- Start content -->
     <div class="content">
