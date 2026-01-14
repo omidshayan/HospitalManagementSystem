@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 06, 2026 at 07:45 PM
+-- Generation Time: Jan 13, 2026 at 09:21 PM
 -- Server version: 9.1.0
 -- PHP Version: 7.4.33
 
@@ -106,18 +106,18 @@ DROP TABLE IF EXISTS `admissions`;
 CREATE TABLE IF NOT EXISTS `admissions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `patient_id` int NOT NULL,
-  `user_name` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `age` varchar(3) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `user_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `age` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `doctor_id` int NOT NULL,
   `queue_number` int DEFAULT NULL,
   `admission_date` datetime DEFAULT NULL,
   `department_id` int DEFAULT NULL,
-  `admission_type` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `admission_type` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `visit_fee` int DEFAULT NULL,
   `payment_status` int DEFAULT NULL,
-  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1' COMMENT '1->panding, 2->visit, 3->cancel',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -140,6 +140,23 @@ INSERT INTO `admissions` (`id`, `patient_id`, `user_name`, `age`, `doctor_id`, `
 (32, 185, 'جمشید رضایی', '40', 1, 5, NULL, 2, NULL, NULL, NULL, NULL, 2, 'کاظم حسینی', '2025-12-26 17:30:14', '2025-12-26 17:30:26'),
 (33, 151, 'sadfsdf', '22', 1, 1, NULL, 2, NULL, NULL, NULL, NULL, 2, 'کاظم حسینی', '2025-12-27 01:18:58', '2025-12-27 01:19:08'),
 (34, 188, 'احمد حسینی aaa', '34', 1, 1, NULL, 2, NULL, NULL, NULL, NULL, 2, 'کاظم حسینی', '2025-12-30 01:43:39', '2025-12-30 01:53:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `backups`
+--
+
+DROP TABLE IF EXISTS `backups`;
+CREATE TABLE IF NOT EXISTS `backups` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `backup` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -202,9 +219,9 @@ INSERT INTO `calendar_settings` (`id`, `calendar_type`, `created_at`, `updated_a
 DROP TABLE IF EXISTS `companies`;
 CREATE TABLE IF NOT EXISTS `companies` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -233,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `csrf_token_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `csrf_token_logs`
@@ -336,7 +353,14 @@ INSERT INTO `csrf_token_logs` (`id`, `message`, `ip_address`, `created_at`, `upd
 (99, 'Invalid or missing CSRF token.', '::1', '2025-12-29 21:04:32', NULL),
 (100, 'Invalid or missing CSRF token.', '::1', '2025-12-29 21:04:35', NULL),
 (101, 'Invalid or missing CSRF token.', '::1', '2025-12-29 21:04:44', NULL),
-(102, 'Invalid or missing CSRF token.', '::1', '2025-12-29 21:04:47', NULL);
+(102, 'Invalid or missing CSRF token.', '::1', '2025-12-29 21:04:47', NULL),
+(103, 'Invalid or missing CSRF token.', '::1', '2026-01-11 01:32:58', NULL),
+(104, 'Invalid or missing CSRF token.', '::1', '2026-01-11 03:31:29', NULL),
+(105, 'Invalid or missing CSRF token.', '::1', '2026-01-11 03:31:34', NULL),
+(106, 'Invalid or missing CSRF token.', '::1', '2026-01-11 03:32:01', NULL),
+(107, 'Invalid or missing CSRF token.', '::1', '2026-01-11 03:32:06', NULL),
+(108, 'Invalid or missing CSRF token.', '::1', '2026-01-11 03:32:17', NULL),
+(109, 'Invalid or missing CSRF token.', '::1', '2026-01-11 03:32:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -393,10 +417,10 @@ INSERT INTO `daily_reports` (`id`, `branch_id`, `report_date`, `total_sales`, `t
 DROP TABLE IF EXISTS `departments`;
 CREATE TABLE IF NOT EXISTS `departments` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `manager_id` int DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -420,9 +444,9 @@ INSERT INTO `departments` (`id`, `name`, `manager_id`, `status`, `who_it`, `crea
 DROP TABLE IF EXISTS `dosage`;
 CREATE TABLE IF NOT EXISTS `dosage` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `dosage` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `dosage` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -434,7 +458,7 @@ CREATE TABLE IF NOT EXISTS `dosage` (
 
 INSERT INTO `dosage` (`id`, `dosage`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
 (3, 'یک دانه در روز', 1, 'کاظم حسینی', '2025-12-11 01:09:12', '2025-12-25 00:01:53'),
-(4, 'دو دانه در روز', 2, 'کاظم حسینی', '2025-12-11 02:34:12', '2025-12-25 00:01:50');
+(4, 'دو دانه در روز', 1, 'کاظم حسینی', '2025-12-11 02:34:12', '2026-01-09 18:34:52');
 
 -- --------------------------------------------------------
 
@@ -445,17 +469,17 @@ INSERT INTO `dosage` (`id`, `dosage`, `status`, `who_it`, `created_at`, `updated
 DROP TABLE IF EXISTS `drugs`;
 CREATE TABLE IF NOT EXISTS `drugs` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
-  `generic_name` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `category_id` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
-  `strength` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `unit` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `manufacturer` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `generic_name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `category_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `strength` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `unit` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `manufacturer` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `price` decimal(12,2) DEFAULT NULL,
-  `image` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `image` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -607,10 +631,10 @@ INSERT INTO `drugs` (`id`, `name`, `generic_name`, `category_id`, `strength`, `u
 DROP TABLE IF EXISTS `drug_categories`;
 CREATE TABLE IF NOT EXISTS `drug_categories` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `cat_name` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `cat_name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -625,6 +649,31 @@ INSERT INTO `drug_categories` (`id`, `cat_name`, `description`, `status`, `who_i
 (4, 'سیرم', '', 1, 'ali', '2025-12-07 12:36:04', NULL),
 (5, 'کپسول', NULL, 1, 'ali', '2025-12-07 12:36:10', '2025-12-09 20:00:08'),
 (8, 'پماد', '', 1, 'احمد هاشمی', '2025-12-18 01:48:58', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drug_types`
+--
+
+DROP TABLE IF EXISTS `drug_types`;
+CREATE TABLE IF NOT EXISTS `drug_types` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `drug_type` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `drug_types`
+--
+
+INSERT INTO `drug_types` (`id`, `drug_type`, `who_it`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'test', 'کاظم حسینی', 1, '2026-01-09 18:20:28', '2026-01-09 23:14:48'),
+(2, 'cap', 'کاظم حسینی', 1, '2026-01-09 18:20:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -663,14 +712,14 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `employee_name` (`employee_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=165 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `employees`
 --
 
 INSERT INTO `employees` (`id`, `branch_id`, `employee_name`, `father_name`, `phone`, `password`, `email`, `address`, `position`, `role`, `department_id`, `verify_token`, `forgot_token`, `forgot_token_expire`, `remember_token`, `expire_remember_token`, `expertise`, `gender`, `image`, `description`, `salary_price`, `who_it`, `state`, `super_admin`, `notif`, `created_at`, `updated_at`) VALUES
-(1, 100, 'کاظم حسینی', NULL, '11', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, 'داکتر', 2, 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '6367f13fbf8d48e4e39cee7f681babe8484a14ff9a1baa259927bcd4eb1be267', '3', 'متخصص گوش حلق بینی', NULL, '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2026-01-06 13:52:30'),
+(1, 100, 'کاظم حسینی', NULL, '11', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, 'داکتر', 2, 2, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', '0fb27f7fe12afba70c5851aadd0876717503881e0259dd3c89723b1e83c55da0', '3', 'متخصص گوش حلق بینی', NULL, '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2026-01-11 01:49:22'),
 (149, 0, 'حسن رضایی', NULL, '0799999999', '$2y$10$/rBJVmIQFUIJ/CgvjMjHZ.und0NRQIuJA2VxXFC/XEED8MLfSk/SK', '', '', '', 1, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, '2025-12-12-02-18-59_693b3c4ba0f10.jpg', '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-12 02:18:59', '2025-12-12 02:25:46'),
 (154, 100, 'ادمین دمو', NULL, '12345', '$2y$10$iuxczaYiD3vNG1eNsBV2au/XRgxZDOujEHZAYL1Tz4m6HBjJ6QNau', 'kazemafg@gmail.com', NULL, '', 2, NULL, NULL, '1daa771ddafb5d1cdc6968fa34a02a4de8c28ed632288dfd33d403619c458ea9', '2025-03-01 13:47:53', NULL, NULL, 'متخصص گوش حلق بینی', NULL, '2024-09-01-23-53-55_66d4bf4bc0f96.jpg', NULL, 2000, '1', 1, 3, 2, '2024-09-01 23:53:55', '2025-12-14 03:55:55'),
 (155, 0, 'محمد احمدی', NULL, '0766666666', '$2y$10$pYigrU23y3fu3FXo0zYPI.8EeGRLReHBiewCUoc.LCZl/BDbCIEu.', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, NULL, 'فوق تخصص جراحی', NULL, NULL, '', NULL, 'احمد هاشمی', 1, NULL, 1, '2025-12-15 18:41:55', '2025-12-16 16:32:44'),
@@ -678,7 +727,8 @@ INSERT INTO `employees` (`id`, `branch_id`, `employee_name`, `father_name`, `pho
 (159, 0, 'omid', NULL, '333', '$2y$10$qtEFXNsIQsk06wBWREmoIuIgdD.6/srs3jfg5xnUr7uKpKqmtvDcG', '', '', 'آقا', 1, NULL, NULL, NULL, NULL, NULL, NULL, 'فوق تخصص جراحی', NULL, NULL, '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-25 01:18:56', NULL),
 (160, 0, 'غلام رضا', NULL, '22', '$2y$10$BGBmvLU55rz5Wl2gv2nT4eqo23tQESPdfRw6VhMBipzvvYuUPCn8C', '', '', 'آقا', 1, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-25 01:19:15', NULL),
 (161, 0, 'احمدرضا هاشمی اصلی', NULL, '65', '$2y$10$uI.o7.hpa6xFgmHfszbZNONmFr3ODj/dzXSGRWj44N/oNe8R2O7vu', '', '', 'داکتر', 1, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-25 02:39:05', NULL),
-(163, 0, 'mohammad jan', NULL, '456', '$2y$10$pgcJrrxWq3qtYjUMuYRXYeQ1t5DUF.1s39/NOlxb/BeXspwW4C2W6', '', '', 'داکتر', 1, 2, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '', NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-25 02:44:26', NULL);
+(163, 0, 'mohammad jan r', NULL, '456', '', '', '', 'داکتر', 1, 2, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, 'کاظم حسینی', 1, NULL, 1, '2025-12-25 02:44:26', '2026-01-11 01:07:24'),
+(164, 0, 'محمد رضا احمدی', NULL, '0777777777', '$2y$10$LtKL6aMGh8OpPGby6HYCQehFfzDN5qlK2Q/sgBMYYxNzDcXEJPFaa', '', '', 'داکتر', 1, 2, NULL, NULL, NULL, '79274f86e15b517dc7eafb115355f7d2b867a0f2b245e84afa4acf948c0927f8', '1', '', NULL, '2026-01-11-01-52-51_6962c32b93d78.jfif', '', NULL, 'کاظم حسینی', 1, NULL, 1, '2026-01-11 01:52:51', '2026-01-11 01:53:29');
 
 -- --------------------------------------------------------
 
@@ -744,9 +794,9 @@ INSERT INTO `expenses_categories` (`id`, `cat_name`, `description`, `who_it`, `s
 DROP TABLE IF EXISTS `intake_instructions`;
 CREATE TABLE IF NOT EXISTS `intake_instructions` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `intake_instructions` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `intake_instructions` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -770,9 +820,9 @@ INSERT INTO `intake_instructions` (`id`, `intake_instructions`, `status`, `who_i
 DROP TABLE IF EXISTS `intake_times`;
 CREATE TABLE IF NOT EXISTS `intake_times` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `intake_time` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `intake_time` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -890,7 +940,7 @@ CREATE TABLE IF NOT EXISTS `number_of_drugs` (
   `id` int NOT NULL AUTO_INCREMENT,
   `number` int NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -917,7 +967,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=930 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=940 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `permissions`
@@ -1020,9 +1070,16 @@ INSERT INTO `permissions` (`id`, `section_name`, `employee_id`, `created_at`, `u
 (924, 'dashboard', 162, '2025-12-25 02:42:59', NULL),
 (925, 'profile', 162, '2025-12-25 02:42:59', NULL),
 (926, 'general', 162, '2025-12-25 02:42:59', NULL),
-(927, 'dashboard', 163, '2025-12-25 02:44:26', NULL),
-(928, 'profile', 163, '2025-12-25 02:44:26', NULL),
-(929, 'general', 163, '2025-12-25 02:44:26', NULL);
+(930, 'dashboard', 163, '2026-01-11 01:07:24', NULL),
+(931, 'profile', 163, '2026-01-11 01:07:24', NULL),
+(932, 'general', 163, '2026-01-11 01:07:24', NULL),
+(933, 'prescriptionPrint', 164, '2026-01-11 01:52:51', NULL),
+(934, 'parentPatients', 164, '2026-01-11 01:52:51', NULL),
+(935, 'showPatients', 164, '2026-01-11 01:52:51', NULL),
+(936, 'addPatient', 164, '2026-01-11 01:52:51', NULL),
+(937, 'dashboard', 164, '2026-01-11 01:52:51', NULL),
+(938, 'profile', 164, '2026-01-11 01:52:51', NULL),
+(939, 'general', 164, '2026-01-11 01:52:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -1063,167 +1120,178 @@ DROP TABLE IF EXISTS `prescriptions`;
 CREATE TABLE IF NOT EXISTS `prescriptions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `patient_id` int DEFAULT NULL,
-  `patient_name` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `patient_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `doctor_id` int DEFAULT NULL,
   `admission_id` int DEFAULT NULL,
   `birth_year` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `diagnosis` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `bp` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `pr` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `rr` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `temp` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `spo2` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `year` varchar(4) COLLATE utf8mb4_general_ci NOT NULL,
+  `diagnosis` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `bp` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `pr` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `rr` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `temp` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `spo2` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `clinical_findings` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `year` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `month` tinyint NOT NULL,
   `type` tinyint NOT NULL DEFAULT '1' COMMENT '1->simble-visit',
   `edited` tinyint DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `patient_id` (`patient_id`),
   KEY `doctor_id` (`doctor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=264 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=275 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prescriptions`
 --
 
-INSERT INTO `prescriptions` (`id`, `patient_id`, `patient_name`, `doctor_id`, `admission_id`, `birth_year`, `diagnosis`, `bp`, `pr`, `rr`, `temp`, `spo2`, `year`, `month`, `type`, `edited`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(1, 34, 'علی رضایی', 1, NULL, '1378', NULL, '120/80', '78', '16', '36.7', '98', '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-09 01:08:57', '2025-12-26 15:18:06'),
-(2, 12, 'مریم احمدی', 1, NULL, '1385', NULL, '110/70', '74', '17', '36.5', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
-(3, 77, 'سارا محمدی', 2, NULL, '1370', NULL, '115/75', '80', '18', '37.0', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
-(4, 52, 'حسن عباسی', 1, NULL, '1392', NULL, '125/85', '72', '15', '36.4', '96', '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-12 01:08:57'),
-(5, 90, 'نیلوفر سادات', 3, NULL, '1381', NULL, '118/76', '79', '17', '36.6', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
-(6, 63, 'جواد رحیمی', 4, NULL, '1375', NULL, '130/90', '85', '19', '37.1', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
-(7, 18, 'زهرا اکبری', 1, NULL, '1390', NULL, '108/68', '70', '16', '36.3', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
-(8, 41, 'فاطمه یوسفی', 4, NULL, '1387', NULL, '112/72', '76', '17', '36.5', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
-(9, 25, 'علی احمدی', 4, NULL, '1373', NULL, '118/78', '83', '18', '36.9', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(10, 57, 'سارا هاشمی', 3, NULL, '1391', NULL, '122/80', '77', '17', '36.6', '96', '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(11, 88, 'نگین رسولی', 1, NULL, '1384', NULL, '119/74', '75', '16', '36.4', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(12, 12, 'حسین موسوی', 3, NULL, '1380', NULL, '128/82', '84', '18', '37.0', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(13, 44, 'زهرا کریمی', 4, NULL, '1393', NULL, '114/73', '71', '15', '36.3', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(14, 101, 'ندا مرادی', 6, NULL, '1379', NULL, '116/74', '79', '16', '36.5', '96', '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(15, 73, 'مهدی قربانی', 5, NULL, '1394', NULL, '111/71', '72', '15', '36.3', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
-(16, 7, 'راضیه انوری', 1, NULL, '1372', NULL, '124/81', '78', '17', '36.8', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(17, 95, 'شیما عزیزی', 2, NULL, '1386', NULL, '113/69', '70', '15', '36.4', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(18, 60, 'یاسین روستا', 6, NULL, '1377', NULL, '125/83', '82', '18', '37.1', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(19, 22, 'فریبا سهرابی', 1, NULL, '1383', NULL, '109/67', '74', '16', '36.2', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(20, 48, 'شیرین نوروزی', 5, NULL, '1388', NULL, '132/89', '86', '19', '37.3', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(21, 102, 'فرزاد طاهری', 6, NULL, '1376', NULL, '117/76', '80', '17', '36.7', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(22, 31, 'بهاره رستگار', 5, NULL, '1390', NULL, '120/74', '77', '15', '36.4', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
-(23, 40, 'کاظم یعقوبی', 6, NULL, '1382', NULL, '115/72', '76', '17', '36.5', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(24, 68, 'زهرا نعمتی', 4, NULL, '1389', NULL, '118/79', '81', '18', '36.8', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(25, 11, 'شقایق فضلی', 6, NULL, '1374', NULL, '122/81', '83', '17', '36.6', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(26, 70, 'امید مرادی', 6, NULL, '1395', NULL, '128/86', '88', '19', '37.2', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(27, 27, 'حمید رسولی', 4, NULL, '1371', NULL, '110/69', '73', '16', '36.4', '96', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(28, 53, 'مونا فرهمند', 4, NULL, '1392', NULL, '116/74', '78', '16', '36.5', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(29, 118, 'زهرا وطن‌دوست', 6, NULL, '1384', NULL, '113/71', '75', '16', '36.4', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
-(30, 16, 'الهام صدیقی', 6, NULL, '1387', NULL, '121/80', '82', '18', '36.9', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(31, 92, 'حمیده هراتی', 1, NULL, '1378', NULL, '130/90', '86', '19', '37.3', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(32, 36, 'سلمان فرجی', 5, NULL, '1381', NULL, '119/77', '76', '17', '36.6', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(33, 101, 'ابراهیم سلیمانی', 2, NULL, '1375', NULL, '117/74', '74', '16', '36.4', '96', '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(34, 55, 'معصومه شکوری', 2, NULL, '1393', NULL, '115/73', '78', '17', '36.5', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(35, 80, 'شیوا احمدپور', 4, NULL, '1383', NULL, '122/82', '84', '18', '36.9', '99', '1404', 9, 1, NULL, 3, 'admin', '1900-01-06 00:00:00', '2025-12-08 01:08:57'),
-(36, 14, 'فاطمه ذبیحی', 5, NULL, '1376', NULL, '112/70', '72', '16', '36.3', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
-(37, 84, 'امیر جعفری', 3, NULL, '1391', NULL, '120/79', '80', '18', '36.8', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(38, 10, 'سمیه بخشی', 5, NULL, '1380', NULL, '118/75', '76', '17', '36.5', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 00:00:00', '2025-12-07 01:08:57'),
-(39, 49, 'کاوه سعیدی', 5, NULL, '1386', NULL, '130/87', '85', '19', '37.2', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(40, 22, 'الهه محمودی', 3, NULL, '1394', NULL, '116/74', '72', '16', '36.4', '96', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-07 01:08:57'),
-(41, 97, 'ابراهیم جمالی', 1, NULL, '1379', NULL, '121/81', '79', '17', '36.6', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(42, 61, 'آرزو یکتا', 5, NULL, '1389', NULL, '114/73', '74', '16', '36.5', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(43, 33, 'پویا شیرازی', 3, NULL, '1392', NULL, '125/83', '81', '18', '37.0', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
-(44, 28, 'سعیده مقیمی', 5, NULL, '1384', NULL, '118/78', '79', '17', '36.6', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(45, 50, 'پدرام قائمی', 5, NULL, '1371', NULL, '126/84', '83', '19', '37.1', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(46, 93, 'فاطمه محسنی', 2, NULL, '1390', NULL, '112/71', '73', '16', '36.4', '97', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(47, 15, 'نیما یوسفی', 3, NULL, '1387', NULL, '115/72', '74', '16', '36.3', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(48, 71, 'بیتا فرجی', 3, NULL, '1375', NULL, '130/90', '86', '19', '37.3', '99', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(49, 109, 'محمد افکاری', 3, NULL, '1393', NULL, '117/76', '78', '17', '36.6', '98', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(50, 6, 'الهام ناصری', 5, NULL, '1373', NULL, '113/69', '72', '15', '36.3', '96', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(51, 6, 'الهام ناصری', 6, NULL, '1373', NULL, '113/69', '72', '15', '36.3', '96', '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
-(52, 51, 'محمد احمدی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 01:49:57', '2025-12-12 01:50:41'),
-(54, 52, 'حسین رضایی', 1, NULL, '1379', NULL, '33', NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 02:23:29', '2025-12-12 02:25:04'),
-(71, 67, 'حسن مرادی', 1, NULL, '1374', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 14:43:35', '2025-12-12 14:53:02'),
-(72, 68, 'احمد حسینی', 1, NULL, '1360', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 14:57:05', '2025-12-12 15:01:57'),
-(73, 69, 'محمد رضا احمدی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 15:02:35', '2025-12-12 15:02:49'),
-(74, 70, 'اسد غلامی', 1, NULL, '1381', NULL, '33', NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 15:03:26', '2025-12-12 15:24:48'),
-(75, 71, 'محمد رضا احمدی', 1, NULL, '1363', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:26:20', '2025-12-12 16:27:20'),
-(76, 72, 'کاظم احمدی', 1, NULL, '1381', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:29:12', '2025-12-12 16:30:15'),
-(77, 73, 'کاظم', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:31:17', '2025-12-12 16:31:27'),
-(78, 74, 'کاظم ', 1, NULL, '1384', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:32:07', '2025-12-12 16:32:40'),
-(79, 75, 'فهیم', 1, NULL, '1384', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:33:18', '2025-12-12 16:34:08'),
-(80, 76, 'احمد', 154, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'ادمین دمو', '2025-12-12 22:56:13', '2025-12-13 22:56:05'),
-(174, 126, 'علی رضایی', 2, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'احمد هاشمی', '2025-12-17 02:11:58', '2025-12-18 01:53:17'),
-(175, 127, 'dsfsdfd', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-21 19:24:32', '2025-12-29 04:15:26'),
-(176, 128, 'احمد حسینی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:07:16', '2025-12-29 04:15:30'),
-(177, 129, 'sadfdsfd', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:11:11', '2025-12-30 01:23:54'),
-(178, 130, 'dsfsdf3', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:11:32', '2025-12-30 03:21:05'),
-(179, 131, '333', 1, NULL, '1402', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:12:11', '2025-12-30 03:21:09'),
-(180, 132, '33', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:12:33', '2025-12-30 03:21:16'),
-(181, 133, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:15:33', '2025-12-30 03:21:18'),
-(182, 134, '3334', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:16:24', '2025-12-30 03:23:15'),
-(183, 135, 'sdfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:16:48', '2025-12-30 03:23:19'),
-(184, 136, 'sdfdsf', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:17:09', '2025-12-30 03:23:25'),
-(185, 137, 'dsfsdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:20:47', '2025-12-30 03:23:28'),
-(186, 138, 'afsdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:21:57', '2025-12-30 03:23:32'),
-(187, 133, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:29:37', '2025-12-30 03:23:34'),
-(188, 139, 'dfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:30:39', '2025-12-30 03:23:45'),
-(189, 135, 'sdfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:31:23', '2025-12-30 03:25:26'),
-(190, 140, 'sadfsadf', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:31:49', '2025-12-30 03:26:28'),
-(191, 141, 'trytry', 1, NULL, '1349', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:42:21', '2025-12-30 03:26:36'),
-(192, 128, 'احمد حسینی', 1, NULL, '1371', 'باید ازمایش دهد', '33', '33', '4', NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:44:31', '2025-12-30 03:26:40'),
-(193, 142, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:56:40', '2025-12-30 03:26:47'),
-(197, 143, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:22:18', '2025-12-30 03:27:33'),
-(200, 144, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:33:43', '2026-01-01 01:11:10'),
-(202, 145, 'احمد حسینی', 1, NULL, '1381', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:40:18', '2026-01-01 01:11:14'),
-(203, 146, 'محمد رضا احمدی', 1, NULL, '1349', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:54:32', '2026-01-01 01:12:13'),
-(204, 147, 'احمد حسینی', 1, NULL, '1359', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:59:16', '2026-01-01 01:12:17'),
-(205, 148, 'احمد حسینی', 1, NULL, '1384', 'باید ازمایش دهد', '33', '33', '22', NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 04:00:00', '2026-01-05 22:01:26'),
-(206, 149, 'شش', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-23 02:55:10', '2025-12-23 02:55:14'),
-(207, NULL, 'احمد حسینی a', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-24 17:24:33', '2025-12-24 17:24:42'),
-(208, 150, 'احمد حسینی 22', 1, NULL, '1360', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-24 17:25:17', '2025-12-24 17:25:36'),
-(209, 157, '111', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 03:24:49', '2025-12-25 03:24:55'),
-(210, 158, 'احمد حسینی', 1, NULL, '1402', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 03:25:07', '2025-12-25 03:25:12'),
-(211, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 05:16:22', '2025-12-25 05:33:03'),
-(212, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 05:34:21', '2025-12-25 05:34:23'),
-(213, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 05:38:56', '2025-12-25 05:38:58'),
-(214, 165, 'رجب علی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:24:17', '2025-12-25 14:36:42'),
-(215, 149, 'شش', 1, 9, '1401', 'ddddd', '33', '33', NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:39:34', '2025-12-25 14:40:21'),
-(216, 165, 'رجب علی', 1, 15, '1371', '33333', '33', NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:50:19', '2025-12-25 14:50:29'),
-(217, 167, 'رجب احمد', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:51:24', '2025-12-25 14:51:34'),
-(218, 168, 'صادق رضایی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:56:22', '2025-12-25 14:56:33'),
-(219, 168, 'صادق رضایی', 1, 17, '1371', 'ffff', NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:57:19', '2025-12-25 14:57:26'),
-(220, 171, 'mamad', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 16:37:01', '2025-12-25 16:37:09'),
-(221, 172, 'احمد حسینی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 16:37:35', '2025-12-25 16:37:38'),
-(222, 159, 'ملا جان', 1, 11, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 16:41:04', '2025-12-25 16:41:08'),
-(223, 169, 'هاشمی', 1, 19, '1339', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 16:41:23', '2025-12-25 16:41:41'),
-(224, 175, 'امیر حسنی', 1, 24, '1372', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 23:01:46', '2025-12-25 23:02:05'),
-(225, 178, 'اکبر اما', 1, 28, '1361', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 13:27:30', '2025-12-26 13:27:31'),
-(226, 178, 'اکبر اما', 1, 29, '1361', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 13:51:06', '2025-12-26 13:51:08'),
-(227, 178, 'اکبر اما', 1, 28, '1361', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 15:33:37', '2025-12-26 15:34:25'),
-(228, 180, 'اکبر اما', 1, 29, '1361', 'برای است است', '1.5', '22', '4', '22', '50.2', '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 15:41:37', '2025-12-26 16:48:50'),
-(229, 182, 'asi', 1, 30, '1390', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 16:49:40', '2025-12-26 16:54:35'),
-(230, 184, 'غلام رضا احمدی', 1, 31, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 17:23:00', '2025-12-26 21:14:30'),
-(231, 185, 'fffffff', 1, 32, '1364', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, 1, 2, 'کاظم حسینی', '2025-12-26 17:30:25', '2025-12-27 01:57:21'),
-(232, 172, 'احمد حسینی', 1, NULL, '1371', 'f', '1.5', '22', NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 22:56:23', '2025-12-26 23:09:28'),
-(236, 151, 'sadfsdf', 1, 33, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-27 01:10:04', '2025-12-27 01:19:08'),
-(238, 187, 'ashe', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-29 21:06:02', '2025-12-29 21:09:13'),
-(239, 188, 'احمد حسینی aaa', 1, NULL, '1370', 'asdaf asdf dsf', 'a', '3', '33', NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-29 21:09:40', '2025-12-29 21:10:02'),
-(241, 189, 'woma', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-29 22:37:35', '2025-12-30 00:49:50'),
-(242, 190, 'ff', 1, NULL, '1402', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, 1, 2, 'کاظم حسینی', '2025-12-30 00:55:56', '2025-12-30 01:03:02'),
-(243, 188, 'احمد حسینی aaa', 1, 34, '1370', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 01:53:56', '2025-12-30 01:53:58'),
-(244, 191, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 03:17:49', '2025-12-30 03:18:11'),
-(251, 192, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:35:02', '2025-12-30 04:36:16'),
-(252, 192, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:42:58', '2025-12-30 04:44:05'),
-(255, 192, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:53:04', '2025-12-30 04:54:20'),
-(257, 192, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:58:11', '2025-12-30 04:59:09'),
-(258, 193, 'a', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 16:34:53', '2026-01-01 01:03:35'),
-(259, 194, 'احمد حسینی', 1, NULL, '-1929', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-01 01:09:42', '2026-01-01 01:09:47'),
-(260, 195, '333', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-01 15:26:20', '2026-01-01 15:26:25'),
-(261, 152, 'احمد حسینی', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-03 04:26:43', '2026-01-05 02:25:05'),
-(262, 196, 'احمد حسینی', 1, NULL, '1368', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-05 02:35:22', '2026-01-05 02:35:27'),
-(263, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 1, 'کاظم حسینی', '2026-01-05 22:11:25', '2026-01-06 02:56:36');
+INSERT INTO `prescriptions` (`id`, `patient_id`, `patient_name`, `doctor_id`, `admission_id`, `birth_year`, `diagnosis`, `bp`, `pr`, `rr`, `temp`, `spo2`, `clinical_findings`, `year`, `month`, `type`, `edited`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, 34, 'علی رضایی', 1, NULL, '1378', NULL, '120/80', '78', '16', '36.7', '98', NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-09 01:08:57', '2025-12-26 15:18:06'),
+(2, 12, 'مریم احمدی', 1, NULL, '1385', NULL, '110/70', '74', '17', '36.5', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
+(3, 77, 'سارا محمدی', 2, NULL, '1370', NULL, '115/75', '80', '18', '37.0', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
+(4, 52, 'حسن عباسی', 1, NULL, '1392', NULL, '125/85', '72', '15', '36.4', '96', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-12 01:08:57'),
+(5, 90, 'نیلوفر سادات', 3, NULL, '1381', NULL, '118/76', '79', '17', '36.6', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
+(6, 63, 'جواد رحیمی', 4, NULL, '1375', NULL, '130/90', '85', '19', '37.1', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
+(7, 18, 'زهرا اکبری', 1, NULL, '1390', NULL, '108/68', '70', '16', '36.3', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-12 01:08:57'),
+(8, 41, 'فاطمه یوسفی', 4, NULL, '1387', NULL, '112/72', '76', '17', '36.5', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-12 01:08:57', '2025-12-12 01:08:57'),
+(9, 25, 'علی احمدی', 4, NULL, '1373', NULL, '118/78', '83', '18', '36.9', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(10, 57, 'سارا هاشمی', 3, NULL, '1391', NULL, '122/80', '77', '17', '36.6', '96', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(11, 88, 'نگین رسولی', 1, NULL, '1384', NULL, '119/74', '75', '16', '36.4', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(12, 12, 'حسین موسوی', 3, NULL, '1380', NULL, '128/82', '84', '18', '37.0', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(13, 44, 'زهرا کریمی', 4, NULL, '1393', NULL, '114/73', '71', '15', '36.3', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(14, 101, 'ندا مرادی', 6, NULL, '1379', NULL, '116/74', '79', '16', '36.5', '96', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(15, 73, 'مهدی قربانی', 5, NULL, '1394', NULL, '111/71', '72', '15', '36.3', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-11 01:08:57', '2025-12-11 01:08:57'),
+(16, 7, 'راضیه انوری', 1, NULL, '1372', NULL, '124/81', '78', '17', '36.8', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(17, 95, 'شیما عزیزی', 2, NULL, '1386', NULL, '113/69', '70', '15', '36.4', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(18, 60, 'یاسین روستا', 6, NULL, '1377', NULL, '125/83', '82', '18', '37.1', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(19, 22, 'فریبا سهرابی', 1, NULL, '1383', NULL, '109/67', '74', '16', '36.2', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(20, 48, 'شیرین نوروزی', 5, NULL, '1388', NULL, '132/89', '86', '19', '37.3', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(21, 102, 'فرزاد طاهری', 6, NULL, '1376', NULL, '117/76', '80', '17', '36.7', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(22, 31, 'بهاره رستگار', 5, NULL, '1390', NULL, '120/74', '77', '15', '36.4', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-10 01:08:57', '2025-12-10 01:08:57'),
+(23, 40, 'کاظم یعقوبی', 6, NULL, '1382', NULL, '115/72', '76', '17', '36.5', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(24, 68, 'زهرا نعمتی', 4, NULL, '1389', NULL, '118/79', '81', '18', '36.8', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(25, 11, 'شقایق فضلی', 6, NULL, '1374', NULL, '122/81', '83', '17', '36.6', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(26, 70, 'امید مرادی', 6, NULL, '1395', NULL, '128/86', '88', '19', '37.2', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(27, 27, 'حمید رسولی', 4, NULL, '1371', NULL, '110/69', '73', '16', '36.4', '96', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(28, 53, 'مونا فرهمند', 4, NULL, '1392', NULL, '116/74', '78', '16', '36.5', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(29, 118, 'زهرا وطن‌دوست', 6, NULL, '1384', NULL, '113/71', '75', '16', '36.4', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-09 01:08:57', '2025-12-09 01:08:57'),
+(30, 16, 'الهام صدیقی', 6, NULL, '1387', NULL, '121/80', '82', '18', '36.9', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(31, 92, 'حمیده هراتی', 1, NULL, '1378', NULL, '130/90', '86', '19', '37.3', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(32, 36, 'سلمان فرجی', 5, NULL, '1381', NULL, '119/77', '76', '17', '36.6', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(33, 101, 'ابراهیم سلیمانی', 2, NULL, '1375', NULL, '117/74', '74', '16', '36.4', '96', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(34, 55, 'معصومه شکوری', 2, NULL, '1393', NULL, '115/73', '78', '17', '36.5', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(35, 80, 'شیوا احمدپور', 4, NULL, '1383', NULL, '122/82', '84', '18', '36.9', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '1900-01-06 00:00:00', '2025-12-08 01:08:57'),
+(36, 14, 'فاطمه ذبیحی', 5, NULL, '1376', NULL, '112/70', '72', '16', '36.3', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-08 01:08:57', '2025-12-08 01:08:57'),
+(37, 84, 'امیر جعفری', 3, NULL, '1391', NULL, '120/79', '80', '18', '36.8', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(38, 10, 'سمیه بخشی', 5, NULL, '1380', NULL, '118/75', '76', '17', '36.5', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 00:00:00', '2025-12-07 01:08:57'),
+(39, 49, 'کاوه سعیدی', 5, NULL, '1386', NULL, '130/87', '85', '19', '37.2', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(40, 22, 'الهه محمودی', 3, NULL, '1394', NULL, '116/74', '72', '16', '36.4', '96', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-07 01:08:57'),
+(41, 97, 'ابراهیم جمالی', 1, NULL, '1379', NULL, '121/81', '79', '17', '36.6', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(42, 61, 'آرزو یکتا', 5, NULL, '1389', NULL, '114/73', '74', '16', '36.5', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(43, 33, 'پویا شیرازی', 3, NULL, '1392', NULL, '125/83', '81', '18', '37.0', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-07 01:08:57', '2025-12-07 01:08:57'),
+(44, 28, 'سعیده مقیمی', 5, NULL, '1384', NULL, '118/78', '79', '17', '36.6', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(45, 50, 'پدرام قائمی', 5, NULL, '1371', NULL, '126/84', '83', '19', '37.1', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(46, 93, 'فاطمه محسنی', 2, NULL, '1390', NULL, '112/71', '73', '16', '36.4', '97', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(47, 15, 'نیما یوسفی', 3, NULL, '1387', NULL, '115/72', '74', '16', '36.3', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(48, 71, 'بیتا فرجی', 3, NULL, '1375', NULL, '130/90', '86', '19', '37.3', '99', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(49, 109, 'محمد افکاری', 3, NULL, '1393', NULL, '117/76', '78', '17', '36.6', '98', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(50, 6, 'الهام ناصری', 5, NULL, '1373', NULL, '113/69', '72', '15', '36.3', '96', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(51, 6, 'الهام ناصری', 6, NULL, '1373', NULL, '113/69', '72', '15', '36.3', '96', NULL, '1404', 9, 1, NULL, 3, 'admin', '2025-12-06 01:08:57', '2025-12-06 01:08:57'),
+(52, 51, 'محمد احمدی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 01:49:57', '2025-12-12 01:50:41'),
+(54, 52, 'حسین رضایی', 1, NULL, '1379', NULL, '33', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 02:23:29', '2025-12-12 02:25:04'),
+(71, 67, 'حسن مرادی', 1, NULL, '1374', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 14:43:35', '2025-12-12 14:53:02'),
+(72, 68, 'احمد حسینی', 1, NULL, '1360', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 14:57:05', '2025-12-12 15:01:57'),
+(73, 69, 'محمد رضا احمدی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 15:02:35', '2025-12-12 15:02:49'),
+(74, 70, 'اسد غلامی', 1, NULL, '1381', NULL, '33', NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 15:03:26', '2025-12-12 15:24:48'),
+(75, 71, 'محمد رضا احمدی', 1, NULL, '1363', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:26:20', '2025-12-12 16:27:20'),
+(76, 72, 'کاظم احمدی', 1, NULL, '1381', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:29:12', '2025-12-12 16:30:15'),
+(77, 73, 'کاظم', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:31:17', '2025-12-12 16:31:27'),
+(78, 74, 'کاظم ', 1, NULL, '1384', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:32:07', '2025-12-12 16:32:40'),
+(79, 75, 'فهیم', 1, NULL, '1384', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'کاظم حسینی', '2025-12-12 16:33:18', '2025-12-12 16:34:08'),
+(80, 76, 'احمد', 154, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'ادمین دمو', '2025-12-12 22:56:13', '2025-12-13 22:56:05'),
+(174, 126, 'علی رضایی', 2, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 9, 1, NULL, 3, 'احمد هاشمی', '2025-12-17 02:11:58', '2025-12-18 01:53:17'),
+(175, 127, 'dsfsdfd', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-21 19:24:32', '2025-12-29 04:15:26'),
+(176, 128, 'احمد حسینی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:07:16', '2025-12-29 04:15:30'),
+(177, 129, 'sadfdsfd', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:11:11', '2025-12-30 01:23:54'),
+(178, 130, 'dsfsdf3', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:11:32', '2025-12-30 03:21:05'),
+(179, 131, '333', 1, NULL, '1402', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:12:11', '2025-12-30 03:21:09'),
+(180, 132, '33', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:12:33', '2025-12-30 03:21:16'),
+(181, 133, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:15:33', '2025-12-30 03:21:18'),
+(182, 134, '3334', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:16:24', '2025-12-30 03:23:15'),
+(183, 135, 'sdfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:16:48', '2025-12-30 03:23:19'),
+(184, 136, 'sdfdsf', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:17:09', '2025-12-30 03:23:25'),
+(185, 137, 'dsfsdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:20:47', '2025-12-30 03:23:28'),
+(186, 138, 'afsdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:21:57', '2025-12-30 03:23:32'),
+(187, 133, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:29:37', '2025-12-30 03:23:34'),
+(188, 139, 'dfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:30:39', '2025-12-30 03:23:45'),
+(189, 135, 'sdfdf', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 01:31:23', '2025-12-30 03:25:26'),
+(190, 140, 'sadfsadf', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:31:49', '2025-12-30 03:26:28'),
+(191, 141, 'trytry', 1, NULL, '1349', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:42:21', '2025-12-30 03:26:36'),
+(192, 128, 'احمد حسینی', 1, NULL, '1371', 'باید ازمایش دهد', '33', '33', '4', NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:44:31', '2025-12-30 03:26:40'),
+(193, 142, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 02:56:40', '2025-12-30 03:26:47'),
+(197, 143, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:22:18', '2025-12-30 03:27:33'),
+(200, 144, 'احمد حسینی', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:33:43', '2026-01-01 01:11:10'),
+(202, 145, 'احمد حسینی', 1, NULL, '1381', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:40:18', '2026-01-01 01:11:14'),
+(203, 146, 'محمد رضا احمدی', 1, NULL, '1349', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:54:32', '2026-01-01 01:12:13'),
+(204, 147, 'احمد حسینی', 1, NULL, '1359', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 03:59:16', '2026-01-01 01:12:17'),
+(205, 148, 'احمد حسینی', 1, NULL, '1384', 'باید ازمایش دهد', '33', '33', '22', NULL, NULL, NULL, '1404', 10, 1, NULL, 3, 'کاظم حسینی', '2025-12-22 04:00:00', '2026-01-05 22:01:26'),
+(206, 149, 'شش', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-23 02:55:10', '2025-12-23 02:55:14'),
+(207, NULL, 'احمد حسینی a', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-24 17:24:33', '2025-12-24 17:24:42'),
+(208, 150, 'احمد حسینی 22', 1, NULL, '1360', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-24 17:25:17', '2025-12-24 17:25:36'),
+(209, 157, '111', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 03:24:49', '2025-12-25 03:24:55'),
+(210, 158, 'احمد حسینی', 1, NULL, '1402', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 03:25:07', '2025-12-25 03:25:12'),
+(211, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 05:16:22', '2025-12-25 05:33:03'),
+(212, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 05:34:21', '2025-12-25 05:34:23'),
+(213, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 05:38:56', '2025-12-25 05:38:58'),
+(214, 165, 'رجب علی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:24:17', '2025-12-25 14:36:42'),
+(215, 149, 'شش', 1, 9, '1401', 'ddddd', '33', '33', NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:39:34', '2025-12-25 14:40:21'),
+(216, 165, 'رجب علی', 1, 15, '1371', '33333', '33', NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:50:19', '2025-12-25 14:50:29'),
+(217, 167, 'رجب احمد', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:51:24', '2025-12-25 14:51:34'),
+(218, 168, 'صادق رضایی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:56:22', '2025-12-25 14:56:33'),
+(219, 168, 'صادق رضایی', 1, 17, '1371', 'ffff', NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 14:57:19', '2025-12-25 14:57:26'),
+(220, 171, 'mamad', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 16:37:01', '2025-12-25 16:37:09'),
+(221, 172, 'احمد حسینی', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 16:37:35', '2025-12-25 16:37:38'),
+(222, 159, 'ملا جان', 1, 11, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 16:41:04', '2025-12-25 16:41:08'),
+(223, 169, 'هاشمی', 1, 19, '1339', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 16:41:23', '2025-12-25 16:41:41'),
+(224, 175, 'امیر حسنی', 1, 24, '1372', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-25 23:01:46', '2025-12-25 23:02:05'),
+(225, 178, 'اکبر اما', 1, 28, '1361', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 13:27:30', '2025-12-26 13:27:31'),
+(226, 178, 'اکبر اما', 1, 29, '1361', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 13:51:06', '2025-12-26 13:51:08'),
+(227, 178, 'اکبر اما', 1, 28, '1361', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 15:33:37', '2025-12-26 15:34:25'),
+(228, 180, 'اکبر اما', 1, 29, '1361', 'برای است است', '1.5', '22', '4', '22', '50.2', NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 15:41:37', '2025-12-26 16:48:50'),
+(229, 182, 'asi', 1, 30, '1390', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 16:49:40', '2025-12-26 16:54:35'),
+(230, 184, 'غلام رضا احمدی', 1, 31, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 17:23:00', '2025-12-26 21:14:30'),
+(231, 185, 'fffffff', 1, 32, '1364', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, 1, 2, 'کاظم حسینی', '2025-12-26 17:30:25', '2025-12-27 01:57:21'),
+(232, 172, 'احمد حسینی', 1, NULL, '1371', 'f', '1.5', '22', NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-26 22:56:23', '2025-12-26 23:09:28'),
+(236, 151, 'sadfsdf', 1, 33, '1382', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-27 01:10:04', '2025-12-27 01:19:08'),
+(238, 187, 'ashe', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-29 21:06:02', '2025-12-29 21:09:13'),
+(239, 188, 'احمد حسینی aaa', 1, NULL, '1370', 'asdaf asdf dsf', 'a', '3', '33', NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-29 21:09:40', '2025-12-29 21:10:02'),
+(241, 189, 'woma', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-29 22:37:35', '2025-12-30 00:49:50'),
+(242, 190, 'ff', 1, NULL, '1402', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, 1, 2, 'کاظم حسینی', '2025-12-30 00:55:56', '2025-12-30 01:03:02'),
+(243, 188, 'احمد حسینی aaa', 1, 34, '1370', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 01:53:56', '2025-12-30 01:53:58'),
+(244, 191, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 03:17:49', '2025-12-30 03:18:11'),
+(251, 192, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:35:02', '2025-12-30 04:36:16'),
+(252, 192, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:42:58', '2025-12-30 04:44:05'),
+(255, 192, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:53:04', '2025-12-30 04:54:20'),
+(257, 192, 'ali', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 04:58:11', '2025-12-30 04:59:09'),
+(258, 193, 'a', 1, NULL, '1371', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2025-12-30 16:34:53', '2026-01-01 01:03:35'),
+(259, 194, 'احمد حسینی', 1, NULL, '-1929', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-01 01:09:42', '2026-01-01 01:09:47'),
+(260, 195, '333', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-01 15:26:20', '2026-01-01 15:26:25'),
+(261, 152, 'احمد حسینی', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-03 04:26:43', '2026-01-05 02:25:05'),
+(262, 196, 'احمد حسینی', 1, NULL, '1368', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-05 02:35:22', '2026-01-05 02:35:27'),
+(263, 191, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-05 22:11:25', '2026-01-07 20:55:49'),
+(264, 191, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-09 23:16:04', '2026-01-09 23:16:07'),
+(266, 197, 'مراد احمدی', 1, NULL, '1371', 'تشخیص است', '1.5', NULL, NULL, NULL, NULL, 'hdk ya', '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-10 17:57:12', '2026-01-10 18:28:16'),
+(267, 198, 'razegh', 1, NULL, '1371', 'tashkhis doctor', '1.5', '22', '4', NULL, NULL, 'yaftehay clinici', '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-10 18:56:00', '2026-01-10 18:56:48'),
+(268, 191, 'احمد حسینی', 1, NULL, '1401', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-10 22:18:36', '2026-01-10 22:18:42'),
+(269, 199, 'aaaaa', 1, NULL, '1382', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, 1, 2, 'کاظم حسینی', '2026-01-10 22:19:22', '2026-01-11 18:58:37'),
+(270, 200, 'جمشید رضایی asl', 1, NULL, '1379', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-10 22:23:59', '2026-01-10 22:24:04'),
+(271, 201, 'مریم رضایی', 1, NULL, '1374', 'tashkhis doctor update', '3', '22', NULL, NULL, NULL, 'yaftehay clin up', '1404', 10, 1, 1, 2, 'کاظم حسینی', '2026-01-11 01:07:57', '2026-01-11 18:59:47'),
+(272, 202, 'اکبر اما', 1, NULL, '1381', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, NULL, 2, 'کاظم حسینی', '2026-01-11 03:21:24', '2026-01-11 14:35:21'),
+(273, 172, 'احمد حسینی test', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1404', 10, 1, 1, 2, 'کاظم حسینی', '2026-01-11 14:41:54', '2026-01-11 16:06:27'),
+(274, 204, 'احمد حسینی', 1, NULL, NULL, 'tashkhis', '1.5', '22', NULL, NULL, NULL, 'yafteha', '1404', 10, 1, 1, 2, 'کاظم حسینی', '2026-01-14 01:41:27', '2026-01-14 01:45:32');
 
 -- --------------------------------------------------------
 
@@ -1234,23 +1302,23 @@ INSERT INTO `prescriptions` (`id`, `patient_id`, `patient_name`, `doctor_id`, `a
 DROP TABLE IF EXISTS `prescription_items`;
 CREATE TABLE IF NOT EXISTS `prescription_items` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `drug_name` varchar(124) COLLATE utf8mb4_general_ci NOT NULL,
+  `drug_name` varchar(124) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `prescription_id` int NOT NULL,
   `drug_id` int NOT NULL,
-  `drug_type` varchar(32) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `dosage` varchar(124) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `interval_time` varchar(124) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `duration_days` varchar(124) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `usage_instruction` varchar(124) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `company` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `drug_type` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `dosage` varchar(124) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `interval_time` varchar(124) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `duration_days` varchar(124) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `usage_instruction` varchar(124) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `company` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `drug_count` int DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `drug_name` (`drug_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=477 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=496 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prescription_items`
@@ -1663,7 +1731,23 @@ INSERT INTO `prescription_items` (`id`, `drug_name`, `prescription_id`, `drug_id
 (472, 'Glucose 10%', 260, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2026-01-01 15:26:20', NULL),
 (473, 'Alteplase', 261, 72, NULL, NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2026-01-03 04:26:43', NULL),
 (474, 'Glucose 10%', 262, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-05 02:35:22', NULL),
-(475, 'Glucose 10%', 263, 33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2026-01-05 22:11:25', NULL);
+(475, 'Glucose 10%', 263, 33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2026-01-05 22:11:25', NULL),
+(477, 'Glucose 10%', 264, 33, 'test', NULL, NULL, NULL, NULL, NULL, '', 1, 1, '2026-01-09 23:16:04', NULL),
+(478, 'Glucose 10%', 266, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', 2, 1, '2026-01-10 17:57:12', NULL),
+(479, 'Glucose 10%', 267, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-10 18:56:00', NULL),
+(480, 'Glucose 10%', 268, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-10 22:18:36', NULL),
+(481, 'Glucose 10%', 269, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-10 22:19:22', NULL),
+(482, 'Glucose 10%', 270, 33, 'cap', NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-10 22:23:59', NULL),
+(483, 'Glucose 10%', 271, 33, 'cap', NULL, 'قبل از غذا', NULL, 'خوراکی', NULL, 'this is description', 6, 1, '2026-01-11 01:07:57', NULL),
+(484, 'Glucose 10%', 272, 33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2026-01-11 03:21:24', NULL),
+(485, 'amo 250ml pk', 272, 130, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-11 03:30:21', NULL),
+(489, 'Alteplase', 271, 72, NULL, NULL, NULL, NULL, NULL, NULL, 'aaaaa', NULL, 1, '2026-01-11 03:40:03', NULL),
+(490, 'amo sadlfjsadf asdf 250ml', 271, 123, NULL, 'یک دانه در روز', 'قبل از غذا', NULL, 'خوراکی', 'هندی', 'aaaaaa aaaa ', 2, 1, '2026-01-11 03:43:53', NULL),
+(491, 'Amiloride', 272, 53, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-11 14:35:15', NULL),
+(493, 'Glucose 10%', 273, 33, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-11 14:53:48', NULL),
+(494, 'Alteplase', 274, 72, 'test', 'یک دانه در روز', 'بعد از غذا', NULL, 'خوراکی', 'ایرانی', 'ddddd', 1, 1, '2026-01-14 01:41:27', NULL);
+INSERT INTO `prescription_items` (`id`, `drug_name`, `prescription_id`, `drug_id`, `drug_type`, `dosage`, `interval_time`, `duration_days`, `usage_instruction`, `company`, `description`, `drug_count`, `status`, `created_at`, `updated_at`) VALUES
+(495, 'Amlodipine', 274, 7, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, '2026-01-14 01:41:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -1709,13 +1793,13 @@ DROP TABLE IF EXISTS `recommended`;
 CREATE TABLE IF NOT EXISTS `recommended` (
   `id` int NOT NULL AUTO_INCREMENT,
   `prescription_id` int NOT NULL,
-  `recommended` varchar(1024) COLLATE utf8mb4_general_ci NOT NULL,
+  `recommended` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `recommended`
@@ -1764,7 +1848,8 @@ INSERT INTO `recommended` (`id`, `prescription_id`, `recommended`, `status`, `wh
 (63, 228, '16', 1, '', '2025-12-26 15:41:37', NULL),
 (66, 232, '18', 1, '', '2025-12-26 23:06:17', NULL),
 (67, 232, '16', 1, '', '2025-12-26 23:09:17', NULL),
-(68, 232, '17', 1, '', '2025-12-26 23:09:26', NULL);
+(68, 232, '17', 1, '', '2025-12-26 23:09:26', NULL),
+(69, 264, '16', 1, '', '2026-01-10 00:59:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -1919,7 +2004,9 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `company` tinyint NOT NULL DEFAULT '1',
   `description` tinyint NOT NULL DEFAULT '1',
   `intake_instructions` tinyint NOT NULL DEFAULT '1',
+  `drug_type` tinyint NOT NULL DEFAULT '1',
   `tests` tinyint NOT NULL DEFAULT '1',
+  `active_doctor_infos` tinyint NOT NULL DEFAULT '1',
   `shwo_section` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `active_infos_pre` tinyint NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
@@ -1931,8 +2018,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `branch_id`, `image`, `single_print`, `admission`, `count_drug`, `intake_time`, `dosage`, `company`, `description`, `intake_instructions`, `tests`, `shwo_section`, `active_infos_pre`, `created_at`, `updated_at`) VALUES
-(1, 20, '2025-12-30-04-38-07_695317e7383e6.jpg', 1, 2, 1, 1, 1, 2, 2, 1, 1, 'ireqUVWnyfEVyvmGbrzWgG2GSKlli6TvlTWAwnQwMPY=', 2, '2025-04-01 13:30:36', '2026-01-06 22:59:03');
+INSERT INTO `settings` (`id`, `branch_id`, `image`, `single_print`, `admission`, `count_drug`, `intake_time`, `dosage`, `company`, `description`, `intake_instructions`, `drug_type`, `tests`, `active_doctor_infos`, `shwo_section`, `active_infos_pre`, `created_at`, `updated_at`) VALUES
+(1, 20, '2026-01-14-01-34-34_6966b36280a97.jpg', 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 'XgwFmbeoPyk0GLj4KtD0OgXFwn3HrDT2nU7UhSeaEiw=', 2, '2025-04-01 13:30:36', '2026-01-14 01:41:02');
 
 -- --------------------------------------------------------
 
@@ -1943,9 +2030,9 @@ INSERT INTO `settings` (`id`, `branch_id`, `image`, `single_print`, `admission`,
 DROP TABLE IF EXISTS `tests`;
 CREATE TABLE IF NOT EXISTS `tests` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `test_name` varchar(512) COLLATE utf8mb4_general_ci NOT NULL,
+  `test_name` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -1970,9 +2057,9 @@ INSERT INTO `tests` (`id`, `test_name`, `status`, `who_it`, `created_at`, `updat
 DROP TABLE IF EXISTS `units`;
 CREATE TABLE IF NOT EXISTS `units` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `unit_name` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `unit_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -2021,7 +2108,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=205 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `users`
@@ -2103,7 +2190,7 @@ INSERT INTO `users` (`id`, `user_code`, `user_name`, `password`, `father_name`, 
 (169, NULL, 'هاشمی', NULL, '', '', NULL, 'آقا', 1339, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, 'کاظم حسینی', '2025-12-25 15:41:25', NULL),
 (170, NULL, 'عباس', NULL, '', '', NULL, 'آقا', 1359, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, 'کاظم حسینی', '2025-12-25 15:42:23', NULL),
 (171, NULL, 'mamad', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-25 16:37:09', NULL),
-(172, NULL, 'احمد حسینی', NULL, '', '', NULL, 'آقا', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-25 16:37:38', NULL),
+(172, NULL, 'احمد حسینی test', NULL, NULL, NULL, NULL, 'آقا', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2025-12-25 16:37:38', '2026-01-11 16:06:27'),
 (173, NULL, 'علی احمدی', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, 'کاظم حسینی', '2025-12-25 16:39:43', NULL),
 (174, NULL, 'حسن فتحی', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, 'کاظم حسینی', '2025-12-25 22:58:50', NULL),
 (175, NULL, 'امیر حسنی', NULL, '', '', NULL, 'آقا', 1372, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 1, 'کاظم حسینی', '2025-12-25 22:59:07', NULL),
@@ -2125,7 +2212,15 @@ INSERT INTO `users` (`id`, `user_code`, `user_name`, `password`, `father_name`, 
 (193, NULL, 'a', NULL, '', '', NULL, 'آقا', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-01 01:03:35', NULL),
 (194, NULL, 'احمد حسینی', NULL, '', '', NULL, 'آقا', -1929, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-01 01:09:47', NULL),
 (195, NULL, '333', NULL, '', '', NULL, 'آقا', 1382, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-01 15:26:25', NULL),
-(196, NULL, 'احمد حسینی', NULL, '', '', NULL, 'آقا', 1368, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-05 02:35:27', NULL);
+(196, NULL, 'احمد حسینی', NULL, '', '', NULL, 'آقا', 1368, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-05 02:35:27', NULL),
+(197, NULL, 'مراد احمدی', NULL, '', '', NULL, 'آقا', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-10 18:28:16', NULL),
+(198, NULL, 'razegh', NULL, '', '', NULL, 'آقا', 1371, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-10 18:56:48', NULL),
+(199, NULL, 'aaaaa', NULL, NULL, NULL, NULL, 'آقا', 1382, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-10 22:19:27', '2026-01-11 18:58:37'),
+(200, NULL, 'جمشید رضایی asl', NULL, '', '', NULL, 'آقا', 1379, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-10 22:24:04', NULL),
+(201, NULL, 'مریم رضایی', NULL, NULL, '078', NULL, 'خانم', 1374, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-11 01:08:34', '2026-01-11 18:59:47'),
+(202, NULL, 'اکبر اما', NULL, '', '', NULL, 'آقا', 1381, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-11 14:35:21', NULL),
+(203, NULL, 'for dele', NULL, '', '', NULL, NULL, 1349, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, 1, 'کاظم حسینی', '2026-01-12 02:18:34', NULL),
+(204, NULL, 'احمد حسینی', NULL, NULL, NULL, NULL, 'آقا', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'کاظم حسینی', '2026-01-14 01:41:54', '2026-01-14 01:45:32');
 
 -- --------------------------------------------------------
 
@@ -2191,13 +2286,13 @@ DROP TABLE IF EXISTS `visits`;
 CREATE TABLE IF NOT EXISTS `visits` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
-  `visit_date` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
-  `symptoms` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'alaem',
-  `diagnosis` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'tashkhis',
-  `note` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `visit_date` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `symptoms` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'alaem',
+  `diagnosis` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'tashkhis',
+  `note` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `doctor_id` int NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
-  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
