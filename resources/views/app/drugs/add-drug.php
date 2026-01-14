@@ -27,6 +27,22 @@
             </div>
         </div>
 
+        <script>
+            initLiveSearch({
+                input: '#search_seller',
+                resultBox: '#backResponseSeller',
+                url: 'search-em',
+                requestKey: 'customer_name',
+                renderItem: function(item) {
+                    return item.user_name + ' - ' + item.birth_year + ' - ' + item.phone;
+                },
+                onSelect: function(item) {
+                    $('#user_id').val(item.id);
+                    $('#patient_name').val(item.user_name);
+                }
+            });
+        </script>
+
         <div class="box-container">
             <div class="insert">
                 <form action="<?= url('drug-store') ?>" method="POST" enctype="multipart/form-data">
