@@ -145,4 +145,27 @@ class Drug extends App
         $this->db->update('drugs', $drug['id'], ['status'], [$newState]);
         $this->send_json_response(true, _success, $newState);
     }
+
+    // live search
+    public function liveSearchDrug($request)
+    {
+        $this->middleware(true, true, 'general');
+
+        $keyword = '%' . $request['customer_name'] . '%';
+
+        $sql = "SELECT * FROM drugs WHERE `name` LIKE ? LIMIT 20";
+        $params = [$keyword];
+
+        $infos = $this->db->select($sql, $params)->fetchAll();
+
+
+        $response = [
+            'status' => 'success',
+            'items'  => $infos,
+        ];
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
 }
