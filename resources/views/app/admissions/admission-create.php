@@ -19,7 +19,7 @@
         ?>
 
         <!-- search box -->
-        <div class=" flex-justify-align mb10">
+        <!-- <div class=" flex-justify-align mb10">
             <div class="border search-database-s flex-justify-align">
                 <a href="#" class="color search-icon-database-s">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-10 search-icon w17">
@@ -32,7 +32,39 @@
                     <li class="resSel search-item color" role="option"></li>
                 </ul>
             </div>
+        </div> -->
+
+        <div class=" flex-justify-align mb10">
+            <div class="border search-database-s flex-justify-align">
+                <a href="#" class="color search-icon-database-s">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-10 search-icon w17">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </a>
+                <input
+                    type="text"
+                    class="p5 fs15 input w100 live-search"
+                    placeholder="جستجوی مریض..."
+                    autofocus
+                    id="search_seller"
+                    data-search-url="<?= url('search-em') ?>"
+                    data-request-key="customer_name"
+
+                    data-display-keys="user_name,birth_year,phone"
+
+                    data-value-key="user_name"
+                    data-id-key="id"
+
+                    data-target-id="#user_id"
+                    data-target-name="#patient_name" />
+
+                <ul class="search-back t34 d-none live-search-result">
+                    <li class="resSel search-item color" role="option"></li>
+                </ul>
+            </div>
         </div>
+
 
         <!-- start page content -->
         <div class="box-container">
