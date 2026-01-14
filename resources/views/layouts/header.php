@@ -521,7 +521,7 @@
       </span>
 
       <!-- search box -->
-      <div class="d-flex border appbar-search">
+      <!-- <div class="d-flex border appbar-search">
         <form action="">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-10 search-icon w17">
             <circle cx="11" cy="11" r="8"></circle>
@@ -529,7 +529,7 @@
           </svg>
           <input type="text" class="p5 fs15 input" placeholder="search..." />
         </form>
-      </div>
+      </div> -->
     </div>
 
     <div class="w60 d-flex justify-between ml-20">
