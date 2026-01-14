@@ -13,6 +13,7 @@ include_once('public/alerts/toastr.php');
     $help_title = 'راهنمای بخش نمایش داروها';
     $help_content = 'اگر شماره آیتمی به رنگ سرخ بود، یعنی آیتم مورد نظر غیر فعال است!';
     include_once('resources/views/helps/help.php');
+    include_once('resources/views/scripts/live-search-link.php');
     ?>
     <!-- start page content -->
 
