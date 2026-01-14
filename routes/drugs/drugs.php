@@ -10,7 +10,8 @@ uri('edit-drug/{id}', 'App\Drug', 'editDrug');
 uri('edit-drug-store/{id}', 'App\Drug', 'editDrugStore', 'POST');
 uri('change-status-drug/{id}', 'App\Drug', 'changeDrugStatus');
 
-
+// live-search-drug
+uri('live-search-drug', 'App\Drug', 'liveSearchDrug', 'POST');
 
 
 

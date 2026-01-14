@@ -29,7 +29,7 @@ include_once('public/alerts/toastr.php');
             <input
                 type="text"
                 class="p5 fs15 input w100 live-search-input"
-                data-search-url="<?= url('live-search-patient') ?>"
+                data-search-url="<?= url('live-search-drug') ?>"
                 data-redirect-url="<?= url('user-details') ?>/"
                 data-edit-url="<?= url('edit-user') ?>/"
                 data-template="user_name"
