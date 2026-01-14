@@ -128,7 +128,6 @@ class User extends App
         exit();
     }
 
-
     // user search details
     public function searchUserDetails($request)
     {

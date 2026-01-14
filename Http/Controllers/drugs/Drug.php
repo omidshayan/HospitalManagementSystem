@@ -168,4 +168,20 @@ class Drug extends App
         echo json_encode($response);
         exit();
     }
+
+    // search drug
+    public function searchDrug($request)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        $infos = $this->db->select("SELECT * FROM users WHERE user_name LIKE ?", ['%' . $request['customer_name'] . '%'])->fetchAll();
+
+        $response = [
+            'status' => 'success',
+            'items' => $infos,
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
 }
