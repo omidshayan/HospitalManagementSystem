@@ -2121,6 +2121,7 @@ box-shadow: 0px 10px 14px -9px rgba(66, 68, 90, 1);}
 -webkit-box-shadow: 0px 10px 14px -9px rgba(66, 68, 90, 1);
 -moz-box-shadow: 0px 10px 14px -9px rgba(66, 68, 90, 1);
 box-shadow: 0px 10px 14px -9px rgba(66, 68, 90, 1);}
+
 @media screen and (max-width: 1200px) {
     .report .report-item {
         width: calc(50% - 20px);
@@ -2136,6 +2137,9 @@ box-shadow: 0px 10px 14px -9px rgba(66, 68, 90, 1);}
     .dash-chart{
         width: 100% !important;
         margin-bottom: 10px;
+    }
+    .search-database-s{
+        width: 68%;
     }
 }
 
@@ -2254,4 +2258,7 @@ box-shadow: 0px 10px 14px -9px rgba(66, 68, 90, 1);}
     .drug-container{
         width: 100% !important;
 }
+    .search-database-s{
+        width: 100%;
+    }
 }
