@@ -13,6 +13,7 @@ uri('change-status-drug/{id}', 'App\Drug', 'changeDrugStatus');
 // live-search-drug
 uri('live-search-drug', 'App\Drug', 'liveSearchDrug', 'POST');
 
+uri('search-drug', 'App\Drug', 'searchDrug', 'POST');
 
 
 
