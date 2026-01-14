@@ -174,7 +174,7 @@ class Drug extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $infos = $this->db->select("SELECT * FROM users WHERE user_name LIKE ?", ['%' . $request['customer_name'] . '%'])->fetchAll();
+        $infos = $this->db->select("SELECT * FROM drugs WHERE `name` LIKE ?", ['%' . $request['drug_name'] . '%'])->fetchAll();
 
         $response = [
             'status' => 'success',

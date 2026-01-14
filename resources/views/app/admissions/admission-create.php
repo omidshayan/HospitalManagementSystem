@@ -3,7 +3,7 @@
     include_once('resources/views/layouts/header.php');
     // include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
-    include_once('resources/views/scripts/live-search-users.php');
+    include_once('resources/views/scripts/search-items.php');
     ?>
 
     <!-- Start content -->
