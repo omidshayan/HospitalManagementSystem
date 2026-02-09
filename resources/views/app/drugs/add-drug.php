@@ -23,7 +23,7 @@
                 <input
                     type="text"
                     class="p5 fs15 input w100 live-search"
-                    placeholder="جستجوی مریض..."
+                    placeholder="جستجوی دارو..."
                     autofocus
                     id="search_seller"
                     data-search-url="<?= url('search-drug') ?>"
