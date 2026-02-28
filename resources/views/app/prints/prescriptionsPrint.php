@@ -1,11 +1,14 @@
 <?php
 $title = 'نمایش نسخه‌ها';
-include_once('resources/views/layouts/header.php');
+include_once('resources/views/layouts/print-layout.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
 
-<div class="content">
+<div class="content m0">
+    <div class="mb50">
+        <a href="<?= url('prescriptions') ?>" class="btn p20 color bold">لیست تمام نسخه‌ها</a>
+    </div>
     <div class="content-title">نمایش نسخه‌ها
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
