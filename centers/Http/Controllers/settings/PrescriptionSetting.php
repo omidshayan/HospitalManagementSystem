@@ -9,6 +9,7 @@ class PrescriptionSetting extends App
     {
         $this->middleware(true, true, 'general', true);
         $prescrption_change = $this->db->select('SELECT * FROM settings')->fetch();
+        $prescription_infos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
         require_once(BASE_PATH . '/resources/views/app/settings/prescription-change.php');
     }
 
