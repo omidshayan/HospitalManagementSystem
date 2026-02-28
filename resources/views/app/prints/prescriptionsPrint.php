@@ -236,8 +236,8 @@ include_once('public/alerts/toastr.php');
 
                 </div>
             </div>
-        </div>
-        `;
+            </div>
+            `;
         }
 
         function printReceipt() {

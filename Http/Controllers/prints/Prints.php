@@ -4,7 +4,7 @@ namespace App;
 
 class Prints extends App
 {
-    // show presctiption for print
+    // auto print prescriptions
     public function print()
     {
         $this->middleware(true, true, 'prescriptionPrint', true);
@@ -179,7 +179,7 @@ class Prints extends App
         $preInfos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
 
         $settings = $this->db->select('SELECT * FROM settings')->fetch();
-        
+
         require_once(BASE_PATH . '/resources/views/app/prints/print-item.php');
     }
 }
