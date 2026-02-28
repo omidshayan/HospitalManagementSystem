@@ -430,16 +430,11 @@
                     <li class="sidebar-dropdown-menu-item">نوع دارو</li>
                   </a>
                 <?php endif; ?>
-                <?php if ($this->hasAccess('tests')): ?>
+                <!-- <?php if ($this->hasAccess('tests')): ?>
                   <a href="<?= url('tests') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت آزمایشات</li>
                   </a>
-                <?php endif; ?>
-                <?php if ($this->hasAccess('prescriptionSettings')): ?>
-                  <a href="<?= url('prescription-settings') ?>">
-                    <li class="sidebar-dropdown-menu-item">تنظیمات نسخه</li>
-                  </a>
-                <?php endif; ?>
+                <?php endif; ?> -->
               </ul>
             </li>
           <?php endif; ?>
