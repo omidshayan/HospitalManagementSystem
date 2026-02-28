@@ -1,0 +1,12 @@
+{
+    "expiration_date": "2026-12-31",
+    "hardware_id": "fd631c32bef817810f61895d79023e695578d8efa5b15d232d6cf750d1b07c21",
+    "last_check": 1767555751,
+    "lock_version": 2,
+    "last_run_date": "2026-01-04",
+    "user_id": "123456789",
+    "license_id": "lic_abcdef1234",
+    "version": "1.0.0",
+    "last_online_update": 0,
+    "status": "active"
+}

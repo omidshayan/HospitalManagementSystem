@@ -1,0 +1,101 @@
+<?php
+
+namespace App;
+
+class DrugCategory extends App
+{
+    //  categoriesDrugs page
+    public function drugCategories()
+    {
+        $this->middleware(true, true, 'general', true);
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories ORDER BY id DESC')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/drug-categories/drug-categories.php');
+    }
+
+    // store expenses
+    public function drugCatStore($request)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+        if ($request['cat_name'] == '') {
+            $this->flashMessage('error', _emptyInputs);
+        }
+        $expenses_categories = $this->db->select('SELECT * FROM drug_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
+        if (!empty($expenses_categories['cat_name'])) {
+            $this->flashMessage('error', _repeat);
+        } else {
+            $this->db->insert('drug_categories', array_keys($request), $request);
+            $this->flashMessage('success', _success);
+        }
+    }
+
+    // Expense Cat Details detiles page
+    public function expenseCatDetails($id)
+    {
+        $this->middleware(true, true, 'general');
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE `id` = ?', [$id])->fetch();
+        if ($drug_categories != null) {
+            require_once(BASE_PATH . '/resources/views/app/drug-categories/drug-cat-details.php');
+            exit();
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+    }
+
+    // change status Expense Cat
+    public function changeStatusDrugCat($id)
+    {
+        $this->middleware(true, true, 'general');
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE id = ?', [$id])->fetch();
+        if ($drug_categories != null) {
+            if ($drug_categories['status'] == 1) {
+                $this->db->update('drug_categories', $drug_categories['id'], ['status'], [2]);
+                $this->send_json_response(true, _success, 2);
+            } else {
+                $this->db->update('drug_categories', $drug_categories['id'], ['status'], [1]);
+                $this->send_json_response(true, _success, 1);
+            }
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+    }
+
+    // edit expense page
+    public function editDrugCat($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        $drug_categories = $this->db->select('SELECT * FROM drug_categories WHERE id = ?', [$id])->fetch();
+        if ($drug_categories != null) {
+            require_once(BASE_PATH . '/resources/views/app/drug-categories/edit-drug-category.php');
+            exit();
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+    }
+
+    // edit expense store
+    public function editDrugCatStore($request, $id)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        // check empty form
+        if ($request['cat_name'] == '') {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
+        $item = $this->db->select('SELECT * FROM drug_categories WHERE `cat_name` = ?', [$request['cat_name']])->fetch();
+
+        if ($item) {
+            if ($item['id'] != $id) {
+                $this->flashMessage('error', 'این دسته قبلا ثبت شده است.');
+                return;
+            }
+        }
+
+        $this->db->update('drug_categories', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('drug-categories'));
+    }
+}

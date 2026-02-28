@@ -1,0 +1,151 @@
+<!-- start sidebar -->
+<?php
+$title = 'جزئیات مریض: ' . $user['user_name'];
+include_once('resources/views/layouts/header.php');
+include_once('resources/views/scripts/change-status.php');
+include_once('resources/views/scripts/show-img-modal.php');
+?>
+<!-- end sidebar -->
+<div id="alert" class="alert" style="display: none;">حالم بده، با برنامه نویس مه تماس بگیر :(</div>
+
+<!-- loading and overlay -->
+<div class="overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+</div>
+<!-- Start content -->
+
+
+<div class="content">
+
+    <div class="content-title d-flex justify-between">
+        <span class="" id="openModalBtn"> <span class="content-title"> جزئیات مریض : <?= $user['user_name'] ?></span>
+        </span>
+    </div>
+
+    <!-- start page content -->
+    <div class="box-container">
+
+        <div class="accordion-title color-orange border">مشخصات عمومی</div>
+        <div class="accordion-content">
+            <div class="child-accordioin">
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">نام</div>
+                    <div class="info-detaile"><?= $user['user_name'] ?></div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">سن</div>
+                    <div class="info-detaile">
+                        <?php if (!empty($user['birth_year']) && $user['birth_year'] != 0): ?>
+                            <?= $user['birth_year'] ?> <span class="fs12">(<?= $this->getAge($user['birth_year']) ?> ساله)</span>
+                        <?php else: ?>
+                            - - - -
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">جنسیت</div>
+                    <div class="info-detaile"><?= ($user['gender'] == 'آقا') ? 'آقا' : 'خانم ' ?></div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">نام پدر</div>
+                    <div class="info-detaile"><?= ($user['father_name'] ? $user['father_name'] : '- - - - ') ?></div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">شماره</div>
+                    <div class="info-detaile"><?= ($user['phone']) ?: '- - - -' ?></div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">آدرس</div>
+                    <div class="info-detaile"><?= $user['address'] ?: '- - - - ' ?></div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">توضیحات</div>
+                    <div class="info-detaile"><?= ($user['description'] ? $user['description'] : '- - - - ') ?></div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">تاریخ ثبت</div>
+                    <div class="info-detaile"><?= jdate('Y/m/d', strtotime($user['created_at'])) ?></div>
+                </div>
+                <div class="detailes-culomn d-flex cursor-p">
+                    <div class="title-detaile">ثبت شده توسط</div>
+                    <div class="info-detaile"><?= $user['who_it'] ?></div>
+                </div>
+                <div class="detailes-culomn d-flex align-center cursor-p">
+                    <div class="title-detaile">عکس</div>
+                    <div class="info-detaile d-flex align-center">
+                        <?= $user['image']
+                            ? '<img class="w50 cursor-p" src="' . asset('public/images/users/' . $user['image']) . '" alt="logo" onclick="openModal(\'' . asset('public/images/users/' . $user['image']) . '\')">'
+                            : ' - - - - ' ?>
+                    </div>
+                </div>
+                <div class="detailes-culomn d-flex align-center cursor-p">
+                    <div class="title-detaile"><a href="#" data-url="<?= url('change-status-user') ?>" data-id="<?= $user['id'] ?>" class="changeStatus color btn p5 w100 m10 center" id="submit">تغییر وضعیت</a></div>
+                    <div class="info-detaile">
+                        <div class="w100 m10 center status status-column" id="status"><?= ($user['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-title color-orange mt5 border">جزئیات مراجعه</div>
+        <div class="accordion-content">
+            <div class="child-accordioin">
+
+                <?php if (!empty($prescriptions)): ?>
+                    <div class="detailes-culomn d-flex cursor-p">
+                        <table class="fl-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>نام داکتر</th>
+                                    <th>نام مریض</th>
+                                    <th>تاریخ ثبت</th>
+                                    <th>جزئیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $perPage = 10;
+                                $data = paginate($prescriptions, $perPage);
+                                $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                                $number = ($currentPage - 1) * $perPage + 1;
+                                foreach ($data as $item) {
+                                ?>
+                                    <tr>
+                                        <td class="color-orange"><?= $number ?></td>
+                                        <td><?= $item['doctor_name'] ?></td>
+                                        <td><?= $item['patient_name'] ?? '- - - -' ?></td>
+                                        <td><?= jdate('Y/m/d', strtotime($item['created_at'])) ?></td>
+                                        <td>
+                                            <a href="<?= url('show-prescription-item/' . $item['id']) ?>">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" class="color-orange" />
+                                                </svg>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $number++;
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <div class="detailes-culomn center">
+                        <div class="fs14 color-red">بدون مراجعه</div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <a href="<?= url('patients') ?>">
+            <div class="btn center p5">برگشت</div>
+        </a>
+    </div>
+    <!-- end page content -->
+</div>
+<!-- End content -->
+
+<?php include_once('resources/views/layouts/footer.php') ?>
