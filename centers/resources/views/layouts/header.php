@@ -88,40 +88,6 @@
             </li>
           <?php endif; ?>
 
-          <!-- admissions -->
-          <?php if (
-            $this->hasAccess('general') &&
-            isset($_SESSION['settings']['admission']) &&
-            $_SESSION['settings']['admission'] == 1
-          ): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
-              <a href="#" class="d-flex align-center justify-between dddd">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 2c0-2.67 3.33-4 6-4s6 1.33 6 4v1h-12v-1zm10-9h-2V5h-4v1H8V5H6v2h12V5z" />
-                  </svg>
-                  <span class="mr5">پذیرش</span>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                </svg>
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('addAdmission')): ?>
-                  <a href="<?= url('admission/create') ?>">
-                    <li class="sidebar-dropdown-menu-item">پذیرش مریض</li>
-                  </a>
-                <?php endif; ?>
-
-                <?php if ($this->hasAccess('showAdmissions')): ?>
-                  <a href="<?= url('admissions') ?>">
-                    <li class="sidebar-dropdown-menu-item">لیست پذیرش‌ها</li>
-                  </a>
-                <?php endif; ?>
-              </ul>
-            </li>
-          <?php endif; ?>
-
           <!-- prescriptions -->
           <?php if ($this->hasAccess('parentPrescription')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
@@ -146,96 +112,6 @@
                 <?php if ($this->hasAccess('showPrescription')): ?>
                   <a href="<?= url('prescriptions') ?>">
                     <li class="sidebar-dropdown-menu-item">نمایش نسخه‌ها</li>
-                  </a>
-                <?php endif; ?>
-              </ul>
-            </li>
-          <?php endif; ?>
-
-          <!-- departments -->
-          <?php if ($this->hasAccess('parentDepartment')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
-              <a href="#" class="d-flex align-center justify-between dddd">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 2c0-2.67 3.33-4 6-4s6 1.33 6 4v1h-12v-1zm10-9h-2V5h-4v1H8V5H6v2h12V5z" />
-                  </svg>
-                  <span class="mr5">مدیریت دپارتمنت‌ها</span>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                </svg>
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('departments')): ?>
-                  <a href="<?= url('departments') ?>">
-                    <li class="sidebar-dropdown-menu-item">دپارتمنت‌ها</li>
-                  </a>
-                <?php endif; ?>
-
-                <?php if ($this->hasAccess('showDepartment')): ?>
-                  <a href="<?= url('departments') ?>">
-                    <li class="sidebar-dropdown-menu-item">جزئیات دپارتمنت‌ها</li>
-                  </a>
-                <?php endif; ?>
-              </ul>
-            </li>
-          <?php endif; ?>
-
-          <!-- funds -->
-          <!-- <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
-              <a href="#" class="d-flex align-center justify-between dddd">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 2c0-2.67 3.33-4 6-4s6 1.33 6 4v1h-12v-1zm10-9h-2V5h-4v1H8V5H6v2h12V5z" />
-                  </svg>
-                  <span class="mr5">موجودی و صندوق</span>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                </svg>
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('money-balance') ?>">
-                    <li class="sidebar-dropdown-menu-item">موجودی</li>
-                  </a>
-                <?php endif; ?>
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('center-fund') ?>">
-                    <li class="sidebar-dropdown-menu-item">جزئیات صندوق مرکزی</li>
-                  </a>
-                <?php endif; ?>
-
-              </ul>
-            </li>
-          <?php endif; ?> -->
-
-          <!-- employee salary -->
-          <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
-              <a href="#" class="d-flex align-center justify-between dddd">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 2c0-2.67 3.33-4 6-4s6 1.33 6 4v1h-12v-1zm10-9h-2V5h-4v1H8V5H6v2h12V5z" />
-                  </svg>
-                  <span class="mr5">معاش کارمندان</span>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                </svg>
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('add-salary') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت معاش</li>
-                  </a>
-                <?php endif; ?>
-
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('salaries') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش معاشات</li>
                   </a>
                 <?php endif; ?>
               </ul>
@@ -348,41 +224,6 @@
                 <?php if ($this->hasAccess('companies')): ?>
                   <a href="<?= url('companies') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت تولید کننده‌ها</li>
-                  </a>
-                <?php endif; ?>
-              </ul>
-            </li>
-          <?php endif; ?>
-
-          <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
-              <a href="#" class="d-flex align-center justify-between dddd">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
-                    <path d="M20 3h-2V1h-2v2H8V1H6v2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM4 5h16v12H4V5zm9 6h-2v2h-2v-2H7v-2h2V7h2v2h2v2z" />
-                  </svg>
-                  <span class="mr5">مصارف</span>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                </svg>
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('add-expense') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت مصرفی</li>
-                  </a>
-                <?php endif; ?>
-
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('expenses') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش مصارف</li>
-                  </a>
-                <?php endif; ?>
-
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('expenses_categories') ?>">
-                    <li class="sidebar-dropdown-menu-item">مدیریت دسته بندی‌ها</li>
                   </a>
                 <?php endif; ?>
               </ul>
