@@ -116,8 +116,8 @@
                         <?php
                         if (isset($settings['active_doctor_infos']) && $settings['active_doctor_infos'] == 1) { ?>
                             <div class="p-doctor-infos">
-                                <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
-                                <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
+                                <h3><?= $prescription['employee_name'] ?></h3>
+                                <span class="fs14 bold"><?= $prescription['expertise'] ?></span>
                                 <hr class="hrp">
                             </div>
                         <?php }

@@ -135,8 +135,8 @@ include_once('public/alerts/toastr.php');
 
                         <!-- doctor infos -->
                         <div class="p-doctor-infos">
-                            <h3>نام داکتر: <?= $prescription['employee_name'] ?></h3>
-                            <span class="fs14 bold">تخصص: <?= $prescription['expertise'] ?></span>
+                            <h3><?= $prescription['employee_name'] ?></h3>
+                            <span class="fs14 bold"><?= $prescription['expertise'] ?></span>
                         </div>
 
                         <!-- infos -->

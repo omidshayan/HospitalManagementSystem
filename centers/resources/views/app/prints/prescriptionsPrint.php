@@ -201,8 +201,8 @@ include_once('public/alerts/toastr.php');
                 <div class="p-left-infos border-r">
 
                     <div class="p-doctor-infos">
-                        <h3>نام داکتر: ${safe(prescription.employee_name)}</h3>
-                        <span class="fs14 bold">تخصص: ${safe(prescription.expertise)}</span>
+                        <h3>${safe(prescription.employee_name)}</h3>
+                        <span class="fs14 bold">${safe(prescription.expertise)}</span>
                     </div>
 
                     <div class="p-vital-signs fs12">
