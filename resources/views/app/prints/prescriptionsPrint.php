@@ -252,29 +252,29 @@ include_once('public/alerts/toastr.php');
             }
         }
 
-        // async function checkForPrescription() {
-        //     if (isPrinting) return;
+        async function checkForPrescription() {
+            if (isPrinting) return;
 
-        //     try {
-        //         const res = await fetch(PRESC_URL);
-        //         const text = await res.text();
-        //         const data = JSON.parse(text);
+            try {
+                const res = await fetch(PRESC_URL);
+                const text = await res.text();
+                const data = JSON.parse(text);
 
-        //         if (data.success) {
-        //             isPrinting = true;
-        //             document.getElementById('printContainer').innerHTML = renderPrescription(data.prescription, data.items, data.tests);
-        //             printReceipt();
+                if (data.success) {
+                    isPrinting = true;
+                    document.getElementById('printContainer').innerHTML = renderPrescription(data.prescription, data.items, data.tests);
+                    printReceipt();
 
-        //             setTimeout(() => {
-        //                 isPrinting = false;
-        //             }, 3000);
-        //         }
-        //     } catch (e) {
-        //         console.error("Error fetching prescription:", e);
-        //     }
-        // }
+                    setTimeout(() => {
+                        isPrinting = false;
+                    }, 3000);
+                }
+            } catch (e) {
+                console.error("Error fetching prescription:", e);
+            }
+        }
 
-        // checkForPrescription();
+        checkForPrescription();
 
         setInterval(checkForPrescription, 2000);
 
