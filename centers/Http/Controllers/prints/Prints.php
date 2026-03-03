@@ -74,7 +74,6 @@ class Prints extends App
                 [$prescription['id']]
             )->fetchAll();
 
-            // ✅ آزمایش‌ها
             $tests = $this->db->select(
                 'SELECT r.id, t.test_name
              FROM recommended r
@@ -85,9 +84,9 @@ class Prints extends App
 
             echo json_encode([
                 'success' => true,
-                'prescription' => $prescription,
-                'items' => $items,
-                'tests' => $tests // ⭐ خیلی مهم
+                'prescription' => $prescription['id'],
+                // 'items' => $items,
+                // 'tests' => $tests
             ], JSON_UNESCAPED_UNICODE);
 
             exit;
