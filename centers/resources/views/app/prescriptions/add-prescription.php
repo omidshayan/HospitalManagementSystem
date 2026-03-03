@@ -222,53 +222,6 @@
                             <form action="<?= url('close-prescription-store/' . ($prescription['id'] ?? '')) ?>" method="post" id="prescriptionForm">
                                 <div class="center fs14 mb10">اطلاعات مریض</div>
                                 <div class="insert">
-                                    <?php
-                                    $admissionStatus = isset($_SESSION['settings']['admission']) && $_SESSION['settings']['admission'] == 1;
-                                    if ($admissionStatus) {
-                                        $currentPatientId = null;
-                                        foreach ($patients as $p) {
-                                            if ($p['status'] == 1) {
-                                                $currentPatientId = $p['id'];
-                                                break;
-                                            }
-                                        }
-                                    ?>
-                                        <select name="admission_id" id="admissionSelect" class="mb20">
-                                            <?php if (empty($patients)): ?>
-                                                <option value="" disabled selected>
-                                                    مریضی ثبت نشده است
-                                                </option>
-                                            <?php else: ?>
-                                                <?php foreach ($patients as $patient): ?>
-                                                    <option
-                                                        class="<?= ($patient['status'] == 2) ? 'fs14 color-green' : '' ?>"
-                                                        value="<?= $patient['id'] ?>"
-                                                        data-name-add="<?= htmlspecialchars($patient['user_name'] ?? '') ?>"
-                                                        data-age-add="<?= $patient['age'] ?? '' ?>"
-                                                        <?= ($patient['id'] == $currentPatientId) ? 'selected' : '' ?>>
-
-                                                        <?= $patient['queue_number'] ?>
-                                                        - <?= $patient['user_name'] ?? 'نامشخص' ?>
-                                                        - (<?= $patient['age'] ?? '—' ?> ساله)
-
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            <?php endif; ?>
-                                        </select>
-
-                                        <!-- btn -->
-                                        <?php if (!empty($patients)): ?>
-                                            <div class="center mb20">
-                                                <a href="<?= url('patient-inquiry') ?>"
-                                                    target="_blank"
-                                                    id="patientInquiryBtn"
-                                                    class="p5-20 bg-success btn fs14">
-                                                    استعلام مریض
-                                                </a>
-                                            </div>
-                                        <?php endif; ?>
-
-                                    <?php } else { ?>
 
                                         <div class="inputs d-flex m6">
                                             <div class="one">
@@ -304,9 +257,7 @@
                                         </div>
 
                                         <!-- end patient infos -->
-                                    <?php }
-                                    ?>
-
+                 
                                     <!-- bp ... -->
                                     <div class="accordion-title color-orange">مدیریت علائم حیاطی</div>
                                     <div class="accordion-content-pre w100">

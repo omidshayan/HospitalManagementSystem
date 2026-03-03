@@ -15,6 +15,7 @@ include_once('public/alerts/toastr.php');
 
     <!-- show -->
     <div class="box-container">
+
         <table class="fl-table">
             <thead>
                 <tr>
@@ -55,6 +56,7 @@ include_once('public/alerts/toastr.php');
                 ?>
             </tbody>
         </table>
+
         <div class="flex-justify-align mt20 paginate-section">
             <div class="table-info fs14">تعداد کل: <?= count($prescriptions) ?></div>
             <?php
@@ -78,6 +80,31 @@ include_once('public/alerts/toastr.php');
     <div id="printContainer" class="center bg-whith">
 
     </div>
+
+    <script>
+        async function checkForPrescription() {
+            if (isPrinting) return;
+
+            try {
+                const res = await fetch(PRESC_URL);
+                const text = await res.text();
+                const data = JSON.parse(text);
+
+                if (data.success) {
+                    isPrinting = true;
+                    document.getElementById('printContainer').innerHTML = renderPrescription(data.prescription, data.items, data.tests);
+                    printReceipt();
+
+                    setTimeout(() => {
+                        isPrinting = false;
+                    }, 3000);
+                }
+            } catch (e) {
+                console.error("Error fetching prescription:", e);
+            }
+        }
+        document.getElementById('checkPrescriptions').addEventListener('click', checkForPrescription);
+    </script>
 
     <script>
         const PRESC_URL = "<?= url('getNextPrescription') ?>";
