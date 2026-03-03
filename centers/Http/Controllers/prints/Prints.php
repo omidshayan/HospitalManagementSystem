@@ -97,7 +97,7 @@ class Prints extends App
         exit;
     }
 
-    // show presctiption for print
+    // show presctiption for print page
     public function prescriptionItemPrint($id)
     {
         $this->middleware(true, true, 'prescriptionPrint', true);
@@ -110,12 +110,10 @@ class Prints extends App
                 e.expertise
          FROM prescriptions p
          JOIN employees e ON e.id = p.doctor_id
-         WHERE p.status = ? AND p.id = ?',
-            [3, $id]
+         WHERE p.id = ?',
+            [$id]
         )->fetch();
-        // NOTE
 
-        // NOTE
         $items = [];
 
         if ($prescription) {
@@ -135,6 +133,10 @@ class Prints extends App
                 [$prescription['id']]
             )->fetchAll();
         }
+
+        $preInfos = $this->db->select('SELECT * FROM prescription_settings')->fetch();
+
+        $settings = $this->db->select('SELECT * FROM settings')->fetch();
 
         require_once(BASE_PATH . '/resources/views/app/prints/prescriptionPrint.php');
     }

@@ -1,18 +1,21 @@
 <?php
-$title = 'نمایش نسخه: ' . $prescription['patient_name'];
-include_once('resources/views/layouts/header.php');
-include_once('public/alerts/check-inputs.php');
+$title = 'چاپ نسخه: ' . $prescription['patient_name'];
+include_once('resources/views/layouts/print-layout.php');
 include_once('public/alerts/toastr.php');
 ?>
 
 <div class="content">
-    <div class="content-title mb20">نمایش نسخه: <?= $prescription['patient_name'] ?>
+    <div class="mb50">
+        <a href="<?= url('prescriptions') ?>" class="btn p20 color bold">لیست تمام نسخه‌ها</a>
+    </div>
+    <div class="content-title mb20 mt20">چاپ نسخه: <?= $prescription['patient_name'] ?>
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
 
     <!-- form print -->
     <?php if (!empty($prescription)) : ?>
 
+        
         <?php include_once('resources/views/app/prescriptions/prescription-print.php'); ?>
 
         <script>
@@ -45,7 +48,6 @@ include_once('public/alerts/toastr.php');
             }
         }
     </script>
-
 
 </div>
 <!-- End content -->
