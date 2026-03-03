@@ -82,34 +82,44 @@ include_once('public/alerts/toastr.php');
     </div>
 
     <script>
+        let isPrinting = false;
         const PRESC_URL = "<?= url('getNextPrescription') ?>";
-        const BASE_REDIRECT_URL = "<?= url('prescriptions/view') ?>"; // روت پایه
-
         async function checkForPrescription() {
+            if (isPrinting) return;
+
             try {
                 const res = await fetch(PRESC_URL);
-                const data = await res.json();
+                const text = await res.text();
+                const data = JSON.parse(text);
 
-                if (data.success && data.prescription?.id) {
+                if (data.success) {
+                    console.log(data);
+                    isPrinting = true;
 
-                    const id = data.prescription.id;
+                    // ساختن آدرس روت جدید با استفاده از آی‌دی دریافتی
+                    const printUrl = `prescription-item-print/${data.prescription}`;
 
-                    // 👇 ساختن آدرس همراه با ID
-                    window.location.href = BASE_REDIRECT_URL + "/" + id;
+                    // باز کردن روت در یک تب جدید
+                    window.open(printUrl, '_blank');
 
-                    return;
+                    // اگر هنوز نیاز داری محتوا رو در همین صفحه هم رندر کنی، این خطوط رو نگه دار
+                    // document.getElementById('printContainer').innerHTML = renderPrescription(data.prescription, data.items, data.tests);
+                    // printReceipt();
+
+                    setTimeout(() => {
+                        isPrinting = false;
+                    }, 3000);
                 }
-
-                // اگر موفق نبود → 3 ثانیه بعد دوباره تلاش
-                setTimeout(checkForPrescription, 3000);
-
             } catch (e) {
                 console.error("Error fetching prescription:", e);
-                setTimeout(checkForPrescription, 3000);
             }
         }
 
         checkForPrescription();
+
+        setInterval(checkForPrescription, 2000);
+
+        document.getElementById('checkPrescriptions').addEventListener('click', checkForPrescription);
     </script>
 
     <script>

@@ -62,10 +62,8 @@ class Prints extends App
 
         if ($prescription) {
 
-            // تغییر وضعیت نسخه
             $this->db->update('prescriptions', $prescription['id'], ['status'], [3]);
 
-            // داروها
             $items = $this->db->select(
                 'SELECT *
              FROM prescription_items
