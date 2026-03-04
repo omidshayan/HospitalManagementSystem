@@ -45,7 +45,7 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14" for="name">دیپارتمنت</div>
-                            <select name="department_id" id="departmentSelect" class="checkSelect" disabled>
+                            <select name="department_id" id="departmentSelect" disabled>
                                 <option selected disabled>لطفا دیپارتمنت را انتخاب نمائید</option>
                                 <?php foreach ($departments as $department) { ?>
                                     <option value="<?= $department['id'] ?>"><?= $department['name'] ?></option>
@@ -248,7 +248,7 @@
     <!-- End content -->
 
     <!-- select department -->
-    <script>
+    <!-- <script>
         const positionSelect = document.getElementById('mySelect');
         const departmentSelect = document.getElementById('departmentSelect');
 
@@ -276,7 +276,7 @@
                 departmentSelect.classList.remove('checkSelect');
             }
         });
-    </script>
+    </script> -->
 
     <script>
         document.getElementById('phone').addEventListener('input', function() {
